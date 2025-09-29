@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Flash Cards + Labo School of Technology</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        /* Additional styles for experimental blockchain flashcards */
+        .flashcard-environment {
+            background: var(--color-white);
+            min-height: 100vh;
+        }
+
+        .flashcard-hero {
+            padding: var(--space-16) var(--space-8);
+            margin-right: 60px;
+            border-bottom: var(--border-width) solid var(--color-black);
+        }
+
+        .flashcard-container {
+            padding: var(--space-8);
+            margin-right: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        .experimental-flashcard {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            perspective: 1000px;
+            margin-bottom: var(--space-8);
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flashcard-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: var(--color-white);
+            border: var(--border-width-4) solid var(--color-black);
+            padding: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .flashcard-front {
+            text-align: center;
+        }
+
+        .flashcard-meta {
+            position: absolute;
+            top: var(--space-4);
+            left: var(--space-4);
+            right: var(--space-4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flashcard-number {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .flashcard-category {
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: var(--space-1) var(--space-2);
+            border: var(--border-width) solid var(--color-black);
+        }
+
+        .flashcard-question {
+            font-size: var(--text-5xl);
+            font-weight: var(--font-black);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-6);
+            text-transform: uppercase;
+        }
+
+        .flashcard-hint {
+            font-size: var(--text-xl);
+            font-weight: var(--font-normal);
+            line-height: 1.2;
+            opacity: 0.7;
+        }
+
+        .flashcard-section {
+            margin-bottom: var(--space-6);
+        }
+
+        .flashcard-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-label {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-2);
+            color: var(--color-electric-blue);
+        }
+
+        .section-content {
+            font-size: var(--text-base);
+            line-height: 1.4;
+            font-weight: var(--font-medium);
+        }
+
+        .example-box {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            padding: var(--space-4);
+            margin-top: var(--space-3);
+            font-style: italic;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .progress-display {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .progress-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: var(--space-4);
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            margin-bottom: var(--space-6);
+        }
+
+        .progress-stat {
+            text-align: center;
+        }
+
+        .progress-value {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-black);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .progress-label {
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+
+        .progress-bar-container {
+            width: 300px;
+            height: 4px;
+            background: var(--color-gray-200);
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .flashcard-hero {
+                padding: var(--space-8) var(--space-4);
+                margin-right: 40px;
+            }
+
+            .flashcard-container {
+                padding: var(--space-4);
+                margin-right: 40px;
+            }
+
+            .experimental-flashcard {
+                height: 400px;
+            }
+
+            .flashcard-question {
+                font-size: var(--text-3xl);
+            }
+
+            .flashcard-hint {
+                font-size: var(--text-lg);
+            }
+
+            .flashcard-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .experimental-btn {
+                width: 200px;
+            }
+
+            .progress-stats {
+                flex-direction: column;
+                gap: var(--space-4);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index-experimental.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Blockchain Flash Cards</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Navigation</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="index-experimental.html" class="experimental-nav-link">Home</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="blockchain-landing.html" class="experimental-nav-link">Blockchain Lab</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="blockchain-flashcards.html" class="experimental-nav-link active">Flash Cards</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="ai-landing.html" class="experimental-nav-link">AI Lab</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Study Tips</div>
+                    <div class="info-box-content">Click cards to flip them and reveal detailed information. Use keyboard arrows to navigate between cards.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Categories</div>
+                    <div class="info-box-content">
+                        Foundation • Protocols<br>
+                        Smart Contracts • DeFi<br>
+                        All levels supported
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Blockchain Lab</div>
+                    <div class="info-box-content">
+                        Decentralized Systems Projection<br>
+                        Visible: All the time<br>
+                        60 cards total
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main flashcard-environment">
+
+            <!-- Hero Section -->
+            <div class="flashcard-hero">
+                <h1 class="experimental-title">Blockchain Flash Cards +</h1>
+                <h2 class="experimental-subtitle">Decentralized Learning Lab</h2>
+                <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                    <span class="experimental-date">01</span>
+                    <span class="experimental-arrow">→</span>
+                    <span class="experimental-date">60</span>
+                </div>
+            </div>
+
+            <!-- Flashcard Container -->
+            <div class="flashcard-container">
+
+                <!-- Progress Display -->
+                <div class="progress-display">
+                    <h3 class="progress-title">Study Progress</h3>
+                    <div class="progress-stats">
+                        <div class="progress-stat">
+                            <span class="progress-value" id="currentCard">01</span>
+                            <span class="progress-label">Current</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-value" id="totalCards">60</span>
+                            <span class="progress-label">Total</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-value" id="progressPercent">2%</span>
+                            <span class="progress-label">Complete</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progressBarFill" style="width: 2%;"></div>
+                    </div>
+                </div>
+
+                <!-- Flashcard -->
+                <div class="experimental-flashcard">
+                    <div class="flashcard-inner" id="flashcardInner">
+
+                        <!-- Front Face -->
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-meta">
+                                <span class="flashcard-number" id="cardNumber">01</span>
+                                <span class="flashcard-category" id="cardCategory">Foundation</span>
+                            </div>
+
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                                <h1 class="flashcard-question" id="cardTitle">Blockchain</h1>
+                                <p class="flashcard-hint" id="cardQuestion">What is a blockchain and how does it work?</p>
+                            </div>
+
+                            <div style="font-size: var(--text-sm); opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em;">
+                                Click to reveal answer
+                            </div>
+                        </div>
+
+                        <!-- Back Face -->
+                        <div class="flashcard-face flashcard-back">
+                            <div class="flashcard-meta">
+                                <span class="flashcard-number" id="cardNumberBack">01</span>
+                                <span class="flashcard-category" id="cardCategoryBack">Foundation</span>
+                            </div>
+
+                            <div class="flashcard-section">
+                                <div class="section-label">Core Concept</div>
+                                <div class="section-content" id="cardExplanation">
+                                    A blockchain is a distributed, immutable ledger that records transactions across multiple computers in a way that makes the records extremely difficult to alter, hack, or cheat.
+                                </div>
+                            </div>
+
+                            <div class="flashcard-section">
+                                <div class="section-label">Key Principle</div>
+                                <div class="section-content" id="cardPrinciple">
+                                    Each block contains cryptographic hashes linking to the previous block, creating an unbreakable chain. Consensus mechanisms ensure all network participants agree on the ledger's state.
+                                </div>
+                            </div>
+
+                            <div class="flashcard-section">
+                                <div class="section-label">Example</div>
+                                <div class="section-content">
+                                    <div class="example-box" id="cardExample">
+                                        Bitcoin blockchain: Each transaction is grouped into blocks, verified by miners, and permanently recorded, creating a transparent and tamper-proof payment system.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flashcard-controls">
+                    <button class="experimental-btn" id="prevBtn">← Previous</button>
+                    <button class="experimental-btn experimental-btn--primary" id="flipBtn">Flip Card</button>
+                    <button class="experimental-btn" id="nextBtn">Next →</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index-experimental.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Load blockchain flashcards data from JSON
+        let blockchainFlashcardsData = [];
+
+        // Load the blockchain data
+        async function loadBlockchainData() {
+            try {
+                const response = await fetch('blockchain.json');
+                const data = await response.json();
+                blockchainFlashcardsData = data.cards;
+
+                // Initialize the flashcard system after data is loaded
+                if (blockchainFlashcardsData.length > 0) {
+                    loadCard(currentCardIndex);
+                    updateProgress();
+                }
+            } catch (error) {
+                console.error('Error loading blockchain data:', error);
+                // Fallback to sample data if JSON fails to load
+                blockchainFlashcardsData = [
+                    {
+                        id: 1,
+                        category: "Foundation",
+                        title: "Blockchain",
+                        question: "What is a blockchain and how does it work?",
+                        explanation: "A blockchain is a distributed, immutable ledger that records transactions across multiple computers in a way that makes the records extremely difficult to alter, hack, or cheat.",
+                        principle: "Each block contains cryptographic hashes linking to the previous block, creating an unbreakable chain. Consensus mechanisms ensure all network participants agree on the ledger's state.",
+                        example: "Bitcoin blockchain: Each transaction is grouped into blocks, verified by miners, and permanently recorded, creating a transparent and tamper-proof payment system."
+                    }
+                ];
+                loadCard(currentCardIndex);
+                updateProgress();
+            }
+        }
+
+        let currentCardIndex = 0;
+        let isFlipped = false;
+
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Initialize the flashcard system
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            loadBlockchainData(); // Load data from JSON first
+        });
+
+        function setupEventListeners() {
+            // Card flipping
+            document.getElementById('flashcardInner').addEventListener('click', flipCard);
+            document.getElementById('flipBtn').addEventListener('click', flipCard);
+
+            // Navigation
+            document.getElementById('prevBtn').addEventListener('click', () => navigateCard(-1));
+            document.getElementById('nextBtn').addEventListener('click', () => navigateCard(1));
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        navigateCard(-1);
+                        break;
+                    case 'ArrowRight':
+                        navigateCard(1);
+                        break;
+                    case ' ':
+                    case 'Enter':
+                        e.preventDefault();
+                        flipCard();
+                        break;
+                    case 'Escape':
+                        const overlay = document.getElementById('mainMenuOverlay');
+                        overlay.classList.remove('active');
+                        break;
+                }
+            });
+        }
+
+        function loadCard(index) {
+            const card = blockchainFlashcardsData[index];
+            if (!card) return;
+
+            // Update front face
+            document.getElementById('cardNumber').textContent = String(card.id).padStart(2, '0');
+            document.getElementById('cardCategory').textContent = card.theme || 'Blockchain';
+            document.getElementById('cardTitle').textContent = card.title;
+            document.getElementById('cardQuestion').textContent = `Learn about: ${card.title}`;
+
+            // Update back face
+            document.getElementById('cardNumberBack').textContent = String(card.id).padStart(2, '0');
+            document.getElementById('cardCategoryBack').textContent = card.theme || 'Blockchain';
+
+            // Split the text into sections for better presentation
+            const text = card.text || '';
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+
+            // Use first part as explanation
+            const explanation = sentences.slice(0, 2).join('. ').trim() + '.';
+            // Use middle part as principle
+            const principle = sentences.slice(2, 4).join('. ').trim() + '.';
+            // Use last part as example/context
+            const example = sentences.slice(4).join('. ').trim() + '.';
+
+            document.getElementById('cardExplanation').textContent = explanation || text.substring(0, 200) + '...';
+            document.getElementById('cardPrinciple').textContent = principle || '';
+            document.getElementById('cardExample').textContent = example || '';
+
+            // Reset flip state
+            isFlipped = false;
+            document.getElementById('flashcardInner').classList.remove('flipped');
+            document.getElementById('flipBtn').textContent = 'Flip Card';
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === blockchainFlashcardsData.length - 1;
+        }
+
+        function flipCard() {
+            const flashcard = document.getElementById('flashcardInner');
+            flashcard.classList.toggle('flipped');
+            isFlipped = !isFlipped;
+
+            // Update flip button text
+            document.getElementById('flipBtn').textContent = isFlipped ? 'Show Question' : 'Show Answer';
+        }
+
+        function navigateCard(direction) {
+            const newIndex = currentCardIndex + direction;
+
+            if (newIndex >= 0 && newIndex < blockchainFlashcardsData.length) {
+                currentCardIndex = newIndex;
+                loadCard(currentCardIndex);
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const current = currentCardIndex + 1;
+            const total = blockchainFlashcardsData.length;
+            const percentage = total > 0 ? Math.round((current / total) * 100) : 0;
+
+            document.getElementById('currentCard').textContent = String(current).padStart(2, '0');
+            document.getElementById('totalCards').textContent = String(total).padStart(2, '0');
+            document.getElementById('progressPercent').textContent = percentage + '%';
+            document.getElementById('progressBarFill').style.width = percentage + '%';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+/* Blockchain Flash Cards Specific Styles - Larger Size for More Content */
+
+/* Override the standard flashcard dimensions for blockchain cards */
+.flashcard-wrapper {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 800px; /* Increased from 600px */
+    height: 500px; /* Increased from 400px */
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 3px solid var(--border-color);
+    background: var(--accent-secondary);
+    padding: 2.5rem; /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    justify-content: flex-start;
+    padding: 2rem; /* Increased from 1.5rem */
+}
+
+.card-content-back {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    overflow-y: auto;
+    max-height: calc(100% - 4rem);
+    padding-right: 1rem;
+}
+
+.card-explanation-display {
+    font-size: 1rem; /* Slightly larger text */
+    line-height: 1.6;
+    color: var(--text-primary);
+    text-align: left;
+    margin: 0;
+}
+
+.card-title-display {
+    font-size: 2rem; /* Increased from default */
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.card-meta-display {
+    font-size: 1.125rem; /* Increased meta text */
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.card-category-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive adjustments for blockchain cards */
+@media (max-width: 768px) {
+    .flashcard-wrapper {
+        max-width: 100%;
+        height: 450px; /* Slightly reduced on mobile */
+    }
+    
+    .flashcard-front,
+    .flashcard-back {
+        padding: 1.5rem;
+    }
+    
+    .flashcard-back {
+        padding: 1.25rem;
+    }
+    
+    .card-title-display {
+        font-size: 1.5rem;
+    }
+    
+    .card-explanation-display {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .flashcard-wrapper {
+        height: 400px;
+    }
+    
+    .flashcard-front,
+    .flashcard-back {
+        padding: 1rem;
+    }
+    
+    .card-title-display {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .card-meta-display {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .card-explanation-display {
+        font-size: 0.85rem;
+    }
+}

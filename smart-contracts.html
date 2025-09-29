@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Contracts - Emerging Tech Hub</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title">Smart Contracts</h1>
+                    <p class="brand-subtitle">Automated Agreements</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Blockchain Basics</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="blockchain-fundamentals.html" class="experimental-nav-link">Introduction</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="cryptocurrency-basics.html" class="experimental-nav-link">Cryptocurrency</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="smart-contracts.html" class="experimental-nav-link active">Smart Contracts</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="consensus-mechanisms.html" class="experimental-nav-link">Consensus</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="defi-basics.html" class="experimental-nav-link">DeFi</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="blockchain-governance.html" class="experimental-nav-link">Governance</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="cryptocurrency-basics.html">← Previous: Cryptocurrency</a><br>
+                        <a href="consensus-mechanisms.html">Next: Consensus →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Smart Contracts</h1>
+                <p class="fundamentals-subtitle">Self-executing agreements that run automatically when conditions are met—no lawyers or middlemen required</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- What are Smart Contracts -->
+                <section class="content-section">
+                    <h2>What are Smart Contracts?</h2>
+                    <p>Imagine a vending machine that doesn't just dispense snacks—it can handle any kind of agreement. You put in the right conditions (like inserting money), and it automatically executes the agreement (gives you the snack). Smart contracts work the same way, but for any type of deal or agreement you can imagine.</p>
+
+                    <p>A smart contract is a computer program that lives on a blockchain. It contains the rules and terms of an agreement written in code. When specific conditions are met, the contract automatically executes without needing humans to intervene.</p>
+
+                    <div class="highlight-box">
+                        <h3>The Magic of "If-Then" Rules</h3>
+                        <p>Smart contracts are essentially sophisticated "if-then" statements: "IF Alice sends 1 Ethereum to this contract AND it's after January 1st, THEN automatically send the concert ticket to Alice's wallet." No human needs to check or approve—it happens automatically.</p>
+                    </div>
+                </section>
+
+                <!-- Real World Comparison -->
+                <section class="content-section">
+                    <h2>Traditional Contracts vs Smart Contracts</h2>
+
+                    <div class="contract-comparison">
+                        <div class="comparison-scenario">
+                            <h4>Scenario: Renting an Apartment</h4>
+
+                            <div class="comparison-grid">
+                                <div class="comparison-item">
+                                    <h5>Traditional Contract</h5>
+                                    <ol>
+                                        <li>Sign lease with landlord</li>
+                                        <li>Put security deposit in landlord's account</li>
+                                        <li>Trust landlord to return deposit</li>
+                                        <li>If problems arise, hire lawyers</li>
+                                        <li>Go to court if necessary</li>
+                                        <li>Wait months for resolution</li>
+                                    </ol>
+                                    <div class="cost-box">
+                                        <strong>Cost:</strong> Legal fees, court costs, time<br>
+                                        <strong>Time:</strong> Months or years<br>
+                                        <strong>Trust:</strong> Must trust landlord and legal system
+                                    </div>
+                                </div>
+
+                                <div class="comparison-item">
+                                    <h5>Smart Contract</h5>
+                                    <ol>
+                                        <li>Create smart contract with lease terms</li>
+                                        <li>Deposit money into the contract (not landlord)</li>
+                                        <li>Contract automatically holds deposit</li>
+                                        <li>At lease end, contract checks conditions</li>
+                                        <li>If no damages reported, auto-refunds deposit</li>
+                                        <li>If damages, follows pre-agreed rules</li>
+                                    </ol>
+                                    <div class="cost-box">
+                                        <strong>Cost:</strong> Small transaction fees only<br>
+                                        <strong>Time:</strong> Instant execution<br>
+                                        <strong>Trust:</strong> Only need to trust the code
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- How Smart Contracts Work -->
+                <section class="content-section">
+                    <h2>How Smart Contracts Actually Work</h2>
+
+                    <div class="smart-contract-flow">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Agreement Terms</h4>
+                                <p>Parties agree on contract terms and conditions. These must be specific and measurable—like "if temperature drops below 32°F" rather than "if it gets cold."</p>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Code Translation</h4>
+                                <p>A programmer converts the agreement into computer code using a programming language like Solidity (for Ethereum contracts).</p>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Deployment</h4>
+                                <p>The contract is uploaded to a blockchain network where it gets its own unique address—like a permanent home on the internet.</p>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Monitoring</h4>
+                                <p>The contract continuously monitors for its trigger conditions using data feeds (called "oracles") or direct blockchain events.</p>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Automatic Execution</h4>
+                                <p>When conditions are met, the contract automatically executes—transferring money, sending notifications, or triggering other contracts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Simple Examples -->
+                <section class="content-section">
+                    <h2>Simple Smart Contract Examples</h2>
+
+                    <div class="examples-grid">
+                        <div class="example-card">
+                            <h4><span class="emoji">🎫</span> Event Ticket Sales</h4>
+                            <div class="example-scenario">
+                                <p><strong>The Contract:</strong> "Sell 1000 concert tickets at $50 each. If concert is canceled, automatically refund all buyers."</p>
+                                <p><strong>What Happens:</strong> People buy tickets by sending $50 to the contract. If the band cancels, the contract automatically refunds everyone immediately.</p>
+                                <p><strong>No Need For:</strong> Ticketing company to manually process refunds</p>
+                            </div>
+                        </div>
+
+                        <div class="example-card">
+                            <h4><span class="emoji">🌾</span> Crop Insurance</h4>
+                            <div class="example-scenario">
+                                <p><strong>The Contract:</strong> "If rainfall is less than 10 inches this season, pay farmer $10,000 insurance."</p>
+                                <p><strong>What Happens:</strong> Contract connects to weather data. If drought conditions are detected, farmer gets paid automatically.</p>
+                                <p><strong>No Need For:</strong> Insurance adjuster to investigate claims</p>
+                            </div>
+                        </div>
+
+                        <div class="example-card">
+                            <h4><span class="emoji">💰</span> Savings Goal</h4>
+                            <div class="example-scenario">
+                                <p><strong>The Contract:</strong> "Lock up my money for 1 year. Only let me withdraw if I reach my $5000 savings goal."</p>
+                                <p><strong>What Happens:</strong> Money is locked and can't be touched early, helping with financial discipline.</p>
+                                <p><strong>No Need For:</strong> Bank to manage savings restrictions</p>
+                            </div>
+                        </div>
+
+                        <div class="example-card">
+                            <h4><span class="emoji">🏆</span> Betting Pool</h4>
+                            <div class="example-scenario">
+                                <p><strong>The Contract:</strong> "Everyone puts in $10. Winner of the football game gets the entire pool."</p>
+                                <p><strong>What Happens:</strong> Contract gets game results from sports data feed and automatically pays the winners.</p>
+                                <p><strong>No Need For:</strong> Someone to collect money and pay out winnings</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Oracles Explained -->
+                <section class="content-section">
+                    <h2>Oracles: How Smart Contracts Learn About the Real World</h2>
+                    <p>Smart contracts live on blockchains, which are like isolated computer worlds. They can't directly check the weather, stock prices, or sports scores. That's where "oracles" come in—they're like messengers that bring real-world information to smart contracts.</p>
+
+                    <div class="oracle-explanation">
+                        <div class="oracle-types">
+                            <div class="oracle-type">
+                                <h4>Weather Oracles</h4>
+                                <p>Connect to meteorological data for crop insurance, event planning, or weather betting contracts.</p>
+                                <div class="example-box">
+                                    <strong>Example:</strong> Temperature drops below freezing → activate crop insurance payment
+                                </div>
+                            </div>
+
+                            <div class="oracle-type">
+                                <h4>Price Oracles</h4>
+                                <p>Provide real-time prices for stocks, commodities, or cryptocurrencies for trading and financial contracts.</p>
+                                <div class="example-box">
+                                    <strong>Example:</strong> Apple stock hits $200 → automatically execute stock option
+                                </div>
+                            </div>
+
+                            <div class="oracle-type">
+                                <h4>Sports Oracles</h4>
+                                <p>Report game results, scores, and player statistics for betting and fantasy sports contracts.</p>
+                                <div class="example-box">
+                                    <strong>Example:</strong> Lakers win championship → pay out prediction market bets
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="oracle-trust">
+                        <h4>The Oracle Problem</h4>
+                        <p>Smart contracts are only as trustworthy as their data sources. If an oracle provides false information, the contract will execute incorrectly. This is why many systems use multiple oracles and reputation systems to ensure accuracy.</p>
+                    </div>
+                </section>
+
+                <!-- DApps Introduction -->
+                <section class="content-section">
+                    <h2>DApps: Apps Powered by Smart Contracts</h2>
+                    <p>A DApp (Decentralized App) is like a regular mobile app, but instead of running on a company's servers, it runs on a blockchain using smart contracts. Think of it as the difference between renting an apartment (regular app) and owning your own house (DApp).</p>
+
+                    <div class="dapp-examples">
+                        <div class="dapp-example">
+                            <h4><span class="emoji">🦄</span> Uniswap - Decentralized Exchange</h4>
+                            <p>Like a stock exchange, but no company runs it. Smart contracts automatically match buyers and sellers of cryptocurrencies.</p>
+                            <div class="dapp-benefit">
+                                <strong>User Benefit:</strong> Trade 24/7 without accounts, verification, or middlemen taking cuts
+                            </div>
+                        </div>
+
+                        <div class="dapp-example">
+                            <h4><span class="emoji">🎨</span> OpenSea - NFT Marketplace</h4>
+                            <p>Like eBay for digital art and collectibles. Smart contracts handle ownership transfers and royalty payments automatically.</p>
+                            <div class="dapp-benefit">
+                                <strong>Artist Benefit:</strong> Get royalties forever, even when art is resold years later
+                            </div>
+                        </div>
+
+                        <div class="dapp-example">
+                            <h4><span class="emoji">📝</span> Lens Protocol - Social Network</h4>
+                            <p>Like Twitter, but you own your posts and followers. Smart contracts ensure your content can't be deleted or censored.</p>
+                            <div class="dapp-benefit">
+                                <strong>User Benefit:</strong> Take your social network with you if you switch platforms
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Advantages and Limitations -->
+                <section class="content-section">
+                    <h2>Smart Contracts: The Good and The Challenging</h2>
+
+                    <div class="pros-cons-grid">
+                        <div class="pros-section">
+                            <h4><span class="emoji">✅</span> Advantages</h4>
+                            <div class="advantage-item">
+                                <h5>Trustless</h5>
+                                <p>You don't need to trust the other party—just the code. The blockchain ensures contracts execute exactly as written.</p>
+                            </div>
+                            <div class="advantage-item">
+                                <h5>Automatic</h5>
+                                <p>No delays, no paperwork, no human error. Conditions met = instant execution.</p>
+                            </div>
+                            <div class="advantage-item">
+                                <h5>Transparent</h5>
+                                <p>Anyone can read the contract code and verify what it does. No hidden terms or surprises.</p>
+                            </div>
+                            <div class="advantage-item">
+                                <h5>Cost-Effective</h5>
+                                <p>Eliminates lawyers, banks, and other intermediaries that charge fees for simple tasks.</p>
+                            </div>
+                        </div>
+
+                        <div class="cons-section">
+                            <h4><span class="emoji">⚠️</span> Current Challenges</h4>
+                            <div class="challenge-item">
+                                <h5>Code is Law</h5>
+                                <p>If there's a bug in the code, it can't be easily fixed. The contract will execute exactly as written, even if that's not what was intended.</p>
+                            </div>
+                            <div class="challenge-item">
+                                <h5>Oracle Dependency</h5>
+                                <p>Smart contracts are only as reliable as their data sources. Bad data = bad outcomes.</p>
+                            </div>
+                            <div class="challenge-item">
+                                <h5>Legal Uncertainty</h5>
+                                <p>Courts are still figuring out how to handle smart contract disputes. Traditional legal remedies may not apply.</p>
+                            </div>
+                            <div class="challenge-item">
+                                <h5>Technical Complexity</h5>
+                                <p>Writing secure smart contracts requires specialized programming skills. Small mistakes can lead to big losses.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Programming Smart Contracts -->
+                <section class="content-section">
+                    <h2>A Peek at Smart Contract Code</h2>
+                    <p>Don't worry—you don't need to be a programmer to use smart contracts! But here's what a simple contract looks like to satisfy your curiosity:</p>
+
+                    <div class="code-example">
+                        <h4>Simple Savings Contract</h4>
+                        <pre><code>contract SavingsGoal {
+    address owner;
+    uint goal = 1000; // Goal: 1000 tokens
+    uint deadline;
+
+    function deposit() public payable {
+        // Accept money deposits
+    }
+
+    function withdraw() public {
+        require(msg.sender == owner); // Only owner can withdraw
+        require(balance >= goal); // Must reach goal first
+        // Send all money to owner
+    }
+}</code></pre>
+                        <p><strong>In Plain English:</strong> "Only let the owner withdraw money, and only if they've saved at least 1000 tokens."</p>
+                    </div>
+                </section>
+
+                <!-- The Future -->
+                <section class="content-section">
+                    <h2>The Future of Smart Contracts</h2>
+
+                    <div class="future-scenarios">
+                        <div class="scenario-card">
+                            <h4><span class="emoji">🏠</span> Real Estate</h4>
+                            <p>Buying a house could become as simple as clicking "buy." Smart contracts handle escrow, title transfers, and mortgage payments automatically.</p>
+                        </div>
+
+                        <div class="scenario-card">
+                            <h4><span class="emoji">🚗</span> Car Ownership</h4>
+                            <p>Your car could automatically pay for parking, gas, and tolls using smart contracts. Miss a car payment? The car locks itself until payment is made.</p>
+                        </div>
+
+                        <div class="scenario-card">
+                            <h4><span class="emoji">🎓</span> Education</h4>
+                            <p>Credentials and certificates stored on blockchain with smart contracts that automatically verify your qualifications to employers.</p>
+                        </div>
+
+                        <div class="scenario-card">
+                            <h4><span class="emoji">🌍</span> Global Commerce</h4>
+                            <p>International trade without banks, currency exchange, or lengthy settlement periods. Smart contracts handle payments and logistics automatically.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Next Steps -->
+                <section class="content-section">
+                    <h2>Continue Learning</h2>
+
+                    <div class="next-steps">
+                        <a href="consensus-mechanisms.html" class="next-step-card">
+                            <h4>Consensus Mechanisms</h4>
+                            <p>Learn how blockchain networks agree on which smart contracts to execute</p>
+                        </a>
+
+                        <a href="defi-basics.html" class="next-step-card">
+                            <h4>DeFi Basics</h4>
+                            <p>Discover how smart contracts are revolutionizing finance</p>
+                        </a>
+
+                        <a href="blockchain-governance.html" class="next-step-card">
+                            <h4>Governance</h4>
+                            <p>Understand how blockchain communities make decisions about protocol changes</p>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index-experimental.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

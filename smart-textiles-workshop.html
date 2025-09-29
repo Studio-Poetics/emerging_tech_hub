@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Textiles Construction Workshop - Emerging Tech Hub</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+        .workshop-lab {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-4);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
+            color: var(--color-white);
+            padding: var(--space-8) var(--space-4);
+            border-radius: var(--radius-large);
+            margin-bottom: var(--space-6);
+            text-align: center;
+        }
+
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .project-card {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-smooth);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--color-electric-blue), var(--color-purple));
+            color: var(--color-white);
+            padding: var(--space-4);
+            text-align: center;
+        }
+
+        .project-content {
+            padding: var(--space-6);
+        }
+
+        .difficulty-level {
+            display: inline-block;
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-small);
+            font-size: var(--text-sm);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-4);
+        }
+
+        .level-beginner { background: #dcfce7; color: #15803d; }
+        .level-intermediate { background: #fef3c7; color: #a16207; }
+        .level-advanced { background: #fee2e2; color: #dc2626; }
+
+        .step-by-step {
+            background: var(--color-grey-50);
+            border-radius: var(--radius-medium);
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-4);
+            padding: var(--space-3);
+            background: var(--color-white);
+            border-radius: var(--radius-medium);
+            box-shadow: var(--shadow-small);
+        }
+
+        .step-number {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-bold);
+            margin-right: var(--space-4);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .materials-list {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: var(--color-white);
+            padding: var(--space-4);
+            border-radius: var(--radius-medium);
+            margin: var(--space-4) 0;
+        }
+
+        .material-item {
+            display: flex;
+            align-items: center;
+            margin: var(--space-2) 0;
+            padding: var(--space-2);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-small);
+        }
+
+        .material-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--space-3);
+            font-size: var(--text-sm);
+        }
+
+        .tools-section {
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+            color: var(--color-white);
+            padding: var(--space-6);
+            border-radius: var(--radius-large);
+            margin: var(--space-6) 0;
+        }
+
+        .tool-category {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-medium);
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-3) 0;
+        }
+
+        .tool-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-3);
+            border-radius: var(--radius-small);
+            text-align: center;
+        }
+
+        .safety-alert {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: var(--color-white);
+            padding: var(--space-4);
+            border-radius: var(--radius-medium);
+            margin: var(--space-4) 0;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .physics-application {
+            background: linear-gradient(135deg, #1e40af, #2563eb);
+            color: var(--color-white);
+            padding: var(--space-4);
+            border-radius: var(--radius-medium);
+            margin: var(--space-4) 0;
+        }
+
+        .formula-highlight {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-3);
+            border-radius: var(--radius-small);
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: var(--space-2) 0;
+        }
+
+        .troubleshooting {
+            background: var(--color-grey-100);
+            border-left: 4px solid var(--color-warning);
+            padding: var(--space-4);
+            border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+            margin: var(--space-4) 0;
+        }
+
+        .problem-solution {
+            background: var(--color-white);
+            padding: var(--space-3);
+            border-radius: var(--radius-small);
+            margin: var(--space-2) 0;
+            border: 1px solid var(--color-border);
+        }
+
+        .kobakant-insight {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            color: var(--color-white);
+            padding: var(--space-4);
+            border-radius: var(--radius-medium);
+            margin: var(--space-4) 0;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .construction-demo {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: var(--space-3);
+            margin: var(--space-4) 0;
+            flex-wrap: wrap;
+        }
+
+        .demo-button {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border: none;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-medium);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .demo-button:hover {
+            background: var(--color-purple);
+        }
+
+        .demo-button.active {
+            background: var(--color-purple);
+            transform: scale(1.05);
+        }
+
+        .circuit-workspace {
+            background: #f8fafc;
+            border: 2px dashed var(--color-grey-300);
+            border-radius: var(--radius-medium);
+            padding: var(--space-6);
+            margin: var(--space-4) 0;
+            min-height: 300px;
+            position: relative;
+        }
+
+        .component {
+            position: absolute;
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: var(--radius-small);
+            padding: var(--space-2);
+            cursor: move;
+            box-shadow: var(--shadow-small);
+            font-size: var(--text-sm);
+            text-align: center;
+        }
+
+        .wire {
+            position: absolute;
+            background: var(--color-electric-blue);
+            height: 2px;
+            z-index: 1;
+        }
+
+        .connection-point {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--color-success);
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .testing-section {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: var(--color-white);
+            padding: var(--space-6);
+            border-radius: var(--radius-large);
+            margin: var(--space-6) 0;
+        }
+
+        .test-protocol {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-medium);
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .measurement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-3) 0;
+        }
+
+        .measurement-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-3);
+            border-radius: var(--radius-small);
+            text-align: center;
+        }
+
+        .measurement-value {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-1);
+        }
+
+        .environmental-considerations {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .environment-factor {
+            background: var(--color-grey-50);
+            border-left: 4px solid var(--color-electric-blue);
+            padding: var(--space-4);
+            margin: var(--space-3) 0;
+            border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: var(--space-6);
+            margin: var(--space-2) 0;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-success);
+            font-weight: var(--font-bold);
+        }
+
+        .advanced-techniques {
+            background: linear-gradient(135deg, #374151, #4b5563);
+            color: var(--color-white);
+            padding: var(--space-6);
+            border-radius: var(--radius-large);
+            margin: var(--space-6) 0;
+        }
+
+        .technique-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-medium);
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title">Smart Textiles</h1>
+                    <p class="brand-subtitle">Workshop</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Smart Textiles</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="smart-textiles-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="smart-textiles-material-science.html" class="experimental-nav-link">Material Science</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="smart-textiles-workshop.html" class="experimental-nav-link active">Workshop</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Hands-On Learning</div>
+                    <div class="info-box-content">Build functional smart textile systems with step-by-step guidance and practical techniques.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="smart-textiles-material-science.html">← Back to Material Science</a><br>
+                        <a href="textiles-landing.html">Smart Textiles Home</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Smart Textiles Construction Workshop</h1>
+                <p class="fundamentals-subtitle">Hands-on building techniques for creating functional smart textile systems</p>
+                <p class="fundamentals-description">From concept to working prototype - following Kobakant's proven methodologies</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+    <div class="workshop-lab">
+        <div class="hero-section">
+            <h1><span class="emoji">🛠️</span> Smart Textiles Construction Workshop</h1>
+            <p>Hands-on building techniques for creating functional smart textile systems</p>
+            <p><em>From concept to working prototype - following Kobakant's proven methodologies</em></p>
+        </div>
+
+        <!-- Essential Tools & Setup -->
+        <div class="tools-section">
+            <h2><span class="emoji">🧰</span> Workshop Setup & Essential Tools</h2>
+
+            <div class="tool-category">
+                <h3>Basic Sewing & Construction</h3>
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">✂️</div>
+                        <h4>Fabric Scissors</h4>
+                        <p>Sharp, dedicated scissors for conductive materials</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">🪡</div>
+                        <h4>Needles</h4>
+                        <p>Sizes 90/14 to 110/18 for heavy threads</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">🧵</div>
+                        <h4>Embroidery Hoop</h4>
+                        <p>Maintains fabric tension for precise stitching</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">📐</div>
+                        <h4>Cutting Mat</h4>
+                        <p>Self-healing mat with grid lines</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3>Electronic Testing & Measurement</h3>
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">⚡</div>
+                        <h4>Digital Multimeter</h4>
+                        <p>Essential for resistance and continuity testing</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">🔬</div>
+                        <h4>Magnifying Glass</h4>
+                        <p>10x magnification for inspecting connections</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">🔋</div>
+                        <h4>Power Supply</h4>
+                        <p>Variable DC supply (0-12V, 1A)</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">📊</div>
+                        <h4>Oscilloscope</h4>
+                        <p>For signal analysis (optional but useful)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <h3>Specialized E-Textile Tools</h3>
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">🔥</div>
+                        <h4>Low-Temp Soldering Iron</h4>
+                        <p>200-300°C for textile-safe soldering</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">🌡️</div>
+                        <h4>Heat Gun</h4>
+                        <p>For heat-shrink tubing and thermoplastics</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">🧲</div>
+                        <h4>Snap Tool</h4>
+                        <p>For installing conductive snaps</p>
+                    </div>
+                    <div class="tool-item">
+                        <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">⚖️</div>
+                        <h4>Precision Scale</h4>
+                        <p>For measuring small components</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="safety-alert">
+                <h3><span class="emoji">⚠️</span> Workshop Safety</h3>
+                <ul>
+                    <li><strong>Electrical:</strong> Always test circuits at low voltages first (3.3V max)</li>
+                    <li><strong>Chemical:</strong> Work in ventilated area when using adhesives or solvents</li>
+                    <li><strong>Thermal:</strong> Use appropriate temperatures to avoid burns or material damage</li>
+                    <li><strong>Sharp tools:</strong> Keep cutting tools sharp and store safely</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Project 1: LED Circuit Textile -->
+        <div class="workshop-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h2><span class="emoji">💡</span> Project 1: Basic LED Circuit</h2>
+                </div>
+                <div class="project-content">
+                    <div class="difficulty-level level-beginner">Beginner</div>
+
+                    <p>Create a simple LED circuit integrated into fabric using conductive thread. This foundational project teaches basic e-textile construction and troubleshooting.</p>
+
+                    <div class="materials-list">
+                        <h3><span class="emoji">📦</span> Materials Needed</h3>
+                        <div class="material-item">
+                            <div class="material-icon">🧵</div>
+                            <div>
+                                <strong>Conductive thread</strong> - 5m silver-plated nylon thread
+                                <br><small>Resistance: ~20Ω/m</small>
+                            </div>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">💡</div>
+                            <div>
+                                <strong>Sewable LEDs</strong> - 3x LilyPad LED modules
+                                <br><small>Forward voltage: 3.3V, Current: 20mA</small>
+                            </div>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">🔋</div>
+                            <div>
+                                <strong>Battery holder</strong> - Sewable 3V coin cell holder
+                                <br><small>CR2032 compatible</small>
+                            </div>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">🧵</div>
+                            <div>
+                                <strong>Base fabric</strong> - Cotton canvas or denim
+                                <br><small>20cm × 20cm minimum</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="physics-application">
+                        <h3><span class="emoji">🔬</span> Physics Application</h3>
+                        <p><strong>Ohm's Law Design:</strong> Calculate current-limiting resistance</p>
+                        <div class="formula-highlight">
+                            R = (Vsupply - VLED) / ILED<br>
+                            R = (3V - 2.1V) / 0.02A = 45Ω
+                        </div>
+                        <p>Use thread length to achieve desired resistance: Length = R / (20Ω/m)</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <h3>Construction Steps</h3>
+
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Circuit Planning</h4>
+                                <p>Sketch your circuit layout on paper. Plan the shortest paths between components while avoiding crossovers.</p>
+                                <ul>
+                                    <li>Mark positive and negative terminals</li>
+                                    <li>Calculate total thread length needed</li>
+                                    <li>Plan component placement for accessibility</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Fabric Preparation</h4>
+                                <p>Prepare your base fabric for construction:</p>
+                                <ul>
+                                    <li>Pre-wash fabric to remove sizing and prevent shrinkage</li>
+                                    <li>Iron flat and mark component positions with fabric pencil</li>
+                                    <li>Test thread adhesion on fabric scrap</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Stitching Technique</h4>
+                                <p>Stitch conductive traces using proper technique:</p>
+                                <div class="kobakant-insight">
+                                    <p><strong>Kobakant Tip:</strong> Use a zigzag stitch pattern for conductive traces. This provides multiple parallel paths, so if one thread breaks, the circuit remains functional.</p>
+                                </div>
+                                <ul>
+                                    <li>Maintain consistent tension</li>
+                                    <li>Make 3-4 passes for reliability</li>
+                                    <li>Avoid pulling too tight (causes breakage)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Component Attachment</h4>
+                                <p>Securely attach LEDs and battery holder:</p>
+                                <ul>
+                                    <li>Stitch through component holes multiple times</li>
+                                    <li>Ensure good electrical contact</li>
+                                    <li>Test each connection with multimeter</li>
+                                    <li>Secure threads with knots on fabric back</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Testing & Troubleshooting</h4>
+                                <p>Systematically test your circuit:</p>
+                                <ul>
+                                    <li>Measure resistance of each trace</li>
+                                    <li>Test continuity end-to-end</li>
+                                    <li>Insert battery and verify LED operation</li>
+                                    <li>Document any issues and solutions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="troubleshooting">
+                        <h3><span class="emoji">🔧</span> Common Problems & Solutions</h3>
+
+                        <div class="problem-solution">
+                            <h4>Problem: LEDs don't light up</h4>
+                            <p><strong>Possible causes:</strong></p>
+                            <ul>
+                                <li>Open circuit - check continuity with multimeter</li>
+                                <li>Wrong polarity - verify positive/negative connections</li>
+                                <li>Dead battery - test voltage with multimeter</li>
+                                <li>Excessive resistance - may need thicker traces</li>
+                            </ul>
+                        </div>
+
+                        <div class="problem-solution">
+                            <h4>Problem: LEDs are dim</h4>
+                            <p><strong>Likely cause:</strong> High resistance in conductive threads</p>
+                            <p><strong>Solutions:</strong></p>
+                            <ul>
+                                <li>Add parallel thread paths to reduce resistance</li>
+                                <li>Use thicker conductive thread</li>
+                                <li>Check for oxidation at connection points</li>
+                            </ul>
+                        </div>
+
+                        <div class="problem-solution">
+                            <h4>Problem: Circuit works intermittently</h4>
+                            <p><strong>Likely cause:</strong> Loose connections or thread breakage</p>
+                            <p><strong>Solutions:</strong></p>
+                            <ul>
+                                <li>Reinforce connection points with additional stitching</li>
+                                <li>Use strain relief around components</li>
+                                <li>Avoid excessive bending of traces</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Pressure Sensor -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2><span class="emoji">👆</span> Project 2: Pressure-Sensitive Fabric</h2>
+                </div>
+                <div class="project-content">
+                    <div class="difficulty-level level-intermediate">Intermediate</div>
+
+                    <p>Build a pressure-sensitive area that changes resistance when pressed. This introduces analog sensing and variable conductivity concepts.</p>
+
+                    <div class="materials-list">
+                        <h3><span class="emoji">📦</span> Materials Needed</h3>
+                        <div class="material-item">
+                            <div class="material-icon">⚫</div>
+                            <div>
+                                <strong>Velostat sheet</strong> - 10cm × 10cm pressure-sensitive material
+                                <br><small>Resistance: ~1kΩ to 100Ω under pressure</small>
+                            </div>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">🧵</div>
+                            <div>
+                                <strong>Conductive fabric</strong> - Silver-coated ripstop nylon
+                                <br><small>Surface resistance: <1Ω/sq</small>
+                            </div>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">🔌</div>
+                            <div>
+                                <strong>Microcontroller</strong> - Arduino Nano or similar
+                                <br><small>With ADC for analog reading</small>
+                            </div>
+                        </div>
+                        <div class="material-item">
+                            <div class="material-icon">⚡</div>
+                            <div>
+                                <strong>Pull-up resistor</strong> - 10kΩ fixed resistor
+                                <br><small>For voltage divider circuit</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="physics-application">
+                        <h3><span class="emoji">🔬</span> Physics Application</h3>
+                        <p><strong>Piezoresistive Effect:</strong> Pressure brings conductive particles closer together</p>
+                        <div class="formula-highlight">
+                            Vout = Vin × (Rsensor / (Rpullup + Rsensor))<br>
+                            Pressure ∝ 1/Rsensor ∝ Vout (approximately)
+                        </div>
+                        <p><strong>Environmental Factors:</strong> Temperature and humidity affect baseline resistance</p>
+                    </div>
+
+                    <div class="step-by-step">
+                        <h3>Construction Steps</h3>
+
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Sensor Assembly</h4>
+                                <p>Create the pressure-sensitive sandwich structure:</p>
+                                <ul>
+                                    <li>Cut two pieces of conductive fabric (electrodes)</li>
+                                    <li>Place Velostat between the fabric pieces</li>
+                                    <li>Ensure no direct contact between electrodes</li>
+                                    <li>Temporarily clamp assembly for testing</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Resistance Characterization</h4>
+                                <p>Test sensor response before final assembly:</p>
+                                <div class="testing-section" style="background: var(--color-grey-100); color: var(--color-grey-900);">
+                                    <h4>Test Protocol</h4>
+                                    <div class="measurement-grid">
+                                        <div class="measurement-card" style="background: var(--color-white);">
+                                            <div class="measurement-value">∞Ω</div>
+                                            <div>No Pressure</div>
+                                        </div>
+                                        <div class="measurement-card" style="background: var(--color-white);">
+                                            <div class="measurement-value">5kΩ</div>
+                                            <div>Light Touch</div>
+                                        </div>
+                                        <div class="measurement-card" style="background: var(--color-white);">
+                                            <div class="measurement-value">500Ω</div>
+                                            <div>Firm Press</div>
+                                        </div>
+                                        <div class="measurement-card" style="background: var(--color-white);">
+                                            <div class="measurement-value">50Ω</div>
+                                            <div>Hard Press</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Integration with Electronics</h4>
+                                <p>Connect sensor to microcontroller circuit:</p>
+                                <ul>
+                                    <li>Create voltage divider with pull-up resistor</li>
+                                    <li>Connect to analog input pin</li>
+                                    <li>Use stable power supply (3.3V or 5V)</li>
+                                    <li>Add bypass capacitors for noise filtering</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Calibration & Software</h4>
+                                <p>Program microcontroller for sensor reading:</p>
+                                <div class="formula-highlight">
+                                    pressure_level = map(analogRead(pin), 0, 1023, 0, 100);
+                                </div>
+                                <ul>
+                                    <li>Sample multiple readings and average</li>
+                                    <li>Implement deadband to reduce noise</li>
+                                    <li>Calibrate pressure thresholds</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="step-item">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Mechanical Integration</h4>
+                                <p>Integrate sensor into fabric structure:</p>
+                                <ul>
+                                    <li>Stitch around perimeter to seal sensor</li>
+                                    <li>Leave active area unsupported for sensitivity</li>
+                                    <li>Route connection wires with strain relief</li>
+                                    <li>Test mechanical durability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kobakant-insight">
+                        <h3><span class="emoji">💡</span> Kobakant Design Philosophy</h3>
+                        <p>"The beauty of pressure sensors is in their simplicity. Start with the simplest possible construction and add complexity only when needed. Document how environmental conditions affect your sensor - this data is invaluable for real-world applications."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Environmental Considerations -->
+        <div class="environmental-considerations">
+            <h2><span class="emoji">🌍</span> Environmental Design Considerations</h2>
+
+            <div class="environment-factor">
+                <h3><span class="emoji">💧</span> Moisture & Humidity Effects</h3>
+                <p><strong>Physics:</strong> Water absorption changes dielectric properties and can create unwanted conductive paths.</p>
+
+                <div class="physics-application">
+                    <h4>Hygroscopic Effects on Resistance</h4>
+                    <div class="formula-highlight">
+                        R(RH) = R₀ × exp(β × RH)
+                    </div>
+                    <p>Where β is the humidity coefficient (material-specific)</p>
+                </div>
+
+                <ul class="checklist">
+                    <li>Test materials at different humidity levels (30%, 50%, 80% RH)</li>
+                    <li>Use hydrophobic coatings on critical connections</li>
+                    <li>Design for graceful degradation rather than failure</li>
+                    <li>Consider moisture as a sensor input, not just a problem</li>
+                </ul>
+            </div>
+
+            <div class="environment-factor">
+                <h3><span class="emoji">🌡️</span> Temperature Cycling</h3>
+                <p><strong>Physics:</strong> Thermal expansion mismatch between materials creates mechanical stress.</p>
+
+                <div class="physics-application">
+                    <h4>Thermal Expansion Calculation</h4>
+                    <div class="formula-highlight">
+                        ΔL = L₀ × α × ΔT
+                    </div>
+                    <p>α = coefficient of thermal expansion (1/K)</p>
+                    <p><strong>Typical values:</strong> Fabric ~10⁻⁴/K, Electronics ~10⁻⁶/K</p>
+                </div>
+
+                <ul class="checklist">
+                    <li>Use flexible connections between rigid and soft components</li>
+                    <li>Plan for differential expansion in long traces</li>
+                    <li>Test through realistic temperature cycles (-10°C to +50°C)</li>
+                    <li>Monitor resistance changes with temperature</li>
+                </ul>
+            </div>
+
+            <div class="environment-factor">
+                <h3><span class="emoji">⚗️</span> Chemical Compatibility</h3>
+                <p><strong>Chemistry:</strong> Body chemistry, detergents, and environmental exposure affect material stability.</p>
+
+                <div class="physics-application">
+                    <h4>Galvanic Corrosion Prevention</h4>
+                    <p><strong>Electrochemical series considerations:</strong></p>
+                    <ul>
+                        <li>Silver vs. Copper: 0.46V potential difference</li>
+                        <li>Aluminum vs. Copper: 2.0V potential difference</li>
+                        <li>Use barrier coatings or same-metal connections</li>
+                    </ul>
+                </div>
+
+                <ul class="checklist">
+                    <li>Test with synthetic sweat solution (pH 6.5, 0.5% NaCl)</li>
+                    <li>Expose to common detergents and fabric softeners</li>
+                    <li>Monitor for color changes indicating chemical reactions</li>
+                    <li>Use MSDS data to check chemical compatibility</li>
+                </ul>
+            </div>
+
+            <div class="environment-factor">
+                <h3><span class="emoji">🔄</span> Mechanical Stress & Fatigue</h3>
+                <p><strong>Mechanics:</strong> Repeated loading leads to cumulative damage and eventual failure.</p>
+
+                <div class="physics-application">
+                    <h4>Fatigue Life Estimation</h4>
+                    <div class="formula-highlight">
+                        N = A × (Δσ)⁻ᵐ
+                    </div>
+                    <p>N = cycles to failure, Δσ = stress range, A & m = material constants</p>
+                </div>
+
+                <ul class="checklist">
+                    <li>Identify high-stress areas in your design</li>
+                    <li>Use strain relief techniques at connection points</li>
+                    <li>Design for 10× expected usage cycles</li>
+                    <li>Test with realistic loading patterns (not just sine waves)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Advanced Techniques -->
+        <div class="advanced-techniques">
+            <h2><span class="emoji">🚀</span> Advanced Construction Techniques</h2>
+
+            <div class="technique-card">
+                <h3><span class="emoji">🧬</span> Multi-Layer Circuit Construction</h3>
+                <p>Create complex circuits with crossing traces using insulation layers.</p>
+
+                <div class="step-by-step" style="background: rgba(255, 255, 255, 0.1);">
+                    <div class="step-item" style="background: rgba(255, 255, 255, 0.1);">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Layer Planning</h4>
+                            <p>Design circuit with minimal layer crossings. Use different layers for power, ground, and signal traces.</p>
+                        </div>
+                    </div>
+                    <div class="step-item" style="background: rgba(255, 255, 255, 0.1);">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Insulation Technique</h4>
+                            <p>Use clear nail polish, heat-shrink tubing, or fabric paint to insulate crossing traces.</p>
+                        </div>
+                    </div>
+                    <div class="step-item" style="background: rgba(255, 255, 255, 0.1);">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Via Construction</h4>
+                            <p>Create interlayer connections using conductive snaps or eyelets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="technique-card">
+                <h3><span class="emoji">📡</span> Wireless Integration</h3>
+                <p>Embed wireless communication capabilities for data transmission and remote control.</p>
+
+                <div class="kobakant-insight" style="background: rgba(255, 255, 255, 0.1);">
+                    <h4>Antenna Integration</h4>
+                    <p>Use conductive thread to create patch antennas. Length = λ/4 for optimal radiation.</p>
+                    <div class="formula-highlight">
+                        L = 75 / f(MHz) meters (approximate for 2.4GHz: 3.1cm)
+                    </div>
+                </div>
+
+                <ul class="checklist">
+                    <li>Keep antenna traces away from ground planes</li>
+                    <li>Test RF performance with network analyzer</li>
+                    <li>Consider body detuning effects</li>
+                    <li>Use baluns for differential signals</li>
+                </ul>
+            </div>
+
+            <div class="technique-card">
+                <h3><span class="emoji">🔋</span> Energy Harvesting</h3>
+                <p>Integrate energy harvesting from body movement, heat, or solar sources.</p>
+
+                <div class="physics-application" style="background: rgba(255, 255, 255, 0.1);">
+                    <h4>Thermoelectric Power</h4>
+                    <div class="formula-highlight">
+                        P = α²ΔT²/(4R) × (thermal conductance)
+                    </div>
+                    <p>α = Seebeck coefficient, ΔT = temperature difference</p>
+                    <p><strong>Typical harvest:</strong> 1-10μW/cm² from body heat</p>
+                </div>
+
+                <ul class="checklist">
+                    <li>Size energy storage for 10× average power consumption</li>
+                    <li>Implement power management circuitry</li>
+                    <li>Use low-power design techniques</li>
+                    <li>Consider energy harvesting efficiency curves</li>
+                </ul>
+            </div>
+
+            <div class="technique-card">
+                <h3><span class="emoji">🧪</span> Material Modification</h3>
+                <p>Modify textile properties through chemical treatment and surface functionalization.</p>
+
+                <div class="safety-alert" style="background: rgba(220, 38, 38, 0.2); border-left-color: rgba(255, 255, 255, 0.5);">
+                    <h4>Chemical Safety</h4>
+                    <p>Always work in ventilated areas. Wear appropriate PPE. Check material compatibility before mixing chemicals.</p>
+                </div>
+
+                <ul class="checklist">
+                    <li>Silver plating for enhanced conductivity</li>
+                    <li>Plasma treatment for improved adhesion</li>
+                    <li>Conductive ink printing techniques</li>
+                    <li>UV-curable encapsulation coatings</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div style="text-align: center; margin-top: var(--space-8);">
+            <button onclick="window.location.href='textiles-landing.html'" class="demo-button" style="background: var(--color-electric-blue); color: var(--color-white); padding: var(--space-3) var(--space-6); margin: var(--space-2);">
+                <span class="emoji">🏠</span> Smart Textiles Home
+            </button>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index-experimental.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Interactive circuit demonstration
+        let isDragging = false;
+        let currentComponent = null;
+
+        function initializeCircuitDemo() {
+            // Add drag and drop functionality to components
+            const components = document.querySelectorAll('.component');
+            components.forEach(component => {
+                component.addEventListener('mousedown', startDrag);
+                component.addEventListener('dragstart', e => e.preventDefault());
+            });
+
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', endDrag);
+        }
+
+        function startDrag(e) {
+            isDragging = true;
+            currentComponent = e.target;
+            e.preventDefault();
+        }
+
+        function drag(e) {
+            if (!isDragging || !currentComponent) return;
+
+            const workspace = document.querySelector('.circuit-workspace');
+            const rect = workspace.getBoundingClientRect();
+
+            currentComponent.style.left = (e.clientX - rect.left - 25) + 'px';
+            currentComponent.style.top = (e.clientY - rect.top - 15) + 'px';
+        }
+
+        function endDrag() {
+            isDragging = false;
+            currentComponent = null;
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Smart Textiles Workshop page loaded');
+            // initializeCircuitDemo(); // Uncomment when circuit demo is added
+        });
+    </script>
+</body>
+</html>

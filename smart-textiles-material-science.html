@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Textiles: Material Science & Physics - Emerging Tech Hub</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title">Smart Textiles</h1>
+                    <p class="brand-subtitle">Material Science</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Smart Textiles</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="smart-textiles-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="smart-textiles-material-science.html" class="experimental-nav-link active">Material Science</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="smart-textiles-workshop.html" class="experimental-nav-link">Workshop</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="smart-textiles-fundamentals.html">← Back to Fundamentals</a><br>
+                        <a href="smart-textiles-workshop.html">Next: Workshop →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Smart Textiles: Material Science & Physics</h1>
+                <p class="fundamentals-subtitle">Deep dive into the fundamental physics and chemistry that make smart textiles possible</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Electrical Conductivity Physics -->
+                <section class="content-section">
+                    <h2>Electrical Conductivity in Textiles</h2>
+                    <p>At the most fundamental level, electrical conductivity in smart textiles follows the same physical principles as conventional electronics, but with unique challenges posed by the textile environment.</p>
+
+                    <h3>Current Density Equation</h3>
+                    <p>The relationship between current flow and material properties is described by:</p>
+
+                    <div class="highlight-box">
+                        <h4>J = σE = (nqμ)E</h4>
+                        <ul>
+                            <li><strong>J:</strong> Current density (A/m²) - amount of current flowing per unit area</li>
+                            <li><strong>σ:</strong> Electrical conductivity (S/m) - material's ability to conduct electric current</li>
+                            <li><strong>E:</strong> Electric field strength (V/m) - voltage gradient driving current flow</li>
+                            <li><strong>n:</strong> Charge carrier density (1/m³) - number of mobile electrons per unit volume</li>
+                            <li><strong>q:</strong> Elementary charge (1.602 × 10⁻¹⁹ C) - charge of a single electron</li>
+                            <li><strong>μ:</strong> Mobility (m²/V·s) - how quickly charge carriers move under electric field</li>
+                        </ul>
+                    </div>
+
+                    <h3>Temperature Dependence</h3>
+                    <p>Unlike rigid conductors, textile-based conductors show significant temperature sensitivity:</p>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h4>Metallic Conductors</h4>
+                            <p>σ(T) = σ₀[1 + α(T - T₀)], where α > 0 for metals. Resistance increases with temperature due to increased phonon scattering.</p>
+                        </div>
+                        <div class="property-card">
+                            <h4>Semiconductors</h4>
+                            <p>For carbon-filled polymers, α < 0. Resistance decreases with temperature as more charge carriers are activated.</p>
+                        </div>
+                        <div class="property-card">
+                            <h4>Practical Impact</h4>
+                            <p>Body heat (37°C) can change circuit resistance by 2-5%, affecting sensor accuracy and LED brightness.</p>
+                        </div>
+                    </div>
+
+                    <h3>Mechanical Deformation Effects</h3>
+                    <p>The piezoresistive effect describes how mechanical strain affects electrical resistance:</p>
+
+                    <div class="highlight-box">
+                        <h4>R = R₀(1 + GF × ε)</h4>
+                        <p>Where GF is the gauge factor (material sensitivity) and ε is strain (fractional length change).</p>
+                        <ul>
+                            <li><strong>Conductive thread:</strong> GF = 2-5</li>
+                            <li><strong>Carbon-filled elastomer:</strong> GF = 10-50</li>
+                            <li><strong>Nanoparticle networks:</strong> GF = 100-1000</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Chemistry of Smart Materials -->
+                <section class="content-section">
+                    <h2>Chemistry of Smart Materials</h2>
+
+                    <p>Understanding the chemical processes that affect smart textile performance is crucial for designing durable systems.</p>
+
+                    <h3>Silver Oxidation</h3>
+                    <p>Silver-plated conductive threads are susceptible to tarnishing:</p>
+                    <div class="highlight-box">
+                        <h4>4Ag + O₂ + 2H₂S → 2Ag₂S + 2H₂O</h4>
+                        <p>This reaction produces a black tarnish layer that increases resistance. Prevention strategies include protective coatings and controlled storage conditions.</p>
+                    </div>
+
+                    <h3>Polymer Degradation</h3>
+                    <p>UV radiation breaks polymer chains through free radical formation:</p>
+                    <div class="highlight-box">
+                        <h4>[-CH₂-CHR-]ₙ + UV → R• + •CH₂-CHR-</h4>
+                        <p>Chain scission leads to mechanical property loss. UV stabilizers and antioxidants can slow this process.</p>
+                    </div>
+
+                    <h3>Hydrolysis</h3>
+                    <p>Water molecules attack polymer backbones, particularly in polyesters:</p>
+                    <div class="highlight-box">
+                        <h4>-COO-R-OOC- + H₂O → -COOH + HO-R-OH</h4>
+                        <p>This is especially problematic in humid environments or during washing cycles.</p>
+                    </div>
+
+                    <h3>Galvanic Corrosion</h3>
+                    <p>When different metals are present with moisture, electrochemical reactions occur:</p>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <h4>Zinc (anode)</h4>
+                            <p>Zn → Zn²⁺ + 2e⁻ (preferentially dissolves)</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Copper (cathode)</h4>
+                            <p>Cu²⁺ + 2e⁻ → Cu (protected from corrosion)</p>
+                        </div>
+                    </div>
+                    <p>Avoid mixing dissimilar metals in humid conditions to prevent preferential dissolution.</p>
+                </section>
+
+                <!-- Environmental Testing -->
+                <section class="content-section">
+                    <h2>Environmental Effects on Performance</h2>
+
+                    <h3>Temperature Cycling</h3>
+                    <p>Repeated thermal expansion and contraction creates mechanical stress:</p>
+
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Test Range</h4>
+                                <p>-20°C to +60°C at 1°C/min maximum rate to avoid thermal shock</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Measured Effects</h4>
+                                <p>Resistance drift, mechanical stress from thermal expansion, phase transitions</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Design Response</h4>
+                                <p>Use flexible interfaces and account for differential expansion between materials</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Humidity Testing</h3>
+                    <p>Moisture absorption changes both electrical and mechanical properties:</p>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h4>Electrical Effects</h4>
+                            <p>Hygroscopic materials absorb water, changing dielectric properties and creating unwanted conductive paths.</p>
+                        </div>
+                        <div class="property-card">
+                            <h4>Mechanical Effects</h4>
+                            <p>Fiber swelling can change fabric dimensions by 2-5%, affecting circuit geometry and component alignment.</p>
+                        </div>
+                        <div class="property-card">
+                            <h4>Testing Protocol</h4>
+                            <p>10% to 95% RH at 25°C ± 2°C, measuring property changes every 10% increment.</p>
+                        </div>
+                    </div>
+
+                    <h3>Mechanical Fatigue</h3>
+                    <p>Repeated loading leads to cumulative damage and eventual failure:</p>
+
+                    <div class="highlight-box">
+                        <h4>Fatigue Life Estimation: N = A × (Δσ)⁻ᵐ</h4>
+                        <p>Where N = cycles to failure, Δσ = stress range, A & m = material constants</p>
+                        <ul>
+                            <li>Test at 1%, 5%, and 10% strain levels</li>
+                            <li>Use realistic loading patterns (not just sine waves)</li>
+                            <li>Monitor resistance changes throughout fatigue life</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Advanced Concepts -->
+                <section class="content-section">
+                    <h2>Advanced Material Science Concepts</h2>
+
+                    <h3>Percolation Theory</h3>
+                    <p>Explains conductivity in carbon-filled polymers:</p>
+                    <div class="highlight-box">
+                        <h4>σ ∝ (p - pс)ᵗ</h4>
+                        <ul>
+                            <li><strong>p:</strong> Filler concentration</li>
+                            <li><strong>pс:</strong> Percolation threshold</li>
+                            <li><strong>t:</strong> Critical exponent (~2)</li>
+                        </ul>
+                        <p>Small changes in filler concentration near the threshold cause dramatic conductivity changes. This explains the sensitivity of pressure sensors.</p>
+                    </div>
+
+                    <h3>Quantum Tunneling</h3>
+                    <p>Current flows between nanoparticles through quantum tunneling:</p>
+                    <div class="highlight-box">
+                        <h4>J ∝ exp(-2κd)</h4>
+                        <ul>
+                            <li><strong>κ:</strong> Decay constant (depends on barrier height)</li>
+                            <li><strong>d:</strong> Barrier width (distance between particles)</li>
+                        </ul>
+                        <p>Distance changes exponentially affect current - the basis for highly sensitive pressure sensors.</p>
+                    </div>
+
+                    <h3>Viscoelastic Response</h3>
+                    <p>Polymer behavior depends on loading history:</p>
+                    <div class="highlight-box">
+                        <h4>σ(t) = ∫G(t-τ)∂ε/∂τ dτ</h4>
+                        <p>Where G(t) is the relaxation modulus. This integral describes how current stress depends on the entire deformation history, explaining hysteresis in stretch sensors.</p>
+                    </div>
+
+                    <h3>Electrochemical Kinetics</h3>
+                    <p>The Butler-Volmer equation describes electrode reactions:</p>
+                    <div class="highlight-box">
+                        <h4>i = i₀[exp(αnFη/RT) - exp(-(1-α)nFη/RT)]</h4>
+                        <p>Where η is the overpotential. Important for understanding corrosion rates and battery integration in wearable devices.</p>
+                    </div>
+                </section>
+
+                <!-- Material Comparison -->
+                <section class="content-section">
+                    <h2>Quantitative Material Performance</h2>
+
+                    <p>Performance data for common smart textile materials:</p>
+
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <h4>Silver-plated thread</h4>
+                            <p>Resistivity: 0.001-0.01 Ω·cm | Gauge Factor: 2-3 | Max Strain: 5-10% | Fatigue Life: 10³-10⁴ cycles</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Stainless steel thread</h4>
+                            <p>Resistivity: 0.01-0.1 Ω·cm | Gauge Factor: 2-4 | Max Strain: 2-5% | Fatigue Life: 10⁵-10⁶ cycles</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Carbon-filled elastomer</h4>
+                            <p>Resistivity: 1-100 Ω·cm | Gauge Factor: 10-50 | Max Strain: 50-200% | Fatigue Life: 10⁴-10⁵ cycles</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Graphene yarn</h4>
+                            <p>Resistivity: 0.0001-0.001 Ω·cm | Gauge Factor: 1-2 | Max Strain: 10-30% | Fatigue Life: 10⁶+ cycles</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Kobakant Methodology -->
+                <section class="content-section">
+                    <h2>Kobakant Research Methodology</h2>
+
+                    <p>Following the systematic approach developed by Hannah Perner-Wilson and Mika Satomi:</p>
+
+                    <h3>1. Systematic Material Characterization</h3>
+                    <div class="highlight-box">
+                        <h4>Standard Test Protocol</h4>
+                        <ul>
+                            <li><strong>Baseline:</strong> Resistance at rest, 20°C, 50% RH</li>
+                            <li><strong>Mechanical:</strong> Resistance vs. strain (0-10% in 1% increments)</li>
+                            <li><strong>Environmental:</strong> Temperature (-10°C to +50°C), humidity (20-80% RH)</li>
+                            <li><strong>Fatigue:</strong> 1000 cycles at 5% strain, measure resistance drift</li>
+                            <li><strong>Wash test:</strong> Hand wash, air dry, measure property retention</li>
+                        </ul>
+                    </div>
+
+                    <h3>2. Physics-Based Design Thinking</h3>
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h4>Force Analysis</h4>
+                            <p>Map all forces: tension, compression, shear, torsion. Consider how each affects electrical properties.</p>
+                        </div>
+                        <div class="property-card">
+                            <h4>Thermal Analysis</h4>
+                            <p>Account for body heat, ambient temperature, component heating, and thermal expansion effects.</p>
+                        </div>
+                        <div class="property-card">
+                            <h4>Chemical Compatibility</h4>
+                            <p>Consider exposure to sweat (pH 4-6.8), detergents (pH 9-12), and environmental pollutants.</p>
+                        </div>
+                    </div>
+
+                    <h3>3. Essential Documentation</h3>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <h4>Material traceability</h4>
+                            <p>Source, batch numbers, and storage conditions for all materials used</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Construction details</h4>
+                            <p>Techniques, thread tensions, and environmental conditions during assembly</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Failure analysis</h4>
+                            <p>Document failure modes and their physical causes for future design improvement</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Performance tracking</h4>
+                            <p>Long-term monitoring of key metrics under realistic use conditions</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index-experimental.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Smart Textiles Material Science page loaded');
+        });
+    </script>
+</body>
+</html>
