@@ -426,28 +426,101 @@
             50% { opacity: 1; }
         }
 
-        /* Responsive design */
+        /* Tablet layout adjustments to prevent overlap */
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+
+        /* Mobile layout: stack panels and shrink canvas to avoid overlap */
         @media (max-width: 768px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
+            }
+
             .radar-title {
                 font-size: 18px;
             }
 
-            .controls-panel {
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
                 position: relative;
+                width: 100%;
+                height: 60vh;
+            }
+
+            .controls-panel {
+                position: static;
                 top: auto;
                 right: auto;
-                margin: 20px;
+                margin: 10px 16px 0 16px;
             }
 
             .legend {
-                position: relative;
+                position: static;
                 bottom: auto;
                 right: auto;
-                margin: 20px;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
             }
         }
     </style>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
 </head>
 <body>
     <div class="radar-container">

@@ -651,11 +651,34 @@ body {
   .experimental-date {
     font-size: var(--text-4xl);
   }
+
+  .section-title {
+    font-size: var(--text-3xl) !important;
+    line-height: 1.15 !important;
+  }
+
+  .available-badge {
+    display: none !important;
+  }
 }
 
 @media (max-width: 768px) {
   .experimental-container {
     grid-template-columns: 1fr;
+  }
+  .section-title {
+    font-size: var(--text-3xl) !important;
+    line-height: 1.15 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .disclaimer-section h2 {
+    font-size: var(--text-2xl) !important;
+    line-height: 1.2 !important;
+  }
+
+  .available-badge {
+    display: none !important;
   }
 
   .experimental-sidebar {
@@ -663,18 +686,39 @@ body {
   }
 
   .vertical-menu {
-    width: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    width: 100vw;
+    background: var(--color-black);
+    z-index: 20;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vertical-menu-text {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+    letter-spacing: 0.1em;
+  }
+
+  .experimental-main {
+    padding-top: 48px;
   }
 
   .experimental-grid {
     grid-template-columns: 1fr;
-    margin-right: 40px;
+    margin-right: 0;
     padding: var(--space-4);
   }
 
   .experimental-hero {
-    padding: var(--space-8) var(--space-4);
-    margin-right: 40px;
+    padding: calc(var(--space-8) + 48px) var(--space-4) var(--space-8);
+    margin-right: 0;
   }
 
   .experimental-title {
@@ -690,14 +734,24 @@ body {
   }
 
   .blue-overlay {
-    width: calc(100vw - 40px);
-    right: 40px;
+    width: 100vw;
+    right: 0;
   }
 }
 
 @media (max-width: 480px) {
   .experimental-title {
     font-size: var(--text-4xl);
+  }
+  .section-title {
+    font-size: var(--text-3xl) !important;
+    line-height: 1.2 !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .disclaimer-section h2 {
+    font-size: var(--text-xl);
+    line-height: 1.25;
   }
 
   .experimental-subtitle {
@@ -707,7 +761,7 @@ body {
   .experimental-grid {
     gap: var(--space-2);
     padding: var(--space-2);
-    margin-right: 40px;
+    margin-right: 0;
   }
 
   .experimental-card {
