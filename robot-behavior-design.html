@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Behavior Design - Movement, Personality & Expression | Emerging Tech Hub</title>
+    <meta name="description" content="Design robot behaviors that communicate intention and personality through movement, expression, and interaction patterns for creative technologists and makers.">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <link rel="stylesheet" href="robotics-fundamentals.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Robotics Fundamentals</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Robotics Fundamentals</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="robotics-design-first.html" class="experimental-nav-link">Design-First Robotics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robot-behavior-design.html" class="experimental-nav-link active">Robot Behavior Design</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robot-anatomy.html" class="experimental-nav-link">Robot Anatomy</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="making-simple-robots.html" class="experimental-nav-link">Making Simple Robots</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="autonomy-and-ai.html" class="experimental-nav-link">Autonomy & AI</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-applications.html" class="experimental-nav-link">Robotics Applications</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="robotics-landing.html">← Back to Robotics Hub</a><br>
+                        <a href="robotics-design-first.html">← Previous: Design-First</a><br>
+                        <a href="robot-anatomy.html">Next: Robot Anatomy →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu (Mobile) -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Robot Behavior Design</h1>
+                <p class="fundamentals-subtitle">
+                    Movement as communication, personality through motion, and creating interaction patterns that feel natural,
+                    predictable, and expressive—designing the choreography of mechanical intelligence.
+                </p>
+            </div>
+
+            <div class="fundamentals-content">
+
+                <!-- Movement Vocabulary -->
+                <section class="content-section" id="movement-vocabulary">
+                    <h2>Building a Movement Vocabulary</h2>
+                    <p>Just as dancers have a vocabulary of gestures and steps, robots need a designed set of movements that communicate specific meanings. This vocabulary becomes the robot's non-verbal language.</p>
+
+                    <div class="highlight-box">
+                        <h3>Movement is Language</h3>
+                        <p>In robotics, behavior is communication. Every movement, pause, and reaction tells a story about the robot's intention and personality. You're choreographing mechanical intelligence.</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>🎭 Animation Analogy</h4>
+                        <p><strong>Like character animation:</strong> Disney animators use "squash and stretch" to make characters feel alive. Similarly, robot behavior design borrows from animation: anticipation before action, follow-through after movement, and secondary actions that add personality.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Basic Movement Primitives</div>
+                            <div class="feature-description">
+                                <p>Core movements robots can combine to create complex behaviors:</p>
+                                <ul>
+                                    <li><strong>Translation:</strong> Moving forward/backward, left/right, up/down</li>
+                                    <li><strong>Rotation:</strong> Turning, pivoting, spinning</li>
+                                    <li><strong>Gestures:</strong> Head tilt, arm wave, body lean</li>
+                                    <li><strong>Pauses:</strong> Strategic stillness to emphasize intention</li>
+                                    <li><strong>Speed variation:</strong> Fast = urgent, slow = careful</li>
+                                </ul>
+                                <p><strong>Design Pattern:</strong> Combine primitives into "movement phrases" like sentences</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Movement Personality Matrix</div>
+                            <div class="feature-description">
+                                <p><strong>Fast + Direct:</strong> Efficient, confident, industrial</p>
+                                <ul>
+                                    <li>Use case: Factory automation, delivery robots</li>
+                                    <li>Emotion conveyed: Competent, businesslike</li>
+                                </ul>
+                                <p><strong>Fast + Curved:</strong> Energetic, playful, curious</p>
+                                <ul>
+                                    <li>Use case: Entertainment robots, toy robots</li>
+                                    <li>Emotion conveyed: Friendly, enthusiastic</li>
+                                </ul>
+                                <p><strong>Slow + Direct:</strong> Deliberate, careful, gentle</p>
+                                <ul>
+                                    <li>Use case: Assistive robots, elderly care</li>
+                                    <li>Emotion conveyed: Trustworthy, non-threatening</li>
+                                </ul>
+                                <p><strong>Slow + Curved:</strong> Graceful, elegant, artistic</p>
+                                <ul>
+                                    <li>Use case: Kinetic sculptures, performance robots</li>
+                                    <li>Emotion conveyed: Beautiful, mesmerizing</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Timing & Rhythm</div>
+                            <div class="feature-description">
+                                <p>When a robot moves matters as much as how it moves:</p>
+                                <ul>
+                                    <li><strong>Beats:</strong> Rhythmic patterns create predictability (metronome-like factory robots)</li>
+                                    <li><strong>Syncopation:</strong> Unexpected pauses or speed changes grab attention</li>
+                                    <li><strong>Acceleration curves:</strong> Ease-in/ease-out feels natural vs. linear feels robotic</li>
+                                    <li><strong>Reaction time:</strong> Instant = programmed, delayed = "thinking"</li>
+                                </ul>
+                                <p><strong>Example:</strong> Anki Vector pauses before "deciding" what to do next, making it feel autonomous rather than scripted</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Expressive vs. Functional Movement</div>
+                            <div class="feature-description">
+                                <p><strong>Functional:</strong> Shortest path from A to B, efficiency prioritized</p>
+                                <ul>
+                                    <li>Industrial robots, vacuum cleaners</li>
+                                    <li>Optimize for speed, precision, energy</li>
+                                </ul>
+                                <p><strong>Expressive:</strong> Movement designed to communicate, not just accomplish</p>
+                                <ul>
+                                    <li>Social robots, companion robots</li>
+                                    <li>Optimize for legibility, personality, trust</li>
+                                </ul>
+                                <p><strong>Hybrid:</strong> Functional movement with expressive flourishes</p>
+                                <ul>
+                                    <li>Example: Robot "nods" after completing a task (functional + acknowledgment)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Personality Archetypes -->
+                <section class="content-section" id="personality">
+                    <h2>Designing Personality Through Motion</h2>
+                    <p>Personality isn't what a robot looks like—it's how it behaves over time. Consistent behavioral patterns create recognizable character.</p>
+
+                    <div class="highlight-box">
+                        <h3>Character Through Consistency</h3>
+                        <p>Like actors staying in character, robots build personality through consistent behavioral choices. A "curious" robot always explores, a "careful" robot always pauses before acting.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">ARCHETYPE 1</div>
+                            <div class="feature-title">The Curious Explorer</div>
+                            <div class="feature-description">
+                                <p><strong>Movement signature:</strong> Head turns toward new stimuli, approach-retreat patterns, pauses to "observe"</p>
+                                <p><strong>Behavioral traits:</strong></p>
+                                <ul>
+                                    <li>Investigates new objects in environment</li>
+                                    <li>Changes direction when discovering something interesting</li>
+                                    <li>Non-threatening, childlike wonder</li>
+                                </ul>
+                                <p><strong>Use case:</strong> Museum guide robots, educational robots, entertainment</p>
+                                <p><strong>Example:</strong> Sony Aibo's exploration mode</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">ARCHETYPE 2</div>
+                            <div class="feature-title">The Efficient Assistant</div>
+                            <div class="feature-description">
+                                <p><strong>Movement signature:</strong> Direct paths, minimal unnecessary motion, quick task execution</p>
+                                <p><strong>Behavioral traits:</strong></p>
+                                <ul>
+                                    <li>Task-focused, ignores distractions</li>
+                                    <li>Confirms completion with simple gesture</li>
+                                    <li>Professional, competent presence</li>
+                                </ul>
+                                <p><strong>Use case:</strong> Service robots, delivery robots, warehouse automation</p>
+                                <p><strong>Example:</strong> Amazon warehouse robots, hotel delivery bots</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">ARCHETYPE 3</div>
+                            <div class="feature-title">The Gentle Companion</div>
+                            <div class="feature-description">
+                                <p><strong>Movement signature:</strong> Slow, smooth motion, maintains comfortable distance, soft gestures</p>
+                                <p><strong>Behavioral traits:</strong></p>
+                                <ul>
+                                    <li>Approaches slowly to avoid startling</li>
+                                    <li>Responsive to human emotional state</li>
+                                    <li>Calm, reassuring presence</li>
+                                </ul>
+                                <p><strong>Use case:</strong> Elderly care, therapeutic robots, assistive devices</p>
+                                <p><strong>Example:</strong> Paro therapeutic seal, ElliQ companion robot</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">ARCHETYPE 4</div>
+                            <div class="feature-title">The Playful Performer</div>
+                            <div class="feature-description">
+                                <p><strong>Movement signature:</strong> Exaggerated gestures, bouncy motion, attention-seeking behaviors</p>
+                                <p><strong>Behavioral traits:</strong></p>
+                                <ul>
+                                    <li>Responsive to audience, performs tricks</li>
+                                    <li>Energetic, dynamic movement quality</li>
+                                    <li>Entertaining, engaging presence</li>
+                                </ul>
+                                <p><strong>Use case:</strong> Entertainment robots, toy robots, promotional bots</p>
+                                <p><strong>Example:</strong> Anki Cozmo, WowWee robotic toys</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interaction Patterns -->
+                <section class="content-section" id="interaction-patterns">
+                    <h2>Designing Interaction Patterns</h2>
+                    <p>How robots respond to humans creates the interaction rhythm. Good interaction design feels like a conversation, not commands to a tool.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Acknowledgment Behaviors</div>
+                            <div class="feature-description">
+                                <p>Robot confirms it perceived the human's action:</p>
+                                <ul>
+                                    <li><strong>Visual:</strong> LED change, screen animation, head turn toward speaker</li>
+                                    <li><strong>Audio:</strong> Beep, tone, verbal "okay"</li>
+                                    <li><strong>Motion:</strong> Nod, slight movement</li>
+                                </ul>
+                                <p><strong>Timing critical:</strong> Acknowledge within 0.5-1 second or human assumes failure</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Turn-Taking Protocol</div>
+                            <div class="feature-description">
+                                <p>Like human conversation, robots need to signal when it's "their turn":</p>
+                                <ul>
+                                    <li><strong>Robot listening:</strong> Attentive posture, tracking speaker</li>
+                                    <li><strong>Robot thinking:</strong> Subtle animation showing processing</li>
+                                    <li><strong>Robot speaking/acting:</strong> Clear start and end signals</li>
+                                    <li><strong>Handoff:</strong> Return to listening posture when done</li>
+                                </ul>
+                                <p><strong>Example:</strong> Amazon Echo's light ring shows listening (blue), thinking (pulsing), speaking (moving pattern)</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Approach & Retreat Dance</div>
+                            <div class="feature-description">
+                                <p>Navigating shared physical space requires social choreography:</p>
+                                <ul>
+                                    <li><strong>Signal intention:</strong> Look at destination before moving</li>
+                                    <li><strong>Request permission:</strong> Pause at boundary, wait for clearance</li>
+                                    <li><strong>Respect distance:</strong> Stop 1.5-2m away unless invited closer</li>
+                                    <li><strong>Retreat gracefully:</strong> Back away slowly if human shows discomfort</li>
+                                </ul>
+                                <p><strong>Research:</strong> MIT Personal Robots Group proxemics studies</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Error & Recovery States</div>
+                            <div class="feature-description">
+                                <p>When robots fail, behavior should communicate the problem:</p>
+                                <ul>
+                                    <li><strong>Confusion:</strong> Head shake, look around, questioning gesture</li>
+                                    <li><strong>Stuck:</strong> Rocking motion, trying alternatives, "help me" signal</li>
+                                    <li><strong>Low battery:</strong> Slower movement, heading to charger</li>
+                                    <li><strong>Complete failure:</strong> Clear shutdown sequence, not just stopping</li>
+                                </ul>
+                                <p><strong>Design principle:</strong> Never fail silently—communicate what went wrong</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Designing Trust -->
+                <section class="content-section" id="designing-trust">
+                    <h2>Designing Trust Through Behavior</h2>
+                    <p>Trust in robots builds through behavioral consistency, predictability, and transparency—not just competent task execution.</p>
+
+                    <div class="highlight-box">
+                        <h3>Trust = Predictability + Competence + Benevolence</h3>
+                        <p>People trust robots that behave consistently (predictable), successfully complete tasks (competent), and seem to act in the human's interest (benevolent).</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Telegraphing Intentions</div>
+                            <div class="feature-description">
+                                <p>Never surprise humans with unexpected movements:</p>
+                                <ul>
+                                    <li><strong>Look before moving:</strong> Camera/sensor points where robot will go</li>
+                                    <li><strong>Wind-up:</strong> Small preparatory motion before large action</li>
+                                    <li><strong>Audio preview:</strong> Chime or voice announcement before moving</li>
+                                    <li><strong>Consistent patterns:</strong> Same warning every time</li>
+                                </ul>
+                                <p><strong>Example:</strong> Self-driving cars project turn signals on ground, not just blink lights</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Explaining Decisions</div>
+                            <div class="feature-description">
+                                <p>Make the robot's reasoning visible:</p>
+                                <ul>
+                                    <li><strong>Verbal:</strong> "I'm going to the kitchen to get a glass"</li>
+                                    <li><strong>Visual:</strong> Screen shows planned path or sensor readings</li>
+                                    <li><strong>Gestural:</strong> Points at object it's about to manipulate</li>
+                                </ul>
+                                <p><strong>Transparency builds trust:</strong> Humans are less anxious when they understand why the robot acts</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Graceful Degradation</div>
+                            <div class="feature-description">
+                                <p>When capabilities are limited, communicate limits clearly:</p>
+                                <ul>
+                                    <li><strong>"I can't reach that shelf"</strong> vs. silently failing</li>
+                                    <li><strong>"I'm having trouble understanding"</strong> vs. random responses</li>
+                                    <li><strong>"My battery is low, returning to charger"</strong> vs. stopping mid-task</li>
+                                </ul>
+                                <p><strong>Honesty > Capability:</strong> Better to admit limits than fake competence</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Consistency Over Time</div>
+                            <div class="feature-description">
+                                <p>Trust breaks if robot behavior is unpredictable:</p>
+                                <ul>
+                                    <li><strong>Same situation = same response</strong> (or explain why it's different)</li>
+                                    <li><strong>Personality stays consistent</strong> (don't switch from playful to serious randomly)</li>
+                                    <li><strong>Capabilities don't mysteriously change</strong></li>
+                                </ul>
+                                <p><strong>Design challenge:</strong> Balance consistency with learning/adaptation</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Behavior Prototyping -->
+                <section class="content-section" id="behavior-prototyping">
+                    <h2>Prototyping & Testing Behaviors</h2>
+                    <p>Don't wait for final hardware to design behavior. Use lo-fi prototypes to test movement patterns, timing, and interaction flows.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">METHOD 1</div>
+                            <div class="feature-title">Wizard of Oz Testing</div>
+                            <div class="feature-description">
+                                <p>Human operator controls "robot" behind the scenes while users think it's autonomous:</p>
+                                <ul>
+                                    <li><strong>Test interaction patterns</strong> before AI works</li>
+                                    <li><strong>Discover unexpected use cases</strong></li>
+                                    <li><strong>Iterate on personality quickly</strong></li>
+                                </ul>
+                                <p><strong>Tools:</strong> RC toy as proxy, person in cardboard box, Puppet control</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">METHOD 2</div>
+                            <div class="feature-title">Animation Prototyping</div>
+                            <div class="feature-description">
+                                <p>Animate robot behavior in software before building hardware:</p>
+                                <ul>
+                                    <li><strong>After Effects:</strong> 2D motion studies</li>
+                                    <li><strong>Blender:</strong> 3D robot animation</li>
+                                    <li><strong>Processing/p5.js:</strong> Interactive behavior sketches</li>
+                                </ul>
+                                <p><strong>Benefit:</strong> Test timing, rhythm, personality at low cost</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">METHOD 3</div>
+                            <div class="feature-title">Physical Mockups</div>
+                            <div class="feature-description">
+                                <p>Build simple mechanical prototypes to test presence and movement:</p>
+                                <ul>
+                                    <li><strong>Cardboard + servos:</strong> Test form and basic gestures</li>
+                                    <li><strong>RC toys modified:</strong> Test navigation patterns</li>
+                                    <li><strong>Existing robots reprogrammed:</strong> Test behavior on similar platform</li>
+                                </ul>
+                                <p><strong>Focus:</strong> Does the behavior feel right, not does the tech work</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">METHOD 4</div>
+                            <div class="feature-title">Video Prototyping</div>
+                            <div class="feature-description">
+                                <p>Create concept videos showing robot in context:</p>
+                                <ul>
+                                    <li><strong>Storyboard:</strong> Sketch interaction sequences</li>
+                                    <li><strong>Video edit:</strong> Simulate robot's POV and actions</li>
+                                    <li><strong>User feedback:</strong> Show videos, gauge reactions</li>
+                                </ul>
+                                <p><strong>Example:</strong> Pixar storyboards every character interaction before animating</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="content-section">
+                    <h2>Behavior-First Design Thinking</h2>
+                    <p>Great robot design starts with behavior, not hardware. Before choosing motors and sensors, ask: What personality do I want? What emotions should this robot convey? How should people feel when interacting with it?</p>
+
+                    <div class="highlight-box">
+                        <h3>Design the Dance, Then Build the Dancer</h3>
+                        <p>Choreograph the movements and interactions you want first. Then select components that enable those behaviors. This ensures your robot feels intentionally designed, not accidentally assembled.</p>
+                    </div>
+
+                    <p>In the next section on Robot Anatomy, we'll explore sensors, actuators, and controllers from a designer's perspective—what they allow you to express, not how they work electrically.</p>
+                </section>
+
+                <!-- Continue Learning Section -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Next</div>
+                            <h4>Robot Anatomy</h4>
+                            <p>Explore sensors, actuators, and controllers from a design perspective - what capabilities they enable for your robot behaviors.</p>
+                            <a href="robot-anatomy.html" class="learning-link">Continue →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Related</div>
+                            <h4>Robotics Flashcards</h4>
+                            <p>Practice and review concepts through interactive flashcards covering robotics fundamentals, components, and applications.</p>
+                            <a href="robotics-flashcards.html" class="learning-link">Review ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Practice</div>
+                            <h4>Robotics Activities</h4>
+                            <p>Apply what you've learned through hands-on robot design exercises, case studies, and maker challenges.</p>
+                            <a href="robotics-activities.html" class="learning-link">Practice ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="robotics-landing.html" class="path-link">← Back to Robotics Hub</a>
+                        <a href="robot-anatomy.html" class="path-link primary">Next: Robot Anatomy →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-branding">
+                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="disclaimer.html">Disclaimer</a>
+                        <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

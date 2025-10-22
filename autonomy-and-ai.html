@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Autonomy & AI - When Robots Need Intelligence | Emerging Tech Hub</title>
+    <meta name="description" content="Understanding autonomy levels, when robots need AI vs simple logic, and designing for graceful failure - explained for designers and makers.">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <link rel="stylesheet" href="robotics-fundamentals.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Robotics Fundamentals</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Robotics Fundamentals</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="robotics-design-first.html" class="experimental-nav-link">Design-First Robotics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robot-behavior-design.html" class="experimental-nav-link">Robot Behavior Design</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robot-anatomy.html" class="experimental-nav-link">Robot Anatomy</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="making-simple-robots.html" class="experimental-nav-link">Making Simple Robots</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="autonomy-and-ai.html" class="experimental-nav-link active">Autonomy & AI</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-applications.html" class="experimental-nav-link">Robotics Applications</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="robotics-landing.html">← Back to Robotics Hub</a><br>
+                        <a href="making-simple-robots.html">← Previous: Making Simple Robots</a><br>
+                        <a href="robotics-applications.html">Next: Robotics Applications →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu (Mobile) -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Robot Autonomy & AI - When Robots Need Intelligence</h1>
+                <p class="fundamentals-subtitle">
+                    Understanding autonomy levels, when robots need AI vs simple logic, and designing for graceful failure - explained for designers and makers.
+                </p>
+            </div>
+
+            <div class="fundamentals-content">
+
+                <!-- Levels of Autonomy -->
+                <section class="content-section" id="autonomy-levels">
+                    <h2>Levels of Autonomy - From Remote Control to Full Independence</h2>
+                    <p>Robot autonomy exists on a spectrum from complete human control to fully independent operation. Understanding these levels helps you design robots appropriate for your use case, budget, and technical capabilities.</p>
+
+                    <div class="highlight-box">
+                        <h3>Autonomy as a Design Choice</h3>
+                        <p>More autonomy isn't always better. A Level 2 semi-autonomous robot might be more appropriate than a Level 5 fully autonomous one depending on context, cost, safety requirements, and user experience goals. Choose the minimum autonomy level that achieves your design intent.</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>🎯 Driving Analogy</h4>
+                        <p><strong>Like car automation levels:</strong> Manual transmission (Level 0), cruise control (Level 1), lane keeping (Level 2), highway autopilot (Level 3), city self-driving with supervision (Level 4), fully autonomous robotaxi (Level 5). Each level requires dramatically more technology and complexity.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">LEVEL 0</div>
+                            <div class="feature-title">Full Human Control - Direct Teleoperation</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> Human controls every action in real-time via remote control or direct wiring</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>Human inputs: Joystick, buttons, keyboard commands</li>
+                                    <li>Robot executes: Exact motor/servo movements commanded</li>
+                                    <li>No decisions: Robot has zero decision-making capability</li>
+                                    <li>Like: RC car, wired robotic arm, puppet</li>
+                                </ul>
+                                <p><strong>Example products (2024-2025):</strong></p>
+                                <ul>
+                                    <li>Basic RC cars ($20-50)</li>
+                                    <li>DJI Tello drone in manual mode ($100)</li>
+                                    <li>Wired surgical robot (Da Vinci system)</li>
+                                </ul>
+                                <p><strong>When to use Level 0:</strong> Simplest to build, no AI needed, complete human control desired, precise manipulation tasks, entertainment/toys</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">LEVEL 1</div>
+                            <div class="feature-title">Assisted Control - Basic Reflexes</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> Human controls direction, robot handles simple self-preservation behaviors</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>Human: "Go forward"</li>
+                                    <li>Robot: Moves forward BUT automatically stops if obstacle detected</li>
+                                    <li>Simple if/then rules: "IF obstacle THEN stop"</li>
+                                    <li>No planning: Just reactive safety behaviors</li>
+                                </ul>
+                                <p><strong>Example products:</strong></p>
+                                <ul>
+                                    <li>Anki Vector robot ($200-250, discontinued but available used)</li>
+                                    <li>DJI Mini drones with obstacle sensors ($400-500)</li>
+                                    <li>Basic Arduino obstacle-avoiding car kits ($50-80)</li>
+                                </ul>
+                                <p><strong>Implementation:</strong> Arduino + ultrasonic sensor + 20 lines of code. No AI required, just simple conditional logic.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">LEVEL 2</div>
+                            <div class="feature-title">Partial Autonomy - Task Assistance</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> Robot can perform specific tasks independently under human supervision</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>Human: Sets goal ("follow this line", "track this color")</li>
+                                    <li>Robot: Executes complete behavior independently</li>
+                                    <li>Human: Monitors and intervenes when needed</li>
+                                    <li>Limited context: Works in structured environments only</li>
+                                </ul>
+                                <p><strong>Example capabilities:</strong></p>
+                                <ul>
+                                    <li>Line-following robot that stays on black tape</li>
+                                    <li>Color-tracking robot using Pixy2 camera ($60)</li>
+                                    <li>Wall-following behavior for maze navigation</li>
+                                </ul>
+                                <p><strong>Real products:</strong> Most educational robot kits, Sphero robots ($150-200), Lego Mindstorms line-followers</p>
+                                <p><strong>Implementation:</strong> Simple computer vision (Pixy2) or sensor arrays. No machine learning needed.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">LEVEL 3</div>
+                            <div class="feature-title">Conditional Autonomy - Environmental Adaptation</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> Robot handles most situations autonomously but requests human help when uncertain</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>Robot: Operates independently in known scenarios</li>
+                                    <li>Unknown situation: Robot asks human for guidance</li>
+                                    <li>Example: Roomba that navigates rooms but gets stuck on cables and asks for help</li>
+                                    <li>Decision trees: More complex rule-based behavior</li>
+                                </ul>
+                                <p><strong>Example products (2024-2025):</strong></p>
+                                <ul>
+                                    <li>iRobot Roomba j7+ ($800) - navigates, maps, avoids obstacles, alerts when stuck</li>
+                                    <li>Amazon Astro robot ($1,600) - patrols home, calls human when confused</li>
+                                    <li>Warehouse robots (Kiva/Amazon) that navigate but request human intervention for exceptions</li>
+                                </ul>
+                                <p><strong>Implementation:</strong> Requires mapping (SLAM), path planning algorithms, multiple sensors, possibly basic ML for object detection</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">LEVEL 4</div>
+                            <div class="feature-title">High Autonomy - Domain-Specific Independence</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> Robot operates fully independently within specific, well-defined environments</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>Operates autonomously: In predefined spaces/scenarios</li>
+                                    <li>Full task completion: Without human supervision</li>
+                                    <li>Limitation: Only in controlled/mapped environments</li>
+                                    <li>AI integration: Machine learning for perception and decision-making</li>
+                                </ul>
+                                <p><strong>Example products:</strong></p>
+                                <ul>
+                                    <li>Waymo autonomous taxi (operates in specific mapped cities)</li>
+                                    <li>Boston Dynamics Spot ($75,000) - autonomous facility inspection</li>
+                                    <li>Warehouse robots (Fetch, Locus) - fully autonomous in warehouses</li>
+                                    <li>Agricultural robots (FarmWise) - autonomous weeding in fields</li>
+                                </ul>
+                                <p><strong>Requirements:</strong> Computer vision, machine learning, sophisticated sensors (LIDAR, depth cameras), powerful computing (Jetson Nano $150+)</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">LEVEL 5</div>
+                            <div class="feature-title">Full Autonomy - Universal Independence</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> Robot operates independently in any environment humans can navigate</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>No restrictions: Works anywhere without pre-mapping</li>
+                                    <li>General intelligence: Handles novel situations</li>
+                                    <li>Full decision-making: From perception to action without human input</li>
+                                    <li>Self-learning: Adapts to new environments and tasks</li>
+                                </ul>
+                                <p><strong>Current state (2024-2025):</strong></p>
+                                <ul>
+                                    <li><strong>Status:</strong> Does not exist yet for physical robots</li>
+                                    <li><strong>Closest:</strong> Advanced humanoid prototypes (Tesla Optimus, Figure 01) but still in development</li>
+                                    <li><strong>Challenges:</strong> Requires AGI (Artificial General Intelligence), not just narrow AI</li>
+                                    <li><strong>Timeline:</strong> Experts estimate 10-30+ years away</li>
+                                </ul>
+                                <p><strong>For makers:</strong> Not a realistic goal for hobby projects. Focus on Levels 1-3 for practical robotics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Rules vs Learning Systems -->
+                <section class="content-section" id="rules-vs-learning">
+                    <h2>Rules vs Learning Systems - When Do You Need AI?</h2>
+                    <p>Most maker robots don't need AI or machine learning. Simple rule-based logic (if/then statements) handles the vast majority of robotics projects. Understanding when you actually need AI saves time, money, and complexity.</p>
+
+                    <div class="highlight-box">
+                        <h3>The 90% Rule for Maker Robotics</h3>
+                        <p>About 90% of hobby/maker robots can be built with simple rule-based logic. Only reach for AI/ML when you encounter problems that genuinely require learning from data - like recognizing faces, interpreting natural speech, or navigating completely unknown environments.</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>🎯 Recipe vs Chef Analogy</h4>
+                        <p><strong>Rules are like recipes:</strong> "IF eggs and flour THEN make pancakes" - perfect for known situations. <strong>Learning is like a trained chef:</strong> Adapts recipes based on ingredient quality, altitude, humidity - needed when situations vary unpredictably.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">RULES</div>
+                            <div class="feature-title">Rule-Based Logic - Simple and Reliable</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> You explicitly program every behavior as if/then statements</p>
+                                <p><strong>Example behaviors you can achieve with pure rules:</strong></p>
+                                <ul>
+                                    <li><strong>Obstacle avoidance:</strong> IF distance < 20cm THEN turn right</li>
+                                    <li><strong>Line following:</strong> IF left sensor sees black THEN turn left</li>
+                                    <li><strong>Light seeking:</strong> IF right sensor brighter THEN turn right</li>
+                                    <li><strong>Wall following:</strong> IF too close THEN veer away, IF too far THEN veer closer</li>
+                                    <li><strong>State machines:</strong> IF button pressed THEN switch from idle to active mode</li>
+                                </ul>
+                                <p><strong>Advantages:</strong></p>
+                                <ul>
+                                    <li>Predictable and debuggable</li>
+                                    <li>Works on simple Arduino boards</li>
+                                    <li>No training data needed</li>
+                                    <li>Immediate behavior modification by changing code</li>
+                                </ul>
+                                <p><strong>Perfect for:</strong> Beginner robots, line followers, obstacle avoiders, simple autonomous behaviors, most educational robotics</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">AI/ML</div>
+                            <div class="feature-title">Machine Learning - When Rules Get Impossible</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> Robot learns patterns from data rather than following explicit rules</p>
+                                <p><strong>When you genuinely need ML:</strong></p>
+                                <ul>
+                                    <li><strong>Face recognition:</strong> Too complex to write rules for every face variation</li>
+                                    <li><strong>Natural speech:</strong> Understanding human language requires learning from examples</li>
+                                    <li><strong>Object classification:</strong> "Is this a dog or cat?" from camera image</li>
+                                    <li><strong>Gesture recognition:</strong> Learning movement patterns from training data</li>
+                                    <li><strong>Adaptive behavior:</strong> Robot learns optimal navigation from experience</li>
+                                </ul>
+                                <p><strong>Requirements:</strong></p>
+                                <ul>
+                                    <li>More powerful hardware (Raspberry Pi minimum, Jetson Nano $150 ideal)</li>
+                                    <li>Training data (hundreds/thousands of examples)</li>
+                                    <li>ML frameworks (TensorFlow Lite, OpenCV)</li>
+                                    <li>Longer development time</li>
+                                </ul>
+                                <p><strong>Realistic maker ML:</strong> Use pre-trained models (Google Teachable Machine, Edge Impulse) rather than training from scratch</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">HYBRID</div>
+                            <div class="feature-title">Hybrid Approach - Best of Both Worlds</div>
+                            <div class="feature-description">
+                                <p><strong>What it means:</strong> Use ML for perception, rules for behavior/safety</p>
+                                <p><strong>Common hybrid architecture:</strong></p>
+                                <ul>
+                                    <li><strong>ML layer:</strong> "I see a face" (computer vision)</li>
+                                    <li><strong>Rules layer:</strong> "IF face detected THEN turn toward it and smile (LED pattern)"</li>
+                                    <li><strong>Safety layer:</strong> "IF battery low THEN override all behaviors and return to dock"</li>
+                                </ul>
+                                <p><strong>Real example - Face-following robot:</strong></p>
+                                <ul>
+                                    <li>Raspberry Pi: Runs OpenCV face detection (ML)</li>
+                                    <li>Arduino: Receives "face at position X,Y" and uses rules to control motors</li>
+                                    <li>Result: ML does what it's good at (seeing), rules do what they're good at (reliable motor control)</li>
+                                </ul>
+                                <p><strong>Advantage:</strong> ML handles perception complexity, rules ensure predictable/safe behavior</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">DECISION</div>
+                            <div class="feature-title">Decision Framework - Rules or Learning?</div>
+                            <div class="feature-description">
+                                <p><strong>Choose RULES when:</strong></p>
+                                <ul>
+                                    <li>Environment is predictable</li>
+                                    <li>You can describe all situations in if/then statements</li>
+                                    <li>Using simple sensors (distance, light, touch)</li>
+                                    <li>Working with Arduino-level hardware</li>
+                                    <li>You're a beginner learning robotics</li>
+                                </ul>
+                                <p><strong>Choose LEARNING when:</strong></p>
+                                <ul>
+                                    <li>Using camera/vision and need to recognize objects/faces/gestures</li>
+                                    <li>Too many possible situations to write rules for</li>
+                                    <li>Need to interpret natural human input (speech, gestures)</li>
+                                    <li>Robot should adapt behavior based on experience</li>
+                                    <li>Have access to Raspberry Pi or better computing</li>
+                                </ul>
+                                <p><strong>Start with rules, add learning only when necessary.</strong> Many successful robots never need ML.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Computer Vision for Makers -->
+                <section class="content-section" id="computer-vision">
+                    <h2>Computer Vision for Makers - Giving Robots Sight</h2>
+                    <p>Computer vision allows robots to interpret visual information from cameras. For makers, this doesn't mean building complex AI from scratch - it means using affordable cameras and accessible tools to enable visual behaviors.</p>
+
+                    <div class="highlight-box">
+                        <h3>Vision Without the PhD</h3>
+                        <p>Modern maker-friendly vision tools (Pixy2, OpenCV, pre-trained models) let you add sophisticated visual capabilities without understanding the underlying math. Focus on what capabilities you need, not how the algorithms work.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Pixy2 CMUcam5 - Beginner-Friendly Vision</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> Smart camera module designed specifically for robotics, works directly with Arduino</p>
+                                <p><strong>Price:</strong> $60 (Pixy2 camera from Charmed Labs)</p>
+                                <p><strong>Key capabilities:</strong></p>
+                                <ul>
+                                    <li><strong>Color blob tracking:</strong> "Follow the red ball" - track up to 7 color signatures</li>
+                                    <li><strong>Line following:</strong> Built-in line tracking mode for maze navigation</li>
+                                    <li><strong>No Raspberry Pi needed:</strong> Works directly with Arduino (sends X,Y coordinates)</li>
+                                    <li><strong>Fast:</strong> 60 frames/second tracking</li>
+                                </ul>
+                                <p><strong>Example projects:</strong></p>
+                                <ul>
+                                    <li>Ball-following robot (tracks colored ball)</li>
+                                    <li>Color-sorting machine</li>
+                                    <li>Line-following maze solver</li>
+                                    <li>Pet-like robot that follows colored toy</li>
+                                </ul>
+                                <p><strong>Perfect for:</strong> Beginners who want vision without learning Python or ML</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Raspberry Pi Camera - Full Computer Vision</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> HD camera module for Raspberry Pi, enables full OpenCV capabilities</p>
+                                <p><strong>Price:</strong> $15-30 (Camera Module v2 or HQ camera)</p>
+                                <p><strong>Requirements:</strong> Raspberry Pi 3/4/5 ($35-80), Python programming</p>
+                                <p><strong>Key capabilities with OpenCV:</strong></p>
+                                <ul>
+                                    <li><strong>Face detection:</strong> Pre-trained Haar Cascade models (built into OpenCV)</li>
+                                    <li><strong>Object detection:</strong> Use pre-trained models (YOLO, MobileNet)</li>
+                                    <li><strong>Motion detection:</strong> Track movement between frames</li>
+                                    <li><strong>QR code reading:</strong> Navigate using QR waypoints</li>
+                                    <li><strong>Color filtering:</strong> More sophisticated than Pixy2</li>
+                                </ul>
+                                <p><strong>Example projects:</strong></p>
+                                <ul>
+                                    <li>Face-following robot</li>
+                                    <li>Security camera with person detection</li>
+                                    <li>Object-finding robot ("where's my coffee mug?")</li>
+                                </ul>
+                                <p><strong>Learning curve:</strong> Moderate - requires Python and basic OpenCV understanding</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">ESP32-CAM - WiFi Vision on a Budget</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> Tiny camera module with WiFi, can stream video and do basic image processing</p>
+                                <p><strong>Price:</strong> $10-15 (complete module)</p>
+                                <p><strong>Key capabilities:</strong></p>
+                                <ul>
+                                    <li><strong>Wireless streaming:</strong> View robot's perspective on phone/computer</li>
+                                    <li><strong>Basic vision:</strong> Face detection available in Arduino libraries</li>
+                                    <li><strong>IoT integration:</strong> Send images to cloud services for AI processing</li>
+                                    <li><strong>Low cost:</strong> Cheapest way to add camera to robot</li>
+                                </ul>
+                                <p><strong>Limitations:</strong></p>
+                                <ul>
+                                    <li>Less powerful than Raspberry Pi</li>
+                                    <li>Simultaneous camera + WiFi can be unstable</li>
+                                    <li>Better for streaming than heavy processing</li>
+                                </ul>
+                                <p><strong>Best for:</strong> Remote-controlled robots where you want to see what robot sees, simple vision tasks, budget projects</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Google Teachable Machine - No-Code Vision AI</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> Free web tool to train custom image recognition models without coding</p>
+                                <p><strong>Price:</strong> Free (teachablemachine.withgoogle.com)</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li><strong>Step 1:</strong> Upload photos of objects you want robot to recognize (20-50 per category)</li>
+                                    <li><strong>Step 2:</strong> Train model in browser (takes 2-5 minutes)</li>
+                                    <li><strong>Step 3:</strong> Export as TensorFlow Lite model for Raspberry Pi</li>
+                                    <li><strong>Step 4:</strong> Robot can now recognize those objects</li>
+                                </ul>
+                                <p><strong>Example use cases:</strong></p>
+                                <ul>
+                                    <li>Train robot to recognize your face vs others</li>
+                                    <li>Recognize hand gestures for control</li>
+                                    <li>Identify specific objects ("find my red mug")</li>
+                                    <li>Pose detection for interactive art</li>
+                                </ul>
+                                <p><strong>Perfect for:</strong> Custom recognition tasks without ML expertise. Deploy to Raspberry Pi.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">05</div>
+                            <div class="feature-title">Edge Impulse - ML for Embedded Systems</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> Platform for building ML models that run on microcontrollers and edge devices</p>
+                                <p><strong>Price:</strong> Free for developers, paid plans for commercial use</p>
+                                <p><strong>Key capabilities:</strong></p>
+                                <ul>
+                                    <li><strong>Vision + audio:</strong> Train models for image AND sound recognition</li>
+                                    <li><strong>Optimized:</strong> Models run fast on limited hardware (Arduino Nano 33, ESP32)</li>
+                                    <li><strong>End-to-end:</strong> Data collection → training → deployment in one platform</li>
+                                    <li><strong>Pre-built projects:</strong> Templates for common robotics tasks</li>
+                                </ul>
+                                <p><strong>Example projects:</strong></p>
+                                <ul>
+                                    <li>Gesture-controlled robot (train on your hand gestures)</li>
+                                    <li>Sound-activated behaviors (recognize specific sounds)</li>
+                                    <li>Custom object detection</li>
+                                </ul>
+                                <p><strong>Best for:</strong> Intermediate makers wanting ML without powerful computers. Deploy to Arduino-class devices.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">06</div>
+                            <div class="feature-title">NVIDIA Jetson Nano - Serious Vision Power</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> Small computer optimized for AI/ML workloads, GPU-accelerated</p>
+                                <p><strong>Price:</strong> $150-200 (Jetson Nano 4GB, though availability varies)</p>
+                                <p><strong>Key capabilities:</strong></p>
+                                <ul>
+                                    <li><strong>Real-time object detection:</strong> YOLO models at good frame rates</li>
+                                    <li><strong>Multiple cameras:</strong> Process several video streams simultaneously</li>
+                                    <li><strong>Deep learning:</strong> Run complex neural networks (pose estimation, semantic segmentation)</li>
+                                    <li><strong>CUDA acceleration:</strong> Much faster than Raspberry Pi for ML</li>
+                                </ul>
+                                <p><strong>When you need Jetson over Raspberry Pi:</strong></p>
+                                <ul>
+                                    <li>Real-time object detection (multiple objects, complex scenes)</li>
+                                    <li>Advanced autonomous navigation</li>
+                                    <li>Multiple simultaneous ML models</li>
+                                    <li>Commercial/professional robotics projects</li>
+                                </ul>
+                                <p><strong>Trade-offs:</strong> More expensive, higher power consumption, steeper learning curve</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Decision-Making Systems -->
+                <section class="content-section" id="decision-making">
+                    <h2>Decision-Making Systems - How Robots Choose Actions</h2>
+                    <p>Decision-making is the bridge between perception and action. Your robot has sensor data - now what? These architectures help you structure robot behavior from simple to sophisticated.</p>
+
+                    <div class="highlight-box">
+                        <h3>Behavior Architectures for Makers</h3>
+                        <p>You don't need to reinvent decision-making systems. Roboticists have developed proven architectures that scale from simple Arduino projects to advanced autonomous systems. Choose based on your complexity needs.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Simple Reactive - Immediate Response</div>
+                            <div class="feature-description">
+                                <p><strong>How it works:</strong> Direct sensor-to-action mapping. No memory, no planning.</p>
+                                <p><strong>Structure:</strong></p>
+                                <ul>
+                                    <li>Sense → Act (immediate response)</li>
+                                    <li>Example: IF obstacle THEN turn right</li>
+                                    <li>No internal state or memory</li>
+                                    <li>Always responds the same way to same stimulus</li>
+                                </ul>
+                                <p><strong>Pros:</strong> Simple to program, fast response, predictable, reliable</p>
+                                <p><strong>Cons:</strong> Can get stuck in loops, no learning, no context awareness</p>
+                                <p><strong>Best for:</strong></p>
+                                <ul>
+                                    <li>Line-following robots</li>
+                                    <li>Light-seeking behaviors</li>
+                                    <li>Simple obstacle avoidance</li>
+                                    <li>Beginner projects</li>
+                                </ul>
+                                <p><strong>Arduino example:</strong> 10-20 lines of if/then statements in loop()</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">State Machines - Context-Aware Behavior</div>
+                            <div class="feature-description">
+                                <p><strong>How it works:</strong> Robot has different "modes" and responds differently based on current mode</p>
+                                <p><strong>Structure:</strong></p>
+                                <ul>
+                                    <li>States: SEARCHING, FOLLOWING, AVOIDING, RETURNING</li>
+                                    <li>Transitions: Rules for switching states</li>
+                                    <li>Same sensor input → different action depending on state</li>
+                                </ul>
+                                <p><strong>Example - Ball-fetching robot:</strong></p>
+                                <ul>
+                                    <li><strong>SEARCHING state:</strong> Spin slowly, look for colored ball</li>
+                                    <li><strong>APPROACHING state:</strong> Ball detected → move toward it</li>
+                                    <li><strong>GRABBING state:</strong> Close to ball → activate gripper</li>
+                                    <li><strong>RETURNING state:</strong> Ball grabbed → navigate back to start</li>
+                                </ul>
+                                <p><strong>Best for:</strong> Multi-step tasks, pet-like robots with moods, robots that switch between behaviors</p>
+                                <p><strong>Implementation:</strong> Switch statement or enum-based state variable in code</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Subsumption Architecture - Layered Behaviors</div>
+                            <div class="feature-description">
+                                <p><strong>How it works:</strong> Multiple behavior layers running simultaneously, higher priority behaviors override lower ones</p>
+                                <p><strong>Structure (from high to low priority):</strong></p>
+                                <ul>
+                                    <li><strong>Layer 3 (highest):</strong> Emergency stop (obstacle very close)</li>
+                                    <li><strong>Layer 2:</strong> Navigate toward goal</li>
+                                    <li><strong>Layer 1:</strong> Wander randomly (default behavior)</li>
+                                </ul>
+                                <p><strong>How layers interact:</strong></p>
+                                <ul>
+                                    <li>All layers run simultaneously</li>
+                                    <li>Higher priority layers can override/suppress lower ones</li>
+                                    <li>If high-priority layer doesn't activate, lower ones take over</li>
+                                </ul>
+                                <p><strong>Example - Autonomous explorer:</strong></p>
+                                <ul>
+                                    <li>Normally: Wanders exploring (Layer 1)</li>
+                                    <li>Sees interesting object: Approaches it (Layer 2 activates)</li>
+                                    <li>Detects cliff: Emergency stop (Layer 3 overrides everything)</li>
+                                </ul>
+                                <p><strong>Best for:</strong> Robots needing robust real-world behavior, autonomous navigation, combining multiple objectives</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Behavior Trees - Modular Decision-Making</div>
+                            <div class="feature-description">
+                                <p><strong>How it works:</strong> Decision-making structured as tree of behaviors, borrowed from video game AI</p>
+                                <p><strong>Structure:</strong></p>
+                                <ul>
+                                    <li><strong>Root:</strong> Overall goal</li>
+                                    <li><strong>Branches:</strong> Decision points (sequences, selectors, conditions)</li>
+                                    <li><strong>Leaves:</strong> Actual actions (move, grab, turn, etc.)</li>
+                                </ul>
+                                <p><strong>Example - Security robot patrol:</strong></p>
+                                <ul>
+                                    <li><strong>Sequence:</strong> Check battery → Is low? → Return to dock</li>
+                                    <li><strong>Selector:</strong> Intruder detected? → Investigate OR Continue patrol</li>
+                                    <li><strong>Actions:</strong> Move to waypoint, Take photo, Sound alarm</li>
+                                </ul>
+                                <p><strong>Advantages:</strong></p>
+                                <ul>
+                                    <li>Very modular - easy to add/remove behaviors</li>
+                                    <li>Visual - can draw tree diagrams</li>
+                                    <li>Reusable - share subtrees between projects</li>
+                                </ul>
+                                <p><strong>Best for:</strong> Complex autonomous behaviors, game-like AI, robots with multiple goals/priorities</p>
+                                <p><strong>Tools:</strong> Behavior Tree libraries available for Python (py_trees), C++ (BehaviorTree.CPP)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Designing for Failure -->
+                <section class="content-section" id="graceful-failure">
+                    <h2>Designing for Failure - Graceful Degradation</h2>
+                    <p>All robots fail eventually - sensors get dirty, batteries die, unexpected obstacles appear. Great robot design isn't about preventing all failures, it's about failing gracefully and safely. Designers must plan for degraded operation.</p>
+
+                    <div class="highlight-box">
+                        <h3>Failure as Design Constraint</h3>
+                        <p>The difference between a good robot and a great robot is how it behaves when things go wrong. Design your robot's degraded states as intentionally as its optimal operation. What does your robot do when its camera fails? When battery is low? When it gets stuck?</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>🎯 Airplane Safety Analogy</h4>
+                        <p><strong>Like aircraft design:</strong> Planes have redundant systems, backup power, and defined emergency procedures. When hydraulics fail, pilots switch to manual backup. When engines fail, planes can glide. Your robot should similarly degrade gracefully rather than catastrophically.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Safe-State Design - Default to Safety</div>
+                            <div class="feature-description">
+                                <p><strong>Principle:</strong> When anything goes wrong, robot enters predefined safe state</p>
+                                <p><strong>Safe state behaviors:</strong></p>
+                                <ul>
+                                    <li><strong>Stop all motors:</strong> Don't continue moving blindly</li>
+                                    <li><strong>Visual/audio alert:</strong> Flash LED, beep to indicate problem</li>
+                                    <li><strong>Request help:</strong> Send notification if networked</li>
+                                    <li><strong>Preserve data:</strong> Log sensor readings before shutdown</li>
+                                </ul>
+                                <p><strong>Example triggers for safe state:</strong></p>
+                                <ul>
+                                    <li>Battery below 20%</li>
+                                    <li>Sensor returns impossible values (indicates failure)</li>
+                                    <li>Stuck in same position for 30 seconds</li>
+                                    <li>Lost connection to controller</li>
+                                    <li>Timeout: No progress toward goal after X seconds</li>
+                                </ul>
+                                <p><strong>Implementation:</strong> Watchdog timer that resets to safe state if main loop hangs, sanity checks on all sensor data</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Degraded Operation - Partial Function</div>
+                            <div class="feature-description">
+                                <p><strong>Principle:</strong> Robot continues operating with reduced capability when non-critical systems fail</p>
+                                <p><strong>Capability hierarchy (from critical to optional):</strong></p>
+                                <ul>
+                                    <li><strong>Critical:</strong> Basic motor control, collision avoidance - without these, stop</li>
+                                    <li><strong>Important:</strong> Main sensors for task - operate in simpler mode if they fail</li>
+                                    <li><strong>Nice-to-have:</strong> LED displays, sounds, WiFi - disable if they fail but continue operating</li>
+                                </ul>
+                                <p><strong>Example - Vacuum robot:</strong></p>
+                                <ul>
+                                    <li><strong>Camera fails:</strong> Switch to "bump and turn" mode (still cleans, less efficiently)</li>
+                                    <li><strong>One wheel encoder fails:</strong> Navigate using remaining sensors, move more slowly</li>
+                                    <li><strong>WiFi drops:</strong> Continue cleaning on schedule, report status when reconnected</li>
+                                    <li><strong>Cliff sensor fails:</strong> Stop completely (safety-critical)</li>
+                                </ul>
+                                <p><strong>Design approach:</strong> Define multiple operation modes with different sensor/capability requirements</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Sensor Validation - Don't Trust Bad Data</div>
+                            <div class="feature-description">
+                                <p><strong>Principle:</strong> Validate sensor readings before using them for decisions</p>
+                                <p><strong>Common sensor validation techniques:</strong></p>
+                                <ul>
+                                    <li><strong>Range checking:</strong> Is value within physically possible range?</li>
+                                    <li><strong>Rate limiting:</strong> Did value change too quickly? (indicates glitch)</li>
+                                    <li><strong>Multiple readings:</strong> Take 3-5 readings, use median or average</li>
+                                    <li><strong>Sensor fusion:</strong> Cross-check with other sensors (does camera agree with distance sensor?)</li>
+                                    <li><strong>Timeout detection:</strong> Is sensor still responding? Not frozen?</li>
+                                </ul>
+                                <p><strong>Example validation code pattern:</strong></p>
+                                <ul>
+                                    <li>Read ultrasonic sensor</li>
+                                    <li>IF reading < 2cm OR > 400cm THEN invalid (out of sensor range)</li>
+                                    <li>IF changed by > 100cm in 0.1 sec THEN likely glitch, ignore</li>
+                                    <li>ELSE use reading</li>
+                                </ul>
+                                <p><strong>Bad sensor behavior:</strong> Dirty sensors, electrical noise, physical obstruction. Validation prevents one bad reading from causing crash.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Stuck Detection - When Robot Can't Progress</div>
+                            <div class="feature-description">
+                                <p><strong>Principle:</strong> Detect when robot is stuck and execute recovery behavior</p>
+                                <p><strong>Stuck detection methods:</strong></p>
+                                <ul>
+                                    <li><strong>Position monitoring:</strong> Motors running but position unchanged for 3 seconds</li>
+                                    <li><strong>Current sensing:</strong> Motor current high (indicates blocked)</li>
+                                    <li><strong>Goal timeout:</strong> Expected to reach goal in 30 sec, hasn't arrived</li>
+                                    <li><strong>Oscillation detection:</strong> Robot repeatedly switching between same two positions</li>
+                                </ul>
+                                <p><strong>Recovery behaviors:</strong></p>
+                                <ul>
+                                    <li><strong>Backup and retry:</strong> Reverse, turn random angle, try again</li>
+                                    <li><strong>Alternative path:</strong> Try different approach to goal</li>
+                                    <li><strong>Call for help:</strong> Alert user/system after N failed attempts</li>
+                                    <li><strong>Give up gracefully:</strong> Mark goal as unreachable, move to next task</li>
+                                </ul>
+                                <p><strong>Example:</strong> Roomba backs up, turns, and tries new direction when bumper triggers repeatedly in short time</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">05</div>
+                            <div class="feature-title">Battery Management - Power-Aware Behavior</div>
+                            <div class="feature-description">
+                                <p><strong>Principle:</strong> Robot behavior adapts based on remaining battery charge</p>
+                                <p><strong>Battery-aware behavior tiers:</strong></p>
+                                <ul>
+                                    <li><strong>100-40%:</strong> Normal operation, all features enabled</li>
+                                    <li><strong>40-20%:</strong> Reduced features (dim LEDs, disable non-critical sensors, slower movement)</li>
+                                    <li><strong>20-10%:</strong> Return to dock/charging station, minimal operation</li>
+                                    <li><strong>Below 10%:</strong> Emergency mode - preserve position data, safe shutdown</li>
+                                </ul>
+                                <p><strong>Implementation:</strong></p>
+                                <ul>
+                                    <li>Voltage divider circuit to monitor battery ($2 in parts)</li>
+                                    <li>Check battery level every minute</li>
+                                    <li>Display battery status via LED color</li>
+                                    <li>Warn user before auto-shutdown</li>
+                                </ul>
+                                <p><strong>Auto-docking:</strong> Advanced robots (Roomba, Astro) navigate back to charging dock when battery low - requires vision or beacon sensors</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">06</div>
+                            <div class="feature-title">Communication Loss - Handling Disconnection</div>
+                            <div class="feature-description">
+                                <p><strong>Principle:</strong> Robot has defined behavior when it loses contact with controller/network</p>
+                                <p><strong>Timeout-based failsafes:</strong></p>
+                                <ul>
+                                    <li><strong>Heartbeat system:</strong> Controller sends signal every 500ms</li>
+                                    <li><strong>IF no signal for 2 seconds:</strong> Assume connection lost</li>
+                                    <li><strong>Then:</strong> Stop motors, flash warning LED, attempt to reconnect</li>
+                                </ul>
+                                <p><strong>Example behaviors on disconnection:</strong></p>
+                                <ul>
+                                    <li><strong>RC robot:</strong> Stop immediately (user loses control)</li>
+                                    <li><strong>Semi-autonomous:</strong> Continue current task, return to start when done</li>
+                                    <li><strong>Security robot:</strong> Continue patrol route, log "comms lost" event</li>
+                                    <li><strong>Delivery robot:</strong> Stop, wait for reconnection or manual retrieval</li>
+                                </ul>
+                                <p><strong>Safety consideration:</strong> Never have robot continue full-speed movement without connection unless that's explicitly designed behavior</p>
+                                <p><strong>Status indication:</strong> Different LED patterns for "normal operation" vs "autonomous after disconnect"</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="content-section">
+                    <h2>Autonomy as Design Decision</h2>
+                    <p>Robot autonomy and intelligence aren't binary choices - they exist on spectrums. Your role as a designer is to select the appropriate autonomy level, decision-making architecture, and failure behaviors for your specific use case and constraints.</p>
+
+                    <div class="highlight-box">
+                        <h3>Start Simple, Add Complexity Intentionally</h3>
+                        <p>Begin with simple rule-based Level 1-2 autonomy. Only add AI/ML when you encounter problems rules can't solve. Design safe-state behaviors from day one. This approach leads to robots that are simpler, more reliable, and easier to debug than jumping straight to complex autonomous systems.</p>
+                    </div>
+
+                    <p>Most successful maker robots operate at Level 2-3 autonomy with rule-based logic and carefully designed failure states. They may use computer vision (via Pixy2 or OpenCV) without needing true machine learning. Focus on behaviors you want to enable, not technology buzzwords.</p>
+
+                    <p>In the next section on Robotics Applications, we'll see how different autonomy levels and decision-making approaches are applied across real-world robotics domains - from toys to industrial robots to space exploration.</p>
+                </section>
+
+                <!-- Continue Learning Section -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Next</div>
+                            <h4>Robotics Applications</h4>
+                            <p>Explore real-world robotics domains from toys to industry to space, understanding how design principles apply across contexts.</p>
+                            <a href="robotics-applications.html" class="learning-link">Continue →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Related</div>
+                            <h4>Robotics Flashcards</h4>
+                            <p>Practice and review concepts through interactive flashcards covering robotics fundamentals, components, and applications.</p>
+                            <a href="robotics-flashcards.html" class="learning-link">Review ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Practice</div>
+                            <h4>Robotics Activities</h4>
+                            <p>Apply what you've learned through hands-on robot design exercises, case studies, and maker challenges.</p>
+                            <a href="robotics-activities.html" class="learning-link">Practice ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="robotics-landing.html" class="path-link">← Back to Robotics Hub</a>
+                        <a href="robotics-applications.html" class="path-link primary">Next: Robotics Applications →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-branding">
+                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="disclaimer.html">Disclaimer</a>
+                        <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

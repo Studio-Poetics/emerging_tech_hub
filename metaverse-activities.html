@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metaverse Activities - Hands-On Design Exercises | Emerging Tech Hub</title>
+    <meta name="description" content="Practice metaverse design through hands-on activities, case studies, and collaborative scenarios. Apply spatial design and virtual world concepts.">
+    <meta name="keywords" content="metaverse exercises, spatial design practice, virtual world activities, metaverse case studies, VR design projects">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Activity Card Styles */
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-6);
+}
+
+.activity-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+}
+
+.activity-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: var(--border-width) solid var(--color-gray-300);
+}
+
+.activity-number {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-electric-blue);
+}
+
+.activity-meta {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+}
+
+.duration {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    color: var(--color-gray-600);
+}
+
+.difficulty {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-width) solid var(--color-black);
+}
+
+.difficulty.beginner {
+    background: var(--color-gray-100);
+    color: var(--color-gray-800);
+}
+
+.difficulty.intermediate {
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    border-color: var(--color-electric-blue);
+}
+
+.difficulty.advanced {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.activity-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-4);
+}
+
+.activity-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    color: var(--color-electric-blue);
+}
+
+.instruction-list,
+.framework-list {
+    margin-left: var(--space-4);
+    margin-top: var(--space-2);
+}
+
+.instruction-list li,
+.framework-list li {
+    margin-bottom: var(--space-2);
+    line-height: 1.6;
+}
+
+.instruction-list li strong,
+.framework-list li strong {
+    font-weight: var(--font-bold);
+}
+
+/* Case Study Styles */
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+}
+
+.case-study-card {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+}
+
+.case-study-card:hover {
+    border-color: var(--color-electric-blue);
+    background: var(--color-white);
+}
+
+.case-study-card h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-3);
+}
+
+.case-meta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: var(--border-width) solid var(--color-gray-300);
+}
+
+.case-year,
+.case-platform,
+.case-attendance,
+.case-type {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-white);
+    border: var(--border-width) solid var(--color-gray-400);
+}
+
+.case-study-card h4 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    color: var(--color-electric-blue);
+}
+
+.analysis-questions {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.analysis-questions li {
+    margin-bottom: var(--space-3);
+    padding-left: var(--space-4);
+    position: relative;
+}
+
+.analysis-questions li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-electric-blue);
+    font-weight: var(--font-bold);
+}
+
+.analysis-questions li strong {
+    font-weight: var(--font-bold);
+    color: var(--color-black);
+}
+
+/* Challenge Cards */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+}
+
+.challenge-card {
+    background: var(--color-white);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-5);
+    transition: all var(--transition-base);
+}
+
+.challenge-card:hover {
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    border-color: var(--color-electric-blue);
+}
+
+.challenge-card:hover * {
+    color: var(--color-white);
+}
+
+.challenge-number {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-electric-blue);
+    display: block;
+    margin-bottom: var(--space-2);
+}
+
+.challenge-card:hover .challenge-number {
+    color: var(--color-white);
+}
+
+.challenge-card h4 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+}
+
+.challenge-card p {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    margin-bottom: var(--space-2);
+}
+
+.challenge-card p strong {
+    font-weight: var(--font-bold);
+}
+
+/* Decision Guide Styles */
+.decision-guide {
+    margin-top: var(--space-6);
+}
+
+.decision-guide h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-4);
+}
+
+.decision-flowchart {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-4);
+}
+
+.decision-step {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-4);
+}
+
+.decision-step h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.decision-step ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.decision-step li {
+    padding-left: var(--space-3);
+    margin-bottom: var(--space-2);
+    position: relative;
+}
+
+.decision-step li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-electric-blue);
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .activity-grid, .feature-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Metaverse Activities</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Activities</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#individual" class="experimental-nav-link">Individual Exercises</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#collaborative" class="experimental-nav-link">Team Scenarios</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#case-studies" class="experimental-nav-link">Case Studies</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#challenges" class="experimental-nav-link">Design Challenges</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Learning Mode</div>
+                    <div class="info-box-content">
+                        Activities progress from individual to collaborative, simple to complex. Start with exercises that match your experience level.
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Navigation</div>
+                    <div class="info-box-content">
+                        <a href="metaverse-landing.html">← Back to Metaverse Hub</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Metaverse Activities</h1>
+                <p class="fundamentals-subtitle">Hands-on exercises, collaborative scenarios, and case study analysis to practice spatial design thinking</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <div class="content-section">
+                    <p class="section-intro">
+                        Learning metaverse design requires practice. These activities help you apply spatial design principles, analyze real metaverse products, and develop your design thinking through structured exercises. Work individually or collaborate with teams to build your portfolio and expertise.
+                    </p>
+                </div>
+
+                <!-- Individual Exercises -->
+                <section class="content-section" id="individual">
+                    <h2>👤 Individual Exercises</h2>
+                    <p class="section-text">
+                        Self-paced projects with structured frameworks. Complete these to build your understanding and create portfolio pieces.
+                    </p>
+
+                    <div class="activity-grid">
+
+                        <!-- Exercise 1 -->
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <div class="activity-number">Exercise 01</div>
+                                <div class="activity-meta">
+                                    <span class="duration">⏱ 2-4 hours</span>
+                                    <span class="difficulty beginner">Beginner</span>
+                                </div>
+                            </div>
+
+                            <h3 class="activity-title">Dreams, VR & Analog Sense Hacking</h3>
+
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Understand how VR/metaverse works by building an analog contraption that "hacks your senses" and transports you to another reality - bridging physical prototyping with digital VR concepts.</p>
+
+                                <div class="highlight-box">
+                                    <h4>💭 Core Question</h4>
+                                    <p><strong>What's the similarity between dreams and VR/metaverse?</strong></p>
+                                    <p>Both create immersive experiences that feel real by manipulating your sensory inputs. When you dream, your brain generates a complete sensory world. VR does the same thing—but from the outside in, using technology to hijack your senses.</p>
+                                </div>
+
+                                <h4>Part 1: Analog Sense Hacking (Physical)</h4>
+                                <p><strong>Challenge:</strong> Using ONLY analog materials, create a mechanism, contraption, or device that can:</p>
+                                <ul class="framework-list">
+                                    <li>Transport you to somewhere else, OR</li>
+                                    <li>Turn you into something/someone else</li>
+                                </ul>
+
+                                <h4>Materials Allowed:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Cardboard</strong> - boxes, tubes, sheets for structure</li>
+                                    <li><strong>Paper</strong> - different textures, weights, tracing paper</li>
+                                    <li><strong>Colors</strong> - paints, markers, colored gels, filters</li>
+                                    <li><strong>Film/Transparencies</strong> - colored cellophane, acetate sheets</li>
+                                    <li><strong>Lenses</strong> - magnifying glasses, old glasses, bottles</li>
+                                    <li><strong>Mirrors/Reflective surfaces</strong></li>
+                                    <li><strong>String/Tape/Glue</strong> - to build contraptions</li>
+                                    <li><strong>Sound makers</strong> - bells, paper, crinkly materials, tubes as resonators</li>
+                                    <li><strong>Fabric/Textures</strong> - create tactile experiences</li>
+                                </ul>
+
+                                <h4>Example Approaches:</h4>
+                                <div class="analogy-box">
+                                    <p><strong>Underwater Transportation:</strong> Build a cardboard box you wear on your head with blue/green cellophane layers, wavy paper cutouts, bubble wrap for texture, tubes with ocean sounds. The layered colored filters change how you see, creating an underwater feeling.</p>
+
+                                    <p><strong>Becoming a Bee:</strong> Create goggles with honeycomb-patterned paper, multiple small lenses (compound eye effect), attach paper wings that rustle with movement, yellow/black color filters, tubes that amplify buzzing sounds.</p>
+
+                                    <p><strong>Portal to Forest:</strong> Cardboard tunnel with layered green transparencies (creating depth), textured surfaces to touch as you move through, hanging paper leaves, speakers/tubes playing forest sounds in different directions.</p>
+                                </div>
+
+                                <h4>Part 2: Analog to Digital Translation</h4>
+                                <p>After building your physical contraption, <strong>document how each analog technique maps to digital VR concepts:</strong></p>
+
+                                <div class="comparison-grid">
+                                    <div class="comparison-item">
+                                        <h4>What You Did (Analog)</h4>
+                                        <ul>
+                                            <li>🎨 <strong>Colored filters/layers</strong> changed what you see</li>
+                                            <li>📐 <strong>Tunnel/box size</strong> restricted your view</li>
+                                            <li>🔍 <strong>Lenses/curved surfaces</strong> distorted vision</li>
+                                            <li>📏 <strong>Distance of elements</strong> created depth</li>
+                                            <li>🔊 <strong>Directional sound tubes</strong> placed audio in space</li>
+                                            <li>👁️ <strong>360° surrounding elements</strong> immersed you</li>
+                                            <li>🎭 <strong>Blocking peripheral vision</strong> focused attention</li>
+                                        </ul>
+                                    </div>
+                                    <div class="comparison-item">
+                                        <h4>VR/Programming Equivalent</h4>
+                                        <ul>
+                                            <li>💻 <strong>Color grading / Post-processing</strong> (shaders, filters)</li>
+                                            <li>📷 <strong>Field of View (FOV)</strong> parameter (60°-120°)</li>
+                                            <li>🎥 <strong>Lens distortion / Fish-eye effects</strong></li>
+                                            <li>🗺️ <strong>Z-axis positioning / Scale</strong> of 3D objects</li>
+                                            <li>🔉 <strong>Spatial/Directional audio</strong> (3D sound)</li>
+                                            <li>🌐 <strong>360° video / Skybox / Environment</strong></li>
+                                            <li>🚪 <strong>Tunnel effect / Vignetting</strong> (comfort mode)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h4>Part 3: Reflection & Documentation</h4>
+                                <p>Answer these questions in your documentation:</p>
+                                <ol class="instruction-list">
+                                    <li><strong>Sensory Manipulation:</strong> Which sense did you prioritize (vision, sound, touch)? Why?</li>
+                                    <li><strong>Illusion of Presence:</strong> What made your contraption feel immersive? What broke the illusion?</li>
+                                    <li><strong>Scale & Perspective:</strong> How did changing scale/distance affect the experience?</li>
+                                    <li><strong>Field of View:</strong> How did restricting peripheral vision change immersion?</li>
+                                    <li><strong>Color Psychology:</strong> How did color choices affect the mood/atmosphere?</li>
+                                    <li><strong>Directional Sound:</strong> If you used sound, how did placement affect spatial awareness?</li>
+                                    <li><strong>360° Surround:</strong> How did surrounding yourself with elements create the illusion of "being there"?</li>
+                                    <li><strong>Digital Translation:</strong> List at least 5 direct mappings from your analog techniques to VR programming concepts (FOV, scale, color, spatial audio, etc.)</li>
+                                </ol>
+
+                                <h4>Programming Fundamentals Learned:</h4>
+                                <ul class="framework-list">
+                                    <li>✅ <strong>Scale:</strong> How object size creates perspective and depth</li>
+                                    <li>✅ <strong>Field of View (FOV):</strong> Controlling what the user can see</li>
+                                    <li>✅ <strong>Color Theory:</strong> Using color to set mood and atmosphere</li>
+                                    <li>✅ <strong>Spatial Audio:</strong> Placing sound in 3D space for directionality</li>
+                                    <li>✅ <strong>Layering/Depth:</strong> Creating illusion of 3D with 2D elements</li>
+                                    <li>✅ <strong>360° Environments:</strong> Why surrounding matters for presence</li>
+                                    <li>✅ <strong>Peripheral Vision:</strong> How limiting view increases immersion</li>
+                                    <li>✅ <strong>Sensory Prioritization:</strong> Which senses matter most for VR</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <ul>
+                                    <li><strong>Physical contraption</strong> - Your analog VR device</li>
+                                    <li><strong>Photos/Video</strong> - Document the experience from inside and outside</li>
+                                    <li><strong>Mapping document</strong> - Table showing analog technique → digital equivalent</li>
+                                    <li><strong>Reflection</strong> (500-800 words) - Answering the questions above</li>
+                                    <li><strong>Presentation</strong> (optional) - Demo your contraption to others and explain the VR concepts learned</li>
+                                </ul>
+
+                                <div class="highlight-box">
+                                    <h4>🎯 Why This Matters</h4>
+                                    <p>This activity demystifies VR by showing it's just <strong>controlled sensory input</strong>. The cardboard and cellophane you use work the same way as shaders and FOV in Unity/Unreal. Once you understand how you fooled your own senses with analog materials, programming a VR experience becomes <strong>translating those physical principles into code</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Exercise 2 -->
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <div class="activity-number">Exercise 02</div>
+                                <div class="activity-meta">
+                                    <span class="duration">⏱ 2-3 hours</span>
+                                    <span class="difficulty beginner">Beginner</span>
+                                </div>
+                            </div>
+
+                            <h3 class="activity-title">Metaverse Platform Critique</h3>
+
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Analyze an existing metaverse experience using spatial design principles</p>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Choose a platform:</strong> Visit Mozilla Hubs, Spatial, VRChat, or another accessible metaverse platform</li>
+                                    <li><strong>Explore a space:</strong> Spend at least 30 minutes navigating and experiencing the environment</li>
+                                    <li><strong>Document your analysis:</strong> Use the framework below</li>
+                                    <li><strong>Present findings:</strong> Create a short presentation or written report</li>
+                                </ol>
+
+                                <h4>Analysis Framework:</h4>
+                                <ul class="framework-list">
+                                    <li><strong>First Impressions:</strong> What was your spawn experience? How did you feel entering?</li>
+                                    <li><strong>Wayfinding:</strong> Could you navigate easily? What helped or hindered orientation?</li>
+                                    <li><strong>Scale & Proportion:</strong> Did spaces feel appropriately sized? Any disorienting scale issues?</li>
+                                    <li><strong>Lighting & Atmosphere:</strong> How did lighting shape the mood? Was it functional and expressive?</li>
+                                    <li><strong>Social Design:</strong> Did the space support social interaction? How?</li>
+                                    <li><strong>What Worked:</strong> Identify 3 strengths of the design</li>
+                                    <li><strong>Improvement Opportunities:</strong> Suggest 3 specific design improvements</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Written critique (500-800 words) with screenshots documenting your observations</p>
+                            </div>
+                        </div>
+
+                        <!-- Exercise 2 -->
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <div class="activity-number">Exercise 02</div>
+                                <div class="activity-meta">
+                                    <span class="duration">⏱ 4-6 hours</span>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                            </div>
+
+                            <h3 class="activity-title">Virtual Gallery Design</h3>
+
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Design a virtual art gallery from concept to spatial layout</p>
+
+                                <h4>Design Brief:</h4>
+                                <p>Create a virtual gallery to showcase 10-15 artworks. The gallery should accommodate solo viewing and small group tours (3-5 people).</p>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Research:</strong> Visit 2-3 virtual galleries for reference (Spatial, Frame VR, or museum VR experiences)</li>
+                                    <li><strong>Sketch layout:</strong> Create top-down 2D floor plan with zones and flow</li>
+                                    <li><strong>Plan user journey:</strong> Map the path from entry to exit, considering pacing</li>
+                                    <li><strong>Design details:</strong> Specify lighting, scale, materials, atmosphere</li>
+                                    <li><strong>Document:</strong> Create design specification with rationale</li>
+                                </ol>
+
+                                <h4>Requirements:</h4>
+                                <ul class="framework-list">
+                                    <li>Clear entry experience with orientation</li>
+                                    <li>Logical flow that encourages exploration</li>
+                                    <li>Varied spatial rhythm (open and intimate areas)</li>
+                                    <li>Appropriate lighting for artwork visibility</li>
+                                    <li>Social spaces that don't overcrowd viewing areas</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Design document with floor plan sketch, user journey map, material/lighting specs, and design rationale</p>
+                            </div>
+                        </div>
+
+                        <!-- Exercise 3 -->
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <div class="activity-number">Exercise 03</div>
+                                <div class="activity-meta">
+                                    <span class="duration">⏱ 3-4 hours</span>
+                                    <span class="difficulty intermediate">Intermediate</span>
+                                </div>
+                            </div>
+
+                            <h3 class="activity-title">Avatar Identity Exploration</h3>
+
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Explore avatar design as identity expression and analyze accessibility considerations</p>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Create avatars:</strong> Use Ready Player Me, VRoid, or platform-specific creators to make 3 different avatars representing different aspects of your identity</li>
+                                    <li><strong>Test in context:</strong> Use these avatars in social VR spaces and observe how they affect your behavior</li>
+                                    <li><strong>Analyze:</strong> Reflect on how avatar choice influenced your interactions</li>
+                                    <li><strong>Design thinking:</strong> Sketch an avatar customization system that supports diverse identities</li>
+                                </ol>
+
+                                <h4>Analysis Questions:</h4>
+                                <ul class="framework-list">
+                                    <li>How did your avatar choice affect how you acted? How others treated you?</li>
+                                    <li>What customization options felt essential vs superficial?</li>
+                                    <li>What identities or body types were difficult or impossible to represent?</li>
+                                    <li>How could avatar systems be more inclusive and accessible?</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Reflective essay (600-1000 words) with screenshots of your avatars and sketch of improved avatar system</p>
+                            </div>
+                        </div>
+
+                        <!-- Exercise 4 -->
+                        <div class="activity-card">
+                            <div class="activity-header">
+                                <div class="activity-number">Exercise 04</div>
+                                <div class="activity-meta">
+                                    <span class="duration">⏱ 5-8 hours</span>
+                                    <span class="difficulty advanced">Advanced</span>
+                                </div>
+                            </div>
+
+                            <h3 class="activity-title">Social Space Design Concept</h3>
+
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Design a virtual space for a specific community with social dynamics in mind</p>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Choose community:</strong> Select a community you're familiar with (book club, gaming group, professional network, etc.)</li>
+                                    <li><strong>Research needs:</strong> What activities does this community do? What do they need from a space?</li>
+                                    <li><strong>Design space:</strong> Create spatial layout supporting both large gatherings and small conversations</li>
+                                    <li><strong>Plan moderation:</strong> How will community be kept safe and welcoming?</li>
+                                    <li><strong>Onboarding flow:</strong> Design new member introduction experience</li>
+                                </ol>
+
+                                <h4>Consider:</h4>
+                                <ul class="framework-list">
+                                    <li>Capacity planning: How many concurrent users?</li>
+                                    <li>Activity zones: Where do different activities happen?</li>
+                                    <li>Social hierarchies: Public vs private spaces</li>
+                                    <li>Moderation tools: How to prevent harassment?</li>
+                                    <li>Rituals and norms: What behaviors should the space encourage?</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Complete design specification: floor plan, user journey, community guidelines, moderation plan, and mockups/sketches</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Collaborative Scenarios -->
+                <section class="content-section" id="collaborative">
+                    <h2>👥 Collaborative Scenarios</h2>
+                    <p class="section-text">
+                        Team-based role-playing exercises to practice cross-functional collaboration. Ideal for workshops or study groups.
+                    </p>
+
+                    <div class="feature-grid">
+
+                        <div class="feature-card">
+                            <div class="feature-number">Scenario 01</div>
+                            <div class="feature-title">Product Team Simulation</div>
+                            <div class="feature-description">
+                                <p><strong>Duration:</strong> 2-hour workshop</p>
+                                <p><strong>Team Size:</strong> 3-5 people</p>
+
+                                <h4>Roles:</h4>
+                                <ul>
+                                    <li><strong>Designer:</strong> Focus on user experience and spatial design</li>
+                                    <li><strong>Engineer:</strong> Raise technical constraints and feasibility</li>
+                                    <li><strong>Product Manager:</strong> Define requirements and prioritize features</li>
+                                    <li><strong>Stakeholder (optional):</strong> Represent business goals</li>
+                                </ul>
+
+                                <h4>Challenge:</h4>
+                                <p>Design a virtual showroom for a furniture company launching in the metaverse. Must support product browsing, customization visualization, and sales consultations.</p>
+
+                                <h4>Deliverable:</h4>
+                                <ul>
+                                    <li>Platform choice with rationale</li>
+                                    <li>Space design concept</li>
+                                    <li>Feature priority list</li>
+                                    <li>MVP timeline and budget estimate</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">Scenario 02</div>
+                            <div class="feature-title">Virtual Event Planning</div>
+                            <div class="feature-description">
+                                <p><strong>Duration:</strong> 3-hour workshop</p>
+                                <p><strong>Team Size:</strong> 4-6 people</p>
+
+                                <h4>Challenge:</h4>
+                                <p>Design a virtual concert or conference for 500+ attendees. Consider stage design, attendee capacity, interaction opportunities, and technical requirements.</p>
+
+                                <h4>Planning Framework:</h4>
+                                <ul>
+                                    <li><strong>Spatial layout:</strong> Stage, audience zones, social areas</li>
+                                    <li><strong>Interaction design:</strong> How do attendees participate?</li>
+                                    <li><strong>Technical requirements:</strong> Streaming, audio, capacity limits</li>
+                                    <li><strong>Attendee journey:</strong> From entry to exit experience</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Event plan with spatial design, technical spec, attendee experience map, and contingency plans</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">Scenario 03</div>
+                            <div class="feature-title">Community Design Challenge</div>
+                            <div class="feature-description">
+                                <p><strong>Duration:</strong> 2-3 hours</p>
+                                <p><strong>Team Size:</strong> 3-4 people</p>
+
+                                <h4>Challenge:</h4>
+                                <p>Design a persistent virtual community space for remote workers seeking social connection. Address loneliness while respecting privacy and preventing burnout.</p>
+
+                                <h4>Consider:</h4>
+                                <ul>
+                                    <li>How to encourage regular visits without obligation?</li>
+                                    <li>Balance between structured events and spontaneous hangouts</li>
+                                    <li>Onboarding new members to existing community</li>
+                                    <li>Moderation and community health</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Community design document with spatial plan, governance structure, onboarding flow, and growth strategy</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Case Study Analysis -->
+                <section class="content-section" id="case-studies">
+                    <h2>🔍 Case Study Analysis</h2>
+                    <p class="section-text">
+                        Learn from real metaverse products and events. Analyze what worked, what didn't, and extract design lessons.
+                    </p>
+
+                    <div class="case-study-grid">
+
+                        <div class="case-study-card">
+                            <h3>Travis Scott Fortnite Concert</h3>
+                            <div class="case-meta">
+                                <span class="case-year">2020</span>
+                                <span class="case-platform">Fortnite</span>
+                                <span class="case-attendance">12.3M concurrent viewers</span>
+                            </div>
+
+                            <h4>What Happened:</h4>
+                            <p>Travis Scott performed a 10-minute virtual concert inside Fortnite. The experience featured synchronized visuals, impossible scale transformations, and interactive elements. It was replayed multiple times over a weekend.</p>
+
+                            <h4>Analysis Questions:</h4>
+                            <ul class="analysis-questions">
+                                <li><strong>Spatial Design:</strong> How did the event use 3D space in ways impossible in physical concerts?</li>
+                                <li><strong>Scale Manipulation:</strong> How did changing avatar scale affect the experience?</li>
+                                <li><strong>Shared Experience:</strong> How did the design create collective presence among millions?</li>
+                                <li><strong>Accessibility:</strong> What made this accessible to non-VR audiences?</li>
+                                <li><strong>Lessons:</strong> What can designers learn about virtual event design?</li>
+                            </ul>
+
+                            <h4>Design Takeaways:</h4>
+                            <ul>
+                                <li>Leverage impossibilities of virtual space (scale, physics, environment transformation)</li>
+                                <li>Synchronous shared experience creates powerful collective presence</li>
+                                <li>Multiple scheduled shows accommodate global audiences</li>
+                                <li>Accessibility matters—not requiring VR headset expanded audience dramatically</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Decentraland Fashion Week</h3>
+                            <div class="case-meta">
+                                <span class="case-year">2022</span>
+                                <span class="case-platform">Decentraland</span>
+                                <span class="case-type">Multi-brand event</span>
+                            </div>
+
+                            <h4>What Happened:</h4>
+                            <p>Major fashion brands (Dolce & Gabbana, Etro, Tommy Hilfiger) hosted virtual fashion shows in Decentraland. Attendees navigated between branded spaces, watched runway shows, and purchased NFT wearables.</p>
+
+                            <h4>Analysis Questions:</h4>
+                            <ul class="analysis-questions">
+                                <li><strong>Navigation Design:</strong> How did users move between brand spaces? Was wayfinding effective?</li>
+                                <li><strong>Runway Experience:</strong> How did virtual runway shows compare to physical? What was gained/lost?</li>
+                                <li><strong>Technical Issues:</strong> What performance problems occurred? How did they affect UX?</li>
+                                <li><strong>NFT Integration:</strong> Did blockchain ownership enhance the experience?</li>
+                                <li><strong>Critique:</strong> What would you improve about the spatial design?</li>
+                            </ul>
+
+                            <h4>Design Takeaways:</h4>
+                            <ul>
+                                <li>Technical performance significantly affects luxury brand perception</li>
+                                <li>Clear navigation between spaces is essential for multi-venue events</li>
+                                <li>Avatar fashion only matters when users care about virtual identity</li>
+                                <li>Consider platform accessibility—desktop vs VR requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Mozilla Hubs in Education</h3>
+                            <div class="case-meta">
+                                <span class="case-year">2020-Present</span>
+                                <span class="case-platform">Mozilla Hubs</span>
+                                <span class="case-type">Educational use case</span>
+                            </div>
+
+                            <h4>What Happened:</h4>
+                            <p>Universities and schools adopted Mozilla Hubs for virtual classrooms during COVID-19. Educators created custom learning environments for lectures, labs, and social learning.</p>
+
+                            <h4>Analysis Questions:</h4>
+                            <ul class="analysis-questions">
+                                <li><strong>Spatial Learning:</strong> How does 3D space support or hinder learning compared to video calls?</li>
+                                <li><strong>Classroom Design:</strong> What spatial layouts work best for different pedagogies?</li>
+                                <li><strong>Engagement:</strong> Do virtual spaces increase student engagement? Why or why not?</li>
+                                <li><strong>Accessibility:</strong> What barriers exist for students with different needs?</li>
+                                <li><strong>Effectiveness:</strong> When is virtual space better than Zoom? When worse?</li>
+                            </ul>
+
+                            <h4>Design Takeaways:</h4>
+                            <ul>
+                                <li>Spatial presence supports collaborative learning better than grid video</li>
+                                <li>Learning curve matters—simple onboarding is essential</li>
+                                <li>Browser-based access is crucial for education (no installs)</li>
+                                <li>Spatial design should match pedagogical goals (lecture vs discussion vs lab)</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>VRChat Community Worlds</h3>
+                            <div class="case-meta">
+                                <span class="case-year">Ongoing</span>
+                                <span class="case-platform">VRChat</span>
+                                <span class="case-type">User-generated</span>
+                            </div>
+
+                            <h4>What's Happening:</h4>
+                            <p>VRChat users create worlds that become social hubs. Popular worlds like "The Pug" (bar) or "Void Club" (nightclub) attract thousands daily. Communities form around these spaces.</p>
+
+                            <h4>Analysis Questions:</h4>
+                            <ul class="analysis-questions">
+                                <li><strong>Social Design:</strong> What spatial features make certain worlds succeed as social hubs?</li>
+                                <li><strong>Emergent Behavior:</strong> What behaviors emerge that creators didn't plan?</li>
+                                <li><strong>Community Norms:</strong> How do spatial designs encourage or discourage certain behaviors?</li>
+                                <li><strong>Longevity:</strong> Why do some worlds remain popular for years?</li>
+                                <li><strong>Lessons:</strong> What makes a virtual "third place" successful?</li>
+                            </ul>
+
+                            <h4>Design Takeaways:</h4>
+                            <ul>
+                                <li>Mix of open social areas and intimate conversation nooks works well</li>
+                                <li>Interesting design attracts initial visits; social dynamics create retention</li>
+                                <li>User-generated content creates ownership and community investment</li>
+                                <li>Simple, accessible onboarding grows communities organically</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Design Challenges -->
+                <section class="content-section" id="challenges">
+                    <h2>🎯 Weekly Design Challenges</h2>
+                    <p class="section-text">
+                        Short, focused prompts to practice specific design skills. Perfect for building portfolio pieces or skill development.
+                    </p>
+
+                    <div class="challenges-grid">
+
+                        <div class="challenge-card">
+                            <div class="challenge-number">Challenge 01</div>
+                            <h4>Design a Virtual Bookstore</h4>
+                            <p><strong>Constraints:</strong> Support browsing, discovery, and reading nooks. Consider how virtual space can improve on physical bookstore experiences.</p>
+                            <p><strong>Deliverable:</strong> Floor plan sketch + design rationale (300 words)</p>
+                        </div>
+
+                        <div class="challenge-card">
+                            <div class="challenge-number">Challenge 02</div>
+                            <h4>Onboarding Flow for VR Newcomers</h4>
+                            <p><strong>Constraints:</strong> Design first 5 minutes in virtual space for someone who's never used VR. Teach controls without overwhelming.</p>
+                            <p><strong>Deliverable:</strong> Step-by-step flow diagram with rationale</p>
+                        </div>
+
+                        <div class="challenge-card">
+                            <div class="challenge-number">Challenge 03</div>
+                            <h4>Intimate Concert Venue</h4>
+                            <p><strong>Constraints:</strong> Design for 50-100 people. Create intimacy while ensuring everyone can see/hear. Consider social interaction between attendees.</p>
+                            <p><strong>Deliverable:</strong> Spatial layout with sight lines and capacity plan</p>
+                        </div>
+
+                        <div class="challenge-card">
+                            <div class="challenge-number">Challenge 04</div>
+                            <h4>Accessible Virtual Workspace</h4>
+                            <p><strong>Constraints:</strong> Design virtual office considering users with different abilities. Address motor, visual, auditory, and cognitive accessibility.</p>
+                            <p><strong>Deliverable:</strong> Accessibility audit framework + design spec</p>
+                        </div>
+
+                        <div class="challenge-card">
+                            <div class="challenge-number">Challenge 05</div>
+                            <h4>Portal Experience Design</h4>
+                            <p><strong>Constraints:</strong> Design the experience of transitioning between two very different virtual environments. Make transition feel intentional and prepare users mentally.</p>
+                            <p><strong>Deliverable:</strong> Transition sequence with visual mockups</p>
+                        </div>
+
+                        <div class="challenge-card">
+                            <div class="challenge-number">Challenge 06</div>
+                            <h4>Virtual Museum Exhibition</h4>
+                            <p><strong>Constraints:</strong> Curate 8-10 pieces into spatial experience. Design for solo exploration and guided tours. Consider pacing and educational goals.</p>
+                            <p><strong>Deliverable:</strong> Exhibition layout + visitor journey map</p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Continue Learning -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Practice</div>
+                            <h4>Metaverse Flashcards</h4>
+                            <p>Review 60 concepts through interactive flashcards covering all metaverse topics.</p>
+                            <a href="metaverse-flashcards.html" class="learning-link">Practice →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Tools</div>
+                            <h4>Field Kit</h4>
+                            <p>Access no-code platforms, templates, and resources to start building.</p>
+                            <a href="metaverse-field-kit.html" class="learning-link">Get Tools ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Study</div>
+                            <h4>Essential Readings</h4>
+                            <p>Deepen understanding with curated research and case studies.</p>
+                            <a href="metaverse-readings.html" class="learning-link">Read ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="metaverse-field-kit.html" class="path-link">← Previous: Field Kit</a>
+                        <a href="metaverse-landing.html" class="path-link primary">Back to Metaverse Hub →</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse Hub</a>
+                    <a href="ai-landing.html" class="main-menu-link">AI Lab</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Lab</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics Lab</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
