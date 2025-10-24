@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Readings - Essential Resources for Designers | Emerging Tech Hub</title>
+    <meta name="description" content="Curated robotics readings for designers and creators. Research papers, articles, and resources on robot design, human-robot interaction, and autonomous systems.">
+    <meta name="keywords" content="robotics research, robot design papers, HRI research, autonomous systems, robotics articles, maker resources">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Paper Link Styling */
+.paper-link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+}
+
+.paper-link:hover {
+    background: var(--color-black);
+    transform: translateX(4px);
+}
+
+/* Papers Grid Styling */
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.paper-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.paper-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.paper-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.paper-meta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-gray-200);
+}
+
+.paper-meta span {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+}
+
+.paper-summary {
+    line-height: 1.8;
+}
+
+.paper-summary p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.paper-summary h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.paper-summary ul {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.paper-summary li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .papers-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Essential Resources</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Categories</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#design-interaction" class="experimental-nav-link">Design & Interaction</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#maker-culture" class="experimental-nav-link">Maker Culture</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#autonomy-ai" class="experimental-nav-link">Autonomy & AI</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#applications" class="experimental-nav-link">Applications</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#ethics-society" class="experimental-nav-link">Ethics & Society</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="robotics-landing.html">← Back to Robotics Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Reading Guide</div>
+                    <div class="info-box-content">
+                        Start with Design & Interaction for user-centered perspectives, then explore Maker Culture for hands-on learning.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Essential Robotics Readings</h1>
+                <p class="fundamentals-subtitle">Curated resources on robot design, human-robot interaction, and autonomous systems for designers, makers, and creators</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Design & Interaction Section -->
+                <section class="content-section" id="design-interaction">
+                    <h2>🤝 Design & Human-Robot Interaction</h2>
+                    <p>Research on designing robots for human interaction, behavior, and social acceptance.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>The Media Equation: How People Treat Computers, Television, and New Media Like Real People</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Byron Reeves & Clifford Nass</span>
+                                <span class="year">1996</span>
+                                <span class="venue">Cambridge University Press</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Foundational research showing people apply social rules to technology. Essential for understanding why we anthropomorphize robots and how to design for natural human-robot interaction.</p>
+                                <h4>Key Insights:</h4>
+                                <ul>
+                                    <li><strong>Social Responses:</strong> People unconsciously treat technology as social actors</li>
+                                    <li><strong>Design Implications:</strong> Small behavioral cues trigger strong social reactions</li>
+                                    <li><strong>Politeness:</strong> Humans are polite to computers and robots</li>
+                                    <li><strong>Personality:</strong> Consistent behavior patterns create perceived personality</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Understanding innate human responses helps design robots that feel natural and trustworthy.</p>
+                                <a href="https://www.cambridge.org/core/books/media-equation/14C0F6F0F8E3F8E3F8E3F8E3F8E3F8E3" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Designing Sociable Robots</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Cynthia Breazeal</span>
+                                <span class="year">2002</span>
+                                <span class="venue">MIT Press</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive guide to social robot design from the creator of Kismet. Covers emotion expression, social learning, and natural interaction design principles.</p>
+                                <h4>Key Concepts:</h4>
+                                <ul>
+                                    <li><strong>Social Intelligence:</strong> How robots can read and respond to human cues</li>
+                                    <li><strong>Emotional Expression:</strong> Designing legible robot emotions and intentions</li>
+                                    <li><strong>Development Approach:</strong> Robots that learn through social interaction</li>
+                                    <li><strong>Embodiment:</strong> Physical form shapes social interaction</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Framework for creating robots that people want to interact with and can naturally communicate with.</p>
+                                <a href="https://mitpress.mit.edu/9780262025102/designing-sociable-robots/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>HRI: A Survey</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Michael Goodrich & Alan Schultz</span>
+                                <span class="year">2007</span>
+                                <span class="venue">Foundations and Trends in HRI</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive survey of human-robot interaction research covering interaction paradigms, methods, and applications.</p>
+                                <h4>Key Topics:</h4>
+                                <ul>
+                                    <li><strong>Interaction Paradigms:</strong> Remote, proximate, and social interaction modes</li>
+                                    <li><strong>Autonomy Levels:</strong> From teleoperation to full autonomy</li>
+                                    <li><strong>Communication:</strong> Natural language, gesture, and multimodal interfaces</li>
+                                    <li><strong>Evaluation Methods:</strong> How to assess HRI effectiveness</li>
+                                </ul>
+                                <h4>For Product Managers:</h4>
+                                <p>Framework for understanding different types of human-robot interaction and their requirements.</p>
+                                <a href="https://www.nowpublishers.com/article/Details/ROB-003" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Uncanny Valley</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Masahiro Mori</span>
+                                <span class="year">1970/2012</span>
+                                <span class="venue">IEEE Robotics & Automation Magazine</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Classic paper identifying the "uncanny valley" phenomenon where almost-human robots trigger revulsion rather than affinity.</p>
+                                <h4>Design Implications:</h4>
+                                <ul>
+                                    <li><strong>Human Likeness:</strong> Relationship between realism and emotional response</li>
+                                    <li><strong>Design Strategy:</strong> Either stylize or perfect - avoid the valley</li>
+                                    <li><strong>Movement Matters:</strong> Motion amplifies the uncanny effect</li>
+                                    <li><strong>Expectations:</strong> Appearance sets behavioral expectations</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Critical understanding for making aesthetic decisions about robot appearance and behavior.</p>
+                                <a href="https://ieeexplore.ieee.org/document/6213238" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Robot Ethics: The Ethical and Social Implications of Robotics</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Patrick Lin, Keith Abney, George Bekey (eds.)</span>
+                                <span class="year">2011</span>
+                                <span class="venue">MIT Press</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Collection of essays examining ethical challenges in robotics from deception to military applications to care robots.</p>
+                                <h4>Key Themes:</h4>
+                                <ul>
+                                    <li><strong>Moral Agency:</strong> Can robots be moral agents? Should they?</li>
+                                    <li><strong>Deception:</strong> Ethics of robots that appear more capable than they are</li>
+                                    <li><strong>Care Contexts:</strong> Special concerns with elderly and child care robots</li>
+                                    <li><strong>Responsibility:</strong> Who's accountable when robots harm?</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Ethical frameworks for making responsible design decisions about robot capabilities and presentation.</p>
+                                <a href="https://mitpress.mit.edu/9780262016667/robot-ethics/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Maker Culture Section -->
+                <section class="content-section" id="maker-culture">
+                    <h2>🛠️ Maker Culture & DIY Robotics</h2>
+                    <p>Resources for hands-on robot building, open-source projects, and maker communities.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>Make: Arduino</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Make Magazine / Arduino Community</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">O'Reilly / Arduino.cc</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Official Arduino documentation and tutorials. The definitive resource for learning Arduino-based robotics from beginner to advanced.</p>
+                                <h4>What You'll Learn:</h4>
+                                <ul>
+                                    <li><strong>Getting Started:</strong> First circuits, sensors, and motors</li>
+                                    <li><strong>Project Library:</strong> Hundreds of documented robot projects</li>
+                                    <li><strong>Community Knowledge:</strong> Forums and troubleshooting</li>
+                                    <li><strong>Progressive Learning:</strong> From blink LED to autonomous robots</li>
+                                </ul>
+                                <h4>For Makers:</h4>
+                                <p>Start here for hands-on robot building. Clear tutorials with supportive community.</p>
+                                <a href="https://www.arduino.cc/en/Tutorial/HomePage" target="_blank" rel="noopener noreferrer" class="paper-link">Visit Arduino →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Raspberry Pi Robotics Projects</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Raspberry Pi Foundation</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">RaspberryPi.org</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Official Raspberry Pi robotics resources. Learn to build vision-enabled, AI-powered robots using Python.</p>
+                                <h4>Key Projects:</h4>
+                                <ul>
+                                    <li><strong>Camera Robots:</strong> Computer vision and object detection</li>
+                                    <li><strong>Voice Control:</strong> Natural language robot interfaces</li>
+                                    <li><strong>Machine Learning:</strong> Robots that learn from experience</li>
+                                    <li><strong>Internet Connectivity:</strong> IoT-enabled robots</li>
+                                </ul>
+                                <h4>For Python Developers:</h4>
+                                <p>Raspberry Pi offers more computational power for AI and vision than Arduino.</p>
+                                <a href="https://projects.raspberrypi.org/en/projects?hardware%5B%5D=raspberry-pi&topics%5B%5D=robotics" target="_blank" rel="noopener noreferrer" class="paper-link">Explore Projects →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Robots and Art: Exploring an Unlikely Symbiosis</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Damith Herath, Christian Kroos, Stelarc (eds.)</span>
+                                <span class="year">2016</span>
+                                <span class="venue">Springer</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Exploration of robots as artistic medium and creative tool. Case studies of robot art installations and performances.</p>
+                                <h4>Key Topics:</h4>
+                                <ul>
+                                    <li><strong>Robotic Art:</strong> Robots as sculpture, performance, and interactive installation</li>
+                                    <li><strong>Creative Expression:</strong> Using robotics for artistic purposes</li>
+                                    <li><strong>Human Augmentation:</strong> Stelarc's cybernetic art</li>
+                                    <li><strong>Social Commentary:</strong> Robots as medium for exploring humanity</li>
+                                </ul>
+                                <h4>For Artists & Designers:</h4>
+                                <p>Inspiration for using robotics as creative material beyond functional applications.</p>
+                                <a href="https://link.springer.com/book/10.1007/978-981-10-0321-9" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Open-Source Robotics: ROS (Robot Operating System)</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Open Robotics / ROS Community</span>
+                                <span class="year">2007-Present</span>
+                                <span class="venue">ros.org</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Industry-standard middleware for robot software. Huge ecosystem of tools, libraries, and shared robot projects.</p>
+                                <h4>What ROS Provides:</h4>
+                                <ul>
+                                    <li><strong>Standard Framework:</strong> Common structure for robot software</li>
+                                    <li><strong>Reusable Code:</strong> Libraries for navigation, vision, manipulation</li>
+                                    <li><strong>Simulation Tools:</strong> Test robots without hardware</li>
+                                    <li><strong>Community:</strong> Thousands of developers sharing solutions</li>
+                                </ul>
+                                <h4>For Developers:</h4>
+                                <p>Essential for serious robotics development. Steep learning curve but powerful capabilities.</p>
+                                <a href="https://www.ros.org/" target="_blank" rel="noopener noreferrer" class="paper-link">Learn ROS →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>The Maker Movement Manifesto</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Mark Hatch</span>
+                                <span class="year">2014</span>
+                                <span class="venue">McGraw-Hill</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Philosophy and principles of the maker movement. How DIY culture is transforming manufacturing, education, and innovation.</p>
+                                <h4>Key Principles:</h4>
+                                <ul>
+                                    <li><strong>Make:</strong> Creating is fundamental to human nature</li>
+                                    <li><strong>Share:</strong> Sharing knowledge multiplies its value</li>
+                                    <li><strong>Give:</strong> Generosity creates strong communities</li>
+                                    <li><strong>Learn:</strong> Making is learning by doing</li>
+                                    <li><strong>Participate:</strong> Join and contribute to maker culture</li>
+                                </ul>
+                                <h4>For Educators:</h4>
+                                <p>Understanding maker culture helps create environments where people learn robotics by building.</p>
+                                <a href="https://www.mhprofessional.com/9780071821124-usa-the-maker-movement-manifesto" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Autonomy & AI Section -->
+                <section class="content-section" id="autonomy-ai">
+                    <h2>🤖 Autonomy & AI Integration</h2>
+                    <p>Understanding autonomous systems, machine learning in robotics, and AI-powered robot capabilities.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>Probabilistic Robotics</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Sebastian Thrun, Wolfram Burgard, Dieter Fox</span>
+                                <span class="year">2005</span>
+                                <span class="venue">MIT Press</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>The definitive textbook on autonomous robot navigation, localization, and mapping. Foundation of self-driving cars and mobile robots.</p>
+                                <h4>Core Concepts:</h4>
+                                <ul>
+                                    <li><strong>SLAM:</strong> Simultaneous Localization and Mapping</li>
+                                    <li><strong>Sensor Fusion:</strong> Combining uncertain sensor data</li>
+                                    <li><strong>Path Planning:</strong> Finding routes in complex environments</li>
+                                    <li><strong>Probabilistic Methods:</strong> Handling uncertainty in robot perception</li>
+                                </ul>
+                                <h4>For Technical Designers:</h4>
+                                <p>Understanding these fundamentals helps design realistic autonomous robot applications.</p>
+                                <a href="https://mitpress.mit.edu/9780262201629/probabilistic-robotics/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>End-to-End Learning for Self-Driving Cars</h3>
+                            <div class="paper-meta">
+                                <span class="authors">NVIDIA Research</span>
+                                <span class="year">2016</span>
+                                <span class="venue">arXiv / NVIDIA</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Groundbreaking work showing neural networks can learn to drive by watching humans. Demonstrates power of deep learning for robot control.</p>
+                                <h4>Key Innovation:</h4>
+                                <ul>
+                                    <li><strong>End-to-End Learning:</strong> Pixels to steering without hand-coding rules</li>
+                                    <li><strong>Imitation Learning:</strong> Robots learning from demonstration</li>
+                                    <li><strong>Generalization:</strong> Handling situations not explicitly trained</li>
+                                    <li><strong>Limitations:</strong> Understanding when learning-based approaches fail</li>
+                                </ul>
+                                <h4>For AI Designers:</h4>
+                                <p>Shows both promise and limitations of machine learning for robot autonomy.</p>
+                                <a href="https://arxiv.org/abs/1604.07316" target="_blank" rel="noopener noreferrer" class="paper-link">Read Paper →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>A Survey of Robot Learning from Demonstration</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Brenna Argall et al.</span>
+                                <span class="year">2009</span>
+                                <span class="venue">Robotics and Autonomous Systems</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive overview of methods for teaching robots through demonstration rather than programming.</p>
+                                <h4>Key Approaches:</h4>
+                                <ul>
+                                    <li><strong>Kinesthetic Teaching:</strong> Physically moving robot to demonstrate</li>
+                                    <li><strong>Teleoperation:</strong> Robot watches human perform task</li>
+                                    <li><strong>Observational Learning:</strong> Learning from watching videos</li>
+                                    <li><strong>Active Learning:</strong> Robot asks questions to improve</li>
+                                </ul>
+                                <h4>For Interaction Designers:</h4>
+                                <p>Understanding how non-programmers can teach robots opens new interaction paradigms.</p>
+                                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0921889008001772" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Computer Vision for Autonomous Vehicles</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Various Authors / CVPR</span>
+                                <span class="year">2015-Present</span>
+                                <span class="venue">Computer Vision Conferences</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Research on how robots "see" and interpret their environment. Object detection, depth perception, and scene understanding.</p>
+                                <h4>Key Capabilities:</h4>
+                                <ul>
+                                    <li><strong>Object Detection:</strong> Identifying what's in the scene</li>
+                                    <li><strong>Semantic Segmentation:</strong> Understanding scene structure</li>
+                                    <li><strong>Depth Estimation:</strong> Perceiving 3D from 2D images</li>
+                                    <li><strong>Tracking:</strong> Following objects over time</li>
+                                </ul>
+                                <h4>For Product Designers:</h4>
+                                <p>Understanding vision capabilities informs what robots can and cannot perceive reliably.</p>
+                                <a href="https://openaccess.thecvf.com/menu" target="_blank" rel="noopener noreferrer" class="paper-link">Browse Research →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Applications Section -->
+                <section class="content-section" id="applications">
+                    <h2>🏭 Real-World Applications</h2>
+                    <p>Case studies and analyses of robots deployed in manufacturing, healthcare, exploration, and service industries.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>Collaborative Robots: Frontiers of Current Research</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Lihui Wang (ed.)</span>
+                                <span class="year">2019</span>
+                                <span class="venue">Springer</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive overview of collaborative robots (cobots) that work alongside humans in manufacturing and other domains.</p>
+                                <h4>Key Topics:</h4>
+                                <ul>
+                                    <li><strong>Human-Robot Collaboration:</strong> Designing workflows where humans and robots work together</li>
+                                    <li><strong>Safety Systems:</strong> Force limiting and collision detection for safe coexistence</li>
+                                    <li><strong>Intuitive Interfaces:</strong> Easy programming for non-roboticists</li>
+                                    <li><strong>Applications:</strong> Assembly, pick-and-place, quality inspection</li>
+                                </ul>
+                                <h4>For Manufacturing Designers:</h4>
+                                <p>Understanding cobots opens opportunities for human-centered automation.</p>
+                                <a href="https://link.springer.com/book/10.1007/978-3-319-99719-6" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Autonomous Driving: A Practical Guide</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Andreas Geiger, et al.</span>
+                                <span class="year">2020</span>
+                                <span class="venue">MIT Press / KITTI Dataset</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Technical guide to self-driving technology, sensors, and decision-making systems. Based on KITTI autonomous driving research.</p>
+                                <h4>Key Systems:</h4>
+                                <ul>
+                                    <li><strong>Perception:</strong> LiDAR, cameras, radar for environment understanding</li>
+                                    <li><strong>Planning:</strong> Route and trajectory planning in traffic</li>
+                                    <li><strong>Control:</strong> Executing driving maneuvers safely</li>
+                                    <li><strong>Safety:</strong> Redundancy and fail-safe systems</li>
+                                </ul>
+                                <h4>For Product Designers:</h4>
+                                <p>Understanding autonomous vehicle technology stack informs mobility and service robot design.</p>
+                                <a href="http://www.cvlibs.net/datasets/kitti/" target="_blank" rel="noopener noreferrer" class="paper-link">KITTI Dataset →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Surgical Robotics: Systems, Applications, and Visions</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Jacob Rosen, Blake Hannaford, Richard Satava</span>
+                                <span class="year">2011</span>
+                                <span class="venue">Springer</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive guide to medical robotics, focusing on surgical systems like da Vinci and future applications.</p>
+                                <h4>Key Applications:</h4>
+                                <ul>
+                                    <li><strong>Minimally Invasive Surgery:</strong> Precision with smaller incisions</li>
+                                    <li><strong>Teleoperation:</strong> Remote surgery capabilities</li>
+                                    <li><strong>Motion Scaling:</strong> Translating surgeon movements to micro-scale</li>
+                                    <li><strong>Haptic Feedback:</strong> Providing sense of touch through robot</li>
+                                </ul>
+                                <h4>For Medical Designers:</h4>
+                                <p>Understanding surgical robotics requirements: precision, safety, and intuitive control.</p>
+                                <a href="https://link.springer.com/book/10.1007/978-1-4419-1126-1" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Mars Rovers: Past, Present, and Future</h3>
+                            <div class="paper-meta">
+                                <span class="authors">NASA/JPL</span>
+                                <span class="year">1997-Present</span>
+                                <span class="venue">NASA Technical Reports</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Documentation of Mars rover missions from Sojourner to Perseverance. Case studies in extreme environment robotics.</p>
+                                <h4>Key Challenges:</h4>
+                                <ul>
+                                    <li><strong>Autonomy:</strong> Operating with communication delays</li>
+                                    <li><strong>Durability:</strong> Surviving harsh environments far longer than designed</li>
+                                    <li><strong>Science:</strong> Robotic geologists and astrobiologists</li>
+                                    <li><strong>Innovation:</strong> Ingenuity helicopter demonstrates new capabilities</li>
+                                </ul>
+                                <h4>For System Designers:</h4>
+                                <p>Lessons in designing ultra-reliable autonomous systems for challenging environments.</p>
+                                <a href="https://mars.nasa.gov/mars2020/" target="_blank" rel="noopener noreferrer" class="paper-link">Mars Missions →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Service Robots: An Emerging Application Domain</h3>
+                            <div class="paper-meta">
+                                <span class="authors">IFR Statistical Department</span>
+                                <span class="year">Annual</span>
+                                <span class="venue">International Federation of Robotics</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Annual market reports on service robots: delivery, cleaning, hospitality, and personal assistance.</p>
+                                <h4>Growing Sectors:</h4>
+                                <ul>
+                                    <li><strong>Delivery Robots:</strong> Last-mile logistics and food delivery</li>
+                                    <li><strong>Cleaning:</strong> Vacuums, floor scrubbers, UV disinfection</li>
+                                    <li><strong>Hospitality:</strong> Reception, room service, concierge robots</li>
+                                    <li><strong>Personal Care:</strong> Elderly assistance and companion robots</li>
+                                </ul>
+                                <h4>For Business Strategists:</h4>
+                                <p>Market analysis and growth projections for service robotics opportunities.</p>
+                                <a href="https://ifr.org/service-robots" target="_blank" rel="noopener noreferrer" class="paper-link">IFR Reports →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Ethics & Society Section -->
+                <section class="content-section" id="ethics-society">
+                    <h2>⚖️ Ethics, Society & Future of Work</h2>
+                    <p>Critical perspectives on automation, human-robot collaboration, and societal impact of robotics.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>The Second Machine Age</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Erik Brynjolfsson & Andrew McAfee</span>
+                                <span class="year">2014</span>
+                                <span class="venue">W.W. Norton</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Analysis of how automation and AI are transforming work, economy, and society. Essential reading on technology's societal impact.</p>
+                                <h4>Key Arguments:</h4>
+                                <ul>
+                                    <li><strong>Technological Unemployment:</strong> Automation displacing workers faster than new jobs are created</li>
+                                    <li><strong>Economic Inequality:</strong> Technology benefiting capital over labor</li>
+                                    <li><strong>Policy Responses:</strong> Education, basic income, and adaptation strategies</li>
+                                    <li><strong>Human-Machine Partnership:</strong> Augmentation vs replacement</li>
+                                </ul>
+                                <h4>For Policy & Business:</h4>
+                                <p>Framework for thinking responsibly about automation's societal consequences.</p>
+                                <a href="https://wwnorton.com/books/The-Second-Machine-Age/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Moral Machines: Teaching Robots Right from Wrong</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Wendell Wallach & Colin Allen</span>
+                                <span class="year">2008</span>
+                                <span class="venue">Oxford University Press</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Exploration of machine ethics: can robots be moral agents? Should they be? How do we program ethical decision-making?</p>
+                                <h4>Key Questions:</h4>
+                                <ul>
+                                    <li><strong>Moral Agency:</strong> What makes an agent morally responsible?</li>
+                                    <li><strong>Decision Frameworks:</strong> Rule-based, consequentialist, virtue ethics for robots</li>
+                                    <li><strong>Trolley Problems:</strong> Programming life-and-death decisions in autonomous systems</li>
+                                    <li><strong>Accountability:</strong> Who's responsible when robots make ethical errors?</li>
+                                </ul>
+                                <h4>For Ethicists & Designers:</h4>
+                                <p>Essential framework for building ethically aware autonomous systems.</p>
+                                <a href="https://global.oup.com/academic/product/moral-machines-9780195374049" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Automation and Its Discontents</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Bernard Harcourt</span>
+                                <span class="year">2020</span>
+                                <span class="venue">MIT Press / Harvard</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Critical examination of automation's costs. Privacy loss, deskilling, surveillance, and loss of human agency.</p>
+                                <h4>Key Concerns:</h4>
+                                <ul>
+                                    <li><strong>Surveillance:</strong> Automated monitoring and behavior tracking</li>
+                                    <li><strong>Deskilling:</strong> Losing human capabilities to automation</li>
+                                    <li><strong>Bias Amplification:</strong> Automated systems encoding and scaling bias</li>
+                                    <li><strong>Agency Loss:</strong> Humans becoming passive consumers of automated decisions</li>
+                                </ul>
+                                <h4>For Critical Designers:</h4>
+                                <p>Understanding unintended consequences helps design more humane automation.</p>
+                                <a href="https://mitpress.mit.edu/books/exposed" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Human-Robot Interaction Safety Standards</h3>
+                            <div class="paper-meta">
+                                <span class="authors">ISO 10218 / ISO/TS 15066</span>
+                                <span class="year">2016</span>
+                                <span class="venue">International Organization for Standardization</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>International safety standards for robots and collaborative robots. Requirements for safe human-robot interaction.</p>
+                                <h4>Key Requirements:</h4>
+                                <ul>
+                                    <li><strong>Risk Assessment:</strong> Identifying and mitigating hazards</li>
+                                    <li><strong>Force Limits:</strong> Maximum forces for safe contact</li>
+                                    <li><strong>Safety Zones:</strong> Monitoring and controlling robot workspace</li>
+                                    <li><strong>Emergency Stops:</strong> Quick and safe shutdown procedures</li>
+                                </ul>
+                                <h4>For Safety Engineers:</h4>
+                                <p>Understanding standards is essential for developing commercially viable robots.</p>
+                                <a href="https://www.iso.org/standard/62996.html" target="_blank" rel="noopener noreferrer" class="paper-link">ISO Standards →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>The Future of Work: Robots, AI, and Automation</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Darrell West</span>
+                                <span class="year">2018</span>
+                                <span class="venue">Brookings Institution Press</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Policy-focused analysis of automation's impact on employment and recommendations for navigating technological disruption.</p>
+                                <h4>Policy Proposals:</h4>
+                                <ul>
+                                    <li><strong>Lifelong Learning:</strong> Continuous education and reskilling programs</li>
+                                    <li><strong>Social Safety Nets:</strong> Supporting workers through transitions</li>
+                                    <li><strong>Labor Standards:</strong> Adapting regulations for gig economy and automation</li>
+                                    <li><strong>Innovation Policy:</strong> Balancing progress with social welfare</li>
+                                </ul>
+                                <h4>For Policy Makers:</h4>
+                                <p>Practical framework for managing automation's societal impact through policy.</p>
+                                <a href="https://www.brookings.edu/books/the-future-of-work/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Continue Learning Section -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Next</div>
+                            <h4>Robotics Activities</h4>
+                            <p>Apply what you've learned through hands-on exercises and case study analysis.</p>
+                            <a href="robotics-activities.html" class="learning-link">Practice →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Tools</div>
+                            <h4>Field Kit</h4>
+                            <p>Access maker kits, design templates, and resources to start building.</p>
+                            <a href="robotics-field-kit.html" class="learning-link">Get Tools ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Review</div>
+                            <h4>Fundamentals</h4>
+                            <p>Revisit core robotics concepts to deepen your understanding.</p>
+                            <a href="robotics-landing.html#fundamentals" class="learning-link">Review ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="robotics-applications.html" class="path-link">← Previous: Applications</a>
+                        <a href="robotics-activities.html" class="path-link primary">Next: Activities →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-branding">
+                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="disclaimer.html">Disclaimer</a>
+                        <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

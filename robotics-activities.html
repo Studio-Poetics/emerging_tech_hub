@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Activities - Hands-On Exercises & Projects | Emerging Tech Hub</title>
+    <meta name="description" content="Apply robotics knowledge through hands-on exercises, case study analysis, and design challenges. Build robots, analyze real products, and develop design skills.">
+    <meta name="keywords" content="robotics exercises, robot design projects, Arduino projects, robotics case studies, HRI activities, robot maker projects">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Activity Card Styles */
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-top: var(--space-8);
+}
+
+.activity-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.activity-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+}
+
+.activity-number {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 48px;
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+}
+
+.activity-card:hover .activity-number {
+    background: var(--color-electric-blue);
+}
+
+.activity-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-6);
+}
+
+.activity-description {
+    line-height: 1.8;
+}
+
+.activity-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.activity-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.instruction-list {
+    margin-left: var(--space-4);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.instruction-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+    padding-left: var(--space-2);
+}
+
+.instruction-list li strong {
+    font-weight: var(--font-bold);
+}
+
+/* Case Study Cards */
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.case-study-card {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.case-study-card:hover {
+    border-color: var(--color-electric-blue);
+    background: var(--color-white);
+}
+
+.case-study-card h4 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.case-study-card p {
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+}
+
+.case-study-card ul {
+    margin-bottom: var(--space-4);
+    margin-left: var(--space-4);
+}
+
+.case-study-card li {
+    line-height: 1.8;
+    margin-bottom: var(--space-3);
+}
+
+.analysis-questions {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: var(--space-4);
+}
+
+.analysis-questions li {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-4);
+    position: relative;
+    line-height: 1.8;
+}
+
+.analysis-questions li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    font-weight: var(--font-bold);
+    color: var(--color-black);
+}
+
+/* Content Section Spacing */
+.content-section {
+    margin-bottom: var(--space-12);
+}
+
+.section-intro {
+    line-height: 1.8;
+    margin-bottom: var(--space-6);
+    font-size: var(--text-lg);
+}
+
+/* Feature Grid for collaborative scenarios */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.feature-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+}
+
+.feature-card h4 {
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+}
+
+.feature-card ul {
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-4);
+    margin-left: var(--space-4);
+}
+
+.feature-card li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
+.feature-card p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .case-study-grid, .feature-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Hands-On Activities</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Activities</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#maker-projects" class="experimental-nav-link">Maker Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#design-scenarios" class="experimental-nav-link">Design Scenarios</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#case-studies" class="experimental-nav-link">Case Studies</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="robotics-landing.html">← Back to Robotics Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Activity Guide</div>
+                    <div class="info-box-content">
+                        Start with maker projects for hands-on learning, then explore case studies for real-world insights.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Robotics Activities</h1>
+                <p class="fundamentals-subtitle">Apply your knowledge through hands-on maker projects, design challenges, and real-world case study analysis</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Maker Projects Section -->
+                <section class="content-section" id="maker-projects">
+                    <h2>🛠️ Individual Maker Projects</h2>
+                    <p class="section-intro">Hands-on projects to build your robotics skills. Progress from paper prototypes to working robots.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <span class="activity-number">1</span>
+                            <h3 class="activity-title">Paper Robot Prototype</h3>
+                            <div class="activity-description">
+                                <p>Design and build a robot prototype using paper, cardboard, and simple mechanisms. Focus on form, movement, and interaction without electronics.</p>
+
+                                <h4>Objectives:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Form Design:</strong> Create compelling robot appearance and personality</li>
+                                    <li><strong>Movement Planning:</strong> Design mechanical movement patterns</li>
+                                    <li><strong>Interaction:</strong> Consider how humans will interact with this robot</li>
+                                    <li><strong>Documentation:</strong> Record design rationale and iteration</li>
+                                </ul>
+
+                                <h4>Materials Needed:</h4>
+                                <ul class="instruction-list">
+                                    <li>Cardboard, paper, foam core</li>
+                                    <li>Scissors, glue, tape</li>
+                                    <li>Markers for decoration</li>
+                                    <li>Brass fasteners for movable joints</li>
+                                    <li>String or elastic for simple mechanisms</li>
+                                </ul>
+
+                                <h4>Step-by-Step Guide:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Define Purpose:</strong> What will your robot do? (deliver objects, greet people, clean, etc.)</li>
+                                    <li><strong>Sketch Ideas:</strong> Draw 3-5 different robot forms from different angles</li>
+                                    <li><strong>Choose Design:</strong> Select one design and refine it</li>
+                                    <li><strong>Build Structure:</strong> Create main body using cardboard</li>
+                                    <li><strong>Add Movement:</strong> Use brass fasteners for rotating joints, test range of motion</li>
+                                    <li><strong>Add Personality:</strong> Details like eyes, color, shape convey character</li>
+                                    <li><strong>Test Interaction:</strong> Have someone interact with your robot, observe what works</li>
+                                    <li><strong>Iterate:</strong> Make improvements based on testing</li>
+                                    <li><strong>Document:</strong> Photo and describe your design decisions</li>
+                                </ul>
+
+                                <h4>Reflection Questions:</h4>
+                                <ul class="analysis-questions">
+                                    <li>How does your robot's form communicate its function?</li>
+                                    <li>What personality does your robot have? How is it conveyed?</li>
+                                    <li>What movements are most important for your robot's task?</li>
+                                    <li>If you were to add electronics, which sensors and actuators would you need?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <span class="activity-number">2</span>
+                            <h3 class="activity-title">Build an Arduino Line-Following Robot</h3>
+                            <div class="activity-description">
+                                <p>Step-by-step guided project to build your first working robot using Arduino. Learn sensors, motors, and basic programming.</p>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Component Assembly:</strong> Connecting sensors, motors, and microcontroller</li>
+                                    <li><strong>Sensor Reading:</strong> Using infrared sensors to detect lines</li>
+                                    <li><strong>Motor Control:</strong> Programming differential drive for steering</li>
+                                    <li><strong>Logic Programming:</strong> If-then rules for robot behavior</li>
+                                </ul>
+
+                                <h4>Required Components:</h4>
+                                <ul class="instruction-list">
+                                    <li>Arduino Uno board</li>
+                                    <li>Motor driver shield (L293D or similar)</li>
+                                    <li>2x DC motors with wheels</li>
+                                    <li>2x IR line sensors</li>
+                                    <li>Robot chassis (or build from cardboard)</li>
+                                    <li>Battery pack (6V or 9V)</li>
+                                    <li>Jumper wires</li>
+                                </ul>
+
+                                <h4>Build Instructions:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Assemble Chassis:</strong> Attach motors to robot base</li>
+                                    <li><strong>Mount Arduino:</strong> Secure Arduino and motor driver to chassis</li>
+                                    <li><strong>Wire Motors:</strong> Connect motors to motor driver outputs</li>
+                                    <li><strong>Attach Sensors:</strong> Mount IR sensors at front, facing down</li>
+                                    <li><strong>Connect Sensors:</strong> Wire sensors to Arduino digital pins</li>
+                                    <li><strong>Add Power:</strong> Connect battery pack to motor driver</li>
+                                    <li><strong>Upload Code:</strong> Program basic line-following logic</li>
+                                    <li><strong>Create Track:</strong> Use black tape on white surface to make a path</li>
+                                    <li><strong>Test & Tune:</strong> Adjust sensor position and code for best performance</li>
+                                </ul>
+
+                                <h4>Basic Code Logic:</h4>
+                                <ul class="instruction-list">
+                                    <li>Read left and right IR sensors</li>
+                                    <li>If both sensors see the line → go forward</li>
+                                    <li>If left sensor sees line, right doesn't → turn left</li>
+                                    <li>If right sensor sees line, left doesn't → turn right</li>
+                                    <li>If neither sensor sees line → stop or search</li>
+                                </ul>
+
+                                <h4>Customization Ideas:</h4>
+                                <ul class="analysis-questions">
+                                    <li>Add speed control to make smoother turns</li>
+                                    <li>Implement more sophisticated search behavior when line is lost</li>
+                                    <li>Add LEDs to indicate robot state</li>
+                                    <li>Create obstacle detection with ultrasonic sensor</li>
+                                </ul>
+
+                                <p><strong>Resources:</strong> Tutorial code and wiring diagrams available at <a href="https://www.arduino.cc/" target="_blank">Arduino.cc</a> project hub.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <span class="activity-number">3</span>
+                            <h3 class="activity-title">Robot Context Design</h3>
+                            <div class="activity-description">
+                                <p>Design a robot for a specific context or use case. Create concept sketches, specifications, and interaction scenarios.</p>
+
+                                <h4>Choose Your Context:</h4>
+                                <ul class="instruction-list">
+                                    <li>Hospital patient care robot</li>
+                                    <li>Museum guide and information robot</li>
+                                    <li>Classroom teaching assistant robot</li>
+                                    <li>Retail customer service robot</li>
+                                    <li>Home elderly companion robot</li>
+                                    <li>Or define your own specific context</li>
+                                </ul>
+
+                                <h4>Design Process:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Research Context:</strong> Understand the environment, users, and needs</li>
+                                    <li><strong>Define Requirements:</strong> What must the robot do? What constraints exist?</li>
+                                    <li><strong>Design Form:</strong> Sketch robot appearance considering context expectations</li>
+                                    <li><strong>Plan Behaviors:</strong> What actions and reactions should the robot have?</li>
+                                    <li><strong>Select Components:</strong> Which sensors and actuators are needed?</li>
+                                    <li><strong>Map Interactions:</strong> How will people interact with this robot?</li>
+                                    <li><strong>Consider Ethics:</strong> What could go wrong? Privacy, safety, job displacement concerns?</li>
+                                    <li><strong>Create Specification:</strong> Document your complete robot design</li>
+                                </ul>
+
+                                <h4>Deliverables:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Concept Sketches:</strong> Multiple views of robot design</li>
+                                    <li><strong>Interaction Scenarios:</strong> 3-5 use cases with illustrations</li>
+                                    <li><strong>Technical Specification:</strong> Sensors, actuators, capabilities list</li>
+                                    <li><strong>Behavior Description:</strong> How robot responds to different situations</li>
+                                    <li><strong>Ethics Assessment:</strong> Potential concerns and mitigation strategies</li>
+                                </ul>
+
+                                <h4>Evaluation Criteria:</h4>
+                                <ul class="analysis-questions">
+                                    <li>Does the robot's form fit its function and context?</li>
+                                    <li>Are the proposed interactions natural and intuitive?</li>
+                                    <li>Is the technical specification realistic and achievable?</li>
+                                    <li>Have ethical concerns been thoughtfully addressed?</li>
+                                    <li>Is the design innovative while being practical?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Design Scenarios Section -->
+                <section class="content-section" id="design-scenarios">
+                    <h2>👥 Collaborative Design Scenarios</h2>
+                    <p class="section-intro">Team-based exercises simulating real product development scenarios. Practice cross-functional collaboration.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3>Design Team Simulation</h3>
+                            <p><strong>Format:</strong> 2-hour collaborative workshop</p>
+
+                            <h4>Roles:</h4>
+                            <ul>
+                                <li><strong>Product Manager:</strong> Defines requirements and business goals</li>
+                                <li><strong>Designer:</strong> Creates user experience and interaction patterns</li>
+                                <li><strong>Engineer:</strong> Assesses technical feasibility and constraints</li>
+                            </ul>
+
+                            <h4>Challenge:</h4>
+                            <p>Design a service robot for hotel lobby assistance. Must greet guests, provide directions, handle check-in questions, and summon human staff when needed.</p>
+
+                            <h4>Deliverables:</h4>
+                            <ul>
+                                <li>Platform choice rationale (wheeled, legged, stationary?)</li>
+                                <li>Interaction design (voice, screen, gesture?)</li>
+                                <li>Technical specification (sensors, AI capabilities, network needs)</li>
+                                <li>Implementation timeline and budget estimate</li>
+                            </ul>
+
+                            <h4>Process:</h4>
+                            <ul>
+                                <li><strong>15 min:</strong> Individual research and brainstorming</li>
+                                <li><strong>30 min:</strong> Team discussion and requirement definition</li>
+                                <li><strong>45 min:</strong> Collaborative design and specification</li>
+                                <li><strong>20 min:</strong> Prepare presentation</li>
+                                <li><strong>10 min:</strong> Present to stakeholders (instructor or other teams)</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <h3>Ethical Dilemma Discussion</h3>
+                            <p><strong>Format:</strong> Structured debate and analysis</p>
+
+                            <h4>Scenarios to Explore:</h4>
+                            <ul>
+                                <li><strong>Automation & Jobs:</strong> Should we build robots that replace human workers?</li>
+                                <li><strong>Elderly Care:</strong> Are companion robots for isolated seniors helpful or dehumanizing?</li>
+                                <li><strong>Autonomous Vehicles:</strong> Who's responsible in an unavoidable accident?</li>
+                                <li><strong>Military Robotics:</strong> Should robots make life-or-death decisions?</li>
+                                <li><strong>Surveillance:</strong> When does helpful monitoring become privacy invasion?</li>
+                            </ul>
+
+                            <h4>Discussion Framework:</h4>
+                            <ul>
+                                <li><strong>Present Scenario:</strong> Describe specific situation with stakeholders</li>
+                                <li><strong>Identify Stakeholders:</strong> Who's affected and how?</li>
+                                <li><strong>Multiple Perspectives:</strong> Argue from different viewpoints</li>
+                                <li><strong>Ethical Frameworks:</strong> Apply utilitarian, deontological, virtue ethics</li>
+                                <li><strong>Design Implications:</strong> How should we design given these concerns?</li>
+                            </ul>
+
+                            <h4>Learning Outcomes:</h4>
+                            <p>Develop ethical reasoning skills. Recognize trade-offs. Consider broader impact of design decisions. Practice respectful disagreement and nuanced thinking.</p>
+                        </div>
+
+                        <div class="feature-card">
+                            <h3>Application Brainstorming</h3>
+                            <p><strong>Format:</strong> Group ideation workshop</p>
+
+                            <h4>Process:</h4>
+                            <ul>
+                                <li><strong>Problem Finding (20 min):</strong> Observe daily life and identify pain points</li>
+                                <li><strong>Robot Brainstorming (30 min):</strong> Generate robot concepts to address problems</li>
+                                <li><strong>Feasibility Check (20 min):</strong> Evaluate technical and business viability</li>
+                                <li><strong>Refinement (20 min):</strong> Develop most promising 2-3 concepts</li>
+                                <li><strong>Presentation (10 min):</strong> Pitch concepts with sketches</li>
+                            </ul>
+
+                            <h4>Brainstorming Rules:</h4>
+                            <ul>
+                                <li>Quantity over quality initially</li>
+                                <li>Wild ideas encouraged</li>
+                                <li>Build on others' suggestions</li>
+                                <li>No criticism during generation phase</li>
+                                <li>Sketch ideas visually</li>
+                            </ul>
+
+                            <h4>Evaluation Criteria:</h4>
+                            <ul>
+                                <li><strong>Desirability:</strong> Do people actually want this?</li>
+                                <li><strong>Feasibility:</strong> Can it be built with current or near-future technology?</li>
+                                <li><strong>Viability:</strong> Is there a sustainable business model?</li>
+                                <li><strong>Innovation:</strong> Is it novel or a meaningful improvement?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Case Studies Section -->
+                <section class="content-section" id="case-studies">
+                    <h2>📊 Real-World Case Study Analysis</h2>
+                    <p class="section-intro">Examine real robots and robotic systems. Understand what worked, what didn't, and why.</p>
+
+                    <div class="case-study-grid">
+                        <div class="case-study-card">
+                            <h3>Boston Dynamics: Spot & Atlas</h3>
+                            <p>Analysis of Boston Dynamics' remarkable robots and their journey from research to commercial products.</p>
+
+                            <h4>Key Observations:</h4>
+                            <ul>
+                                <li><strong>Movement Mastery:</strong> Unprecedented mobility and balance</li>
+                                <li><strong>Viral Success:</strong> YouTube videos generated massive interest</li>
+                                <li><strong>Application Search:</strong> Years of looking for viable use cases</li>
+                                <li><strong>Commercial Pivot:</strong> Spot now available for lease/purchase</li>
+                            </ul>
+
+                            <h4>Design Analysis:</h4>
+                            <p>Why is movement so important? How does Spot's dog-like form affect perceptions? Why did Atlas stay in research while Spot went commercial?</p>
+
+                            <h4>Business Lessons:</h4>
+                            <p>Cutting-edge technology doesn't guarantee market success. Need clear use cases and value propositions. Sometimes the impressive demo isn't the viable product.</p>
+
+                            <h4>Analysis Questions:</h4>
+                            <ul class="analysis-questions">
+                                <li>What emotions do Boston Dynamics robots evoke? Why?</li>
+                                <li>Why did inspection and monitoring become Spot's primary use case?</li>
+                                <li>What limitations prevent wider Spot adoption?</li>
+                                <li>Should humanoid robots like Atlas prioritize human-like movement?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Social Robots: Jibo vs. Pepper</h3>
+                            <p>Comparing two ambitious social robots: why Jibo failed commercially while Pepper found niche success.</p>
+
+                            <h4>Jibo (Failed, 2017-2018):</h4>
+                            <ul>
+                                <li><strong>Vision:</strong> "World's first social robot for the home"</li>
+                                <li><strong>Design:</strong> Cute, expressive, voice-first interaction</li>
+                                <li><strong>Technology:</strong> Limited capabilities compared to smartphones</li>
+                                <li><strong>Failure:</strong> Couldn't compete with Alexa/Google Home, unclear value proposition</li>
+                            </ul>
+
+                            <h4>Pepper (Ongoing, 2014-Present):</h4>
+                            <ul>
+                                <li><strong>Vision:</strong> Humanoid service robot for businesses</li>
+                                <li><strong>Design:</strong> Friendly but clearly robotic appearance</li>
+                                <li><strong>Technology:</strong> Autonomous navigation, facial recognition, programmable</li>
+                                <li><strong>Success:</strong> Deployed in retail, hospitality, healthcare as greeter/info provider</li>
+                            </ul>
+
+                            <h4>Key Differences:</h4>
+                            <p>Jibo targeted consumers, Pepper targeted businesses. Jibo promised too much, Pepper set realistic expectations. Pepper's form factor justified its cost for commercial use; Jibo's didn't for home use.</p>
+
+                            <h4>Analysis Questions:</h4>
+                            <ul class="analysis-questions">
+                                <li>What can social robots do that screens cannot?</li>
+                                <li>Why are physical robots harder to justify in homes vs businesses?</li>
+                                <li>What would a successful home social robot need to do?</li>
+                                <li>How does embodiment change human-robot interaction?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Collaborative Robots in Manufacturing</h3>
+                            <p>How "cobots" are changing factory work by working alongside humans rather than replacing them.</p>
+
+                            <h4>Traditional Industrial Robots:</h4>
+                            <ul>
+                                <li>Fast, precise, dangerous - must be caged</li>
+                                <li>Expensive, complex programming</li>
+                                <li>Inflexible - retooling is time-consuming</li>
+                                <li>Best for high-volume, repetitive tasks</li>
+                            </ul>
+
+                            <h4>Collaborative Robots:</h4>
+                            <ul>
+                                <li>Slower but safe enough to work near humans</li>
+                                <li>Easier programming (often by demonstration)</li>
+                                <li>Flexible - can be reassigned to new tasks</li>
+                                <li>Complement human workers rather than replace them</li>
+                            </ul>
+
+                            <h4>Design Innovation:</h4>
+                            <p>Force-limiting joints, rounded surfaces, easy programming interfaces, mobile deployment. Success comes from human-centered design, not just technical capability.</p>
+
+                            <h4>Impact on Work:</h4>
+                            <p>Cobots take over dull, dirty, dangerous tasks. Humans focus on judgment, problem-solving, fine motor skills. Requires new training but generally welcomed by workers.</p>
+
+                            <h4>Analysis Questions:</h4>
+                            <ul class="analysis-questions">
+                                <li>Why didn't traditional industrial robots spread to small manufacturers?</li>
+                                <li>What makes a task good for cobot automation vs human work?</li>
+                                <li>How should factories be redesigned for human-robot collaboration?</li>
+                                <li>What new skills do workers need in cobot environments?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Delivery Robots: Starship, Nuro, and Last-Mile Logistics</h3>
+                            <p>Analyzing autonomous delivery robots navigating sidewalks and streets. Different approaches to the "last mile" problem.</p>
+
+                            <h4>Starship (Sidewalk Delivery):</h4>
+                            <ul>
+                                <li><strong>Form:</strong> Small 6-wheeled sidewalk robot</li>
+                                <li><strong>Speed:</strong> Walking pace (4 mph)</li>
+                                <li><strong>Use Case:</strong> Food and package delivery within 2 miles</li>
+                                <li><strong>Success:</strong> Operating in 100+ cities, millions of deliveries</li>
+                            </ul>
+
+                            <h4>Nuro (Street Delivery):</h4>
+                            <ul>
+                                <li><strong>Form:</strong> Custom autonomous vehicle, no passenger space</li>
+                                <li><strong>Speed:</strong> Street legal (25 mph)</li>
+                                <li><strong>Use Case:</strong> Grocery and retail delivery</li>
+                                <li><strong>Progress:</strong> Pilot programs, regulatory approvals, partnerships with major retailers</li>
+                            </ul>
+
+                            <h4>Key Challenges:</h4>
+                            <ul>
+                                <li><strong>Navigation:</strong> Sidewalks are complex - curbs, obstacles, pedestrians</li>
+                                <li><strong>Social Acceptance:</strong> Do robots belong on sidewalks?</li>
+                                <li><strong>Security:</strong> Preventing theft and vandalism</li>
+                                <li><strong>Weather:</strong> Operating in rain, snow, ice</li>
+                                <li><strong>Regulation:</strong> Creating new rules for new robot types</li>
+                            </ul>
+
+                            <h4>Design Decisions:</h4>
+                            <p>Friendly appearance to reduce fear, lights and sounds to signal intent, remote supervision for edge cases, secure compartments, simple UI for receiving deliveries.</p>
+
+                            <h4>Analysis Questions:</h4>
+                            <ul class="analysis-questions">
+                                <li>Should delivery robots use sidewalks or streets?</li>
+                                <li>How do you design robots that share space with pedestrians safely?</li>
+                                <li>What makes autonomous delivery economically viable vs human delivery?</li>
+                                <li>How should these robots communicate their intentions to people?</li>
+                                <li>What's the environmental impact compared to traditional delivery?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Continue Learning Section -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Tools</div>
+                            <h4>Robotics Field Kit</h4>
+                            <p>Access maker resources, design templates, and component guides.</p>
+                            <a href="robotics-field-kit.html" class="learning-link">Get Tools →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Learn</div>
+                            <h4>Robotics Readings</h4>
+                            <p>Explore research papers and resources on robot design and HRI.</p>
+                            <a href="robotics-readings.html" class="learning-link">Read More ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Review</div>
+                            <h4>Fundamentals</h4>
+                            <p>Revisit core robotics concepts to deepen your understanding.</p>
+                            <a href="robotics-landing.html#fundamentals" class="learning-link">Review ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="robotics-readings.html" class="path-link">← Previous: Readings</a>
+                        <a href="robotics-field-kit.html" class="path-link primary">Next: Field Kit →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-branding">
+                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="disclaimer.html">Disclaimer</a>
+                        <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

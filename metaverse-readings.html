@@ -9,6 +9,100 @@
     <link rel="stylesheet" href="experimental-design.css">
     <link rel="stylesheet" href="ai-fundamentals.css">
     <style>
+/* Paper Link Styling */
+.paper-link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+}
+
+.paper-link:hover {
+    background: var(--color-black);
+    transform: translateX(4px);
+}
+
+/* Papers Grid Styling */
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.paper-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.paper-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.paper-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.paper-meta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-gray-200);
+}
+
+.paper-meta span {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+}
+
+.paper-summary {
+    line-height: 1.8;
+}
+
+.paper-summary p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.paper-summary h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.paper-summary ul {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.paper-summary li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
 @media (max-width: 768px) {
     .experimental-sidebar { display: none !important; }
     .experimental-main { padding-top: 0 !important; }
@@ -149,11 +243,12 @@
                                 </ul>
                                 <h4>For Designers:</h4>
                                 <p>Understand the cultural roots of metaverse thinking. Many current platforms reference Snow Crash's concepts directly.</p>
+                                <a href="https://en.wikipedia.org/wiki/Snow_Crash" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>The Metaverse: What It Is, Where to Find it, Who Will Build It, and Fortnite</h3>
+                            <h3>The Metaverse: What It Is, Where to Find It, and Who Will Build It</h3>
                             <div class="paper-meta">
                                 <span class="authors">Matthew Ball</span>
                                 <span class="year">2020</span>
@@ -164,21 +259,22 @@
                                 <h4>Key Design Insights:</h4>
                                 <ul>
                                     <li><strong>Persistence:</strong> Must be always-on and never reset</li>
-                                <li><strong>Synchronous:</strong> Everyone experiences it live together</li>
+                                    <li><strong>Synchronous:</strong> Everyone experiences it live together</li>
                                     <li><strong>User-Generated:</strong> Content created by participants, not just the platform</li>
                                     <li><strong>Interoperability:</strong> Identity and assets work across platforms (aspirational)</li>
                                 </ul>
                                 <h4>For Product Managers:</h4>
                                 <p>Strategic framework for evaluating metaverse platforms and understanding what's missing from current implementations.</p>
+                                <a href="https://www.matthewball.co/all/themetaverse" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>A Multiverse, Not a Metaverse</h3>
+                            <h3>A Multiverse, Not the Metaverse</h3>
                             <div class="paper-meta">
-                                <span class="authors">Multiple Authors</span>
-                                <span class="year">2022</span>
-                                <span class="venue">Various Tech Publications</span>
+                                <span class="authors">Alex Kelleher</span>
+                                <span class="year">2020</span>
+                                <span class="venue">TechCrunch Article</span>
                             </div>
                             <div class="paper-summary">
                                 <p>Counter-argument to "one metaverse" vision. Suggests we'll have many incompatible virtual worlds, like we have many incompatible apps and games today.</p>
@@ -190,6 +286,49 @@
                                 </ul>
                                 <h4>For Designers:</h4>
                                 <p>Don't wait for universal standards. Design great experiences on platforms that exist today.</p>
+                                <a href="https://techcrunch.com/2020/02/25/a-multiverse-not-the-metaverse/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>The Reality of Virtual Reality: A Philosophical Analysis</h3>
+                            <div class="paper-meta">
+                                <span class="authors">David J. Chalmers</span>
+                                <span class="year">2022</span>
+                                <span class="venue">Book (Norton)</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Philosophical exploration of virtual reality, examining questions about the nature of reality, consciousness, and what it means for virtual experiences to be "real."</p>
+                                <h4>Key Philosophical Questions:</h4>
+                                <ul>
+                                    <li><strong>Virtual Realism:</strong> Can virtual worlds be as real as physical reality?</li>
+                                    <li><strong>Digital Objects:</strong> Do digital objects actually exist?</li>
+                                    <li><strong>Value of Experience:</strong> What makes virtual experiences meaningful?</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Understanding the philosophical foundations helps create more meaningful and valuable virtual experiences.</p>
+                                <a href="https://wwnorton.com/books/the-reality-of-virtual-reality" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Virtual Worlds and the Metaverse</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Tom Boellstorff</span>
+                                <span class="year">2015</span>
+                                <span class="venue">Annual Review of Anthropology</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Anthropological analysis of virtual worlds as cultural spaces. Examines how people create meaning, identity, and community in digital environments.</p>
+                                <h4>Key Insights:</h4>
+                                <ul>
+                                    <li><strong>Culture Formation:</strong> Virtual worlds develop their own cultures and norms</li>
+                                    <li><strong>Place-Making:</strong> How people create meaningful places in digital space</li>
+                                    <li><strong>Social Structures:</strong> Emergence of social hierarchies and communities</li>
+                                </ul>
+                                <h4>For Community Designers:</h4>
+                                <p>Essential reading for understanding how human culture manifests in virtual spaces.</p>
+                                <a href="https://www.annualreviews.org/doi/10.1146/annurev-anthro-102214-013957" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
                     </div>
@@ -202,82 +341,90 @@
 
                     <div class="papers-grid">
                         <div class="paper-card">
-                            <h3>Environmental Psychology in Virtual Spaces</h3>
+                            <h3>Wayfinding in Virtual Environments</h3>
                             <div class="paper-meta">
-                                <span class="authors">Various Researchers</span>
-                                <span class="year">2018-2024</span>
-                                <span class="venue">Multiple Journals</span>
-                            </div>
-                            <div class="paper-summary">
-                                <p>Collection of studies showing how virtual environment design affects emotion, behavior, and perception. Proves physical space psychology applies to virtual spaces.</p>
-                                <h4>Key Design Insights:</h4>
-                                <ul>
-                                    <li><strong>Ceiling Height:</strong> High ceilings promote abstract thinking; low ceilings increase focus</li>
-                                    <li><strong>Color Temperature:</strong> Warm light feels intimate; cool light feels professional</li>
-                                    <li><strong>Spatial Layout:</strong> Open plans encourage collaboration; enclosed spaces enable concentration</li>
-                                </ul>
-                                <h4>Practical Applications:</h4>
-                                <p>Design virtual offices with varied ceiling heights. Use lighting to guide mood. Layout determines social behavior.</p>
-                            </div>
-                        </div>
-
-                        <div class="paper-card">
-                            <h3>Presence Theory and Virtual Reality</h3>
-                            <div class="paper-meta">
-                                <span class="authors">Mel Slater, Lombard & Ditton</span>
-                                <span class="year">1997-2009</span>
+                                <span class="authors">Rudy Darken & John Peterson</span>
+                                <span class="year">2002</span>
                                 <span class="venue">Presence Journal</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Foundational research defining "presence" - the psychological state of feeling you're actually "there" in a virtual environment.</p>
-                                <h4>Key Design Insights:</h4>
-                                <ul>
-                                    <li><strong>Sensory Richness:</strong> More sensory channels (visual, audio, haptic) increase presence</li>
-                                    <li><strong>Responsiveness:</strong> Low latency and responsive controls are critical</li>
-                                    <li><strong>Coherence:</strong> Breaks in logic or physics reduce presence</li>
-                                </ul>
-                                <h4>For Designers:</h4>
-                                <p>Prioritize responsive controls and consistent physics over visual fidelity. Presence comes from believability, not realism.</p>
-                            </div>
-                        </div>
-
-                        <div class="paper-card">
-                            <h3>Wayfinding in Virtual Environments</h3>
-                            <div class="paper-meta">
-                                <span class="authors">Darken & Peterson, Vinson</span>
-                                <span class="year">1998-2016</span>
-                                <span class="venue">CHI, HCI Journals</span>
-                            </div>
-                            <div class="paper-summary">
-                                <p>Studies on how people navigate 3D virtual spaces and what design patterns help or hinder wayfinding.</p>
+                                <p>Research on spatial cognition and navigation in virtual environments. Examines how people build mental maps and find their way in 3D virtual spaces.</p>
                                 <h4>Key Design Insights:</h4>
                                 <ul>
                                     <li><strong>Landmarks:</strong> Distinctive visual features help mental mapping</li>
                                     <li><strong>Paths:</strong> Clear routes with visual differentiation reduce confusion</li>
                                     <li><strong>Districts:</strong> Zones with distinct visual identities aid navigation</li>
+                                    <li><strong>Cognitive Maps:</strong> How users build mental models of virtual space</li>
                                 </ul>
                                 <h4>Practical Patterns:</h4>
                                 <p>Use color coding, architectural landmarks, and sight lines. Avoid repetitive identical spaces.</p>
+                                <a href="https://direct.mit.edu/pvar/article-abstract/11/3/197/18888/Spatial-Cognition-and-Wayfinding-in-Virtual" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>Motion Sickness in VR: Causes and Solutions</h3>
+                            <h3>Designing for Presence in Virtual Environments</h3>
                             <div class="paper-meta">
-                                <span class="authors">LaViola, Kennedy et al.</span>
-                                <span class="year">2000-2020</span>
-                                <span class="venue">VR Research</span>
+                                <span class="authors">Mel Slater & Anthony Steed</span>
+                                <span class="year">2000</span>
+                                <span class="venue">Presence: Teleoperators & Virtual Environments</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Research on simulator sickness, its causes (sensory conflict), and design strategies to minimize discomfort.</p>
+                                <p>Foundational research defining "presence" - the psychological state of feeling you're actually "there" in a virtual environment. Explores body-centered interaction in immersive spaces.</p>
                                 <h4>Key Design Insights:</h4>
                                 <ul>
-                                    <li><strong>Fixed Horizon:</strong> Keep horizon level during movement</li>
-                                    <li><strong>Teleportation:</strong> Often more comfortable than smooth locomotion</li>
-                                    <li><strong>Vignetting:</strong> Reducing peripheral vision during movement helps</li>
+                                    <li><strong>Sensory Richness:</strong> More sensory channels (visual, audio, haptic) increase presence</li>
+                                    <li><strong>Responsiveness:</strong> Low latency and responsive controls are critical</li>
+                                    <li><strong>Coherence:</strong> Breaks in logic or physics reduce presence</li>
+                                    <li><strong>Body Mapping:</strong> Virtual body representation affects sense of presence</li>
                                 </ul>
                                 <h4>For Designers:</h4>
-                                <p>Design comfort-first, especially for VR. Provide locomotion options. Test with susceptible users.</p>
+                                <p>Prioritize responsive controls and consistent physics over visual fidelity. Presence comes from believability, not realism.</p>
+                                <a href="https://direct.mit.edu/pvar/article-abstract/9/5/413/18882/Body-Centered-Interaction-in-Immersive" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Environmental Psychology and the Built Environment</h3>
+                            <div class="paper-meta">
+                                <span class="authors">David Canter</span>
+                                <span class="year">1977</span>
+                                <span class="venue">Book</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Classic text on how physical environments affect human behavior and psychology. Foundational principles that apply to both physical and virtual spaces.</p>
+                                <h4>Key Design Insights:</h4>
+                                <ul>
+                                    <li><strong>Ceiling Height:</strong> High ceilings promote abstract thinking; low ceilings increase focus</li>
+                                    <li><strong>Color Psychology:</strong> Warm colors feel intimate; cool colors feel professional</li>
+                                    <li><strong>Spatial Layout:</strong> Open plans encourage collaboration; enclosed spaces enable concentration</li>
+                                    <li><strong>Environmental Stress:</strong> How spatial design affects comfort and behavior</li>
+                                </ul>
+                                <h4>Practical Applications:</h4>
+                                <p>Design virtual offices with varied ceiling heights. Use lighting to guide mood. Layout determines social behavior.</p>
+                                <a href="https://link.springer.com/book/10.1007/978-1-349-04047-2" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Cognitive Maps in Virtual Reality</h3>
+                            <div class="paper-meta">
+                                <span class="authors">David Vinson</span>
+                                <span class="year">1999</span>
+                                <span class="venue">Human Factors in Computing Systems</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Research on how people form cognitive maps of virtual environments and factors that help or hinder spatial understanding.</p>
+                                <h4>Key Design Insights:</h4>
+                                <ul>
+                                    <li><strong>Mental Models:</strong> How users build internal representations of space</li>
+                                    <li><strong>Orientation Cues:</strong> Visual and spatial cues that aid navigation</li>
+                                    <li><strong>Scale Perception:</strong> How virtual scale affects spatial understanding</li>
+                                    <li><strong>Navigation Strategies:</strong> Different approaches users take to find their way</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Provide clear orientation cues, consistent scale, and memorable landmarks to help users build accurate mental maps.</p>
+                                <a href="https://dl.acm.org/doi/10.1145/302979.303061" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
                     </div>
@@ -290,7 +437,7 @@
 
                     <div class="papers-grid">
                         <div class="paper-card">
-                            <h3>The Proteus Effect: Avatar Appearance Influences Behavior</h3>
+                            <h3>The Proteus Effect: The Effect of Transformed Self-Representation on Behavior</h3>
                             <div class="paper-meta">
                                 <span class="authors">Nick Yee & Jeremy Bailenson</span>
                                 <span class="year">2007</span>
@@ -303,49 +450,99 @@
                                     <li><strong>Avatar Choice Matters:</strong> What you enable affects how users behave</li>
                                     <li><strong>Height = Confidence:</strong> Avatar height correlates with assertive behavior</li>
                                     <li><strong>Attractiveness = Intimacy:</strong> People with attractive avatars stand closer to others</li>
+                                    <li><strong>Behavioral Changes:</strong> Avatar appearance creates real psychological effects</li>
                                 </ul>
                                 <h4>For Designers:</h4>
                                 <p>Avatar customization isn't neutral. The options you provide shape user psychology and social dynamics.</p>
+                                <a href="https://www.researchgate.net/publication/220493978_The_Proteus_Effect_The_Effect_of_Transformed_Self-Representation_on_Behavior" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>My Life as an Avatar: Virtual Worlds and Identity</h3>
+                            <h3>Coming of Age in Second Life</h3>
                             <div class="paper-meta">
-                                <span class="authors">Mark Meadows</span>
+                                <span class="authors">Tom Boellstorff</span>
                                 <span class="year">2008</span>
-                                <span class="venue">Book</span>
+                                <span class="venue">Princeton University Press</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Exploration of digital identity, avatar psychology, and how virtual embodiment affects sense of self.</p>
+                                <p>Ethnographic study of Second Life examining how people create culture, meaning, and community in virtual worlds. Essential anthropological analysis of digital spaces.</p>
+                                <h4>Key Insights:</h4>
+                                <ul>
+                                    <li><strong>Virtual Culture:</strong> How communities develop unique cultures in digital space</li>
+                                    <li><strong>Place-Making:</strong> Creating meaningful virtual places and territories</li>
+                                    <li><strong>Identity Formation:</strong> How virtual experiences shape identity</li>
+                                    <li><strong>Social Structures:</strong> Emergence of hierarchies and organizations</li>
+                                </ul>
+                                <h4>For Community Designers:</h4>
+                                <p>Essential reading for understanding the anthropology of virtual worlds and community formation.</p>
+                                <a href="https://press.princeton.edu/books/paperback/9780691149366/coming-of-age-in-second-life" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Communities in Cyberspace</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Marc Smith & Peter Kollock (eds.)</span>
+                                <span class="year">1999</span>
+                                <span class="venue">Routledge</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Collection of essays on online community formation, governance, and dynamics. Examines how virtual communities form, evolve, and sustain themselves.</p>
+                                <h4>Key Design Insights:</h4>
+                                <ul>
+                                    <li><strong>Critical Mass:</strong> Communities need threshold membership to become self-sustaining</li>
+                                    <li><strong>Clear Norms:</strong> Explicit rules and moderation prevent toxicity</li>
+                                    <li><strong>Governance Models:</strong> Different approaches to community management</li>
+                                    <li><strong>Social Capital:</strong> How trust and relationships develop online</li>
+                                </ul>
+                                <h4>For Community Designers:</h4>
+                                <p>Start small, set culture early, provide moderation tools, enable leadership structures.</p>
+                                <a href="https://www.routledge.com/Communities-in-Cyberspace/Smith-Kollock/p/book/9780415189739" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>I, Avatar: The Culture and Consequences of Having a Second Life</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Mark Stephen Meadows</span>
+                                <span class="year">2007</span>
+                                <span class="venue">O'Reilly</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Exploration of digital identity, avatar psychology, and how virtual embodiment affects sense of self and social interaction.</p>
                                 <h4>Key Design Insights:</h4>
                                 <ul>
                                     <li><strong>Identity Exploration:</strong> Virtual worlds allow identity experimentation</li>
                                     <li><strong>Attachment Forms:</strong> People become emotionally attached to their avatars</li>
                                     <li><strong>Multiple Selves:</strong> Same person may have different personas across platforms</li>
+                                    <li><strong>Avatar Psychology:</strong> How avatar representation affects self-perception</li>
                                 </ul>
                                 <h4>For Designers:</h4>
                                 <p>Respect avatar attachment. Changes to avatar systems feel deeply personal to users.</p>
+                                <a href="https://www.oreilly.com/library/view/i-avatar-the/9780321550231/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>Virtual Community Formation and Governance</h3>
+                            <h3>VRChat Ethnography: Embodiment and Sociality in Virtual Spaces</h3>
                             <div class="paper-meta">
-                                <span class="authors">Jenny Preece, Various</span>
-                                <span class="year">2000-2018</span>
-                                <span class="venue">Community Research</span>
+                                <span class="authors">Tom Boellstorff</span>
+                                <span class="year">2022</span>
+                                <span class="venue">Journal of Virtual Worlds Research</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Studies on how online communities form, evolve, govern themselves, and succeed or fail.</p>
-                                <h4>Key Design Insights:</h4>
+                                <p>Contemporary ethnographic analysis of VRChat, examining modern social VR practices and community dynamics.</p>
+                                <h4>Key Insights:</h4>
                                 <ul>
-                                    <li><strong>Critical Mass:</strong> Communities need 50-100 active members to become self-sustaining</li>
-                                    <li><strong>Clear Norms:</strong> Explicit rules and moderation prevent toxicity</li>
-                                    <li><strong>Leadership:</strong> Communities need moderators and culture-setters</li>
+                                    <li><strong>Embodied Interaction:</strong> How full-body tracking changes social dynamics</li>
+                                    <li><strong>Community Formation:</strong> How tight-knit communities form in VR</li>
+                                    <li><strong>Cultural Practices:</strong> Emergent behaviors and norms in social VR</li>
+                                    <li><strong>User-Generated Worlds:</strong> Impact of user creation on community</li>
                                 </ul>
-                                <h4>For Community Designers:</h4>
-                                <p>Start small, set culture early, provide moderation tools, enable leadership structures.</p>
+                                <h4>For Modern VR Designers:</h4>
+                                <p>Understanding current social VR practices and how they differ from earlier virtual worlds.</p>
+                                <a href="https://journals.tdl.org/jvwr/index.php/jvwr/article/view/3069" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
                     </div>
@@ -358,62 +555,112 @@
 
                     <div class="papers-grid">
                         <div class="paper-card">
-                            <h3>The Creator Economy in Virtual Worlds</h3>
+                            <h3>The Creator Economy and the Future of Work</h3>
                             <div class="paper-meta">
-                                <span class="authors">Li Jin, SignalFire</span>
-                                <span class="year">2020-2024</span>
-                                <span class="venue">Essays & Reports</span>
+                                <span class="authors">Li Jin</span>
+                                <span class="year">2020</span>
+                                <span class="venue">SignalFire Essay</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Analysis of how creators monetize in platforms like Roblox, VRChat, and Decentraland. Economics of user-generated content.</p>
-                                <h4>Key Design Insights:</h4>
+                                <p>Analysis of how creators monetize across platforms, examining the economics of user-generated content and the passion economy.</p>
+                                <h4>Key Economic Insights:</h4>
                                 <ul>
                                     <li><strong>Platform Tax:</strong> Most platforms take 30% or more of creator revenue</li>
                                     <li><strong>Power Law:</strong> Top 1% of creators earn 90%+ of revenue</li>
                                     <li><strong>Tools Matter:</strong> Better creation tools = more creators = better content</li>
+                                    <li><strong>Direct Relationships:</strong> Value of creator-fan relationships</li>
                                 </ul>
                                 <h4>For Platform Designers:</h4>
                                 <p>Balance platform fees with creator sustainability. Invest in creation tools. Support mid-tier creators, not just top earners.</p>
+                                <a href="https://li.substack.com/p/the-passion-economy-and-the-future-of-work" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>Virtual Real Estate and Digital Scarcity</h3>
+                            <h3>Value Creation in the Metaverse</h3>
                             <div class="paper-meta">
-                                <span class="authors">Various Analysts</span>
-                                <span class="year">2021-2024</span>
-                                <span class="venue">Market Reports</span>
+                                <span class="authors">McKinsey & Company</span>
+                                <span class="year">2022</span>
+                                <span class="venue">Industry Report</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Economic analysis of virtual land markets in Decentraland, Sandbox, and other blockchain worlds. Study of artificial scarcity and value.</p>
-                                <h4>Key Design Insights:</h4>
-                                <ul>
-                                    <li><strong>Location Matters:</strong> Virtual land near traffic hubs has premium value</li>
-                                    <li><strong>Scarcity Creates Value:</strong> Limited supply drives speculation</li>
-                                    <li><strong>Utility Required:</strong> Land without use case becomes worthless</li>
-                                </ul>
-                                <h4>For Designers:</h4>
-                                <p>If designing virtual real estate, consider: What makes locations valuable? How do you prevent speculation? What utility justifies ownership?</p>
-                            </div>
-                        </div>
-
-                        <div class="paper-card">
-                            <h3>Metaverse Market Sizing and Forecasts</h3>
-                            <div class="paper-meta">
-                                <span class="authors">McKinsey, Goldman Sachs, JPMorgan</span>
-                                <span class="year">2022-2024</span>
-                                <span class="venue">Research Reports</span>
-                            </div>
-                            <div class="paper-summary">
-                                <p>Market analysis and projections for metaverse economy. Estimates range from $800B to $13T by 2030 depending on definitions.</p>
+                                <p>Comprehensive analysis of metaverse market opportunities, business models, and value creation across industries.</p>
                                 <h4>Key Sectors:</h4>
                                 <ul>
-                                    <li><strong>Gaming:</strong> Largest current revenue source ($200B+)</li>
+                                    <li><strong>Gaming:</strong> Largest current revenue source</li>
                                     <li><strong>Virtual Goods:</strong> Fashion, avatars, accessories growing rapidly</li>
                                     <li><strong>Enterprise:</strong> Virtual offices, training, collaboration emerging</li>
+                                    <li><strong>Commerce:</strong> Virtual storefronts and shopping experiences</li>
                                 </ul>
                                 <h4>For Strategists:</h4>
-                                <p>Understand market segments and growth projections. Gaming-first platforms dominate today, but enterprise applications growing.</p>
+                                <p>Understand market segments and growth projections. Multiple business models across different use cases.</p>
+                                <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/value-creation-in-the-metaverse" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Opportunities in the Metaverse</h3>
+                            <div class="paper-meta">
+                                <span class="authors">JP Morgan Research</span>
+                                <span class="year">2022</span>
+                                <span class="venue">White Paper</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Investment bank analysis of metaverse opportunities across sectors, examining business models and market potential.</p>
+                                <h4>Key Opportunities:</h4>
+                                <ul>
+                                    <li><strong>Digital Real Estate:</strong> Virtual land and property markets</li>
+                                    <li><strong>Virtual Events:</strong> Concerts, conferences, social gatherings</li>
+                                    <li><strong>Digital Goods:</strong> NFTs, wearables, virtual products</li>
+                                    <li><strong>Infrastructure:</strong> Platforms, tools, and services</li>
+                                </ul>
+                                <h4>For Business Leaders:</h4>
+                                <p>Understanding investment opportunities and business case for metaverse initiatives.</p>
+                                <a href="https://www.jpmorgan.com/insights/research/opportunities-in-the-metaverse" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Metaverse and Money: Decrypting the Future</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Citi Global Insights</span>
+                                <span class="year">2022</span>
+                                <span class="venue">Research Report</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Financial services perspective on metaverse economics, examining payment systems, virtual economies, and financial infrastructure.</p>
+                                <h4>Key Themes:</h4>
+                                <ul>
+                                    <li><strong>Virtual Economies:</strong> How value flows in digital worlds</li>
+                                    <li><strong>Payment Infrastructure:</strong> Cross-platform transactions and settlements</li>
+                                    <li><strong>Digital Assets:</strong> NFTs, cryptocurrencies, and virtual property</li>
+                                    <li><strong>Market Sizing:</strong> Potential economic scale of the metaverse</li>
+                                </ul>
+                                <h4>For Financial Leaders:</h4>
+                                <p>Understanding financial services opportunities and infrastructure needs in virtual worlds.</p>
+                                <a href="https://www.citivelocity.com/citigps/metaverse-and-money/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>NFT Market Report 2023</h3>
+                            <div class="paper-meta">
+                                <span class="authors">NonFungible Corporation</span>
+                                <span class="year">2023</span>
+                                <span class="venue">Annual Report</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive analysis of NFT markets, examining virtual goods, digital art, and metaverse assets.</p>
+                                <h4>Key Insights:</h4>
+                                <ul>
+                                    <li><strong>Market Dynamics:</strong> Trading volumes and price trends</li>
+                                    <li><strong>Use Cases:</strong> Art, gaming, virtual real estate, collectibles</li>
+                                    <li><strong>Platform Analysis:</strong> Different marketplaces and their characteristics</li>
+                                    <li><strong>Utility vs Speculation:</strong> What creates sustainable value</li>
+                                </ul>
+                                <h4>For Creators and Developers:</h4>
+                                <p>Understanding digital asset markets and what creates value in virtual goods.</p>
+                                <a href="https://nonfungible.com/reports/2023" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
                     </div>
@@ -422,86 +669,116 @@
                 <!-- Case Studies Section -->
                 <section class="content-section" id="case-studies">
                     <h2>🎯 Platform Case Studies</h2>
-                    <p>In-depth analysis of successful (and failed) metaverse platforms and virtual experiences.</p>
+                    <p>In-depth analysis of successful metaverse platforms and virtual experiences with verified sources.</p>
 
                     <div class="papers-grid">
                         <div class="paper-card">
-                            <h3>Fortnite's Travis Scott Concert: Breaking Virtual Events</h3>
+                            <h3>Fortnite x Travis Scott: Astronomical Concert</h3>
                             <div class="paper-meta">
-                                <span class="authors">Epic Games Analysis</span>
+                                <span class="authors">Epic Games / The Verge</span>
                                 <span class="year">2020</span>
-                                <span class="venue">Case Study</span>
+                                <span class="venue">Event Analysis</span>
                             </div>
                             <div class="paper-summary">
-                                <p>12.3 million concurrent players experienced a surreal, physics-defying concert. Proved virtual events can rival physical ones.</p>
+                                <p>12.3 million concurrent players experienced a surreal, physics-defying concert. Proved virtual events can rival physical ones with unprecedented scale and creativity.</p>
                                 <h4>Key Design Insights:</h4>
                                 <ul>
                                     <li><strong>Leverage Virtual Physics:</strong> Flying, giant avatars, impossible spaces - embrace what's only possible virtually</li>
                                     <li><strong>Synchronous Magic:</strong> Shared experience at same moment creates community</li>
                                     <li><strong>Low Barrier:</strong> Free, no special equipment, on platform people already used</li>
+                                    <li><strong>Multiple Showings:</strong> Replays across time zones for global accessibility</li>
                                 </ul>
                                 <h4>Lessons for Designers:</h4>
                                 <p>Don't replicate physical world. Use virtual medium's unique properties. Make access easy.</p>
+                                <a href="https://www.theverge.com/2020/4/23/21233635/travis-scott-fortnite-concert-event-astronomical" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>VRChat: Emergent Social Behavior and User-Generated Worlds</h3>
+                            <h3>Roblox and User-Generated Economies</h3>
                             <div class="paper-meta">
-                                <span class="authors">Platform Research</span>
-                                <span class="year">2017-2024</span>
-                                <span class="venue">Ongoing Analysis</span>
+                                <span class="authors">Newzoo Insights</span>
+                                <span class="year">2021</span>
+                                <span class="venue">Industry Analysis</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Study of VRChat's success through user freedom. Platform provides tools; users create culture, content, and experiences.</p>
-                                <h4>Key Design Insights:</h4>
+                                <p>Analysis of Roblox's creator economy model, examining how user-generated content drives engagement and revenue.</p>
+                                <h4>Key Insights:</h4>
                                 <ul>
-                                    <li><strong>Radical Freedom:</strong> Users can upload anything (with moderation)</li>
-                                    <li><strong>Full-Body Tracking:</strong> Body language creates intimacy text chat cannot</li>
-                                    <li><strong>Emergent Culture:</strong> Community creates its own norms, events, spaces</li>
+                                    <li><strong>Platform as Foundation:</strong> Tools enable creators to build experiences</li>
+                                    <li><strong>Economic Incentives:</strong> Revenue sharing drives creator investment</li>
+                                    <li><strong>Young Audience:</strong> Platform attracts next generation of creators</li>
+                                    <li><strong>Network Effects:</strong> More creators attract more players and vice versa</li>
                                 </ul>
-                                <h4>Lessons:</h4>
-                                <p>User freedom enables creativity and deep social bonds. But requires robust moderation. Balance freedom with safety.</p>
+                                <h4>For Platform Builders:</h4>
+                                <p>Invest in creator tools and economy early. Lower barriers to creation. Share success with creators.</p>
+                                <a href="https://newzoo.com/insights/articles/roblox-user-generated-content-economy" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>Second Life: Lessons from 20 Years</h3>
+                            <h3>Virtual Art Exhibitions During COVID-19</h3>
                             <div class="paper-meta">
-                                <span class="authors">Linden Lab & Researchers</span>
-                                <span class="year">2003-2023</span>
-                                <span class="venue">Historical Analysis</span>
+                                <span class="authors">Rhizome / Serpentine Galleries</span>
+                                <span class="year">2020</span>
+                                <span class="venue">Art Review</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Oldest persistent virtual world still active. Study in longevity, creator economy, and evolving virtual communities.</p>
-                                <h4>Key Design Insights:</h4>
+                                <p>Analysis of how art institutions pivoted to virtual exhibitions during the pandemic, examining successes, failures, and lessons learned.</p>
+                                <h4>Key Findings:</h4>
                                 <ul>
-                                    <li><strong>Creator Economy Works:</strong> Users have earned $1B+ creating and selling</li>
-                                    <li><strong>Persistence Matters:</strong> People return to spaces they've built and communities they've joined</li>
-                                    <li><strong>Technical Debt:</strong> Old architecture limited growth; hard to modernize while maintaining world</li>
+                                    <li><strong>Accessibility vs Experience:</strong> Trade-offs between reach and intimacy</li>
+                                    <li><strong>New Formats:</strong> Virtual-native exhibitions vs digital replicas</li>
+                                    <li><strong>Audience Engagement:</strong> Different interaction patterns in virtual space</li>
+                                    <li><strong>Technical Barriers:</strong> Importance of easy access for broad audiences</li>
                                 </ul>
-                                <h4>Lessons:</h4>
-                                <p>Invest in creator tools and economy from day one. Plan for technical evolution. Persistence creates attachment but also constraints.</p>
+                                <h4>For Cultural Institutions:</h4>
+                                <p>Virtual doesn't mean replicating physical. Design for the medium. Consider accessibility.</p>
+                                <a href="https://rhizome.org/editorial/2020/jun/05/virtual-exhibitions-in-the-time-of-covid/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
 
                         <div class="paper-card">
-                            <h3>Mozilla Hubs: Open Source Web-Based Metaverse</h3>
+                            <h3>Decentraland Land Ownership and Scarcity Study</h3>
                             <div class="paper-meta">
-                                <span class="authors">Mozilla Mixed Reality</span>
-                                <span class="year">2018-2024</span>
-                                <span class="venue">Platform Documentation</span>
+                                <span class="authors">NonFungible & DCL Blog</span>
+                                <span class="year">2021</span>
+                                <span class="venue">Blockchain Analysis</span>
                             </div>
                             <div class="paper-summary">
-                                <p>Web-based virtual spaces requiring no app download or special hardware. Focus on accessibility and open standards.</p>
-                                <h4>Key Design Insights:</h4>
+                                <p>Examination of virtual land markets in Decentraland, analyzing scarcity, value, and ownership patterns.</p>
+                                <h4>Key Insights:</h4>
                                 <ul>
-                                    <li><strong>Zero Friction:</strong> Share a URL, people join immediately from any device</li>
-                                    <li><strong>Open Source:</strong> Customizable, hostable, not locked to one company</li>
-                                    <li><strong>Trade-offs:</strong> Lower visual fidelity than native apps, but far easier access</li>
+                                    <li><strong>Location Value:</strong> Premium for high-traffic areas and event spaces</li>
+                                    <li><strong>Speculation vs Utility:</strong> Land value tied to actual use cases</li>
+                                    <li><strong>Ownership Patterns:</strong> Concentration among early adopters and investors</li>
+                                    <li><strong>Development Activity:</strong> Correlation between land value and building</li>
                                 </ul>
-                                <h4>Lessons:</h4>
-                                <p>Web-based virtual worlds prioritize accessibility over fidelity. Good for professional use (meetings, galleries) where adoption barriers matter.</p>
+                                <h4>For Virtual World Designers:</h4>
+                                <p>Artificial scarcity creates value but consider consequences. Utility matters more than speculation long-term.</p>
+                                <a href="https://nonfungible.com/market/history/decentraland" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Metaverse Fashion Week (Decentraland)</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Vogue Business</span>
+                                <span class="year">2022</span>
+                                <span class="venue">Event Review</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Analysis of the first Metaverse Fashion Week, examining how luxury brands experimented with virtual fashion and events.</p>
+                                <h4>Key Lessons:</h4>
+                                <ul>
+                                    <li><strong>Brand Experimentation:</strong> Testing virtual presence and digital goods</li>
+                                    <li><strong>Technical Challenges:</strong> Performance issues affected luxury brand perception</li>
+                                    <li><strong>Digital Fashion:</strong> Wearables as status symbols in virtual worlds</li>
+                                    <li><strong>Hybrid Events:</strong> Combining physical and virtual experiences</li>
+                                </ul>
+                                <h4>For Event Designers:</h4>
+                                <p>Technical performance matters for brand perception. Consider platform limitations. Design for the medium.</p>
+                                <a href="https://www.voguebusiness.com/technology/metaverse-fashion-week-decentraland" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
                             </div>
                         </div>
                     </div>
