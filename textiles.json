@@ -1,0 +1,484 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "category": "Wearable Design",
+      "question": "Body-Centered Design",
+      "hint": "Designing for the human form",
+      "answer": "Design approach that prioritizes the body's movement, comfort, and natural interaction patterns. Considers placement, weight, flexibility, and how technology integrates with physical activity.",
+      "example": "A heart rate sensor shirt must stretch with breathing, stay in place during exercise, and not restrict arm movement—unlike a wrist sensor which only needs to fit one stable location."
+    },
+    {
+      "id": 2,
+      "category": "Wearable Design",
+      "question": "Wearability",
+      "hint": "Would someone actually wear this?",
+      "answer": "The quality that makes technology comfortable, practical, and socially acceptable to wear. Balances technical function with aesthetics, comfort, and social norms.",
+      "example": "Google Glass failed partly due to poor wearability—the aesthetic was socially awkward and the display was uncomfortable for extended use, despite working technically."
+    },
+    {
+      "id": 3,
+      "category": "Wearable Design",
+      "question": "Proximal Placement",
+      "hint": "Location on the body",
+      "answer": "Strategic positioning of wearable components considering sensor accuracy, user comfort, accessibility, visibility, and social acceptability.",
+      "example": "Chest straps give most accurate heart rate data but are less comfortable than wrist sensors. Designers must balance accuracy needs with user willingness to wear the device."
+    },
+    {
+      "id": 4,
+      "category": "Wearable Design",
+      "question": "Interaction Legibility",
+      "hint": "Making actions obvious",
+      "answer": "How clearly a wearable communicates what it does and how to use it. Users should discover functionality through natural exploration without manuals.",
+      "example": "A fabric button shaped like traditional buttons signals 'press me', while a hidden capacitive touch area on unmarked fabric provides no clue about interaction."
+    },
+    {
+      "id": 5,
+      "category": "Wearable Design",
+      "question": "Social Acceptability",
+      "hint": "What feels okay to wear in public",
+      "answer": "The degree to which a wearable device is comfortable to wear in social contexts. Technology that's too visible, strange-looking, or attention-grabbing may be rejected.",
+      "example": "Smartwatches succeeded partly because watches are socially normal. LED-covered clothing works at festivals but not in professional settings."
+    },
+    {
+      "id": 6,
+      "category": "Wearable Design",
+      "question": "Garment Integration",
+      "hint": "Merging tech with clothing",
+      "answer": "The process of seamlessly incorporating electronics into garments so they feel like clothing, not gadgets. Considers washing, durability, flexibility, and aesthetic integration.",
+      "example": "Google Jacquard wove conductive thread into denim during manufacturing, making the technology invisible in the jacket until activated by touch."
+    },
+    {
+      "id": 7,
+      "category": "Wearable Design",
+      "question": "Feedback Modalities",
+      "hint": "How wearables communicate back",
+      "answer": "The sensory channels through which wearables provide information to users—visual (LEDs, displays), haptic (vibration, pressure), audio (beeps, voice), or thermal (heat/cool).",
+      "example": "Fitness trackers vibrate for subtle alerts without disturbing others, while smartwatches add visual screens for richer information when privacy allows."
+    },
+    {
+      "id": 8,
+      "category": "Wearable Design",
+      "question": "Aesthetic Integration",
+      "hint": "Making tech look intentional",
+      "answer": "Designing electronics to contribute to rather than compromise the visual appeal of a garment. Technology becomes part of the fashion statement.",
+      "example": "CuteCircuit's couture pieces use LEDs as decorative elements creating beautiful patterns, not hiding technology but celebrating it as design material."
+    },
+    {
+      "id": 9,
+      "category": "Wearable Design",
+      "question": "Contextual Awareness",
+      "hint": "Behavior changes with situation",
+      "answer": "Wearables that adapt their behavior based on user activity, location, social context, or environmental conditions for appropriate responses.",
+      "example": "A wearable that vibrates for notifications during the day but stays silent at night, or changes LED brightness based on ambient light."
+    },
+    {
+      "id": 10,
+      "category": "Wearable Design",
+      "question": "Power Constraints",
+      "hint": "Battery life limitations",
+      "answer": "The fundamental challenge of providing enough power for wearable functionality while keeping battery weight, size, and charging frequency acceptable to users.",
+      "example": "Smartwatches balance features with battery life—always-on displays drain power quickly, so many use raise-to-wake to extend the typical 1-2 day battery life."
+    },
+    {
+      "id": 11,
+      "category": "Wearable Design",
+      "question": "Durability Requirements",
+      "hint": "Surviving real-world use",
+      "answer": "Wearables must withstand movement, stretching, washing, sweat, and repeated wear while maintaining electrical connections and functionality.",
+      "example": "Conductive thread connections must be sewn securely with knots coated in fabric glue, as loose threads will break with washing or wear."
+    },
+    {
+      "id": 12,
+      "category": "Wearable Design",
+      "question": "Privacy & Ethics",
+      "hint": "Biosensing data concerns",
+      "answer": "Wearables collect intimate body data raising questions about who owns it, how it's used, who can access it, and the implications of continuous monitoring.",
+      "example": "A fitness tracker knows your heart rate, sleep patterns, location, and activity. Should insurance companies access this? Employers? Law enforcement?"
+    },
+    {
+      "id": 13,
+      "category": "Materials & Components",
+      "question": "Conductive Thread",
+      "hint": "Sewable electrical connections",
+      "answer": "Thread containing conductive materials (silver, stainless steel, or copper) used to create electrical connections in fabric. Resistance varies by material type.",
+      "example": "Silver-plated thread (~10Ω/ft) works for most e-textile circuits. Stainless steel thread (~50Ω/ft) is cheaper but only suitable for low-current applications like LEDs."
+    },
+    {
+      "id": 14,
+      "category": "Materials & Components",
+      "question": "Velostat",
+      "hint": "Pressure-sensitive material",
+      "answer": "A carbon-impregnated plastic material whose resistance decreases when pressure is applied. Essential for creating fabric pressure sensors.",
+      "example": "Sandwich Velostat between two layers of conductive fabric to create a pressure sensor for interactive clothing or game controllers."
+    },
+    {
+      "id": 15,
+      "category": "Materials & Components",
+      "question": "LilyPad Arduino",
+      "hint": "Washable wearable microcontroller",
+      "answer": "A sewable Arduino board with large connection holes and components sealed for durability. Designed specifically for e-textiles and wearables.",
+      "example": "The standard platform for beginner e-textiles. Sew to fabric using conductive thread, program like regular Arduino, can survive gentle washing."
+    },
+    {
+      "id": 16,
+      "category": "Materials & Components",
+      "question": "NeoPixels",
+      "hint": "Addressable RGB LEDs",
+      "answer": "Individually controllable RGB LEDs that can be chained together. Each pixel displays any color and can be programmed independently for dynamic patterns.",
+      "example": "String of NeoPixels sewn into a dress can create flowing rainbow patterns, respond to sound, or display animations—all controlled by single microcontroller."
+    },
+    {
+      "id": 17,
+      "category": "Materials & Components",
+      "question": "Conductive Fabric",
+      "hint": "Textile-form conductors",
+      "answer": "Fabrics woven with or coated in conductive materials. Used for sensors, electrodes, touch interfaces, and electrical traces in wearables.",
+      "example": "Copper taffeta creates capacitive touch buttons on clothing, conductive knit fabric can serve as flexible circuit traces, and silver-coated fabric works for ECG electrodes."
+    },
+    {
+      "id": 18,
+      "category": "Materials & Components",
+      "question": "Coin Cell Battery",
+      "hint": "Small circular power source",
+      "answer": "Thin, disc-shaped batteries (typically CR2032) that provide 3V power for simple e-textile circuits. Compact but limited capacity.",
+      "example": "CR2032 batteries power simple LED circuits in wearables. They fit in small sewable holders but only last hours under continuous LED use."
+    },
+    {
+      "id": 19,
+      "category": "Materials & Components",
+      "question": "LiPo Battery",
+      "hint": "Rechargeable polymer battery",
+      "answer": "Lithium-ion polymer batteries offering high capacity in small, flat form factors. Rechargeable and commonly used in wearables, but require proper charging circuits.",
+      "example": "A 500mAh LiPo battery can power an Arduino and LEDs for several hours, recharges via USB, but needs protection circuitry to prevent over-charging."
+    },
+    {
+      "id": 20,
+      "category": "Materials & Components",
+      "question": "Sewable LEDs",
+      "hint": "Fabric-friendly lights",
+      "answer": "LEDs mounted on flexible boards with large holes for sewing with conductive thread. Come in various colors and some include built-in resistors.",
+      "example": "LilyPad LEDs have + and - tabs with large holes. Sew positive trace to + and negative to -, keeping traces from crossing to avoid shorts."
+    },
+    {
+      "id": 21,
+      "category": "Materials & Components",
+      "question": "Accelerometer",
+      "hint": "Motion and orientation sensor",
+      "answer": "Sensor that measures acceleration and tilt in X, Y, and Z axes. Used to detect movement, orientation changes, taps, and activity in wearables.",
+      "example": "Accelerometer sewn into a jacket can detect arm gestures for controlling music, or sense when wearer is running vs walking for activity tracking."
+    },
+    {
+      "id": 22,
+      "category": "Materials & Components",
+      "question": "Flora Platform",
+      "hint": "Adafruit's wearable board",
+      "answer": "Adafruit's sewable Arduino-compatible platform with excellent NeoPixel support and extensive online documentation. Smaller than LilyPad with many compatible sensors.",
+      "example": "Flora is ideal for LED-heavy projects. Its NeoPixel library and tutorials make creating colorful, animated wearables straightforward for beginners."
+    },
+    {
+      "id": 23,
+      "category": "Materials & Components",
+      "question": "Conductive Ink/Paint",
+      "hint": "Printable/painted circuits",
+      "answer": "Liquid conductive material that can be printed, painted, or drawn onto fabric to create circuits. Allows custom circuit patterns without sewing.",
+      "example": "Draw circuit traces with conductive ink pen, let dry, then attach components. Useful for prototyping or creating circuits on non-traditional surfaces."
+    },
+    {
+      "id": 24,
+      "category": "Materials & Components",
+      "question": "Vibration Motor",
+      "hint": "Haptic feedback component",
+      "answer": "Small motor with offset weight creating vibrations. Provides tactile feedback in wearables without sound or light that others can perceive.",
+      "example": "Phone-style vibration motors sewn into clothing provide private notifications—alerts without disturbing others or requiring looking at device."
+    },
+    {
+      "id": 25,
+      "category": "Materials & Components",
+      "question": "Fabric Switches",
+      "hint": "Soft button alternatives",
+      "answer": "Switches made from conductive fabric layers that connect when pressed. Can be sewn into garments as soft, flexible alternatives to hard buttons.",
+      "example": "Two layers of conductive fabric separated by spacer material with holes. Pressing fabric makes connection through holes, completing circuit."
+    },
+    {
+      "id": 26,
+      "category": "Materials & Components",
+      "question": "Stretch Sensors",
+      "hint": "Measuring fabric deformation",
+      "answer": "Materials whose resistance changes when stretched. Used to detect body movement, breathing, or fabric deformation in smart garments.",
+      "example": "Stretch sensors around chest measure breathing rate, or in knees detect leg bending. Can be made from conductive rubber cord or stretch fabric."
+    },
+    {
+      "id": 27,
+      "category": "Materials & Components",
+      "question": "Temperature Sensors",
+      "hint": "Measuring heat",
+      "answer": "Small electronic components that measure temperature. Used in wearables for body temperature monitoring, environmental sensing, or comfort control.",
+      "example": "Temperature sensor sewn near skin can track body temperature for health monitoring or trigger heating/cooling elements in smart garments."
+    },
+    {
+      "id": 28,
+      "category": "Making Techniques",
+      "question": "Soft Circuits",
+      "hint": "Fabric-based electronics",
+      "answer": "Electronic circuits built with flexible, fabric-friendly materials instead of rigid wires and boards. Uses conductive thread, fabric, and sewable components.",
+      "example": "Instead of soldering LEDs to a PCB, sew them to fabric with conductive thread, creating circuits that bend, stretch, and feel like clothing."
+    },
+    {
+      "id": 29,
+      "category": "Making Techniques",
+      "question": "Circuit Tracing",
+      "hint": "Planning electrical paths",
+      "answer": "Designing the paths that conductive thread will follow to connect components, ensuring positive and negative traces never cross to avoid short circuits.",
+      "example": "Sketch circuit on paper first, marking + traces in red and - in black. Plan routes that don't intersect, or use insulation where they must cross."
+    },
+    {
+      "id": 30,
+      "category": "Making Techniques",
+      "question": "Secure Knotting",
+      "hint": "Preventing circuit failures",
+      "answer": "Technique of tying off conductive thread with tight knots and coating with fabric glue to prevent loosening. Critical for reliable e-textile connections.",
+      "example": "After sewing circuit, tie thread with triple knot, trim close, coat knot with clear nail polish or fabric glue to prevent unraveling through wear or washing."
+    },
+    {
+      "id": 31,
+      "category": "Making Techniques",
+      "question": "Insulation Methods",
+      "hint": "Preventing short circuits",
+      "answer": "Techniques to keep conductive traces from accidentally touching: spacing, non-conductive barriers, coating with insulating materials, or crossing with fabric layers between.",
+      "example": "Paint traces with Mod Podge, place fabric patch between crossing traces, or use heat-shrink tubing on exposed connections to prevent shorts."
+    },
+    {
+      "id": 32,
+      "category": "Making Techniques",
+      "question": "Component Attachment",
+      "hint": "Securing electronics to fabric",
+      "answer": "Methods for firmly attaching electronic components to fabric: sewing with regular thread first for structure, then adding conductive thread for electrical connection.",
+      "example": "First sew LilyPad board to fabric with regular thread through mounting holes for mechanical stability, then add conductive thread for electrical connections."
+    },
+    {
+      "id": 33,
+      "category": "Making Techniques",
+      "question": "Resistance Testing",
+      "hint": "Checking circuit continuity",
+      "answer": "Using a multimeter to measure resistance in conductive paths, verify connections work, and troubleshoot broken circuits before powering on.",
+      "example": "Set multimeter to resistance mode, touch probes to both ends of sewn trace. Low resistance (under 10Ω) means good connection; high/infinite means break in circuit."
+    },
+    {
+      "id": 34,
+      "category": "Making Techniques",
+      "question": "Washing Considerations",
+      "hint": "Making circuits survive cleaning",
+      "answer": "Design and construction techniques to enable wearables to survive washing: waterproof enclosures, removable electronics, washable materials, secure connections.",
+      "example": "Design garment so LilyPad and battery are in pockets that can be removed before washing. Use only waterproof LEDs and well-insulated connections for parts that stay in."
+    },
+    {
+      "id": 35,
+      "category": "Making Techniques",
+      "question": "Strain Relief",
+      "hint": "Protecting connections from stress",
+      "answer": "Techniques to prevent mechanical stress from breaking electrical connections: flexible routing, loops in thread, avoiding placement at stress points.",
+      "example": "Route conductive thread with slight slack rather than pulled tight. At joints (elbow, knee), add small loops or curved paths so bending doesn't snap threads."
+    },
+    {
+      "id": 36,
+      "category": "Making Techniques",
+      "question": "Prototyping with Alligators",
+      "hint": "Testing before sewing",
+      "answer": "Using alligator clip wires to temporarily connect components and test circuit design before committing to sewing with conductive thread.",
+      "example": "Lay out components on fabric, connect with alligator clips, test functionality and code. Once working, mark positions and sew permanent connections."
+    },
+    {
+      "id": 37,
+      "category": "Making Techniques",
+      "question": "Sandwiching Construction",
+      "hint": "Building layered sensors",
+      "answer": "Creating sensors by layering materials in specific orders—typically conductive, resistive, conductive—to create pressure-sensitive or bend-sensitive elements.",
+      "example": "Layer: conductive fabric, Velostat, conductive fabric to create pressure sensor. When pressed, Velostat connects the two fabric layers with variable resistance."
+    },
+    {
+      "id": 38,
+      "category": "Making Techniques",
+      "question": "Encapsulation",
+      "hint": "Protecting exposed connections",
+      "answer": "Covering electronic connections and components with protective materials to prevent corrosion, damage, or short circuits from sweat and moisture.",
+      "example": "Coat conductive thread knots with clear nail polish, cover components with fabric patches, or seal battery holders with waterproof fabric tape."
+    },
+    {
+      "id": 39,
+      "category": "Making Techniques",
+      "question": "Power Management",
+      "hint": "Making batteries last",
+      "answer": "Design strategies to extend battery life: using sleep modes, reducing LED brightness, turning off components when not needed, efficient code.",
+      "example": "Program Arduino to sleep between button presses, wake on interrupt. Use LEDs at 50% brightness instead of 100%. Can extend battery life from hours to days."
+    },
+    {
+      "id": 40,
+      "category": "Making Techniques",
+      "question": "Capacitive Touch",
+      "hint": "Touch-sensing without buttons",
+      "answer": "Creating touch-sensitive areas using conductive fabric or thread connected to microcontroller's capacitive sensing pins. Detects proximity without physical buttons.",
+      "example": "Sew conductive fabric patch connected to Arduino's capacitive pin. Code detects when finger approaches fabric, enabling touch controls without visible buttons."
+    },
+    {
+      "id": 41,
+      "category": "Applications",
+      "question": "Health Monitoring",
+      "hint": "Medical wearable applications",
+      "answer": "Using smart textiles to continuously monitor vital signs like heart rate, respiration, temperature, or movement for medical, fitness, or wellness purposes.",
+      "example": "Hexoskin smart shirt with embedded sensors tracks heart rate, breathing rate, and activity. Medical-grade data in comfortable garment form factor."
+    },
+    {
+      "id": 42,
+      "category": "Applications",
+      "question": "Athletic Performance",
+      "hint": "Sports and fitness tech",
+      "answer": "Wearables that measure biomechanics, exertion, muscle activity, or form to help athletes improve performance and prevent injury.",
+      "example": "Athos clothing with EMG sensors measures which muscles are working and how hard during exercise, helping optimize workout routines."
+    },
+    {
+      "id": 43,
+      "category": "Applications",
+      "question": "Interactive Fashion",
+      "hint": "Clothing that responds",
+      "answer": "Garments that change appearance or behavior in response to environment, data, or interaction—fashion as dynamic medium rather than static object.",
+      "example": "CuteCircuit's Twitter Dress displays live Twitter messages as scrolling text made of LEDs, making social media interaction visible in physical space."
+    },
+    {
+      "id": 44,
+      "category": "Applications",
+      "question": "Gesture Control",
+      "hint": "Body movements as input",
+      "answer": "Using wearable sensors to detect body movements and translate them into control signals for devices, enabling hands-free interaction.",
+      "example": "Google Jacquard jacket detects swipes and taps on sleeve fabric, controlling phone music playback without taking phone from pocket."
+    },
+    {
+      "id": 45,
+      "category": "Applications",
+      "question": "Posture Correction",
+      "hint": "Body awareness feedback",
+      "answer": "Wearables that detect poor posture and provide haptic feedback to encourage proper alignment and prevent back/neck strain.",
+      "example": "Lumo Lift clips to shirt and vibrates when you slouch. Trains better posture through immediate feedback, helping users develop awareness of their positioning."
+    },
+    {
+      "id": 46,
+      "category": "Applications",
+      "question": "Safety & Visibility",
+      "hint": "Wearable for hazardous environments",
+      "answer": "Smart clothing that enhances safety through visibility (LEDs for cyclists), environmental monitoring (gas detection), or emergency alerts.",
+      "example": "Cycling jacket with turn-signal LEDs controlled by handlebar remote, making intentions visible to cars. Brake lights activate automatically when slowing."
+    },
+    {
+      "id": 47,
+      "category": "Applications",
+      "question": "Communication Wearables",
+      "hint": "Expressing information through clothing",
+      "answer": "Clothing that communicates information, emotions, or data to others through visual displays, color changes, or patterns.",
+      "example": "Mood sweater that changes LED colors based on biometric data, expressing wearer's emotional state visibly to others in social context."
+    },
+    {
+      "id": 48,
+      "category": "Applications",
+      "question": "Assistive Technology",
+      "hint": "Wearables for accessibility",
+      "answer": "Smart textiles that help people with disabilities navigate, communicate, or perform daily activities more independently.",
+      "example": "Haptic navigation vest vibrates in different patterns to indicate direction for visually impaired users, translating GPS to physical sensation."
+    },
+    {
+      "id": 49,
+      "category": "Applications",
+      "question": "Environmental Sensing",
+      "hint": "Monitoring surroundings",
+      "answer": "Wearables that measure air quality, temperature, UV exposure, or other environmental factors, alerting wearer to potential hazards.",
+      "example": "Wearable with air quality sensor alerts to pollution levels, helping people with asthma or allergies avoid triggering environments."
+    },
+    {
+      "id": 50,
+      "category": "Applications",
+      "question": "Performance Art",
+      "hint": "Technology as artistic medium",
+      "answer": "Using smart textiles in dance, theater, or performance art to create visual effects, enhance expression, or create interactive experiences.",
+      "example": "Dance costume with motion-reactive LEDs and accelerometers creates flowing light patterns that respond to dancer's movements in real-time."
+    },
+    {
+      "id": 51,
+      "category": "Tools & Platforms",
+      "question": "Arduino IDE",
+      "hint": "Programming environment",
+      "answer": "Software used to write, compile, and upload code to Arduino-based wearable platforms like LilyPad and Flora. Uses C++ programming language.",
+      "example": "Write code in Arduino IDE to make LEDs blink in patterns, read sensor data, and control wearable behavior. Upload code via USB to your LilyPad board."
+    },
+    {
+      "id": 52,
+      "category": "Tools & Platforms",
+      "question": "Multimeter",
+      "hint": "Essential testing tool",
+      "answer": "Electronic tool that measures voltage, current, and resistance. Critical for testing conductive thread connections, batteries, and troubleshooting e-textile circuits.",
+      "example": "Use multimeter's resistance mode to verify sewn connections have low resistance (~5-10Ω), indicating good electrical contact before powering circuit."
+    },
+    {
+      "id": 53,
+      "category": "Tools & Platforms",
+      "question": "Fritzing",
+      "hint": "Circuit design software",
+      "answer": "Open-source tool for designing and documenting electronic circuits visually. Includes libraries for wearable components like LilyPad and Flora.",
+      "example": "Design your e-textile circuit in Fritzing before sewing. Drag components onto canvas, draw connections, generate schematic and shopping list."
+    },
+    {
+      "id": 54,
+      "category": "Tools & Platforms",
+      "question": "CircuitPython",
+      "hint": "Beginner-friendly programming",
+      "answer": "Simplified Python implementation for microcontrollers. Easier than Arduino C++, with instant code updates when you save the file—no compilation or uploading.",
+      "example": "Edit code.py directly on board (appears as USB drive), save file, code runs immediately. Great for beginners and rapid prototyping."
+    },
+    {
+      "id": 55,
+      "category": "Tools & Platforms",
+      "question": "Micro:bit",
+      "hint": "Educational wearable platform",
+      "answer": "Small programmable board with built-in sensors, LED display, and buttons. Programmed using visual blocks or Python, excellent for beginners.",
+      "example": "Micro:bit in wearable pouch can display scrolling messages on LED grid, detect taps with accelerometer, all programmed with drag-drop blocks—no text coding."
+    },
+    {
+      "id": 56,
+      "category": "Tools & Platforms",
+      "question": "Kobakant",
+      "hint": "E-textile encyclopedia",
+      "answer": "Comprehensive online resource documenting e-textile techniques, materials, and construction methods. Created by e-textile pioneers Mika Satomi and Hannah Perner-Wilson.",
+      "example": "Need to build a bend sensor? Kobakant's 'How to Get What You Want' shows multiple approaches with materials, testing, and construction details."
+    },
+    {
+      "id": 57,
+      "category": "Tools & Platforms",
+      "question": "Adafruit Learn",
+      "hint": "Tutorial library",
+      "answer": "Extensive collection of wearable electronics tutorials from Adafruit Industries. Step-by-step guides with code, diagrams, and shopping lists for Flora projects.",
+      "example": "Learn.adafruit.com has dozens of wearable projects from beginner LED bracelets to advanced NeoPixel dresses with detailed instructions and support."
+    },
+    {
+      "id": 58,
+      "category": "Tools & Platforms",
+      "question": "SparkFun Learn",
+      "hint": "Educational resources",
+      "answer": "SparkFun's learning platform with LilyPad tutorials, hookup guides for components, and educational curricula for teaching e-textiles.",
+      "example": "SparkFun's LilyPad basics guide walks through first circuit, sewing techniques, and common troubleshooting issues for beginners."
+    },
+    {
+      "id": 59,
+      "category": "Tools & Platforms",
+      "question": "NeoPixel Library",
+      "hint": "Controlling addressable LEDs",
+      "answer": "Arduino library for controlling individually addressable RGB LEDs. Simplifies complex timing requirements, enabling easy creation of colorful patterns and animations.",
+      "example": "NeoPixel library lets you set each LED's color with simple commands like 'setPixelColor(0, 255, 0, 0)' for red, handling complex timing automatically."
+    },
+    {
+      "id": 60,
+      "category": "Tools & Platforms",
+      "question": "Bluetooth LE",
+      "hint": "Wireless wearable connectivity",
+      "answer": "Low-energy Bluetooth protocol used to connect wearables to phones or other devices. Enables data transfer and control while preserving battery life.",
+      "example": "Add Bluetooth module to wearable to send sensor data to phone app, or receive commands from phone to control LED colors wirelessly."
+    }
+  ]
+}

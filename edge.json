@@ -1,0 +1,484 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "category": "Edge Computing Concepts",
+      "question": "Edge Computing",
+      "hint": "Processing at the source",
+      "answer": "Computing paradigm that brings computation and data storage closer to data sources rather than relying on centralized cloud data centers. Reduces latency, bandwidth usage, and enables real-time processing.",
+      "example": "A factory's vision system analyzing product defects on-site in milliseconds, rather than uploading video to cloud and waiting for response—critical for real-time quality control."
+    },
+    {
+      "id": 2,
+      "category": "Edge Computing Concepts",
+      "question": "Fog Computing",
+      "hint": "Between edge and cloud",
+      "answer": "Distributed computing infrastructure that extends cloud capabilities to the network edge, creating a hierarchical architecture between devices and cloud. Coined by Cisco.",
+      "example": "Smart city traffic lights processing locally (edge), aggregating data at district level (fog), then sending insights to city-wide control center (cloud)."
+    },
+    {
+      "id": 3,
+      "category": "Edge Computing Concepts",
+      "question": "Cloudlet",
+      "hint": "Small cloud nearby",
+      "answer": "Small-scale cloud datacenter located at the network edge to serve mobile devices with low latency. Provides cloud-like resources geographically close to users.",
+      "example": "A cloudlet in a mall providing AR shopping experiences to visitors' phones without lag, while full cloud is too distant for real-time interaction."
+    },
+    {
+      "id": 4,
+      "category": "Edge Computing Concepts",
+      "question": "Multi-Access Edge Computing (MEC)",
+      "hint": "Computing in 5G networks",
+      "answer": "Edge computing integrated into cellular network infrastructure (at base stations or aggregation points). Enables ultra-low latency applications for mobile users.",
+      "example": "5G networks running edge servers at cell towers to enable cloud gaming or AR with under 10ms latency for mobile devices."
+    },
+    {
+      "id": 5,
+      "category": "Edge Computing Concepts",
+      "question": "Latency Reduction",
+      "hint": "Faster response time",
+      "answer": "Primary benefit of edge computing: reducing time between request and response by processing data close to source. Critical for real-time applications requiring immediate feedback.",
+      "example": "Autonomous vehicle must detect obstacles and react in milliseconds—cloud round-trip of 100ms is too slow, but edge processing achieves <10ms."
+    },
+    {
+      "id": 6,
+      "category": "Edge Computing Concepts",
+      "question": "Bandwidth Optimization",
+      "hint": "Reducing data transfer",
+      "answer": "Using edge computing to filter, aggregate, or process data locally, sending only relevant results to cloud. Reduces network costs and congestion.",
+      "example": "Security camera system with 50 cameras: edge processes video and sends only 'person detected' events to cloud, not 24/7 video streams—99% bandwidth reduction."
+    },
+    {
+      "id": 7,
+      "category": "Edge Computing Concepts",
+      "question": "Data Locality",
+      "hint": "Keep data where it's created",
+      "answer": "Principle of processing data near where it's generated, avoiding unnecessary data movement. Improves performance and can address privacy/compliance requirements.",
+      "example": "Hospital patient monitoring processes vital signs at bedside, triggering local alarms instantly, storing only summaries remotely—keeps sensitive data on-premises."
+    },
+    {
+      "id": 8,
+      "category": "Edge Computing Concepts",
+      "question": "Edge Node",
+      "hint": "Device at the edge",
+      "answer": "Computing device deployed at the edge of the network, close to data sources. Can be gateway, embedded computer, or specialized edge server running applications.",
+      "example": "Raspberry Pi in each retail store running inventory tracking software, analyzing shelf camera feeds locally before reporting stock levels to headquarters."
+    },
+    {
+      "id": 9,
+      "category": "Edge Computing Concepts",
+      "question": "Edge Gateway",
+      "hint": "Bridge between devices and network",
+      "answer": "Device that connects edge sensors/devices to network, often performing protocol translation, data aggregation, and local processing before cloud transmission.",
+      "example": "Industrial gateway collects data from 100 Modbus sensors, converts to MQTT, aggregates readings, and forwards to cloud—sensors don't need direct internet access."
+    },
+    {
+      "id": 10,
+      "category": "Edge Computing Concepts",
+      "question": "Edge Intelligence",
+      "hint": "Smart decisions at the edge",
+      "answer": "Running AI/ML models at the edge for local decision-making without cloud dependency. Enables intelligent responses with minimal latency and bandwidth.",
+      "example": "Smart speaker recognizes wake word ('Hey Google') locally on device using TinyML, only sending subsequent speech to cloud for complex processing."
+    },
+    {
+      "id": 11,
+      "category": "Edge Computing Concepts",
+      "question": "Offline Operation",
+      "hint": "Working without cloud",
+      "answer": "Edge system's ability to function autonomously when cloud connectivity is unavailable. Critical for reliability in remote or unreliable network conditions.",
+      "example": "Agricultural drone continues mapping fields and collecting data using onboard edge processing even in areas with no cellular coverage, syncing when connection restored."
+    },
+    {
+      "id": 12,
+      "category": "Edge Computing Concepts",
+      "question": "Edge-Cloud Continuum",
+      "hint": "Spectrum of computing locations",
+      "answer": "Concept that computing exists on a spectrum from device to edge to cloud, with workloads distributed across this continuum based on requirements.",
+      "example": "Smart home: device-level (motion sensor triggers light), edge-level (local automation rules), cloud-level (analyzing energy usage patterns across months)."
+    },
+    {
+      "id": 13,
+      "category": "IoT Fundamentals",
+      "question": "IoT Device",
+      "hint": "Connected thing",
+      "answer": "Physical object embedded with sensors, software, and network connectivity to collect and exchange data. Forms the foundation of IoT systems.",
+      "example": "Smart thermostat measuring temperature, running local automation logic, and connecting to cloud for remote control and learning algorithms."
+    },
+    {
+      "id": 14,
+      "category": "IoT Fundamentals",
+      "question": "Sensor",
+      "hint": "Measures physical phenomena",
+      "answer": "Device that detects and measures physical properties (temperature, pressure, light, motion) and converts to electrical signals that computers can process.",
+      "example": "DHT22 sensor measures temperature and humidity in a room, converting readings to digital values an ESP32 can read and transmit."
+    },
+    {
+      "id": 15,
+      "category": "IoT Fundamentals",
+      "question": "Actuator",
+      "hint": "Creates physical action",
+      "answer": "Device that converts electrical signals into physical action, controlled by IoT system to affect environment. Output counterpart to sensors (input).",
+      "example": "Smart irrigation system uses moisture sensors as input, then controls valve actuators to water plants only when soil is dry."
+    },
+    {
+      "id": 16,
+      "category": "IoT Fundamentals",
+      "question": "MQTT",
+      "hint": "Lightweight messaging protocol",
+      "answer": "Message Queuing Telemetry Transport: lightweight publish-subscribe protocol designed for IoT devices with limited resources and unreliable networks.",
+      "example": "100 sensors publish temperature readings to topics like 'floor2/room5/temp', dashboard subscribes to all topics, receiving updates without sensors knowing about dashboard."
+    },
+    {
+      "id": 17,
+      "category": "IoT Fundamentals",
+      "question": "CoAP",
+      "hint": "Constrained Application Protocol",
+      "answer": "Specialized web transfer protocol for constrained IoT devices, similar to HTTP but optimized for low power and lossy networks. Uses UDP instead of TCP.",
+      "example": "Battery-powered environmental sensor uses CoAP to send readings—simpler than HTTP, works over unreliable mesh networks, uses 10x less power than TCP."
+    },
+    {
+      "id": 18,
+      "category": "IoT Fundamentals",
+      "question": "LoRaWAN",
+      "hint": "Long range wide area network",
+      "answer": "Low-power wide-area network protocol enabling long-range wireless communication (up to 10km) for IoT devices with years of battery life.",
+      "example": "Agricultural sensors across a farm transmit soil data using LoRaWAN—one gateway covers entire property, sensors run on coin cells for 2+ years."
+    },
+    {
+      "id": 19,
+      "category": "IoT Fundamentals",
+      "question": "NB-IoT",
+      "hint": "Narrowband cellular IoT",
+      "answer": "Cellular network technology designed for IoT devices requiring small amounts of data, long battery life, and wide coverage using existing cell infrastructure.",
+      "example": "Smart water meters use NB-IoT to report usage monthly—works in basements, 10-year battery life, leverages existing cellular networks."
+    },
+    {
+      "id": 20,
+      "category": "IoT Fundamentals",
+      "question": "Bluetooth Low Energy (BLE)",
+      "hint": "Short-range low power wireless",
+      "answer": "Power-optimized version of Bluetooth for short-range IoT communication. Designed for devices that transmit small amounts of data infrequently.",
+      "example": "Fitness tracker uses BLE to sync with phone—uses 100x less power than classic Bluetooth, enabling months of battery life on small battery."
+    },
+    {
+      "id": 21,
+      "category": "IoT Fundamentals",
+      "question": "Digital Twin",
+      "hint": "Virtual replica of physical thing",
+      "answer": "Virtual representation of physical IoT device or system, updated in real-time with sensor data. Enables simulation, monitoring, and predictive maintenance.",
+      "example": "Factory maintains digital twin of production line—sensor data updates virtual model, enabling simulation of changes before implementing on real equipment."
+    },
+    {
+      "id": 22,
+      "category": "IoT Fundamentals",
+      "question": "Device Shadow",
+      "hint": "Cloud representation of device state",
+      "answer": "Persistent virtual representation of IoT device in cloud, storing last known state and desired state. Enables control even when device is offline.",
+      "example": "Smart light's shadow stores 'desired: on, brightness: 75%'—when light reconnects after being offline, it syncs to desired state from shadow."
+    },
+    {
+      "id": 23,
+      "category": "IoT Fundamentals",
+      "question": "Over-the-Air (OTA) Updates",
+      "hint": "Wireless firmware updates",
+      "answer": "Mechanism to remotely update firmware/software on deployed IoT devices via network connection. Critical for fixing bugs and adding features post-deployment.",
+      "example": "Security camera manufacturer pushes OTA update to 10,000 cameras fixing vulnerability—without OTA, would need technicians visiting each location."
+    },
+    {
+      "id": 24,
+      "category": "IoT Fundamentals",
+      "question": "IoT Gateway",
+      "hint": "Local network bridge",
+      "answer": "Local device connecting IoT sensors/devices to internet, performing protocol translation, edge processing, and security functions.",
+      "example": "Zigbee smart home hub acts as gateway—battery-powered sensors use low-power Zigbee to hub, hub connects to internet via WiFi/Ethernet for cloud access."
+    },
+    {
+      "id": 25,
+      "category": "Distributed Architecture",
+      "question": "CAP Theorem",
+      "hint": "Can only have 2 of 3",
+      "answer": "Fundamental principle: distributed system can provide only two of: Consistency (all nodes see same data), Availability (system responds to requests), Partition tolerance (works despite network failures).",
+      "example": "During network split, edge system chooses: remain available with potentially stale data (AP), or refuse requests to maintain consistency (CP). Cannot have all three."
+    },
+    {
+      "id": 26,
+      "category": "Distributed Architecture",
+      "question": "Eventual Consistency",
+      "hint": "Consistent given enough time",
+      "answer": "Consistency model where system guarantees data will converge to consistent state eventually, but may be temporarily inconsistent. Trades immediate consistency for availability.",
+      "example": "Edge device updates record locally (immediate availability), syncs to cloud when connected—other locations see update within minutes, not milliseconds."
+    },
+    {
+      "id": 27,
+      "category": "Distributed Architecture",
+      "question": "Consensus",
+      "hint": "Agreeing on single truth",
+      "answer": "Process by which distributed nodes agree on a single data value or decision. Fundamental for coordination in distributed edge systems.",
+      "example": "Three edge servers need to elect leader to coordinate work—use consensus algorithm (Raft, Paxos) to agree which one becomes leader even if some nodes fail."
+    },
+    {
+      "id": 28,
+      "category": "Distributed Architecture",
+      "question": "Replication",
+      "hint": "Copying data across nodes",
+      "answer": "Storing copies of data across multiple edge nodes for redundancy, availability, and performance. Requires strategy for keeping replicas synchronized.",
+      "example": "Store database runs on three edge servers—if one fails, others continue serving requests. Changes replicate to all three for consistency."
+    },
+    {
+      "id": 29,
+      "category": "Distributed Architecture",
+      "question": "Load Balancing",
+      "hint": "Distributing work evenly",
+      "answer": "Distributing workload across multiple edge nodes to optimize resource use, maximize throughput, and avoid overloading single node.",
+      "example": "Video analytics requests distributed across 5 edge servers—each processes 20% of camera feeds, preventing any single server from becoming bottleneck."
+    },
+    {
+      "id": 30,
+      "category": "Distributed Architecture",
+      "question": "Failover",
+      "hint": "Automatic backup takeover",
+      "answer": "Automatic switching to redundant edge node when primary node fails, ensuring continuous service availability.",
+      "example": "Primary edge gateway fails—within seconds, standby gateway detects failure and takes over, IoT devices reconnect automatically with minimal disruption."
+    },
+    {
+      "id": 31,
+      "category": "Distributed Architecture",
+      "question": "Redundancy",
+      "hint": "Backup systems for reliability",
+      "answer": "Deploying duplicate components or systems to ensure service continues if primary fails. Increases reliability but adds cost.",
+      "example": "Critical industrial system has two edge servers running same workload—if primary hardware fails, secondary continues processing without interruption."
+    },
+    {
+      "id": 32,
+      "category": "Distributed Architecture",
+      "question": "Partition Tolerance",
+      "hint": "Working despite network splits",
+      "answer": "Distributed system's ability to continue operating when network failures split system into isolated groups of nodes.",
+      "example": "Factory with 3 buildings loses inter-building network—each building's edge system continues working independently, resynchronizes when network restored."
+    },
+    {
+      "id": 33,
+      "category": "Distributed Architecture",
+      "question": "Service Discovery",
+      "hint": "Finding available services",
+      "answer": "Mechanism for services to automatically find and connect to each other in distributed system without hard-coded addresses.",
+      "example": "Edge application needs database—service discovery (Consul, etcd) provides current database address, updates automatically if database moves to different node."
+    },
+    {
+      "id": 34,
+      "category": "Distributed Architecture",
+      "question": "Container Orchestration",
+      "hint": "Managing containerized apps",
+      "answer": "Automating deployment, scaling, and management of containerized applications across cluster of edge nodes. Kubernetes is dominant platform.",
+      "example": "K3s (lightweight Kubernetes) manages 50 edge nodes—automatically deploys applications, restarts failed containers, and scales workloads based on demand."
+    },
+    {
+      "id": 35,
+      "category": "Distributed Architecture",
+      "question": "Edge Caching",
+      "hint": "Storing frequently accessed data",
+      "answer": "Keeping copies of frequently accessed data at edge nodes to reduce latency and cloud bandwidth. Data served locally when cached, fetched from cloud on cache miss.",
+      "example": "Content delivery network (CDN) caches website assets at edge servers worldwide—users get fast page loads from nearby edge, not distant origin server."
+    },
+    {
+      "id": 36,
+      "category": "Distributed Architecture",
+      "question": "Data Synchronization",
+      "hint": "Keeping copies aligned",
+      "answer": "Process of ensuring data consistency between edge and cloud, handling conflicts when same data modified in multiple locations.",
+      "example": "Mobile app makes edits offline on edge device—when reconnects, sync protocol merges local changes with cloud updates, resolving conflicts using timestamps."
+    },
+    {
+      "id": 37,
+      "category": "Edge AI & ML",
+      "question": "Model Quantization",
+      "hint": "Reducing numerical precision",
+      "answer": "Technique to reduce ML model size and improve inference speed by using lower-precision numbers (e.g., 8-bit integers instead of 32-bit floats). Minimal accuracy loss.",
+      "example": "Image classification model: 32-bit floats (100MB, 200ms inference) → 8-bit quantized (25MB, 50ms inference) on Raspberry Pi with <1% accuracy drop."
+    },
+    {
+      "id": 38,
+      "category": "Edge AI & ML",
+      "question": "Model Pruning",
+      "hint": "Removing unnecessary weights",
+      "answer": "Removing weights and connections from neural network that contribute little to predictions, reducing model size while maintaining accuracy.",
+      "example": "Object detection model trained with 1M parameters—pruning removes 70% of weights that are near zero, resulting in 300K model that runs 3x faster."
+    },
+    {
+      "id": 39,
+      "category": "Edge AI & ML",
+      "question": "Knowledge Distillation",
+      "hint": "Teacher-student training",
+      "answer": "Training small 'student' model to mimic large 'teacher' model's behavior. Student learns from teacher's outputs, not just original training data.",
+      "example": "Large BERT model (340MB) teaches small model (17MB) for text classification—student achieves 95% of teacher's accuracy at 20x smaller size for edge deployment."
+    },
+    {
+      "id": 40,
+      "category": "Edge AI & ML",
+      "question": "TinyML",
+      "hint": "ML on microcontrollers",
+      "answer": "Machine learning on ultra-low-power devices like microcontrollers (Arduino, ESP32), enabling intelligent sensors running on coin cell batteries for years.",
+      "example": "Keyword detection on Arduino Nano 33 using TensorFlow Lite Micro—recognizes wake word using <1mW power, enabling always-listening device on battery."
+    },
+    {
+      "id": 41,
+      "category": "Edge AI & ML",
+      "question": "Federated Learning",
+      "hint": "Collaborative learning without sharing data",
+      "answer": "Training ML models across distributed edge devices without centralizing data. Devices train locally, only model updates shared with central server.",
+      "example": "Smartphone keyboard learns from typing without uploading messages—each phone trains locally on user's text, only sends model improvements to improve global model."
+    },
+    {
+      "id": 42,
+      "category": "Edge AI & ML",
+      "question": "On-Device Training",
+      "hint": "Learning directly on edge",
+      "answer": "Continuously adapting ML model on edge device using new local data, enabling personalization and adaptation without cloud connection.",
+      "example": "Smart speaker adapts to household's unique voice patterns—continuously learns on device without sending audio to cloud, improving accuracy over time."
+    },
+    {
+      "id": 43,
+      "category": "Edge AI & ML",
+      "question": "Model Optimization",
+      "hint": "Making models edge-ready",
+      "answer": "Combination of techniques (quantization, pruning, compilation) to prepare ML models for efficient execution on resource-constrained edge hardware.",
+      "example": "TensorFlow model optimized for Raspberry Pi: graph optimization + quantization + TFLite conversion → 5x faster inference and 4x smaller size."
+    },
+    {
+      "id": 44,
+      "category": "Edge AI & ML",
+      "question": "Inference Latency",
+      "hint": "Time from input to output",
+      "answer": "Time required for ML model to process input and produce prediction. Critical metric for real-time edge applications.",
+      "example": "Autonomous vehicle needs <10ms latency—cloud round-trip ~100ms too slow, edge inference with optimized model achieves 5ms for real-time obstacle detection."
+    },
+    {
+      "id": 45,
+      "category": "Edge AI & ML",
+      "question": "Edge TPU",
+      "hint": "Tensor Processing Unit at edge",
+      "answer": "Specialized hardware accelerator for ML inference designed for edge deployment. Google Coral USB Accelerator brings TPU acceleration to edge devices.",
+      "example": "MobileNet object detection: 6 FPS on Raspberry Pi CPU → 100 FPS with Coral Edge TPU attached, enabling real-time multi-camera vision systems."
+    },
+    {
+      "id": 46,
+      "category": "Edge AI & ML",
+      "question": "Neural Processing Unit (NPU)",
+      "hint": "AI accelerator chip",
+      "answer": "Specialized processor optimized for neural network operations, commonly integrated into edge devices for efficient ML inference.",
+      "example": "Smartphone NPU enables real-time portrait mode and face detection—camera processing happens locally at 30 FPS without draining battery or needing cloud."
+    },
+    {
+      "id": 47,
+      "category": "Edge AI & ML",
+      "question": "Edge Model Update",
+      "hint": "Refreshing deployed models",
+      "answer": "Process of updating ML models deployed on edge devices, typically using OTA mechanisms to improve accuracy or add capabilities post-deployment.",
+      "example": "Smart camera fleet receives updated object detection model via OTA—improves accuracy from 92% to 95% without hardware replacement or site visits."
+    },
+    {
+      "id": 48,
+      "category": "Edge AI & ML",
+      "question": "Hybrid Inference",
+      "hint": "Split between edge and cloud",
+      "answer": "Architecture where part of ML inference happens at edge and part in cloud, optimizing for latency, accuracy, and resource constraints.",
+      "example": "Voice assistant: wake word detection at edge (TinyML), speech recognition in cloud (complex model)—minimizes latency for activation, leverages cloud for accuracy."
+    },
+    {
+      "id": 49,
+      "category": "Applications & Use Cases",
+      "question": "Smart City",
+      "hint": "Connected urban infrastructure",
+      "answer": "Urban infrastructure using IoT sensors and edge computing for traffic management, energy optimization, public safety, and quality of life improvements.",
+      "example": "Barcelona smart city: edge-processed parking sensors guide drivers to spots, adaptive street lighting saves 30% energy, real-time air quality monitoring alerts residents."
+    },
+    {
+      "id": 50,
+      "category": "Applications & Use Cases",
+      "question": "Industry 4.0",
+      "hint": "Smart manufacturing",
+      "answer": "Fourth industrial revolution combining IoT, edge AI, and cyber-physical systems for intelligent, adaptive manufacturing with real-time optimization.",
+      "example": "Factory uses edge computing for real-time quality inspection, predictive maintenance on machines, and adaptive production scheduling—reducing defects by 40%."
+    },
+    {
+      "id": 51,
+      "category": "Applications & Use Cases",
+      "question": "Predictive Maintenance",
+      "hint": "Fix before it breaks",
+      "answer": "Using edge sensors and ML to predict equipment failures before they occur, enabling scheduled maintenance and avoiding costly downtime.",
+      "example": "Wind turbines with vibration sensors and edge ML detect bearing degradation weeks before failure—maintenance scheduled during low-wind periods, avoiding emergency repairs."
+    },
+    {
+      "id": 52,
+      "category": "Applications & Use Cases",
+      "question": "Autonomous Vehicles",
+      "hint": "Self-driving cars",
+      "answer": "Vehicles using extensive edge computing for real-time sensor fusion, object detection, and path planning—cloud dependency would create unacceptable latency.",
+      "example": "Tesla Full Self-Driving Computer processes 8 camera feeds with custom neural network accelerator, making driving decisions in <10ms without cloud connection."
+    },
+    {
+      "id": 53,
+      "category": "Applications & Use Cases",
+      "question": "Retail Analytics",
+      "hint": "In-store intelligence",
+      "answer": "Using edge computing for real-time analysis of customer behavior, inventory tracking, and store operations without streaming sensitive video to cloud.",
+      "example": "Smart shelves with weight sensors and edge vision detect out-of-stock items in real-time, automatically triggering restocking—inventory accuracy improves 25%."
+    },
+    {
+      "id": 54,
+      "category": "Applications & Use Cases",
+      "question": "Smart Home",
+      "hint": "Intelligent residence",
+      "answer": "Home automation using edge computing for privacy-preserving local control, reduced latency for interactions, and functionality during internet outages.",
+      "example": "Google Nest runs face recognition at edge—identifies family members locally without sending video to cloud, maintaining privacy while enabling personalized automation."
+    },
+    {
+      "id": 55,
+      "category": "Applications & Use Cases",
+      "question": "Healthcare Monitoring",
+      "hint": "Remote patient tracking",
+      "answer": "Using edge-processed wearable and home sensors for continuous health monitoring with immediate alerts for concerning patterns, keeping sensitive data local.",
+      "example": "Cardiac patient wears edge device analyzing ECG in real-time—detects arrhythmia and alerts emergency services in seconds, processes data locally per HIPAA requirements."
+    },
+    {
+      "id": 56,
+      "category": "Applications & Use Cases",
+      "question": "Content Delivery Network (CDN)",
+      "hint": "Distributed content serving",
+      "answer": "Distributed edge servers caching web content close to users, reducing load times and origin server load. Classic edge computing application.",
+      "example": "Netflix CDN caches movies at thousands of edge locations—users stream from nearby server (10ms latency) instead of origin in California (100ms latency)."
+    },
+    {
+      "id": 57,
+      "category": "Applications & Use Cases",
+      "question": "Video Analytics",
+      "hint": "Intelligent video processing",
+      "answer": "Using edge AI to analyze video streams in real-time for object detection, tracking, and behavior analysis without uploading raw video to cloud.",
+      "example": "Airport security: edge processes 500 camera feeds for unattended baggage detection—only alerts sent to cloud, not video, saving 99% bandwidth and improving privacy."
+    },
+    {
+      "id": 58,
+      "category": "Applications & Use Cases",
+      "question": "AR/VR Streaming",
+      "hint": "Low-latency immersive media",
+      "answer": "Using edge computing (MEC) to render and stream augmented/virtual reality content with <20ms latency required for comfortable immersive experiences.",
+      "example": "Cloud gaming on 5G network uses edge servers at cell towers—game rendering happens 10km away instead of 1000km, achieving 15ms latency for responsive gameplay."
+    },
+    {
+      "id": 59,
+      "category": "Applications & Use Cases",
+      "question": "Agriculture IoT",
+      "hint": "Precision farming",
+      "answer": "Edge computing in agriculture for real-time crop monitoring, automated irrigation, and drone-based crop analysis in areas with limited connectivity.",
+      "example": "Farm with LoRaWAN soil sensors uses edge gateway for automated irrigation decisions—works without internet, syncs analytics to cloud when connected."
+    },
+    {
+      "id": 60,
+      "category": "Applications & Use Cases",
+      "question": "Edge Security Monitoring",
+      "hint": "Threat detection at the edge",
+      "answer": "Running security analysis at edge to detect threats in real-time, reduce attack surface, and maintain operation during cloud connectivity issues.",
+      "example": "Industrial facility edge firewall analyzes all traffic locally—detects anomalies using ML, blocks threats immediately without waiting for cloud security service response."
+    }
+  ]
+}

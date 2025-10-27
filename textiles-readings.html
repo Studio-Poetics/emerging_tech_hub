@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Textiles Readings - Essential Resources for Designers | Emerging Tech Hub</title>
+    <meta name="description" content="Curated smart textiles readings for designers and makers. Research papers, tutorials, and resources on wearable design, e-textiles, and fashion technology.">
+    <meta name="keywords" content="smart textiles research, e-textiles, wearable design, fashion technology, soft circuits, conductive fabrics">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Paper Link Styling */
+.paper-link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+}
+
+.paper-link:hover {
+    background: var(--color-black);
+    transform: translateX(4px);
+}
+
+/* Papers Grid Styling */
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.paper-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.paper-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.paper-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.paper-meta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-gray-200);
+}
+
+.paper-meta span {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+}
+
+.paper-summary {
+    line-height: 1.8;
+}
+
+.paper-summary p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.paper-summary h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.paper-summary ul {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.paper-summary li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .papers-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Essential Resources</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Categories</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#wearable-design" class="experimental-nav-link">Wearable Design</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#materials" class="experimental-nav-link">Material Exploration</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#maker-projects" class="experimental-nav-link">Maker Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#applications" class="experimental-nav-link">Applications</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#creative-practice" class="experimental-nav-link">Creative Practice</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="textiles-landing.html">← Back to Textiles Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Reading Guide</div>
+                    <div class="info-box-content">
+                        Start with Wearable Design for conceptual foundations, then explore Maker Projects for hands-on tutorials.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Essential Smart Textiles Readings</h1>
+                <p class="fundamentals-subtitle">Curated resources on wearable design, e-textiles, and fashion technology for designers, makers, and creative technologists</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Wearable Design Section -->
+                <section class="content-section" id="wearable-design">
+                    <h2>👗 Wearable Design & Fashion Technology</h2>
+                    <p style="line-height: 1.8;">Research on designing for the body, wearable interaction patterns, and fashion technology innovations.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>Fashionable Technology: The Intersection of Design, Fashion, Science and Technology</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Sabine Seymour</span>
+                                <span class="year">2008</span>
+                                <span class="venue">Springer</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive guide to wearable technology design covering materials, construction, and creative applications. Essential reading for designers entering fashion tech.</p>
+                                <h4>Key Topics:</h4>
+                                <ul>
+                                    <li><strong>Design Thinking:</strong> Applying design methodology to wearable technology</li>
+                                    <li><strong>Material Innovation:</strong> Smart fabrics and responsive materials</li>
+                                    <li><strong>Body-Centered Design:</strong> Considering movement, comfort, and human factors</li>
+                                    <li><strong>Case Studies:</strong> Pioneering projects in fashion technology</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Framework for thinking about technology as fashion material and designing wearables that people actually want to wear.</p>
+                                <a href="https://www.springer.com/gp/book/9783211749524" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Wearable Computing: A First Step Toward Personal Imaging</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Steve Mann</span>
+                                <span class="year">1997</span>
+                                <span class="venue">IEEE Computer</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Foundational paper from wearable computing pioneer Steve Mann exploring principles of body-worn technology and its implications.</p>
+                                <h4>Key Concepts:</h4>
+                                <ul>
+                                    <li><strong>Always-On:</strong> Persistent access to computation and information</li>
+                                    <li><strong>Context Awareness:</strong> Technology that responds to environment and activity</li>
+                                    <li><strong>Augmentation:</strong> Enhancing human capabilities through wearables</li>
+                                    <li><strong>Design Principles:</strong> Considerations for body-worn devices</li>
+                                </ul>
+                                <h4>For Product Managers:</h4>
+                                <p>Historical perspective on wearable computing that informs current design decisions.</p>
+                                <a href="https://ieeexplore.ieee.org/document/566147" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Designing for Wearability</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Gemperle et al.</span>
+                                <span class="year">1998</span>
+                                <span class="venue">IEEE ISWC</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Research identifying key factors for comfortable and practical wearable devices through body mapping and user studies.</p>
+                                <h4>Design Guidelines:</h4>
+                                <ul>
+                                    <li><strong>Body Placement:</strong> Optimal locations for different types of wearables</li>
+                                    <li><strong>Form Language:</strong> Shapes that work with body contours</li>
+                                    <li><strong>Attachment Methods:</strong> Strategies for keeping devices secure and comfortable</li>
+                                    <li><strong>Movement:</strong> Designing for dynamic body motion</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Practical guidelines for making wearables that people can actually live with.</p>
+                                <a href="https://ieeexplore.ieee.org/document/729537" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Fashion and Technology: A Guide to Materials and Applications</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Aneta Genova</span>
+                                <span class="year">2016</span>
+                                <span class="venue">Bloomsbury</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Practical guide exploring the intersection of fashion design and technology, with focus on creative applications and designer workflows.</p>
+                                <h4>Key Areas:</h4>
+                                <ul>
+                                    <li><strong>Material Selection:</strong> Choosing smart textiles for design goals</li>
+                                    <li><strong>Prototyping:</strong> Methods for testing wearable concepts</li>
+                                    <li><strong>Fabrication:</strong> Construction techniques for electronic textiles</li>
+                                    <li><strong>Industry Trends:</strong> Commercial applications and market insights</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Bridges fashion design and technology with practical, maker-friendly approaches.</p>
+                                <a href="https://www.bloomsbury.com/us/fashion-and-technology-9781472527233/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Wearable Technology and the Body: Designing for Wearability</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Tromp & Nachtigall</span>
+                                <span class="year">2015</span>
+                                <span class="venue">Design Issues</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Design research examining how wearables become part of personal identity and daily life, with framework for body-centered design.</p>
+                                <h4>Design Considerations:</h4>
+                                <ul>
+                                    <li><strong>Body Integration:</strong> Designing technology that feels natural to wear</li>
+                                    <li><strong>Social Acceptability:</strong> Aesthetic and cultural factors in wearables</li>
+                                    <li><strong>Personal Expression:</strong> Wearables as extensions of identity</li>
+                                    <li><strong>Long-term Use:</strong> Designing for sustained adoption</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Critical framework for understanding what makes wearables succeed or fail in real life.</p>
+                                <a href="https://direct.mit.edu/desi/issue/31/2" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Material Exploration Section -->
+                <section class="content-section" id="materials">
+                    <h2>🧵 Material Exploration & Swatches</h2>
+                    <p style="line-height: 1.8;">Guides to conductive materials, fabric sensors, and smart textile components for hands-on exploration.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>How to Get What You Want: A Practical Guide to E-Textile Materials</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Kobakant (Mika Satomi & Hannah Perner-Wilson)</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">kobakant.at</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>The essential e-textile encyclopedia. Comprehensive documentation of materials, techniques, and construction methods from leading practitioners.</p>
+                                <h4>What's Included:</h4>
+                                <ul>
+                                    <li><strong>Material Swatches:</strong> Detailed testing and characterization of conductive materials</li>
+                                    <li><strong>Sensor Techniques:</strong> How to build pressure, bend, stretch, and proximity sensors</li>
+                                    <li><strong>Construction Methods:</strong> Sewing, knitting, weaving with electronics</li>
+                                    <li><strong>Troubleshooting:</strong> Common issues and solutions</li>
+                                </ul>
+                                <h4>For Makers:</h4>
+                                <p>The most comprehensive resource for hands-on e-textile making. Start here.</p>
+                                <a href="https://www.kobakant.at/DIY/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>E-Textiles: Research, Design, and Fabrication</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Katia Vega & Hugo Fuks</span>
+                                <span class="year">2014</span>
+                                <span class="venue">ACM Computers in Entertainment</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Survey of e-textile materials, fabrication techniques, and design approaches with focus on creative applications and maker methods.</p>
+                                <h4>Key Topics:</h4>
+                                <ul>
+                                    <li><strong>Material Properties:</strong> Understanding conductive threads, fabrics, and inks</li>
+                                    <li><strong>Fabrication Techniques:</strong> Sewing, printing, weaving, and embroidering circuits</li>
+                                    <li><strong>Design Patterns:</strong> Reusable approaches for common e-textile challenges</li>
+                                    <li><strong>Case Studies:</strong> Successful projects and lessons learned</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Overview of what's possible with e-textiles and how to achieve it.</p>
+                                <a href="https://dl.acm.org/doi/10.1145/2617959.2617970" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Textile Messages: Dispatches from the World of E-Textiles and Education</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Leah Buechley & Kylie Peppler (eds.)</span>
+                                <span class="year">2013</span>
+                                <span class="venue">Peter Lang Publishing</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Collection of essays on e-textiles in education, making, and creative expression. Includes tutorials and project ideas.</p>
+                                <h4>Featured Projects:</h4>
+                                <ul>
+                                    <li><strong>LilyPad Arduino:</strong> Origins and applications of the iconic e-textile platform</li>
+                                    <li><strong>Educational Applications:</strong> Using e-textiles to teach computing concepts</li>
+                                    <li><strong>Creative Communities:</strong> How e-textiles enable new forms of making</li>
+                                    <li><strong>Design Workshops:</strong> Practical activities and lesson plans</li>
+                                </ul>
+                                <h4>For Educators & Makers:</h4>
+                                <p>Inspiration and practical guidance for e-textile projects and workshops.</p>
+                                <a href="https://www.peterlang.com/document/1050768" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Soft Circuit Design Resources</h3>
+                            <div class="paper-meta">
+                                <span class="authors">High-Low Tech Group, MIT</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">MIT Media Lab</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Collection of tutorials, material tests, and project documentation from MIT's pioneering e-textile research group.</p>
+                                <h4>Resources Include:</h4>
+                                <ul>
+                                    <li><strong>Material Testing:</strong> Conductivity, washability, and durability studies</li>
+                                    <li><strong>Construction Techniques:</strong> Detailed how-tos for soft circuits</li>
+                                    <li><strong>Design Tools:</strong> Templates and planning resources</li>
+                                    <li><strong>Project Ideas:</strong> Inspirational examples with documentation</li>
+                                </ul>
+                                <h4>For Makers:</h4>
+                                <p>Research-backed practical guidance from leading e-textile lab.</p>
+                                <a href="https://highlowtech.org/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Smart Textiles: Materials and Applications</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Xiaoming Tao (ed.)</span>
+                                <span class="year">2001</span>
+                                <span class="venue">Woodhead Publishing</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Technical reference on smart textile materials covering conductive fibers, sensors, and functional fabrics with practical applications.</p>
+                                <h4>Material Categories:</h4>
+                                <ul>
+                                    <li><strong>Conductive Textiles:</strong> Metallic fibers, conductive polymers, and coated fabrics</li>
+                                    <li><strong>Sensing Textiles:</strong> Pressure, temperature, and chemical sensors</li>
+                                    <li><strong>Phase-Change Materials:</strong> Temperature-regulating fabrics</li>
+                                    <li><strong>Applications:</strong> Healthcare, sports, military, and fashion uses</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Understanding material capabilities helps inform design possibilities.</p>
+                                <a href="https://www.elsevier.com/books/smart-textiles/tao/978-1-85573-546-0" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Maker Projects Section -->
+                <section class="content-section" id="maker-projects">
+                    <h2>🛠️ Maker Projects & Tutorials</h2>
+                    <p style="line-height: 1.8;">Beginner-friendly e-textile projects, construction techniques, and community resources for hands-on learning.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>The LilyPad Arduino E-Sewing Kit</h3>
+                            <div class="paper-meta">
+                                <span class="authors">SparkFun Electronics</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">SparkFun Learn</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive tutorial series for LilyPad Arduino covering basics through advanced projects with step-by-step instructions.</p>
+                                <h4>Tutorial Topics:</h4>
+                                <ul>
+                                    <li><strong>Getting Started:</strong> First circuit with LEDs and conductive thread</li>
+                                    <li><strong>Sensors:</strong> Adding light, sound, and motion sensors</li>
+                                    <li><strong>Programming Basics:</strong> Visual and text-based coding for wearables</li>
+                                    <li><strong>Project Gallery:</strong> Illuminated clothing, interactive accessories</li>
+                                </ul>
+                                <h4>For Beginners:</h4>
+                                <p>Perfect starting point with clear instructions and troubleshooting support.</p>
+                                <a href="https://learn.sparkfun.com/tutorials/lilypad-basics-e-sewing" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Adafruit Wearables Learning System</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Adafruit Industries</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">learn.adafruit.com</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Extensive library of wearable electronics tutorials using Flora, Gemma, and other maker-friendly platforms.</p>
+                                <h4>Featured Projects:</h4>
+                                <ul>
+                                    <li><strong>LED Fashion:</strong> Illuminated dresses, bags, and accessories</li>
+                                    <li><strong>Sound-Reactive Wearables:</strong> Clothing that responds to music</li>
+                                    <li><strong>NeoPixel Projects:</strong> Programmable LED strips and patterns</li>
+                                    <li><strong>Power Management:</strong> Batteries and charging for wearables</li>
+                                </ul>
+                                <h4>For Makers:</h4>
+                                <p>Well-documented projects with shopping lists, diagrams, and code examples.</p>
+                                <a href="https://learn.adafruit.com/category/wearables" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>The Sewing Handbook: Wearable Electronics</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Kate Hartman</span>
+                                <span class="year">2014</span>
+                                <span class="venue">Maker Media</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Practical guide combining traditional sewing skills with electronics, covering construction techniques and design thinking.</p>
+                                <h4>Skills Covered:</h4>
+                                <ul>
+                                    <li><strong>Sewing Fundamentals:</strong> Basic skills for integrating electronics</li>
+                                    <li><strong>Circuit Design:</strong> Planning and documenting soft circuits</li>
+                                    <li><strong>Material Selection:</strong> Choosing fabrics and components</li>
+                                    <li><strong>Finishing:</strong> Making wearables durable and washable</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Bridges craft skills and technology for practical wearable making.</p>
+                                <a href="https://www.makershed.com/products/wearable-electronics" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Make: Wearable Electronics</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Kate Hartman</span>
+                                <span class="year">2014</span>
+                                <span class="venue">Maker Media</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Project-based book covering wearable electronics from concept to completion with focus on creative expression and communication.</p>
+                                <h4>Project Themes:</h4>
+                                <ul>
+                                    <li><strong>Communication Wearables:</strong> Devices for social interaction</li>
+                                    <li><strong>Sensing & Responding:</strong> Environmental and body-sensing projects</li>
+                                    <li><strong>Mobile Integration:</strong> Connecting wearables to smartphones</li>
+                                    <li><strong>Performance:</strong> Wearables for live performance and art</li>
+                                </ul>
+                                <h4>For Creative Technologists:</h4>
+                                <p>Focuses on expression and interaction design, not just technical skills.</p>
+                                <a href="https://www.oreilly.com/library/view/make-wearable-electronics/9781449336523/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Instructables: E-Textiles & Wearables</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Community-Contributed</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">Instructables</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Large collection of user-submitted e-textile tutorials covering beginner to advanced projects with detailed instructions.</p>
+                                <h4>Project Range:</h4>
+                                <ul>
+                                    <li><strong>Beginner Projects:</strong> Simple LED circuits and fabric sensors</li>
+                                    <li><strong>Intermediate:</strong> Arduino-powered interactive garments</li>
+                                    <li><strong>Advanced:</strong> Custom PCBs and complex wearable systems</li>
+                                    <li><strong>Community Support:</strong> Comments, tips, and modifications</li>
+                                </ul>
+                                <h4>For All Levels:</h4>
+                                <p>Diverse projects with varying complexity and creative approaches.</p>
+                                <a href="https://www.instructables.com/circuits/wearables/projects/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Applications Section -->
+                <section class="content-section" id="applications">
+                    <h2>💡 Applications & Case Studies</h2>
+                    <p style="line-height: 1.8;">Real-world examples from fashion, healthcare, sports, and interactive art demonstrating smart textile possibilities.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>Google Jacquard: Smart Fabric Platform</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Google ATAP</span>
+                                <span class="year">2015-Present</span>
+                                <span class="venue">Case Study</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Analysis of Google's smart fabric platform enabling touch-sensitive textiles at industrial scale through Levi's Commuter Jacket and other collaborations.</p>
+                                <h4>Key Innovations:</h4>
+                                <ul>
+                                    <li><strong>Woven Electronics:</strong> Conductive threads integrated into industrial looms</li>
+                                    <li><strong>Gesture Recognition:</strong> Touch interactions on fabric surfaces</li>
+                                    <li><strong>Commercial Viability:</strong> Making e-textiles scalable and washable</li>
+                                    <li><strong>Design Lessons:</strong> Balancing technology and fashion aesthetics</li>
+                                </ul>
+                                <h4>For Product Designers:</h4>
+                                <p>Case study in bringing e-textiles to mass market through fashion partnerships.</p>
+                                <a href="https://atap.google.com/jacquard/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Smart Textiles for Healthcare</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Van Langenhove (ed.)</span>
+                                <span class="year">2007</span>
+                                <span class="venue">Springer</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Survey of medical applications for smart textiles including monitoring, therapy, and assistive technologies.</p>
+                                <h4>Medical Applications:</h4>
+                                <ul>
+                                    <li><strong>Vital Signs Monitoring:</strong> ECG, respiration, and temperature sensing</li>
+                                    <li><strong>Compression Therapy:</strong> Pressure garments with embedded sensors</li>
+                                    <li><strong>Elderly Care:</strong> Fall detection and activity monitoring</li>
+                                    <li><strong>Design Challenges:</strong> Safety, comfort, and clinical validation</li>
+                                </ul>
+                                <h4>For Healthcare Designers:</h4>
+                                <p>Understanding medical requirements and opportunities for textile-based solutions.</p>
+                                <a href="https://www.springer.com/gp/book/9781402042744" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Athletic Performance Monitoring Textiles</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Hexoskin, Athos, OMSignal</span>
+                                <span class="year">2010-Present</span>
+                                <span class="venue">Industry Case Studies</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Analysis of commercial smart clothing for athletic performance monitoring, exploring product design and market adoption.</p>
+                                <h4>Product Features:</h4>
+                                <ul>
+                                    <li><strong>Biometric Sensing:</strong> Heart rate, breathing, and movement tracking</li>
+                                    <li><strong>Form Factor:</strong> Tight-fitting athletic wear for accurate sensing</li>
+                                    <li><strong>Data Analysis:</strong> Mobile apps for performance insights</li>
+                                    <li><strong>Market Challenges:</strong> Cost, comfort, and value proposition</li>
+                                </ul>
+                                <h4>For Product Managers:</h4>
+                                <p>Lessons in positioning, pricing, and designing smart textiles for consumer markets.</p>
+                                <a href="https://www.hexoskin.com/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>CuteCircuit: High Fashion Wearables</h3>
+                            <div class="paper-meta">
+                                <span class="authors">CuteCircuit Studio</span>
+                                <span class="year">2004-Present</span>
+                                <span class="venue">Fashion Case Study</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Analysis of CuteCircuit's haute couture wearable designs worn by celebrities including the famous Twitter Dress and Hug Shirt.</p>
+                                <h4>Design Philosophy:</h4>
+                                <ul>
+                                    <li><strong>Fashion First:</strong> Technology as design material, not gadget</li>
+                                    <li><strong>Interactive Fashion:</strong> Garments that respond to data and environment</li>
+                                    <li><strong>Craftsmanship:</strong> Combining couture techniques with electronics</li>
+                                    <li><strong>Cultural Impact:</strong> Making technology beautiful and desirable</li>
+                                </ul>
+                                <h4>For Fashion Technologists:</h4>
+                                <p>Inspiration for treating wearable technology as artistic expression.</p>
+                                <a href="https://cutecircuit.com/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Wearables in Performing Arts</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Various Artists & Practitioners</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">Performance Case Studies</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Collection of case studies exploring wearable technology in dance, theater, and performance art for enhanced expression.</p>
+                                <h4>Performance Applications:</h4>
+                                <ul>
+                                    <li><strong>Motion Sensing:</strong> Gestural control of sound, light, and video</li>
+                                    <li><strong>Visual Effects:</strong> LED costumes and responsive lighting</li>
+                                    <li><strong>Interactive Narratives:</strong> Audience participation through wearables</li>
+                                    <li><strong>Technical Challenges:</strong> Reliability, battery life, and performer comfort</li>
+                                </ul>
+                                <h4>For Artists & Designers:</h4>
+                                <p>Examples of wearables as creative tools for expression and storytelling.</p>
+                                <a href="https://www.kobakant.at/DIY/?cat=26" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Creative Practice Section -->
+                <section class="content-section" id="creative-practice">
+                    <h2>🎨 Creative Practice & Theory</h2>
+                    <p style="line-height: 1.8;">Theoretical frameworks and critical perspectives on smart textiles, wearables, and body-centered design.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>The Craftsman</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Richard Sennett</span>
+                                <span class="year">2008</span>
+                                <span class="venue">Yale University Press</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Philosophical exploration of craftsmanship and material engagement. Relevant for understanding hands-on e-textile making as practice.</p>
+                                <h4>Key Themes:</h4>
+                                <ul>
+                                    <li><strong>Material Dialogue:</strong> How working with materials generates knowledge</li>
+                                    <li><strong>Skill Development:</strong> Craft expertise through sustained practice</li>
+                                    <li><strong>Making as Thinking:</strong> Physical work as intellectual activity</li>
+                                    <li><strong>Quality:</strong> Pursuing excellence in material work</li>
+                                </ul>
+                                <h4>For Makers:</h4>
+                                <p>Elevates e-textile making from hobby to meaningful creative practice.</p>
+                                <a href="https://yalebooks.yale.edu/book/9780300151282/craftsman/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>When Code and Craft Collide</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Leah Buechley & Hannah Perner-Wilson</span>
+                                <span class="year">2012</span>
+                                <span class="venue">IEEE Computer</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Vision for e-textiles as meeting point between traditional craft and digital technology, creating new forms of making.</p>
+                                <h4>Core Ideas:</h4>
+                                <ul>
+                                    <li><strong>Democratizing Technology:</strong> Making electronics accessible through familiar materials</li>
+                                    <li><strong>Soft Computing:</strong> Alternative aesthetics and physical forms for computation</li>
+                                    <li><strong>Maker Culture:</strong> DIY electronics through textile craft traditions</li>
+                                    <li><strong>Educational Potential:</strong> Learning technology through creative making</li>
+                                </ul>
+                                <h4>For Educators & Makers:</h4>
+                                <p>Philosophical foundation for e-textiles as transformative practice.</p>
+                                <a href="https://ieeexplore.ieee.org/document/6331578" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Wearable Absence: Exploring Intelligent Textiles and Haptic Communication</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Joanna Berzowska</span>
+                                <span class="year">2005</span>
+                                <span class="venue">ACM SIGGRAPH</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Critical design research exploring smart textiles as medium for subtle communication and emotional expression.</p>
+                                <h4>Design Investigations:</h4>
+                                <ul>
+                                    <li><strong>Subtle Interaction:</strong> Communication through touch and sensation</li>
+                                    <li><strong>Emotional Textiles:</strong> Fabrics that express or evoke feelings</li>
+                                    <li><strong>Memory Materials:</strong> Clothing that remembers and responds</li>
+                                    <li><strong>Critical Making:</strong> Using design to explore technology implications</li>
+                                </ul>
+                                <h4>For Designers:</h4>
+                                <p>Provocative examples pushing beyond utility toward poetic interaction.</p>
+                                <a href="https://dl.acm.org/doi/10.1145/1089008.1089010" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Fashioning Technology: A DIY Intro to Smart Crafting</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Syuzi Pakhchyan</span>
+                                <span class="year">2008</span>
+                                <span class="venue">O'Reilly Media</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Practical and philosophical guide to fashion technology covering materials, techniques, and creative approaches for makers.</p>
+                                <h4>Topics Covered:</h4>
+                                <ul>
+                                    <li><strong>Material Literacy:</strong> Understanding smart textile capabilities</li>
+                                    <li><strong>DIY Techniques:</strong> Accessible methods for integrating electronics</li>
+                                    <li><strong>Design Process:</strong> From concept to wearable prototype</li>
+                                    <li><strong>Community:</strong> Connecting with fashion tech makers</li>
+                                </ul>
+                                <h4>For DIY Fashion Technologists:</h4>
+                                <p>Empowering approach to making wearable technology at home.</p>
+                                <a href="https://www.oreilly.com/library/view/fashioning-technology/9780596514389/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>XS Labs: Crafting Computational Textiles</h3>
+                            <div class="paper-meta">
+                                <span class="authors">XS Labs Research Group</span>
+                                <span class="year">Ongoing</span>
+                                <span class="venue">Concordia University</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Research exploring computational textiles through material experimentation, electronic embroidery, and shape-changing fabrics.</p>
+                                <h4>Research Areas:</h4>
+                                <ul>
+                                    <li><strong>Electronic Embroidery:</strong> Circuit creation through industrial embroidery</li>
+                                    <li><strong>Shape-Changing Textiles:</strong> Fabrics that transform in response to stimuli</li>
+                                    <li><strong>Material Computing:</strong> Computation embedded in textile structure</li>
+                                    <li><strong>Craft Methodologies:</strong> Research through making and material exploration</li>
+                                </ul>
+                                <h4>For Researchers & Advanced Makers:</h4>
+                                <p>Cutting-edge explorations in computational textile possibilities.</p>
+                                <a href="http://www.xslabs.net/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 4px solid var(--color-black);">
+                    <a href="textiles-landing.html" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-electric-blue); color: var(--color-white); text-decoration: none; font-weight: var(--font-bold); border-radius: 4px;">← Back to Smart Textiles Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

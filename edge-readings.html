@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Computing Readings - Essential Resources for Developers | Emerging Tech Hub</title>
+    <meta name="description" content="Curated edge computing readings for IoT developers and system architects. Research papers, tutorials, and resources on distributed systems, edge AI, and real-world deployments.">
+    <meta name="keywords" content="edge computing research, IoT, distributed systems, edge AI, TinyML, fog computing, sensor networks">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Paper Link Styling */
+.paper-link {
+    display: inline-block;
+    margin-top: var(--space-4);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+}
+
+.paper-link:hover {
+    background: var(--color-black);
+    transform: translateX(4px);
+}
+
+/* Papers Grid Styling */
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.paper-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.paper-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.paper-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.paper-meta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-gray-200);
+}
+
+.paper-meta span {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+}
+
+.paper-summary {
+    line-height: 1.8;
+}
+
+.paper-summary p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.paper-summary h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.paper-summary ul {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.paper-summary li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .papers-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Essential Resources</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Categories</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#fundamentals" class="experimental-nav-link">Edge Computing Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#iot-sensors" class="experimental-nav-link">IoT & Sensor Networks</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#distributed" class="experimental-nav-link">Distributed Systems</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#edge-ai" class="experimental-nav-link">Edge AI & ML</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#deployments" class="experimental-nav-link">Real-World Deployments</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="edge-landing.html">← Back to Edge Computing Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Reading Guide</div>
+                    <div class="info-box-content">
+                        Start with Fundamentals for core concepts, then explore Edge AI & ML for practical machine learning applications.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Essential Edge Computing Readings</h1>
+                <p class="fundamentals-subtitle">Curated resources on distributed systems, edge AI, IoT, and real-world deployments for developers, architects, and product managers</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Edge Computing Fundamentals Section -->
+                <section class="content-section" id="fundamentals">
+                    <h2>🌐 Edge Computing Fundamentals</h2>
+                    <p style="line-height: 1.8;">Core concepts, architectural patterns, and strategic understanding of when and why to use edge computing.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>The NIST Definition of Cloud Computing and Edge Computing Extensions</h3>
+                            <div class="paper-meta">
+                                <span class="authors">NIST Special Publication</span>
+                                <span class="year">2018</span>
+                                <span class="venue">NIST</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Official definition and framework for edge computing from the National Institute of Standards and Technology, establishing terminology and architectural models.</p>
+                                <h4>Key Definitions:</h4>
+                                <ul>
+                                    <li><strong>Edge Computing:</strong> Processing data near the source rather than in centralized cloud</li>
+                                    <li><strong>Latency Reduction:</strong> Minimizing round-trip time for time-sensitive applications</li>
+                                    <li><strong>Bandwidth Optimization:</strong> Reducing data transmission costs and network congestion</li>
+                                    <li><strong>Edge vs Cloud vs Fog:</strong> Clarifying the spectrum of distributed computing</li>
+                                </ul>
+                                <h4>For Architects:</h4>
+                                <p>Authoritative reference for understanding edge computing architecture and terminology.</p>
+                                <a href="https://www.nist.gov/programs-projects/nist-cloud-computing-program-nccp" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Edge Computing: Vision and Challenges</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Shi et al.</span>
+                                <span class="year">2016</span>
+                                <span class="venue">IEEE Internet of Things Journal</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive survey defining edge computing landscape, identifying challenges, and outlining research directions.</p>
+                                <h4>Core Concepts:</h4>
+                                <ul>
+                                    <li><strong>Computing at the Edge:</strong> Moving computation from cloud to network edge</li>
+                                    <li><strong>Benefits:</strong> Reduced latency, bandwidth savings, privacy, reliability</li>
+                                    <li><strong>Challenges:</strong> Resource constraints, heterogeneity, security</li>
+                                    <li><strong>Use Cases:</strong> IoT, mobile computing, content delivery, smart cities</li>
+                                </ul>
+                                <h4>For Product Managers:</h4>
+                                <p>Framework for evaluating when edge computing provides strategic advantage.</p>
+                                <a href="https://ieeexplore.ieee.org/document/7488250" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Fog Computing and Its Role in the Internet of Things</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Bonomi et al.</span>
+                                <span class="year">2012</span>
+                                <span class="venue">ACM</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Introduction to fog computing architecture extending cloud computing to the edge, focusing on IoT applications.</p>
+                                <h4>Fog Computing Model:</h4>
+                                <ul>
+                                    <li><strong>Distributed Architecture:</strong> Hierarchical compute between devices and cloud</li>
+                                    <li><strong>Location Awareness:</strong> Processing near data sources for context</li>
+                                    <li><strong>Low Latency:</strong> Real-time response for interactive applications</li>
+                                    <li><strong>IoT Integration:</strong> Supporting massive numbers of connected devices</li>
+                                </ul>
+                                <h4>For System Architects:</h4>
+                                <p>Understanding the fog computing paradigm and its relationship to edge and cloud.</p>
+                                <a href="https://dl.acm.org/doi/10.1145/2342509.2342513" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Edge Computing Use Cases & Deployment Scenarios</h3>
+                            <div class="paper-meta">
+                                <span class="authors">ETSI White Paper</span>
+                                <span class="year">2020</span>
+                                <span class="venue">ETSI MEC</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Industry whitepaper from European Telecommunications Standards Institute documenting practical edge computing deployments across industries.</p>
+                                <h4>Industry Applications:</h4>
+                                <ul>
+                                    <li><strong>Smart Cities:</strong> Traffic management, public safety, energy optimization</li>
+                                    <li><strong>Industrial IoT:</strong> Predictive maintenance, quality control, automation</li>
+                                    <li><strong>Retail:</strong> In-store analytics, inventory management, customer experience</li>
+                                    <li><strong>Healthcare:</strong> Patient monitoring, telemedicine, medical imaging</li>
+                                </ul>
+                                <h4>For Business Leaders:</h4>
+                                <p>Real-world examples demonstrating edge computing business value.</p>
+                                <a href="https://www.etsi.org/technologies/multi-access-edge-computing" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Edge Computing: A Primer</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Satyanarayanan</span>
+                                <span class="year">2017</span>
+                                <span class="venue">IEEE Computer</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Accessible introduction to edge computing from Carnegie Mellon pioneer, covering history, motivations, and future directions.</p>
+                                <h4>Historical Context:</h4>
+                                <ul>
+                                    <li><strong>From Cloud to Edge:</strong> Evolution of distributed computing architectures</li>
+                                    <li><strong>Mobile Computing:</strong> How smartphones drove edge computing needs</li>
+                                    <li><strong>Cloudlets:</strong> Early edge computing infrastructure concepts</li>
+                                    <li><strong>Future Vision:</strong> Pervasive edge computing and its implications</li>
+                                </ul>
+                                <h4>For Technologists:</h4>
+                                <p>Historical perspective informing current edge computing design decisions.</p>
+                                <a href="https://ieeexplore.ieee.org/document/7807196" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- IoT & Sensor Networks Section -->
+                <section class="content-section" id="iot-sensors">
+                    <h2>📡 IoT & Sensor Networks</h2>
+                    <p style="line-height: 1.8;">Connecting physical devices to digital systems with distributed sensors, communication protocols, and network architectures.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>Building the Internet of Things</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Maciej Kranz</span>
+                                <span class="year">2016</span>
+                                <span class="venue">Wiley</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Practical guide to IoT architecture and implementation covering device connectivity, data management, and business applications.</p>
+                                <h4>Key Topics:</h4>
+                                <ul>
+                                    <li><strong>IoT Architecture:</strong> Device, gateway, cloud, and application layers</li>
+                                    <li><strong>Connectivity:</strong> Selecting appropriate communication protocols</li>
+                                    <li><strong>Data Flow:</strong> Managing data from devices to insights</li>
+                                    <li><strong>Business Models:</strong> Creating value from IoT deployments</li>
+                                </ul>
+                                <h4>For IoT Developers:</h4>
+                                <p>End-to-end perspective on building practical IoT systems.</p>
+                                <a href="https://www.wiley.com/en-us/Building+the+Internet+of+Things-p-9781119088332" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>MQTT: The Standard for IoT Messaging</h3>
+                            <div class="paper-meta">
+                                <span class="authors">OASIS Standard</span>
+                                <span class="year">2019</span>
+                                <span class="venue">OASIS</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Official specification for MQTT protocol, the lightweight publish-subscribe messaging protocol designed for IoT and edge applications.</p>
+                                <h4>Protocol Features:</h4>
+                                <ul>
+                                    <li><strong>Publish-Subscribe:</strong> Decoupled messaging pattern for IoT devices</li>
+                                    <li><strong>Lightweight:</strong> Minimal overhead for constrained devices and networks</li>
+                                    <li><strong>Quality of Service:</strong> Configurable delivery guarantees</li>
+                                    <li><strong>Last Will:</strong> Automatic notification of device disconnection</li>
+                                </ul>
+                                <h4>For Developers:</h4>
+                                <p>Essential protocol for IoT device communication and edge architectures.</p>
+                                <a href="https://mqtt.org/mqtt-specification/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Low-Power Wide-Area Networks: A Survey</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Raza et al.</span>
+                                <span class="year">2017</span>
+                                <span class="venue">IEEE Communications Surveys</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive survey of LPWAN technologies including LoRaWAN, NB-IoT, and Sigfox for long-range, low-power IoT connectivity.</p>
+                                <h4>LPWAN Technologies:</h4>
+                                <ul>
+                                    <li><strong>LoRaWAN:</strong> Long-range wireless for battery-powered sensors</li>
+                                    <li><strong>NB-IoT:</strong> Cellular-based narrow-band IoT</li>
+                                    <li><strong>Sigfox:</strong> Ultra-narrow band communication</li>
+                                    <li><strong>Trade-offs:</strong> Range, power, bandwidth, and cost comparisons</li>
+                                </ul>
+                                <h4>For IoT Architects:</h4>
+                                <p>Selecting appropriate connectivity for distributed sensor networks.</p>
+                                <a href="https://ieeexplore.ieee.org/document/7815384" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Wireless Sensor Networks: A Survey</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Akyildiz et al.</span>
+                                <span class="year">2002</span>
+                                <span class="venue">Computer Networks</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Foundational survey of wireless sensor network principles, architectures, and protocols that underpin modern IoT systems.</p>
+                                <h4>WSN Fundamentals:</h4>
+                                <ul>
+                                    <li><strong>Network Topology:</strong> Mesh, star, and hierarchical sensor networks</li>
+                                    <li><strong>Routing Protocols:</strong> Energy-efficient data transmission</li>
+                                    <li><strong>Data Aggregation:</strong> Reducing network traffic through in-network processing</li>
+                                    <li><strong>Energy Management:</strong> Maximizing battery life in sensor nodes</li>
+                                </ul>
+                                <h4>For Network Designers:</h4>
+                                <p>Foundational knowledge for distributed sensor network design.</p>
+                                <a href="https://www.sciencedirect.com/science/article/abs/pii/S1389128601003024" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Industrial Internet of Things: Architecture and Applications</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Industrial Internet Consortium</span>
+                                <span class="year">2019</span>
+                                <span class="venue">IIC</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Industry reference architecture for Industrial IoT (IIoT) covering manufacturing, energy, and infrastructure applications.</p>
+                                <h4>IIoT Architecture:</h4>
+                                <ul>
+                                    <li><strong>Edge Devices:</strong> Industrial sensors, PLCs, and gateways</li>
+                                    <li><strong>Connectivity:</strong> Industrial protocols (OPC UA, Modbus, etc.)</li>
+                                    <li><strong>Edge Analytics:</strong> Real-time processing for industrial automation</li>
+                                    <li><strong>Security:</strong> Industrial-grade security and safety requirements</li>
+                                </ul>
+                                <h4>For Industrial Engineers:</h4>
+                                <p>Standards and best practices for industrial edge computing deployments.</p>
+                                <a href="https://www.iiconsortium.org/iira/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Distributed Systems Section -->
+                <section class="content-section" id="distributed">
+                    <h2>🔗 Distributed Systems</h2>
+                    <p style="line-height: 1.8;">System-level thinking for edge deployments including orchestration, synchronization, fault tolerance, and security.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>Designing Data-Intensive Applications</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Martin Kleppmann</span>
+                                <span class="year">2017</span>
+                                <span class="venue">O'Reilly Media</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive guide to distributed systems concepts including consistency, replication, and partitioning essential for edge architectures.</p>
+                                <h4>Key Concepts:</h4>
+                                <ul>
+                                    <li><strong>Consistency Models:</strong> CAP theorem and eventual consistency</li>
+                                    <li><strong>Replication:</strong> Strategies for data distribution across edge nodes</li>
+                                    <li><strong>Partitioning:</strong> Sharding data for distributed processing</li>
+                                    <li><strong>Fault Tolerance:</strong> Designing for unreliable networks and devices</li>
+                                </ul>
+                                <h4>For System Architects:</h4>
+                                <p>Essential distributed systems knowledge for edge computing design.</p>
+                                <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Distributed Systems: Principles and Paradigms</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Tanenbaum & Van Steen</span>
+                                <span class="year">2017</span>
+                                <span class="venue">Pearson</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Authoritative textbook on distributed systems covering fundamental principles applicable to edge computing architectures.</p>
+                                <h4>Distributed Computing Topics:</h4>
+                                <ul>
+                                    <li><strong>Communication:</strong> RPC, message-passing, and streaming</li>
+                                    <li><strong>Synchronization:</strong> Clock synchronization and distributed coordination</li>
+                                    <li><strong>Consistency:</strong> Data consistency models and protocols</li>
+                                    <li><strong>Fault Tolerance:</strong> Handling failures in distributed systems</li>
+                                </ul>
+                                <h4>For Computer Scientists:</h4>
+                                <p>Theoretical foundation for distributed edge computing systems.</p>
+                                <a href="https://www.distributed-systems.net/index.php/books/ds3/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Kubernetes at the Edge</h3>
+                            <div class="paper-meta">
+                                <span class="authors">K3s, KubeEdge Projects</span>
+                                <span class="year">2019-Present</span>
+                                <span class="venue">CNCF</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Documentation and case studies of lightweight Kubernetes distributions for edge orchestration and container management.</p>
+                                <h4>Edge Orchestration:</h4>
+                                <ul>
+                                    <li><strong>K3s:</strong> Lightweight Kubernetes for resource-constrained edge devices</li>
+                                    <li><strong>KubeEdge:</strong> Extending Kubernetes to edge nodes with offline autonomy</li>
+                                    <li><strong>Container Management:</strong> Deploying and updating edge workloads</li>
+                                    <li><strong>Service Mesh:</strong> Managing communication between edge and cloud</li>
+                                </ul>
+                                <h4>For DevOps Engineers:</h4>
+                                <p>Practical tools for managing distributed edge infrastructure.</p>
+                                <a href="https://kubeedge.io/en/docs/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Edge-Cloud Data Synchronization Strategies</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Zhang et al.</span>
+                                <span class="year">2020</span>
+                                <span class="venue">IEEE Access</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Survey of data synchronization strategies for hybrid edge-cloud systems, addressing consistency and conflict resolution.</p>
+                                <h4>Synchronization Patterns:</h4>
+                                <ul>
+                                    <li><strong>Eventual Consistency:</strong> Asynchronous updates between edge and cloud</li>
+                                    <li><strong>Conflict Resolution:</strong> Handling concurrent updates from multiple edges</li>
+                                    <li><strong>Bandwidth Optimization:</strong> Selective synchronization strategies</li>
+                                    <li><strong>Offline Operation:</strong> Maintaining functionality during network outages</li>
+                                </ul>
+                                <h4>For Backend Developers:</h4>
+                                <p>Strategies for keeping edge and cloud data synchronized.</p>
+                                <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6287639" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Security and Privacy in Edge Computing</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Roman et al.</span>
+                                <span class="year">2018</span>
+                                <span class="venue">IEEE Communications Surveys</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive survey of security challenges and solutions for edge computing including device security, network security, and data privacy.</p>
+                                <h4>Security Challenges:</h4>
+                                <ul>
+                                    <li><strong>Device Security:</strong> Securing resource-constrained edge devices</li>
+                                    <li><strong>Network Security:</strong> Protecting edge-to-cloud communication</li>
+                                    <li><strong>Data Privacy:</strong> Processing sensitive data at the edge</li>
+                                    <li><strong>Trust Models:</strong> Establishing trust in distributed edge environments</li>
+                                </ul>
+                                <h4>For Security Engineers:</h4>
+                                <p>Security considerations specific to edge computing architectures.</p>
+                                <a href="https://ieeexplore.ieee.org/document/8307202" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Edge AI & ML Section -->
+                <section class="content-section" id="edge-ai">
+                    <h2>🤖 Edge AI & Machine Learning</h2>
+                    <p style="line-height: 1.8;">Running machine learning models on constrained devices with model optimization, TinyML, and real-time inference.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>TinyML: Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-Power Microcontrollers</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Pete Warden & Daniel Situnayake</span>
+                                <span class="year">2019</span>
+                                <span class="venue">O'Reilly Media</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive guide to deploying machine learning on microcontrollers and embedded devices with minimal power consumption.</p>
+                                <h4>TinyML Concepts:</h4>
+                                <ul>
+                                    <li><strong>Model Optimization:</strong> Quantization, pruning, and compression techniques</li>
+                                    <li><strong>TensorFlow Lite Micro:</strong> ML framework for microcontrollers</li>
+                                    <li><strong>Audio Recognition:</strong> Wake word detection and sound classification</li>
+                                    <li><strong>Vision Applications:</strong> Person detection on resource-constrained devices</li>
+                                </ul>
+                                <h4>For Embedded ML Engineers:</h4>
+                                <p>Practical guide to running ML on ultra-low-power edge devices.</p>
+                                <a href="https://www.oreilly.com/library/view/tinyml/9781492052036/" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Han et al.</span>
+                                <span class="year">2016</span>
+                                <span class="venue">ICLR</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Foundational paper on neural network compression techniques essential for deploying models on edge devices.</p>
+                                <h4>Compression Techniques:</h4>
+                                <ul>
+                                    <li><strong>Pruning:</strong> Removing redundant weights and connections</li>
+                                    <li><strong>Quantization:</strong> Reducing precision from 32-bit to 8-bit or lower</li>
+                                    <li><strong>Huffman Coding:</strong> Further compression through encoding</li>
+                                    <li><strong>Performance:</strong> 35-49× compression without accuracy loss</li>
+                                </ul>
+                                <h4>For ML Engineers:</h4>
+                                <p>Techniques for making deep learning models edge-compatible.</p>
+                                <a href="https://arxiv.org/abs/1510.00149" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Federated Learning: Collaborative Machine Learning without Centralized Training Data</h3>
+                            <div class="paper-meta">
+                                <span class="authors">McMahan et al.</span>
+                                <span class="year">2017</span>
+                                <span class="venue">Google AI</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Introduction to federated learning, enabling model training across distributed edge devices without centralizing data.</p>
+                                <h4>Federated Learning:</h4>
+                                <ul>
+                                    <li><strong>Decentralized Training:</strong> Learning from data on edge devices</li>
+                                    <li><strong>Privacy Preservation:</strong> Data remains on device, only model updates shared</li>
+                                    <li><strong>Communication Efficiency:</strong> Minimizing data transfer between edge and cloud</li>
+                                    <li><strong>Applications:</strong> Mobile keyboards, healthcare, IoT sensor networks</li>
+                                </ul>
+                                <h4>For ML Researchers:</h4>
+                                <p>Privacy-preserving machine learning for distributed edge systems.</p>
+                                <a href="https://arxiv.org/abs/1602.05629" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Howard et al.</span>
+                                <span class="year">2017</span>
+                                <span class="venue">Google Research</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Introduction to MobileNet architecture family designed specifically for efficient inference on mobile and edge devices.</p>
+                                <h4>MobileNet Features:</h4>
+                                <ul>
+                                    <li><strong>Depthwise Separable Convolutions:</strong> Efficient CNN building blocks</li>
+                                    <li><strong>Width Multiplier:</strong> Tunable model size for different devices</li>
+                                    <li><strong>Resolution Multiplier:</strong> Trading accuracy for speed</li>
+                                    <li><strong>Applications:</strong> Object detection, classification, segmentation on edge</li>
+                                </ul>
+                                <h4>For Computer Vision Engineers:</h4>
+                                <p>Efficient neural network architectures for edge vision applications.</p>
+                                <a href="https://arxiv.org/abs/1704.04861" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Edge Intelligence: Real-time AI at the Edge with YOLO and Beyond</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Zhou et al.</span>
+                                <span class="year">2019</span>
+                                <span class="venue">IEEE Network</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Survey of real-time computer vision on edge devices covering YOLO, SSD, and other efficient detection models.</p>
+                                <h4>Real-Time Vision:</h4>
+                                <ul>
+                                    <li><strong>YOLO Family:</strong> Single-shot object detection for real-time applications</li>
+                                    <li><strong>Edge TPUs:</strong> Specialized hardware accelerators for vision models</li>
+                                    <li><strong>Model Selection:</strong> Choosing models for different edge hardware</li>
+                                    <li><strong>Applications:</strong> Surveillance, autonomous systems, industrial inspection</li>
+                                </ul>
+                                <h4>For Edge AI Developers:</h4>
+                                <p>Deploying state-of-the-art computer vision models on edge devices.</p>
+                                <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=65" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Real-World Deployments Section -->
+                <section class="content-section" id="deployments">
+                    <h2>🏙️ Real-World Deployments</h2>
+                    <p style="line-height: 1.8;">Case studies and practical implementations across smart cities, retail, healthcare, autonomous vehicles, and 5G networks.</p>
+
+                    <div class="papers-grid">
+                        <div class="paper-card">
+                            <h3>Smart Cities and Edge Computing: A Survey</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Morabito et al.</span>
+                                <span class="year">2018</span>
+                                <span class="venue">IEEE Access</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Comprehensive survey of edge computing applications in smart city infrastructure including traffic, energy, and public safety.</p>
+                                <h4>Smart City Applications:</h4>
+                                <ul>
+                                    <li><strong>Intelligent Transportation:</strong> Traffic management with edge-based video analytics</li>
+                                    <li><strong>Smart Lighting:</strong> Adaptive street lighting based on real-time conditions</li>
+                                    <li><strong>Public Safety:</strong> Surveillance and emergency response systems</li>
+                                    <li><strong>Environmental Monitoring:</strong> Air quality and noise pollution sensing</li>
+                                </ul>
+                                <h4>For Urban Planners:</h4>
+                                <p>Understanding how edge computing enables smart city services.</p>
+                                <a href="https://ieeexplore.ieee.org/document/8387660" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Edge Computing in Retail: Use Cases and Business Models</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Intel Retail Solutions</span>
+                                <span class="year">2020</span>
+                                <span class="venue">Industry Report</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Analysis of edge computing deployments in retail environments covering customer analytics, inventory management, and checkout-free stores.</p>
+                                <h4>Retail Edge Applications:</h4>
+                                <ul>
+                                    <li><strong>Computer Vision:</strong> Shelf monitoring, customer flow analysis, loss prevention</li>
+                                    <li><strong>Inventory Management:</strong> Real-time stock tracking with RFID and vision</li>
+                                    <li><strong>Personalization:</strong> In-store product recommendations</li>
+                                    <li><strong>Checkout-Free:</strong> Amazon Go-style automated checkout systems</li>
+                                </ul>
+                                <h4>For Retail Technologists:</h4>
+                                <p>ROI and implementation strategies for retail edge computing.</p>
+                                <a href="https://www.intel.com/content/www/us/en/retail/overview.html" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Edge Computing for Healthcare IoT</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Gia et al.</span>
+                                <span class="year">2019</span>
+                                <span class="venue">IEEE Access</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Survey of edge computing applications in healthcare including remote patient monitoring, medical imaging, and telemedicine.</p>
+                                <h4>Healthcare Edge:</h4>
+                                <ul>
+                                    <li><strong>Patient Monitoring:</strong> Real-time vital signs analysis at edge</li>
+                                    <li><strong>Medical Imaging:</strong> Edge-based preliminary diagnosis and image enhancement</li>
+                                    <li><strong>Telemedicine:</strong> Low-latency remote consultations</li>
+                                    <li><strong>Privacy & Compliance:</strong> Processing sensitive data locally for HIPAA compliance</li>
+                                </ul>
+                                <h4>For Healthcare IT:</h4>
+                                <p>Edge computing enabling new healthcare delivery models.</p>
+                                <a href="https://ieeexplore.ieee.org/document/8642869" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>Autonomous Vehicles and Edge Computing: Computing at the Speed of Light</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Liu et al.</span>
+                                <span class="year">2020</span>
+                                <span class="venue">IEEE Vehicular Technology</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Analysis of edge computing requirements and architectures for autonomous driving including V2X communication and real-time decision making.</p>
+                                <h4>Autonomous Driving Edge:</h4>
+                                <ul>
+                                    <li><strong>Sensor Fusion:</strong> Processing lidar, radar, and camera data in real-time</li>
+                                    <li><strong>V2X Communication:</strong> Vehicle-to-everything edge coordination</li>
+                                    <li><strong>Path Planning:</strong> Low-latency trajectory computation</li>
+                                    <li><strong>Edge Infrastructure:</strong> Roadside units supporting autonomous vehicles</li>
+                                </ul>
+                                <h4>For Automotive Engineers:</h4>
+                                <p>Edge computing as critical infrastructure for autonomous driving.</p>
+                                <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=25" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-card">
+                            <h3>5G and Multi-Access Edge Computing (MEC): The Future of Networks</h3>
+                            <div class="paper-meta">
+                                <span class="authors">Patel et al.</span>
+                                <span class="year">2019</span>
+                                <span class="venue">IEEE Communications</span>
+                            </div>
+                            <div class="paper-summary">
+                                <p>Overview of Multi-Access Edge Computing (MEC) architecture integrated with 5G networks enabling ultra-low latency applications.</p>
+                                <h4>5G + MEC:</h4>
+                                <ul>
+                                    <li><strong>Network Edge:</strong> Compute resources at cellular network edge</li>
+                                    <li><strong>Ultra-Low Latency:</strong> Sub-10ms response times for applications</li>
+                                    <li><strong>Network Slicing:</strong> Dedicated edge resources for specific applications</li>
+                                    <li><strong>Use Cases:</strong> AR/VR, cloud gaming, industrial automation, smart cities</li>
+                                </ul>
+                                <h4>For Telecom Engineers:</h4>
+                                <p>Understanding the convergence of 5G and edge computing.</p>
+                                <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=35" target="_blank" rel="noopener noreferrer" class="paper-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 4px solid var(--color-black);">
+                    <a href="edge-landing.html" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-electric-blue); color: var(--color-white); text-decoration: none; font-weight: var(--font-bold); border-radius: 4px;">← Back to Edge Computing Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

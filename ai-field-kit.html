@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Machine Learning Field Kit - Tools, Platforms & Resources | Emerging Tech Hub</title>
+    <meta name="description" content="Essential tools for AI and ML development. No-code platforms, ML frameworks, datasets, and pre-trained models for developers and non-technical users.">
+    <meta name="keywords" content="AI tools, machine learning platforms, TensorFlow, PyTorch, Hugging Face, OpenAI, no-code AI, ML datasets">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Resource Card Styling */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.resource-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.resource-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.resource-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+}
+
+.resource-description {
+    line-height: 1.8;
+    margin-bottom: var(--space-5);
+}
+
+.resource-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.resource-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.resource-list {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.resource-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
+.resource-link {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+}
+
+.resource-link:hover {
+    background: var(--color-black);
+    transform: translateX(4px);
+}
+
+/* Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.comparison-table th,
+.comparison-table td {
+    border: 2px solid var(--color-black);
+    padding: var(--space-3);
+    text-align: left;
+    line-height: 1.6;
+}
+
+.comparison-table th {
+    background: var(--color-black);
+    color: var(--color-white);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    letter-spacing: 0.05em;
+}
+
+.comparison-table tr:hover {
+    background: var(--color-gray-50);
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .resources-grid { grid-template-columns: 1fr !important; }
+    .comparison-table { font-size: var(--text-sm); }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">AI & ML Resources</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Resource Types</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#no-code" class="experimental-nav-link">No-Code AI Tools</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#local-offline" class="experimental-nav-link">Local & Offline AI</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#ml-frameworks" class="experimental-nav-link">ML Frameworks</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#model-hubs" class="experimental-nav-link">Model Hubs & APIs</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#datasets" class="experimental-nav-link">Datasets</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#dev-environments" class="experimental-nav-link">Dev Environments</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="ai-landing.html">← Back to AI Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">For Everyone</div>
+                    <div class="info-box-content">
+                        Start with No-Code tools if you're new to AI. Developers can explore frameworks and custom model development.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">AI & Machine Learning Field Kit</h1>
+                <p class="fundamentals-subtitle">Tools, platforms, and resources for building with artificial intelligence</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- No-Code AI Tools Section -->
+                <section class="content-section" id="no-code">
+                    <h2>🎨 No-Code AI Tools</h2>
+                    <p style="line-height: 1.8;">Build AI applications without writing code. Perfect for designers, product managers, and anyone exploring AI capabilities.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Highly Recommended</div>
+                            <h3>Google Teachable Machine</h3>
+                            <div class="resource-description">
+                                <p>Train image, sound, and pose recognition models directly in your browser. Intuitive interface for anyone to create custom ML models.</p>
+
+                                <h4>What You Can Do:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Image Classification:</strong> Teach computer to recognize objects, gestures, facial expressions</li>
+                                    <li><strong>Audio Recognition:</strong> Create sound detectors, voice command systems</li>
+                                    <li><strong>Pose Detection:</strong> Build body movement recognition applications</li>
+                                    <li><strong>Export Models:</strong> Use in websites, apps, or Arduino projects</li>
+                                </ul>
+
+                                <h4>Perfect For:</h4>
+                                <p>Quick prototypes, educational demos, testing ML concepts before investing in custom development.</p>
+
+                                <a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Try Teachable Machine →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Runway ML</h3>
+                            <div class="resource-description">
+                                <p>Creative AI toolkit for video, image, and generative content. No-code interface for powerful AI models.</p>
+
+                                <h4>Capabilities:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Video Editing:</strong> Remove backgrounds, inpaint, motion tracking with AI</li>
+                                    <li><strong>Image Generation:</strong> Text-to-image, style transfer, super-resolution</li>
+                                    <li><strong>Audio:</strong> Text-to-speech, voice cloning, music generation</li>
+                                    <li><strong>3D:</strong> Generate 3D models from images</li>
+                                </ul>
+
+                                <h4>Use Cases:</h4>
+                                <p>Content creation, video production, creative experimentation, rapid prototyping visual concepts.</p>
+
+                                <a href="https://runwayml.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Explore Runway →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Levity AI</h3>
+                            <div class="resource-description">
+                                <p>No-code platform for automating business workflows with custom AI models. Visual interface for training classifiers.</p>
+
+                                <h4>Business Applications:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Document Processing:</strong> Extract data from invoices, receipts, forms</li>
+                                    <li><strong>Email Triage:</strong> Auto-categorize and route customer emails</li>
+                                    <li><strong>Image Moderation:</strong> Filter inappropriate content automatically</li>
+                                    <li><strong>Sentiment Analysis:</strong> Analyze customer feedback at scale</li>
+                                </ul>
+
+                                <p>Integrates with Zapier, Make, and other automation platforms.</p>
+
+                                <a href="https://www.levity.ai/" target="_blank" rel="noopener noreferrer" class="resource-link">Visit Levity →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Lobe (Microsoft)</h3>
+                            <div class="resource-description">
+                                <p>Free desktop app for training custom image classification models. Simple drag-and-drop interface.</p>
+
+                                <h4>Features:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Easy Training:</strong> Drop images, label categories, train model</li>
+                                    <li><strong>Real-time Preview:</strong> Test with webcam immediately</li>
+                                    <li><strong>Export Formats:</strong> TensorFlow, TensorFlow Lite, ONNX, CoreML</li>
+                                    <li><strong>100% Free:</strong> No cloud costs, runs locally</li>
+                                </ul>
+
+                                <a href="https://www.lobe.ai/" target="_blank" rel="noopener noreferrer" class="resource-link">Download Lobe →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Local & Offline AI Section -->
+                <section class="content-section" id="local-offline">
+                    <h2>🏠 Local & Offline AI Tools</h2>
+                    <p style="line-height: 1.8;">Run powerful AI models on your own computer—no internet required, complete privacy, no subscription costs.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Easiest Setup</div>
+                            <h3>Ollama - Run LLMs Locally</h3>
+                            <div class="resource-description">
+                                <p>Run large language models (like ChatGPT) on your own computer. Simple installation, completely private, works offline.</p>
+
+                                <h4>What Is Ollama?</h4>
+                                <p>Think of it like iTunes for AI models—download, manage, and run LLMs on your Mac, Windows, or Linux machine.</p>
+
+                                <h4>Popular Models You Can Run:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>LLaMA 3:</strong> Meta's open-source model, ChatGPT-quality for many tasks</li>
+                                    <li><strong>Mistral:</strong> Excellent for coding, analysis, and general chat</li>
+                                    <li><strong>Phi-3:</strong> Microsoft's small but powerful model (runs on laptops)</li>
+                                    <li><strong>CodeLlama:</strong> Specialized for programming assistance</li>
+                                </ul>
+
+                                <h4>Simple Setup (Non-Technical):</h4>
+                                <ol class="resource-list">
+                                    <li><strong>Download:</strong> Visit ollama.com, download installer for your OS</li>
+                                    <li><strong>Install:</strong> Double-click and follow prompts (like any app)</li>
+                                    <li><strong>Open Terminal:</strong> On Mac: Applications → Terminal. On Windows: Search "cmd"</li>
+                                    <li><strong>Run Model:</strong> Type <code>ollama run llama3</code> and press Enter</li>
+                                    <li><strong>Chat:</strong> Wait for download (first time only), then start chatting!</li>
+                                </ol>
+
+                                <h4>System Requirements:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Minimum:</strong> 8GB RAM, can run small models (Phi-3)</li>
+                                    <li><strong>Recommended:</strong> 16GB RAM for better models (LLaMA 3)</li>
+                                    <li><strong>Best:</strong> 32GB+ RAM and GPU for fastest responses</li>
+                                </ul>
+
+                                <h4>Why Use Ollama:</h4>
+                                <ul class="resource-list">
+                                    <li>✓ Complete privacy—your conversations never leave your computer</li>
+                                    <li>✓ No internet needed after initial download</li>
+                                    <li>✓ No subscription fees or API costs</li>
+                                    <li>✓ Unlimited usage</li>
+                                </ul>
+
+                                <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Get Ollama →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-badge">Most Popular</div>
+                            <h3>Stable Diffusion - Local Image Generation</h3>
+                            <div class="resource-description">
+                                <p>Generate images from text descriptions on your own computer. Open-source alternative to DALL-E and Midjourney.</p>
+
+                                <h4>What You Can Create:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Art & Illustrations:</strong> Any style, any subject</li>
+                                    <li><strong>Product Mockups:</strong> Visualize ideas before building</li>
+                                    <li><strong>Photo Editing:</strong> Inpaint, outpaint, upscale images</li>
+                                    <li><strong>Concept Art:</strong> Characters, environments, objects</li>
+                                </ul>
+
+                                <h4>Ways to Run It:</h4>
+                                <p><strong>Option 1: Automatic1111 (Popular, Beginner-Friendly)</strong></p>
+                                <ol class="resource-list">
+                                    <li>Download from <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                                    <li>Run the installer script (double-click .bat on Windows, .sh on Mac/Linux)</li>
+                                    <li>Wait for automatic setup (downloads everything needed)</li>
+                                    <li>Open browser to localhost:7860</li>
+                                    <li>Type prompt, click Generate!</li>
+                                </ol>
+
+                                <p><strong>Option 2: ComfyUI (Covered below—more powerful)</strong></p>
+
+                                <h4>System Requirements:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>GPU:</strong> NVIDIA RTX 2060 or better (6GB+ VRAM)</li>
+                                    <li><strong>RAM:</strong> 16GB minimum</li>
+                                    <li><strong>Storage:</strong> 20GB+ for models</li>
+                                    <li><strong>Mac:</strong> M1/M2/M3 works but slower than NVIDIA</li>
+                                </ul>
+
+                                <h4>Where to Get Models:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Civitai.com:</strong> 100,000+ community models (realistic, anime, artistic)</li>
+                                    <li><strong>Hugging Face:</strong> Official Stable Diffusion versions</li>
+                                    <li><strong>Built-in:</strong> Automatic1111 downloads default model on first run</li>
+                                </ul>
+
+                                <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" target="_blank" rel="noopener noreferrer" class="resource-link">Get Stable Diffusion →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>ComfyUI - Visual Stable Diffusion</h3>
+                            <div class="resource-description">
+                                <p>Node-based interface for Stable Diffusion. More powerful than Automatic1111 but still accessible to non-coders.</p>
+
+                                <h4>Why ComfyUI?</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Visual Workflow:</strong> Connect nodes like puzzle pieces—no coding required</li>
+                                    <li><strong>More Control:</strong> Fine-tune every aspect of generation</li>
+                                    <li><strong>Faster:</strong> More efficient than Automatic1111</li>
+                                    <li><strong>Workflows:</strong> Save and share complete pipelines</li>
+                                </ul>
+
+                                <h4>Learning Curve:</h4>
+                                <p><strong>Day 1:</strong> Confusing—lots of nodes and connections.</p>
+                                <p><strong>Week 1:</strong> Start to understand the workflow logic.</p>
+                                <p><strong>Month 1:</strong> Create complex multi-step generations easily.</p>
+
+                                <h4>Setup for Beginners:</h4>
+                                <ol class="resource-list">
+                                    <li><strong>Download:</strong> Get ComfyUI from <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                                    <li><strong>Portable Version:</strong> Easier for Windows—comes with everything bundled</li>
+                                    <li><strong>Run:</strong> Double-click run_nvidia_gpu.bat (or cpu version if no GPU)</li>
+                                    <li><strong>Load Workflow:</strong> Use example workflows to start</li>
+                                    <li><strong>Download Models:</strong> Place in models/checkpoints folder</li>
+                                </ol>
+
+                                <h4>Beginner-Friendly Resources:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Civitai Workflows:</strong> Download pre-made workflows with instructions</li>
+                                    <li><strong>YouTube Tutorials:</strong> "ComfyUI for beginners" has many guides</li>
+                                    <li><strong>ComfyUI Manager:</strong> Extension to install custom nodes easily</li>
+                                </ul>
+
+                                <h4>When to Use ComfyUI vs Automatic1111:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Use Automatic1111 if:</strong> You want simple, click-and-generate experience</li>
+                                    <li><strong>Use ComfyUI if:</strong> You want maximum control and don't mind learning</li>
+                                </ul>
+
+                                <a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener noreferrer" class="resource-link">Get ComfyUI →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>LM Studio - User-Friendly LLM Interface</h3>
+                            <div class="resource-description">
+                                <p>Desktop app for running local LLMs with beautiful UI. Easier than Ollama for complete beginners.</p>
+
+                                <h4>Why LM Studio:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>No Terminal:</strong> Everything through friendly graphical interface</li>
+                                    <li><strong>Model Browser:</strong> Search and download models with one click</li>
+                                    <li><strong>ChatGPT-Like UI:</strong> Familiar chat interface</li>
+                                    <li><strong>Easy Comparison:</strong> Try different models side-by-side</li>
+                                </ul>
+
+                                <h4>Setup (Zero Technical Knowledge):</h4>
+                                <ol class="resource-list">
+                                    <li><strong>Download:</strong> Get LM Studio from lmstudio.ai</li>
+                                    <li><strong>Install:</strong> Drag to Applications (Mac) or run installer (Windows)</li>
+                                    <li><strong>Browse Models:</strong> Click "Discover" tab, see available models</li>
+                                    <li><strong>Download Model:</strong> Click download button next to model you want</li>
+                                    <li><strong>Start Chatting:</strong> Select model from dropdown, start conversation</li>
+                                </ol>
+
+                                <h4>Recommended First Models:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Phi-3-mini (8GB RAM):</strong> Great for laptops</li>
+                                    <li><strong>LLaMA-3-8B (16GB RAM):</strong> Excellent general model</li>
+                                    <li><strong>Mistral-7B (16GB RAM):</strong> Good at reasoning tasks</li>
+                                </ul>
+
+                                <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" class="resource-link">Get LM Studio →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Jan - Open-Source ChatGPT Alternative</h3>
+                            <div class="resource-description">
+                                <p>Desktop AI assistant that runs 100% offline. Clean interface, easy setup, works on Mac/Windows/Linux.</p>
+
+                                <h4>Features:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Chat Interface:</strong> Just like ChatGPT but private</li>
+                                    <li><strong>Model Library:</strong> Download models from built-in hub</li>
+                                    <li><strong>Extensions:</strong> Add capabilities like web search</li>
+                                    <li><strong>Import/Export:</strong> Save conversations locally</li>
+                                </ul>
+
+                                <h4>Advantages Over Cloud AI:</h4>
+                                <ul class="resource-list">
+                                    <li>✓ No data sent to servers—completely private</li>
+                                    <li>✓ Works on planes, trains, anywhere without internet</li>
+                                    <li>✓ No usage limits or rate limiting</li>
+                                    <li>✓ Free forever—just hardware costs</li>
+                                </ul>
+
+                                <a href="https://jan.ai/" target="_blank" rel="noopener noreferrer" class="resource-link">Download Jan →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Pinokio - One-Click AI Installer</h3>
+                            <div class="resource-description">
+                                <p>Install Stable Diffusion, LLMs, and other AI tools with one click. Manages all dependencies automatically.</p>
+
+                                <h4>What Pinokio Does:</h4>
+                                <p>Automates the complex setup process for AI tools. Instead of following 20-step installation guides, just click "Install".</p>
+
+                                <h4>Available Apps (200+):</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Image Generation:</strong> Stable Diffusion, DALL-E mini</li>
+                                    <li><strong>LLMs:</strong> Ollama, LM Studio, text-generation-webui</li>
+                                    <li><strong>Voice:</strong> Whisper (speech-to-text), Coqui TTS</li>
+                                    <li><strong>Video:</strong> AnimateDiff, video generation models</li>
+                                </ul>
+
+                                <h4>Setup Process:</h4>
+                                <ol class="resource-list">
+                                    <li>Download Pinokio from pinokio.computer</li>
+                                    <li>Browse app library</li>
+                                    <li>Click "Install" on any app</li>
+                                    <li>Wait for automatic setup</li>
+                                    <li>Click "Run" to launch</li>
+                                </ol>
+
+                                <h4>Perfect For:</h4>
+                                <p>Non-technical users who want to try various AI tools without dealing with installation complexity.</p>
+
+                                <a href="https://pinokio.computer/" target="_blank" rel="noopener noreferrer" class="resource-link">Get Pinokio →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: var(--space-10); margin-bottom: var(--space-6);">Privacy & Cost Comparison</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Solution</th>
+                                <th>Privacy</th>
+                                <th>Cost</th>
+                                <th>Internet Needed</th>
+                                <th>Setup Difficulty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ollama / LM Studio</strong></td>
+                                <td>100% Private</td>
+                                <td>Free (after hardware)</td>
+                                <td>Only for download</td>
+                                <td>Very Easy</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stable Diffusion (local)</strong></td>
+                                <td>100% Private</td>
+                                <td>Free (after hardware)</td>
+                                <td>Only for models</td>
+                                <td>Medium</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ComfyUI</strong></td>
+                                <td>100% Private</td>
+                                <td>Free (after hardware)</td>
+                                <td>Only for models</td>
+                                <td>Medium-Hard</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OpenAI API</strong></td>
+                                <td>Data sent to OpenAI</td>
+                                <td>Pay per use</td>
+                                <td>Always required</td>
+                                <td>Very Easy</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ChatGPT Plus</strong></td>
+                                <td>Data sent to OpenAI</td>
+                                <td>$20/month</td>
+                                <td>Always required</td>
+                                <td>Very Easy</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- ML Frameworks Section -->
+                <section class="content-section" id="ml-frameworks">
+                    <h2>🔧 Machine Learning Frameworks</h2>
+                    <p style="line-height: 1.8;">Industry-standard frameworks for developers building custom ML models and applications.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h3>TensorFlow & Keras</h3>
+                            <div class="resource-description">
+                                <p>Google's open-source ML framework. Keras provides high-level API for rapid development.</p>
+
+                                <h4>Strengths:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Production-Ready:</strong> Deploy to web, mobile, edge, cloud</li>
+                                    <li><strong>TensorFlow.js:</strong> Run models in browser with JavaScript</li>
+                                    <li><strong>TensorFlow Lite:</strong> Mobile and embedded deployment</li>
+                                    <li><strong>Large Ecosystem:</strong> Massive community, tutorials, pre-trained models</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Production deployments, mobile/web apps, researchers, teams needing Google ecosystem integration.</p>
+
+                                <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer" class="resource-link">TensorFlow Docs →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>PyTorch</h3>
+                            <div class="resource-description">
+                                <p>Facebook's (Meta) ML framework. Dominant in research, increasingly popular in production.</p>
+
+                                <h4>Strengths:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Pythonic:</strong> Feels natural for Python developers</li>
+                                    <li><strong>Dynamic Graphs:</strong> Easier debugging, more flexible models</li>
+                                    <li><strong>Research Favorite:</strong> Most cutting-edge papers use PyTorch</li>
+                                    <li><strong>Lightning:</strong> High-level wrapper for organized training</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Research, experimentation, computer vision, NLP, custom architecture development.</p>
+
+                                <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" class="resource-link">PyTorch Docs →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Scikit-learn</h3>
+                            <div class="resource-description">
+                                <p>Python library for traditional machine learning. Simple, efficient, and perfect for classical ML tasks.</p>
+
+                                <h4>Algorithms Included:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Classification:</strong> SVM, Random Forest, Logistic Regression</li>
+                                    <li><strong>Regression:</strong> Linear, Polynomial, Ridge, Lasso</li>
+                                    <li><strong>Clustering:</strong> K-Means, DBSCAN, Hierarchical</li>
+                                    <li><strong>Preprocessing:</strong> Scalers, encoders, feature selection</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Tabular data, traditional ML, quick prototypes, data analysis, when deep learning is overkill.</p>
+
+                                <a href="https://scikit-learn.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Scikit-learn Docs →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Fast.ai</h3>
+                            <div class="resource-description">
+                                <p>High-level PyTorch library making deep learning accessible. Opinionated best practices built-in.</p>
+
+                                <h4>Philosophy:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>High-Level API:</strong> Train state-of-the-art models in few lines</li>
+                                    <li><strong>Best Practices:</strong> Learning rate finder, progressive resizing, etc.</li>
+                                    <li><strong>Excellent Course:</strong> Free "Practical Deep Learning for Coders"</li>
+                                    <li><strong>Rapid Prototyping:</strong> From idea to working model quickly</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Learning deep learning, rapid experimentation, developers wanting quick results.</p>
+
+                                <a href="https://www.fast.ai/" target="_blank" rel="noopener noreferrer" class="resource-link">Fast.ai Docs →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: var(--space-10); margin-bottom: var(--space-6);">Framework Comparison</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Framework</th>
+                                <th>Ease of Use</th>
+                                <th>Performance</th>
+                                <th>Deployment</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>TensorFlow</strong></td>
+                                <td>Medium</td>
+                                <td>Excellent</td>
+                                <td>Best (mobile, web, cloud)</td>
+                                <td>Production systems</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PyTorch</strong></td>
+                                <td>Good</td>
+                                <td>Excellent</td>
+                                <td>Good (improving)</td>
+                                <td>Research, custom models</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Scikit-learn</strong></td>
+                                <td>Excellent</td>
+                                <td>Good (classical ML)</td>
+                                <td>Simple (Python)</td>
+                                <td>Tabular data, quick wins</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fast.ai</strong></td>
+                                <td>Excellent</td>
+                                <td>Excellent</td>
+                                <td>Good (PyTorch-based)</td>
+                                <td>Learning, prototypes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Model Hubs & APIs Section -->
+                <section class="content-section" id="model-hubs">
+                    <h2>🤗 Model Hubs & AI APIs</h2>
+                    <p style="line-height: 1.8;">Pre-trained models and API services—use cutting-edge AI without training from scratch.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Most Popular</div>
+                            <h3>Hugging Face</h3>
+                            <div class="resource-description">
+                                <p>The GitHub of machine learning. 200,000+ pre-trained models for NLP, computer vision, audio, and more.</p>
+
+                                <h4>What's Available:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Transformers:</strong> BERT, GPT, T5, LLaMA, Mistral, and thousands more</li>
+                                    <li><strong>Diffusion Models:</strong> Stable Diffusion, ControlNet, image generation</li>
+                                    <li><strong>Datasets:</strong> 100,000+ ready-to-use datasets</li>
+                                    <li><strong>Spaces:</strong> Host ML demos and applications for free</li>
+                                    <li><strong>Inference API:</strong> Use any model via simple API</li>
+                                </ul>
+
+                                <h4>Why It's Essential:</h4>
+                                <p>Don't train from scratch when world-class models are free. Fine-tune for your specific needs.</p>
+
+                                <a href="https://huggingface.co/" target="_blank" rel="noopener noreferrer" class="resource-link">Browse Hugging Face →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>OpenAI API</h3>
+                            <div class="resource-description">
+                                <p>GPT-4, DALL-E, Whisper, and embeddings via simple API. Most advanced AI models available.</p>
+
+                                <h4>Models & Capabilities:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>GPT-4:</strong> Advanced language understanding and generation</li>
+                                    <li><strong>GPT-3.5-turbo:</strong> Fast, cost-effective, ChatGPT-quality</li>
+                                    <li><strong>DALL-E 3:</strong> State-of-the-art image generation</li>
+                                    <li><strong>Whisper:</strong> Best-in-class speech recognition</li>
+                                    <li><strong>Embeddings:</strong> Semantic search, recommendations, clustering</li>
+                                </ul>
+
+                                <h4>Pricing:</h4>
+                                <p>Pay-per-use. GPT-3.5-turbo: ~$0.001-0.002 per 1K tokens. GPT-4: ~$0.03-0.06 per 1K tokens.</p>
+
+                                <a href="https://platform.openai.com/" target="_blank" rel="noopener noreferrer" class="resource-link">OpenAI Platform →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Anthropic Claude</h3>
+                            <div class="resource-description">
+                                <p>Advanced language model with 200K context window. Excellent for analysis, summarization, coding.</p>
+
+                                <h4>Key Features:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Massive Context:</strong> 200,000 tokens (~150,000 words)</li>
+                                    <li><strong>Constitutional AI:</strong> Safer, more aligned responses</li>
+                                    <li><strong>Longer Reasoning:</strong> Better at complex, multi-step tasks</li>
+                                    <li><strong>Document Analysis:</strong> Process entire books, codebases, reports</li>
+                                </ul>
+
+                                <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer" class="resource-link">Claude API →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Replicate</h3>
+                            <div class="resource-description">
+                                <p>Run and deploy machine learning models in the cloud. Pay-per-use for thousands of open-source models.</p>
+
+                                <h4>Popular Models:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Stable Diffusion:</strong> Text-to-image generation</li>
+                                    <li><strong>LLaMA:</strong> Open-source language models</li>
+                                    <li><strong>Whisper:</strong> Speech recognition</li>
+                                    <li><strong>CLIP:</strong> Image and text embeddings</li>
+                                </ul>
+
+                                <h4>Advantages:</h4>
+                                <p>No infrastructure management. Scale automatically. Use any model via API without setup.</p>
+
+                                <a href="https://replicate.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Browse Replicate →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Datasets Section -->
+                <section class="content-section" id="datasets">
+                    <h2>📊 Datasets & Data Sources</h2>
+                    <p style="line-height: 1.8;">Quality datasets for training, fine-tuning, and benchmarking machine learning models.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h3>Kaggle Datasets</h3>
+                            <div class="resource-description">
+                                <p>50,000+ datasets covering every domain. Active community, competitions, and notebooks.</p>
+
+                                <h4>Categories:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Computer Vision:</strong> ImageNet, COCO, OpenImages</li>
+                                    <li><strong>NLP:</strong> Reviews, social media, news articles</li>
+                                    <li><strong>Tabular:</strong> Finance, healthcare, e-commerce</li>
+                                    <li><strong>Time Series:</strong> Stock prices, sensor data, weather</li>
+                                </ul>
+
+                                <a href="https://www.kaggle.com/datasets" target="_blank" rel="noopener noreferrer" class="resource-link">Browse Kaggle →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Hugging Face Datasets</h3>
+                            <div class="resource-description">
+                                <p>100,000+ datasets optimized for ML. Easy to load with one line of Python.</p>
+
+                                <h4>Popular Datasets:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>GLUE/SuperGLUE:</strong> NLP benchmarks</li>
+                                    <li><strong>Common Voice:</strong> Multilingual speech</li>
+                                    <li><strong>LAION:</strong> Billions of image-text pairs</li>
+                                    <li><strong>The Stack:</strong> Code from GitHub</li>
+                                </ul>
+
+                                <a href="https://huggingface.co/datasets" target="_blank" rel="noopener noreferrer" class="resource-link">Datasets Hub →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Google Dataset Search</h3>
+                            <div class="resource-description">
+                                <p>Search engine for datasets across the web. Find academic, government, and open data.</p>
+
+                                <h4>Sources Include:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Government:</strong> data.gov, census data, climate data</li>
+                                    <li><strong>Research:</strong> Academic datasets from papers</li>
+                                    <li><strong>Organizations:</strong> WHO, World Bank, UNESCO</li>
+                                    <li><strong>Companies:</strong> Open datasets from tech companies</li>
+                                </ul>
+
+                                <a href="https://datasetsearch.research.google.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Search Datasets →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Roboflow Universe</h3>
+                            <div class="resource-description">
+                                <p>Computer vision datasets with annotations. Over 200,000 datasets for object detection, segmentation, classification.</p>
+
+                                <h4>Features:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Pre-Annotated:</strong> Bounding boxes, polygons, keypoints</li>
+                                    <li><strong>Multiple Formats:</strong> YOLO, COCO, Pascal VOC</li>
+                                    <li><strong>Community Datasets:</strong> Upload and discover projects</li>
+                                    <li><strong>Training Tools:</strong> Train models directly on platform</li>
+                                </ul>
+
+                                <a href="https://universe.roboflow.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Roboflow Universe →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dev Environments Section -->
+                <section class="content-section" id="dev-environments">
+                    <h2>💻 Development Environments</h2>
+                    <p style="line-height: 1.8;">Platforms for writing code, training models, and collaborating on ML projects.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Free GPU Access</div>
+                            <h3>Google Colab</h3>
+                            <div class="resource-description">
+                                <p>Jupyter notebooks in the cloud with free GPU/TPU access. No setup required—start coding immediately.</p>
+
+                                <h4>Features:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Free GPUs:</strong> NVIDIA T4, up to 12 hours per session</li>
+                                    <li><strong>Pre-installed:</strong> TensorFlow, PyTorch, scikit-learn ready</li>
+                                    <li><strong>Google Drive Integration:</strong> Save notebooks, datasets</li>
+                                    <li><strong>Collaboration:</strong> Share notebooks like Google Docs</li>
+                                </ul>
+
+                                <h4>Perfect For:</h4>
+                                <p>Learning, prototyping, tutorials, training small-to-medium models without local GPU.</p>
+
+                                <a href="https://colab.research.google.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Launch Colab →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Kaggle Notebooks</h3>
+                            <div class="resource-description">
+                                <p>Cloud notebooks with free GPU/TPU. Access Kaggle datasets directly, participate in competitions.</p>
+
+                                <h4>Advantages:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>30 hours/week GPU:</strong> More generous than Colab free tier</li>
+                                    <li><strong>Dataset Integration:</strong> Instant access to 50,000+ datasets</li>
+                                    <li><strong>Community:</strong> Learn from public notebooks</li>
+                                    <li><strong>Competitions:</strong> Practice ML on real problems</li>
+                                </ul>
+
+                                <a href="https://www.kaggle.com/code" target="_blank" rel="noopener noreferrer" class="resource-link">Kaggle Notebooks →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Jupyter Lab / Notebook</h3>
+                            <div class="resource-description">
+                                <p>Local development environment for data science and ML. Industry standard for interactive Python development.</p>
+
+                                <h4>Why Use Local Jupyter:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Full Control:</strong> Use your own hardware and environment</li>
+                                    <li><strong>No Time Limits:</strong> Run training as long as needed</li>
+                                    <li><strong>Privacy:</strong> Data never leaves your machine</li>
+                                    <li><strong>Extensions:</strong> Customize with plugins and themes</li>
+                                </ul>
+
+                                <p><code>pip install jupyterlab</code> to get started</p>
+
+                                <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Jupyter Docs →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Weights & Biases (W&B)</h3>
+                            <div class="resource-description">
+                                <p>Experiment tracking, model versioning, and collaboration for ML teams.</p>
+
+                                <h4>Capabilities:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Experiment Tracking:</strong> Log metrics, hyperparameters automatically</li>
+                                    <li><strong>Visualizations:</strong> Real-time training curves, comparisons</li>
+                                    <li><strong>Model Registry:</strong> Version and deploy models</li>
+                                    <li><strong>Sweeps:</strong> Automated hyperparameter tuning</li>
+                                </ul>
+
+                                <p>Free for individuals and small teams.</p>
+
+                                <a href="https://wandb.ai/" target="_blank" rel="noopener noreferrer" class="resource-link">W&B Platform →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 4px solid var(--color-black);">
+                    <a href="ai-landing.html" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-electric-blue); color: var(--color-white); text-decoration: none; font-weight: var(--font-bold); border-radius: 4px;">← Back to AI Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

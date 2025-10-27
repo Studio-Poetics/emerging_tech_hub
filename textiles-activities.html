@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Textiles Activities - Hands-On Projects & Exercises | Emerging Tech Hub</title>
+    <meta name="description" content="Apply smart textiles knowledge through hands-on maker projects, design exercises, and case study analysis. Build e-textiles and develop wearable design skills.">
+    <meta name="keywords" content="e-textile projects, wearable design exercises, smart fabric tutorials, fashion tech activities, soft circuits, conductive thread projects">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Activity Card Styles */
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-top: var(--space-8);
+}
+
+.activity-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.activity-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+}
+
+.activity-number {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 48px;
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+}
+
+.activity-card:hover .activity-number {
+    background: var(--color-electric-blue);
+}
+
+.activity-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-6);
+}
+
+.activity-description {
+    line-height: 1.8;
+}
+
+.activity-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.activity-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.instruction-list {
+    margin-left: var(--space-4);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.instruction-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+    padding-left: var(--space-2);
+}
+
+.instruction-list li strong {
+    font-weight: var(--font-bold);
+}
+
+/* Case Study Cards */
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.case-study-card {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.case-study-card:hover {
+    border-color: var(--color-electric-blue);
+    background: var(--color-white);
+}
+
+.case-study-card h4 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.case-study-card p {
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+}
+
+.case-study-card ul {
+    margin-bottom: var(--space-4);
+    margin-left: var(--space-4);
+}
+
+.case-study-card li {
+    line-height: 1.8;
+    margin-bottom: var(--space-3);
+}
+
+.analysis-questions {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: var(--space-4);
+}
+
+.analysis-questions li {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-4);
+    position: relative;
+    line-height: 1.8;
+}
+
+.analysis-questions li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-electric-blue);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .case-study-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Hands-On Learning</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Activity Types</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#maker-projects" class="experimental-nav-link">Maker Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#design-exercises" class="experimental-nav-link">Design Exercises</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#collaborative" class="experimental-nav-link">Collaborative</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#case-studies" class="experimental-nav-link">Case Studies</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="textiles-landing.html">← Back to Textiles Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Learning Path</div>
+                    <div class="info-box-content">
+                        Start with Maker Projects for hands-on skills, then progress to Design Exercises and Case Studies.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Smart Textiles Activities</h1>
+                <p class="fundamentals-subtitle">Hands-on maker projects, design exercises, and case studies to practice wearable technology design</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Maker Projects Section -->
+                <section class="content-section" id="maker-projects">
+                    <h2>🛠️ Individual Maker Projects</h2>
+                    <p style="line-height: 1.8;">Build e-textile projects from beginner to intermediate level. Each project includes materials list, step-by-step instructions, and design variations.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">01</div>
+                            <h3 class="activity-title">Fabric Material Swatch Book</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner | <strong>Time:</strong> 2-3 hours | <strong>Cost:</strong> $20-40</p>
+                                <p>Create a personal reference book of conductive materials by testing and documenting different fabrics, threads, and components. This foundational project helps you understand material properties through hands-on exploration.</p>
+
+                                <h4>Materials Needed:</h4>
+                                <ul class="instruction-list">
+                                    <li>Small fabric book or binder with pages</li>
+                                    <li>Conductive thread samples (silver-plated, stainless steel)</li>
+                                    <li>Conductive fabric samples (Velostat, copper taffeta, conductive knit)</li>
+                                    <li>Multimeter for resistance testing</li>
+                                    <li>Sewing supplies (needle, regular thread, scissors)</li>
+                                    <li>Notebook for observations</li>
+                                </ul>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Collect Materials:</strong> Gather various conductive materials from suppliers like Adafruit, SparkFun, or local electronics stores</li>
+                                    <li><strong>Create Swatches:</strong> Cut small samples of each material and attach to pages</li>
+                                    <li><strong>Test Resistance:</strong> Use multimeter to measure resistance across different distances</li>
+                                    <li><strong>Document Observations:</strong> Note texture, flexibility, washability, and potential uses</li>
+                                    <li><strong>Test Connections:</strong> Practice sewing connections between materials</li>
+                                    <li><strong>Build Reference:</strong> Create a guide you can reference for future projects</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>How to identify and source conductive materials</li>
+                                    <li>Understanding material properties and their implications</li>
+                                    <li>Basic testing techniques for e-textiles</li>
+                                    <li>Building material literacy for design decisions</li>
+                                </ul>
+
+                                <h4>Design Variations:</h4>
+                                <p>Expand your swatch book to include non-conductive materials you might combine with electronics, adhesive samples, or encapsulation techniques for protecting circuits.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">02</div>
+                            <h3 class="activity-title">Simple LED Circuit Bracelet</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner | <strong>Time:</strong> 1-2 hours | <strong>Cost:</strong> $15-25</p>
+                                <p>Create your first wearable circuit by building an LED bracelet with a coin cell battery. Learn basic circuit design, sewing with conductive thread, and creating a simple on/off switch.</p>
+
+                                <h4>Materials Needed:</h4>
+                                <ul class="instruction-list">
+                                    <li>Felt or fabric strip (1.5" x 8")</li>
+                                    <li>Sewable LED (LilyPad, Flora, or similar)</li>
+                                    <li>CR2032 coin cell battery with holder</li>
+                                    <li>Conductive thread (silver-plated recommended)</li>
+                                    <li>Regular thread and needle</li>
+                                    <li>Snap fasteners for closure</li>
+                                    <li>Optional: decorative elements</li>
+                                </ul>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Plan Circuit:</strong> Sketch LED and battery placement ensuring positive and negative traces won't touch</li>
+                                    <li><strong>Attach Components:</strong> Use regular thread to secure battery holder and LED to fabric</li>
+                                    <li><strong>Sew Positive Trace:</strong> Using conductive thread, connect battery positive to LED positive with tight stitches</li>
+                                    <li><strong>Insulate:</strong> Tie off thread securely and coat knots with fabric glue</li>
+                                    <li><strong>Sew Negative Trace:</strong> Connect negative side, keeping traces separated</li>
+                                    <li><strong>Test Circuit:</strong> Insert battery and verify LED lights up</li>
+                                    <li><strong>Add Closure:</strong> Attach snaps to make bracelet wearable</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>Basic circuit concepts (polarity, open/closed circuits)</li>
+                                    <li>Sewing techniques for conductive thread</li>
+                                    <li>Planning traces to avoid short circuits</li>
+                                    <li>Securing connections for reliability</li>
+                                </ul>
+
+                                <h4>Design Variations:</h4>
+                                <p>Add multiple LEDs in parallel, create a fabric switch by making two conductive pads that press together, or design custom shapes and decorative elements around your circuit.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">03</div>
+                            <h3 class="activity-title">Pressure-Sensitive Fabric Sensor</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate | <strong>Time:</strong> 2-3 hours | <strong>Cost:</strong> $25-40</p>
+                                <p>Build a fabric sensor that changes resistance when pressed, then connect it to a simple Arduino circuit to create an interactive wearable prototype that responds to touch.</p>
+
+                                <h4>Materials Needed:</h4>
+                                <ul class="instruction-list">
+                                    <li>Velostat or pressure-sensitive conductive material</li>
+                                    <li>Conductive fabric (2 pieces, 3" x 3")</li>
+                                    <li>Regular fabric for backing</li>
+                                    <li>Conductive thread</li>
+                                    <li>LilyPad Arduino or Flora</li>
+                                    <li>LED or buzzer for output</li>
+                                    <li>Alligator clips for testing</li>
+                                </ul>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Create Sensor Sandwich:</strong> Layer conductive fabric, Velostat, conductive fabric with insulating spacers at edges</li>
+                                    <li><strong>Attach Leads:</strong> Sew conductive thread to each conductive fabric layer as connection points</li>
+                                    <li><strong>Test Sensor:</strong> Use multimeter to verify resistance changes with pressure</li>
+                                    <li><strong>Setup Arduino:</strong> Connect sensor to analog input using resistor divider circuit</li>
+                                    <li><strong>Program Response:</strong> Write simple code to light LED based on sensor readings</li>
+                                    <li><strong>Calibrate:</strong> Test different pressure levels and adjust code thresholds</li>
+                                    <li><strong>Integrate Design:</strong> Incorporate sensor into wearable garment or accessory</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>How to build fabric sensors from basic materials</li>
+                                    <li>Understanding analog sensor readings</li>
+                                    <li>Integrating sensors with microcontrollers</li>
+                                    <li>Calibration and threshold setting</li>
+                                </ul>
+
+                                <h4>Design Variations:</h4>
+                                <p>Create multiple sensors for different body locations, map sensor data to different outputs (sound, color, vibration), or combine with wireless communication to send data to phone or computer.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">04</div>
+                            <h3 class="activity-title">Interactive Wearable Prototype</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate | <strong>Time:</strong> 4-6 hours | <strong>Cost:</strong> $40-80</p>
+                                <p>Design and build a complete wearable prototype that responds to user input or environmental conditions. This open-ended project lets you apply all skills learned to create something uniquely yours.</p>
+
+                                <h4>Project Ideas:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Emotion-Signaling Accessory:</strong> Use color-changing LEDs to express mood via button input</li>
+                                    <li><strong>Posture-Reminder Wearable:</strong> Vibrates when you slouch using accelerometer</li>
+                                    <li><strong>Sound-Reactive Clothing:</strong> LED patterns that respond to ambient sound levels</li>
+                                    <li><strong>Proximity-Aware Fashion:</strong> Changes appearance when people get close</li>
+                                </ul>
+
+                                <h4>Design Process:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Define Concept:</strong> What interaction or experience do you want to create?</li>
+                                    <li><strong>Sketch Ideas:</strong> Draw form, placement on body, and basic interaction flow</li>
+                                    <li><strong>Plan Circuit:</strong> Identify sensors, outputs, and controller needs</li>
+                                    <li><strong>Prototype Electronics:</strong> Test circuit on breadboard before sewing</li>
+                                    <li><strong>Design Form:</strong> Create pattern and plan component placement</li>
+                                    <li><strong>Build & Test:</strong> Construct piece, test continuously, iterate as needed</li>
+                                    <li><strong>Refine & Finish:</strong> Add enclosures, strain relief, and aesthetic details</li>
+                                    <li><strong>Document:</strong> Photo documentation and reflection on process</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>Complete wearable design process from concept to prototype</li>
+                                    <li>Problem-solving and iteration in physical computing</li>
+                                    <li>Balancing technical requirements with wearability</li>
+                                    <li>Documentation and communication of design work</li>
+                                </ul>
+
+                                <h4>Presentation:</h4>
+                                <p>Create documentation showing your concept, design process, technical decisions, challenges encountered, and final working prototype. Consider how you would explain your design to both technical and non-technical audiences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Design Exercises Section -->
+                <section class="content-section" id="design-exercises">
+                    <h2>✏️ Design Exercises</h2>
+                    <p style="line-height: 1.8;">Practice wearable interaction design through structured exercises that develop your design thinking and specification skills.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">05</div>
+                            <h3 class="activity-title">Body Mapping & Placement Study</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 1-2 hours | <strong>Materials:</strong> Paper, markers, photo reference</p>
+                                <p>Map suitable locations on the body for different types of wearable components considering comfort, visibility, accessibility, and social acceptability.</p>
+
+                                <h4>Exercise Steps:</h4>
+                                <ol class="instruction-list">
+                                    <li>Draw or print human body outline from multiple angles</li>
+                                    <li>Research existing wearable device placements</li>
+                                    <li>Map zones for different component types (displays, sensors, controls, power)</li>
+                                    <li>Consider activities: standing, sitting, walking, reaching</li>
+                                    <li>Note comfort, visibility, and social factors for each location</li>
+                                    <li>Create your own placement guidelines reference</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">06</div>
+                            <h3 class="activity-title">Wearable Interaction Storyboard</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 2-3 hours | <strong>Materials:</strong> Paper, markers, sticky notes</p>
+                                <p>Design a complete wearable interaction using storyboarding to show how users would discover, activate, and experience your design in real contexts.</p>
+
+                                <h4>Exercise Steps:</h4>
+                                <ol class="instruction-list">
+                                    <li>Choose a wearable concept (can be aspirational)</li>
+                                    <li>Define target user and key use scenario</li>
+                                    <li>Storyboard key moments: discovery, first use, typical use, social context</li>
+                                    <li>Show input method, system response, and user feedback</li>
+                                    <li>Consider edge cases and failure modes</li>
+                                    <li>Present storyboard to others and gather feedback</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">07</div>
+                            <h3 class="activity-title">Technical Specification Writing</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 2-3 hours | <strong>Materials:</strong> Computer, template document</p>
+                                <p>Practice writing technical specifications for a wearable project to communicate effectively with engineers and makers who will help build your design.</p>
+
+                                <h4>Specification Components:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Design Intent:</strong> What experience are you creating and why?</li>
+                                    <li><strong>User Requirements:</strong> Who will wear it and in what contexts?</li>
+                                    <li><strong>Functional Requirements:</strong> What must the system do?</li>
+                                    <li><strong>Interaction Flow:</strong> Step-by-step interaction sequence</li>
+                                    <li><strong>Physical Requirements:</strong> Size, weight, durability, washability</li>
+                                    <li><strong>Power Requirements:</strong> Battery life and charging considerations</li>
+                                    <li><strong>Constraints:</strong> Budget, timeline, technical limitations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Collaborative Section -->
+                <section class="content-section" id="collaborative">
+                    <h2>👥 Collaborative Scenarios</h2>
+                    <p style="line-height: 1.8;">Team exercises simulating real-world collaboration between designers, engineers, and product managers in fashion tech development.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">08</div>
+                            <h3 class="activity-title">Fashion Tech Product Team Simulation</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 3-5 people | <strong>Time:</strong> 2-3 hours</p>
+                                <p>Simulate a product development meeting where designer, engineer, and product manager perspectives must be balanced to create a viable wearable tech product.</p>
+
+                                <h4>Roles:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Designer:</strong> Advocates for user experience, aesthetics, wearability</li>
+                                    <li><strong>Engineer:</strong> Focuses on technical feasibility, reliability, power</li>
+                                    <li><strong>Product Manager:</strong> Balances cost, timeline, market fit</li>
+                                    <li><strong>Fashion Expert:</strong> Ensures style, trends, and garment construction</li>
+                                </ul>
+
+                                <h4>Scenario:</h4>
+                                <p>Design a fitness-tracking shirt for yoga practitioners with heart rate monitoring and breath tracking. Team must decide on sensor placement, data display, power solution, garment construction, and pricing within budget and timeline constraints.</p>
+
+                                <h4>Deliverable:</h4>
+                                <p>Create one-page product brief with key decisions, tradeoffs made, and rationale. Present to class/peers for feedback.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">09</div>
+                            <h3 class="activity-title">Wearable Ethics Discussion</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 4-6 people | <strong>Time:</strong> 90 minutes</p>
+                                <p>Structured discussion of ethical considerations in wearable technology including privacy, data ownership, social implications, and design responsibility.</p>
+
+                                <h4>Discussion Topics:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Privacy:</strong> Biosensing data collection and storage</li>
+                                    <li><strong>Consent:</strong> Who owns data from your body?</li>
+                                    <li><strong>Social Dynamics:</strong> Status signaling and technological inequality</li>
+                                    <li><strong>Distraction:</strong> Always-on notifications and attention</li>
+                                    <li><strong>Environmental Impact:</strong> Fast fashion meets fast tech</li>
+                                    <li><strong>Accessibility:</strong> Designing for diverse bodies and abilities</li>
+                                </ul>
+
+                                <h4>Format:</h4>
+                                <p>Use case-based discussions with real wearable products. Each participant researches one ethical concern and leads 10-minute discussion. Group develops shared design principles for ethical wearable design.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">10</div>
+                            <h3 class="activity-title">Design Critique Workshop</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 5-8 people | <strong>Time:</strong> 2 hours</p>
+                                <p>Practice giving and receiving design feedback on wearable projects using structured critique methodology from design education.</p>
+
+                                <h4>Critique Structure:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Presentation (5 min):</strong> Designer shows work and explains intent</li>
+                                    <li><strong>Questions (5 min):</strong> Group asks clarifying questions only</li>
+                                    <li><strong>Feedback (15 min):</strong> Group offers observations and suggestions</li>
+                                    <li><strong>Response (5 min):</strong> Designer reflects on feedback received</li>
+                                </ol>
+
+                                <h4>Feedback Guidelines:</h4>
+                                <ul class="instruction-list">
+                                    <li>Start with what works well before suggesting improvements</li>
+                                    <li>Be specific ("the LED placement feels unbalanced" vs "I don't like it")</li>
+                                    <li>Focus on design intent and user experience</li>
+                                    <li>Offer alternatives rather than just criticism</li>
+                                    <li>Consider technical, aesthetic, and experiential dimensions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Case Studies Section -->
+                <section class="content-section" id="case-studies">
+                    <h2>📚 Case Study Analysis</h2>
+                    <p style="line-height: 1.8;">Analyze real fashion tech products to understand what made them succeed or fail. Learn from the industry's wins and losses.</p>
+
+                    <div class="case-study-grid">
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Google Jacquard & Levi's Commuter Jacket</h3>
+                            <p>Google partnered with Levi's to create a touch-sensitive smart jacket using Jacquard woven electronics platform. Launched 2017, discontinued 2023.</p>
+
+                            <h4>What They Did Right:</h4>
+                            <ul>
+                                <li>Industrial-scale production of conductive fabric</li>
+                                <li>Genuinely washable e-textile implementation</li>
+                                <li>Subtle integration that looked like normal clothing</li>
+                                <li>Gesture controls for useful functions (music, navigation)</li>
+                                <li>Strong fashion brand partnership</li>
+                            </ul>
+
+                            <h4>What Challenged Them:</h4>
+                            <ul>
+                                <li>High price point ($350) limited market</li>
+                                <li>Required phone proximity for functionality</li>
+                                <li>Value proposition unclear for mainstream users</li>
+                                <li>Limited application beyond initial use cases</li>
+                                <li>Fashion moves faster than tech product cycles</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Fashion Partnership is Crucial:</strong> Working with Levi's provided credibility and manufacturing expertise</li>
+                                <li><strong>Wash ability as Core Requirement:</strong> Successfully solving this technical challenge was key achievement</li>
+                                <li><strong>Subtle Integration Works:</strong> Most successful when tech was invisible</li>
+                                <li><strong>Value Proposition Matters:</strong> Cool technology isn't enough without clear user benefit</li>
+                                <li><strong>Platform Thinking:</strong> Jacquard as platform could enable other applications</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> If you were redesigning this, what use cases would justify the price?</li>
+                                <li><strong>Question:</strong> How would you balance fashion's seasonal nature with tech's development timeline?</li>
+                                <li><strong>Question:</strong> What applications of Jacquard fabric could work better than a jacket?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Hexoskin Smart Shirts</h3>
+                            <p>Canadian company creating biometric monitoring shirts for athletes and medical applications. In business since 2006, focused on B2B markets.</p>
+
+                            <h4>What They Did Right:</h4>
+                            <ul>
+                                <li>Medical-grade sensors in comfortable garment form</li>
+                                <li>Focused on professional/medical markets not consumer</li>
+                                <li>Extensive validation and research partnerships</li>
+                                <li>Long-term commitment to single product category</li>
+                                <li>Built proprietary sensor technology and analytics</li>
+                            </ul>
+
+                            <h4>What Challenged Them:</h4>
+                            <ul>
+                                <li>Consumer market adoption remained limited</li>
+                                <li>Tight-fitting compression garment not universally comfortable</li>
+                                <li>Price point ($400+) too high for casual fitness</li>
+                                <li>Data value proposition unclear for average users</li>
+                                <li>Competition from wrist-worn fitness trackers</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Market Selection Crucial:</strong> B2B/medical focus was right call given constraints</li>
+                                <li><strong>Form Factor Tradeoffs:</strong> Tight fit needed for accuracy vs comfort for all-day wear</li>
+                                <li><strong>Data Interpretation Matters:</strong> Raw metrics insufficient without actionable insights</li>
+                                <li><strong>Ecosystem Competition:</strong> Wearables compete with entire device categories</li>
+                                <li><strong>Longevity Possible:</strong> Company survived where many failed by finding right niche</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> What garment types could work better for comfortable all-day biometric sensing?</li>
+                                <li><strong>Question:</strong> How would you make biometric data more valuable to average users?</li>
+                                <li><strong>Question:</strong> What can textile sensors do that wrist-worn trackers cannot?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">CuteCircuit: High Fashion Wearables</h3>
+                            <p>London fashion tech studio creating couture garments with integrated technology. Founded 2004, known for Twitter Dress, Hug Shirt, and celebrity pieces.</p>
+
+                            <h4>What They Did Right:</h4>
+                            <ul>
+                                <li>Fashion-first approach with technology as material</li>
+                                <li>Exceptional craftsmanship and attention to aesthetic detail</li>
+                                <li>High-profile placements (Katy Perry, Black Eyed Peas)</li>
+                                <li>Explored meaningful interactions (Hug Shirt for remote connection)</li>
+                                <li>Positioned as art/fashion, not just gadgets</li>
+                            </ul>
+
+                            <h4>Business Model Challenges:</h4>
+                            <ul>
+                                <li>One-off couture pieces not scalable to mass market</li>
+                                <li>Technology components dated quickly</li>
+                                <li>Extremely high production costs</li>
+                                <li>Difficult to translate concept pieces to consumer products</li>
+                                <li>Niche market for technology-integrated haute couture</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Fashion as Primary:</strong> When technology serves fashion, not vice versa, aesthetic succeeds</li>
+                                <li><strong>Exploration Value:</strong> Concept pieces push boundaries even if not commercial</li>
+                                <li><strong>Celebrity Amplification:</strong> High-profile visibility creates cultural impact</li>
+                                <li><strong>Interaction Design:</strong> Hug Shirt showed emotional potential of wearables</li>
+                                <li><strong>Craft Matters:</strong> High-quality construction distinguished from consumer electronics</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> How could haute couture wearable concepts be adapted for mass production?</li>
+                                <li><strong>Question:</strong> What's the role of concept/art pieces in advancing the field?</li>
+                                <li><strong>Question:</strong> How do you balance technological capabilities with fashion aesthetic?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Lumo Lift Posture Sensor</h3>
+                            <p>Small wearable device that vibrated when user slouched. Launched 2014, company shut down 2018 despite positive reviews.</p>
+
+                            <h4>What They Did Right:</h4>
+                            <ul>
+                                <li>Focused on single clear problem: posture</li>
+                                <li>Simple, immediate feedback via vibration</li>
+                                <li>Elegant small form factor (magnetic clip)</li>
+                                <li>Good reviews and user satisfaction</li>
+                                <li>Clear value proposition</li>
+                            </ul>
+
+                            <h4>What Challenged Them:</h4>
+                            <ul>
+                                <li>Problem solved itself - users learned better posture and stopped using device</li>
+                                <li>No repeat purchase or subscription model</li>
+                                <li>Too narrow focus limited market size</li>
+                                <li>Competition from general activity trackers</li>
+                                <li>Difficulty scaling beyond initial enthusiasts</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Success Problem:</strong> When product works too well, users don't need to keep buying</li>
+                                <li><strong>Business Model Critical:</strong> One-time purchase model limited viability</li>
+                                <li><strong>Feature vs Platform:</strong> Single-purpose devices struggle against multifunction competitors</li>
+                                <li><strong>Behavior Change:</strong> Temporary intervention device different from continuous monitoring</li>
+                                <li><strong>Clear Value:</strong> Simple, focused solution connected with users who needed it</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> How would you design business model for a behavior-change wearable?</li>
+                                <li><strong>Question:</strong> What other discrete body-worn sensors could solve specific problems?</li>
+                                <li><strong>Question:</strong> How do you compete when smartphones/watches absorb your functionality?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 4px solid var(--color-black);">
+                    <a href="textiles-landing.html" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-electric-blue); color: var(--color-white); text-decoration: none; font-weight: var(--font-bold); border-radius: 4px;">← Back to Smart Textiles Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

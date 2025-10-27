@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Computing Field Kit - Hardware, Tools & Platforms | Emerging Tech Hub</title>
+    <meta name="description" content="Essential tools for edge computing and IoT development. Raspberry Pi, NVIDIA Jetson, Edge Impulse, YOLO models, and edge ML platforms.">
+    <meta name="keywords" content="edge computing hardware, IoT development, Edge Impulse, TinyML, YOLO, Raspberry Pi, NVIDIA Jetson, edge AI">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Resource Card Styling */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.resource-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.resource-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.resource-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+}
+
+.resource-description {
+    line-height: 1.8;
+    margin-bottom: var(--space-5);
+}
+
+.resource-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.resource-list {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.resource-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
+.resource-link {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+}
+
+.resource-link:hover {
+    background: var(--color-black);
+    transform: translateX(4px);
+}
+
+/* Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.comparison-table th,
+.comparison-table td {
+    border: 2px solid var(--color-black);
+    padding: var(--space-3);
+    text-align: left;
+    line-height: 1.6;
+}
+
+.comparison-table th {
+    background: var(--color-black);
+    color: var(--color-white);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    letter-spacing: 0.05em;
+}
+
+.comparison-table tr:hover {
+    background: var(--color-gray-50);
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .resources-grid { grid-template-columns: 1fr !important; }
+    .comparison-table { font-size: var(--text-sm); }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Edge Computing Resources</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Resource Types</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#edge-hardware" class="experimental-nav-link">Edge Hardware</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#ml-platforms" class="experimental-nav-link">ML Platforms</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#vision-models" class="experimental-nav-link">Vision Models</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#iot-platforms" class="experimental-nav-link">IoT Platforms</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="edge-landing.html">← Back to Edge Computing Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Getting Started</div>
+                    <div class="info-box-content">
+                        Start with Raspberry Pi 4 and Edge Impulse for most accessible entry into edge ML.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Edge Computing Field Kit</h1>
+                <p class="fundamentals-subtitle">Hardware, platforms, and tools for building intelligent edge systems—from IoT devices to edge AI with modern ML models like YOLO</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Edge Hardware Section -->
+                <section class="content-section" id="edge-hardware">
+                    <h2>💻 Edge Computing Hardware</h2>
+                    <p style="line-height: 1.8;">Devices for running ML models, processing sensor data, and making real-time decisions at the edge without cloud dependency.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <span class="resource-badge">Recommended</span>
+                            <h3>Raspberry Pi 4 / 5</h3>
+                            <div class="resource-description">
+                                <p><strong>Price:</strong> $35-75 | <strong>Best For:</strong> General edge computing, learning</p>
+                                <p>Most accessible edge computing platform. Full Linux computer in credit-card size with GPIO pins for sensors, camera support, and enough power for edge ML inference.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Specifications (Pi 4):</h4>
+                                <ul class="resource-list">
+                                    <li>Quad-core ARM CPU (1.5-1.8GHz)</li>
+                                    <li>2GB/4GB/8GB RAM options</li>
+                                    <li>WiFi, Bluetooth, Ethernet</li>
+                                    <li>40-pin GPIO for sensors</li>
+                                    <li>Camera interface (CSI)</li>
+                                    <li>USB 3.0 ports</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Perfect For:</h4>
+                                <ul class="resource-list">
+                                    <li>Edge ML inference with TensorFlow Lite</li>
+                                    <li>IoT gateway and sensor hub</li>
+                                    <li>Computer vision projects (with Pi Camera)</li>
+                                    <li>Home automation and smart devices</li>
+                                    <li>Learning edge computing concepts</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">ML Performance:</h4>
+                                <ul class="resource-list">
+                                    <li>Runs TensorFlow Lite models</li>
+                                    <li>YOLO object detection: ~1-3 FPS (depending on model size)</li>
+                                    <li>MobileNet inference: ~5-10 FPS</li>
+                                    <li>Best for keyword spotting, simple vision tasks</li>
+                                </ul>
+
+                                <a href="https://www.raspberrypi.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Get Started →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <span class="resource-badge">Edge AI</span>
+                            <h3>NVIDIA Jetson Nano / Orin Nano</h3>
+                            <div class="resource-description">
+                                <p><strong>Price:</strong> $149-499 | <strong>Best For:</strong> Computer vision, robotics, edge AI</p>
+                                <p>Powerful edge AI platform with GPU acceleration. Runs full-size deep learning models with real-time performance for vision and robotics applications.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Key Features:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>GPU:</strong> 128-core Maxwell GPU (Nano) or up to 1024-core Ampere (Orin)</li>
+                                    <li>4GB-8GB RAM</li>
+                                    <li>CUDA and cuDNN support</li>
+                                    <li>Multiple camera inputs (CSI)</li>
+                                    <li>GPIO pins for sensors</li>
+                                    <li>Pre-installed ML frameworks</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">ML Performance:</h4>
+                                <ul class="resource-list">
+                                    <li>YOLOv5/v8 at 20-30 FPS (Nano) or 60+ FPS (Orin)</li>
+                                    <li>Real-time pose estimation</li>
+                                    <li>Multiple object tracking</li>
+                                    <li>Runs full PyTorch and TensorFlow models</li>
+                                    <li>Excellent for autonomous robots and drones</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Use Cases:</h4>
+                                <ul class="resource-list">
+                                    <li>Autonomous vehicles and robotics</li>
+                                    <li>Real-time video analytics</li>
+                                    <li>Industrial vision inspection</li>
+                                    <li>Smart retail and surveillance</li>
+                                </ul>
+
+                                <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/" target="_blank" rel="noopener noreferrer" class="resource-link">Learn More →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Google Coral Dev Board / USB Accelerator</h3>
+                            <div class="resource-description">
+                                <p><strong>Price:</strong> $59-149 | <strong>Best For:</strong> Fast ML inference on resource-constrained devices</p>
+                                <p>Google's Edge TPU provides hardware acceleration for TensorFlow Lite models. USB Accelerator adds ML to any device; Dev Board is standalone computer.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Edge TPU Capabilities:</h4>
+                                <ul class="resource-list">
+                                    <li>4 TOPS (trillion operations/second)</li>
+                                    <li>Optimized for MobileNet, SSD, YOLO</li>
+                                    <li>Runs quantized TensorFlow Lite models</li>
+                                    <li>Ultra-low power consumption (2W)</li>
+                                    <li>MobileNet inference: 100+ FPS</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">USB Accelerator ($59):</h4>
+                                <ul class="resource-list">
+                                    <li>Plug into Raspberry Pi, PC, or any USB host</li>
+                                    <li>Instant ML acceleration without changing hardware</li>
+                                    <li>Perfect for adding AI to existing edge devices</li>
+                                    <li>Low power, no cooling needed</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Dev Board ($149):</h4>
+                                <ul class="resource-list">
+                                    <li>Standalone computer with integrated Edge TPU</li>
+                                    <li>NXP i.MX 8M CPU, 1GB RAM</li>
+                                    <li>WiFi, Bluetooth, USB-C</li>
+                                    <li>40-pin GPIO header</li>
+                                </ul>
+
+                                <a href="https://coral.ai/" target="_blank" rel="noopener noreferrer" class="resource-link">Explore Coral →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Arduino Boards & ESP32</h3>
+                            <div class="resource-description">
+                                <p><strong>Price:</strong> $5-50 | <strong>Best For:</strong> Ultra-low-power edge, TinyML, sensors</p>
+                                <p>Microcontrollers for battery-powered edge devices. Limited compute but extremely power-efficient for sensor data and simple ML tasks.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Popular Options:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Arduino Nano 33 BLE Sense ($35):</strong> Built-in IMU, mic, temp/humidity, gesture sensor</li>
+                                    <li><strong>ESP32 ($5-15):</strong> WiFi/Bluetooth, dual-core, affordable</li>
+                                    <li><strong>Arduino Portenta H7 ($99):</strong> Dual-core ARM M7+M4, vision shield available</li>
+                                    <li><strong>Seeed XIAO ESP32S3 Sense ($14):</strong> Camera, mic, TinyML capable</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">TinyML Capabilities:</h4>
+                                <ul class="resource-list">
+                                    <li>Keyword spotting ("Hey device")</li>
+                                    <li>Gesture recognition from IMU</li>
+                                    <li>Vibration anomaly detection</li>
+                                    <li>Simple image classification (low-res)</li>
+                                    <li>Power consumption: milliwatts (battery lasts months)</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Perfect For:</h4>
+                                <ul class="resource-list">
+                                    <li>Always-on sensor nodes</li>
+                                    <li>Wearable devices</li>
+                                    <li>Industrial monitoring (vibration, sound)</li>
+                                    <li>Smart home sensors</li>
+                                </ul>
+
+                                <a href="https://www.arduino.cc/en/hardware" target="_blank" rel="noopener noreferrer" class="resource-link">Browse Arduino →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hardware Comparison Table -->
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-top: var(--space-12); margin-bottom: var(--space-6);">Edge Hardware Comparison</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Device</th>
+                                <th>Price</th>
+                                <th>ML Performance</th>
+                                <th>Power Usage</th>
+                                <th>Best Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Raspberry Pi 4</strong></td>
+                                <td>$35-75</td>
+                                <td>Light ML (TFLite)</td>
+                                <td>3-5W</td>
+                                <td>General edge, learning, prototyping</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NVIDIA Jetson Nano</strong></td>
+                                <td>$149</td>
+                                <td>Real-time vision AI</td>
+                                <td>5-10W</td>
+                                <td>Computer vision, robotics</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google Coral USB</strong></td>
+                                <td>$59</td>
+                                <td>Fast TFLite inference</td>
+                                <td>2W</td>
+                                <td>Add ML to existing hardware</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Arduino Nano 33 BLE</strong></td>
+                                <td>$35</td>
+                                <td>TinyML (simple models)</td>
+                                <td>0.01W (10mW)</td>
+                                <td>Battery-powered sensors</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ESP32</strong></td>
+                                <td>$5-15</td>
+                                <td>Very basic ML</td>
+                                <td>0.05-0.2W</td>
+                                <td>WiFi sensors, ultra-low cost</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- ML Platforms Section -->
+                <section class="content-section" id="ml-platforms">
+                    <h2>🧠 Edge ML Development Platforms</h2>
+                    <p style="line-height: 1.8;">End-to-end platforms for building, training, and deploying machine learning models to edge devices without deep ML expertise.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <span class="resource-badge">Highly Recommended</span>
+                            <h3>Edge Impulse</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Full ML Development Platform | <strong>Price:</strong> Free for developers, paid for commercial</p>
+                                <p>Most accessible end-to-end platform for edge ML. Collect data, train models, deploy to any edge device—all through web interface. No PhD required.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What Makes It Special:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Complete Workflow:</strong> Data collection → Training → Deployment in one platform</li>
+                                    <li><strong>No-Code Interface:</strong> Build ML models without writing code</li>
+                                    <li><strong>Device Support:</strong> Arduino, Raspberry Pi, ESP32, mobile, more</li>
+                                    <li><strong>Pre-Built Blocks:</strong> Audio (keyword spotting), vision (object detection), sensor data</li>
+                                    <li><strong>AutoML:</strong> Automatically finds best model architecture</li>
+                                    <li><strong>EON Tuner:</strong> Optimizes models for your specific hardware</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Supported Use Cases:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Vision:</strong> Object detection (FOMO, YOLOv5), image classification</li>
+                                    <li><strong>Audio:</strong> Keyword spotting, audio classification, anomaly detection</li>
+                                    <li><strong>Motion:</strong> Gesture recognition, activity classification from IMU</li>
+                                    <li><strong>Sensor Fusion:</strong> Combine multiple sensor types</li>
+                                    <li><strong>Anomaly Detection:</strong> Industrial predictive maintenance</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Learning Path:</h4>
+                                <ul class="resource-list">
+                                    <li>Start with pre-built public projects</li>
+                                    <li>Follow step-by-step tutorials for your hardware</li>
+                                    <li>Collect your own data using phone or device</li>
+                                    <li>Train model with one click</li>
+                                    <li>Deploy to device as Arduino library or binary</li>
+                                </ul>
+
+                                <a href="https://www.edgeimpulse.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Start Building →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>TensorFlow Lite</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> ML Framework | <strong>Price:</strong> Free & Open Source</p>
+                                <p>Google's framework for running TensorFlow models on mobile and edge devices. Industry standard with extensive device support.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Key Features:</h4>
+                                <ul class="resource-list">
+                                    <li>Convert TensorFlow models to optimized .tflite format</li>
+                                    <li>Quantization for smaller models (INT8, float16)</li>
+                                    <li>Hardware acceleration (GPU, Edge TPU, NNAPI)</li>
+                                    <li>Support for Raspberry Pi, Android, iOS, microcontrollers</li>
+                                    <li>Pre-trained models available (image classification, object detection)</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">TensorFlow Lite Micro:</h4>
+                                <ul class="resource-list">
+                                    <li>Runs on microcontrollers (Arduino, ESP32)</li>
+                                    <li>Footprint as small as 16KB</li>
+                                    <li>No operating system required</li>
+                                    <li>Perfect for TinyML applications</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Getting Started:</h4>
+                                <ul class="resource-list">
+                                    <li>Use pre-trained models from TensorFlow Hub</li>
+                                    <li>Convert your own TensorFlow models</li>
+                                    <li>Optimize with post-training quantization</li>
+                                    <li>Deploy with Python or C++ APIs</li>
+                                </ul>
+
+                                <a href="https://www.tensorflow.org/lite" target="_blank" rel="noopener noreferrer" class="resource-link">Get Started →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Roboflow</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Computer Vision Platform | <strong>Price:</strong> Free tier, paid plans</p>
+                                <p>End-to-end platform for computer vision. Upload images, annotate, train models, deploy to edge. Specializes in making YOLO and other vision models accessible.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What It Does:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Dataset Management:</strong> Upload, organize, version control images</li>
+                                    <li><strong>Annotation:</strong> Web-based labeling tools for object detection, segmentation</li>
+                                    <li><strong>Augmentation:</strong> Automatically generate training variations</li>
+                                    <li><strong>Training:</strong> One-click training of YOLOv5, YOLOv8, and other models</li>
+                                    <li><strong>Deployment:</strong> Export for edge devices or use hosted API</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Supported Models:</h4>
+                                <ul class="resource-list">
+                                    <li>YOLOv5, YOLOv8, YOLOv9 (object detection)</li>
+                                    <li>Faster R-CNN, RetinaNet</li>
+                                    <li>Semantic segmentation models</li>
+                                    <li>Instance segmentation</li>
+                                    <li>Export to TensorFlow Lite, ONNX, CoreML</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Perfect For:</h4>
+                                <ul class="resource-list">
+                                    <li>Custom object detection for edge devices</li>
+                                    <li>Quality inspection systems</li>
+                                    <li>Retail analytics</li>
+                                    <li>Security and surveillance</li>
+                                </ul>
+
+                                <a href="https://roboflow.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Try Roboflow →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>NVIDIA TAO Toolkit</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Transfer Learning Platform | <strong>Price:</strong> Free</p>
+                                <p>NVIDIA's toolkit for training AI models without large datasets or ML expertise. Use transfer learning to adapt pre-trained models to your use case.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Key Capabilities:</h4>
+                                <ul class="resource-list">
+                                    <li>Pre-trained models for common vision tasks</li>
+                                    <li>Transfer learning with small datasets (100s of images)</li>
+                                    <li>AutoML for model architecture search</li>
+                                    <li>Pruning and quantization for edge deployment</li>
+                                    <li>Optimized for Jetson deployment</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Supported Applications:</h4>
+                                <ul class="resource-list">
+                                    <li>Object detection (DetectNet, YOLO, Faster R-CNN)</li>
+                                    <li>Image classification</li>
+                                    <li>Semantic segmentation</li>
+                                    <li>Action recognition</li>
+                                    <li>Re-identification</li>
+                                </ul>
+
+                                <a href="https://developer.nvidia.com/tao-toolkit" target="_blank" rel="noopener noreferrer" class="resource-link">Get TAO →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Vision Models Section -->
+                <section class="content-section" id="vision-models">
+                    <h2>👁️ Modern Computer Vision Models for Edge</h2>
+                    <p style="line-height: 1.8;">State-of-the-art object detection and vision models optimized for edge deployment. From YOLO to newer efficient architectures.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <span class="resource-badge">Industry Standard</span>
+                            <h3>YOLO (You Only Look Once)</h3>
+                            <div class="resource-description">
+                                <p><strong>Latest Version:</strong> YOLOv9 / YOLOv10 (2024) | <strong>Type:</strong> Real-time Object Detection</p>
+                                <p>The gold standard for real-time object detection. Fast enough for edge devices while maintaining high accuracy. Multiple versions optimized for different hardware.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">YOLO Evolution:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>YOLOv5:</strong> Most popular, excellent balance of speed/accuracy</li>
+                                    <li><strong>YOLOv7:</strong> Improved accuracy, still fast</li>
+                                    <li><strong>YOLOv8 (Ultralytics):</strong> Easiest to use, great documentation</li>
+                                    <li><strong>YOLOv9:</strong> Cutting-edge architecture improvements</li>
+                                    <li><strong>YOLO-NAS:</strong> Neural Architecture Search optimized</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Edge-Optimized Versions:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>YOLOv5n (nano):</strong> Smallest, fastest (1.9MB model)</li>
+                                    <li><strong>YOLOv5s (small):</strong> Good balance for Raspberry Pi</li>
+                                    <li><strong>YOLOv8n:</strong> Even more efficient nano model</li>
+                                    <li>All can be quantized to INT8 for 4x speedup</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Performance on Edge Hardware:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Raspberry Pi 4:</strong> YOLOv5n at 5-10 FPS</li>
+                                    <li><strong>Jetson Nano:</strong> YOLOv5s at 20-30 FPS</li>
+                                    <li><strong>Jetson Orin:</strong> YOLOv8 at 60+ FPS</li>
+                                    <li><strong>Coral TPU:</strong> YOLOv5 TFLite at 15-25 FPS</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Easy Deployment:</h4>
+                                <ul class="resource-list">
+                                    <li>Ultralytics library: <code>pip install ultralytics</code></li>
+                                    <li>Export to TensorFlow Lite, ONNX, CoreML</li>
+                                    <li>Pre-trained on COCO dataset (80 common objects)</li>
+                                    <li>Easy to fine-tune on custom datasets</li>
+                                </ul>
+
+                                <a href="https://github.com/ultralytics/ultralytics" target="_blank" rel="noopener noreferrer" class="resource-link">Get YOLO →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>MobileNet & EfficientNet</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Lightweight Image Classification | <strong>Optimized For:</strong> Mobile & Edge</p>
+                                <p>Google's efficient neural networks designed specifically for resource-constrained devices. Excellent accuracy with minimal compute.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">MobileNet Family:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>MobileNetV1:</strong> Depthwise separable convolutions</li>
+                                    <li><strong>MobileNetV2:</strong> Inverted residuals, linear bottlenecks</li>
+                                    <li><strong>MobileNetV3:</strong> Neural architecture search optimized</li>
+                                    <li>Models from 1MB to 16MB</li>
+                                    <li>Runs smoothly on any edge hardware</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">EfficientNet:</h4>
+                                <ul class="resource-list">
+                                    <li>Compound scaling of depth, width, resolution</li>
+                                    <li>Better accuracy than MobileNet at similar size</li>
+                                    <li>EfficientNet-Lite optimized for edge</li>
+                                    <li>Used in many mobile apps</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Use Cases:</h4>
+                                <ul class="resource-list">
+                                    <li>Image classification (1000 ImageNet classes)</li>
+                                    <li>Transfer learning base for custom tasks</li>
+                                    <li>Feature extraction for other models</li>
+                                    <li>Real-time classification on video streams</li>
+                                </ul>
+
+                                <a href="https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV3" target="_blank" rel="noopener noreferrer" class="resource-link">Explore Models →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>MediaPipe (Google)</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Pre-Built ML Pipelines | <strong>Price:</strong> Free & Open Source</p>
+                                <p>Google's collection of ready-to-use ML solutions for common tasks. Optimized pipelines that work out-of-the-box on edge devices.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Available Solutions:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Pose Detection:</strong> Track 33 body landmarks in real-time</li>
+                                    <li><strong>Hand Tracking:</strong> 21 hand landmarks for gesture recognition</li>
+                                    <li><strong>Face Detection/Mesh:</strong> 468 facial landmarks</li>
+                                    <li><strong>Object Detection:</strong> Optimized for mobile</li>
+                                    <li><strong>Selfie Segmentation:</strong> Real-time background removal</li>
+                                    <li><strong>Holistic:</strong> Face, pose, and hands together</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Why MediaPipe:</h4>
+                                <ul class="resource-list">
+                                    <li>No training needed—works immediately</li>
+                                    <li>Runs on CPU (no GPU required for many tasks)</li>
+                                    <li>Cross-platform (Python, C++, Android, iOS, Web)</li>
+                                    <li>Real-time performance on edge devices</li>
+                                    <li>Great for prototyping interactive systems</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Example Use Cases:</h4>
+                                <ul class="resource-list">
+                                    <li>Fitness tracking and form correction</li>
+                                    <li>Sign language recognition</li>
+                                    <li>AR filters and effects</li>
+                                    <li>Gesture-controlled interfaces</li>
+                                </ul>
+
+                                <a href="https://developers.google.com/mediapipe" target="_blank" rel="noopener noreferrer" class="resource-link">Try MediaPipe →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Newer Edge-Optimized Models (2023-2024)</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Cutting-Edge Architectures | <strong>Status:</strong> Research → Production</p>
+                                <p>Latest models pushing the boundaries of edge AI performance with transformer-based architectures and novel optimizations.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Notable Recent Models:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>FastViT:</strong> Vision Transformer optimized for edge (2023)</li>
+                                    <li><strong>EfficientViT:</strong> Memory-efficient vision transformers</li>
+                                    <li><strong>MobileViT:</strong> Combines convolutions with transformers</li>
+                                    <li><strong>PP-YOLOE:</strong> Paddle Paddle's anchor-free YOLO variant</li>
+                                    <li><strong>YOLO-NAS:</strong> Neural Architecture Search for optimal structure</li>
+                                    <li><strong>RT-DETR:</strong> Real-time transformer-based detection</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Trends in Edge Vision:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Transformer Efficiency:</strong> Making attention mechanisms work on edge</li>
+                                    <li><strong>Anchor-Free Detection:</strong> Simpler, faster object detection</li>
+                                    <li><strong>Neural Architecture Search:</strong> Auto-designed optimal models</li>
+                                    <li><strong>Quantization-Aware Training:</strong> Models designed for INT8 from start</li>
+                                    <li><strong>Dynamic Networks:</strong> Adjust compute based on input complexity</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Where to Find:</h4>
+                                <ul class="resource-list">
+                                    <li><a href="https://paperswithcode.com/sota" target="_blank" rel="noopener noreferrer">Papers with Code</a> - Latest research</li>
+                                    <li><a href="https://github.com/topics/edge-ai" target="_blank" rel="noopener noreferrer">GitHub Edge AI</a> - Open implementations</li>
+                                    <li>Hugging Face Model Hub - Pre-trained models</li>
+                                </ul>
+
+                                <a href="https://paperswithcode.com/task/real-time-object-detection" target="_blank" rel="noopener noreferrer" class="resource-link">Explore Latest →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- IoT Platforms Section -->
+                <section class="content-section" id="iot-platforms">
+                    <h2>🌐 IoT & Edge Platforms</h2>
+                    <p style="line-height: 1.8;">Cloud platforms and tools for managing edge device fleets, data pipelines, and edge-to-cloud integration.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h3>AWS IoT Greengrass</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Edge Runtime & Cloud Integration | <strong>Price:</strong> Free tier, usage-based</p>
+                                <p>Amazon's edge computing platform. Run Lambda functions, Docker containers, and ML models locally on edge devices while syncing with AWS cloud.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Key Capabilities:</h4>
+                                <ul class="resource-list">
+                                    <li>Deploy AWS Lambda functions to edge devices</li>
+                                    <li>Run ML models (SageMaker Neo optimized)</li>
+                                    <li>Local message processing with MQTT</li>
+                                    <li>Device management and OTA updates</li>
+                                    <li>Works offline, syncs when connected</li>
+                                </ul>
+
+                                <a href="https://aws.amazon.com/greengrass/" target="_blank" rel="noopener noreferrer" class="resource-link">Learn More →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Azure IoT Edge</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Edge Computing Platform | <strong>Price:</strong> Free tier, usage-based</p>
+                                <p>Microsoft's edge platform. Deploy Azure services and custom code to edge devices. Strong support for industrial IoT.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Features:</h4>
+                                <ul class="resource-list">
+                                    <li>Deploy containerized workloads to edge</li>
+                                    <li>Azure Cognitive Services at edge</li>
+                                    <li>Stream Analytics for real-time processing</li>
+                                    <li>Integration with Azure ML</li>
+                                    <li>Enterprise security and compliance</li>
+                                </ul>
+
+                                <a href="https://azure.microsoft.com/en-us/products/iot-edge/" target="_blank" rel="noopener noreferrer" class="resource-link">Get Started →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Balena</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Fleet Management Platform | <strong>Price:</strong> Free for up to 10 devices</p>
+                                <p>Developer-friendly platform for building, deploying, and managing IoT fleets. Excellent for Raspberry Pi and edge device management.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What It Does:</h4>
+                                <ul class="resource-list">
+                                    <li>Deploy apps to thousands of devices</li>
+                                    <li>OTA updates with rollback</li>
+                                    <li>Remote SSH access to devices</li>
+                                    <li>Docker-based applications</li>
+                                    <li>Environment variables and secrets management</li>
+                                </ul>
+
+                                <a href="https://www.balena.io/" target="_blank" rel="noopener noreferrer" class="resource-link">Try Balena →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Node-RED</h3>
+                            <div class="resource-description">
+                                <p><strong>Type:</strong> Visual IoT Programming | <strong>Price:</strong> Free & Open Source</p>
+                                <p>Flow-based programming tool for wiring together IoT devices, APIs, and services. Perfect for rapid prototyping without coding.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Features:</h4>
+                                <ul class="resource-list">
+                                    <li>Drag-and-drop visual programming</li>
+                                    <li>Huge library of pre-built nodes</li>
+                                    <li>MQTT, HTTP, WebSocket support</li>
+                                    <li>Dashboard creation for IoT visualization</li>
+                                    <li>Runs on Raspberry Pi, servers, cloud</li>
+                                </ul>
+
+                                <a href="https://nodered.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Install Node-RED →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 4px solid var(--color-black);">
+                    <a href="edge-landing.html" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-electric-blue); color: var(--color-white); text-decoration: none; font-weight: var(--font-bold); border-radius: 4px;">← Back to Edge Computing Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
