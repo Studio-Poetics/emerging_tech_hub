@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Machine Learning Activities - Hands-On Projects & Exercises | Emerging Tech Hub</title>
+    <meta name="description" content="Apply AI knowledge through hands-on no-code projects, design exercises, and case study analysis. Build AI applications without programming.">
+    <meta name="keywords" content="AI projects, no-code AI, machine learning exercises, AI case studies, teachable machine tutorials, AI applications">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Activity Card Styles */
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-top: var(--space-8);
+}
+
+.activity-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.activity-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+}
+
+.activity-number {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 48px;
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+}
+
+.activity-card:hover .activity-number {
+    background: var(--color-electric-blue);
+}
+
+.activity-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-6);
+}
+
+.activity-description {
+    line-height: 1.8;
+}
+
+.activity-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.activity-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.instruction-list {
+    margin-left: var(--space-4);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.instruction-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+    padding-left: var(--space-2);
+}
+
+.instruction-list li strong {
+    font-weight: var(--font-bold);
+}
+
+/* Case Study Cards */
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.case-study-card {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.case-study-card:hover {
+    border-color: var(--color-electric-blue);
+    background: var(--color-white);
+}
+
+.case-study-card h4 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.case-study-card p {
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+}
+
+.case-study-card ul {
+    margin-bottom: var(--space-4);
+    margin-left: var(--space-4);
+}
+
+.case-study-card li {
+    line-height: 1.8;
+    margin-bottom: var(--space-3);
+}
+
+.analysis-questions {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: var(--space-4);
+}
+
+.analysis-questions li {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-4);
+    position: relative;
+    line-height: 1.8;
+}
+
+.analysis-questions li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-electric-blue);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .case-study-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Hands-On Learning</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Activity Types</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#no-code-projects" class="experimental-nav-link">No-Code Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#design-exercises" class="experimental-nav-link">Design Exercises</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#collaborative" class="experimental-nav-link">Collaborative</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#case-studies" class="experimental-nav-link">Case Studies</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="ai-landing.html">← Back to AI Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Learning Path</div>
+                    <div class="info-box-content">
+                        Start with No-Code Projects for hands-on experience, then progress to Design Exercises and Case Studies.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">AI & Machine Learning Activities</h1>
+                <p class="fundamentals-subtitle">Hands-on no-code projects, design exercises, and case studies to practice AI thinking</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- No-Code Projects Section -->
+                <section class="content-section" id="no-code-projects">
+                    <h2>🎨 No-Code AI Projects</h2>
+                    <p style="line-height: 1.8;">Build real AI applications without writing code. Perfect for designers, product managers, and anyone exploring AI capabilities.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">01</div>
+                            <h3 class="activity-title">Custom Image Classifier with Teachable Machine</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner | <strong>Time:</strong> 1-2 hours | <strong>Cost:</strong> Free</p>
+                                <p>Train a custom image recognition model that can identify objects, gestures, or anything you can photograph. No coding or ML knowledge required.</p>
+
+                                <h4>Project Ideas:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Personal Item Finder:</strong> Teach AI to recognize your keys, wallet, phone</li>
+                                    <li><strong>Product Sorter:</strong> Classify products by type for inventory management</li>
+                                    <li><strong>Gesture Controller:</strong> Control applications with hand gestures</li>
+                                    <li><strong>Quality Checker:</strong> Detect defects in products or plants</li>
+                                </ul>
+
+                                <h4>Step-by-Step:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Go to teachablemachine.withgoogle.com</strong></li>
+                                    <li><strong>Choose "Image Project"</strong> → Standard image model</li>
+                                    <li><strong>Create Classes:</strong> Click "Add a class" for each thing you want to recognize</li>
+                                    <li><strong>Collect Images:</strong> Use webcam or upload 50-100 photos per class</li>
+                                    <li><strong>Train Model:</strong> Click "Train Model" and wait 1-2 minutes</li>
+                                    <li><strong>Test:</strong> Use webcam preview to test accuracy</li>
+                                    <li><strong>Export:</strong> Download for website, app, or Arduino</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>How machine learning models learn from examples</li>
+                                    <li>Importance of diverse training data</li>
+                                    <li>How to evaluate model accuracy</li>
+                                    <li>When image recognition is useful vs when it isn't</li>
+                                </ul>
+
+                                <h4>Pro Tips:</h4>
+                                <ul class="instruction-list">
+                                    <li>Use varied lighting and backgrounds in training images</li>
+                                    <li>More examples = better accuracy (aim for 100+ per class)</li>
+                                    <li>Test with images the model hasn't seen before</li>
+                                    <li>Create a "None of the above" class for unknowns</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">02</div>
+                            <h3 class="activity-title">Chat with Your Own Documents (Local AI)</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner-Intermediate | <strong>Time:</strong> 2-3 hours | <strong>Cost:</strong> Free</p>
+                                <p>Set up a local AI that can answer questions about your own documents, PDFs, or notes—completely private, works offline.</p>
+
+                                <h4>What You'll Build:</h4>
+                                <p>An AI assistant that reads your files and answers questions about them, like ChatGPT but for your personal knowledge base.</p>
+
+                                <h4>Tools Needed:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>LM Studio</strong> or <strong>Ollama</strong> (for running the AI)</li>
+                                    <li><strong>AnythingLLM</strong> (free app that connects AI to your documents)</li>
+                                    <li>Your computer (8GB+ RAM recommended)</li>
+                                </ul>
+
+                                <h4>Setup Process:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Install LM Studio:</strong> Download from lmstudio.ai, install like any app</li>
+                                    <li><strong>Download Model:</strong> In LM Studio, search for "llama-3-8b", click download</li>
+                                    <li><strong>Install AnythingLLM:</strong> Get from useanything.com, install</li>
+                                    <li><strong>Connect Them:</strong> In AnythingLLM settings, select LM Studio as provider</li>
+                                    <li><strong>Add Documents:</strong> Drag PDFs, text files, or folders into AnythingLLM</li>
+                                    <li><strong>Ask Questions:</strong> Chat with your documents naturally</li>
+                                </ol>
+
+                                <h4>Use Cases:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Research:</strong> Query across hundreds of papers instantly</li>
+                                    <li><strong>Studying:</strong> Ask questions about textbooks and notes</li>
+                                    <li><strong>Work:</strong> Search company docs, meeting notes, reports</li>
+                                    <li><strong>Personal:</strong> Query your journal, recipes, travel notes</li>
+                                </ul>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>How to run AI models locally on your computer</li>
+                                    <li>Difference between general AI (ChatGPT) and customized AI</li>
+                                    <li>Privacy benefits of local AI vs cloud services</li>
+                                    <li>How AI can search and understand large document collections</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">03</div>
+                            <h3 class="activity-title">Create AI-Generated Art Gallery</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner-Intermediate | <strong>Time:</strong> 3-5 hours | <strong>Cost:</strong> Free (need GPU recommended)</p>
+                                <p>Generate a collection of AI art using Stable Diffusion locally. Learn prompting, styles, and create your own unique visual aesthetic.</p>
+
+                                <h4>What You'll Create:</h4>
+                                <p>A personal art collection exploring a theme: fantasy characters, architectural concepts, product designs, or abstract art.</p>
+
+                                <h4>Setup:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Easy Route:</strong> Use Pinokio to install Stable Diffusion with one click</li>
+                                    <li><strong>Alternative:</strong> Install Automatic1111 directly (see Field Kit for instructions)</li>
+                                    <li><strong>Get Models:</strong> Download from Civitai.com (realistic, anime, or artistic styles)</li>
+                                    <li><strong>Place Models:</strong> Put .safetensors files in models/Stable-diffusion folder</li>
+                                </ol>
+
+                                <h4>The Creative Process:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Choose Theme:</strong> Decide what type of images you want to create</li>
+                                    <li><strong>Learn Prompting:</strong> Study example prompts on Civitai or Lexica.art</li>
+                                    <li><strong>Experiment:</strong> Generate 50-100 images, tweaking prompts</li>
+                                    <li><strong>Refine Style:</strong> Note what words create desired effects</li>
+                                    <li><strong>Curate Gallery:</strong> Select best 20-30 images</li>
+                                    <li><strong>Post-Process:</strong> Optional upscaling or editing</li>
+                                </ol>
+
+                                <h4>Prompt Writing Tips:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Be Specific:</strong> "Portrait of elderly wizard with long white beard, blue robes"</li>
+                                    <li><strong>Add Style:</strong> "in the style of Greg Rutkowski, digital art, highly detailed"</li>
+                                    <li><strong>Control Quality:</strong> Add "masterpiece, best quality, 8k, detailed"</li>
+                                    <li><strong>Avoid Negatives:</strong> Use negative prompt to exclude unwanted elements</li>
+                                </ul>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>How AI interprets text descriptions</li>
+                                    <li>Relationship between training data and output style</li>
+                                    <li>Iterative creative process with AI as collaborator</li>
+                                    <li>Limitations and biases in AI art generation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">04</div>
+                            <h3 class="activity-title">Voice-Controlled Smart Assistant</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate | <strong>Time:</strong> 3-4 hours | <strong>Cost:</strong> Free</p>
+                                <p>Build a voice assistant that can transcribe speech, understand commands, and respond—all running locally for complete privacy.</p>
+
+                                <h4>System Overview:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Speech-to-Text:</strong> Whisper AI converts your voice to text</li>
+                                    <li><strong>Understanding:</strong> LLM (Ollama) processes commands and responds</li>
+                                    <li><strong>Text-to-Speech:</strong> Piper TTS reads responses aloud</li>
+                                    <li>All runs on your computer—nothing sent to cloud</li>
+                                </ul>
+
+                                <h4>Setup Using Pinokio (Easiest):</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Install Pinokio:</strong> From pinokio.computer</li>
+                                    <li><strong>Install Whisper:</strong> Search "Whisper" in Pinokio, click install</li>
+                                    <li><strong>Install Ollama:</strong> Install from Pinokio or ollama.com</li>
+                                    <li><strong>Download LLM:</strong> Run <code>ollama pull llama3</code> in terminal</li>
+                                    <li><strong>Get Piper TTS:</strong> Install from Pinokio</li>
+                                    <li><strong>Connect Pieces:</strong> Use Open WebUI or similar interface to connect all three</li>
+                                </ol>
+
+                                <h4>Use Cases:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Meeting Notes:</strong> Real-time transcription with privacy</li>
+                                    <li><strong>Hands-Free Control:</strong> Control apps while working</li>
+                                    <li><strong>Language Learning:</strong> Practice conversations with AI</li>
+                                    <li><strong>Accessibility:</strong> Voice interface for those who need it</li>
+                                </ul>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>How voice assistants work under the hood</li>
+                                    <li>Connecting multiple AI models together</li>
+                                    <li>Tradeoffs between local and cloud AI</li>
+                                    <li>Real-world performance of open-source AI</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Design Exercises Section -->
+                <section class="content-section" id="design-exercises">
+                    <h2>✏️ AI Design Exercises</h2>
+                    <p style="line-height: 1.8;">Practice thinking strategically about AI applications, capabilities, and limitations.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">05</div>
+                            <h3 class="activity-title">AI Feature Feasibility Analysis</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 1-2 hours | <strong>Materials:</strong> Spreadsheet or document</p>
+                                <p>Evaluate whether AI is the right solution for different product feature ideas. Learn to distinguish AI hype from practical applications.</p>
+
+                                <h4>Exercise Scenarios:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Smart Recipe App:</strong> Suggest recipes based on photo of your fridge contents</li>
+                                    <li><strong>Meeting Assistant:</strong> Automatically summarize meetings and create action items</li>
+                                    <li><strong>Fashion Advisor:</strong> Recommend outfits based on weather, calendar, and wardrobe</li>
+                                    <li><strong>Plant Doctor:</strong> Diagnose plant health from photos</li>
+                                    <li><strong>Email Organizer:</strong> Auto-categorize emails by urgency and topic</li>
+                                </ol>
+
+                                <h4>Evaluation Framework:</h4>
+                                <p>For each scenario, analyze:</p>
+                                <ul class="instruction-list">
+                                    <li><strong>Data Requirements:</strong> What data is needed to train/run this?</li>
+                                    <li><strong>Accuracy Needs:</strong> How accurate must it be? What if it's wrong?</li>
+                                    <li><strong>Existing Solutions:</strong> Can current AI do this? (Check Hugging Face, OpenAI)</li>
+                                    <li><strong>Build vs Buy:</strong> Custom model or API? Cost comparison?</li>
+                                    <li><strong>User Experience:</strong> How will errors affect users?</li>
+                                    <li><strong>Alternative Approaches:</strong> Could non-AI solution work better?</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Create decision matrix ranking each feature on feasibility (1-5), value (1-5), and risk (1-5). Make recommendation for each.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">06</div>
+                            <h3 class="activity-title">Bias & Ethics Audit</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 2-3 hours | <strong>Materials:</strong> AI tool of choice, notepad</p>
+                                <p>Test an AI system for biases and ethical concerns. Learn to identify problematic patterns in AI behavior.</p>
+
+                                <h4>Systems to Test:</h4>
+                                <ul class="instruction-list">
+                                    <li>Image generation AI (Stable Diffusion, DALL-E)</li>
+                                    <li>Language model (ChatGPT, Claude, local LLM)</li>
+                                    <li>Google Teachable Machine model (train your own)</li>
+                                </ul>
+
+                                <h4>Test Categories:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Representation:</strong> Try "CEO", "nurse", "engineer" - what gender/race appears?</li>
+                                    <li><strong>Stereotypes:</strong> Ask about professions, capabilities by demographic</li>
+                                    <li><strong>Cultural Bias:</strong> Test with non-Western names, locations, concepts</li>
+                                    <li><strong>Edge Cases:</strong> What happens with ambiguous or unusual inputs?</li>
+                                    <li><strong>Failure Modes:</strong> When does it confidently give wrong answers?</li>
+                                </ol>
+
+                                <h4>Documentation:</h4>
+                                <ul class="instruction-list">
+                                    <li>Screenshot problematic outputs</li>
+                                    <li>Note patterns in biases</li>
+                                    <li>Hypothesize why biases exist</li>
+                                    <li>Suggest mitigation strategies</li>
+                                </ul>
+
+                                <h4>Reflection Questions:</h4>
+                                <ul class="instruction-list">
+                                    <li>Where did the training data come from?</li>
+                                    <li>Whose perspectives are missing?</li>
+                                    <li>What real-world harms could these biases cause?</li>
+                                    <li>How would you design safeguards?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">07</div>
+                            <h3 class="activity-title">AI Product Spec Writing</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 2-3 hours | <strong>Materials:</strong> Document template</p>
+                                <p>Write a product specification for an AI-powered feature. Practice communicating AI requirements to technical teams.</p>
+
+                                <h4>Choose a Feature:</h4>
+                                <ul class="instruction-list">
+                                    <li>Smart search in content management system</li>
+                                    <li>Automated customer support chatbot</li>
+                                    <li>Content moderation for community platform</li>
+                                    <li>Personalized recommendations engine</li>
+                                </ul>
+
+                                <h4>Specification Components:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>User Stories:</strong> Who uses this and why?</li>
+                                    <li><strong>Success Metrics:</strong> How do you measure if AI works well?</li>
+                                    <li><strong>Accuracy Requirements:</strong> What's acceptable error rate?</li>
+                                    <li><strong>Failure Handling:</strong> What happens when AI is uncertain or wrong?</li>
+                                    <li><strong>Data Requirements:</strong> What data is needed? Privacy implications?</li>
+                                    <li><strong>Model Selection:</strong> Pre-trained model or custom? Why?</li>
+                                    <li><strong>Human Oversight:</strong> Where do humans review AI decisions?</li>
+                                    <li><strong>Iterative Improvement:</strong> How will the system learn from mistakes?</li>
+                                </ol>
+
+                                <h4>Key Considerations:</h4>
+                                <ul class="instruction-list">
+                                    <li>Be specific about accuracy vs speed tradeoffs</li>
+                                    <li>Define what "good enough" looks like</li>
+                                    <li>Plan for monitoring and maintenance</li>
+                                    <li>Consider edge cases and failure modes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Collaborative Section -->
+                <section class="content-section" id="collaborative">
+                    <h2>👥 Collaborative Team Scenarios</h2>
+                    <p style="line-height: 1.8;">Team exercises simulating real-world AI product development and decision-making.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">08</div>
+                            <h3 class="activity-title">AI Product Prioritization Workshop</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 4-6 people | <strong>Time:</strong> 2-3 hours</p>
+                                <p>Product team must decide which AI features to build first, balancing user value, technical feasibility, and business impact.</p>
+
+                                <h4>Team Roles:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Product Manager:</strong> Represents user needs and business goals</li>
+                                    <li><strong>AI/ML Lead:</strong> Assesses technical feasibility</li>
+                                    <li><strong>Designer:</strong> Focuses on UX and trust-building</li>
+                                    <li><strong>Data Scientist:</strong> Evaluates data availability</li>
+                                    <li><strong>Engineering Lead:</strong> Estimates implementation effort</li>
+                                </ul>
+
+                                <h4>Scenario:</h4>
+                                <p>E-commerce company wants to add AI. Proposed features:</p>
+                                <ol class="instruction-list">
+                                    <li>Visual search (upload photo, find similar products)</li>
+                                    <li>Smart size recommendations (reduce returns)</li>
+                                    <li>Personalized product descriptions</li>
+                                    <li>Chatbot for customer service</li>
+                                    <li>Automated product categorization</li>
+                                </ol>
+
+                                <h4>Discussion Points:</h4>
+                                <ul class="instruction-list">
+                                    <li>What data exists? What needs collection?</li>
+                                    <li>Build custom model vs use existing APIs?</li>
+                                    <li>Which features have highest ROI?</li>
+                                    <li>What can ship in 3 months vs 12 months?</li>
+                                    <li>Where are risks if AI makes mistakes?</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Prioritized roadmap with rationale for sequencing. One-page brief for each feature explaining decision.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">09</div>
+                            <h3 class="activity-title">AI Ethics Committee Simulation</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 5-8 people | <strong>Time:</strong> 90-120 minutes</p>
+                                <p>Review AI product proposals for ethical concerns and decide whether to approve, modify, or reject.</p>
+
+                                <h4>Committee Roles:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Ethicist:</strong> Identifies moral implications</li>
+                                    <li><strong>Legal:</strong> Focuses on compliance and liability</li>
+                                    <li><strong>User Advocate:</strong> Represents affected users</li>
+                                    <li><strong>Technical Lead:</strong> Explains capabilities/limitations</li>
+                                    <li><strong>Business Rep:</strong> Presents commercial rationale</li>
+                                </ul>
+
+                                <h4>Proposals to Review:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Hiring AI:</strong> Screen resumes and score candidates</li>
+                                    <li><strong>Social Media Moderation:</strong> Auto-remove harmful content</li>
+                                    <li><strong>Credit Scoring:</strong> AI-based loan approval</li>
+                                    <li><strong>Healthcare Triage:</strong> Prioritize patients by urgency</li>
+                                </ol>
+
+                                <h4>Evaluation Criteria:</h4>
+                                <ul class="instruction-list">
+                                    <li>Potential for discrimination or bias</li>
+                                    <li>Transparency and explainability</li>
+                                    <li>User consent and control</li>
+                                    <li>Data privacy and security</li>
+                                    <li>Accountability when errors occur</li>
+                                    <li>Social and economic impact</li>
+                                </ul>
+
+                                <h4>Outcome:</h4>
+                                <p>For each proposal: Approve, Approve with Modifications, or Reject—with written justification and mitigation recommendations.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">10</div>
+                            <h3 class="activity-title">Build vs Buy AI Decision</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 3-5 people | <strong>Time:</strong> 2 hours</p>
+                                <p>Team must decide whether to build custom AI, use API services, or buy third-party solution for specific use case.</p>
+
+                                <h4>Scenario:</h4>
+                                <p>Startup needs AI-powered transcription and meeting summarization. Options:</p>
+                                <ol class="instruction-list">
+                                    <li><strong>Build Custom:</strong> Train own Whisper model, custom summarization</li>
+                                    <li><strong>Use APIs:</strong> OpenAI Whisper API + GPT-4 for summaries</li>
+                                    <li><strong>Buy Solution:</strong> Otter.ai, Fireflies.ai, or similar</li>
+                                </ol>
+
+                                <h4>Analysis Framework:</h4>
+                                <table style="width: 100%; border-collapse: collapse; margin-top: var(--space-4);">
+                                    <tr style="border-bottom: 2px solid black;">
+                                        <th style="padding: var(--space-2); text-align: left;">Factor</th>
+                                        <th style="padding: var(--space-2); text-align: left;">Build</th>
+                                        <th style="padding: var(--space-2); text-align: left;">API</th>
+                                        <th style="padding: var(--space-2); text-align: left;">Buy</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--space-2);">Initial Cost</td>
+                                        <td style="padding: var(--space-2);">$$$$</td>
+                                        <td style="padding: var(--space-2);">$</td>
+                                        <td style="padding: var(--space-2);">$$</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--space-2);">Ongoing Cost</td>
+                                        <td style="padding: var(--space-2);">Server costs</td>
+                                        <td style="padding: var(--space-2);">Per-use fees</td>
+                                        <td style="padding: var(--space-2);">Subscription</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--space-2);">Time to Launch</td>
+                                        <td style="padding: var(--space-2);">6+ months</td>
+                                        <td style="padding: var(--space-2);">1-2 weeks</td>
+                                        <td style="padding: var(--space-2);">Immediate</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: var(--space-2);">Customization</td>
+                                        <td style="padding: var(--space-2);">Full control</td>
+                                        <td style="padding: var(--space-2);">Limited</td>
+                                        <td style="padding: var(--space-2);">Minimal</td>
+                                    </tr>
+                                </table>
+
+                                <h4>Deliverable:</h4>
+                                <p>Decision document with cost projections, risk analysis, and recommendation with clear rationale.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Case Studies Section -->
+                <section class="content-section" id="case-studies">
+                    <h2>📚 Real-World Case Study Analysis</h2>
+                    <p style="line-height: 1.8;">Analyze production AI systems to understand what made them succeed or fail in the real world.</p>
+
+                    <div class="case-study-grid">
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">GitHub Copilot: AI Pair Programmer</h3>
+                            <p>AI that suggests code as developers type. Trained on billions of lines of public code. Launched 2021, widely adopted.</p>
+
+                            <h4>What Worked Well:</h4>
+                            <ul>
+                                <li>Solved real pain point—writing repetitive boilerplate code</li>
+                                <li>Built on proven technology (GPT models from OpenAI)</li>
+                                <li>Integrated into existing tools (VS Code) developers already use</li>
+                                <li>Fast enough to feel magical (suggestions appear while typing)</li>
+                                <li>Clear value proposition—productivity boost measurable</li>
+                            </ul>
+
+                            <h4>Challenges & Criticisms:</h4>
+                            <ul>
+                                <li>Copyright concerns—trained on open-source code, suggestions sometimes too similar</li>
+                                <li>Security risks—AI might suggest vulnerable code patterns</li>
+                                <li>Quality varies—sometimes suggestions are unhelpful or wrong</li>
+                                <li>Over-reliance—developers might accept code without understanding</li>
+                                <li>Licensing questions—who owns AI-generated code?</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Context Matters:</strong> AI works best with lots of surrounding code context</li>
+                                <li><strong>Speed is Critical:</strong> Suggestions must appear instantly or users abandon tool</li>
+                                <li><strong>Trust Through Transparency:</strong> Show confidence levels, let users see alternatives</li>
+                                <li><strong>Augment, Don't Replace:</strong> Position as assistant, not replacement</li>
+                                <li><strong>Iterate Based on Usage:</strong> Continuous improvement from user interactions</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> What other professional roles could benefit from similar AI assistance?</li>
+                                <li><strong>Question:</strong> How would you design safeguards against bad AI suggestions?</li>
+                                <li><strong>Question:</strong> Should AI tools credit the original code they learned from?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Spotify Discover Weekly: Personalized Playlists</h3>
+                            <p>AI-generated playlist of 30 songs every Monday, personalized to each user's taste. One of Spotify's most loved features.</p>
+
+                            <h4>How It Works:</h4>
+                            <ul>
+                                <li><strong>Collaborative Filtering:</strong> "Users like you also liked these songs"</li>
+                                <li><strong>Audio Analysis:</strong> ML models analyze sound characteristics</li>
+                                <li><strong>Natural Language:</strong> Analyzes what people write about music</li>
+                                <li><strong>Hybrid Approach:</strong> Combines multiple AI techniques</li>
+                            </ul>
+
+                            <h4>Why It Succeeded:</h4>
+                            <ul>
+                                <li><strong>Low Stakes:</strong> If AI suggests bad song, you just skip it—no harm done</li>
+                                <li><strong>Delightful Serendipity:</strong> Discovery feels like gift, creates emotional connection</li>
+                                <li><strong>Just Enough Personalization:</strong> Familiar enough yet introduces new artists</li>
+                                <li><strong>Fixed Format:</strong> 30 songs, every Monday—creates habit and anticipation</li>
+                                <li><strong>Passive Experience:</strong> No work required from users, just listen</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Start Where Stakes Are Low:</strong> Perfect place to introduce AI</li>
+                                <li><strong>Balance Exploration vs Exploitation:</strong> Mix familiar with novel</li>
+                                <li><strong>Create Rituals:</strong> Regular cadence builds engagement</li>
+                                <li><strong>Make AI Invisible:</strong> Users don't think "I'm using AI", they think "Spotify gets me"</li>
+                                <li><strong>Embrace Imperfection:</strong> Not every recommendation hits, and that's okay</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> Why does the fixed weekly cadence matter for user engagement?</li>
+                                <li><strong>Question:</strong> What other domains could benefit from curated discovery?</li>
+                                <li><strong>Question:</strong> How do you balance "give me what I like" vs "show me something new"?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Amazon's Hiring AI (Scrapped): Lessons from Failure</h3>
+                            <p>Amazon built AI to screen resumes and score candidates. Discovered it discriminated against women. Project abandoned 2018.</p>
+
+                            <h4>What Happened:</h4>
+                            <ul>
+                                <li>AI trained on 10 years of Amazon's hiring decisions</li>
+                                <li>Historical data reflected that most hires (especially in tech) were men</li>
+                                <li>AI learned to prefer male candidates</li>
+                                <li>Penalized resumes containing "women's" (women's chess club, women's college)</li>
+                                <li>Downgraded candidates from all-women's colleges</li>
+                            </ul>
+
+                            <h4>Why It Failed:</h4>
+                            <ul>
+                                <li><strong>Biased Training Data:</strong> Past decisions reflected historical discrimination</li>
+                                <li><strong>AI Amplified Bias:</strong> Made systemic problems worse, not better</li>
+                                <li><strong>Pattern Matching Gone Wrong:</strong> Found correlations that weren't causal</li>
+                                <li><strong>High Stakes Application:</strong> Hiring decisions directly impact people's livelihoods</li>
+                                <li><strong>Insufficient Testing:</strong> Didn't catch bias before considering deployment</li>
+                            </ul>
+
+                            <h4>Critical Lessons:</h4>
+                            <ul>
+                                <li><strong>AI Inherits Historical Bias:</strong> Training on past decisions perpetuates discrimination</li>
+                                <li><strong>Audit for Fairness:</strong> Test across demographics before deployment</li>
+                                <li><strong>High-Stakes = High Scrutiny:</strong> Some applications need extreme caution</li>
+                                <li><strong>Human Oversight Required:</strong> AI shouldn't make consequential decisions alone</li>
+                                <li><strong>Transparency Matters:</strong> Amazon caught this because they examined it closely</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> Could this have been fixed, or was the concept fundamentally flawed?</li>
+                                <li><strong>Question:</strong> What safeguards would you require for AI in hiring?</li>
+                                <li><strong>Question:</strong> Where else might historical bias be hiding in training data?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Duolingo: AI for Personalized Language Learning</h3>
+                            <p>Language learning app using AI to adapt difficulty, provide conversational practice, and explain concepts. 500M+ users.</p>
+
+                            <h4>AI Applications:</h4>
+                            <ul>
+                                <li><strong>Adaptive Learning:</strong> Adjusts difficulty based on performance</li>
+                                <li><strong>Duolingo Max (GPT-4):</strong> Conversational practice with AI</li>
+                                <li><strong>Explain My Answer:</strong> AI explains why answer was wrong</li>
+                                <li><strong>Personalized Review:</strong> Resurfaces words you struggle with</li>
+                                <li><strong>Speech Recognition:</strong> Evaluates pronunciation</li>
+                            </ul>
+
+                            <h4>Smart Implementation:</h4>
+                            <ul>
+                                <li><strong>Gradual AI Introduction:</strong> Started with simple algorithms, added LLMs later</li>
+                                <li><strong>Premium Tier for Expensive AI:</strong> GPT-4 features require paid subscription</li>
+                                <li><strong>Teacher Replacement Myth:</strong> Positions AI as supplement, not replacement</li>
+                                <li><strong>Gamification + AI:</strong> Combines motivation system with intelligent tutoring</li>
+                                <li><strong>Massive Scale:</strong> AI makes personalization financially viable</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>AI Enables Impossible Economics:</strong> Personal tutor for everyone at scale</li>
+                                <li><strong>Start Simple, Add Complexity:</strong> Don't need cutting-edge AI day one</li>
+                                <li><strong>Monetize Expensive AI:</strong> Premium tier justifies GPT-4 costs</li>
+                                <li><strong>Augmented Learning:</strong> AI explains and adapts, doesn't replace curriculum</li>
+                                <li><strong>Immediate Feedback Loop:</strong> AI can respond instantly, unlike human teachers</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> What other educational subjects could benefit from similar AI?</li>
+                                <li><strong>Question:</strong> How do you prevent AI from teaching incorrect information?</li>
+                                <li><strong>Question:</strong> When does AI tutoring work better than human tutoring, and when worse?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 4px solid var(--color-black);">
+                    <a href="ai-landing.html" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-electric-blue); color: var(--color-white); text-decoration: none; font-weight: var(--font-bold); border-radius: 4px;">← Back to AI Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

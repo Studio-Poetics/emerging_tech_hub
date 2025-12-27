@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Computing Activities - Hands-On Projects & Exercises | Emerging Tech Hub</title>
+    <meta name="description" content="Apply edge computing knowledge through hands-on IoT projects, architecture exercises, and case study analysis. Build distributed systems and deploy edge AI.">
+    <meta name="keywords" content="edge computing projects, IoT tutorials, edge AI deployment, distributed systems, TinyML projects, sensor networks">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Activity Card Styles */
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-top: var(--space-8);
+}
+
+.activity-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.activity-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+}
+
+.activity-number {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 48px;
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+}
+
+.activity-card:hover .activity-number {
+    background: var(--color-electric-blue);
+}
+
+.activity-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-6);
+}
+
+.activity-description {
+    line-height: 1.8;
+}
+
+.activity-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.activity-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.instruction-list {
+    margin-left: var(--space-4);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.instruction-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+    padding-left: var(--space-2);
+}
+
+.instruction-list li strong {
+    font-weight: var(--font-bold);
+}
+
+/* Case Study Cards */
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.case-study-card {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.case-study-card:hover {
+    border-color: var(--color-electric-blue);
+    background: var(--color-white);
+}
+
+.case-study-card h4 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.case-study-card p {
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+}
+
+.case-study-card ul {
+    margin-bottom: var(--space-4);
+    margin-left: var(--space-4);
+}
+
+.case-study-card li {
+    line-height: 1.8;
+    margin-bottom: var(--space-3);
+}
+
+.analysis-questions {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: var(--space-4);
+}
+
+.analysis-questions li {
+    margin-bottom: var(--space-4);
+    padding-left: var(--space-4);
+    position: relative;
+    line-height: 1.8;
+}
+
+.analysis-questions li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-electric-blue);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .case-study-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Hands-On Learning</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Activity Types</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#iot-projects" class="experimental-nav-link">IoT Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#design-exercises" class="experimental-nav-link">Architecture Exercises</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#collaborative" class="experimental-nav-link">Collaborative</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#case-studies" class="experimental-nav-link">Case Studies</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="edge-landing.html">← Back to Edge Computing Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Learning Path</div>
+                    <div class="info-box-content">
+                        Start with IoT Projects for hands-on skills, then progress to Architecture Exercises and Case Studies.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Edge Computing Activities</h1>
+                <p class="fundamentals-subtitle">Hands-on IoT projects, architecture exercises, and case studies to practice distributed edge systems</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- IoT Projects Section -->
+                <section class="content-section" id="iot-projects">
+                    <h2>🔧 Individual IoT Projects</h2>
+                    <p style="line-height: 1.8;">Build distributed edge computing systems from beginner to intermediate level. Each project includes hardware requirements, step-by-step instructions, and extension ideas.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">01</div>
+                            <h3 class="activity-title">Multi-Node Sensor Network</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner | <strong>Time:</strong> 3-4 hours | <strong>Cost:</strong> $40-80</p>
+                                <p>Build a distributed sensor network with multiple edge nodes collecting environmental data and reporting to a central gateway. Learn edge data collection, MQTT messaging, and basic IoT architecture.</p>
+
+                                <h4>Hardware Needed:</h4>
+                                <ul class="instruction-list">
+                                    <li>3x ESP32 or ESP8266 microcontrollers ($5-10 each)</li>
+                                    <li>3x DHT22 temperature/humidity sensors ($5 each)</li>
+                                    <li>1x Raspberry Pi 4 as gateway ($35-75)</li>
+                                    <li>Power supplies (USB chargers or battery packs)</li>
+                                    <li>Breadboards and jumper wires</li>
+                                    <li>MicroSD card for Raspberry Pi</li>
+                                </ul>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Setup Gateway:</strong> Install Mosquitto MQTT broker on Raspberry Pi</li>
+                                    <li><strong>Configure Nodes:</strong> Program ESP32s to read sensors and publish to MQTT</li>
+                                    <li><strong>Test Connectivity:</strong> Verify each node can connect to WiFi and broker</li>
+                                    <li><strong>Implement Data Flow:</strong> Nodes publish sensor readings every 10 seconds</li>
+                                    <li><strong>Create Dashboard:</strong> Use Node-RED on Pi to visualize data from all nodes</li>
+                                    <li><strong>Add Edge Logic:</strong> Program nodes to only send data when values change significantly</li>
+                                    <li><strong>Monitor System:</strong> Track message frequency and node uptime</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>MQTT publish-subscribe messaging pattern</li>
+                                    <li>Distributed sensor network architecture</li>
+                                    <li>Edge preprocessing to reduce network traffic</li>
+                                    <li>Gateway pattern for aggregating edge devices</li>
+                                </ul>
+
+                                <h4>Extensions:</h4>
+                                <p>Add different sensor types, implement data logging to time-series database (InfluxDB), create alerts for threshold violations, or add battery monitoring and deep sleep modes for power efficiency.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">02</div>
+                            <h3 class="activity-title">Edge AI Object Detection</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate | <strong>Time:</strong> 4-6 hours | <strong>Cost:</strong> $150-250</p>
+                                <p>Deploy a computer vision model on edge hardware to detect objects in real-time without cloud connectivity. Learn model optimization, inference at the edge, and performance tuning.</p>
+
+                                <h4>Hardware Needed:</h4>
+                                <ul class="instruction-list">
+                                    <li>Raspberry Pi 4 (4GB+ RAM recommended) or NVIDIA Jetson Nano</li>
+                                    <li>Pi Camera Module or USB webcam</li>
+                                    <li>Optional: Google Coral USB Accelerator ($60) for faster inference</li>
+                                    <li>Power supply and cooling (heatsink/fan)</li>
+                                    <li>MicroSD card (32GB+)</li>
+                                </ul>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Setup Environment:</strong> Install TensorFlow Lite or PyTorch on edge device</li>
+                                    <li><strong>Choose Model:</strong> Download pre-trained YOLOv8 or MobileNet model</li>
+                                    <li><strong>Optimize Model:</strong> Convert to TFLite format and apply quantization</li>
+                                    <li><strong>Test Inference:</strong> Run model on sample images, measure FPS and latency</li>
+                                    <li><strong>Stream Video:</strong> Connect camera and run real-time object detection</li>
+                                    <li><strong>Add Logic:</strong> Only save frames or send alerts when specific objects detected</li>
+                                    <li><strong>Performance Tuning:</strong> Adjust resolution, model size, and frame rate</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>Deploying ML models to resource-constrained devices</li>
+                                    <li>Model quantization and optimization techniques</li>
+                                    <li>Real-time inference performance considerations</li>
+                                    <li>Edge vs cloud tradeoffs for computer vision</li>
+                                </ul>
+
+                                <h4>Extensions:</h4>
+                                <p>Train custom model with Edge Impulse or Roboflow, implement object tracking across frames, add privacy features (blur faces, local-only processing), or create multi-camera distributed vision system.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">03</div>
+                            <h3 class="activity-title">Edge-to-Cloud Data Pipeline</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate | <strong>Time:</strong> 4-5 hours | <strong>Cost:</strong> $50-100 + cloud costs</p>
+                                <p>Design and implement a complete data pipeline from edge sensors through gateway to cloud storage and analytics. Learn data flow design, edge aggregation, and cloud integration patterns.</p>
+
+                                <h4>System Components:</h4>
+                                <ul class="instruction-list">
+                                    <li>Edge sensors (multiple ESP32s or Arduino IoT devices)</li>
+                                    <li>Edge gateway (Raspberry Pi running local processing)</li>
+                                    <li>Cloud platform (AWS IoT Core, Azure IoT Hub, or Google Cloud IoT)</li>
+                                    <li>Data storage (cloud database or time-series DB)</li>
+                                    <li>Visualization dashboard (cloud-based or self-hosted)</li>
+                                </ul>
+
+                                <h4>Architecture Design:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Map Data Flow:</strong> Diagram data path from sensors to cloud to dashboard</li>
+                                    <li><strong>Define Edge Processing:</strong> What happens at edge vs in cloud?</li>
+                                    <li><strong>Select Protocols:</strong> MQTT for edge-to-gateway, HTTPS for gateway-to-cloud</li>
+                                    <li><strong>Plan Storage:</strong> Time-series data, metadata, and alert history</li>
+                                    <li><strong>Design for Failure:</strong> What happens when cloud is unreachable?</li>
+                                    <li><strong>Implement System:</strong> Build each component and integrate</li>
+                                    <li><strong>Test Scenarios:</strong> Normal operation, network loss, sensor failure</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>End-to-end IoT system architecture</li>
+                                    <li>Edge aggregation and buffering strategies</li>
+                                    <li>Cloud service integration (IoT platforms)</li>
+                                    <li>Fault tolerance and offline operation</li>
+                                </ul>
+
+                                <h4>Extensions:</h4>
+                                <p>Add OTA (over-the-air) firmware updates, implement edge caching with automatic cloud sync, create alerting system with SMS/email, or add device management and monitoring dashboard.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">04</div>
+                            <h3 class="activity-title">TinyML Audio Classification</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate-Advanced | <strong>Time:</strong> 5-8 hours | <strong>Cost:</strong> $30-60</p>
+                                <p>Train and deploy a machine learning model on a microcontroller to classify sounds. Learn TinyML workflow from data collection through deployment on ultra-low-power devices.</p>
+
+                                <h4>Hardware Needed:</h4>
+                                <ul class="instruction-list">
+                                    <li>Arduino Nano 33 BLE Sense (has built-in microphone) or</li>
+                                    <li>ESP32 with I2S microphone module</li>
+                                    <li>USB cable for programming</li>
+                                    <li>Computer for training (Edge Impulse Studio is cloud-based)</li>
+                                </ul>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Define Problem:</strong> Choose 3-5 sounds to classify (e.g., voice, clapping, knocking, silence)</li>
+                                    <li><strong>Collect Data:</strong> Record 2-3 minutes of each sound class using Edge Impulse</li>
+                                    <li><strong>Design Features:</strong> Extract audio features (MFE, MFCC) suitable for classification</li>
+                                    <li><strong>Train Model:</strong> Use Edge Impulse to train neural network classifier</li>
+                                    <li><strong>Test Performance:</strong> Evaluate accuracy and confusion matrix</li>
+                                    <li><strong>Optimize for Edge:</strong> Quantize model to reduce size and memory usage</li>
+                                    <li><strong>Deploy to Device:</strong> Export Arduino library and flash to microcontroller</li>
+                                    <li><strong>Test Real-time:</strong> Verify classification works in real-world conditions</li>
+                                </ol>
+
+                                <h4>What You'll Learn:</h4>
+                                <ul class="instruction-list">
+                                    <li>Complete TinyML workflow from data to deployment</li>
+                                    <li>Audio feature extraction for embedded ML</li>
+                                    <li>Model optimization for microcontrollers</li>
+                                    <li>Real-time inference on ultra-low-power devices</li>
+                                </ul>
+
+                                <h4>Applications:</h4>
+                                <p>Voice command recognition, industrial sound monitoring (detecting machine faults), baby monitor with cry detection, smart home with gesture sound recognition, or wildlife monitoring.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture Exercises Section -->
+                <section class="content-section" id="design-exercises">
+                    <h2>📐 Architecture & Design Exercises</h2>
+                    <p style="line-height: 1.8;">Practice edge computing architecture decisions through structured exercises that develop your system design and analysis skills.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">05</div>
+                            <h3 class="activity-title">Cloud vs Edge Decision Framework</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 2-3 hours | <strong>Materials:</strong> Spreadsheet, paper for diagrams</p>
+                                <p>Create a decision framework for determining when to use edge computing versus cloud-only architecture for different application scenarios.</p>
+
+                                <h4>Framework Factors:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Latency Requirements:</strong> Real-time (<10ms), interactive (<100ms), or batch (>1s)</li>
+                                    <li><strong>Bandwidth Costs:</strong> Volume of data, upload vs processing locally</li>
+                                    <li><strong>Privacy/Compliance:</strong> Sensitive data that can't leave premises</li>
+                                    <li><strong>Reliability:</strong> Need to function during network outages</li>
+                                    <li><strong>Scale:</strong> Number of devices, geographic distribution</li>
+                                    <li><strong>Compute Requirements:</strong> Processing complexity, hardware acceleration</li>
+                                </ul>
+
+                                <h4>Exercise Scenarios:</h4>
+                                <ol class="instruction-list">
+                                    <li>Retail store with 20 cameras for customer flow analysis</li>
+                                    <li>Factory with 500 vibration sensors for predictive maintenance</li>
+                                    <li>Smart home with voice assistant and automation</li>
+                                    <li>Autonomous drone fleet for agriculture monitoring</li>
+                                    <li>Hospital patient monitoring with vital signs</li>
+                                </ol>
+
+                                <p>For each scenario, analyze requirements and recommend edge vs cloud architecture with justification.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">06</div>
+                            <h3 class="activity-title">Edge Network Topology Design</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 2-3 hours | <strong>Materials:</strong> Drawing tools (digital or paper)</p>
+                                <p>Design network topology for a multi-location edge deployment considering data flow, redundancy, and communication patterns.</p>
+
+                                <h4>Design Scenario:</h4>
+                                <p>Chain of 10 retail stores, each with 15 IoT devices (cameras, sensors, beacons). Stores connect to regional data centers for aggregation before cloud upload.</p>
+
+                                <h4>Design Requirements:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>In-Store Layer:</strong> Device-to-gateway connectivity within store</li>
+                                    <li><strong>Store-to-Regional:</strong> Aggregation and local processing at region</li>
+                                    <li><strong>Regional-to-Cloud:</strong> Selective upload of insights and alerts</li>
+                                    <li><strong>Redundancy:</strong> Failover paths if primary connection lost</li>
+                                    <li><strong>Management:</strong> How to monitor and update all edge nodes</li>
+                                </ul>
+
+                                <h4>Deliverables:</h4>
+                                <p>Network topology diagram showing all layers, data flow diagram indicating what data moves where, failure mode analysis, and bandwidth/compute requirements at each level.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">07</div>
+                            <h3 class="activity-title">Edge vs Cloud Cost Analysis</h3>
+                            <div class="activity-description">
+                                <p><strong>Time:</strong> 2-4 hours | <strong>Materials:</strong> Spreadsheet, cloud pricing calculators</p>
+                                <p>Perform detailed cost comparison between edge and cloud architectures for a specific use case over 3-year period.</p>
+
+                                <h4>Cost Analysis Scenario:</h4>
+                                <p>Video analytics system for 50 cameras recording 24/7. Compare two architectures:</p>
+                                <ul class="instruction-list">
+                                    <li><strong>Cloud-Only:</strong> All video streams to cloud, processing happens centrally</li>
+                                    <li><strong>Edge-Hybrid:</strong> Object detection at edge, only events/metadata sent to cloud</li>
+                                </ul>
+
+                                <h4>Cost Factors:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Hardware:</strong> Edge devices, servers, cameras, networking equipment</li>
+                                    <li><strong>Connectivity:</strong> Internet bandwidth costs (especially upload)</li>
+                                    <li><strong>Cloud Services:</strong> Compute, storage, data transfer, ML inference</li>
+                                    <li><strong>Maintenance:</strong> Updates, monitoring, support labor</li>
+                                    <li><strong>Power:</strong> Electricity costs for edge devices</li>
+                                </ul>
+
+                                <h4>Analysis:</h4>
+                                <p>Create 3-year total cost of ownership model for both architectures. Consider different scenarios: 10 cameras, 50 cameras, 200 cameras. Identify break-even points and key cost drivers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Collaborative Section -->
+                <section class="content-section" id="collaborative">
+                    <h2>👥 Collaborative Team Scenarios</h2>
+                    <p style="line-height: 1.8;">Team exercises simulating real-world collaboration on edge computing system design and deployment.</p>
+
+                    <div class="activity-grid">
+                        <div class="activity-card">
+                            <div class="activity-number">08</div>
+                            <h3 class="activity-title">Smart Building IoT Design Sprint</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 4-6 people | <strong>Time:</strong> 3-4 hours</p>
+                                <p>Design a smart building system using edge computing for energy optimization, occupancy monitoring, and environmental control.</p>
+
+                                <h4>Team Roles:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>IoT Architect:</strong> Overall system design and device selection</li>
+                                    <li><strong>Edge Developer:</strong> Local processing and gateway logic</li>
+                                    <li><strong>Data Engineer:</strong> Data pipeline and storage design</li>
+                                    <li><strong>Security Lead:</strong> Network security and data privacy</li>
+                                    <li><strong>Facilities Manager:</strong> Building operations perspective</li>
+                                </ul>
+
+                                <h4>Design Challenge:</h4>
+                                <p>10-floor office building with 500 rooms. Design IoT system for:</p>
+                                <ul class="instruction-list">
+                                    <li>Occupancy sensing and lighting automation</li>
+                                    <li>HVAC optimization based on room usage</li>
+                                    <li>Energy monitoring per floor</li>
+                                    <li>Air quality and environmental monitoring</li>
+                                    <li>Fault detection for building systems</li>
+                                </ul>
+
+                                <h4>Deliverables:</h4>
+                                <p>System architecture diagram, device and sensor specifications, edge processing logic description, data flow and storage plan, security model, and 3-year budget estimate.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">09</div>
+                            <h3 class="activity-title">Industrial IoT Implementation Plan</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 3-5 people | <strong>Time:</strong> 2-3 hours</p>
+                                <p>Create implementation plan for industrial edge computing system for predictive maintenance in manufacturing facility.</p>
+
+                                <h4>Scenario:</h4>
+                                <p>Manufacturing plant with 50 production machines. Implement vibration and temperature monitoring for predictive maintenance using edge computing.</p>
+
+                                <h4>Planning Requirements:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Sensor Selection:</strong> Types, placement, communication protocol</li>
+                                    <li><strong>Edge Infrastructure:</strong> Gateways, compute capacity, networking</li>
+                                    <li><strong>ML Models:</strong> Anomaly detection, remaining useful life prediction</li>
+                                    <li><strong>Integration:</strong> Connection to existing SCADA/MES systems</li>
+                                    <li><strong>Rollout Plan:</strong> Pilot, phased deployment, training</li>
+                                    <li><strong>ROI Justification:</strong> Reduced downtime, maintenance cost savings</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>6-month implementation roadmap with milestones, risk assessment, resource requirements, and success metrics.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">10</div>
+                            <h3 class="activity-title">Edge Deployment Logistics Workshop</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 4-6 people | <strong>Time:</strong> 2-3 hours</p>
+                                <p>Plan the physical deployment of edge devices across distributed locations considering logistics, configuration, and ongoing management.</p>
+
+                                <h4>Deployment Scenario:</h4>
+                                <p>Deploy 200 edge devices across 50 retail locations in 10 cities. Each location needs 4 devices (cameras + edge gateway).</p>
+
+                                <h4>Logistics Challenges:</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Procurement:</strong> Ordering hardware, managing inventory</li>
+                                    <li><strong>Pre-Configuration:</strong> How much setup before shipping?</li>
+                                    <li><strong>Shipping:</strong> Coordinating delivery to locations</li>
+                                    <li><strong>Installation:</strong> DIY with instructions vs professional installers?</li>
+                                    <li><strong>Commissioning:</strong> Network configuration, testing, activation</li>
+                                    <li><strong>Ongoing Management:</strong> Updates, monitoring, troubleshooting</li>
+                                    <li><strong>Support:</strong> Help desk, on-site support, replacement devices</li>
+                                </ul>
+
+                                <h4>Deliverable:</h4>
+                                <p>Deployment playbook with timeline, checklists for each phase, training materials, and support escalation plan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Case Studies Section -->
+                <section class="content-section" id="case-studies">
+                    <h2>📚 Real-World Case Study Analysis</h2>
+                    <p style="line-height: 1.8;">Analyze production edge computing deployments to understand architectural decisions, challenges, and outcomes.</p>
+
+                    <div class="case-study-grid">
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">AWS IoT Greengrass at Scale</h3>
+                            <p>Amazon's edge computing platform enabling local compute, messaging, and ML inference with cloud connectivity. Widely deployed across industrial IoT and smart devices.</p>
+
+                            <h4>Architecture Decisions:</h4>
+                            <ul>
+                                <li>Lambda functions run locally on edge devices for processing</li>
+                                <li>Local MQTT broker enables device-to-device messaging without cloud</li>
+                                <li>ML inference with optimized SageMaker models at edge</li>
+                                <li>Automatic synchronization with AWS cloud when connected</li>
+                                <li>Device shadowing for offline/online state management</li>
+                            </ul>
+
+                            <h4>Customer Success Stories:</h4>
+                            <ul>
+                                <li><strong>Manufacturing:</strong> Real-time quality control with local vision AI</li>
+                                <li><strong>Oil & Gas:</strong> Predictive maintenance in remote locations with intermittent connectivity</li>
+                                <li><strong>Smart Buildings:</strong> HVAC optimization with local control and cloud analytics</li>
+                                <li><strong>Retail:</strong> In-store inventory tracking without constant cloud connection</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Offline-First:</strong> Designing for intermittent connectivity from day one</li>
+                                <li><strong>Cloud Integration:</strong> Seamless experience between local and cloud operations</li>
+                                <li><strong>Fleet Management:</strong> Managing thousands of edge devices remotely</li>
+                                <li><strong>Security Model:</strong> Certificate-based authentication and encrypted communication</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> What workloads benefit most from Lambda at the edge vs always-cloud?</li>
+                                <li><strong>Question:</strong> How would you decide data synchronization strategy for different use cases?</li>
+                                <li><strong>Question:</strong> What are the cost tradeoffs of edge vs cloud processing at scale?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Tesla Full Self-Driving Computer</h3>
+                            <p>Custom-designed edge AI chip processing data from 8 cameras in real-time for autonomous driving. Example of extreme edge computing requirements.</p>
+
+                            <h4>Technical Architecture:</h4>
+                            <ul>
+                                <li>Custom neural network accelerator (144 TOPS)</li>
+                                <li>Processes 8 camera feeds simultaneously at 36 FPS</li>
+                                <li>Multiple redundant systems for safety-critical operation</li>
+                                <li>Local decision making with <100ms latency requirement</li>
+                                <li>No cloud connectivity required for driving decisions</li>
+                            </ul>
+
+                            <h4>Edge Requirements:</h4>
+                            <ul>
+                                <li><strong>Ultra-low Latency:</strong> Driving decisions cannot wait for cloud round-trip</li>
+                                <li><strong>High Reliability:</strong> Must function in tunnels, remote areas without connectivity</li>
+                                <li><strong>Data Volume:</strong> ~1GB per mile of video data, impractical to upload all</li>
+                                <li><strong>Privacy:</strong> Processing video locally avoids streaming camera feeds to cloud</li>
+                                <li><strong>Real-time ML:</strong> Running complex neural networks at video frame rates</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Purpose-Built Hardware:</strong> Custom chips when general-purpose insufficient</li>
+                                <li><strong>Edge-Only Operation:</strong> Cloud optional, not required for core functionality</li>
+                                <li><strong>Data Strategy:</strong> Selective upload (interesting scenarios) vs streaming all</li>
+                                <li><strong>OTA Updates:</strong> Improving edge AI models through fleet learning</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> What other applications have similarly strict edge requirements?</li>
+                                <li><strong>Question:</strong> How to balance edge autonomy with fleet-wide model improvements?</li>
+                                <li><strong>Question:</strong> When does custom hardware become cost-effective for edge AI?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Google Nest: Consumer Edge AI</h3>
+                            <p>Smart home devices with on-device machine learning for face recognition, sound detection, and home automation without constant cloud dependency.</p>
+
+                            <h4>Edge AI Features:</h4>
+                            <ul>
+                                <li><strong>Face Recognition:</strong> Familiar face detection runs locally on Nest cameras</li>
+                                <li><strong>Sound Detection:</strong> Smoke alarm, glass breaking, dog barking detected at edge</li>
+                                <li><strong>Person Detection:</strong> Distinguishing people from cars/animals locally</li>
+                                <li><strong>Automated Response:</strong> Local rules and automation without cloud latency</li>
+                                <li><strong>Privacy by Design:</strong> Video analysis at edge, not streamed to cloud unless event</li>
+                            </ul>
+
+                            <h4>Architecture Decisions:</h4>
+                            <ul>
+                                <li>Google Coral Edge TPU in newer devices for ML acceleration</li>
+                                <li>Federated learning for improving models without centralizing personal data</li>
+                                <li>Local storage buffer when internet disconnected</li>
+                                <li>Hybrid: simple tasks at edge, complex analysis can use cloud</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Privacy-Focused Edge:</strong> Marketing edge AI as privacy feature resonates with consumers</li>
+                                <li><strong>Graceful Degradation:</strong> Core features work offline, enhanced features need cloud</li>
+                                <li><strong>User Control:</strong> Settings for what stays local vs what uses cloud</li>
+                                <li><strong>Model Updates:</strong> Improving edge AI capabilities over product lifetime</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> How do you decide which features require cloud vs can be edge-only?</li>
+                                <li><strong>Question:</strong> What's the tradeoff between privacy (local) and functionality (cloud)?</li>
+                                <li><strong>Question:</strong> How to educate consumers about value of edge computing?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">Siemens MindSphere Industrial Edge</h3>
+                            <p>Industrial IoT platform combining edge computing with cloud analytics for manufacturing and industrial automation.</p>
+
+                            <h4>Industrial Edge Architecture:</h4>
+                            <ul>
+                                <li>Edge devices in factories collect data from PLCs, sensors, machines</li>
+                                <li>Local processing for real-time control and monitoring</li>
+                                <li>Pre-processing and aggregation before cloud upload</li>
+                                <li>Integration with existing industrial protocols (OPC UA, Modbus)</li>
+                                <li>MindSphere cloud for cross-plant analytics and optimization</li>
+                            </ul>
+
+                            <h4>Use Cases:</h4>
+                            <ul>
+                                <li><strong>Predictive Maintenance:</strong> Vibration analysis at edge, trending in cloud</li>
+                                <li><strong>Quality Control:</strong> Real-time inspection with edge vision systems</li>
+                                <li><strong>Energy Optimization:</strong> Local control loops, plant-wide optimization in cloud</li>
+                                <li><strong>Production Monitoring:</strong> OEE calculation at edge, benchmarking across facilities</li>
+                            </ul>
+
+                            <h4>Design Lessons:</h4>
+                            <ul>
+                                <li><strong>Brownfield Integration:</strong> Working with decades-old equipment and protocols</li>
+                                <li><strong>Deterministic Edge:</strong> Industrial control requires predictable real-time response</li>
+                                <li><strong>IT/OT Convergence:</strong> Bridging factory floor and IT infrastructure securely</li>
+                                <li><strong>Certified Hardware:</strong> Industrial-grade edge devices for harsh environments</li>
+                                <li><strong>Hybrid Analytics:</strong> Edge for real-time, cloud for historical and cross-plant</li>
+                            </ul>
+
+                            <ul class="analysis-questions">
+                                <li><strong>Question:</strong> How do industrial edge requirements differ from consumer IoT?</li>
+                                <li><strong>Question:</strong> What security considerations are unique to industrial edge?</li>
+                                <li><strong>Question:</strong> How to prove ROI for industrial edge computing deployments?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 4px solid var(--color-black);">
+                    <a href="edge-landing.html" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-electric-blue); color: var(--color-white); text-decoration: none; font-weight: var(--font-bold); border-radius: 4px;">← Back to Edge Computing Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

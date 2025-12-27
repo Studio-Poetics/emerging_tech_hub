@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics - Emerging Tech Hub</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+
+    /* Landing page specific */
+    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
+    .section-nav-list { gap: var(--space-3) !important; }
+    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
+    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
+    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
+    .section-description { font-size: var(--text-base) !important; }
+    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Fundamentals</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">AI Fundamentals</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="ai-basics.html" class="experimental-nav-link">AI Basics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="machine-learning.html" class="experimental-nav-link">Machine Learning</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="neural-networks.html" class="experimental-nav-link">Neural Networks</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="data-and-training.html" class="experimental-nav-link">Data & Training</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="ai-ethics.html" class="experimental-nav-link active">AI Ethics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="future-of-ai.html" class="experimental-nav-link">Future of AI</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="ai-landing.html">← Back to AI Hub</a><br>
+                        <a href="data-and-training.html">← Previous: Data & Training</a><br>
+                        <a href="future-of-ai.html">Next: Future of AI →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">AI Ethics</h1>
+                <p class="fundamentals-subtitle">Building AI systems that are fair, transparent, and beneficial for all—understanding bias, accountability, and responsible innovation</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>Why AI Ethics Matters More Than Ever</h2>
+
+                    <p>Imagine if a bank's AI system automatically denied loans to people from certain neighborhoods, or if a hiring algorithm systematically rejected qualified women. These aren't hypothetical scenarios—they've actually happened. As AI becomes more powerful and widespread, the ethical implications of our technology choices affect millions of people's lives.</p>
+
+                    <p>AI ethics isn't about slowing down innovation—it's about building better, more trustworthy systems that benefit everyone. Companies with strong ethical AI practices often see better business outcomes, reduced legal risks, and stronger customer trust.</p>
+
+                    <div class="analogy-box">
+                        <h4>🚗 The Seat Belt Analogy</h4>
+                        <p><strong>Like car safety features:</strong> Seat belts, airbags, and safety testing don't make cars slower—they make them safer and more trustworthy. AI ethics is similar: building in fairness, transparency, and accountability from the start creates better products people can rely on.</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Key Insight</h3>
+                        <p>AI systems reflect the values and biases of their creators and training data. Ethical AI isn't just about avoiding harm—it's about actively designing systems that promote fairness, transparency, and human wellbeing.</p>
+                    </div>
+                </section>
+
+                <!-- Core Ethical Challenges -->
+                <section class="content-section">
+                    <h2>The Big Ethical Challenges in AI</h2>
+
+                    <div class="ethics-challenges">
+                        <div class="challenge-card">
+                            <h3>Bias and Fairness</h3>
+                            <p class="challenge-subtitle">When AI Perpetuates Discrimination</p>
+
+                            <div class="challenge-problem">
+                                <h4>The Problem</h4>
+                                <p>AI systems can discriminate against certain groups, often in subtle ways that are hard to detect. This happens because AI learns from historical data that already contains human biases.</p>
+                            </div>
+
+                            <div class="real-example">
+                                <h4>Real Example: Amazon's Hiring AI</h4>
+                                <p>Amazon built an AI system to screen resumes but scrapped it when they discovered it was biased against women. The AI learned from 10 years of historical hiring data, which reflected past discrimination in tech hiring. It downgraded resumes that included words like "women's" (as in "women's chess club captain").</p>
+                            </div>
+
+                            <div class="business-impact">
+                                <h4>Business Impact</h4>
+                                <ul>
+                                    <li>Legal liability and discrimination lawsuits</li>
+                                    <li>Missing out on diverse talent and perspectives</li>
+                                    <li>Damage to brand reputation and customer trust</li>
+                                    <li>Regulatory fines and compliance issues</li>
+                                </ul>
+                            </div>
+
+                            <div class="solution-approach">
+                                <h4>Mitigation Strategies</h4>
+                                <ul>
+                                    <li>Audit training data for representation gaps</li>
+                                    <li>Test AI systems across different demographic groups</li>
+                                    <li>Include diverse perspectives in development teams</li>
+                                    <li>Use bias detection tools and fairness metrics</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card">
+                            <h3>Privacy and Surveillance</h3>
+                            <p class="challenge-subtitle">Balancing Innovation with Personal Privacy</p>
+
+                            <div class="challenge-problem">
+                                <h4>The Problem</h4>
+                                <p>AI systems can analyze massive amounts of personal data to make inferences about our health, preferences, and behavior—sometimes without our knowledge or consent.</p>
+                            </div>
+
+                            <div class="real-example">
+                                <h4>Real Example: Facial Recognition Controversy</h4>
+                                <p>Cities like San Francisco and Boston banned government use of facial recognition technology due to concerns about mass surveillance and false positives (especially affecting people of color). Meanwhile, some retailers used it to identify "problem customers" without informing shoppers.</p>
+                            </div>
+
+                            <div class="business-impact">
+                                <h4>Business Impact</h4>
+                                <ul>
+                                    <li>GDPR, CCPA, and other privacy regulation violations</li>
+                                    <li>Customer backlash and boycotts</li>
+                                    <li>Loss of competitive advantage if customers lose trust</li>
+                                    <li>Increased regulatory scrutiny and restrictions</li>
+                                </ul>
+                            </div>
+
+                            <div class="solution-approach">
+                                <h4>Best Practices</h4>
+                                <ul>
+                                    <li>Practice data minimization—collect only what you need</li>
+                                    <li>Provide clear, understandable privacy notices</li>
+                                    <li>Give users control over their data and AI interactions</li>
+                                    <li>Implement privacy-by-design principles</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card">
+                            <h3>Transparency and Explainability</h3>
+                            <p class="challenge-subtitle">The "Black Box" Problem</p>
+
+                            <div class="challenge-problem">
+                                <h4>The Problem</h4>
+                                <p>Many AI systems, especially deep learning models, make decisions in ways that are difficult or impossible to explain. This "black box" nature makes it hard to trust, audit, or improve AI systems.</p>
+                            </div>
+
+                            <div class="real-example">
+                                <h4>Real Example: Medical AI Diagnosis</h4>
+                                <p>An AI system that detects cancer in medical scans might be highly accurate but unable to explain why it flagged a particular image. Doctors need to understand the reasoning to trust the diagnosis and explain it to patients.</p>
+                            </div>
+
+                            <div class="business-impact">
+                                <h4>Business Impact</h4>
+                                <ul>
+                                    <li>Difficulty meeting regulatory requirements for explainability</li>
+                                    <li>Professional liability in high-stakes decisions</li>
+                                    <li>Reduced user adoption due to lack of trust</li>
+                                    <li>Inability to debug and improve AI systems</li>
+                                </ul>
+                            </div>
+
+                            <div class="solution-approach">
+                                <h4>Approaches</h4>
+                                <ul>
+                                    <li>Use interpretable models when possible</li>
+                                    <li>Develop explanation interfaces for end users</li>
+                                    <li>Document AI system capabilities and limitations</li>
+                                    <li>Provide confidence scores and uncertainty measures</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="challenge-card">
+                            <h3>Accountability and Responsibility</h3>
+                            <p class="challenge-subtitle">Who's Responsible When AI Goes Wrong?</p>
+
+                            <div class="challenge-problem">
+                                <h4>The Problem</h4>
+                                <p>When AI systems make mistakes that harm people, it's often unclear who should be held responsible—the developer, the company using it, the data provider, or someone else entirely.</p>
+                            </div>
+
+                            <div class="real-example">
+                                <h4>Real Example: Autonomous Vehicle Accidents</h4>
+                                <p>When a self-driving car causes an accident, who's liable? The car manufacturer, the AI software company, the sensor provider, or the "driver" who wasn't actually driving? These questions are still being worked out in courts and regulations.</p>
+                            </div>
+
+                            <div class="business-impact">
+                                <h4>Business Impact</h4>
+                                <ul>
+                                    <li>Unclear liability exposure and insurance costs</li>
+                                    <li>Difficulty establishing clear governance structures</li>
+                                    <li>Challenges in product development and deployment</li>
+                                    <li>Regulatory uncertainty and compliance complexity</li>
+                                </ul>
+                            </div>
+
+                            <div class="solution-approach">
+                                <h4>Framework Elements</h4>
+                                <ul>
+                                    <li>Establish clear roles and responsibilities</li>
+                                    <li>Create audit trails for AI decisions</li>
+                                    <li>Implement human oversight and intervention capabilities</li>
+                                    <li>Develop incident response and correction procedures</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Ethical AI Principles -->
+                <section class="content-section">
+                    <h2>Core Principles for Ethical AI</h2>
+
+                    <div class="principles-grid">
+                        <div class="principle-card">
+                            <h3>Human-Centered Design</h3>
+                            <p><strong>Put people first:</strong> AI should augment human capabilities, not replace human judgment in critical decisions. Always consider the human impact of your AI systems.</p>
+                            <div class="principle-example">
+                                <strong>In Practice:</strong> A medical AI suggests diagnoses but leaves final decisions to doctors. It enhances their expertise rather than replacing it.
+                            </div>
+                        </div>
+
+                        <div class="principle-card">
+                            <h3>⚖️ Fairness and Non-Discrimination</h3>
+                            <p><strong>Treat everyone fairly:</strong> AI systems should work equally well for all groups and not systematically disadvantage any particular community.</p>
+                            <div class="principle-example">
+                                <strong>In Practice:</strong> A loan approval AI is tested across different demographic groups to ensure equal access to credit regardless of race, gender, or zip code.
+                            </div>
+                        </div>
+
+                        <div class="principle-card">
+                            <h3>Transparency and Explainability</h3>
+                            <p><strong>Be open about how AI works:</strong> Users should understand when they're interacting with AI and how it makes decisions that affect them.</p>
+                            <div class="principle-example">
+                                <strong>In Practice:</strong> A job application system clearly states it uses AI screening and provides feedback on why applications were accepted or rejected.
+                            </div>
+                        </div>
+
+                        <div class="principle-card">
+                            <h3>🔒 Privacy and Security</h3>
+                            <p><strong>Protect personal information:</strong> Collect only necessary data, store it securely, and respect user preferences about how their information is used.</p>
+                            <div class="principle-example">
+                                <strong>In Practice:</strong> A recommendation system learns user preferences without storing personal browsing history and allows users to opt out at any time.
+                            </div>
+                        </div>
+
+                        <div class="principle-card">
+                            <h3>Reliability and Safety</h3>
+                            <p><strong>Build robust systems:</strong> AI should perform consistently and safely, with appropriate safeguards against misuse or failure.</p>
+                            <div class="principle-example">
+                                <strong>In Practice:</strong> An autonomous vehicle AI is rigorously tested in thousands of scenarios and includes multiple backup systems for critical functions.
+                            </div>
+                        </div>
+
+                        <div class="principle-card">
+                            <h3>Accountability</h3>
+                            <p><strong>Take responsibility:</strong> Organizations deploying AI should be accountable for its impacts and have processes to address problems when they arise.</p>
+                            <div class="principle-example">
+                                <strong>In Practice:</strong> A company using AI for hiring maintains detailed records of decisions and has a clear process for applicants to appeal AI-driven rejections.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Real-World Ethical Dilemmas -->
+                <section class="content-section">
+                    <h2>Ethical Dilemmas in Practice</h2>
+
+                    <div class="dilemmas-section">
+                        <div class="dilemma-card">
+                            <h3>🚨 The Predictive Policing Paradox</h3>
+                            <div class="dilemma-scenario">
+                                <h4>The Scenario</h4>
+                                <p>Police departments use AI to predict where crimes are likely to occur, allowing them to deploy officers more effectively. The AI is trained on historical crime data and has reduced overall crime rates.</p>
+                            </div>
+                            <div class="dilemma-tensions">
+                                <h4>The Ethical Tensions</h4>
+                                <ul>
+                                    <li><strong>Effectiveness vs. Bias:</strong> The system works but reinforces over-policing of minority communities</li>
+                                    <li><strong>Safety vs. Privacy:</strong> Crime prevention benefits vs. increased surveillance</li>
+                                    <li><strong>Past vs. Present:</strong> Historical crime data reflects past injustices</li>
+                                </ul>
+                            </div>
+                            <div class="dilemma-questions">
+                                <h4>Key Questions</h4>
+                                <ul>
+                                    <li>Should we use effective but potentially biased AI for public safety?</li>
+                                    <li>How do we balance crime prevention with equitable treatment?</li>
+                                    <li>Who decides what constitutes "fair" policing?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="dilemma-card">
+                            <h3>⚕️ The Healthcare AI Trade-off</h3>
+                            <div class="dilemma-scenario">
+                                <h4>The Scenario</h4>
+                                <p>A hospital AI system can predict which patients are likely to need intensive care in the next 24 hours. It's 85% accurate but works best for patients similar to those in its training data (primarily from wealthy urban hospitals).</p>
+                            </div>
+                            <div class="dilemma-tensions">
+                                <h4>The Ethical Tensions</h4>
+                                <ul>
+                                    <li><strong>Accuracy vs. Equity:</strong> Great for some patients, less reliable for others</li>
+                                    <li><strong>Innovation vs. Caution:</strong> Deploy now to help most patients or wait for better data?</li>
+                                    <li><strong>Resource Allocation:</strong> AI might systematically under-serve certain groups</li>
+                                </ul>
+                            </div>
+                            <div class="dilemma-questions">
+                                <h4>Key Questions</h4>
+                                <ul>
+                                    <li>Is it ethical to deploy AI that helps most but not all patients?</li>
+                                    <li>How do we ensure AI doesn't worsen healthcare disparities?</li>
+                                    <li>What level of accuracy justifies deployment?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="dilemma-card">
+                            <h3>The Employment Automation Dilemma</h3>
+                            <div class="dilemma-scenario">
+                                <h4>The Scenario</h4>
+                                <p>A company can implement AI that automates 60% of customer service jobs, reducing costs and improving response times. The technology is ready and competitors are adopting it.</p>
+                            </div>
+                            <div class="dilemma-tensions">
+                                <h4>The Ethical Tensions</h4>
+                                <ul>
+                                    <li><strong>Efficiency vs. Employment:</strong> Better service but job losses</li>
+                                    <li><strong>Competition vs. Responsibility:</strong> Stay competitive or protect workers?</li>
+                                    <li><strong>Short-term vs. Long-term:</strong> Immediate savings vs. social impact</li>
+                                </ul>
+                            </div>
+                            <div class="dilemma-questions">
+                                <h4>Key Questions</h4>
+                                <ul>
+                                    <li>What responsibility do companies have to their displaced workers?</li>
+                                    <li>How can automation be implemented more ethically?</li>
+                                    <li>Should there be retraining or transition support?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Building Ethical AI -->
+                <section class="content-section">
+                    <h2>How to Build Ethics Into Your AI Projects</h2>
+
+                    <div class="ethics-framework">
+                        <div class="framework-phase">
+                            <h3>Phase 1: Planning and Design</h3>
+                            <div class="framework-steps">
+                                <div class="step-item">
+                                    <h4>1. Ethical Impact Assessment</h4>
+                                    <p>Before building AI, ask: Who will this affect? What could go wrong? How might it be misused? Include diverse stakeholders in this discussion.</p>
+                                </div>
+                                <div class="step-item">
+                                    <h4>2. Define Success Metrics</h4>
+                                    <p>Beyond accuracy, define fairness metrics, user satisfaction, and harm prevention goals. What does "success" look like for all affected groups?</p>
+                                </div>
+                                <div class="step-item">
+                                    <h4>3. Set Ethical Guidelines</h4>
+                                    <p>Establish clear principles and boundaries for your AI system. What values will guide decision-making when trade-offs arise?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="framework-phase">
+                            <h3>Phase 2: Development and Testing</h3>
+                            <div class="framework-steps">
+                                <div class="step-item">
+                                    <h4>4. Diverse Data and Teams</h4>
+                                    <p>Ensure training data represents all user groups. Include diverse perspectives on development teams to spot potential issues early.</p>
+                                </div>
+                                <div class="step-item">
+                                    <h4>5. Bias Testing and Mitigation</h4>
+                                    <p>Test AI performance across different demographic groups. Use fairness metrics and bias detection tools throughout development.</p>
+                                </div>
+                                <div class="step-item">
+                                    <h4>6. Explainability Features</h4>
+                                    <p>Build in ways for users to understand AI decisions. Provide confidence scores, reasoning, and ways to appeal or correct mistakes.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="framework-phase">
+                            <h3>Phase 3: Deployment and Monitoring</h3>
+                            <div class="framework-steps">
+                                <div class="step-item">
+                                    <h4>7. Transparent Communication</h4>
+                                    <p>Clearly inform users when AI is involved. Explain how it works, what data it uses, and how to opt out or appeal decisions.</p>
+                                </div>
+                                <div class="step-item">
+                                    <h4>8. Continuous Monitoring</h4>
+                                    <p>Monitor AI performance and fairness metrics in production. Watch for drift in accuracy or fairness over time.</p>
+                                </div>
+                                <div class="step-item">
+                                    <h4>9. Incident Response Plan</h4>
+                                    <p>Have clear procedures for addressing AI mistakes, bias complaints, or unintended consequences. Be prepared to act quickly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interactive Ethics Quiz -->
+                <section class="content-section">
+                    <h2>Ethical Decision-Making Quiz</h2>
+
+                    <div class="quiz-container" id="ethicsQuiz">
+                        <div class="quiz-question" data-question="1">
+                            <h4>Question 1: Your company's AI hiring system is 90% accurate overall but only 70% accurate for candidates from underrepresented groups. What should you do?</h4>
+                            <div class="quiz-options">
+                                <button class="quiz-option" data-answer="wrong">Deploy it—90% accuracy is better than human recruiters</button>
+                                <button class="quiz-option" data-answer="correct">Pause deployment and work to improve fairness across all groups</button>
+                                <button class="quiz-option" data-answer="wrong">Deploy it but only for initial screening, not final decisions</button>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <p><strong>Correct!</strong> Deploying an AI system that systematically disadvantages certain groups, even if it's generally accurate, can perpetuate discrimination and create legal liability. Address fairness issues before deployment.</p>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question" data-question="2">
+                            <h4>Question 2: You discover that your customer recommendation AI occasionally suggests inappropriate content. The CEO wants to launch next week. What's the most ethical approach?</h4>
+                            <div class="quiz-options">
+                                <button class="quiz-option" data-answer="wrong">Launch as planned—you can fix issues after deployment</button>
+                                <button class="quiz-option" data-answer="correct">Delay launch to implement content filtering and safety measures</button>
+                                <button class="quiz-option" data-answer="wrong">Launch but only for premium customers initially</button>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <p><strong>Correct!</strong> Launching AI systems with known harmful outputs prioritizes business timeline over user safety. It's better to delay and ensure proper safeguards are in place.</p>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question" data-question="3">
+                            <h4>Question 3: A client wants to use your facial recognition AI to monitor employee productivity. What ethical concerns should you raise?</h4>
+                            <div class="quiz-options">
+                                <button class="quiz-option" data-answer="wrong">None—it's legal and the client is paying well</button>
+                                <button class="quiz-option" data-answer="wrong">Only technical concerns about accuracy in different lighting</button>
+                                <button class="quiz-option" data-answer="correct">Privacy, consent, workplace surveillance, and potential for discrimination</button>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <p><strong>Correct!</strong> Employee surveillance raises serious ethical concerns about privacy, consent, power dynamics, and potential bias. These should be thoroughly discussed before implementation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hands-on Activities -->
+                <section class="content-section">
+                    <h2>Ethics in Action Exercises</h2>
+
+                    <div class="activities-grid">
+                        <div class="activity-card">
+                            <h4>Bias Detective Challenge</h4>
+                            <p><strong>Goal:</strong> Learn to spot potential bias in AI systems</p>
+                            <div class="activity-steps">
+                                <p><strong>What to do:</strong></p>
+                                <ol>
+                                    <li>Choose an AI system you use regularly (search, social media, shopping)</li>
+                                    <li>Experiment with different types of queries or profiles</li>
+                                    <li>Try the same search from different accounts or demographic profiles</li>
+                                    <li>Document differences in results or recommendations</li>
+                                    <li>Consider what might cause these differences</li>
+                                    <li>Reflect on whether the differences seem fair or problematic</li>
+                                </ol>
+                                <p><strong>Learning:</strong> You'll develop sensitivity to how AI systems might treat different users differently.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <h4>Ethical Dilemma Discussion</h4>
+                            <p><strong>Goal:</strong> Practice ethical reasoning about AI decisions</p>
+                            <div class="activity-steps">
+                                <p><strong>What to do:</strong></p>
+                                <ol>
+                                    <li>Gather 3-5 colleagues or friends</li>
+                                    <li>Present one of the dilemmas from this page</li>
+                                    <li>Have each person argue for a different approach</li>
+                                    <li>Discuss the trade-offs and stakeholder impacts</li>
+                                    <li>Try to reach consensus on the most ethical path</li>
+                                    <li>Reflect on what factors influenced your group's thinking</li>
+                                </ol>
+                                <p><strong>Learning:</strong> You'll experience how different perspectives and values lead to different ethical conclusions.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <h4>Ethics Impact Assessment</h4>
+                            <p><strong>Goal:</strong> Practice evaluating AI projects for ethical risks</p>
+                            <div class="activity-steps">
+                                <p><strong>What to do:</strong></p>
+                                <ol>
+                                    <li>Choose a potential AI project for your organization</li>
+                                    <li>List all stakeholders who would be affected</li>
+                                    <li>Identify potential benefits and harms for each group</li>
+                                    <li>Consider what could go wrong or be misused</li>
+                                    <li>Brainstorm safeguards and mitigation strategies</li>
+                                    <li>Create an ethical guidelines document for the project</li>
+                                </ol>
+                                <p><strong>Learning:</strong> You'll develop skills for proactive ethical planning in AI projects.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <h4>🗣️ Transparency Test</h4>
+                            <p><strong>Goal:</strong> Evaluate how well AI systems explain themselves</p>
+                            <div class="activity-steps">
+                                <p><strong>What to do:</strong></p>
+                                <ol>
+                                    <li>Find an AI system that makes recommendations (Netflix, Spotify, Amazon)</li>
+                                    <li>Try to understand why it made specific suggestions</li>
+                                    <li>Look for explanation features or help documentation</li>
+                                    <li>Rate how well you understand the AI's reasoning</li>
+                                    <li>Consider what additional information would be helpful</li>
+                                    <li>Compare transparency across different AI systems</li>
+                                </ol>
+                                <p><strong>Learning:</strong> You'll appreciate the importance of explainable AI and what good transparency looks like.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Business Ethics Guidelines -->
+                <section class="content-section">
+                    <h2>Ethical AI Strategy for Business Leaders</h2>
+
+                    <div class="takeaways-grid">
+                        <div class="takeaway-item">
+                            <h4>📜 Establish Clear AI Ethics Policy</h4>
+                            <p>Create company-wide guidelines for AI development and deployment. Include specific principles, processes, and accountability measures that align with your values.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>👥 Build Diverse, Cross-Functional Teams</h4>
+                            <p>Include ethicists, social scientists, and affected community representatives alongside engineers. Diverse perspectives catch blind spots that homogeneous teams miss.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>Audit and Monitor Continuously</h4>
+                            <p>Regularly test AI systems for bias, fairness, and unintended consequences. Ethics isn't a one-time check—it requires ongoing vigilance as systems and contexts evolve.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>💬 Engage Stakeholders Early</h4>
+                            <p>Involve affected communities, customers, and civil society in AI development. Early engagement prevents costly redesigns and builds trust in your systems.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>Balance Innovation with Responsibility</h4>
+                            <p>Ethical AI doesn't mean slow AI. Build ethics into your development process from the start—it's easier than retrofitting ethics later.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>Measure What Matters</h4>
+                            <p>Track fairness, user trust, and societal impact alongside traditional business metrics. What gets measured gets managed.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Navigation -->
+                <div class="content-navigation">
+                    <a href="data-and-training.html" class="nav-button nav-back">← Previous: Data & Training</a>
+                    <a href="ai-landing.html" class="nav-button">AI Hub</a>
+                    <a href="future-of-ai.html" class="nav-button nav-next">Next: Future of AI →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu" id="verticalMenu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    const explanation = question.querySelector('.quiz-explanation');
+
+                    // Disable all options
+                    allOptions.forEach(opt => opt.disabled = true);
+
+                    // Show result
+                    if (this.dataset.answer === 'correct') {
+                        this.style.backgroundColor = 'var(--color-electric-blue)';
+                        this.style.color = 'white';
+                    } else {
+                        this.style.backgroundColor = '#dc2626';
+                        this.style.color = 'white';
+                        // Show correct answer
+                        const correctOption = question.querySelector('[data-answer="correct"]');
+                        if (correctOption) {
+                            correctOption.style.backgroundColor = 'var(--color-electric-blue)';
+                            correctOption.style.color = 'white';
+                        }
+                    }
+
+                    // Show explanation
+                    explanation.style.display = 'block';
+                });
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

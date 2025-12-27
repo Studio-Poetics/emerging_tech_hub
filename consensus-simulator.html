@@ -1,0 +1,3116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consensus Mechanism Simulator - Blockchain Activities</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Interactive Learning Experience</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Activity Sections</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#introduction" class="experimental-nav-link">Introduction</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#proof-of-work" class="experimental-nav-link">Proof of Work</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#proof-of-stake" class="experimental-nav-link">Proof of Stake</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#byzantine-faults" class="experimental-nav-link">Byzantine Faults</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#comparison" class="experimental-nav-link">Final Analysis</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Your Progress</div>
+                    <div class="info-box-content" id="progress-tracker">
+                        <div class="progress-item">
+                            <span class="progress-step">Introduction</span>
+                            <span class="progress-status" id="intro-status">Not Started</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-step">PoW Simulation</span>
+                            <span class="progress-status" id="pow-status">Locked</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-step">PoS Simulation</span>
+                            <span class="progress-status" id="pos-status">Locked</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-step">Byzantine Faults</span>
+                            <span class="progress-status" id="byzantine-status">Locked</span>
+                        </div>
+                        <div class="progress-item">
+                            <span class="progress-step">Final Analysis</span>
+                            <span class="progress-status" id="analysis-status">Locked</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="blockchain-activities.html">← Back to Activities</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Consensus Mechanism Simulator</h1>
+                <p class="fundamentals-subtitle">Experience how distributed networks achieve agreement through interactive simulations</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction Section -->
+                <section class="content-section" id="introduction">
+                    <h2><span class="emoji">🎯</span> Understanding Consensus</h2>
+
+                    <div class="concept-introduction">
+                        <p><strong>The Challenge:</strong> In a distributed network where participants don't trust each other, how do you get everyone to agree on a single version of the truth?</p>
+
+                        <p>This is the <strong>consensus problem</strong> - one of the hardest challenges in distributed systems. Blockchain networks solve this through carefully designed consensus mechanisms that create incentives for honest behavior.</p>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>What You'll Discover</h3>
+                        <ul>
+                            <li>Why consensus is fundamentally difficult in distributed systems</li>
+                            <li>How different mechanisms trade off security, speed, and energy consumption</li>
+                            <li>Why economic incentives are crucial for network security</li>
+                            <li>When to use different consensus mechanisms for different applications</li>
+                        </ul>
+                    </div>
+
+                    <div class="interactive-element">
+                        <div class="challenge-question">
+                            <h3><span class="emoji">🤔</span> Think About It</h3>
+                            <p><strong>Question:</strong> You have 100 participants in a network. 30 of them are trying to cheat. How do you ensure the honest majority can still make correct decisions?</p>
+
+                            <div class="multiple-choice" id="intro-question">
+                                <button class="choice-button" onclick="checkAnswer('intro', 'wrong1')">A) Trust the participants to be honest</button>
+                                <button class="choice-button" onclick="checkAnswer('intro', 'wrong2')">B) Have a central authority decide</button>
+                                <button class="choice-button" onclick="checkAnswer('intro', 'correct')">C) Create economic incentives that make honesty profitable</button>
+                                <button class="choice-button" onclick="checkAnswer('intro', 'wrong3')">D) Remove the dishonest participants</button>
+                            </div>
+
+                            <div class="answer-feedback" id="intro-feedback" style="display: none;">
+                                <!-- Feedback will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" id="start-pow" onclick="unlockSection('proof-of-work', 'pow')" disabled>
+                            Continue to Proof of Work Simulation
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Proof of Work Section -->
+                <section class="content-section locked-section" id="proof-of-work">
+                    <h2><span class="emoji">⚡</span> Proof of Work: The Mining Challenge</h2>
+
+                    <div class="pow-introduction">
+                        <h3>The Problem We're Solving</h3>
+                        <p>Imagine you're in a room with strangers, and you need to agree on who gets to write the next page in a shared ledger. How do you decide fairly without trusting anyone?</p>
+
+                        <p><strong>Proof of Work's Solution:</strong> Make everyone solve a difficult puzzle. The first person to solve it proves they've done the "work" and earns the right to write the next page.</p>
+
+                        <div class="analogy-box">
+                            <h4><span class="emoji">🎯</span> Real-World Analogy</h4>
+                            <p><strong>Like a lottery where tickets cost effort:</strong> Instead of buying lottery tickets with money, miners "buy" tickets by spending computational energy. The more energy you spend, the more tickets you get, but everyone has a chance to win.</p>
+                        </div>
+                    </div>
+
+                    <div class="puzzle-demonstration">
+                        <h3>The Mining Puzzle Explained</h3>
+                        <p>Let's see what miners actually do. They're trying to find a special number called a "nonce" that, when combined with transaction data, creates a hash starting with zeros.</p>
+
+                        <div class="puzzle-example">
+                            <h4>Try It Yourself!</h4>
+                            <div class="hash-demo">
+                                <div class="demo-input">
+                                    <label>Block Data: <code>Transactions: Alice→Bob 5 BTC, Charlie→Dave 2 BTC</code></label>
+                                </div>
+                                <div class="demo-input">
+                                    <label>Previous Block Hash: <code>00004f2a8b3d...</code></label>
+                                </div>
+                                <div class="demo-input">
+                                    <label>Nonce (your guess): <input type="number" id="user-nonce" value="0" min="0" max="999999" style="width: 100px;"></label>
+                                    <button class="experimental-btn" onclick="tryHash()">Hash It!</button>
+                                </div>
+                                <div class="demo-result">
+                                    <strong>Resulting Hash:</strong> <code id="demo-hash">Click "Hash It!" to see result</code>
+                                </div>
+                                <div class="demo-explanation" id="demo-explanation">
+                                    <p>Try different nonce values until you get a hash starting with <strong>0000</strong>. This is the "proof of work"!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="difficulty-explanation">
+                            <h4><span class="emoji">🎚️</span> Difficulty Adjustment</h4>
+                            <p>The network automatically adjusts how many zeros are required based on how fast blocks are being mined. More miners = higher difficulty = more zeros needed.</p>
+
+                            <div class="difficulty-demo">
+                                <label>Required Zeros: </label>
+                                <input type="range" id="difficulty-slider" min="1" max="6" value="4" oninput="updateDifficulty()">
+                                <span id="difficulty-display">4 zeros (0000...)</span>
+                                <div class="difficulty-stats">
+                                    <div>Average Attempts Needed: <span id="attempts-needed">65,536</span></div>
+                                    <div>Network Hash Rate Required: <span id="hash-rate-needed">65,536 H/s for 1-second blocks</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-mining-race">
+                        <h3>The Mining Race Simulation</h3>
+                        <p>Now let's see this in action! Watch as miners compete to solve the puzzle. Notice how the miner with higher hash rate (more computational power) has better odds, but it's still a lottery.</p>
+
+                        <div class="current-block-info">
+                            <h4>Current Mining Challenge</h4>
+                            <div class="block-template" id="block-template">
+                                <div class="template-field">
+                                    <strong>Block #:</strong> <span id="current-block-number">1</span>
+                                </div>
+                                <div class="template-field">
+                                    <strong>Transactions:</strong>
+                                    <div class="pending-transactions" id="pending-transactions">
+                                        <div>Alice → Bob: 2.5 BTC (fee: 0.001 BTC)</div>
+                                        <div>Charlie → Dave: 1.8 BTC (fee: 0.002 BTC)</div>
+                                        <div>Eve → Frank: 0.7 BTC (fee: 0.001 BTC)</div>
+                                    </div>
+                                </div>
+                                <div class="template-field">
+                                    <strong>Previous Hash:</strong> <code id="previous-hash">000004f2a8b3d7e9c1a5f8b2d4e6a7c9</code>
+                                </div>
+                                <div class="template-field">
+                                    <strong>Target:</strong> Hash must start with <span id="target-zeros">0000</span>
+                                </div>
+                                <div class="template-field">
+                                    <strong>Block Reward:</strong> 6.25 BTC + 0.004 BTC fees = <strong>6.254 BTC</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mining-competition">
+                            <h4>Miners Racing to Solve the Puzzle</h4>
+                            <div class="miners-racing" id="miners-racing">
+                                <div class="racing-miner" id="racing-miner-1">
+                                    <div class="miner-info">
+                                        <h5><span class="emoji">⚡</span> PowerMiner</h5>
+                                        <div class="hash-rate">Hash Rate: 10 TH/s (40%)</div>
+                                        <div class="current-nonce">Current Nonce: <span id="nonce-1">0</span></div>
+                                        <div class="attempts">Attempts: <span id="attempts-1">0</span></div>
+                                    </div>
+                                    <div class="mining-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="progress-1"></div>
+                                        </div>
+                                        <div class="current-hash" id="hash-1">Starting...</div>
+                                    </div>
+                                </div>
+
+                                <div class="racing-miner" id="racing-miner-2">
+                                    <div class="miner-info">
+                                        <h5><span class="emoji">🚀</span> SpeedMiner</h5>
+                                        <div class="hash-rate">Hash Rate: 7.5 TH/s (30%)</div>
+                                        <div class="current-nonce">Current Nonce: <span id="nonce-2">0</span></div>
+                                        <div class="attempts">Attempts: <span id="attempts-2">0</span></div>
+                                    </div>
+                                    <div class="mining-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="progress-2"></div>
+                                        </div>
+                                        <div class="current-hash" id="hash-2">Starting...</div>
+                                    </div>
+                                </div>
+
+                                <div class="racing-miner" id="racing-miner-3">
+                                    <div class="miner-info">
+                                        <h5><span class="emoji">💻</span> HomeMiner</h5>
+                                        <div class="hash-rate">Hash Rate: 5 TH/s (20%)</div>
+                                        <div class="current-nonce">Current Nonce: <span id="nonce-3">0</span></div>
+                                        <div class="attempts">Attempts: <span id="attempts-3">0</span></div>
+                                    </div>
+                                    <div class="mining-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="progress-3"></div>
+                                        </div>
+                                        <div class="current-hash" id="hash-3">Starting...</div>
+                                    </div>
+                                </div>
+
+                                <div class="racing-miner malicious" id="racing-miner-4">
+                                    <div class="miner-info">
+                                        <h5><span class="emoji">😈</span> AttackMiner</h5>
+                                        <div class="hash-rate">Hash Rate: 2.5 TH/s (10%)</div>
+                                        <div class="current-nonce">Current Nonce: <span id="nonce-4">0</span></div>
+                                        <div class="attempts">Attempts: <span id="attempts-4">0</span></div>
+                                    </div>
+                                    <div class="mining-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="progress-4"></div>
+                                        </div>
+                                        <div class="current-hash" id="hash-4">Starting...</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mining-controls">
+                                <button class="experimental-btn experimental-btn--primary" onclick="startMiningRace()" id="start-mining">
+                                    🚀 Start Mining Race!
+                                </button>
+                                <button class="experimental-btn" onclick="pauseMiningRace()" id="pause-mining" disabled>
+                                    ⏸️ Pause
+                                </button>
+                                <button class="experimental-btn" onclick="resetMiningRace()">
+                                    🔄 Reset Race
+                                </button>
+                                <button class="experimental-btn" onclick="adjustDifficulty()">
+                                    🎚️ Adjust Difficulty
+                                </button>
+                            </div>
+
+                            <div class="race-status" id="race-status">
+                                <div class="status-message">Click "Start Mining Race" to see the competition in action!</div>
+                                <div class="network-stats">
+                                    <div class="stat">Total Hash Rate: <span id="total-hash-rate">25 TH/s</span></div>
+                                    <div class="stat">Expected Time: <span id="expected-time">~10 minutes</span></div>
+                                    <div class="stat">Elapsed Time: <span id="elapsed-time">0s</span></div>
+                                </div>
+                            </div>
+
+                            <div class="mining-results" id="mining-results" style="display: none;">
+                                <h4>🏆 Mining Results</h4>
+                                <div id="results-content">
+                                    <!-- Results will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blockchain-visualization">
+                            <h4>Blockchain Updates</h4>
+                            <div class="blockchain-chain" id="blockchain-chain">
+                                <div class="block genesis-block">
+                                    <div class="block-header">Genesis Block</div>
+                                    <div class="block-hash">#000000</div>
+                                    <div class="block-height">Height: 0</div>
+                                    <div class="block-miner">Network</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="economic-insights">
+                        <h3><span class="emoji">💰</span> The Economics Behind the Work</h3>
+
+                        <div class="economic-breakdown">
+                            <h4>Why Do Miners Spend So Much Energy?</h4>
+                            <div class="economics-demo">
+                                <div class="cost-benefit-analysis">
+                                    <div class="mining-costs">
+                                        <h5>Mining Costs (per block attempt)</h5>
+                                        <div class="cost-item">Electricity: ~$50,000/hour</div>
+                                        <div class="cost-item">Hardware amortization: ~$10,000/hour</div>
+                                        <div class="cost-item">Total: <strong>~$60,000/hour</strong></div>
+                                    </div>
+                                    <div class="mining-rewards">
+                                        <h5>Mining Rewards (per successful block)</h5>
+                                        <div class="reward-item">Block reward: 6.25 BTC ≈ $250,000</div>
+                                        <div class="reward-item">Transaction fees: ~$5,000</div>
+                                        <div class="reward-item">Total: <strong>≈$255,000</strong></div>
+                                    </div>
+                                </div>
+
+                                <div class="profitability-calculator">
+                                    <h5>Profitability Calculator</h5>
+                                    <div class="calc-input">
+                                        <label>Your Hash Rate (% of network):</label>
+                                        <input type="range" id="user-hash-rate" min="0.1" max="50" value="1" step="0.1" oninput="calculateProfitability()">
+                                        <span id="hash-rate-display">1%</span>
+                                    </div>
+                                    <div class="calc-results">
+                                        <div>Expected blocks per day: <span id="expected-blocks">1.44</span></div>
+                                        <div>Daily revenue: <span id="daily-revenue">$367,200</span></div>
+                                        <div>Daily costs: <span id="daily-costs">$14,400</span></div>
+                                        <div class="profit">Daily profit: <span id="daily-profit">$352,800</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="attack-explanation">
+                            <h3><span class="emoji">😈</span> What Does "AttackMiner" Mean?</h3>
+                            <p>In our simulation, <strong>AttackMiner</strong> represents a malicious actor trying to manipulate the blockchain. But what exactly are they trying to do?</p>
+
+                            <div class="attack-types">
+                                <h4>Types of Mining Attacks</h4>
+
+                                <div class="attack-type-card">
+                                    <h5><span class="emoji">🔄</span> Double Spending Attack</h5>
+                                    <div class="attack-details">
+                                        <p><strong>The Goal:</strong> Spend the same coins twice by rewriting blockchain history</p>
+                                        <div class="attack-scenario">
+                                            <h6>How It Works:</h6>
+                                            <ol>
+                                                <li>AttackMiner sends coins to exchange and sells them for cash</li>
+                                                <li>Secretly mines an alternative blockchain where those coins were never sent</li>
+                                                <li>If their chain becomes longer, the network accepts it as "truth"</li>
+                                                <li>The exchange transaction disappears - AttackMiner keeps both coins and cash!</li>
+                                            </ol>
+                                        </div>
+                                        <div class="defense-mechanism">
+                                            <p><strong>Defense:</strong> Exchanges wait for multiple "confirmations" (6+ blocks) before considering transactions final. This makes attacks exponentially harder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="attack-type-card">
+                                    <h5><span class="emoji">🚫</span> Censorship Attack</h5>
+                                    <div class="attack-details">
+                                        <p><strong>The Goal:</strong> Prevent specific transactions from being included in the blockchain</p>
+                                        <div class="attack-scenario">
+                                            <h6>How It Works:</h6>
+                                            <ol>
+                                                <li>AttackMiner refuses to include certain transactions in their blocks</li>
+                                                <li>They also reject any blocks from honest miners that include those transactions</li>
+                                                <li>If they control majority hash power, they can build the longest chain without the censored transactions</li>
+                                            </ol>
+                                        </div>
+                                        <div class="defense-mechanism">
+                                            <p><strong>Defense:</strong> Requires sustained majority control. Even then, users can increase transaction fees to incentivize inclusion.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="attack-type-card">
+                                    <h5><span class="emoji">💥</span> Selfish Mining</h5>
+                                    <div class="attack-details">
+                                        <p><strong>The Goal:</strong> Earn more rewards than their fair share of hash power should provide</p>
+                                        <div class="attack-scenario">
+                                            <h6>How It Works:</h6>
+                                            <ol>
+                                                <li>AttackMiner finds a valid block but keeps it secret</li>
+                                                <li>They continue mining on their secret chain while others mine on the public chain</li>
+                                                <li>At strategic moments, they reveal their longer secret chain</li>
+                                                <li>The network adopts their chain, invalidating honest miners' work</li>
+                                            </ol>
+                                        </div>
+                                        <div class="defense-mechanism">
+                                            <p><strong>Defense:</strong> Only profitable with >33% hash power and perfect network timing. Protocol improvements make this even harder.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="attack-simulation-controls">
+                                <h4>Simulate Different Attack Scenarios</h4>
+                                <p>See how different attack types play out in our mining simulation:</p>
+
+                                <div class="attack-buttons">
+                                    <button class="experimental-btn experimental-btn--primary" onclick="simulateAttack('double-spend')">
+                                        <span class="emoji">🔄</span> Simulate Double Spend
+                                    </button>
+                                    <button class="experimental-btn experimental-btn--primary" onclick="simulateAttack('censorship')">
+                                        <span class="emoji">🚫</span> Simulate Censorship
+                                    </button>
+                                    <button class="experimental-btn experimental-btn--primary" onclick="simulateAttack('selfish-mining')">
+                                        <span class="emoji">💥</span> Simulate Selfish Mining
+                                    </button>
+                                    <button class="experimental-btn" onclick="simulateAttack('51-percent')">
+                                        <span class="emoji">⚠️</span> 51% Attack Scenario
+                                    </button>
+                                </div>
+
+                                <div class="attack-results" id="attack-simulation-results" style="display: none;">
+                                    <h5>Attack Simulation Results</h5>
+                                    <div id="attack-results-content">
+                                        <!-- Results will be populated here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="security-implications">
+                            <h3><span class="emoji">🛡️</span> Why These Attacks Usually Fail</h3>
+
+                            <div class="security-layers">
+                                <div class="security-layer">
+                                    <h4><span class="emoji">💰</span> Economic Incentives</h4>
+                                    <p>Honest mining is more profitable than attacking. An attacker with 51% hash power would earn ~$127M daily from honest mining, vs. potentially destroying the value of coins they're trying to steal.</p>
+                                </div>
+
+                                <div class="security-layer">
+                                    <h4><span class="emoji">⏱️</span> Time and Confirmations</h4>
+                                    <p>Each additional block makes rewriting history exponentially harder. After 6 confirmations, the computational cost of rewriting becomes astronomical.</p>
+                                </div>
+
+                                <div class="security-layer">
+                                    <h4><span class="emoji">👥</span> Decentralized Response</h4>
+                                    <p>If an attack is detected, the community can respond by changing mining algorithms, creating social consensus against the attacker, or implementing emergency protocol changes.</p>
+                                </div>
+
+                                <div class="security-layer">
+                                    <h4><span class="emoji">📊</span> Market Consequences</h4>
+                                    <p>Attacks tank the price of the cryptocurrency being attacked, making the attacker's mining hardware and coin holdings less valuable.</p>
+                                </div>
+                            </div>
+
+                            <div class="security-explanation">
+                                <div class="attack-cost">
+                                    <h4>Real-World Attack Costs</h4>
+                                    <p>Let's put the cost of attacking Bitcoin into perspective:</p>
+                                    <div class="attack-calculator">
+                                        <div class="stat-large">Current Network Hash Rate: <strong>400 EH/s</strong></div>
+                                        <div class="stat-large">Hardware Cost for 51%: <strong>~$20 Billion</strong></div>
+                                        <div class="stat-large">Daily Electricity Cost: <strong>~$50 Million</strong></div>
+                                        <div class="stat-large">Daily Revenue from Honest Mining: <strong>~$127 Million</strong></div>
+                                        <div class="security-insight">
+                                            <p><strong>Key Insight:</strong> It would cost more to attack Bitcoin than the GDP of many small countries, and the attack would likely fail while destroying the attacker's investment!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="historical-attacks">
+                                <h4><span class="emoji">📚</span> Historical Context</h4>
+                                <div class="historical-examples">
+                                    <div class="example-card">
+                                        <h5>Bitcoin: Never Successfully Attacked</h5>
+                                        <p>Despite being worth over $1 trillion at peak, Bitcoin has never suffered a successful 51% attack due to its massive hash rate and economic incentives.</p>
+                                    </div>
+                                    <div class="example-card">
+                                        <h5>Smaller Networks: Vulnerable</h5>
+                                        <p>Ethereum Classic, Bitcoin Gold, and other smaller networks have suffered 51% attacks because their lower hash rates make attacks cheaper.</p>
+                                    </div>
+                                    <div class="example-card">
+                                        <h5>The Network Effect</h5>
+                                        <p>As networks grow larger, they become exponentially more secure. This creates a virtuous cycle where security attracts users, which increases value and security.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-challenges">
+                        <h3><span class="emoji">🧠</span> Test Your Understanding</h3>
+
+                        <div class="challenge-question">
+                            <h4>Challenge 1: Mining Economics</h4>
+                            <p>If electricity costs $0.05 per kWh and your mining rig uses 3000W, how much does it cost to run for 24 hours?</p>
+                            <div class="challenge-input">
+                                <input type="number" id="electricity-answer" placeholder="Enter cost in USD">
+                                <button class="experimental-btn" onclick="checkElectricityAnswer()">Check Answer</button>
+                            </div>
+                            <div class="answer-feedback" id="electricity-feedback" style="display: none;"></div>
+                        </div>
+
+                        <div class="challenge-question">
+                            <h4>Challenge 2: Hash Rate Impact</h4>
+                            <p>If the total network hash rate doubles overnight, what happens to block times?</p>
+                            <div class="multiple-choice" id="hashrate-question">
+                                <button class="choice-button" onclick="checkHashRateAnswer('double')">A) Block times become twice as fast</button>
+                                <button class="choice-button" onclick="checkHashRateAnswer('half')">B) Block times become half as fast</button>
+                                <button class="choice-button" onclick="checkHashRateAnswer('same')">C) Block times stay the same</button>
+                                <button class="choice-button" onclick="checkHashRateAnswer('random')">D) Block times become random</button>
+                            </div>
+                            <div class="answer-feedback" id="hashrate-feedback" style="display: none;"></div>
+                        </div>
+
+                        <div class="challenge-question">
+                            <h4>Challenge 3: Security Analysis</h4>
+                            <p>A mining pool controls 35% of the network hash rate. Can they perform a 51% attack?</p>
+                            <div class="multiple-choice" id="security-question">
+                                <button class="choice-button" onclick="checkSecurityAnswer('yes-immediately')">A) Yes, immediately</button>
+                                <button class="choice-button" onclick="checkSecurityAnswer('no-need-51')">B) No, they need 51% or more</button>
+                                <button class="choice-button" onclick="checkSecurityAnswer('maybe-lucky')">C) Maybe, if they get very lucky</button>
+                                <button class="choice-button" onclick="checkSecurityAnswer('depends-others')">D) It depends on what other miners do</button>
+                            </div>
+                            <div class="answer-feedback" id="security-feedback" style="display: none;"></div>
+                        </div>
+                    </div>
+
+                    <div class="reflection-questions">
+                        <h3><span class="emoji">💭</span> Deep Thinking Questions</h3>
+                        <div class="question-set">
+                            <div class="reflection-question">
+                                <p><strong>1. Environmental Impact vs Security:</strong> Proof of Work consumes enormous amounts of energy. Is this justified by the security it provides? What alternatives exist?</p>
+                                <textarea class="reflection-input" placeholder="Consider both the benefits of absolute security and the environmental costs..." id="pow-reflection-1"></textarea>
+                            </div>
+                            <div class="reflection-question">
+                                <p><strong>2. Centralization Pressure:</strong> Mining tends to centralize in regions with cheap electricity and specialized hardware. How does this affect Bitcoin's decentralization goals?</p>
+                                <textarea class="reflection-input" placeholder="Think about mining pools, geographic concentration, and ASIC development..." id="pow-reflection-2"></textarea>
+                            </div>
+                            <div class="reflection-question">
+                                <p><strong>3. Future Evolution:</strong> As block rewards decrease (Bitcoin halving), transaction fees must support mining. What are the implications for the network's future?</p>
+                                <textarea class="reflection-input" placeholder="Consider fee markets, layer 2 solutions, and long-term sustainability..." id="pow-reflection-3"></textarea>
+                            </div>
+                        </div>
+                        <button class="experimental-btn" onclick="saveReflections('pow')">Save Reflections</button>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" id="continue-pos" onclick="unlockSection('proof-of-stake', 'pos')" disabled>
+                            Continue to Proof of Stake →
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Proof of Stake Section -->
+                <section class="content-section locked-section" id="proof-of-stake">
+                    <h2><span class="emoji">💎</span> Proof of Stake Simulation</h2>
+
+                    <div class="mechanism-explanation">
+                        <p><strong>Proof of Stake:</strong> Validators are chosen to propose blocks based on their stake in the network. No energy-intensive mining required.</p>
+
+                        <div class="key-concepts">
+                            <div class="concept-card">
+                                <h4><span class="emoji">🎯</span> Validator Selection</h4>
+                                <p>Probability of being chosen proportional to stake size</p>
+                            </div>
+                            <div class="concept-card">
+                                <h4><span class="emoji">💰</span> Staking Rewards</h4>
+                                <p>Earn rewards for honest validation, lose stake for dishonesty</p>
+                            </div>
+                            <div class="concept-card">
+                                <h4><span class="emoji">⚖️</span> Slashing</h4>
+                                <p>Validators lose staked tokens for malicious behavior</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="simulation-interface">
+                        <h3>Validator Network Simulation</h3>
+
+                        <div class="staking-network">
+                            <div class="network-state">
+                                <div class="total-staked">
+                                    <h4>Total Staked: <span id="total-staked">1,000,000</span> tokens</h4>
+                                </div>
+                            </div>
+
+                            <div class="validators-grid" id="validators-grid">
+                                <div class="validator-card honest" id="validator-1">
+                                    <h5><span class="emoji">✅</span> Honest Validator A</h5>
+                                    <div class="validator-stats">
+                                        <div>Stake: <span class="stake-amount">300,000</span> tokens</div>
+                                        <div>Probability: <span class="selection-probability">30%</span></div>
+                                        <div>Blocks Proposed: <span class="blocks-proposed">0</span></div>
+                                        <div>Rewards Earned: <span class="rewards-earned">0</span></div>
+                                    </div>
+                                </div>
+                                <div class="validator-card honest" id="validator-2">
+                                    <h5><span class="emoji">✅</span> Honest Validator B</h5>
+                                    <div class="validator-stats">
+                                        <div>Stake: <span class="stake-amount">250,000</span> tokens</div>
+                                        <div>Probability: <span class="selection-probability">25%</span></div>
+                                        <div>Blocks Proposed: <span class="blocks-proposed">0</span></div>
+                                        <div>Rewards Earned: <span class="rewards-earned">0</span></div>
+                                    </div>
+                                </div>
+                                <div class="validator-card honest" id="validator-3">
+                                    <h5><span class="emoji">✅</span> Honest Validator C</h5>
+                                    <div class="validator-stats">
+                                        <div>Stake: <span class="stake-amount">200,000</span> tokens</div>
+                                        <div>Probability: <span class="selection-probability">20%</span></div>
+                                        <div>Blocks Proposed: <span class="blocks-proposed">0</span></div>
+                                        <div>Rewards Earned: <span class="rewards-earned">0</span></div>
+                                    </div>
+                                </div>
+                                <div class="validator-card malicious" id="validator-4">
+                                    <h5><span class="emoji">❌</span> Malicious Validator</h5>
+                                    <div class="validator-stats">
+                                        <div>Stake: <span class="stake-amount">250,000</span> tokens</div>
+                                        <div>Probability: <span class="selection-probability">25%</span></div>
+                                        <div>Blocks Proposed: <span class="blocks-proposed">0</span></div>
+                                        <div>Slashed: <span class="tokens-slashed">0</span> tokens</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pos-simulation-controls">
+                                <button class="experimental-btn" onclick="startPosSimulation()">Run Validation Round</button>
+                                <button class="experimental-btn experimental-btn--primary" onclick="introduceSlashing()">Simulate Malicious Behavior</button>
+                                <button class="experimental-btn" onclick="resetPosSimulation()">Reset Simulation</button>
+                            </div>
+
+                            <div class="simulation-results" id="pos-results" style="display: none;">
+                                <h4>Validation Results</h4>
+                                <div id="pos-result-content">
+                                    <!-- Results will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparative-analysis">
+                        <h3><span class="emoji">⚖️</span> PoW vs PoS Comparison</h3>
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>Energy Consumption</h4>
+                                <div class="comparison-bars">
+                                    <div class="bar-item">
+                                        <span>PoW</span>
+                                        <div class="bar pow-high"></div>
+                                        <span>Very High</span>
+                                    </div>
+                                    <div class="bar-item">
+                                        <span>PoS</span>
+                                        <div class="bar pos-low"></div>
+                                        <span>Very Low</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>Security Model</h4>
+                                <div class="security-models">
+                                    <div class="model-item">
+                                        <strong>PoW:</strong> Cost of attack = Cost of hardware + electricity
+                                    </div>
+                                    <div class="model-item">
+                                        <strong>PoS:</strong> Cost of attack = Cost of staked tokens (which can be slashed)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" id="continue-byzantine" onclick="unlockSection('byzantine-faults', 'byzantine')" disabled>
+                            Explore Byzantine Fault Tolerance
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Byzantine Faults Section -->
+                <section class="content-section locked-section" id="byzantine-faults">
+                    <h2><span class="emoji">🛡️</span> Byzantine Fault Tolerance</h2>
+
+                    <div class="byzantine-introduction">
+                        <p>The <strong>Byzantine Generals Problem</strong> describes the challenge of achieving consensus when some participants may be malicious or unreliable.</p>
+
+                        <div class="problem-scenario">
+                            <h3>The Classic Scenario</h3>
+                            <p>Several generals are besieging a city. They must coordinate their attack - all attack together to succeed, or all retreat to avoid defeat. But some generals might be traitors trying to cause failure.</p>
+
+                            <p><strong>The Challenge:</strong> How do honest generals coordinate when they can't distinguish honest messages from malicious ones?</p>
+                        </div>
+                    </div>
+
+                    <div class="byzantine-simulation">
+                        <h3>Interactive Byzantine Simulation</h3>
+
+                        <div class="generals-network">
+                            <h4>Network of Generals (Nodes)</h4>
+                            <div class="generals-grid" id="generals-grid">
+                                <div class="general-card honest" id="general-1">
+                                    <h5><span class="emoji">👑</span> General Alpha</h5>
+                                    <div class="general-info">
+                                        <div>Type: <span class="general-type">Honest</span></div>
+                                        <div>Vote: <span class="general-vote">Undecided</span></div>
+                                        <div>Messages Sent: <span class="messages-sent">0</span></div>
+                                    </div>
+                                </div>
+                                <div class="general-card honest" id="general-2">
+                                    <h5><span class="emoji">⚔️</span> General Beta</h5>
+                                    <div class="general-info">
+                                        <div>Type: <span class="general-type">Honest</span></div>
+                                        <div>Vote: <span class="general-vote">Undecided</span></div>
+                                        <div>Messages Sent: <span class="messages-sent">0</span></div>
+                                    </div>
+                                </div>
+                                <div class="general-card honest" id="general-3">
+                                    <h5><span class="emoji">🏹</span> General Gamma</h5>
+                                    <div class="general-info">
+                                        <div>Type: <span class="general-type">Honest</span></div>
+                                        <div>Vote: <span class="general-vote">Undecided</span></div>
+                                        <div>Messages Sent: <span class="messages-sent">0</span></div>
+                                    </div>
+                                </div>
+                                <div class="general-card malicious" id="general-4">
+                                    <h5><span class="emoji">🗡️</span> General Delta</h5>
+                                    <div class="general-info">
+                                        <div>Type: <span class="general-type">Traitor</span></div>
+                                        <div>Strategy: <span class="traitor-strategy">Send conflicting messages</span></div>
+                                        <div>Messages Sent: <span class="messages-sent">0</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="consensus-challenge">
+                            <h4>Consensus Challenge</h4>
+                            <p>The generals need to decide: <strong>Attack</strong> or <strong>Retreat</strong></p>
+
+                            <div class="challenge-controls">
+                                <button class="experimental-btn" onclick="startByzantineRound()">Start Communication Round</button>
+                                <button class="experimental-btn experimental-btn--primary" onclick="increaseTraitors()">Add More Traitors</button>
+                                <button class="experimental-btn" onclick="resetByzantine()">Reset Network</button>
+                            </div>
+
+                            <div class="message-log" id="message-log">
+                                <h5>Communication Log</h5>
+                                <div class="log-content" id="log-content">
+                                    <!-- Messages will be logged here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="consensus-result" id="byzantine-result" style="display: none;">
+                            <h4>Consensus Result</h4>
+                            <div id="byzantine-result-content">
+                                <!-- Result will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-insights">
+                        <h3><span class="emoji">💡</span> Key Insights</h3>
+                        <div class="insight-cards">
+                            <div class="insight-card">
+                                <h4>The 2/3 Rule</h4>
+                                <p>Byzantine Fault Tolerance requires that less than 1/3 of participants are malicious. If more than 1/3 are dishonest, consensus becomes impossible.</p>
+                            </div>
+                            <div class="insight-card">
+                                <h4>Communication Overhead</h4>
+                                <p>Achieving Byzantine Fault Tolerance requires multiple rounds of communication, increasing latency and message complexity.</p>
+                            </div>
+                            <div class="insight-card">
+                                <h4>Real-World Applications</h4>
+                                <p>This problem applies to all distributed systems: blockchain networks, distributed databases, and even space missions!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" id="continue-analysis" onclick="unlockSection('comparison', 'analysis')" disabled>
+                            Complete Final Analysis
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Comparison and Analysis Section -->
+                <section class="content-section locked-section" id="comparison">
+                    <h2><span class="emoji">🎓</span> Strategic Analysis & Conclusions</h2>
+
+                    <div class="final-challenge">
+                        <h3>Design Challenge: Choose Your Consensus</h3>
+                        <p>You're designing a blockchain for different use cases. Based on what you've learned, which consensus mechanism would you choose?</p>
+
+                        <div class="use-case-scenarios">
+                            <div class="scenario-card" onclick="selectScenario('digital-currency')">
+                                <h4><span class="emoji">💰</span> Digital Currency</h4>
+                                <p>Global peer-to-peer money system requiring maximum security and decentralization</p>
+                                <div class="scenario-requirements">
+                                    <span class="requirement">High Security</span>
+                                    <span class="requirement">Global Scale</span>
+                                    <span class="requirement">Censorship Resistance</span>
+                                </div>
+                            </div>
+
+                            <div class="scenario-card" onclick="selectScenario('supply-chain')">
+                                <h4><span class="emoji">📦</span> Supply Chain</h4>
+                                <p>Enterprise consortium for tracking goods from manufacturer to consumer</p>
+                                <div class="scenario-requirements">
+                                    <span class="requirement">Fast Transactions</span>
+                                    <span class="requirement">Low Cost</span>
+                                    <span class="requirement">Known Participants</span>
+                                </div>
+                            </div>
+
+                            <div class="scenario-card" onclick="selectScenario('defi-platform')">
+                                <h4><span class="emoji">🏦</span> DeFi Platform</h4>
+                                <p>Smart contract platform for decentralized financial services</p>
+                                <div class="scenario-requirements">
+                                    <span class="requirement">Smart Contracts</span>
+                                    <span class="requirement">Low Fees</span>
+                                    <span class="requirement">Fast Finality</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="decision-framework" id="decision-framework" style="display: none;">
+                            <h4>Decision Analysis</h4>
+                            <div id="framework-content">
+                                <!-- Framework analysis will be shown here -->
+                            </div>
+
+                            <div class="final-choice">
+                                <h5>Your Recommendation:</h5>
+                                <div class="choice-buttons">
+                                    <button class="choice-button" onclick="makeChoice('pow')">Proof of Work</button>
+                                    <button class="choice-button" onclick="makeChoice('pos')">Proof of Stake</button>
+                                    <button class="choice-button" onclick="makeChoice('pbft')">Byzantine Fault Tolerance</button>
+                                    <button class="choice-button" onclick="makeChoice('hybrid')">Hybrid Approach</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="choice-feedback" id="choice-feedback" style="display: none;">
+                            <!-- Choice feedback will be shown here -->
+                        </div>
+                    </div>
+
+                    <div class="learning-summary">
+                        <h3><span class="emoji">📊</span> What You've Learned</h3>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <h4>Consensus is Hard</h4>
+                                <p>Achieving agreement in distributed systems with untrusted participants is one of computer science's hardest problems.</p>
+                            </div>
+                            <div class="summary-item">
+                                <h4>Trade-offs Matter</h4>
+                                <p>Every consensus mechanism involves trade-offs between security, speed, energy consumption, and decentralization.</p>
+                            </div>
+                            <div class="summary-item">
+                                <h4>Economics Drive Security</h4>
+                                <p>All successful consensus mechanisms rely on economic incentives to encourage honest behavior and punish attacks.</p>
+                            </div>
+                            <div class="summary-item">
+                                <h4>Context Determines Choice</h4>
+                                <p>The "best" consensus mechanism depends entirely on your specific requirements and constraints.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-steps">
+                        <h3><span class="emoji">🚀</span> Continue Your Learning Journey</h3>
+                        <div class="recommendation-cards">
+                            <div class="recommendation-card">
+                                <h4>Crypto Economics Laboratory</h4>
+                                <p>Explore how token incentives create sustainable blockchain networks</p>
+                                <button class="experimental-btn" onclick="goToActivity('crypto-economics')">Start Lab</button>
+                            </div>
+                            <div class="recommendation-card">
+                                <h4>Decentralized Governance</h4>
+                                <p>See how consensus mechanisms apply to organizational decision-making</p>
+                                <button class="experimental-btn" onclick="goToActivity('governance')">Start Workshop</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="blockchain-activities.html" class="main-menu-link">Blockchain Activities</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Progress tracking
+        let completedSections = {
+            intro: false,
+            pow: false,
+            pos: false,
+            byzantine: false,
+            analysis: false
+        };
+
+        // Activity data
+        let simulationData = {
+            powRounds: 0,
+            posRounds: 0,
+            byzantineRounds: 0,
+            reflections: {}
+        };
+
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Answer checking for introduction
+        function checkAnswer(section, answer) {
+            const feedback = document.getElementById(section + '-feedback');
+            const buttons = document.querySelectorAll(`#${section}-question .choice-button`);
+
+            // Disable all buttons
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (answer === 'correct') {
+                feedback.innerHTML = `
+                    <div class="correct-answer">
+                        <h4><span class="emoji">✅</span> Correct!</h4>
+                        <p>Economic incentives are indeed the key! By making honest behavior profitable and dishonest behavior costly, blockchain networks create a game where participants benefit from following the rules.</p>
+                        <p>This insight is fundamental to understanding why blockchain works without central authorities.</p>
+                    </div>
+                `;
+                completedSections.intro = true;
+                updateProgress('intro', 'Completed');
+                document.getElementById('start-pow').disabled = false;
+            } else {
+                let correctExplanation = '';
+                if (answer === 'wrong1') {
+                    correctExplanation = 'Trusting participants defeats the purpose of a trustless system.';
+                } else if (answer === 'wrong2') {
+                    correctExplanation = 'Central authorities create single points of failure and control.';
+                } else if (answer === 'wrong3') {
+                    correctExplanation = 'In a decentralized system, you cannot easily identify or remove dishonest participants.';
+                }
+
+                feedback.innerHTML = `
+                    <div class="incorrect-answer">
+                        <h4><span class="emoji">❌</span> Not quite right</h4>
+                        <p>${correctExplanation}</p>
+                        <p><strong>Think about it:</strong> How can you make it more profitable to be honest than dishonest?</p>
+                        <button class="experimental-btn" onclick="resetQuestion('${section}')">Try Again</button>
+                    </div>
+                `;
+            }
+
+            feedback.style.display = 'block';
+        }
+
+        function resetQuestion(section) {
+            const feedback = document.getElementById(section + '-feedback');
+            const buttons = document.querySelectorAll(`#${section}-question .choice-button`);
+
+            feedback.style.display = 'none';
+            buttons.forEach(btn => btn.disabled = false);
+        }
+
+        // Progress updating
+        function updateProgress(section, status) {
+            const statusElement = document.getElementById(section + '-status');
+            if (statusElement) {
+                statusElement.textContent = status;
+                statusElement.className = 'progress-status ' + status.toLowerCase().replace(' ', '-');
+            }
+        }
+
+        // Section unlocking
+        function unlockSection(sectionId, progressKey) {
+            const section = document.getElementById(sectionId);
+            const navLink = document.querySelector(`a[href="#${sectionId}"]`);
+
+            section.classList.remove('locked-section');
+            if (navLink) {
+                navLink.style.color = 'var(--color-electric-blue)';
+            }
+
+            updateProgress(progressKey, 'In Progress');
+
+            // Scroll to section
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Enhanced PoW Simulation Variables
+        let miningRaceActive = false;
+        let miningRaceInterval = null;
+        let currentDifficulty = 4;
+        let blockNumber = 1;
+        let miners = [
+            { id: 1, name: 'PowerMiner', hashRate: 40, nonce: 0, attempts: 0 },
+            { id: 2, name: 'SpeedMiner', hashRate: 30, nonce: 0, attempts: 0 },
+            { id: 3, name: 'HomeMiner', hashRate: 20, nonce: 0, attempts: 0 },
+            { id: 4, name: 'AttackMiner', hashRate: 10, nonce: 0, attempts: 0 }
+        ];
+
+        // Simple hash function for demonstration
+        function simpleHash(input) {
+            let hash = 0;
+            for (let i = 0; i < input.length; i++) {
+                const char = input.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // Convert to 32bit integer
+            }
+            return Math.abs(hash).toString(16).padStart(8, '0');
+        }
+
+        // Hash demonstration
+        function tryHash() {
+            const nonce = document.getElementById('user-nonce').value;
+            const blockData = `Transactions: Alice→Bob 5 BTC, Charlie→Dave 2 BTC`;
+            const prevHash = `00004f2a8b3d`;
+            const fullData = blockData + prevHash + nonce;
+            const hash = simpleHash(fullData);
+
+            document.getElementById('demo-hash').textContent = hash;
+
+            const targetZeros = '0'.repeat(currentDifficulty);
+            const explanation = document.getElementById('demo-explanation');
+
+            if (hash.startsWith(targetZeros)) {
+                explanation.innerHTML = `
+                    <div style="color: green;">
+                        <p><strong>🎉 SUCCESS!</strong> Your nonce ${nonce} produces a valid hash!</p>
+                        <p>This hash starts with ${currentDifficulty} zeros, meeting the current difficulty target.</p>
+                        <p>In a real network, you would now broadcast this block and earn the reward!</p>
+                    </div>
+                `;
+            } else {
+                explanation.innerHTML = `
+                    <p>Hash doesn't start with ${targetZeros}. Keep trying different nonce values!</p>
+                    <p><strong>Tip:</strong> Try values like 12345, 54321, 98765, or let the mining race show you how it's done!</p>
+                `;
+            }
+        }
+
+        // Difficulty adjustment
+        function updateDifficulty() {
+            const difficulty = parseInt(document.getElementById('difficulty-slider').value);
+            currentDifficulty = difficulty;
+            const zeros = '0'.repeat(difficulty);
+            document.getElementById('difficulty-display').textContent = `${difficulty} zeros (${zeros}...)`;
+
+            const attempts = Math.pow(16, difficulty);
+            document.getElementById('attempts-needed').textContent = attempts.toLocaleString();
+            document.getElementById('hash-rate-needed').textContent = `${attempts.toLocaleString()} H/s for 1-second blocks`;
+
+            // Update target display
+            document.getElementById('target-zeros').textContent = zeros;
+        }
+
+        // Mining race simulation
+        function startMiningRace() {
+            if (miningRaceActive) return;
+
+            miningRaceActive = true;
+            document.getElementById('start-mining').disabled = true;
+            document.getElementById('pause-mining').disabled = false;
+
+            // Reset miners
+            miners.forEach(miner => {
+                miner.nonce = 0;
+                miner.attempts = 0;
+            });
+
+            const startTime = Date.now();
+            let elapsedTime = 0;
+
+            // Update UI
+            document.querySelector('.status-message').textContent = 'Mining race in progress...';
+
+            miningRaceInterval = setInterval(() => {
+                elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+                document.getElementById('elapsed-time').textContent = elapsedTime + 's';
+
+                // Simulate each miner's attempts
+                miners.forEach((miner, index) => {
+                    const hashRatePerSecond = miner.hashRate * 1000; // Simulate hash attempts per second
+                    const attemptsThisSecond = Math.floor(hashRatePerSecond * Math.random());
+
+                    miner.attempts += attemptsThisSecond;
+                    miner.nonce += attemptsThisSecond;
+
+                    // Update UI
+                    document.getElementById(`nonce-${miner.id}`).textContent = miner.nonce.toLocaleString();
+                    document.getElementById(`attempts-${miner.id}`).textContent = miner.attempts.toLocaleString();
+
+                    // Simulate hash attempts
+                    const blockData = `Block${blockNumber}:Alice→Bob:2.5BTC`;
+                    const prevHash = document.getElementById('previous-hash').textContent;
+                    const fullData = blockData + prevHash + miner.nonce;
+                    const hash = simpleHash(fullData);
+
+                    document.getElementById(`hash-${miner.id}`).textContent = hash.substring(0, 12) + '...';
+
+                    // Update progress bar (visual representation)
+                    const progress = Math.min((miner.attempts / (Math.pow(16, currentDifficulty) * 0.1)) * 100, 95);
+                    document.getElementById(`progress-${miner.id}`).style.width = progress + '%';
+
+                    // Check for winning hash (simplified probability)
+                    const targetZeros = '0'.repeat(currentDifficulty);
+                    const winProbability = miner.hashRate / 100 * 0.001; // Adjusted probability
+
+                    if (Math.random() < winProbability && hash.startsWith(targetZeros.substring(0, 2))) {
+                        // This miner wins!
+                        finishMiningRace(miner, hash, elapsedTime);
+                        return;
+                    }
+                });
+
+                // Auto-finish after reasonable time
+                if (elapsedTime > 30) {
+                    const winner = miners[Math.floor(Math.random() * miners.length)];
+                    finishMiningRace(winner, simpleHash(`winner${Date.now()}`), elapsedTime);
+                }
+            }, 1000);
+        }
+
+        function finishMiningRace(winner, winningHash, elapsedTime) {
+            clearInterval(miningRaceInterval);
+            miningRaceActive = false;
+
+            document.getElementById('start-mining').disabled = false;
+            document.getElementById('pause-mining').disabled = true;
+
+            // Show results
+            const results = document.getElementById('mining-results');
+            const content = document.getElementById('results-content');
+
+            content.innerHTML = `
+                <div class="winner-announcement">
+                    <h5>🏆 Winner: ${winner.name}</h5>
+                    <div class="win-details">
+                        <div><strong>Winning Nonce:</strong> ${winner.nonce.toLocaleString()}</div>
+                        <div><strong>Total Attempts:</strong> ${winner.attempts.toLocaleString()}</div>
+                        <div><strong>Time Elapsed:</strong> ${elapsedTime} seconds</div>
+                        <div><strong>Winning Hash:</strong> <code>${winningHash}</code></div>
+                        <div><strong>Hash Rate:</strong> ${winner.hashRate}% of network</div>
+                        <div><strong>Reward Earned:</strong> 6.254 BTC (~$250,000)</div>
+                    </div>
+                </div>
+
+                <div class="race-analysis">
+                    <h5>Race Analysis</h5>
+                    <p><strong>Why ${winner.name} won:</strong> ${
+                        winner.hashRate > 30
+                        ? `High hash rate (${winner.hashRate}%) gave them the best odds, though victory wasn't guaranteed.`
+                        : `Despite lower hash rate (${winner.hashRate}%), they got lucky! This shows the probabilistic nature of mining.`
+                    }</p>
+                    <p><strong>Energy Consumed:</strong> Approximately ${(elapsedTime * 60000).toLocaleString()} kWh across all miners</p>
+                    <p><strong>Security Provided:</strong> This computational work makes the block extremely difficult to alter retroactively</p>
+                </div>
+            `;
+
+            results.style.display = 'block';
+
+            // Add block to blockchain
+            addBlockToChain(winner, winningHash);
+
+            // Enable progression
+            simulationData.powRounds++;
+            if (simulationData.powRounds >= 2) {
+                document.getElementById('continue-pos').disabled = false;
+                completedSections.pow = true;
+                updateProgress('pow', 'Completed');
+            }
+        }
+
+        function pauseMiningRace() {
+            if (!miningRaceActive) return;
+
+            clearInterval(miningRaceInterval);
+            miningRaceActive = false;
+
+            document.getElementById('start-mining').disabled = false;
+            document.getElementById('pause-mining').disabled = true;
+            document.querySelector('.status-message').textContent = 'Mining paused. Click "Start Mining Race" to continue.';
+        }
+
+        function resetMiningRace() {
+            clearInterval(miningRaceInterval);
+            miningRaceActive = false;
+
+            document.getElementById('start-mining').disabled = false;
+            document.getElementById('pause-mining').disabled = true;
+            document.getElementById('mining-results').style.display = 'none';
+            document.getElementById('elapsed-time').textContent = '0s';
+            document.querySelector('.status-message').textContent = 'Click "Start Mining Race" to see the competition in action!';
+
+            // Reset all miners
+            miners.forEach(miner => {
+                miner.nonce = 0;
+                miner.attempts = 0;
+                document.getElementById(`nonce-${miner.id}`).textContent = '0';
+                document.getElementById(`attempts-${miner.id}`).textContent = '0';
+                document.getElementById(`progress-${miner.id}`).style.width = '0%';
+                document.getElementById(`hash-${miner.id}`).textContent = 'Starting...';
+            });
+        }
+
+        function addBlockToChain(winner, hash) {
+            const blockchain = document.getElementById('blockchain-chain');
+            const newBlock = document.createElement('div');
+            newBlock.className = winner.name === 'AttackMiner' ? 'block malicious-block' : 'block';
+            newBlock.innerHTML = `
+                <div class="block-header">Block #${blockNumber}</div>
+                <div class="block-hash">#${hash.substring(0, 8)}</div>
+                <div class="block-height">Height: ${blockNumber}</div>
+                <div class="block-miner">${winner.name}</div>
+            `;
+            blockchain.appendChild(newBlock);
+
+            // Update for next block
+            blockNumber++;
+            document.getElementById('current-block-number').textContent = blockNumber;
+            document.getElementById('previous-hash').textContent = hash;
+        }
+
+        function adjustDifficulty() {
+            const newDifficulty = prompt('Enter new difficulty (1-6 zeros):', currentDifficulty);
+            if (newDifficulty && newDifficulty >= 1 && newDifficulty <= 6) {
+                currentDifficulty = parseInt(newDifficulty);
+                document.getElementById('difficulty-slider').value = currentDifficulty;
+                updateDifficulty();
+            }
+        }
+
+        // Economic calculations
+        function calculateProfitability() {
+            const hashRatePercent = parseFloat(document.getElementById('user-hash-rate').value);
+            document.getElementById('hash-rate-display').textContent = hashRatePercent + '%';
+
+            // Bitcoin network produces ~144 blocks per day
+            const blocksPerDay = 144;
+            const expectedBlocks = (hashRatePercent / 100) * blocksPerDay;
+            const blockReward = 255000; // $255k per block (reward + fees)
+            const dailyRevenue = expectedBlocks * blockReward;
+
+            // Costs scale with hash rate
+            const dailyCosts = (hashRatePercent / 100) * 1440000; // $1.44M for 100% of network
+
+            document.getElementById('expected-blocks').textContent = expectedBlocks.toFixed(2);
+            document.getElementById('daily-revenue').textContent = '$' + dailyRevenue.toLocaleString();
+            document.getElementById('daily-costs').textContent = '$' + dailyCosts.toLocaleString();
+            document.getElementById('daily-profit').textContent = '$' + (dailyRevenue - dailyCosts).toLocaleString();
+        }
+
+        // Challenge questions
+        function checkElectricityAnswer() {
+            const answer = parseFloat(document.getElementById('electricity-answer').value);
+            const correct = 3 * 24 * 0.05; // 3kW * 24h * $0.05/kWh = $3.60
+            const feedback = document.getElementById('electricity-feedback');
+
+            if (Math.abs(answer - correct) < 0.1) {
+                feedback.innerHTML = `
+                    <div class="correct-answer">
+                        <p><strong>✅ Correct!</strong> 3kW × 24h × $0.05/kWh = $3.60</p>
+                        <p>This shows why miners seek cheap electricity - even small differences in power costs significantly impact profitability.</p>
+                    </div>
+                `;
+            } else {
+                feedback.innerHTML = `
+                    <div class="incorrect-answer">
+                        <p><strong>❌ Not quite.</strong> Calculate: 3,000W = 3kW → 3kW × 24h × $0.05/kWh</p>
+                        <p>The correct answer is $3.60. Try the calculation again!</p>
+                    </div>
+                `;
+            }
+            feedback.style.display = 'block';
+        }
+
+        function checkHashRateAnswer(answer) {
+            const feedback = document.getElementById('hashrate-feedback');
+            const buttons = document.querySelectorAll('#hashrate-question .choice-button');
+
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (answer === 'half') {
+                feedback.innerHTML = `
+                    <div class="correct-answer">
+                        <p><strong>✅ Correct!</strong> Block times become half as fast (5 minutes instead of 10).</p>
+                        <p>However, Bitcoin's difficulty adjustment algorithm will increase difficulty within ~2 weeks to bring block times back to 10 minutes.</p>
+                    </div>
+                `;
+            } else {
+                feedback.innerHTML = `
+                    <div class="incorrect-answer">
+                        <p><strong>❌ Not correct.</strong> When hash rate doubles, miners find blocks twice as fast initially.</p>
+                        <p>The network will adjust difficulty upward to maintain the target 10-minute block time.</p>
+                        <button class="experimental-btn" onclick="resetHashRateQuestion()">Try Again</button>
+                    </div>
+                `;
+            }
+            feedback.style.display = 'block';
+        }
+
+        function resetHashRateQuestion() {
+            const feedback = document.getElementById('hashrate-feedback');
+            const buttons = document.querySelectorAll('#hashrate-question .choice-button');
+
+            feedback.style.display = 'none';
+            buttons.forEach(btn => btn.disabled = false);
+        }
+
+        function checkSecurityAnswer(answer) {
+            const feedback = document.getElementById('security-feedback');
+            const buttons = document.querySelectorAll('#security-question .choice-button');
+
+            buttons.forEach(btn => btn.disabled = true);
+
+            if (answer === 'no-need-51') {
+                feedback.innerHTML = `
+                    <div class="correct-answer">
+                        <p><strong>✅ Correct!</strong> 35% is not enough for a reliable 51% attack.</p>
+                        <p>While they might occasionally mine consecutive blocks by luck, they cannot consistently control the network. They would need 51% or more for a sustained attack.</p>
+                        <p><strong>Key insight:</strong> The security threshold is precisely why it's called a "51% attack"!</p>
+                    </div>
+                `;
+            } else if (answer === 'maybe-lucky') {
+                feedback.innerHTML = `
+                    <div class="partially-correct">
+                        <p><strong>⚠️ Partially correct.</strong> They might get lucky occasionally, but this isn't a reliable attack.</p>
+                        <p>A true 51% attack requires sustained control, which needs majority hash power. 35% could temporarily disrupt but not consistently control.</p>
+                    </div>
+                `;
+            } else {
+                feedback.innerHTML = `
+                    <div class="incorrect-answer">
+                        <p><strong>❌ Not correct.</strong> 35% gives significant influence but isn't enough for a sustained attack.</p>
+                        <p>The magic number is 51% because that represents majority control over the network's computational power.</p>
+                        <button class="experimental-btn" onclick="resetSecurityQuestion()">Try Again</button>
+                    </div>
+                `;
+            }
+            feedback.style.display = 'block';
+        }
+
+        function resetSecurityQuestion() {
+            const feedback = document.getElementById('security-feedback');
+            const buttons = document.querySelectorAll('#security-question .choice-button');
+
+            feedback.style.display = 'none';
+            buttons.forEach(btn => btn.disabled = false);
+        }
+
+        // Attack simulation functions
+        function simulateAttack(attackType) {
+            const results = document.getElementById('attack-simulation-results');
+            const content = document.getElementById('attack-results-content');
+
+            const attackScenarios = {
+                'double-spend': {
+                    title: 'Double Spending Attack Simulation',
+                    scenario: `
+                        <div class="simulation-story">
+                            <h5>🎯 Attack Scenario</h5>
+                            <p><strong>AttackMiner's Plan:</strong> Send 1000 BTC to an exchange, sell for $40M cash, then rewrite history to keep both the cash and the Bitcoin.</p>
+
+                            <div class="attack-timeline">
+                                <div class="timeline-event">
+                                    <strong>Block 100:</strong> AttackMiner sends 1000 BTC to CryptoExchange
+                                </div>
+                                <div class="timeline-event">
+                                    <strong>Block 101-105:</strong> Exchange waits for 6 confirmations (standard security practice)
+                                </div>
+                                <div class="timeline-event">
+                                    <strong>Block 106:</strong> Exchange releases $40M to AttackMiner's bank account
+                                </div>
+                                <div class="timeline-event">
+                                    <strong>Block 100 (Alternative):</strong> AttackMiner secretly mines alternative chain where 1000 BTC was never sent
+                                </div>
+                            </div>
+
+                            <div class="attack-outcome">
+                                <h5>📊 Reality Check</h5>
+                                <p><strong>With 10% hash rate:</strong> Probability of mining 6 blocks in a row = (0.10)^6 = 0.000001 = 0.0001%</p>
+                                <p><strong>Expected attempts needed:</strong> 1,000,000 attempts</p>
+                                <p><strong>Time required:</strong> ~190 years at current difficulty</p>
+                                <p><strong>Cost:</strong> $3.6 billion in electricity alone</p>
+
+                                <div class="verdict">
+                                    <p><strong>🚫 Attack Verdict:</strong> FAILED - Economically impossible with 10% hash rate</p>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    lesson: 'Double spending requires sustained majority hash power and gets exponentially harder with each confirmation. This is why exchanges wait for multiple confirmations!'
+                },
+
+                'censorship': {
+                    title: 'Transaction Censorship Simulation',
+                    scenario: `
+                        <div class="simulation-story">
+                            <h5>🎯 Attack Scenario</h5>
+                            <p><strong>AttackMiner's Plan:</strong> Prevent Alice's transaction to WikiLeaks from being included in any blocks.</p>
+
+                            <div class="censorship-demo">
+                                <div class="transaction-pool">
+                                    <h6>📝 Transaction Pool</h6>
+                                    <div class="tx pending">Alice → Bob: 2 BTC (fee: 0.01 BTC) ✅ </div>
+                                    <div class="tx censored">Alice → WikiLeaks: 5 BTC (fee: 0.02 BTC) ❌ CENSORED</div>
+                                    <div class="tx pending">Charlie → Dave: 1 BTC (fee: 0.005 BTC) ✅</div>
+                                </div>
+
+                                <div class="miner-responses">
+                                    <div class="miner-response honest">
+                                        <strong>Honest Miners (90%):</strong> Include all transactions (including WikiLeaks)
+                                        <div class="block-proposal">Block includes: Alice→Bob, Alice→WikiLeaks, Charlie→Dave</div>
+                                    </div>
+                                    <div class="miner-response malicious">
+                                        <strong>AttackMiner (10%):</strong> Refuses WikiLeaks transaction
+                                        <div class="block-proposal">Block includes: Alice→Bob, Charlie→Dave</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="attack-outcome">
+                                <h5>📊 Result Analysis</h5>
+                                <p><strong>Honest miners win 90% of blocks:</strong> WikiLeaks transaction gets included in most blocks</p>
+                                <p><strong>AttackMiner wins 10% of blocks:</strong> Can delay but cannot permanently censor</p>
+                                <p><strong>Alice's response:</strong> Increases fee to 0.05 BTC, making censorship unprofitable</p>
+
+                                <div class="verdict">
+                                    <p><strong>✅ Network Verdict:</strong> CENSORSHIP RESISTED - Transaction eventually included</p>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    lesson: 'Censorship attacks require sustained majority control and are economically costly since attackers lose transaction fees.'
+                },
+
+                'selfish-mining': {
+                    title: 'Selfish Mining Attack Simulation',
+                    scenario: `
+                        <div class="simulation-story">
+                            <h5>🎯 Attack Scenario</h5>
+                            <p><strong>AttackMiner's Plan:</strong> Mine blocks secretly, then reveal them strategically to earn more than their fair share.</p>
+
+                            <div class="mining-race-demo">
+                                <div class="public-chain">
+                                    <h6>🌐 Public Chain (What Everyone Sees)</h6>
+                                    <div class="chain">Genesis → Block 1 → Block 2 → Block 3</div>
+                                </div>
+
+                                <div class="secret-chain">
+                                    <h6>🤫 AttackMiner's Secret Chain</h6>
+                                    <div class="chain">Genesis → Secret Block 1 → Secret Block 2 → Secret Block 3 → Secret Block 4</div>
+                                </div>
+
+                                <div class="revelation">
+                                    <h6>💥 The Reveal</h6>
+                                    <p>AttackMiner suddenly broadcasts their longer secret chain!</p>
+                                    <p><strong>Network reaction:</strong> Adopts the longer chain, invalidating honest miners' work</p>
+                                </div>
+                            </div>
+
+                            <div class="attack-outcome">
+                                <h5>📊 Profitability Analysis</h5>
+                                <div class="profit-comparison">
+                                    <div class="honest-mining">
+                                        <strong>Honest Mining (10% hash rate):</strong>
+                                        <p>Expected blocks per day: 14.4</p>
+                                        <p>Revenue: $3.67M</p>
+                                    </div>
+                                    <div class="selfish-mining">
+                                        <strong>Selfish Mining (10% hash rate):</strong>
+                                        <p>Expected blocks per day: ~8.2 (loses efficiency)</p>
+                                        <p>Revenue: $2.09M</p>
+                                    </div>
+                                </div>
+
+                                <div class="verdict">
+                                    <p><strong>🚫 Attack Verdict:</strong> UNPROFITABLE - Loses 43% of revenue compared to honest mining</p>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    lesson: 'Selfish mining is only profitable with >33% hash rate and perfect network conditions. Below this threshold, it reduces profits!'
+                },
+
+                '51-percent': {
+                    title: '51% Attack Scenario',
+                    scenario: `
+                        <div class="simulation-story">
+                            <h5>⚠️ Maximum Threat Scenario</h5>
+                            <p><strong>What if AttackMiner controlled 51% of the network?</strong></p>
+
+                            <div class="attack-powers">
+                                <h6>🔥 Attack Capabilities</h6>
+                                <div class="capability">✅ Double spend with high probability</div>
+                                <div class="capability">✅ Censor any transaction</div>
+                                <div class="capability">✅ Rewrite recent blockchain history</div>
+                                <div class="capability">✅ Perform selfish mining profitably</div>
+                                <div class="capability">❌ Cannot steal coins from others' wallets</div>
+                                <div class="capability">❌ Cannot change Bitcoin's monetary policy</div>
+                            </div>
+
+                            <div class="economic-reality">
+                                <h6>💰 Economic Reality Check</h6>
+                                <div class="cost-breakdown">
+                                    <div class="cost-item">
+                                        <strong>Hardware Investment:</strong> $20+ billion for 51% of mining equipment
+                                    </div>
+                                    <div class="cost-item">
+                                        <strong>Daily Electricity:</strong> $50+ million per day
+                                    </div>
+                                    <div class="cost-item">
+                                        <strong>Honest Mining Profit:</strong> $127 million per day
+                                    </div>
+                                    <div class="cost-item">
+                                        <strong>Attack Profit:</strong> Negative (destroys Bitcoin's value)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="market-response">
+                                <h6>📈 Market Response</h6>
+                                <p>If a 51% attack was detected:</p>
+                                <ul>
+                                    <li>Bitcoin price would crash by 80-90%</li>
+                                    <li>Attacker's $20B investment becomes nearly worthless</li>
+                                    <li>Community would likely fork to new algorithm</li>
+                                    <li>Attacker left with expensive, useless hardware</li>
+                                </ul>
+                            </div>
+
+                            <div class="verdict">
+                                <p><strong>🧠 Strategic Insight:</strong> Even with 51% power, attacks are self-defeating due to economic incentives</p>
+                            </div>
+                        </div>
+                    `,
+                    lesson: 'Even with majority control, attacks are economically irrational because they destroy the value of the network they control.'
+                }
+            };
+
+            const scenario = attackScenarios[attackType];
+
+            content.innerHTML = `
+                <div class="attack-simulation-result">
+                    <h4>${scenario.title}</h4>
+                    ${scenario.scenario}
+                    <div class="key-lesson">
+                        <h5>🎓 Key Lesson</h5>
+                        <p>${scenario.lesson}</p>
+                    </div>
+                </div>
+            `;
+
+            results.style.display = 'block';
+
+            // Scroll to results
+            setTimeout(() => {
+                results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Initialize calculators
+        calculateProfitability();
+        updateDifficulty();
+
+        // PoS Simulation
+        function startPosSimulation() {
+            const validators = document.querySelectorAll('.validator-card');
+            const results = document.getElementById('pos-results');
+
+            // Calculate probabilities based on stake
+            const stakes = [300000, 250000, 200000, 250000];
+            const totalStake = stakes.reduce((a, b) => a + b, 0);
+            const probabilities = stakes.map(stake => (stake / totalStake) * 100);
+
+            // Select validator based on stake
+            const random = Math.random() * 100;
+            let selected = 0;
+            let cumulative = 0;
+
+            for (let i = 0; i < probabilities.length; i++) {
+                cumulative += probabilities[i];
+                if (random <= cumulative) {
+                    selected = i;
+                    break;
+                }
+            }
+
+            // Update selected validator
+            const selectedValidator = document.getElementById(`validator-${selected + 1}`);
+            const blocksProposed = selectedValidator.querySelector('.blocks-proposed');
+            const rewardsEarned = selectedValidator.querySelector('.rewards-earned');
+
+            blocksProposed.textContent = parseInt(blocksProposed.textContent) + 1;
+
+            if (selected !== 3) { // Not malicious
+                const currentRewards = parseInt(rewardsEarned.textContent);
+                rewardsEarned.textContent = currentRewards + 100;
+            }
+
+            // Show results
+            results.style.display = 'block';
+            const resultContent = document.getElementById('pos-result-content');
+            resultContent.innerHTML = `
+                <p><strong>Selected Validator:</strong> Validator ${String.fromCharCode(65 + selected)} ${selected === 3 ? '(Malicious)' : '(Honest)'}</p>
+                <p><strong>Stake:</strong> ${stakes[selected].toLocaleString()} tokens (${probabilities[selected].toFixed(1)}% probability)</p>
+                <p><strong>Block Validation:</strong> ${selected === 3 ? 'Block rejected due to invalid transactions' : 'Block validated successfully'}</p>
+                <p><strong>Rewards:</strong> ${selected === 3 ? 'No rewards - validation failed' : '100 tokens earned'}</p>
+            `;
+
+            simulationData.posRounds++;
+
+            if (simulationData.posRounds >= 3) {
+                document.getElementById('continue-byzantine').disabled = false;
+                completedSections.pos = true;
+                updateProgress('pos', 'Completed');
+            }
+        }
+
+        function resetPosSimulation() {
+            simulationData.posRounds = 0;
+            document.querySelectorAll('.blocks-proposed').forEach(el => el.textContent = '0');
+            document.querySelectorAll('.rewards-earned').forEach(el => el.textContent = '0');
+            document.querySelectorAll('.tokens-slashed').forEach(el => el.textContent = '0');
+            document.getElementById('pos-results').style.display = 'none';
+            document.getElementById('continue-byzantine').disabled = true;
+        }
+
+        function introduceSlashing() {
+            const maliciousValidator = document.getElementById('validator-4');
+            const slashedTokens = maliciousValidator.querySelector('.tokens-slashed');
+            const stakeAmount = maliciousValidator.querySelector('.stake-amount');
+
+            const currentStake = parseInt(stakeAmount.textContent.replace(/,/g, ''));
+            const slashAmount = 50000;
+            const newStake = currentStake - slashAmount;
+
+            stakeAmount.textContent = newStake.toLocaleString();
+            slashedTokens.textContent = parseInt(slashedTokens.textContent) + slashAmount;
+
+            // Recalculate probabilities
+            const newProbability = (newStake / 950000) * 100; // Total is now 950,000
+            const probabilityEl = maliciousValidator.querySelector('.selection-probability');
+            probabilityEl.textContent = newProbability.toFixed(1) + '%';
+
+            alert(`Slashing Applied! Malicious validator lost 50,000 tokens for dishonest behavior. Their selection probability decreased to ${newProbability.toFixed(1)}%.`);
+        }
+
+        // Byzantine Simulation
+        function startByzantineRound() {
+            const logContent = document.getElementById('log-content');
+            const result = document.getElementById('byzantine-result');
+
+            logContent.innerHTML = '';
+
+            // Simulate message exchange
+            const messages = [
+                { from: 'Alpha', to: 'All', message: 'ATTACK', honest: true },
+                { from: 'Beta', to: 'All', message: 'ATTACK', honest: true },
+                { from: 'Gamma', to: 'All', message: 'ATTACK', honest: true },
+                { from: 'Delta', to: 'Alpha', message: 'ATTACK', honest: false },
+                { from: 'Delta', to: 'Beta', message: 'RETREAT', honest: false },
+                { from: 'Delta', to: 'Gamma', message: 'ATTACK', honest: false }
+            ];
+
+            let delay = 0;
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    const messageEl = document.createElement('div');
+                    messageEl.className = `message ${msg.honest ? 'honest-message' : 'malicious-message'}`;
+                    messageEl.innerHTML = `
+                        <strong>${msg.from}</strong> → ${msg.to}: "${msg.message}"
+                        ${!msg.honest ? ' <em>(Conflicting message)</em>' : ''}
+                    `;
+                    logContent.appendChild(messageEl);
+
+                    if (index === messages.length - 1) {
+                        setTimeout(() => showByzantineResult(), 1000);
+                    }
+                }, delay);
+                delay += 800;
+            });
+        }
+
+        function showByzantineResult() {
+            const result = document.getElementById('byzantine-result');
+            const resultContent = document.getElementById('byzantine-result-content');
+
+            resultContent.innerHTML = `
+                <div class="consensus-analysis">
+                    <h5><span class="emoji">📊</span> Consensus Analysis</h5>
+                    <p><strong>Honest Generals:</strong> 3 out of 4 (75%)</p>
+                    <p><strong>Malicious Generals:</strong> 1 out of 4 (25%)</p>
+                    <p><strong>Consensus Achieved:</strong> <span style="color: green;">YES</span></p>
+                    <p><strong>Decision:</strong> ATTACK (majority of honest generals agreed)</p>
+
+                    <div class="explanation">
+                        <p>Even though the malicious general sent conflicting messages, the honest generals were able to achieve consensus because:</p>
+                        <ul>
+                            <li>Less than 1/3 of participants were malicious (1/4 = 25% < 33%)</li>
+                            <li>Honest generals could verify messages through multiple rounds</li>
+                            <li>The Byzantine Fault Tolerance threshold was maintained</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            result.style.display = 'block';
+
+            simulationData.byzantineRounds++;
+            if (simulationData.byzantineRounds >= 1) {
+                document.getElementById('continue-analysis').disabled = false;
+                completedSections.byzantine = true;
+                updateProgress('byzantine', 'Completed');
+            }
+        }
+
+        function increaseTraitors() {
+            // This would add more malicious generals to demonstrate the 1/3 threshold
+            alert('Adding more traitors would exceed the 1/3 Byzantine Fault Tolerance threshold, making consensus impossible. This demonstrates why the 2/3 honest majority is crucial!');
+        }
+
+        function resetByzantine() {
+            document.getElementById('log-content').innerHTML = '';
+            document.getElementById('byzantine-result').style.display = 'none';
+        }
+
+        // Save reflections
+        function saveReflections(section) {
+            const inputs = document.querySelectorAll(`#${section}-reflection-1, #${section}-reflection-2`);
+            inputs.forEach((input, index) => {
+                simulationData.reflections[`${section}-${index + 1}`] = input.value;
+            });
+
+            alert('Reflections saved! Your thoughts help deepen understanding of these complex concepts.');
+        }
+
+        // Final analysis functions
+        function selectScenario(scenario) {
+            const framework = document.getElementById('decision-framework');
+            const frameworkContent = document.getElementById('framework-content');
+
+            const scenarios = {
+                'digital-currency': {
+                    title: 'Digital Currency Analysis',
+                    requirements: [
+                        'Maximum Security: Must resist attacks from nation-states',
+                        'Global Scale: Must work across all jurisdictions',
+                        'Censorship Resistance: No single point of control',
+                        'Long-term Stability: Must survive decades'
+                    ],
+                    considerations: [
+                        'Energy consumption is acceptable for ultimate security',
+                        'Transaction speed is less critical than security',
+                        'Decentralization is more important than efficiency'
+                    ]
+                },
+                'supply-chain': {
+                    title: 'Supply Chain Analysis',
+                    requirements: [
+                        'Fast Transactions: Real-time tracking needs',
+                        'Low Cost: High volume of small transactions',
+                        'Known Participants: Enterprise consortium',
+                        'Regulatory Compliance: Must meet industry standards'
+                    ],
+                    considerations: [
+                        'Participants are known and somewhat trusted',
+                        'Speed and cost are more important than maximum decentralization',
+                        'Energy efficiency is important for sustainability goals'
+                    ]
+                },
+                'defi-platform': {
+                    title: 'DeFi Platform Analysis',
+                    requirements: [
+                        'Smart Contracts: Complex programmable transactions',
+                        'Low Fees: Users are fee-sensitive',
+                        'Fast Finality: DeFi needs quick confirmation',
+                        'High Throughput: Many users and transactions'
+                    ],
+                    considerations: [
+                        'Must balance decentralization with performance',
+                        'Users need predictable and low transaction costs',
+                        'Platform must be credibly neutral for financial services'
+                    ]
+                }
+            };
+
+            const selected = scenarios[scenario];
+            frameworkContent.innerHTML = `
+                <h5>${selected.title}</h5>
+
+                <div class="requirements-analysis">
+                    <h6>Key Requirements:</h6>
+                    <ul>
+                        ${selected.requirements.map(req => `<li>${req}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="considerations-analysis">
+                    <h6>Strategic Considerations:</h6>
+                    <ul>
+                        ${selected.considerations.map(con => `<li>${con}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            framework.style.display = 'block';
+        }
+
+        function makeChoice(mechanism) {
+            const feedback = document.getElementById('choice-feedback');
+            const feedbackContent = {
+                'pow': {
+                    title: 'Proof of Work Analysis',
+                    strengths: ['Maximum security', 'Proven track record', 'True decentralization'],
+                    weaknesses: ['High energy consumption', 'Slow transactions', 'Scalability limits'],
+                    bestFor: 'Digital currency requiring maximum security and decentralization'
+                },
+                'pos': {
+                    title: 'Proof of Stake Analysis',
+                    strengths: ['Energy efficient', 'Faster finality', 'Lower barriers to participation'],
+                    weaknesses: ['Newer mechanism', 'Potential centralization', 'Nothing at stake problem'],
+                    bestFor: 'DeFi platforms needing efficiency with good security'
+                },
+                'pbft': {
+                    title: 'Byzantine Fault Tolerance Analysis',
+                    strengths: ['Instant finality', 'Known participants', 'High throughput'],
+                    weaknesses: ['Limited decentralization', 'Communication overhead', 'Permissioned'],
+                    bestFor: 'Enterprise consortium with known, semi-trusted participants'
+                },
+                'hybrid': {
+                    title: 'Hybrid Approach Analysis',
+                    strengths: ['Combines benefits', 'Flexible design', 'Can optimize for specific needs'],
+                    weaknesses: ['Increased complexity', 'More potential failure points', 'Harder to analyze'],
+                    bestFor: 'Complex systems requiring multiple trade-off optimizations'
+                }
+            };
+
+            const choice = feedbackContent[mechanism];
+            feedback.innerHTML = `
+                <div class="choice-analysis">
+                    <h4><span class="emoji">🎯</span> ${choice.title}</h4>
+
+                    <div class="analysis-grid">
+                        <div class="analysis-section">
+                            <h5><span class="emoji">✅</span> Strengths:</h5>
+                            <ul>
+                                ${choice.strengths.map(strength => `<li>${strength}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="analysis-section">
+                            <h5><span class="emoji">⚠️</span> Challenges:</h5>
+                            <ul>
+                                ${choice.weaknesses.map(weakness => `<li>${weakness}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="best-fit">
+                        <h5><span class="emoji">💡</span> Best Suited For:</h5>
+                        <p>${choice.bestFor}</p>
+                    </div>
+
+                    <div class="strategic-insight">
+                        <p><strong>Key Insight:</strong> There's no "perfect" consensus mechanism. The best choice depends on your specific requirements, constraints, and trade-offs. Understanding these trade-offs is what makes you a strategic blockchain thinker!</p>
+                    </div>
+                </div>
+            `;
+
+            feedback.style.display = 'block';
+
+            // Mark activity as completed
+            completedSections.analysis = true;
+            updateProgress('analysis', 'Completed');
+        }
+
+        // Navigation functions
+        function goToActivity(activity) {
+            const urls = {
+                'crypto-economics': 'blockchain-activities.html#simulations',
+                'governance': 'blockchain-activities.html#simulations'
+            };
+
+            window.location.href = urls[activity] || 'blockchain-activities.html';
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active navigation on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.experimental-nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* Activity-specific styles */
+        .locked-section {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Enhanced PoW Simulation Styles */
+        .pow-introduction {
+            background: linear-gradient(135deg, #f6f8ff 0%, #e8f2ff 100%);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 12px;
+            padding: var(--space-8);
+            margin: var(--space-6) 0;
+        }
+
+        .analogy-box {
+            background: var(--color-white);
+            border-left: 4px solid var(--color-electric-blue);
+            padding: var(--space-6);
+            margin: var(--space-4) 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .puzzle-demonstration {
+            background: var(--color-gray-50);
+            border-radius: 12px;
+            padding: var(--space-8);
+            margin: var(--space-6) 0;
+        }
+
+        .hash-demo {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            padding: var(--space-6);
+            margin: var(--space-4) 0;
+        }
+
+        .demo-input {
+            margin-bottom: var(--space-3);
+        }
+
+        .demo-input label {
+            display: block;
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .demo-result {
+            background: var(--color-gray-100);
+            padding: var(--space-3);
+            border-radius: 6px;
+            margin: var(--space-3) 0;
+            font-family: monospace;
+        }
+
+        .demo-explanation {
+            margin-top: var(--space-4);
+            padding: var(--space-4);
+            background: #f8f9ff;
+            border-radius: 6px;
+            border-left: 4px solid var(--color-electric-blue);
+        }
+
+        .difficulty-explanation {
+            margin-top: var(--space-8);
+        }
+
+        .difficulty-demo {
+            background: var(--color-white);
+            padding: var(--space-6);
+            border-radius: 8px;
+            border: 1px solid var(--color-gray-200);
+            margin: var(--space-4) 0;
+        }
+
+        .difficulty-demo label {
+            font-weight: var(--font-semibold);
+            margin-right: var(--space-2);
+        }
+
+        .difficulty-demo input[type="range"] {
+            width: 200px;
+            margin: 0 var(--space-2);
+        }
+
+        .difficulty-stats {
+            margin-top: var(--space-4);
+            font-size: var(--text-sm);
+            color: var(--color-gray-700);
+        }
+
+        .difficulty-stats div {
+            margin-bottom: var(--space-1);
+        }
+
+        .interactive-mining-race {
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 12px;
+            padding: var(--space-8);
+            margin: var(--space-8) 0;
+        }
+
+        .current-block-info {
+            background: var(--color-gray-50);
+            border-radius: 8px;
+            padding: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+
+        .block-template {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 6px;
+            padding: var(--space-4);
+        }
+
+        .template-field {
+            margin-bottom: var(--space-2);
+            padding: var(--space-1) 0;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+
+        .template-field:last-child {
+            border-bottom: none;
+        }
+
+        .pending-transactions {
+            margin-left: var(--space-4);
+            color: var(--color-gray-700);
+        }
+
+        .pending-transactions div {
+            margin: var(--space-1) 0;
+        }
+
+        .mining-competition {
+            margin: var(--space-6) 0;
+        }
+
+        .miners-racing {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .racing-miner {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            padding: var(--space-4);
+            transition: all var(--transition-base);
+        }
+
+        .racing-miner.malicious {
+            border-color: var(--color-red);
+            background: #fef2f2;
+        }
+
+        .racing-miner:hover {
+            border-color: var(--color-electric-blue);
+            box-shadow: 0 4px 12px rgba(64, 64, 255, 0.1);
+        }
+
+        .miner-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3);
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .miner-info h5 {
+            margin: 0;
+            font-size: var(--text-lg);
+            font-weight: var(--font-bold);
+        }
+
+        .hash-rate, .current-nonce, .attempts {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+            min-width: 120px;
+        }
+
+        .mining-progress {
+            margin-top: var(--space-3);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--color-gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: var(--space-2);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-electric-blue), #00d4ff);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 6px;
+        }
+
+        .current-hash {
+            font-family: monospace;
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+            background: var(--color-gray-100);
+            padding: var(--space-1) var(--space-2);
+            border-radius: 4px;
+        }
+
+        .mining-controls {
+            display: flex;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+            margin: var(--space-6) 0;
+            justify-content: center;
+        }
+
+        .race-status {
+            background: var(--color-gray-50);
+            border-radius: 8px;
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+            text-align: center;
+        }
+
+        .status-message {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-3);
+            color: var(--color-black);
+        }
+
+        .network-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .mining-results {
+            background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
+            border: 2px solid var(--color-green);
+            border-radius: 12px;
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .winner-announcement {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .winner-announcement h5 {
+            font-size: var(--text-2xl);
+            color: var(--color-green);
+            margin-bottom: var(--space-4);
+        }
+
+        .win-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-2);
+            text-align: left;
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .race-analysis {
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin-top: var(--space-4);
+        }
+
+        .race-analysis h5 {
+            color: var(--color-electric-blue);
+            margin-bottom: var(--space-3);
+        }
+
+        .economic-insights {
+            background: var(--color-white);
+            border: 2px solid var(--color-yellow);
+            border-radius: 12px;
+            padding: var(--space-8);
+            margin: var(--space-8) 0;
+        }
+
+        .economic-breakdown {
+            margin-bottom: var(--space-6);
+        }
+
+        .economics-demo {
+            margin: var(--space-6) 0;
+        }
+
+        .cost-benefit-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .mining-costs, .mining-rewards {
+            background: var(--color-gray-50);
+            border-radius: 8px;
+            padding: var(--space-6);
+            border-left: 4px solid var(--color-electric-blue);
+        }
+
+        .mining-rewards {
+            border-left-color: var(--color-green);
+        }
+
+        .cost-item, .reward-item {
+            margin: var(--space-2) 0;
+            padding: var(--space-1) 0;
+        }
+
+        .profitability-calculator {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .calc-input {
+            margin-bottom: var(--space-4);
+        }
+
+        .calc-input label {
+            display: block;
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .calc-input input[type="range"] {
+            width: 100%;
+            margin: var(--space-2) 0;
+        }
+
+        .calc-results {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: 6px;
+        }
+
+        .calc-results div {
+            margin: var(--space-2) 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .profit {
+            font-weight: var(--font-bold);
+            color: var(--color-green);
+            border-top: 1px solid var(--color-gray-300);
+            margin-top: var(--space-3);
+            padding-top: var(--space-3);
+        }
+
+        .security-implications {
+            margin-top: var(--space-8);
+        }
+
+        .security-explanation {
+            background: var(--color-gray-50);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .attack-calculator {
+            background: var(--color-white);
+            padding: var(--space-6);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-red);
+            margin: var(--space-4) 0;
+        }
+
+        .stat-large {
+            font-size: var(--text-lg);
+            margin: var(--space-3) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .security-insight {
+            background: #f0f9f0;
+            padding: var(--space-4);
+            border-radius: 6px;
+            margin-top: var(--space-4);
+            border-left: 4px solid var(--color-green);
+        }
+
+        .interactive-challenges {
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 12px;
+            padding: var(--space-8);
+            margin: var(--space-8) 0;
+        }
+
+        .challenge-question {
+            background: var(--color-gray-50);
+            border-radius: 8px;
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+            border-left: 4px solid var(--color-electric-blue);
+        }
+
+        .challenge-question h4 {
+            color: var(--color-electric-blue);
+            margin-bottom: var(--space-3);
+        }
+
+        .challenge-input {
+            display: flex;
+            gap: var(--space-3);
+            align-items: center;
+            margin: var(--space-4) 0;
+        }
+
+        .challenge-input input {
+            padding: var(--space-2) var(--space-3);
+            border: 2px solid var(--color-gray-200);
+            border-radius: 6px;
+            font-size: var(--text-base);
+        }
+
+        .challenge-input input:focus {
+            outline: none;
+            border-color: var(--color-electric-blue);
+        }
+
+        .partially-correct {
+            background: #fef3cd;
+            border: 1px solid #ffc107;
+            padding: var(--space-4);
+            border-radius: 6px;
+            color: #856404;
+        }
+
+        /* Attack explanation styles */
+        .attack-explanation {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border: 2px solid var(--color-red);
+            border-radius: 12px;
+            padding: var(--space-8);
+            margin: var(--space-8) 0;
+        }
+
+        .attack-types {
+            margin: var(--space-6) 0;
+        }
+
+        .attack-type-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-red);
+            border-radius: 8px;
+            padding: var(--space-6);
+            margin: var(--space-4) 0;
+            box-shadow: 0 2px 8px rgba(255, 0, 0, 0.1);
+        }
+
+        .attack-type-card h5 {
+            color: var(--color-red);
+            margin-bottom: var(--space-3);
+            font-size: var(--text-lg);
+        }
+
+        .attack-details {
+            margin-top: var(--space-4);
+        }
+
+        .attack-scenario {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: 6px;
+            margin: var(--space-3) 0;
+            border-left: 4px solid var(--color-red);
+        }
+
+        .attack-scenario h6 {
+            color: var(--color-red);
+            margin-bottom: var(--space-2);
+            font-weight: var(--font-bold);
+        }
+
+        .attack-scenario ol {
+            margin: var(--space-2) 0;
+            padding-left: var(--space-4);
+        }
+
+        .attack-scenario li {
+            margin: var(--space-2) 0;
+            line-height: 1.5;
+        }
+
+        .defense-mechanism {
+            background: #f0f9f0;
+            padding: var(--space-4);
+            border-radius: 6px;
+            margin-top: var(--space-3);
+            border-left: 4px solid var(--color-green);
+        }
+
+        .defense-mechanism p {
+            margin: 0;
+            color: var(--color-gray-800);
+        }
+
+        .attack-simulation-controls {
+            margin: var(--space-8) 0;
+            text-align: center;
+        }
+
+        .attack-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .attack-buttons button {
+            padding: var(--space-4) var(--space-3);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .attack-results {
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 12px;
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .attack-simulation-result h4 {
+            color: var(--color-red);
+            margin-bottom: var(--space-4);
+            font-size: var(--text-xl);
+        }
+
+        .simulation-story {
+            margin: var(--space-4) 0;
+        }
+
+        .attack-timeline {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .timeline-event {
+            background: var(--color-white);
+            padding: var(--space-3);
+            margin: var(--space-2) 0;
+            border-left: 4px solid var(--color-electric-blue);
+            border-radius: 4px;
+        }
+
+        .attack-outcome {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .verdict {
+            background: var(--color-red);
+            color: var(--color-white);
+            padding: var(--space-3);
+            border-radius: 6px;
+            margin: var(--space-3) 0;
+            text-align: center;
+            font-weight: var(--font-bold);
+        }
+
+        .censorship-demo {
+            margin: var(--space-4) 0;
+        }
+
+        .transaction-pool {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .tx {
+            background: var(--color-white);
+            padding: var(--space-2);
+            margin: var(--space-2) 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .tx.pending {
+            border-left: 4px solid var(--color-green);
+        }
+
+        .tx.censored {
+            border-left: 4px solid var(--color-red);
+            background: #fef2f2;
+        }
+
+        .miner-responses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .miner-response {
+            padding: var(--space-4);
+            border-radius: 8px;
+        }
+
+        .miner-response.honest {
+            background: #f0f9f0;
+            border: 2px solid var(--color-green);
+        }
+
+        .miner-response.malicious {
+            background: #fef2f2;
+            border: 2px solid var(--color-red);
+        }
+
+        .block-proposal {
+            background: var(--color-white);
+            padding: var(--space-2);
+            margin-top: var(--space-2);
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: var(--text-sm);
+        }
+
+        .mining-race-demo {
+            margin: var(--space-4) 0;
+        }
+
+        .public-chain, .secret-chain {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            margin: var(--space-3) 0;
+            border-radius: 8px;
+        }
+
+        .secret-chain {
+            border: 2px dashed var(--color-red);
+            background: #fef2f2;
+        }
+
+        .chain {
+            font-family: monospace;
+            background: var(--color-white);
+            padding: var(--space-2);
+            border-radius: 4px;
+            text-align: center;
+            margin: var(--space-2) 0;
+        }
+
+        .revelation {
+            background: var(--color-yellow);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-3) 0;
+            text-align: center;
+        }
+
+        .profit-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .honest-mining, .selfish-mining {
+            padding: var(--space-4);
+            border-radius: 8px;
+        }
+
+        .honest-mining {
+            background: #f0f9f0;
+            border: 2px solid var(--color-green);
+        }
+
+        .selfish-mining {
+            background: #fef2f2;
+            border: 2px solid var(--color-red);
+        }
+
+        .attack-powers {
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .capability {
+            padding: var(--space-2);
+            margin: var(--space-1) 0;
+            border-radius: 4px;
+            font-weight: var(--font-semibold);
+        }
+
+        .economic-reality, .market-response {
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .cost-breakdown {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: 6px;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .cost-item:last-child {
+            border-bottom: none;
+        }
+
+        .security-layers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .security-layer {
+            background: var(--color-white);
+            border: 2px solid var(--color-green);
+            border-radius: 8px;
+            padding: var(--space-4);
+        }
+
+        .security-layer h4 {
+            color: var(--color-green);
+            margin-bottom: var(--space-3);
+        }
+
+        .historical-attacks {
+            margin-top: var(--space-6);
+        }
+
+        .historical-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .example-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 8px;
+            padding: var(--space-4);
+        }
+
+        .example-card h5 {
+            color: var(--color-electric-blue);
+            margin-bottom: var(--space-2);
+        }
+
+        .key-lesson {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-6) 0;
+        }
+
+        .key-lesson h5 {
+            margin-bottom: var(--space-3);
+        }
+
+        .progress-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-2);
+            font-size: var(--text-sm);
+        }
+
+        .progress-status {
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-600);
+        }
+
+        .progress-status.completed {
+            color: var(--color-green);
+        }
+
+        .progress-status.in-progress {
+            color: var(--color-electric-blue);
+        }
+
+        .concept-introduction {
+            background: var(--color-gray-50);
+            border-left: 4px solid var(--color-electric-blue);
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .interactive-element {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-electric-blue);
+            padding: var(--space-6);
+            margin: var(--space-8) 0;
+            border-radius: 8px;
+        }
+
+        .multiple-choice {
+            margin: var(--space-4) 0;
+        }
+
+        .choice-button {
+            display: block;
+            width: 100%;
+            background: var(--color-gray-50);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            margin-bottom: var(--space-3);
+            text-align: left;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .choice-button:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .choice-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .correct-answer, .incorrect-answer {
+            margin-top: var(--space-4);
+            padding: var(--space-4);
+            border-radius: 8px;
+        }
+
+        .correct-answer {
+            background: #f0f9f0;
+            border: 1px solid #4ade80;
+            color: #166534;
+        }
+
+        .incorrect-answer {
+            background: #fef2f2;
+            border: 1px solid #f87171;
+            color: #991b1b;
+        }
+
+        .key-concepts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .concept-card {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .miners-grid, .validators-grid, .generals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .miner-card, .validator-card, .general-card {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            transition: all var(--transition-base);
+        }
+
+        .miner-card.honest, .validator-card.honest, .general-card.honest {
+            border-color: var(--color-green);
+        }
+
+        .miner-card.malicious, .validator-card.malicious, .general-card.malicious {
+            border-color: var(--color-red);
+        }
+
+        .blockchain-chain {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin: var(--space-4) 0;
+        }
+
+        .block {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-300);
+            padding: var(--space-3);
+            border-radius: 8px;
+            min-width: 120px;
+            text-align: center;
+            font-size: var(--text-sm);
+        }
+
+        .genesis-block {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .malicious-block {
+            background: var(--color-red);
+            color: var(--color-white);
+        }
+
+        .simulation-controls, .pos-simulation-controls, .challenge-controls {
+            display: flex;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+            margin: var(--space-6) 0;
+        }
+
+        .simulation-results {
+            background: var(--color-gray-50);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .comparison-bars {
+            margin: var(--space-3) 0;
+        }
+
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-2);
+        }
+
+        .bar {
+            height: 20px;
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .pow-high {
+            width: 90%;
+            background: var(--color-red);
+        }
+
+        .pos-low {
+            width: 10%;
+            background: var(--color-green);
+        }
+
+        .message-log {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .message {
+            padding: var(--space-2);
+            margin: var(--space-2) 0;
+            border-radius: 4px;
+        }
+
+        .honest-message {
+            background: #f0f9f0;
+            border-left: 3px solid var(--color-green);
+        }
+
+        .malicious-message {
+            background: #fef2f2;
+            border-left: 3px solid var(--color-red);
+        }
+
+        .reflection-questions {
+            margin: var(--space-8) 0;
+        }
+
+        .reflection-input {
+            width: 100%;
+            min-height: 100px;
+            padding: var(--space-3);
+            border: var(--border-width) solid var(--color-gray-200);
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .use-case-scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .scenario-card {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-6);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .scenario-card:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .scenario-requirements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+        }
+
+        .requirement {
+            background: var(--color-gray-100);
+            color: var(--color-gray-700);
+            padding: var(--space-1) var(--space-2);
+            font-size: var(--text-xs);
+            border-radius: 12px;
+        }
+
+        .scenario-card:hover .requirement {
+            background: var(--color-white);
+            color: var(--color-electric-blue);
+        }
+
+        .next-step-action {
+            margin: var(--space-8) 0;
+            text-align: center;
+        }
+
+        .learning-summary {
+            margin: var(--space-8) 0;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .summary-item {
+            background: var(--color-gray-50);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+        }
+
+        .recommendation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .recommendation-card {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .miners-grid, .validators-grid, .generals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blockchain-chain {
+                flex-direction: column;
+            }
+
+            .use-case-scenarios, .summary-grid, .recommendation-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

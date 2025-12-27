@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Hands-On Projects - Build Real Connected Systems | Emerging Tech Hub</title>
+    <meta name="description" content="Step-by-step IoT projects for makers and students. Build environmental monitors, home automation, agricultural sensors, and industrial prototypes with ESP32, Arduino, and Raspberry Pi.">
+    <meta name="keywords" content="IoT projects, ESP32 projects, Arduino IoT, smart home projects, sensor networks, MQTT projects, DIY IoT">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+.project-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    margin-bottom: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.project-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-6);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+}
+
+.project-title {
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+}
+
+.project-badges {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+}
+
+.badge-beginner { background: #10b981; color: white; }
+.badge-intermediate { background: #f59e0b; color: white; }
+.badge-advanced { background: #ef4444; color: white; }
+.badge-time { background: var(--color-gray-200); border: 1px solid var(--color-gray-400); }
+.badge-cost { background: var(--color-gray-200); border: 1px solid var(--color-gray-400); }
+
+.project-intro {
+    margin-bottom: var(--space-6);
+    line-height: 1.8;
+}
+
+.bom-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-2);
+    margin: var(--space-6) 0;
+    padding: var(--space-4);
+    background: var(--color-gray-50);
+    border: 2px solid var(--color-gray-200);
+}
+
+.bom-header {
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    font-size: var(--text-xs);
+    letter-spacing: 0.05em;
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-black);
+}
+
+.bom-item {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-gray-300);
+}
+
+.project-steps {
+    margin-top: var(--space-6);
+}
+
+.step {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-electric-blue);
+    color: white;
+    font-weight: var(--font-bold);
+    font-size: var(--text-xl);
+    border-radius: 50%;
+}
+
+.step-content h4 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+}
+
+.step-content p {
+    line-height: 1.8;
+    margin-bottom: var(--space-3);
+}
+
+.step-content code {
+    background: var(--color-gray-100);
+    padding: var(--space-1) var(--space-2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--text-sm);
+}
+
+.code-block {
+    background: var(--color-gray-900);
+    color: var(--color-gray-100);
+    padding: var(--space-4);
+    margin: var(--space-4) 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--text-sm);
+    overflow-x: auto;
+    border-radius: 4px;
+}
+
+.project-tips {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: var(--space-4);
+    margin: var(--space-6) 0;
+}
+
+.project-tips h4 {
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .bom-grid { grid-template-columns: 1fr; }
+    .step { flex-direction: column; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Hands-On Projects</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Project Categories</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#beginner" class="experimental-nav-link">Beginner Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#intermediate" class="experimental-nav-link">Intermediate Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#advanced" class="experimental-nav-link">Advanced Projects</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Getting Started</div>
+                    <div class="info-box-content">
+                        All projects use components available in India. Check the Field Kit page for where to buy hardware.
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="iot-landing.html">← Back to IoT Hub</a><br>
+                        <a href="iot-field-kit.html">Field Kit & Hardware →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">IoT Hands-On Projects</h1>
+                <p class="fundamentals-subtitle">Build real connected systems from scratch—environmental monitors, home automation, industrial sensors, and agricultural IoT</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Beginner Projects -->
+                <section id="beginner" class="content-section">
+                    <h2>Beginner Projects</h2>
+                    <p>Start here if you're new to IoT. These projects teach fundamentals while building useful devices.</p>
+
+                    <!-- Project 1: Temperature Monitor -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Smart Temperature & Humidity Monitor</h3>
+                                <div class="project-badges">
+                                    <span class="badge badge-beginner">Beginner</span>
+                                    <span class="badge badge-time">2-3 hours</span>
+                                    <span class="badge badge-cost">₹800-1,200</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-intro">
+                            <p><strong>What you'll build:</strong> A Wi-Fi-connected sensor that measures room temperature and humidity, sends data to a cloud dashboard, and triggers alerts when values exceed thresholds.</p>
+                            <p><strong>What you'll learn:</strong> ESP32 programming, sensor interfacing, MQTT protocol, cloud dashboards (ThingSpeak or Blynk), basic data visualization.</p>
+                            <p><strong>Real-world applications:</strong> Server room monitoring, greenhouse climate control, home HVAC optimization, cold chain logistics.</p>
+                        </div>
+
+                        <h4>Bill of Materials</h4>
+                        <div class="bom-grid">
+                            <div class="bom-header">Component</div>
+                            <div class="bom-header">Quantity</div>
+                            <div class="bom-header">Est. Cost</div>
+
+                            <div class="bom-item">ESP32 DevKit</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹400</div>
+
+                            <div class="bom-item">DHT22 Temperature/Humidity Sensor</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹200</div>
+
+                            <div class="bom-item">Breadboard</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹80</div>
+
+                            <div class="bom-item">Jumper Wires (M-M, M-F)</div>
+                            <div class="bom-item">10</div>
+                            <div class="bom-item">₹50</div>
+
+                            <div class="bom-item">Micro USB Cable</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹100</div>
+
+                            <div class="bom-item"><strong>Total</strong></div>
+                            <div class="bom-item"></div>
+                            <div class="bom-item"><strong>₹830</strong></div>
+                        </div>
+
+                        <div class="project-steps">
+                            <h4>Step-by-Step Guide</h4>
+
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Setup Development Environment</h4>
+                                    <p>Install Arduino IDE (download from arduino.cc). Add ESP32 board support: go to File → Preferences, add this URL to "Additional Board Manager URLs":</p>
+                                    <div class="code-block">https://dl.espressif.com/dl/package_esp32_index.json</div>
+                                    <p>Then go to Tools → Board → Boards Manager, search "ESP32" and install. Select "ESP32 Dev Module" as your board.</p>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Install Required Libraries</h4>
+                                    <p>In Arduino IDE, go to Sketch → Include Library → Manage Libraries. Install:</p>
+                                    <ul>
+                                        <li><code>DHT sensor library</code> by Adafruit</li>
+                                        <li><code>Adafruit Unified Sensor</code> library</li>
+                                        <li><code>PubSubClient</code> for MQTT</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Wire the DHT22 Sensor</h4>
+                                    <p>Connect DHT22 to ESP32:</p>
+                                    <ul>
+                                        <li>DHT22 VCC → ESP32 3.3V</li>
+                                        <li>DHT22 GND → ESP32 GND</li>
+                                        <li>DHT22 DATA → ESP32 GPIO 4 (you can use any GPIO pin)</li>
+                                    </ul>
+                                    <p>Add a 10kΩ pull-up resistor between VCC and DATA pin (or use DHT22 modules with built-in resistor).</p>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Create ThingSpeak Account</h4>
+                                    <p>Go to thingspeak.com and create a free account. Create a new channel with two fields: "Temperature" and "Humidity". Note down your Channel ID and Write API Key.</p>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Write the Code</h4>
+                                    <p>Upload this code to your ESP32 (replace Wi-Fi credentials and ThingSpeak API key):</p>
+                                    <div class="code-block">#include &lt;WiFi.h&gt;
+#include &lt;DHT.h&gt;
+#include &lt;ThingSpeak.h&gt;
+
+#define DHTPIN 4
+#define DHTTYPE DHT22
+
+const char* ssid = "YOUR_WIFI_SSID";
+const char* password = "YOUR_WIFI_PASSWORD";
+unsigned long channelID = YOUR_CHANNEL_ID;
+const char* apiKey = "YOUR_WRITE_API_KEY";
+
+DHT dht(DHTPIN, DHTTYPE);
+WiFiClient client;
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("\nWiFi connected");
+  ThingSpeak.begin(client);
+}
+
+void loop() {
+  float temp = dht.readTemperature();
+  float humidity = dht.readHumidity();
+
+  if (isnan(temp) || isnan(humidity)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
+
+  Serial.print("Temp: "); Serial.print(temp);
+  Serial.print("°C, Humidity: "); Serial.print(humidity);
+  Serial.println("%");
+
+  ThingSpeak.setField(1, temp);
+  ThingSpeak.setField(2, humidity);
+  ThingSpeak.writeFields(channelID, apiKey);
+
+  delay(20000); // Update every 20 seconds
+}</div>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">6</div>
+                                <div class="step-content">
+                                    <h4>Test and Visualize</h4>
+                                    <p>Open Serial Monitor (Tools → Serial Monitor) to see readings. Check your ThingSpeak channel—you should see graphs updating every 20 seconds. Set up alerts in ThingSpeak to get email notifications when temperature exceeds thresholds.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-tips">
+                            <h4>💡 Pro Tips</h4>
+                            <ul>
+                                <li>ThingSpeak free tier updates max every 15 seconds. For faster updates, use Blynk or MQTT brokers.</li>
+                                <li>Add a battery and deep sleep mode to make it portable (ESP32 can run for weeks on a battery).</li>
+                                <li>Use multiple sensors in different rooms and combine data on one dashboard.</li>
+                                <li>Indian vendors: Robu.in, ThinkRobotics, Rhydo Technologies have all components.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Smart LED Control -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Voice-Controlled Smart LED</h3>
+                                <div class="project-badges">
+                                    <span class="badge badge-beginner">Beginner</span>
+                                    <span class="badge badge-time">1-2 hours</span>
+                                    <span class="badge badge-cost">₹500-800</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-intro">
+                            <p><strong>What you'll build:</strong> Control an LED using your voice via Google Assistant or Alexa, or through a smartphone app.</p>
+                            <p><strong>What you'll learn:</strong> Cloud integration, Blynk/Sinric Pro platforms, relay control, basic home automation concepts.</p>
+                            <p><strong>Real-world applications:</strong> Home automation, accessibility for elderly/disabled, energy management.</p>
+                        </div>
+
+                        <h4>Bill of Materials</h4>
+                        <div class="bom-grid">
+                            <div class="bom-header">Component</div>
+                            <div class="bom-header">Quantity</div>
+                            <div class="bom-header">Est. Cost</div>
+
+                            <div class="bom-item">ESP8266 NodeMCU</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹250</div>
+
+                            <div class="bom-item">5V Relay Module</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹80</div>
+
+                            <div class="bom-item">LED Bulb (AC 230V)</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹50</div>
+
+                            <div class="bom-item">Bulb Holder & Wire</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹100</div>
+
+                            <div class="bom-item"><strong>Total</strong></div>
+                            <div class="bom-item"></div>
+                            <div class="bom-item"><strong>₹480</strong></div>
+                        </div>
+
+                        <div class="project-tips">
+                            <h4>⚠️ Safety Warning</h4>
+                            <p><strong>This project involves mains AC voltage (230V).</strong> If you're not comfortable working with AC power, use a 12V DC LED strip instead. Always disconnect power before wiring. Consider using a certified enclosure for the relay.</p>
+                        </div>
+
+                        <div class="project-tips">
+                            <h4>💡 Quick Start</h4>
+                            <ul>
+                                <li>Use Sinric Pro (free tier) for easy Google/Alexa integration—no complex setup needed.</li>
+                                <li>Alternatively, use Blynk for smartphone app control (simpler for beginners).</li>
+                                <li>Start with low-voltage LEDs before attempting AC appliance control.</li>
+                                <li>Once working, expand to control fans, water pumps, or other appliances.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Intermediate Projects -->
+                <section id="intermediate" class="content-section">
+                    <h2>Intermediate Projects</h2>
+                    <p>These projects involve multiple sensors, data storage, or more complex logic. Requires basic programming knowledge.</p>
+
+                    <!-- Project 3: Agricultural Soil Monitor -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Smart Agricultural Soil Monitor with Auto-Irrigation</h3>
+                                <div class="project-badges">
+                                    <span class="badge badge-intermediate">Intermediate</span>
+                                    <span class="badge badge-time">4-6 hours</span>
+                                    <span class="badge badge-cost">₹2,500-3,500</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-intro">
+                            <p><strong>What you'll build:</strong> A complete agricultural IoT system that monitors soil moisture, temperature, and humidity. Automatically triggers irrigation when soil is dry and sends data to farmers' phones.</p>
+                            <p><strong>What you'll learn:</strong> Multiple sensor integration, relay control for water pumps, MQTT broker setup, local data logging, power management for outdoor deployment.</p>
+                            <p><strong>Real-world applications:</strong> Precision farming, greenhouse automation, urban gardening, drip irrigation optimization.</p>
+                        </div>
+
+                        <h4>Bill of Materials</h4>
+                        <div class="bom-grid">
+                            <div class="bom-header">Component</div>
+                            <div class="bom-header">Quantity</div>
+                            <div class="bom-header">Est. Cost</div>
+
+                            <div class="bom-item">ESP32</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹400</div>
+
+                            <div class="bom-item">Capacitive Soil Moisture Sensor</div>
+                            <div class="bom-item">2</div>
+                            <div class="bom-item">₹400</div>
+
+                            <div class="bom-item">DHT22 (Temp/Humidity)</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹200</div>
+
+                            <div class="bom-item">5V Relay Module (2-channel)</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹150</div>
+
+                            <div class="bom-item">12V Water Pump</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹300</div>
+
+                            <div class="bom-item">Solar Panel (5V, 5W)</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹500</div>
+
+                            <div class="bom-item">18650 Battery + Holder</div>
+                            <div class="bom-item">2</div>
+                            <div class="bom-item">₹400</div>
+
+                            <div class="bom-item">TP4056 Charging Module</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹50</div>
+
+                            <div class="bom-item">Waterproof Enclosure</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹300</div>
+
+                            <div class="bom-item"><strong>Total</strong></div>
+                            <div class="bom-item"></div>
+                            <div class="bom-item"><strong>₹2,700</strong></div>
+                        </div>
+
+                        <div class="project-tips">
+                            <h4>💡 India-Specific Considerations</h4>
+                            <ul>
+                                <li><strong>Use capacitive sensors:</strong> Resistive soil sensors corrode quickly in Indian soil conditions. Capacitive sensors last 2-3 years.</li>
+                                <li><strong>Solar power essential:</strong> Fields often lack electricity. 5W solar + 2x18650 batteries runs ESP32 indefinitely.</li>
+                                <li><strong>LoRaWAN option:</strong> For large farms without Wi-Fi, replace ESP32 with LoRa module + Raspberry Pi gateway.</li>
+                                <li><strong>Crop-specific thresholds:</strong> Rice needs 60-80% moisture, wheat 40-60%, vegetables 50-70%. Adjust trigger levels accordingly.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Air Quality Monitor -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Multi-Sensor Air Quality Monitor</h3>
+                                <div class="project-badges">
+                                    <span class="badge badge-intermediate">Intermediate</span>
+                                    <span class="badge badge-time">3-4 hours</span>
+                                    <span class="badge badge-cost">₹3,000-4,000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-intro">
+                            <p><strong>What you'll build:</strong> Monitor PM2.5, PM10, CO2, temperature, and humidity. Display AQI (Air Quality Index) on OLED screen and send alerts when pollution levels are unhealthy.</p>
+                            <p><strong>What you'll learn:</strong> I2C communication, sensor calibration, AQI calculation algorithms, OLED displays, data logging to SD card.</p>
+                            <p><strong>Real-world applications:</strong> Delhi/Mumbai air quality tracking, school/office health monitoring, industrial safety compliance.</p>
+                        </div>
+
+                        <h4>Bill of Materials</h4>
+                        <div class="bom-grid">
+                            <div class="bom-header">Component</div>
+                            <div class="bom-header">Quantity</div>
+                            <div class="bom-header">Est. Cost</div>
+
+                            <div class="bom-item">ESP32</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹400</div>
+
+                            <div class="bom-item">PMS5003 PM2.5/PM10 Sensor</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹1,200</div>
+
+                            <div class="bom-item">MQ-135 Air Quality Sensor (CO2, NH3)</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹150</div>
+
+                            <div class="bom-item">BME280 (Temp/Humidity/Pressure)</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹350</div>
+
+                            <div class="bom-item">0.96" OLED Display (I2C)</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹200</div>
+
+                            <div class="bom-item">MicroSD Card Module</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹80</div>
+
+                            <div class="bom-item">8GB MicroSD Card</div>
+                            <div class="bom-item">1</div>
+                            <div class="bom-item">₹200</div>
+
+                            <div class="bom-item"><strong>Total</strong></div>
+                            <div class="bom-item"></div>
+                            <div class="bom-item"><strong>₹2,580</strong></div>
+                        </div>
+
+                        <div class="project-tips">
+                            <h4>💡 Sensor Calibration Tips</h4>
+                            <ul>
+                                <li><strong>PMS5003 warm-up:</strong> Sensor needs 30 seconds to stabilize after power-on. Discard first 3-5 readings.</li>
+                                <li><strong>Compare with official stations:</strong> Check government AQI data for your city and calibrate your readings.</li>
+                                <li><strong>Placement matters:</strong> Indoor monitors should be at breathing height (4-5 feet), away from windows/doors.</li>
+                                <li><strong>Save data locally:</strong> Log to SD card in case Wi-Fi drops. Upload historical data when connection returns.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Advanced Projects -->
+                <section id="advanced" class="content-section">
+                    <h2>Advanced Projects</h2>
+                    <p>Complex systems involving edge AI, industrial protocols, or large-scale deployments. For experienced makers.</p>
+
+                    <!-- Project 5: Predictive Maintenance -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Industrial Predictive Maintenance System</h3>
+                                <div class="project-badges">
+                                    <span class="badge badge-advanced">Advanced</span>
+                                    <span class="badge badge-time">8-12 hours</span>
+                                    <span class="badge badge-cost">₹5,000-7,000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-intro">
+                            <p><strong>What you'll build:</strong> Vibration and temperature monitoring for motors/pumps with edge ML for anomaly detection. Predicts failures 1-2 weeks before they occur.</p>
+                            <p><strong>What you'll learn:</strong> ADXL345 accelerometer, FFT analysis, TensorFlow Lite on ESP32, MQTT industrial protocols, predictive algorithms, alert systems.</p>
+                            <p><strong>Real-world applications:</strong> Factory equipment monitoring, HVAC predictive maintenance, industrial pump monitoring, reducing unplanned downtime.</p>
+                        </div>
+
+                        <div class="project-tips">
+                            <h4>🎯 Project Highlights</h4>
+                            <ul>
+                                <li><strong>Edge ML:</strong> Train model on normal vibration patterns, deploy to ESP32 for real-time anomaly detection.</li>
+                                <li><strong>Industrial value:</strong> Prevent equipment failures costing lakhs in downtime.</li>
+                                <li><strong>Scalable:</strong> Deploy multiple nodes across factory floor, centralize data for factory-wide insights.</li>
+                                <li><strong>ROI:</strong> One prevented failure pays for entire system 10x over.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Smart Building -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">Complete Smart Building Management System</h3>
+                                <div class="project-badges">
+                                    <span class="badge badge-advanced">Advanced</span>
+                                    <span class="badge badge-time">15-20 hours</span>
+                                    <span class="badge badge-cost">₹8,000-12,000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-intro">
+                            <p><strong>What you'll build:</strong> Multi-room system controlling lighting, HVAC, occupancy detection, energy monitoring, and access control. Custom dashboard with analytics.</p>
+                            <p><strong>What you'll learn:</strong> Mesh networking (Zigbee/ESP-NOW), central gateway (Raspberry Pi), Node-RED for automation rules, InfluxDB time-series database, Grafana dashboards.</p>
+                            <p><strong>Real-world applications:</strong> Office buildings, co-working spaces, hotels, smart homes, commercial complexes.</p>
+                        </div>
+
+                        <div class="project-tips">
+                            <h4>🏗️ System Architecture</h4>
+                            <ul>
+                                <li><strong>Edge layer:</strong> 10-20 ESP32 nodes (sensors + actuators per room)</li>
+                                <li><strong>Gateway layer:</strong> Raspberry Pi 4 running Node-RED + MQTT broker</li>
+                                <li><strong>Storage layer:</strong> InfluxDB for time-series data (energy consumption, occupancy patterns)</li>
+                                <li><strong>Visualization:</strong> Grafana dashboards accessible via web/mobile</li>
+                                <li><strong>Automation:</strong> Node-RED flows for rules ("if room empty > 10 min, turn off lights")</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Resources Section -->
+                <section class="content-section" style="margin-top: 5rem;">
+                    <h2>Additional Resources</h2>
+
+                    <div class="highlight-box">
+                        <h3>Where to Get Help</h3>
+                        <p><strong>Community Forums:</strong></p>
+                        <ul>
+                            <li>Arduino Forum (forum.arduino.cc) - Troubleshooting ESP32/Arduino issues</li>
+                            <li>ESP32 India Group (Telegram/WhatsApp) - Local community for quick help</li>
+                            <li>r/esp32 (Reddit) - Active community sharing projects and solutions</li>
+                            <li>Hackster.io - Browse similar projects with full code/schematics</li>
+                        </ul>
+
+                        <p style="margin-top: 1.5rem;"><strong>Video Tutorials:</strong></p>
+                        <ul>
+                            <li>DroneBot Workshop (YouTube) - Excellent ESP32 and sensor tutorials</li>
+                            <li>GreatScott! (YouTube) - Electronics fundamentals and IoT projects</li>
+                            <li>Andreas Spiess (YouTube) - Deep technical IoT content</li>
+                        </ul>
+                    </div>
+
+                    <div class="next-steps" style="margin-top: 3rem;">
+                        <a href="iot-fundamentals.html" class="next-step-card">
+                            <h4>IoT Fundamentals</h4>
+                            <p>Understand core concepts, architecture, and design principles before building</p>
+                        </a>
+
+                        <a href="iot-field-kit.html" class="next-step-card">
+                            <h4>Field Kit & Hardware</h4>
+                            <p>Complete guide to sensors, boards, and where to buy in India</p>
+                        </a>
+
+                        <a href="iot-readings.html" class="next-step-card">
+                            <h4>Technical Readings</h4>
+                            <p>Research papers and guides on protocols, security, and real-world deployments</p>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

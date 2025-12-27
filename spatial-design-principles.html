@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatial Design Principles - 3D Environment Design for Virtual Worlds | Emerging Technology Hub</title>
+    <meta name="description" content="Master spatial design for the metaverse. Learn 3D composition, scale psychology, environmental storytelling, and designing for presence in virtual spaces.">
+    <meta name="keywords" content="spatial design, 3D composition, virtual world design, environmental storytelling, presence design, scale in VR, metaverse design principles">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/spatial-design-principles.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Metaverse Fundamentals</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Metaverse Topics</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="metaverse-basics.html" class="experimental-nav-link">Metaverse Basics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="spatial-design-principles.html" class="experimental-nav-link active">Spatial Design</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="avatar-identity-design.html" class="experimental-nav-link">Avatar & Identity</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="virtual-architecture.html" class="experimental-nav-link">Virtual Architecture</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="metaverse-economy.html" class="experimental-nav-link">Virtual Economies</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="social-spaces-design.html" class="experimental-nav-link">Social Spaces</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="metaverse-landing.html">← Back to Metaverse Hub</a><br>
+                        <a href="avatar-identity-design.html">Next: Avatar & Identity →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Spatial Design Principles</h1>
+                <p class="fundamentals-subtitle">Mastering 3D composition, scale psychology, environmental storytelling, and designing for presence in virtual worlds</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>Designing in Three Dimensions</h2>
+                    <p>Spatial design for virtual worlds is fundamentally different from 2D screen design. You're not arranging elements on a canvas - you're architecting environments that people inhabit, explore, and experience from within. The principles draw from architecture, environmental design, theater, and game level design rather than traditional graphic design.</p>
+
+                    <p>Unlike physical architecture, virtual spaces aren't bound by gravity, construction costs, or material limits. But they face unique constraints: performance budgets, navigation challenges, comfort considerations, and the psychology of digital presence. Great spatial design balances creative possibilities with user experience fundamentals.</p>
+
+                    <div class="highlight-box">
+                        <h3>Core Mindset Shift</h3>
+                        <p>Stop thinking about "pages" and "screens." Start thinking about "rooms," "paths," "vistas," and "landmarks." You're designing spatial experiences, not visual layouts.</p>
+                    </div>
+                </section>
+
+                <!-- Scale and Proportion -->
+                <section class="content-section">
+                    <h2>Scale and Proportion in Virtual Space</h2>
+                    <p>Scale in virtual worlds profoundly affects how people feel and behave. Get it wrong, and spaces feel uncanny, uncomfortable, or impossible to navigate.</p>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h3>Human Scale Reference</h3>
+                            <p>Base everything on human proportions. Avatar height typically ranges 1.6-1.8m. Doors should feel natural to walk through, ceilings comfortable overhead.</p>
+                            <div class="example-box">
+                                <strong>Rule of Thumb:</strong> If your ceiling is lower than 2.4m, most people will feel cramped. Higher than 6m without architectural details, they'll feel lost.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Exaggerated Scale for Effect</h3>
+                            <p>Intentionally break scale to create emotion. Cathedral-high ceilings for awe. Narrow passages for tension. Giant objects for wonder.</p>
+                            <div class="example-box">
+                                <strong>Example:</strong> A virtual art gallery might use 5m-tall ceilings to make art feel monumental. A cozy café might use 2.7m ceilings for intimacy.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Perspective and Distance</h3>
+                            <p>Things look closer in VR than flat screens. What feels like 50m away on a monitor might feel like 20m in VR. Design with this perceptual shift in mind.</p>
+                            <div class="example-box">
+                                <strong>Practical Tip:</strong> Test distances by walking them. If something takes 30+ seconds to reach on foot, it's too far for casual exploration.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Comfort Zones</h3>
+                            <p>Personal space matters in virtual worlds. People feel uncomfortable when avatars stand closer than 1.5m unless it's an intimate social context.</p>
+                            <div class="example-box">
+                                <strong>Design Implication:</strong> Conversation areas should allow 2-3m between seating. Crowds need 0.8m+ per person or they feel overwhelming.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Scale Testing Checklist</h3>
+                        <ul>
+                            <li>Can an average avatar walk through comfortably?</li>
+                            <li>Does the space feel appropriately sized for its function?</li>
+                            <li>Are sight lines clear to important elements?</li>
+                            <li>Does the scale create the intended emotion?</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Environmental Storytelling -->
+                <section class="content-section">
+                    <h2>Environmental Storytelling Through Space</h2>
+                    <p>Spaces tell stories without words. The arrangement of objects, the path through an environment, the quality of light - these communicate meaning and guide behavior.</p>
+
+                    <div class="approach-cards">
+                        <div class="approach-card">
+                            <h3>Layered Discovery</h3>
+                            <p>Reveal information progressively as people explore. What's visible from the entrance? What do they discover as they move deeper? Create moments of revelation.</p>
+                            <div class="example-box">
+                                <strong>Technique:</strong> Place an intriguing object partially visible around a corner. Curiosity draws people forward.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Visual Hierarchy in 3D</h3>
+                            <p>Use size, light, color, and position to direct attention. Important elements should be visually prominent from key viewpoints.</p>
+                            <div class="example-box">
+                                <strong>Technique:</strong> Spotlight a featured artwork. Use height for landmarks. Create contrast between figure and ground.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Implied Narrative</h3>
+                            <p>Arrangement suggests story. A knocked-over chair, an open book, scattered objects - these imply events and invite imagination.</p>
+                            <div class="example-box">
+                                <strong>Example:</strong> A virtual workspace with coffee mug, notes, and dimmed lights tells the story of someone working late.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Atmospheric Details</h3>
+                            <p>Mood comes from accumulation of subtle elements: lighting quality, ambient sound, material textures, particle effects, color temperature.</p>
+                            <div class="example-box">
+                                <strong>Example:</strong> Dust motes in volumetric light suggest age and stillness. Clean, bright light suggests sterility or newness.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Navigation and Wayfinding -->
+                <section class="content-section">
+                    <h2>Navigation and Wayfinding</h2>
+                    <p>Unlike websites with menus and links, 3D environments require spatial navigation. People need to know where they are, where they can go, and how to get there.</p>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h3>Landmarks and Orientation</h3>
+                            <p>Create distinctive features visible from multiple angles. These become mental anchor points for navigation.</p>
+                            <div class="example-box">
+                                <strong>Examples:</strong> Tall sculpture at gallery center. Unique colored lighting for each zone. Architectural feature visible from afar.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Sight Lines and Vistas</h3>
+                            <p>Design so people can see where they're going. Long corridors need visual interest at the end. Closed doors need hints of what's beyond.</p>
+                            <div class="example-box">
+                                <strong>Technique:</strong> Use portals, windows, or partial openings to preview the next space. Creates anticipation and orientation.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Path Clarity</h3>
+                            <p>Make intended routes obvious. Use lighting, floor materials, width changes, or guiding elements to suggest direction.</p>
+                            <div class="example-box">
+                                <strong>Technique:</strong> Wider paths for main routes. Narrower for secondary. Different materials for different functions.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Prevent Disorientation</h3>
+                            <p>Repetitive spaces cause confusion. Vary each area slightly. Provide visual anchors. Avoid perfect symmetry unless it's intentional.</p>
+                            <div class="example-box">
+                                <strong>Anti-Pattern:</strong> A hallway with 10 identical doors and no distinguishing features. Users get lost immediately.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Navigation Design Principles</h3>
+                        <ul>
+                            <li><strong>Entry Clarity:</strong> First view should orient users to space layout</li>
+                            <li><strong>Progressive Disclosure:</strong> Reveal complexity gradually, not all at once</li>
+                            <li><strong>Return Routes:</strong> Make it easy to backtrack or reset</li>
+                            <li><strong>Focal Points:</strong> Every space needs something that draws the eye</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Lighting and Atmosphere -->
+                <section class="content-section">
+                    <h2>Lighting and Atmospheric Design</h2>
+                    <p>Lighting isn't just visibility - it's mood, guidance, and storytelling. In virtual worlds, you have complete control over light in ways impossible in physical space.</p>
+
+                    <div class="approach-cards">
+                        <div class="approach-card">
+                            <h3>Light as Guidance</h3>
+                            <p>Bright areas attract. Dark areas repel. Use this instinct to guide exploration. Light the path you want people to follow.</p>
+                            <div class="example-box">
+                                <strong>Application:</strong> Spotlight the gallery entrance. Dim the exit corridors. Brighten interactive zones.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Color Temperature Psychology</h3>
+                            <p>Warm light (2700-3000K) feels cozy, intimate, welcoming. Cool light (5000-6500K) feels professional, alert, sterile.</p>
+                            <div class="example-box">
+                                <strong>Example:</strong> Virtual café: warm oranges. Virtual office: cool white. Virtual club: saturated colors with moving lights.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Shadows and Contrast</h3>
+                            <p>Shadows create depth and drama. Flat, even lighting feels artificial and boring. Contrast creates visual interest.</p>
+                            <div class="example-box">
+                                <strong>Technique:</strong> Dramatic shadows for mysterious spaces. Soft shadows for comfortable spaces. No shadows for utilitarian spaces.
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Dynamic and Animated Light</h3>
+                            <p>Light doesn't need to be static. Flickering candles, passing clouds, day/night cycles - movement adds life.</p>
+                            <div class="example-box">
+                                <strong>Subtlety:</strong> Gentle, slow changes feel natural. Rapid changes feel artificial or attention-grabbing.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sound Design for Space -->
+                <section class="content-section">
+                    <h2>Sound Design and Spatial Audio</h2>
+                    <p>Sound completes the spatial experience. In the metaverse, audio can be positioned in 3D space, creating presence and depth that visuals alone cannot achieve.</p>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h3>Spatial Audio Basics</h3>
+                            <p>Sounds have position and distance. A voice to your left sounds like it's to your left. Farther objects sound quieter.</p>
+                            <div class="example-box">
+                                <strong>Design Implication:</strong> Place ambient sounds strategically. Fountain sounds near fountain. Music from speakers, not everywhere.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Ambient Soundscapes</h3>
+                            <p>Background sound creates atmosphere: café chatter, forest birds, office HVAC hum, city traffic, ocean waves.</p>
+                            <div class="example-box">
+                                <strong>Subtlety is Key:</strong> Ambient should be noticeable when absent but not intrusive when present. 10-20% volume typically.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Sound as Navigation</h3>
+                            <p>Sound draws attention beyond sight lines. Distant music or conversation can guide exploration.</p>
+                            <div class="example-box">
+                                <strong>Technique:</strong> Place engaging audio in areas you want users to discover. Silence in areas you want them to pass through.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Acoustic Spaces</h3>
+                            <p>Different spaces have different acoustic qualities. Cathedrals echo. Padded rooms absorb. Open fields have no reverb.</p>
+                            <div class="example-box">
+                                <strong>Realism:</strong> Match reverb to architectural space. Large stone room = long reverb. Small fabric-filled room = dead acoustics.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Comfort and Performance -->
+                <section class="content-section">
+                    <h2>Designing for Comfort and Performance</h2>
+                    <p>Virtual environments can cause discomfort if poorly designed. Motion sickness, visual fatigue, and performance issues are real constraints.</p>
+
+                    <div class="challenges-list">
+                        <div class="challenge-item">
+                            <h3>Motion Comfort</h3>
+                            <p><strong>Issue:</strong> Camera movement not matching head movement causes nausea.</p>
+                            <p><strong>Solution:</strong> Minimize forced camera movement. Teleportation instead of smooth locomotion. Keep horizons level. Avoid acceleration.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h3>Visual Stability</h3>
+                            <p><strong>Issue:</strong> Flickering, strobing, or high-frequency patterns cause discomfort.</p>
+                            <p><strong>Solution:</strong> Avoid small, repeating patterns. No flashing below 3Hz or above 60Hz. Use smooth transitions, not jarring cuts.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h3>Performance Budget</h3>
+                            <p><strong>Issue:</strong> Complex scenes cause lag, breaking presence and causing discomfort.</p>
+                            <p><strong>Solution:</strong> Optimize geometry (use low-poly models). Limit draw distance. Use LOD (Level of Detail). Test on target devices.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h3>Cognitive Load</h3>
+                            <p><strong>Issue:</strong> Too much visual information overwhelms. Too little bores.</p>
+                            <p><strong>Solution:</strong> Balance density with negative space. Guide attention with focal points. Progressive complexity.  </p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Comfort Checklist</h3>
+                        <ul>
+                            <li>✓ Horizon stays level during movement</li>
+                            <li>✓ No forced camera rotation</li>
+                            <li>✓ Frame rate stays above 60fps (90fps for VR)</li>
+                            <li>✓ No strobing or high-frequency flashing</li>
+                            <li>✓ Clear focal points in every view</li>
+                            <li>✓ Smooth, gradual transitions</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Composition Principles -->
+                <section class="content-section">
+                    <h2>3D Composition Principles</h2>
+                    <p>Traditional design principles (balance, contrast, rhythm) still apply - but in three dimensions with movement through space.</p>
+
+                    <div class="approach-cards">
+                        <div class="approach-card">
+                            <h3>Volumetric Balance</h3>
+                            <p>Balance mass in 3D space. Heavy visual weight on one side should be balanced by something on the other - not symmetrically, but perceptually.</p>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Depth Layering</h3>
+                            <p>Create depth with foreground, mid-ground, and background elements. Overlapping objects suggest spatial relationships.</p>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Rhythm and Repetition</h3>
+                            <p>Repeating elements create visual rhythm that guides movement. Columns, windows, lighting fixtures - patterns imply continuation.</p>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Negative Space in 3D</h3>
+                            <p>Empty space isn't wasted - it's rest for the eyes, room to breathe, emphasis on what IS present. Don't fill every cubic meter.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Practical Tips -->
+                <section class="content-section">
+                    <h2>Practical Design Workflow</h2>
+
+                    <div class="getting-started">
+                        <div class="step-card">
+                            <div class="step-number">01</div>
+                            <h3>Start with 2D Planning</h3>
+                            <p>Sketch floor plans and elevation views. Plan circulation paths. Mark focal points. Think through the experience before building.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">02</div>
+                            <h3>Blockout in 3D</h3>
+                            <p>Build rough forms with simple geometry. Test scale by walking through. Verify sight lines and navigation. Don't add detail yet.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">03</div>
+                            <h3>Test User Flow</h3>
+                            <p>Walk the intended path. Where does attention go? What questions arise? Is navigation intuitive? Fix issues at low fidelity.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">04</div>
+                            <h3>Layer in Detail</h3>
+                            <p>Add materials, lighting, objects progressively. Test performance continuously. Detail is good; unnecessary detail hurts performance.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">05</div>
+                            <h3>Iterate with Feedback</h3>
+                            <p>Watch others experience your space. Where do they look? Where do they go? What confuses them? Design is iteration.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Summary -->
+                <section class="content-section">
+                    <h2>Key Takeaways</h2>
+                    <div class="key-takeaways">
+                        <ul>
+                            <li><strong>Think architecturally</strong> - you're designing environments, not screens</li>
+                            <li><strong>Scale matters immensely</strong> - use human proportions as reference, break intentionally for effect</li>
+                            <li><strong>Spaces tell stories</strong> - use environmental details, lighting, and composition to communicate</li>
+                            <li><strong>Navigation must be intuitive</strong> - landmarks, sight lines, and path clarity prevent disorientation</li>
+                            <li><strong>Lighting guides and sets mood</strong> - use it strategically for both function and atmosphere</li>
+                            <li><strong>Sound completes the experience</strong> - spatial audio adds depth and presence visuals can't achieve</li>
+                            <li><strong>Comfort is paramount</strong> - avoid motion sickness triggers and optimize performance</li>
+                            <li><strong>Iterate through testing</strong> - design is refined through observation and feedback</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Continue Learning Section -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Next</div>
+                            <h4>Avatar & Identity Design</h4>
+                            <p>Learn how to design avatar systems that enable self-expression, representation, and social presence in virtual worlds.</p>
+                            <a href="avatar-identity-design.html" class="learning-link">Continue →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Related</div>
+                            <h4>Virtual Architecture</h4>
+                            <p>Dive deeper into designing functional spaces for different activities in the metaverse.</p>
+                            <a href="virtual-architecture.html" class="learning-link">Explore ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Practice</div>
+                            <h4>Space Design Canvas</h4>
+                            <p>Use our interactive tool to sketch and plan your virtual environment layouts.</p>
+                            <a href="metaverse-space-designer.html" class="learning-link">Design ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="metaverse-basics.html" class="path-link">← Previous: Metaverse Basics</a>
+                        <a href="avatar-identity-design.html" class="path-link primary">Next: Avatar & Identity →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-branding">
+                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="disclaimer.html">Disclaimer</a>
+                        <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

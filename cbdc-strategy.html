@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBDC Strategy Case Study - Blockchain Activities</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Strategic Decision Making</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Case Study Sections</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#briefing" class="experimental-nav-link">Executive Briefing</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#stakeholder-analysis" class="experimental-nav-link">Stakeholder Analysis</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#technical-decisions" class="experimental-nav-link">Technical Architecture</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#economic-model" class="experimental-nav-link">Economic Model</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#privacy-surveillance" class="experimental-nav-link">Privacy vs Surveillance</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#implementation" class="experimental-nav-link">Implementation Strategy</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#final-recommendation" class="experimental-nav-link">Final Recommendation</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Your Decisions</div>
+                    <div class="info-box-content" id="decision-tracker">
+                        <div class="decision-summary">
+                            <div>Architecture: <span id="tech-decision">Pending</span></div>
+                            <div>Privacy Level: <span id="privacy-decision">Pending</span></div>
+                            <div>Launch Strategy: <span id="launch-decision">Pending</span></div>
+                            <div>Overall Score: <span id="overall-score">0/100</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="blockchain-activities.html">← Back to Activities</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Central Bank Digital Currency Strategy</h1>
+                <p class="fundamentals-subtitle">Navigate the complex decisions facing national monetary authorities in the digital age</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Executive Briefing Section -->
+                <section class="content-section" id="briefing">
+                    <h2><span class="emoji">📋</span> Executive Briefing</h2>
+
+                    <div class="scenario-setup">
+                        <div class="scenario-header">
+                            <h3>Your Role: Senior Policy Advisor</h3>
+                            <p><strong>Country:</strong> Modernia (Population: 50M, GDP: $2.5T, Democratic constitutional republic)</p>
+                            <p><strong>Mission:</strong> Advise the Central Bank Governor on whether and how to launch a Central Bank Digital Currency (CBDC)</p>
+                        </div>
+
+                        <div class="current-situation">
+                            <h4><span class="emoji">🌍</span> Global Context</h4>
+                            <div class="situation-grid">
+                                <div class="situation-card urgent">
+                                    <h5>China's Digital Yuan</h5>
+                                    <p>Already processing $14B in transactions. Raising concerns about digital currency dominance in international trade.</p>
+                                </div>
+                                <div class="situation-card important">
+                                    <h5>US Dollar Hegemony</h5>
+                                    <p>Federal Reserve cautiously exploring digital dollar. Delay could mean losing monetary sovereignty to early adopters.</p>
+                                </div>
+                                <div class="situation-card moderate">
+                                    <h5>EU Digital Euro</h5>
+                                    <p>ECB planning 2026 launch. Could establish new standards for privacy and interoperability.</p>
+                                </div>
+                                <div class="situation-card emerging">
+                                    <h5>Cryptocurrency Growth</h5>
+                                    <p>15% of Modernia's population holds crypto. Growing pressure for regulatory clarity and digital payment alternatives.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="immediate-pressures">
+                            <h4><span class="emoji">⚡</span> Immediate Pressures</h4>
+                            <div class="pressure-list">
+                                <div class="pressure-item">
+                                    <strong>Political:</strong> Opposition party claims government is "behind on digital innovation"
+                                </div>
+                                <div class="pressure-item">
+                                    <strong>Economic:</strong> 23% of population is unbanked, struggling with digital payment access
+                                </div>
+                                <div class="pressure-item">
+                                    <strong>Technological:</strong> Aging payment infrastructure needs $50B upgrade
+                                </div>
+                                <div class="pressure-item">
+                                    <strong>International:</strong> G20 summit in 6 months - need position on digital currency cooperation
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="key-questions">
+                            <h4><span class="emoji">❓</span> Critical Questions You Must Answer</h4>
+                            <ol>
+                                <li>Should Modernia launch a CBDC at all?</li>
+                                <li>If yes, what technical architecture ensures both innovation and stability?</li>
+                                <li>How do we balance financial privacy with anti-money laundering requirements?</li>
+                                <li>What's the optimal launch strategy to ensure public adoption?</li>
+                                <li>How do we protect monetary sovereignty while enabling international interoperability?</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="briefing-materials">
+                        <h4><span class="emoji">📊</span> Available Intelligence</h4>
+                        <div class="intelligence-grid">
+                            <div class="intel-card" onclick="viewIntel('public-opinion')">
+                                <h5><span class="emoji">📈</span> Public Opinion Survey</h5>
+                                <p>Recent polling on digital currency attitudes</p>
+                            </div>
+                            <div class="intel-card" onclick="viewIntel('banking-sector')">
+                                <h5><span class="emoji">🏦</span> Banking Sector Analysis</h5>
+                                <p>Impact assessment on commercial banks</p>
+                            </div>
+                            <div class="intel-card" onclick="viewIntel('technical-feasibility')">
+                                <h5><span class="emoji">⚙️</span> Technical Feasibility</h5>
+                                <p>Infrastructure requirements and costs</p>
+                            </div>
+                            <div class="intel-card" onclick="viewIntel('international-precedents')">
+                                <h5><span class="emoji">🌐</span> International Case Studies</h5>
+                                <p>Lessons from other CBDC implementations</p>
+                            </div>
+                        </div>
+
+                        <div class="intel-viewer" id="intel-viewer" style="display: none;">
+                            <h5 id="intel-title">Intelligence Report</h5>
+                            <div id="intel-content">
+                                <!-- Intelligence content will be loaded here -->
+                            </div>
+                            <button class="experimental-btn" onclick="closeIntel()">Close Report</button>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" onclick="proceedToSection('stakeholder-analysis')">
+                            Begin Stakeholder Analysis
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Stakeholder Analysis Section -->
+                <section class="content-section" id="stakeholder-analysis">
+                    <h2><span class="emoji">👥</span> Stakeholder Analysis</h2>
+
+                    <div class="stakeholder-mapping">
+                        <p>Understanding stakeholder positions is critical for CBDC success. Analyze each group's interests and concerns.</p>
+
+                        <div class="stakeholders-grid">
+                            <div class="stakeholder-card high-influence" onclick="analyzeStakeholder('central-bank')">
+                                <div class="stakeholder-header">
+                                    <h4><span class="emoji">🏛️</span> Central Bank</h4>
+                                    <div class="influence-level">High Influence</div>
+                                </div>
+                                <div class="stakeholder-preview">
+                                    <p><strong>Primary Interest:</strong> Monetary policy effectiveness</p>
+                                    <p><strong>Key Concern:</strong> Maintaining financial stability</p>
+                                </div>
+                            </div>
+
+                            <div class="stakeholder-card high-influence" onclick="analyzeStakeholder('commercial-banks')">
+                                <div class="stakeholder-header">
+                                    <h4><span class="emoji">🏦</span> Commercial Banks</h4>
+                                    <div class="influence-level">High Influence</div>
+                                </div>
+                                <div class="stakeholder-preview">
+                                    <p><strong>Primary Interest:</strong> Protecting deposit base</p>
+                                    <p><strong>Key Concern:</strong> Disintermediation risk</p>
+                                </div>
+                            </div>
+
+                            <div class="stakeholder-card medium-influence" onclick="analyzeStakeholder('fintech-companies')">
+                                <div class="stakeholder-header">
+                                    <h4><span class="emoji">💳</span> FinTech Companies</h4>
+                                    <div class="influence-level">Medium Influence</div>
+                                </div>
+                                <div class="stakeholder-preview">
+                                    <p><strong>Primary Interest:</strong> Innovation opportunities</p>
+                                    <p><strong>Key Concern:</strong> Regulatory compliance costs</p>
+                                </div>
+                            </div>
+
+                            <div class="stakeholder-card medium-influence" onclick="analyzeStakeholder('privacy-advocates')">
+                                <div class="stakeholder-header">
+                                    <h4><span class="emoji">🔒</span> Privacy Advocates</h4>
+                                    <div class="influence-level">Medium Influence</div>
+                                </div>
+                                <div class="stakeholder-preview">
+                                    <p><strong>Primary Interest:</strong> Financial privacy protection</p>
+                                    <p><strong>Key Concern:</strong> Government surveillance</p>
+                                </div>
+                            </div>
+
+                            <div class="stakeholder-card high-influence" onclick="analyzeStakeholder('general-public')">
+                                <div class="stakeholder-header">
+                                    <h4><span class="emoji">👨‍👩‍👧‍👦</span> General Public</h4>
+                                    <div class="influence-level">High Influence</div>
+                                </div>
+                                <div class="stakeholder-preview">
+                                    <p><strong>Primary Interest:</strong> Convenient, secure payments</p>
+                                    <p><strong>Key Concern:</strong> Learning new technology</p>
+                                </div>
+                            </div>
+
+                            <div class="stakeholder-card medium-influence" onclick="analyzeStakeholder('law-enforcement')">
+                                <div class="stakeholder-header">
+                                    <h4><span class="emoji">👮</span> Law Enforcement</h4>
+                                    <div class="influence-level">Medium Influence</div>
+                                </div>
+                                <div class="stakeholder-preview">
+                                    <p><strong>Primary Interest:</strong> Traceability for investigations</p>
+                                    <p><strong>Key Concern:</strong> Crypto-enabled crime</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stakeholder-analysis-panel" id="stakeholder-panel" style="display: none;">
+                            <div class="panel-header">
+                                <h4 id="stakeholder-name">Stakeholder Analysis</h4>
+                                <button class="close-panel" onclick="closeStakeholderPanel()">×</button>
+                            </div>
+                            <div id="stakeholder-details">
+                                <!-- Detailed analysis will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stakeholder-strategy">
+                        <h3><span class="emoji">🎯</span> Stakeholder Engagement Strategy</h3>
+                        <p>Based on your analysis, which stakeholder management approach will you adopt?</p>
+
+                        <div class="strategy-options">
+                            <div class="strategy-option" onclick="selectStrategy('inclusive-consensus')">
+                                <h4><span class="emoji">🤝</span> Inclusive Consensus Building</h4>
+                                <p>Extensive consultation with all stakeholders. Slower but builds broad support.</p>
+                                <div class="strategy-impact">
+                                    <span class="impact-item">+High legitimacy</span>
+                                    <span class="impact-item">+Reduced resistance</span>
+                                    <span class="impact-item">-Slower implementation</span>
+                                    <span class="impact-item">-May compromise design</span>
+                                </div>
+                            </div>
+
+                            <div class="strategy-option" onclick="selectStrategy('technocratic-efficiency')">
+                                <h4><span class="emoji">⚡</span> Technocratic Efficiency</h4>
+                                <p>Central bank-led design prioritizing technical excellence and monetary policy.</p>
+                                <div class="strategy-impact">
+                                    <span class="impact-item">+Faster implementation</span>
+                                    <span class="impact-item">+Technical coherence</span>
+                                    <span class="impact-item">-Lower public buy-in</span>
+                                    <span class="impact-item">-Industry resistance</span>
+                                </div>
+                            </div>
+
+                            <div class="strategy-option" onclick="selectStrategy('public-private-partnership')">
+                                <h4><span class="emoji">🔗</span> Public-Private Partnership</h4>
+                                <p>Collaborate with private sector while maintaining public oversight.</p>
+                                <div class="strategy-impact">
+                                    <span class="impact-item">+Innovation leverage</span>
+                                    <span class="impact-item">+Industry expertise</span>
+                                    <span class="impact-item">-Governance complexity</span>
+                                    <span class="impact-item">-Public trust concerns</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="strategy-selection" id="strategy-result" style="display: none;">
+                            <h4>Selected Strategy Impact</h4>
+                            <div id="strategy-analysis">
+                                <!-- Strategy analysis will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" onclick="proceedToSection('technical-decisions')" id="continue-tech" disabled>
+                            Continue to Technical Architecture
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Technical Decisions Section -->
+                <section class="content-section" id="technical-decisions">
+                    <h2><span class="emoji">⚙️</span> Technical Architecture Decisions</h2>
+
+                    <div class="architecture-decisions">
+                        <p>The technical foundation will determine your CBDC's capabilities, scalability, and long-term viability. Each choice has profound implications.</p>
+
+                        <div class="decision-categories">
+                            <div class="tech-decision-category">
+                                <h3><span class="emoji">🏗️</span> Core Infrastructure</h3>
+
+                                <div class="decision-question">
+                                    <h4>1. Underlying Technology Platform</h4>
+                                    <div class="tech-options">
+                                        <div class="tech-option" onclick="selectTech('distributed-ledger', 'platform')">
+                                            <h5>Distributed Ledger (Blockchain-based)</h5>
+                                            <div class="tech-specs">
+                                                <div class="pro">+ Transparency and auditability</div>
+                                                <div class="pro">+ Decentralized resilience</div>
+                                                <div class="con">- Limited throughput (3,000-5,000 TPS)</div>
+                                                <div class="con">- Higher energy consumption</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tech-option" onclick="selectTech('centralized-database', 'platform')">
+                                            <h5>Centralized Database System</h5>
+                                            <div class="tech-specs">
+                                                <div class="pro">+ High throughput (100,000+ TPS)</div>
+                                                <div class="pro">+ Proven scalability</div>
+                                                <div class="con">- Single point of failure</div>
+                                                <div class="con">- Reduced transparency</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tech-option" onclick="selectTech('hybrid-architecture', 'platform')">
+                                            <h5>Hybrid Architecture</h5>
+                                            <div class="tech-specs">
+                                                <div class="pro">+ Balanced performance/transparency</div>
+                                                <div class="pro">+ Flexible scaling options</div>
+                                                <div class="con">- Increased complexity</div>
+                                                <div class="con">- Higher development costs</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="decision-question">
+                                    <h4>2. Network Access Model</h4>
+                                    <div class="access-options">
+                                        <div class="access-option" onclick="selectTech('direct-access', 'access')">
+                                            <h5>Direct Central Bank Access</h5>
+                                            <p>Citizens hold accounts directly with central bank</p>
+                                            <div class="implications">
+                                                <span class="implication">Maximum control</span>
+                                                <span class="implication">Disintermediates banks</span>
+                                                <span class="implication">High operational burden</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="access-option" onclick="selectTech('intermediated-access', 'access')">
+                                            <h5>Bank-Intermediated Access</h5>
+                                            <p>Commercial banks manage customer relationships</p>
+                                            <div class="implications">
+                                                <span class="implication">Preserves banking sector</span>
+                                                <span class="implication">Leverages existing infrastructure</span>
+                                                <span class="implication">Reduced central bank control</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="access-option" onclick="selectTech('multi-tier-access', 'access')">
+                                            <h5>Multi-Tier Access</h5>
+                                            <p>Different access levels for different use cases</p>
+                                            <div class="implications">
+                                                <span class="implication">Flexible design</span>
+                                                <span class="implication">Gradual transition</span>
+                                                <span class="implication">Complex governance</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tech-decision-category">
+                                <h3><span class="emoji">🔧</span> Operational Parameters</h3>
+
+                                <div class="parameter-controls">
+                                    <div class="parameter-control">
+                                        <label for="transaction-limits">Daily Transaction Limits</label>
+                                        <input type="range" id="transaction-limits" min="1000" max="100000" value="10000" oninput="updateParameter('limits')">
+                                        <div class="parameter-display">
+                                            <span id="limits-value">$10,000</span>
+                                            <div class="parameter-impact" id="limits-impact">Moderate inclusion, moderate risk</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="parameter-control">
+                                        <label for="offline-capability">Offline Functionality</label>
+                                        <select id="offline-capability" onchange="updateParameter('offline')">
+                                            <option value="none">No offline capability</option>
+                                            <option value="limited">Limited offline (24 hours, $100 limit)</option>
+                                            <option value="extended">Extended offline (7 days, $1000 limit)</option>
+                                        </select>
+                                        <div class="parameter-impact" id="offline-impact">Better inclusion but higher fraud risk</div>
+                                    </div>
+
+                                    <div class="parameter-control">
+                                        <label for="programmability">Smart Contract Support</label>
+                                        <select id="programmability" onchange="updateParameter('programmability')">
+                                            <option value="none">No programmability</option>
+                                            <option value="basic">Basic automation (recurring payments)</option>
+                                            <option value="advanced">Advanced smart contracts</option>
+                                        </select>
+                                        <div class="parameter-impact" id="programmability-impact">Innovation vs complexity trade-off</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="technical-assessment">
+                            <h3><span class="emoji">📊</span> Technical Assessment</h3>
+                            <div class="assessment-metrics">
+                                <div class="metric">
+                                    <span class="metric-label">Scalability Score:</span>
+                                    <span class="metric-value" id="scalability-score">0/10</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Security Score:</span>
+                                    <span class="metric-value" id="security-score">0/10</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Innovation Score:</span>
+                                    <span class="metric-value" id="innovation-score">0/10</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Implementation Risk:</span>
+                                    <span class="metric-value" id="risk-score">0/10</span>
+                                </div>
+                            </div>
+
+                            <div class="technical-recommendation" id="tech-recommendation">
+                                <h4>System Architecture Recommendation</h4>
+                                <div id="tech-rec-content">
+                                    Make your technical choices to see personalized recommendations.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" onclick="proceedToSection('economic-model')" id="continue-economic" disabled>
+                            Design Economic Model
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Economic Model Section -->
+                <section class="content-section" id="economic-model">
+                    <h2><span class="emoji">💰</span> Economic Model Design</h2>
+
+                    <div class="economic-framework">
+                        <p>Your economic model will determine how the CBDC integrates with existing monetary policy and financial systems.</p>
+
+                        <div class="economic-decisions">
+                            <div class="economic-category">
+                                <h3><span class="emoji">🎯</span> Monetary Policy Integration</h3>
+
+                                <div class="policy-question">
+                                    <h4>Interest Rate Mechanism</h4>
+                                    <div class="policy-options">
+                                        <div class="policy-option" onclick="selectEconomic('no-interest', 'interest')">
+                                            <h5>No Interest on CBDC Holdings</h5>
+                                            <p>CBDC functions purely as digital cash equivalent</p>
+                                            <div class="economic-impact">
+                                                <span class="impact positive">Preserves bank deposit incentives</span>
+                                                <span class="impact neutral">Limited monetary policy tool</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="policy-option" onclick="selectEconomic('variable-interest', 'interest')">
+                                            <h5>Variable Interest Rates</h5>
+                                            <p>Central bank can adjust CBDC interest rates for policy</p>
+                                            <div class="economic-impact">
+                                                <span class="impact positive">Powerful monetary policy tool</span>
+                                                <span class="impact negative">May destabilize banking sector</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="policy-option" onclick="selectEconomic('tiered-interest', 'interest')">
+                                            <h5>Tiered Interest Structure</h5>
+                                            <p>Different rates for different holding amounts</p>
+                                            <div class="economic-impact">
+                                                <span class="impact positive">Encourages circulation</span>
+                                                <span class="impact neutral">Complex to implement</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="policy-question">
+                                    <h4>Holdings Limits</h4>
+                                    <div class="limits-control">
+                                        <label for="individual-limit">Individual Holdings Limit</label>
+                                        <input type="range" id="individual-limit" min="0" max="100000" value="25000" oninput="updateEconomicParameter('individual')">
+                                        <div class="limit-display">
+                                            <span id="individual-limit-value">$25,000</span>
+                                            <div id="individual-limit-impact">Moderate bank protection</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="limits-control">
+                                        <label for="business-limit">Business Holdings Limit</label>
+                                        <input type="range" id="business-limit" min="0" max="10000000" value="1000000" oninput="updateEconomicParameter('business')">
+                                        <div class="limit-display">
+                                            <span id="business-limit-value">$1,000,000</span>
+                                            <div id="business-limit-impact">Supports SME operations</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="economic-category">
+                                <h3><span class="emoji">🏦</span> Banking Sector Impact</h3>
+
+                                <div class="impact-simulation">
+                                    <h4>Bank Disintermediation Risk Assessment</h4>
+                                    <div class="simulation-controls">
+                                        <div class="scenario-buttons">
+                                            <button class="scenario-btn" onclick="runBankingScenario('mild')">Mild CBDC Adoption (20%)</button>
+                                            <button class="scenario-btn" onclick="runBankingScenario('moderate')">Moderate Adoption (50%)</button>
+                                            <button class="scenario-btn" onclick="runBankingScenario('high')">High Adoption (80%)</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="simulation-results" id="banking-simulation" style="display: none;">
+                                        <h5>Banking Sector Impact Analysis</h5>
+                                        <div id="banking-results">
+                                            <!-- Results will be populated here -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mitigation-strategies">
+                                    <h4>Bank Sector Protection Measures</h4>
+                                    <div class="protection-options">
+                                        <label>
+                                            <input type="checkbox" id="deposit-insurance" onchange="updateProtection()">
+                                            Enhanced Deposit Insurance Guarantees
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="transition-support" onchange="updateProtection()">
+                                            Digital Infrastructure Transition Support
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="reserve-requirements" onchange="updateProtection()">
+                                            Adjusted Reserve Requirements
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="new-services" onchange="updateProtection()">
+                                            Incentives for New Digital Services
+                                        </label>
+                                    </div>
+
+                                    <div class="protection-assessment" id="protection-assessment">
+                                        <div class="assessment-score">Banking Sector Stability: <span id="stability-score">65%</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="economic-dashboard">
+                            <h3><span class="emoji">📈</span> Economic Impact Dashboard</h3>
+                            <div class="dashboard-metrics">
+                                <div class="dashboard-card">
+                                    <h4>Monetary Policy Effectiveness</h4>
+                                    <div class="metric-large" id="monetary-effectiveness">0%</div>
+                                    <div class="metric-trend" id="monetary-trend">Baseline</div>
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h4>Financial Inclusion</h4>
+                                    <div class="metric-large" id="inclusion-score">0%</div>
+                                    <div class="metric-trend" id="inclusion-trend">Current: 77%</div>
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h4>Economic Efficiency Gain</h4>
+                                    <div class="metric-large" id="efficiency-gain">0%</div>
+                                    <div class="metric-trend" id="efficiency-trend">Payment system costs</div>
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h4>Systemic Risk Level</h4>
+                                    <div class="metric-large" id="systemic-risk">0%</div>
+                                    <div class="metric-trend" id="risk-trend">Financial stability</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" onclick="proceedToSection('privacy-surveillance')" id="continue-privacy" disabled>
+                            Address Privacy Concerns
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Privacy vs Surveillance Section -->
+                <section class="content-section" id="privacy-surveillance">
+                    <h2><span class="emoji">🔒</span> Privacy vs Surveillance Balance</h2>
+
+                    <div class="privacy-framework">
+                        <p>This may be your most politically sensitive decision. How much financial privacy should citizens retain in a digital currency system?</p>
+
+                        <div class="privacy-spectrum">
+                            <h3><span class="emoji">⚖️</span> Privacy Spectrum</h3>
+                            <div class="spectrum-options">
+                                <div class="privacy-option" onclick="selectPrivacy('maximum-privacy')">
+                                    <h4><span class="emoji">🕶️</span> Maximum Privacy</h4>
+                                    <p>Anonymous transactions, minimal government visibility</p>
+                                    <div class="privacy-details">
+                                        <div class="feature">✓ Anonymous small transactions (&lt;$1,000)</div>
+                                        <div class="feature">✓ Encrypted transaction metadata</div>
+                                        <div class="feature">✓ User-controlled data sharing</div>
+                                        <div class="concern">⚠️ Limited AML/KYC compliance</div>
+                                        <div class="concern">⚠️ May facilitate illicit activity</div>
+                                    </div>
+                                </div>
+
+                                <div class="privacy-option" onclick="selectPrivacy('balanced-privacy')">
+                                    <h4><span class="emoji">🎭</span> Balanced Approach</h4>
+                                    <p>Pseudonymous with regulatory compliance mechanisms</p>
+                                    <div class="privacy-details">
+                                        <div class="feature">✓ Pseudonymous for routine transactions</div>
+                                        <div class="feature">✓ KYC required for large amounts</div>
+                                        <div class="feature">✓ Court-ordered transaction tracing</div>
+                                        <div class="feature">✓ Aggregate data for policy analysis</div>
+                                    </div>
+                                </div>
+
+                                <div class="privacy-option" onclick="selectPrivacy('maximum-surveillance')">
+                                    <h4><span class="emoji">👁️</span> Maximum Surveillance</h4>
+                                    <p>Full transaction visibility for government oversight</p>
+                                    <div class="privacy-details">
+                                        <div class="feature">✓ Complete transaction traceability</div>
+                                        <div class="feature">✓ Real-time AML/CFT monitoring</div>
+                                        <div class="feature">✓ Tax compliance automation</div>
+                                        <div class="concern">⚠️ Low public acceptance risk</div>
+                                        <div class="concern">⚠️ Authoritarian concerns</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="privacy-impact" id="privacy-impact" style="display: none;">
+                                <h4>Privacy Choice Impact Analysis</h4>
+                                <div id="privacy-analysis">
+                                    <!-- Analysis will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="regulatory-compliance">
+                            <h3><span class="emoji">📋</span> Regulatory Compliance Framework</h3>
+                            <div class="compliance-areas">
+                                <div class="compliance-area">
+                                    <h4>Anti-Money Laundering (AML)</h4>
+                                    <div class="compliance-options">
+                                        <label>
+                                            <input type="radio" name="aml" value="traditional" onchange="updateCompliance()">
+                                            Traditional threshold-based reporting ($10,000+)
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="aml" value="enhanced" onchange="updateCompliance()">
+                                            Enhanced AI-powered transaction monitoring
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="aml" value="risk-based" onchange="updateCompliance()">
+                                            Risk-based approach with dynamic thresholds
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="compliance-area">
+                                    <h4>Data Protection & Privacy Rights</h4>
+                                    <div class="compliance-options">
+                                        <label>
+                                            <input type="checkbox" id="data-minimization" onchange="updateCompliance()">
+                                            Data minimization principles
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="user-consent" onchange="updateCompliance()">
+                                            Explicit user consent for data use
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="right-erasure" onchange="updateCompliance()">
+                                            Right to erasure (where legally possible)
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="data-portability" onchange="updateCompliance()">
+                                            Data portability rights
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="compliance-assessment" id="compliance-assessment">
+                                <div class="assessment-grid">
+                                    <div class="assessment-item">
+                                        <span>Legal Compliance:</span>
+                                        <span id="legal-compliance">0%</span>
+                                    </div>
+                                    <div class="assessment-item">
+                                        <span>Public Trust:</span>
+                                        <span id="public-trust">0%</span>
+                                    </div>
+                                    <div class="assessment-item">
+                                        <span>Implementation Complexity:</span>
+                                        <span id="implementation-complexity">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="privacy-tradeoffs">
+                            <h3><span class="emoji">🤔</span> Critical Trade-off Analysis</h3>
+                            <div class="tradeoff-scenarios">
+                                <div class="scenario-card" onclick="exploreTradeoff('tax-evasion')">
+                                    <h4>Tax Evasion Prevention</h4>
+                                    <p>Full transaction visibility could increase tax compliance by 15% but may reduce CBDC adoption by 40%</p>
+                                </div>
+
+                                <div class="scenario-card" onclick="exploreTradeoff('authoritarian-risk')">
+                                    <h4>Authoritarian Misuse Risk</h4>
+                                    <p>Future governments could use CBDC surveillance for political repression. How do you build safeguards?</p>
+                                </div>
+
+                                <div class="scenario-card" onclick="exploreTradeoff('financial-crimes')">
+                                    <h4>Financial Crime Detection</h4>
+                                    <p>Enhanced monitoring could reduce financial crimes by 60% but requires extensive personal data collection</p>
+                                </div>
+                            </div>
+
+                            <div class="tradeoff-analysis" id="tradeoff-analysis" style="display: none;">
+                                <h4 id="tradeoff-title">Trade-off Analysis</h4>
+                                <div id="tradeoff-content">
+                                    <!-- Trade-off content will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" onclick="proceedToSection('implementation')" id="continue-implementation" disabled>
+                            Plan Implementation Strategy
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Implementation Strategy Section -->
+                <section class="content-section" id="implementation">
+                    <h2><span class="emoji">🚀</span> Implementation Strategy</h2>
+
+                    <div class="implementation-planning">
+                        <p>With your technical and policy framework defined, how will you bring the CBDC to market?</p>
+
+                        <div class="launch-strategies">
+                            <h3><span class="emoji">📅</span> Launch Strategy Options</h3>
+
+                            <div class="strategy-timeline">
+                                <div class="timeline-option" onclick="selectTimeline('gradual-rollout')">
+                                    <h4><span class="emoji">🐌</span> Gradual Rollout (3-5 years)</h4>
+                                    <div class="timeline-phases">
+                                        <div class="phase">Phase 1: Pilot with 1000 users (6 months)</div>
+                                        <div class="phase">Phase 2: Regional deployment (18 months)</div>
+                                        <div class="phase">Phase 3: National rollout (2-3 years)</div>
+                                    </div>
+                                    <div class="strategy-pros-cons">
+                                        <div class="pros">Lower risk, better testing, gradual adaptation</div>
+                                        <div class="cons">Slower market capture, may lose first-mover advantage</div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-option" onclick="selectTimeline('accelerated-launch')">
+                                    <h4><span class="emoji">🚀</span> Accelerated Launch (18 months)</h4>
+                                    <div class="timeline-phases">
+                                        <div class="phase">Phase 1: Technical development (8 months)</div>
+                                        <div class="phase">Phase 2: Limited beta (4 months)</div>
+                                        <div class="phase">Phase 3: National launch (6 months)</div>
+                                    </div>
+                                    <div class="strategy-pros-cons">
+                                        <div class="pros">First-mover advantage, rapid market capture</div>
+                                        <div class="cons">Higher technical risk, limited testing time</div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-option" onclick="selectTimeline('phased-demographic')">
+                                    <h4><span class="emoji">👥</span> Demographic-Phased (2-3 years)</h4>
+                                    <div class="timeline-phases">
+                                        <div class="phase">Phase 1: Digital natives (18-35) (8 months)</div>
+                                        <div class="phase">Phase 2: Working age (35-55) (12 months)</div>
+                                        <div class="phase">Phase 3: All demographics (8 months)</div>
+                                    </div>
+                                    <div class="strategy-pros-cons">
+                                        <div class="pros">Targeted user experience, manageable growth</div>
+                                        <div class="cons">May create digital divide, complex messaging</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-impact" id="timeline-impact" style="display: none;">
+                                <h4>Implementation Timeline Impact</h4>
+                                <div id="timeline-analysis">
+                                    <!-- Timeline analysis will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="adoption-strategy">
+                            <h3><span class="emoji">🎯</span> User Adoption Strategy</h3>
+
+                            <div class="adoption-levers">
+                                <div class="lever-category">
+                                    <h4>Incentive Mechanisms</h4>
+                                    <div class="incentive-options">
+                                        <label>
+                                            <input type="checkbox" id="signup-bonus" onchange="updateAdoption()">
+                                            Sign-up bonus ($50 CBDC for new users)
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="merchant-discounts" onchange="updateAdoption()">
+                                            Merchant discount programs (2% cashback)
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="government-payments" onchange="updateAdoption()">
+                                            Government payments via CBDC (welfare, salaries)
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="tax-incentives" onchange="updateAdoption()">
+                                            Tax reporting incentives for CBDC use
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="lever-category">
+                                    <h4>Infrastructure Development</h4>
+                                    <div class="infrastructure-options">
+                                        <label>
+                                            <input type="checkbox" id="atm-conversion" onchange="updateAdoption()">
+                                            Convert 50% of ATMs to CBDC-enabled
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="merchant-terminals" onchange="updateAdoption()">
+                                            Subsidize merchant terminal upgrades
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="mobile-app" onchange="updateAdoption()">
+                                            Government-developed mobile wallet app
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="offline-solutions" onchange="updateAdoption()">
+                                            Offline payment solutions for rural areas
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="adoption-projection">
+                                <h4><span class="emoji">📊</span> Adoption Projection</h4>
+                                <div class="projection-chart">
+                                    <canvas id="adoptionChart" width="400" height="200"></canvas>
+                                </div>
+                                <div class="projection-metrics">
+                                    <div class="metric">Year 1 Adoption: <span id="year1-adoption">0%</span></div>
+                                    <div class="metric">Year 3 Adoption: <span id="year3-adoption">0%</span></div>
+                                    <div class="metric">Total Cost: <span id="adoption-cost">$0M</span></div>
+                                    <div class="metric">Break-even: <span id="breakeven-time">N/A</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="risk-mitigation">
+                            <h3><span class="emoji">⚠️</span> Risk Mitigation Plan</h3>
+
+                            <div class="risk-assessment">
+                                <div class="risk-item high-risk">
+                                    <h4><span class="emoji">🏃</span> Bank Run Risk</h4>
+                                    <p>Mass withdrawal from commercial banks to CBDC</p>
+                                    <div class="mitigation-plan">
+                                        <strong>Mitigation:</strong> Holdings limits, gradual rollout, bank support measures
+                                    </div>
+                                </div>
+
+                                <div class="risk-item medium-risk">
+                                    <h4><span class="emoji">🔧</span> Technical Failure</h4>
+                                    <p>System outages affecting payment infrastructure</p>
+                                    <div class="mitigation-plan">
+                                        <strong>Mitigation:</strong> Redundant systems, offline capability, cash backup
+                                    </div>
+                                </div>
+
+                                <div class="risk-item medium-risk">
+                                    <h4><span class="emoji">🔒</span> Cybersecurity Attack</h4>
+                                    <p>Sophisticated attacks on CBDC infrastructure</p>
+                                    <div class="mitigation-plan">
+                                        <strong>Mitigation:</strong> Multi-layer security, continuous monitoring, incident response
+                                    </div>
+                                </div>
+
+                                <div class="risk-item low-risk">
+                                    <h4><span class="emoji">📉</span> Low Adoption</h4>
+                                    <p>Public reluctance to adopt new payment method</p>
+                                    <div class="mitigation-plan">
+                                        <strong>Mitigation:</strong> Education campaigns, incentives, gradual transition
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contingency-planning">
+                                <h4>Contingency Scenarios</h4>
+                                <div class="contingency-options">
+                                    <div class="contingency-card" onclick="planContingency('system-failure')">
+                                        <h5>System-wide Technical Failure</h5>
+                                        <p>What if the CBDC system fails during peak usage?</p>
+                                    </div>
+                                    <div class="contingency-card" onclick="planContingency('economic-crisis')">
+                                        <h5>Economic Crisis Response</h5>
+                                        <p>How does CBDC help during financial emergencies?</p>
+                                    </div>
+                                    <div class="contingency-card" onclick="planContingency('international-sanctions')">
+                                        <h5>International Sanctions</h5>
+                                        <p>What if other countries restrict CBDC interoperability?</p>
+                                    </div>
+                                </div>
+
+                                <div class="contingency-plan" id="contingency-plan" style="display: none;">
+                                    <h5 id="contingency-title">Contingency Plan</h5>
+                                    <div id="contingency-content">
+                                        <!-- Contingency plan content will be loaded here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" onclick="proceedToSection('final-recommendation')" id="continue-final" disabled>
+                            Finalize Recommendation
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Final Recommendation Section -->
+                <section class="content-section" id="final-recommendation">
+                    <h2><span class="emoji">📊</span> Final Recommendation</h2>
+
+                    <div class="recommendation-synthesis">
+                        <p>Synthesize your analysis into a comprehensive recommendation for the Central Bank Governor.</p>
+
+                        <div class="decision-summary">
+                            <h3><span class="emoji">📋</span> Your CBDC Design Summary</h3>
+                            <div class="summary-grid" id="design-summary">
+                                <!-- Summary will be populated based on user choices -->
+                            </div>
+                        </div>
+
+                        <div class="impact-assessment">
+                            <h3><span class="emoji">📈</span> Projected Impact Assessment</h3>
+                            <div class="impact-dashboard">
+                                <div class="impact-metric">
+                                    <h4>Overall Success Probability</h4>
+                                    <div class="metric-display">
+                                        <span class="metric-value" id="success-probability">0%</span>
+                                        <div class="metric-breakdown">
+                                            <div>Technical: <span id="tech-success">0%</span></div>
+                                            <div>Economic: <span id="economic-success">0%</span></div>
+                                            <div>Political: <span id="political-success">0%</span></div>
+                                            <div>Social: <span id="social-success">0%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="impact-projections">
+                                    <div class="projection-item">
+                                        <h5>Economic Impact (5 years)</h5>
+                                        <div class="projection-value" id="economic-impact">+$0B GDP</div>
+                                    </div>
+                                    <div class="projection-item">
+                                        <h5>Financial Inclusion Gain</h5>
+                                        <div class="projection-value" id="inclusion-gain">+0%</div>
+                                    </div>
+                                    <div class="projection-item">
+                                        <h5>Implementation Cost</h5>
+                                        <div class="projection-value" id="total-cost">$0B</div>
+                                    </div>
+                                    <div class="projection-item">
+                                        <h5>Risk Level</h5>
+                                        <div class="projection-value" id="overall-risk">Unknown</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recommendation-builder">
+                            <h3><span class="emoji">✍️</span> Build Your Recommendation</h3>
+
+                            <div class="recommendation-sections">
+                                <div class="rec-section">
+                                    <h4>Executive Summary</h4>
+                                    <textarea id="exec-summary" placeholder="Summarize your key recommendation in 2-3 sentences..."></textarea>
+                                </div>
+
+                                <div class="rec-section">
+                                    <h4>Strategic Rationale</h4>
+                                    <div class="rationale-options">
+                                        <label>
+                                            <input type="checkbox" id="monetary-sovereignty" onchange="updateRationale()">
+                                            Preserve monetary sovereignty in digital age
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="financial-inclusion" onchange="updateRationale()">
+                                            Advance financial inclusion and access
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="payment-efficiency" onchange="updateRationale()">
+                                            Improve payment system efficiency
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="innovation-leadership" onchange="updateRationale()">
+                                            Establish innovation leadership position
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" id="crisis-resilience" onchange="updateRationale()">
+                                            Build crisis resilience and emergency capabilities
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="rec-section">
+                                    <h4>Implementation Timeline</h4>
+                                    <select id="timeline-recommendation">
+                                        <option value="">Select recommended timeline...</option>
+                                        <option value="immediate">Immediate development (12-18 months)</option>
+                                        <option value="planned">Planned development (2-3 years)</option>
+                                        <option value="research">Extended research phase (3-5 years)</option>
+                                        <option value="wait">Wait and observe international developments</option>
+                                    </select>
+                                </div>
+
+                                <div class="rec-section">
+                                    <h4>Key Success Factors</h4>
+                                    <textarea id="success-factors" placeholder="Identify the 3-4 most critical factors for CBDC success..."></textarea>
+                                </div>
+
+                                <div class="rec-section">
+                                    <h4>Major Risks & Mitigation</h4>
+                                    <textarea id="risk-mitigation" placeholder="Outline primary risks and your mitigation strategies..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="recommendation-actions">
+                                <button class="experimental-btn experimental-btn--primary" onclick="generateFinalReport()">
+                                    Generate Executive Report
+                                </button>
+                                <button class="experimental-btn" onclick="reviewDecisions()">
+                                    Review All Decisions
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="final-report" id="final-report" style="display: none;">
+                            <h3><span class="emoji">📑</span> Executive Report for Central Bank Governor</h3>
+                            <div id="report-content">
+                                <!-- Final report will be generated here -->
+                            </div>
+
+                            <div class="report-actions">
+                                <button class="experimental-btn" onclick="downloadReport()">
+                                    <span class="emoji">📥</span> Download Report
+                                </button>
+                                <button class="experimental-btn" onclick="shareReport()">
+                                    <span class="emoji">📤</span> Share Analysis
+                                </button>
+                                <button class="experimental-btn experimental-btn--primary" onclick="exploreAlternatives()">
+                                    <span class="emoji">🔄</span> Explore Alternative Scenarios
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="learning-reflection">
+                            <h3><span class="emoji">🎓</span> Strategic Learning Reflection</h3>
+                            <div class="reflection-questions">
+                                <div class="reflection-item">
+                                    <h4>Most Challenging Decision</h4>
+                                    <p>Which aspect of CBDC design proved most complex? Privacy vs surveillance? Technical architecture? Economic model?</p>
+                                    <textarea class="reflection-input" placeholder="Reflect on the most difficult trade-offs you encountered..."></textarea>
+                                </div>
+
+                                <div class="reflection-item">
+                                    <h4>Stakeholder Dynamics</h4>
+                                    <p>How did competing stakeholder interests influence your decisions? What compromises were necessary?</p>
+                                    <textarea class="reflection-input" placeholder="Consider how you balanced different stakeholder needs..."></textarea>
+                                </div>
+
+                                <div class="reflection-item">
+                                    <h4>Long-term Implications</h4>
+                                    <p>What long-term consequences might emerge from your CBDC design that weren't immediately apparent?</p>
+                                    <textarea class="reflection-input" placeholder="Think about second and third-order effects..."></textarea>
+                                </div>
+                            </div>
+
+                            <button class="experimental-btn" onclick="saveReflections()">
+                                Save Learning Insights
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="next-learning">
+                        <h3><span class="emoji">🚀</span> Continue Your Strategic Journey</h3>
+                        <div class="next-activities">
+                            <div class="activity-recommendation">
+                                <h4>Enterprise Blockchain Adoption</h4>
+                                <p>Apply your strategic thinking to corporate blockchain implementation decisions</p>
+                                <button class="experimental-btn" onclick="goToActivity('enterprise')">Start Case Study</button>
+                            </div>
+                            <div class="activity-recommendation">
+                                <h4>DeFi Regulation Framework</h4>
+                                <p>Design regulatory approaches for decentralized finance protocols</p>
+                                <button class="experimental-btn" onclick="goToActivity('defi-regulation')">Start Workshop</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="blockchain-activities.html" class="main-menu-link">Blockchain Activities</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // CBDC Strategy state management
+        let cbdcState = {
+            decisions: {
+                stakeholderStrategy: null,
+                technicalPlatform: null,
+                accessModel: null,
+                interestModel: null,
+                privacyLevel: null,
+                implementationTimeline: null
+            },
+            scores: {
+                technical: 0,
+                economic: 0,
+                political: 0,
+                social: 0
+            },
+            parameters: {
+                individualLimit: 25000,
+                businessLimit: 1000000,
+                transactionLimits: 10000,
+                offlineCapability: 'none',
+                programmability: 'none'
+            }
+        };
+
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Section navigation
+        function proceedToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+
+            // Update active navigation
+            document.querySelectorAll('.experimental-nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`a[href="#${sectionId}"]`).classList.add('active');
+        }
+
+        // Intelligence viewing
+        function viewIntel(intelType) {
+            const viewer = document.getElementById('intel-viewer');
+            const title = document.getElementById('intel-title');
+            const content = document.getElementById('intel-content');
+
+            const intelData = {
+                'public-opinion': {
+                    title: 'Public Opinion Survey Results',
+                    content: `
+                        <div class="intel-report">
+                            <h6>Key Findings (n=5,000 respondents)</h6>
+                            <div class="survey-results">
+                                <div class="result-item">
+                                    <strong>Awareness:</strong> 34% have heard of CBDCs, 12% understand the concept
+                                </div>
+                                <div class="result-item">
+                                    <strong>Interest:</strong> 67% interested in faster, cheaper digital payments
+                                </div>
+                                <div class="result-item">
+                                    <strong>Concerns:</strong> 78% worried about privacy, 45% about technical complexity
+                                </div>
+                                <div class="result-item">
+                                    <strong>Trust:</strong> 52% trust central bank vs 23% trust private companies
+                                </div>
+                                <div class="result-item">
+                                    <strong>Adoption Intent:</strong> 41% likely to use if launched today
+                                </div>
+                            </div>
+                            <div class="intel-insight">
+                                <strong>Strategic Implication:</strong> High potential demand but education and privacy concerns must be addressed for successful adoption.
+                            </div>
+                        </div>
+                    `
+                },
+                'banking-sector': {
+                    title: 'Banking Sector Impact Analysis',
+                    content: `
+                        <div class="intel-report">
+                            <h6>Commercial Bank Assessment</h6>
+                            <div class="banking-analysis">
+                                <div class="bank-concern">
+                                    <strong>Deposit Flight Risk:</strong> 15-40% of deposits could migrate to CBDC
+                                </div>
+                                <div class="bank-concern">
+                                    <strong>Revenue Impact:</strong> $2.8B annual fee revenue at risk
+                                </div>
+                                <div class="bank-opportunity">
+                                    <strong>New Services:</strong> CBDC infrastructure and advisory services worth $1.2B
+                                </div>
+                                <div class="bank-position">
+                                    <strong>Industry Position:</strong> Support conditional on intermediated model
+                                </div>
+                            </div>
+                            <div class="intel-insight">
+                                <strong>Strategic Implication:</strong> Banks supportive if they retain customer relationships. Direct model would face strong industry opposition.
+                            </div>
+                        </div>
+                    `
+                },
+                'technical-feasibility': {
+                    title: 'Technical Infrastructure Assessment',
+                    content: `
+                        <div class="intel-report">
+                            <h6>Implementation Requirements</h6>
+                            <div class="tech-requirements">
+                                <div class="requirement-item">
+                                    <strong>Development Timeline:</strong> 18-36 months for full deployment
+                                </div>
+                                <div class="requirement-item">
+                                    <strong>Infrastructure Cost:</strong> $800M - $2.5B depending on architecture
+                                </div>
+                                <div class="requirement-item">
+                                    <strong>Throughput Capacity:</strong> Must handle 50,000 TPS at peak
+                                </div>
+                                <div class="requirement-item">
+                                    <strong>Security Requirements:</strong> Military-grade encryption, 99.99% uptime
+                                </div>
+                                <div class="requirement-item">
+                                    <strong>Integration Complexity:</strong> 2,400 banks, 150,000 merchants to connect
+                                </div>
+                            </div>
+                            <div class="intel-insight">
+                                <strong>Strategic Implication:</strong> Technically feasible but requires significant investment and careful architecture choices.
+                            </div>
+                        </div>
+                    `
+                },
+                'international-precedents': {
+                    title: 'International CBDC Case Studies',
+                    content: `
+                        <div class="intel-report">
+                            <h6>Global Implementation Lessons</h6>
+                            <div class="case-studies">
+                                <div class="case-study">
+                                    <strong>China (Digital Yuan):</strong> 260M+ users, $14B transactions. Success factors: government adoption mandates, ecosystem integration.
+                                </div>
+                                <div class="case-study">
+                                    <strong>Bahamas (Sand Dollar):</strong> Limited adoption (8% population). Challenge: insufficient merchant acceptance.
+                                </div>
+                                <div class="case-study">
+                                    <strong>Nigeria (eNaira):</strong> 0.5% adoption rate. Issues: poor user experience, limited offline capability.
+                                </div>
+                                <div class="case-study">
+                                    <strong>Sweden (e-krona pilot):</strong> Promising trials but delayed by privacy concerns and banking sector resistance.
+                                </div>
+                            </div>
+                            <div class="intel-insight">
+                                <strong>Strategic Implication:</strong> Success requires ecosystem approach, not just technical launch. User experience and merchant adoption are critical.
+                            </div>
+                        </div>
+                    `
+                }
+            };
+
+            const intel = intelData[intelType];
+            title.textContent = intel.title;
+            content.innerHTML = intel.content;
+            viewer.style.display = 'block';
+        }
+
+        function closeIntel() {
+            document.getElementById('intel-viewer').style.display = 'none';
+        }
+
+        // Stakeholder analysis
+        function analyzeStakeholder(stakeholderType) {
+            const panel = document.getElementById('stakeholder-panel');
+            const name = document.getElementById('stakeholder-name');
+            const details = document.getElementById('stakeholder-details');
+
+            const stakeholderData = {
+                'central-bank': {
+                    name: 'Central Bank - Internal Analysis',
+                    details: `
+                        <div class="stakeholder-deep-dive">
+                            <div class="stakeholder-interests">
+                                <h5>Core Interests</h5>
+                                <ul>
+                                    <li>Maintaining monetary policy transmission effectiveness</li>
+                                    <li>Ensuring financial system stability during transition</li>
+                                    <li>Preserving central bank credibility and independence</li>
+                                    <li>Achieving policy objectives (inflation, employment)</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-power">
+                                <h5>Power & Influence</h5>
+                                <p><strong>Decision Authority:</strong> Ultimate CBDC approval authority</p>
+                                <p><strong>Resources:</strong> $12B annual budget, regulatory powers</p>
+                                <p><strong>Constraints:</strong> Political oversight, international coordination needs</p>
+                            </div>
+                            <div class="engagement-strategy">
+                                <h5>Engagement Strategy</h5>
+                                <p>Build internal consensus through technical committees and stress testing. Address governor's concerns about operational risks and international competitive position.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                'commercial-banks': {
+                    name: 'Commercial Banks - Industry Position',
+                    details: `
+                        <div class="stakeholder-deep-dive">
+                            <div class="stakeholder-interests">
+                                <h5>Core Interests</h5>
+                                <ul>
+                                    <li>Protecting $890B deposit base from disintermediation</li>
+                                    <li>Maintaining customer relationships and fee revenue</li>
+                                    <li>Avoiding stranded investment in payment infrastructure</li>
+                                    <li>Accessing new revenue opportunities in digital economy</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-concerns">
+                                <h5>Key Concerns</h5>
+                                <p><strong>Existential Risk:</strong> Direct CBDC could eliminate need for bank deposits</p>
+                                <p><strong>Regulatory Burden:</strong> New compliance requirements without revenue offsets</p>
+                                <p><strong>Competitive Disadvantage:</strong> Central bank competing directly with private sector</p>
+                            </div>
+                            <div class="engagement-strategy">
+                                <h5>Engagement Strategy</h5>
+                                <p>Offer intermediated model preserving bank relationships. Provide transition support and new business opportunities. Consider holding limits to protect deposit base.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                'fintech-companies': {
+                    name: 'FinTech Sector - Innovation Perspective',
+                    details: `
+                        <div class="stakeholder-deep-dive">
+                            <div class="stakeholder-interests">
+                                <h5>Core Interests</h5>
+                                <ul>
+                                    <li>Level playing field with traditional banks</li>
+                                    <li>Access to CBDC infrastructure for innovation</li>
+                                    <li>Clear regulatory framework for new services</li>
+                                    <li>Avoiding regulatory compliance costs that favor incumbents</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-opportunities">
+                                <h5>Opportunities</h5>
+                                <p><strong>New Services:</strong> CBDC wallets, payment solutions, DeFi bridges</p>
+                                <p><strong>Market Access:</strong> Direct central bank relationship possibilities</p>
+                                <p><strong>Innovation Labs:</strong> Pilot programs and testing environments</p>
+                            </div>
+                            <div class="engagement-strategy">
+                                <h5>Engagement Strategy</h5>
+                                <p>Include in technical working groups. Offer sandbox environments for CBDC innovation. Ensure interoperability standards don't exclude smaller players.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                'privacy-advocates': {
+                    name: 'Privacy Advocates - Rights Perspective',
+                    details: `
+                        <div class="stakeholder-deep-dive">
+                            <div class="stakeholder-interests">
+                                <h5>Core Interests</h5>
+                                <ul>
+                                    <li>Preserving financial privacy as fundamental right</li>
+                                    <li>Preventing government surveillance and control</li>
+                                    <li>Ensuring data minimization and user consent</li>
+                                    <li>Protecting vulnerable populations from discrimination</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-concerns">
+                                <h5>Key Concerns</h5>
+                                <p><strong>Surveillance State:</strong> CBDC enables unprecedented government monitoring</p>
+                                <p><strong>Social Control:</strong> Programmable money could restrict individual freedom</p>
+                                <p><strong>Data Misuse:</strong> Financial data could be used for political purposes</p>
+                            </div>
+                            <div class="engagement-strategy">
+                                <h5>Engagement Strategy</h5>
+                                <p>Implement privacy-by-design principles. Offer anonymous small-value transactions. Establish independent privacy oversight board with civil society representation.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                'general-public': {
+                    name: 'General Public - Citizen Perspective',
+                    details: `
+                        <div class="stakeholder-deep-dive">
+                            <div class="stakeholder-interests">
+                                <h5>Core Interests</h5>
+                                <ul>
+                                    <li>Faster, cheaper, more convenient payments</li>
+                                    <li>Financial security and fraud protection</li>
+                                    <li>Easy-to-use technology that "just works"</li>
+                                    <li>Access to financial services regardless of location/status</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-segments">
+                                <h5>Key Segments</h5>
+                                <p><strong>Digital Natives (28%):</strong> Eager for innovation, privacy-conscious</p>
+                                <p><strong>Mainstream Users (45%):</strong> Want convenience but need education</p>
+                                <p><strong>Digital Hesitant (27%):</strong> Prefer cash, need offline options</p>
+                            </div>
+                            <div class="engagement-strategy">
+                                <h5>Engagement Strategy</h5>
+                                <p>Extensive public education campaign. Pilot programs in diverse communities. Ensure seamless integration with existing payment habits.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                'law-enforcement': {
+                    name: 'Law Enforcement - Security Perspective',
+                    details: `
+                        <div class="stakeholder-deep-dive">
+                            <div class="stakeholder-interests">
+                                <h5>Core Interests</h5>
+                                <ul>
+                                    <li>Enhanced ability to trace financial crimes</li>
+                                    <li>Real-time monitoring of suspicious transactions</li>
+                                    <li>Reduced cash-based criminal activity</li>
+                                    <li>International cooperation on illicit finance</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-capabilities">
+                                <h5>Enhanced Capabilities</h5>
+                                <p><strong>AML/CFT:</strong> Automated suspicious transaction reporting</p>
+                                <p><strong>Asset Recovery:</strong> Programmable seizure and freezing</p>
+                                <p><strong>Tax Compliance:</strong> Real-time revenue monitoring</p>
+                            </div>
+                            <div class="engagement-strategy">
+                                <h5>Engagement Strategy</h5>
+                                <p>Collaborate on technical standards for law enforcement access. Balance investigative needs with privacy rights through judicial oversight mechanisms.</p>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+
+            const stakeholder = stakeholderData[stakeholderType];
+            name.textContent = stakeholder.name;
+            details.innerHTML = stakeholder.details;
+            panel.style.display = 'block';
+        }
+
+        function closeStakeholderPanel() {
+            document.getElementById('stakeholder-panel').style.display = 'none';
+        }
+
+        // Strategy selection
+        function selectStrategy(strategy) {
+            cbdcState.decisions.stakeholderStrategy = strategy;
+
+            const result = document.getElementById('strategy-result');
+            const analysis = document.getElementById('strategy-analysis');
+
+            const strategyAnalysis = {
+                'inclusive-consensus': {
+                    score: { political: 85, social: 90, technical: 65, economic: 70 },
+                    analysis: 'High legitimacy approach builds broad support but may compromise on technical optimization. Recommended for politically sensitive implementations.'
+                },
+                'technocratic-efficiency': {
+                    score: { political: 60, social: 55, technical: 95, economic: 85 },
+                    analysis: 'Technically superior approach but risks stakeholder resistance. Suitable if central bank has strong independence and public trust.'
+                },
+                'public-private-partnership': {
+                    score: { political: 75, social: 70, technical: 80, economic: 80 },
+                    analysis: 'Balanced approach leveraging private sector expertise while maintaining public oversight. Good compromise for complex implementations.'
+                }
+            };
+
+            const selected = strategyAnalysis[strategy];
+            cbdcState.scores = { ...selected.score };
+
+            analysis.innerHTML = `
+                <div class="strategy-scores">
+                    <div class="score-item">Political Feasibility: ${selected.score.political}%</div>
+                    <div class="score-item">Social Acceptance: ${selected.score.social}%</div>
+                    <div class="score-item">Technical Quality: ${selected.score.technical}%</div>
+                    <div class="score-item">Economic Impact: ${selected.score.economic}%</div>
+                </div>
+                <p>${selected.analysis}</p>
+            `;
+
+            result.style.display = 'block';
+            document.getElementById('continue-tech').disabled = false;
+            updateDecisionTracker();
+        }
+
+        // Technical selections
+        function selectTech(choice, category) {
+            cbdcState.decisions['technical' + category.charAt(0).toUpperCase() + category.slice(1)] = choice;
+
+            // Update visual selection
+            document.querySelectorAll(`.${category === 'platform' ? 'tech' : 'access'}-option`).forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.tech-option, .access-option').classList.add('selected');
+
+            updateTechnicalAssessment();
+
+            if (cbdcState.decisions.technicalPlatform && cbdcState.decisions.technicalAccess) {
+                document.getElementById('continue-economic').disabled = false;
+            }
+        }
+
+        // Update technical assessment
+        function updateTechnicalAssessment() {
+            const platform = cbdcState.decisions.technicalPlatform;
+            const access = cbdcState.decisions.technicalAccess;
+
+            if (!platform || !access) return;
+
+            const assessmentScores = {
+                'distributed-ledger': { scalability: 6, security: 9, innovation: 8, risk: 7 },
+                'centralized-database': { scalability: 10, security: 7, innovation: 5, risk: 4 },
+                'hybrid-architecture': { scalability: 8, security: 8, innovation: 7, risk: 6 }
+            };
+
+            const accessModifiers = {
+                'direct-access': { scalability: -1, security: 1, innovation: 2, risk: 3 },
+                'intermediated-access': { scalability: 1, security: 0, innovation: -1, risk: -2 },
+                'multi-tier-access': { scalability: 0, security: -1, innovation: 1, risk: 1 }
+            };
+
+            const baseScores = assessmentScores[platform];
+            const modifiers = accessModifiers[access];
+
+            document.getElementById('scalability-score').textContent = Math.max(1, baseScores.scalability + modifiers.scalability) + '/10';
+            document.getElementById('security-score').textContent = Math.max(1, baseScores.security + modifiers.security) + '/10';
+            document.getElementById('innovation-score').textContent = Math.max(1, baseScores.innovation + modifiers.innovation) + '/10';
+            document.getElementById('risk-score').textContent = Math.max(1, baseScores.risk + modifiers.risk) + '/10';
+
+            // Update recommendation
+            const rec = document.getElementById('tech-rec-content');
+            rec.innerHTML = generateTechRecommendation(platform, access);
+        }
+
+        function generateTechRecommendation(platform, access) {
+            const recommendations = {
+                'distributed-ledger': {
+                    'direct-access': 'High innovation but significant operational risk. Consider pilot program first.',
+                    'intermediated-access': 'Good balance of innovation and stability. Recommended for cautious implementation.',
+                    'multi-tier-access': 'Complex but flexible. Allows gradual transition and stakeholder accommodation.'
+                },
+                'centralized-database': {
+                    'direct-access': 'Maximum control and efficiency but eliminates banking sector. High political risk.',
+                    'intermediated-access': 'Conservative, proven approach. Lower risk but limited innovation potential.',
+                    'multi-tier-access': 'Practical compromise allowing different service levels for different needs.'
+                },
+                'hybrid-architecture': {
+                    'direct-access': 'Balanced approach with good innovation potential. Moderate implementation complexity.',
+                    'intermediated-access': 'Optimal balance of all factors. Recommended for most implementations.',
+                    'multi-tier-access': 'Most flexible but most complex. Requires strong technical governance.'
+                }
+            };
+
+            return recommendations[platform][access];
+        }
+
+        // Update parameter controls
+        function updateParameter(param) {
+            if (param === 'limits') {
+                const value = document.getElementById('transaction-limits').value;
+                cbdcState.parameters.transactionLimits = parseInt(value);
+                document.getElementById('limits-value').textContent = '$' + parseInt(value).toLocaleString();
+
+                const impact = value < 5000 ? 'Lower inclusion, lower risk' :
+                              value > 50000 ? 'Higher inclusion, higher risk' :
+                              'Moderate inclusion, moderate risk';
+                document.getElementById('limits-impact').textContent = impact;
+            }
+            // Add other parameter updates...
+        }
+
+        // Economic model functions
+        function selectEconomic(choice, category) {
+            cbdcState.decisions['economic' + category.charAt(0).toUpperCase() + category.slice(1)] = choice;
+
+            // Update visual selection
+            document.querySelectorAll('.policy-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.policy-option').classList.add('selected');
+
+            if (cbdcState.decisions.economicInterest) {
+                document.getElementById('continue-privacy').disabled = false;
+            }
+        }
+
+        function updateEconomicParameter(type) {
+            if (type === 'individual') {
+                const value = document.getElementById('individual-limit').value;
+                cbdcState.parameters.individualLimit = parseInt(value);
+                document.getElementById('individual-limit-value').textContent = '$' + parseInt(value).toLocaleString();
+
+                const impact = value < 10000 ? 'Strong bank protection' :
+                              value > 50000 ? 'Weak bank protection' :
+                              'Moderate bank protection';
+                document.getElementById('individual-limit-impact').textContent = impact;
+            }
+            // Add business parameter update...
+        }
+
+        function runBankingScenario(scenario) {
+            const results = document.getElementById('banking-simulation');
+            const content = document.getElementById('banking-results');
+
+            const scenarios = {
+                'mild': {
+                    adoption: '20%',
+                    deposit_flight: '15%',
+                    revenue_loss: '$420M',
+                    bank_failure_risk: 'Low',
+                    unemployment: '12,000 jobs',
+                    assessment: 'Manageable impact. Banks adapt through new services and efficiency gains.'
+                },
+                'moderate': {
+                    adoption: '50%',
+                    deposit_flight: '35%',
+                    revenue_loss: '$1.2B',
+                    bank_failure_risk: 'Medium',
+                    unemployment: '45,000 jobs',
+                    assessment: 'Significant restructuring required. Government support measures essential.'
+                },
+                'high': {
+                    adoption: '80%',
+                    deposit_flight: '60%',
+                    revenue_loss: '$2.1B',
+                    bank_failure_risk: 'High',
+                    unemployment: '85,000 jobs',
+                    assessment: 'Systemic banking crisis likely without major intervention.'
+                }
+            };
+
+            const result = scenarios[scenario];
+            content.innerHTML = `
+                <div class="scenario-result">
+                    <h6>${scenario.charAt(0).toUpperCase() + scenario.slice(1)} CBDC Adoption (${result.adoption})</h6>
+                    <div class="impact-metrics">
+                        <div class="impact-item">Bank Deposit Flight: ${result.deposit_flight}</div>
+                        <div class="impact-item">Annual Revenue Loss: ${result.revenue_loss}</div>
+                        <div class="impact-item">Bank Failure Risk: ${result.bank_failure_risk}</div>
+                        <div class="impact-item">Potential Job Losses: ${result.unemployment}</div>
+                    </div>
+                    <div class="scenario-assessment">
+                        <strong>Assessment:</strong> ${result.assessment}
+                    </div>
+                </div>
+            `;
+
+            results.style.display = 'block';
+        }
+
+        // Privacy selection
+        function selectPrivacy(level) {
+            cbdcState.decisions.privacyLevel = level;
+
+            const impact = document.getElementById('privacy-impact');
+            const analysis = document.getElementById('privacy-analysis');
+
+            const privacyAnalysis = {
+                'maximum-privacy': {
+                    public_support: 85,
+                    law_enforcement: 25,
+                    regulatory_compliance: 40,
+                    analysis: 'High public appeal but significant regulatory challenges. May face pressure from law enforcement and international partners.'
+                },
+                'balanced-privacy': {
+                    public_support: 70,
+                    law_enforcement: 75,
+                    regulatory_compliance: 90,
+                    analysis: 'Optimal balance for most implementations. Meets regulatory requirements while preserving reasonable privacy expectations.'
+                },
+                'maximum-surveillance': {
+                    public_support: 35,
+                    law_enforcement: 95,
+                    regulatory_compliance: 100,
+                    analysis: 'Strong regulatory compliance but low public acceptance. Risk of authoritarian association and adoption resistance.'
+                }
+            };
+
+            const selected = privacyAnalysis[level];
+            analysis.innerHTML = `
+                <div class="privacy-scores">
+                    <div class="score-item">Public Support: ${selected.public_support}%</div>
+                    <div class="score-item">Law Enforcement: ${selected.law_enforcement}%</div>
+                    <div class="score-item">Regulatory Compliance: ${selected.regulatory_compliance}%</div>
+                </div>
+                <p>${selected.analysis}</p>
+            `;
+
+            impact.style.display = 'block';
+            document.getElementById('continue-implementation').disabled = false;
+            updateDecisionTracker();
+        }
+
+        // Update decision tracker
+        function updateDecisionTracker() {
+            document.getElementById('tech-decision').textContent =
+                cbdcState.decisions.technicalPlatform || 'Pending';
+            document.getElementById('privacy-decision').textContent =
+                cbdcState.decisions.privacyLevel || 'Pending';
+            document.getElementById('launch-decision').textContent =
+                cbdcState.decisions.implementationTimeline || 'Pending';
+
+            // Calculate overall score
+            const scores = Object.values(cbdcState.scores);
+            const avgScore = scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
+            document.getElementById('overall-score').textContent = Math.round(avgScore) + '/100';
+        }
+
+        // Implementation timeline selection
+        function selectTimeline(timeline) {
+            cbdcState.decisions.implementationTimeline = timeline;
+
+            const impact = document.getElementById('timeline-impact');
+            const analysis = document.getElementById('timeline-analysis');
+
+            const timelineAnalysis = {
+                'gradual-rollout': {
+                    risk: 'Low',
+                    cost: '$1.2B',
+                    market_position: 'Follower',
+                    success_probability: '85%',
+                    analysis: 'Conservative approach with high success probability but may miss first-mover advantages.'
+                },
+                'accelerated-launch': {
+                    risk: 'High',
+                    cost: '$2.1B',
+                    market_position: 'Leader',
+                    success_probability: '65%',
+                    analysis: 'Aggressive timeline captures market leadership but increases technical and adoption risks.'
+                },
+                'phased-demographic': {
+                    risk: 'Medium',
+                    cost: '$1.6B',
+                    market_position: 'Competitive',
+                    success_probability: '75%',
+                    analysis: 'Targeted approach allows optimization per user group but requires sophisticated marketing.'
+                }
+            };
+
+            const selected = timelineAnalysis[timeline];
+            analysis.innerHTML = `
+                <div class="timeline-assessment">
+                    <div class="assessment-item">Implementation Risk: ${selected.risk}</div>
+                    <div class="assessment-item">Total Cost: ${selected.cost}</div>
+                    <div class="assessment-item">Market Position: ${selected.market_position}</div>
+                    <div class="assessment-item">Success Probability: ${selected.success_probability}</div>
+                </div>
+                <p>${selected.analysis}</p>
+            `;
+
+            impact.style.display = 'block';
+            document.getElementById('continue-final').disabled = false;
+            updateDecisionTracker();
+        }
+
+        // Additional functions for adoption, contingency planning, final report generation, etc.
+        function updateAdoption() {
+            // Update adoption projections based on selected incentives
+            const incentives = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).length;
+            const year1 = Math.min(incentives * 8 + 15, 60);
+            const year3 = Math.min(year1 * 2.2, 85);
+            const cost = incentives * 180 + 400;
+
+            document.getElementById('year1-adoption').textContent = year1 + '%';
+            document.getElementById('year3-adoption').textContent = year3 + '%';
+            document.getElementById('adoption-cost').textContent = '$' + cost + 'M';
+            document.getElementById('breakeven-time').textContent = year3 > 40 ? '4-5 years' : '6-8 years';
+        }
+
+        function planContingency(scenario) {
+            // Show contingency planning for different scenarios
+            const plan = document.getElementById('contingency-plan');
+            const title = document.getElementById('contingency-title');
+            const content = document.getElementById('contingency-content');
+
+            const contingencies = {
+                'system-failure': {
+                    title: 'System-wide Technical Failure Response Plan',
+                    content: `
+                        <div class="contingency-details">
+                            <h6>Immediate Response (0-4 hours)</h6>
+                            <ul>
+                                <li>Activate backup systems and redundant infrastructure</li>
+                                <li>Enable offline transaction capabilities for essential services</li>
+                                <li>Communicate system status through all channels</li>
+                                <li>Coordinate with banks to increase cash liquidity</li>
+                            </ul>
+                            <h6>Short-term Measures (4-48 hours)</h6>
+                            <ul>
+                                <li>Deploy mobile emergency payment units to critical locations</li>
+                                <li>Activate emergency cash distribution network</li>
+                                <li>Implement priority transaction queuing for essential services</li>
+                                <li>Provide regular public updates on restoration timeline</li>
+                            </ul>
+                            <h6>Recovery Phase (2-7 days)</h6>
+                            <ul>
+                                <li>Gradual system restoration with enhanced monitoring</li>
+                                <li>Transaction reconciliation and error correction</li>
+                                <li>Independent technical audit and improvement implementation</li>
+                                <li>Public confidence restoration campaign</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                'economic-crisis': {
+                    title: 'Economic Crisis Response Capabilities',
+                    content: `
+                        <div class="contingency-details">
+                            <h6>CBDC Crisis Response Tools</h6>
+                            <ul>
+                                <li>Instant stimulus distribution to targeted demographics</li>
+                                <li>Programmable spending conditions (local business support)</li>
+                                <li>Real-time economic activity monitoring and adjustment</li>
+                                <li>Negative interest rates implementation if needed</li>
+                            </ul>
+                            <h6>Financial Stability Measures</h6>
+                            <ul>
+                                <li>Automatic bank deposit protection triggers</li>
+                                <li>Emergency liquidity provision to financial institutions</li>
+                                <li>Capital flow monitoring and management</li>
+                                <li>Coordinated international central bank response</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                'international-sanctions': {
+                    title: 'International Isolation Response Strategy',
+                    content: `
+                        <div class="contingency-details">
+                            <h6>Domestic Resilience Measures</h6>
+                            <ul>
+                                <li>Strengthen domestic payment infrastructure independence</li>
+                                <li>Develop alternative international settlement mechanisms</li>
+                                <li>Build strategic partnerships with non-sanctioning countries</li>
+                                <li>Enhance CBDC offline and peer-to-peer capabilities</li>
+                            </ul>
+                            <h6>Economic Adaptation Strategy</h6>
+                            <ul>
+                                <li>Prioritize domestic supply chain resilience</li>
+                                <li>Implement import substitution support programs</li>
+                                <li>Develop barter and alternative currency mechanisms</li>
+                                <li>Strengthen regional economic integration</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            };
+
+            const selected = contingencies[scenario];
+            title.textContent = selected.title;
+            content.innerHTML = selected.content;
+            plan.style.display = 'block';
+        }
+
+        function generateFinalReport() {
+            // Generate comprehensive executive report
+            const report = document.getElementById('final-report');
+            const content = document.getElementById('report-content');
+
+            // Calculate final scores and recommendations
+            const overallScore = Object.values(cbdcState.scores).reduce((a, b) => a + b, 0) / 4;
+
+            content.innerHTML = `
+                <div class="executive-report">
+                    <div class="report-header">
+                        <h4>CONFIDENTIAL - Central Bank Digital Currency Strategic Recommendation</h4>
+                        <p><strong>Prepared for:</strong> Central Bank Governor<br>
+                        <strong>Date:</strong> ${new Date().toLocaleDateString()}<br>
+                        <strong>Classification:</strong> Internal Use Only</p>
+                    </div>
+
+                    <div class="executive-summary">
+                        <h5>Executive Summary</h5>
+                        <p>${document.getElementById('exec-summary').value || 'Recommendation to proceed with CBDC implementation using selected technical and policy framework.'}</p>
+                        <div class="key-metrics">
+                            <div class="metric">Overall Feasibility Score: <strong>${Math.round(overallScore)}/100</strong></div>
+                            <div class="metric">Recommended Timeline: <strong>${cbdcState.decisions.implementationTimeline || 'To be determined'}</strong></div>
+                            <div class="metric">Estimated Investment: <strong>$1.2B - $2.5B</strong></div>
+                            <div class="metric">Success Probability: <strong>75%</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="technical-summary">
+                        <h5>Technical Architecture</h5>
+                        <div class="tech-decisions">
+                            <div>Platform: <strong>${cbdcState.decisions.technicalPlatform || 'Not selected'}</strong></div>
+                            <div>Access Model: <strong>${cbdcState.decisions.technicalAccess || 'Not selected'}</strong></div>
+                            <div>Privacy Level: <strong>${cbdcState.decisions.privacyLevel || 'Not selected'}</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="risk-assessment">
+                        <h5>Risk Assessment & Mitigation</h5>
+                        <p>${document.getElementById('risk-mitigation').value || 'Key risks include banking sector disruption, technical failures, and privacy concerns. Mitigation strategies have been developed for each risk category.'}</p>
+                    </div>
+
+                    <div class="recommendations">
+                        <h5>Strategic Recommendations</h5>
+                        <ol>
+                            <li>Proceed with CBDC development using selected technical framework</li>
+                            <li>Implement comprehensive stakeholder engagement program</li>
+                            <li>Establish dedicated CBDC project office with governor oversight</li>
+                            <li>Begin international coordination discussions immediately</li>
+                            <li>Initiate public education and communication strategy</li>
+                        </ol>
+                    </div>
+
+                    <div class="next-steps">
+                        <h5>Immediate Next Steps</h5>
+                        <ul>
+                            <li>Board approval for CBDC development program</li>
+                            <li>Budget allocation for initial development phase</li>
+                            <li>Technical vendor selection and contracting</li>
+                            <li>Regulatory framework development initiation</li>
+                            <li>International engagement strategy implementation</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            report.style.display = 'block';
+        }
+
+        // Additional utility functions
+        function downloadReport() {
+            alert('Report download functionality would be implemented here');
+        }
+
+        function shareReport() {
+            alert('Report sharing functionality would be implemented here');
+        }
+
+        function exploreAlternatives() {
+            if (confirm('Reset all decisions and explore alternative scenarios?')) {
+                // Reset state and allow re-running with different choices
+                cbdcState.decisions = {};
+                cbdcState.scores = { technical: 0, economic: 0, political: 0, social: 0 };
+                document.getElementById('briefing').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function saveReflections() {
+            alert('Learning reflections saved successfully');
+        }
+
+        function goToActivity(activity) {
+            const urls = {
+                'enterprise': 'blockchain-activities.html#case-studies',
+                'defi-regulation': 'blockchain-activities.html#case-studies'
+            };
+            window.location.href = urls[activity] || 'blockchain-activities.html';
+        }
+
+        // Initialize the application
+        updateDecisionTracker();
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* CBDC-specific styles */
+        .scenario-setup {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f3ff 100%);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 12px;
+            padding: var(--space-8);
+            margin: var(--space-6) 0;
+        }
+
+        .scenario-header {
+            background: var(--color-white);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin-bottom: var(--space-6);
+            border-left: 4px solid var(--color-electric-blue);
+        }
+
+        .situation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .situation-card {
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-gray-400);
+        }
+
+        .situation-card.urgent {
+            border-left-color: var(--color-red);
+        }
+
+        .situation-card.important {
+            border-left-color: var(--color-yellow);
+        }
+
+        .situation-card.moderate {
+            border-left-color: var(--color-electric-blue);
+        }
+
+        .situation-card.emerging {
+            border-left-color: var(--color-green);
+        }
+
+        .pressure-list {
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .pressure-item {
+            padding: var(--space-2) 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .pressure-item:last-child {
+            border-bottom: none;
+        }
+
+        .intelligence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .intel-card {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .intel-card:hover {
+            border-color: var(--color-electric-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 64, 255, 0.1);
+        }
+
+        .intel-viewer {
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            padding: var(--space-6);
+            border-radius: 12px;
+            margin: var(--space-6) 0;
+        }
+
+        .stakeholders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .stakeholder-card {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            border-radius: 8px;
+            padding: var(--space-4);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .stakeholder-card:hover {
+            border-color: var(--color-electric-blue);
+            transform: translateY(-2px);
+        }
+
+        .stakeholder-card.high-influence {
+            border-left: 4px solid var(--color-red);
+        }
+
+        .stakeholder-card.medium-influence {
+            border-left: 4px solid var(--color-yellow);
+        }
+
+        .influence-level {
+            background: var(--color-gray-100);
+            padding: var(--space-1) var(--space-2);
+            border-radius: 4px;
+            font-size: var(--text-xs);
+            font-weight: var(--font-semibold);
+        }
+
+        .stakeholder-analysis-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 12px;
+            padding: var(--space-6);
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+            border-bottom: 1px solid var(--color-gray-200);
+            padding-bottom: var(--space-3);
+        }
+
+        .close-panel {
+            background: none;
+            border: none;
+            font-size: var(--text-2xl);
+            cursor: pointer;
+            color: var(--color-gray-600);
+        }
+
+        .strategy-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .strategy-option {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            padding: var(--space-6);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .strategy-option:hover {
+            border-color: var(--color-electric-blue);
+            transform: translateY(-2px);
+        }
+
+        .strategy-impact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+        }
+
+        .impact-item {
+            background: var(--color-gray-100);
+            padding: var(--space-1) var(--space-2);
+            border-radius: 4px;
+            font-size: var(--text-xs);
+        }
+
+        .impact-item.positive {
+            background: #f0f9f0;
+            color: var(--color-green);
+        }
+
+        .impact-item.negative {
+            background: #fef2f2;
+            color: var(--color-red);
+        }
+
+        .impact-item.neutral {
+            background: var(--color-gray-100);
+            color: var(--color-gray-700);
+        }
+
+        .tech-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .tech-option {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .tech-option:hover, .tech-option.selected {
+            border-color: var(--color-electric-blue);
+            background: #f8f9ff;
+        }
+
+        .tech-specs {
+            margin-top: var(--space-3);
+        }
+
+        .pro {
+            color: var(--color-green);
+            margin: var(--space-1) 0;
+        }
+
+        .con {
+            color: var(--color-red);
+            margin: var(--space-1) 0;
+        }
+
+        .access-options {
+            display: grid;
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .access-option {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .access-option:hover, .access-option.selected {
+            border-color: var(--color-electric-blue);
+            background: #f8f9ff;
+        }
+
+        .implications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-top: var(--space-2);
+        }
+
+        .implication {
+            background: var(--color-gray-100);
+            padding: var(--space-1) var(--space-2);
+            border-radius: 4px;
+            font-size: var(--text-xs);
+        }
+
+        .parameter-controls {
+            background: var(--color-white);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .parameter-control {
+            margin-bottom: var(--space-4);
+        }
+
+        .parameter-control label {
+            display: block;
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .parameter-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--space-2);
+        }
+
+        .parameter-impact {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+        }
+
+        .technical-assessment {
+            background: var(--color-gray-50);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-6) 0;
+        }
+
+        .assessment-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--color-white);
+            padding: var(--space-3);
+            border-radius: 6px;
+        }
+
+        .metric-label {
+            font-weight: var(--font-semibold);
+        }
+
+        .metric-value {
+            font-weight: var(--font-bold);
+            color: var(--color-electric-blue);
+        }
+
+        .policy-options {
+            display: grid;
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .policy-option {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .policy-option:hover, .policy-option.selected {
+            border-color: var(--color-electric-blue);
+            background: #f8f9ff;
+        }
+
+        .economic-impact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-top: var(--space-2);
+        }
+
+        .impact {
+            padding: var(--space-1) var(--space-2);
+            border-radius: 4px;
+            font-size: var(--text-xs);
+            font-weight: var(--font-semibold);
+        }
+
+        .privacy-spectrum {
+            margin: var(--space-6) 0;
+        }
+
+        .spectrum-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .privacy-option {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            padding: var(--space-6);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .privacy-option:hover {
+            border-color: var(--color-electric-blue);
+            transform: translateY(-2px);
+        }
+
+        .privacy-details {
+            margin-top: var(--space-4);
+        }
+
+        .feature {
+            color: var(--color-green);
+            margin: var(--space-1) 0;
+        }
+
+        .concern {
+            color: var(--color-red);
+            margin: var(--space-1) 0;
+        }
+
+        .decision-summary {
+            background: var(--color-gray-50);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-6) 0;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .impact-dashboard {
+            background: var(--color-white);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .impact-metric {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .metric-display {
+            margin: var(--space-4) 0;
+        }
+
+        .metric-value {
+            font-size: var(--text-4xl);
+            font-weight: var(--font-bold);
+            color: var(--color-electric-blue);
+        }
+
+        .metric-breakdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+            font-size: var(--text-sm);
+        }
+
+        .impact-projections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+        }
+
+        .projection-item {
+            text-align: center;
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: 6px;
+        }
+
+        .projection-value {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-electric-blue);
+            margin-top: var(--space-2);
+        }
+
+        .recommendation-sections {
+            margin: var(--space-6) 0;
+        }
+
+        .rec-section {
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+            border-left: 4px solid var(--color-electric-blue);
+        }
+
+        .rec-section h4 {
+            margin-bottom: var(--space-3);
+            color: var(--color-electric-blue);
+        }
+
+        .rec-section textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: var(--space-3);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .rec-section select {
+            width: 100%;
+            padding: var(--space-3);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .rationale-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .rationale-options label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            cursor: pointer;
+        }
+
+        .final-report {
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            padding: var(--space-8);
+            border-radius: 12px;
+            margin: var(--space-6) 0;
+        }
+
+        .executive-report {
+            line-height: 1.6;
+        }
+
+        .report-header {
+            border-bottom: 2px solid var(--color-gray-200);
+            padding-bottom: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-4) 0;
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: 6px;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: var(--space-3);
+            margin: var(--space-6) 0;
+            justify-content: center;
+        }
+
+        .reflection-questions {
+            margin: var(--space-6) 0;
+        }
+
+        .reflection-item {
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+            border-left: 4px solid var(--color-electric-blue);
+        }
+
+        .reflection-input {
+            width: 100%;
+            min-height: 80px;
+            padding: var(--space-3);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+            margin-top: var(--space-2);
+        }
+
+        .next-activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .activity-recommendation {
+            background: var(--color-white);
+            border: 2px solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .next-step-action {
+            text-align: center;
+            margin: var(--space-8) 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .situation-grid, .stakeholders-grid, .strategy-options, .tech-options, .spectrum-options {
+                grid-template-columns: 1fr;
+            }
+
+            .stakeholder-analysis-panel {
+                max-width: 90vw;
+            }
+
+            .assessment-metrics, .key-metrics, .impact-projections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

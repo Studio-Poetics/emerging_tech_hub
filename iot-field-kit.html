@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Field Kit - Hardware, Boards & Sensors for Makers | Emerging Tech Hub</title>
+    <meta name="description" content="Complete IoT hardware catalog with Indian vendors and pricing. Development boards, sensors, communication modules, and cloud platforms for building connected systems.">
+    <meta name="keywords" content="IoT hardware, ESP32, Arduino, Raspberry Pi, sensors, development boards, Indian electronics vendors, IoT components">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Hardware Card Styling */
+.hardware-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+}
+
+.hardware-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+}
+
+.hardware-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hardware-card h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+}
+
+.hardware-specs {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--color-gray-200);
+}
+
+.spec-tag {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+}
+
+.spec-tag.price {
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    border-color: var(--color-electric-blue);
+}
+
+.hardware-description {
+    line-height: 1.8;
+    margin-bottom: var(--space-4);
+}
+
+.hardware-features {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.hardware-features li {
+    line-height: 1.8;
+    margin-bottom: var(--space-2);
+}
+
+.vendor-info {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-gray-200);
+}
+
+.vendor-info strong {
+    color: var(--color-black);
+}
+
+/* Platform Card Styling */
+.platform-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.platform-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+}
+
+.platform-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+}
+
+.platform-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+}
+
+.platform-feature-item {
+    padding: var(--space-3);
+    background: var(--color-gray-50);
+    border-left: 3px solid var(--color-electric-blue);
+}
+
+.platform-feature-item h4 {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+}
+
+/* Buying Guide Styling */
+.buying-guide {
+    background: var(--color-gray-50);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.buying-guide h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-5);
+}
+
+.vendor-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+}
+
+.vendor-item {
+    background: var(--color-white);
+    padding: var(--space-4);
+    border: 2px solid var(--color-gray-300);
+}
+
+.vendor-item h4 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+    color: var(--color-electric-blue);
+}
+
+.vendor-item p {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin-bottom: var(--space-2);
+}
+
+.vendor-item .vendor-url {
+    font-size: var(--text-xs);
+    color: var(--color-gray-600);
+    font-family: monospace;
+}
+
+@media (max-width: 768px) {
+    .hardware-grid, .vendor-list {
+        grid-template-columns: 1fr;
+    }
+
+    .platform-features {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Connected Worlds</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Internet of Things</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="iot-landing.html" class="experimental-nav-link">← IoT Home</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="iot-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="iot-readings.html" class="experimental-nav-link">Readings</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="iot-projects.html" class="experimental-nav-link">Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="iot-activities.html" class="experimental-nav-link">Activities</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">What's Included</div>
+                    <div class="info-box-content">Development boards, sensors, communication modules, cloud platforms, and Indian vendor recommendations with pricing.</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero experimental-fade-in">
+                <div class="hero-content">
+                    <h1 class="fundamentals-title text-reveal">IoT Field Kit</h1>
+                    <p class="fundamentals-subtitle">Essential hardware, components, and platforms for building connected systems—from beginner projects to industrial deployments.</p>
+
+                    <div style="display: flex; align-items: center; margin-top: 2rem;">
+                        <span class="experimental-date">Hardware Catalog</span>
+                        <span class="experimental-arrow">→</span>
+                        <span class="experimental-date">Indian Vendors & Pricing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Development Boards Section -->
+                <div id="boards" class="content-section">
+                    <h2>Development Boards</h2>
+                    <p style="line-height: 1.8; margin-bottom: var(--space-6);">The brain of your IoT system. These microcontroller boards handle sensors, connectivity, and logic.</p>
+
+                    <div class="hardware-grid">
+
+                        <!-- ESP32 -->
+                        <div class="hardware-card">
+                            <h3>ESP32 DevKit V1</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹200-600</span>
+                                <span class="spec-tag">Beginner Friendly</span>
+                                <span class="spec-tag">WiFi + BLE</span>
+                            </div>
+                            <p class="hardware-description">The go-to board for most IoT projects. Built-in WiFi and Bluetooth, low power consumption, Arduino-compatible, and incredibly affordable.</p>
+                            <ul class="hardware-features">
+                                <li>Dual-core 240MHz processor</li>
+                                <li>Built-in WiFi (802.11 b/g/n) & Bluetooth 4.2</li>
+                                <li>30+ GPIO pins for sensors/actuators</li>
+                                <li>Deep sleep mode (10μA) for battery projects</li>
+                                <li>Arduino IDE & MicroPython support</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Best For:</strong> Smart home devices, sensor networks, WiFi-enabled projects</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹299), ThinkRobotics (₹349), Amazon India (₹399)</p>
+                        </div>
+
+                        <!-- ESP32-C6 -->
+                        <div class="hardware-card">
+                            <h3>ESP32-C6 DevKit</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹500-900</span>
+                                <span class="spec-tag">WiFi 6</span>
+                                <span class="spec-tag">RISC-V</span>
+                            </div>
+                            <p class="hardware-description">The next-generation ESP32 with WiFi 6, Bluetooth 5.3, and RISC-V architecture. Better performance, lower power, and future-proof connectivity.</p>
+                            <ul class="hardware-features">
+                                <li>Single-core RISC-V processor (160MHz)</li>
+                                <li>WiFi 6 (802.11ax) with 2.4GHz support</li>
+                                <li>Bluetooth 5.3 LE with Mesh support</li>
+                                <li>22 GPIO pins, ultra-low power (7μA deep sleep)</li>
+                                <li>Zigbee & Thread protocol support</li>
+                                <li>ESP-IDF & Arduino support</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Best For:</strong> Battery-powered devices, Matter smart home, mesh networks, future-proof projects</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹649), ThinkRobotics (₹749), Amazon India (₹799)</p>
+                        </div>
+
+                        <!-- Arduino Uno -->
+                        <div class="hardware-card">
+                            <h3>Arduino Uno R3</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹400-800</span>
+                                <span class="spec-tag">Beginner Friendly</span>
+                                <span class="spec-tag">USB Powered</span>
+                            </div>
+                            <p class="hardware-description">The classic learning board. Simple, reliable, and supported by thousands of tutorials. Perfect for understanding sensor basics before adding connectivity.</p>
+                            <ul class="hardware-features">
+                                <li>ATmega328P microcontroller (16MHz)</li>
+                                <li>14 digital I/O pins, 6 analog inputs</li>
+                                <li>5V operation, USB programming</li>
+                                <li>Massive community & library support</li>
+                                <li>Shields available for WiFi, GSM, LoRa</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Best For:</strong> Learning electronics, sensor prototyping, classroom projects</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹549), Amazon India (₹650), Electroncomponents (₹599)</p>
+                        </div>
+
+                        <!-- Raspberry Pi Pico W -->
+                        <div class="hardware-card">
+                            <h3>Raspberry Pi Pico W</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹600-900</span>
+                                <span class="spec-tag">WiFi Enabled</span>
+                                <span class="spec-tag">Python & C</span>
+                            </div>
+                            <p class="hardware-description">Modern microcontroller with built-in WiFi. More powerful than Arduino, cheaper than full Raspberry Pi. Great for Python developers entering IoT.</p>
+                            <ul class="hardware-features">
+                                <li>Dual-core ARM Cortex-M0+ (133MHz)</li>
+                                <li>Built-in WiFi (2.4GHz 802.11n)</li>
+                                <li>26 GPIO pins, 3 analog inputs</li>
+                                <li>MicroPython & C/C++ support</li>
+                                <li>264KB RAM for complex programs</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Best For:</strong> Python developers, data logging, multi-sensor systems</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹649), ThinkRobotics (₹699), Rarecomponents (₹750)</p>
+                        </div>
+
+                        <!-- NodeMCU ESP8266 -->
+                        <div class="hardware-card">
+                            <h3>NodeMCU ESP8266</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹150-350</span>
+                                <span class="spec-tag">Ultra Cheap</span>
+                                <span class="spec-tag">WiFi</span>
+                            </div>
+                            <p class="hardware-description">The most affordable WiFi-enabled board. Older than ESP32 but still excellent for simple connected projects.</p>
+                            <ul class="hardware-features">
+                                <li>80MHz processor with WiFi</li>
+                                <li>128KB RAM, 4MB flash</li>
+                                <li>11 GPIO pins</li>
+                                <li>MicroUSB programming</li>
+                                <li>3.3V operation</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Best For:</strong> Budget WiFi projects, home automation, learning IoT connectivity</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹199), Amazon India (₹249), Electroncomponents (₹299)</p>
+                        </div>
+
+                        <!-- Raspberry Pi 4 -->
+                        <div class="hardware-card">
+                            <h3>Raspberry Pi 4 (2GB/4GB)</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹4,500-7,500</span>
+                                <span class="spec-tag">Advanced</span>
+                                <span class="spec-tag">Full Linux</span>
+                            </div>
+                            <p class="hardware-description">A full Linux computer for edge computing. Run databases, web servers, computer vision, and AI at the edge.</p>
+                            <ul class="hardware-features">
+                                <li>Quad-core ARM Cortex-A72 (1.5GHz)</li>
+                                <li>2GB/4GB/8GB RAM options</li>
+                                <li>Dual 4K HDMI, USB 3.0, Gigabit Ethernet</li>
+                                <li>40-pin GPIO for sensors</li>
+                                <li>Run Python, Node.js, databases, Docker</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Best For:</strong> Edge gateways, computer vision, local data processing, AI inference</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹5,499 for 2GB), Amazon India (₹6,200 for 4GB)</p>
+                        </div>
+
+                        <!-- Particle Photon -->
+                        <div class="hardware-card">
+                            <h3>Particle Photon 2</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹2,500-3,500</span>
+                                <span class="spec-tag">Production Ready</span>
+                                <span class="spec-tag">Cloud Integrated</span>
+                            </div>
+                            <p class="hardware-description">Professional-grade IoT board with built-in cloud connectivity, OTA updates, and cellular options. Built for products, not just prototypes.</p>
+                            <ul class="hardware-features">
+                                <li>ARM Cortex-M4F processor</li>
+                                <li>Built-in WiFi & Bluetooth</li>
+                                <li>Cloud IDE & OTA firmware updates</li>
+                                <li>REST API and webhooks built-in</li>
+                                <li>Certification-ready for commercial deployment</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Best For:</strong> Commercial IoT products, fleet management, remote monitoring</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Import from Particle.io, Mouser Electronics ships to India</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Sensors Section -->
+                <div id="sensors" class="content-section">
+                    <h2>Sensors & Actuators</h2>
+                    <p style="line-height: 1.8; margin-bottom: var(--space-6);">The eyes, ears, and hands of your IoT system. Sensors collect data from the physical world; actuators change it.</p>
+
+                    <div class="hardware-grid">
+
+                        <!-- DHT22 -->
+                        <div class="hardware-card">
+                            <h3>DHT22 Temperature & Humidity Sensor</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹150-300</span>
+                                <span class="spec-tag">Beginner</span>
+                                <span class="spec-tag">Digital</span>
+                            </div>
+                            <p class="hardware-description">The most popular environmental sensor. Reliable, cheap, and simple to use. Perfect first sensor.</p>
+                            <ul class="hardware-features">
+                                <li>Temperature: -40°C to 80°C (±0.5°C accuracy)</li>
+                                <li>Humidity: 0-100% RH (±2-5% accuracy)</li>
+                                <li>Digital output, 1-wire protocol</li>
+                                <li>3-5V operation</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Weather stations, greenhouse monitoring, home automation</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹199), Amazon India (₹249)</p>
+                        </div>
+
+                        <!-- MQ-135 Air Quality -->
+                        <div class="hardware-card">
+                            <h3>MQ-135 Air Quality Sensor</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹100-250</span>
+                                <span class="spec-tag">Beginner</span>
+                                <span class="spec-tag">Analog</span>
+                            </div>
+                            <p class="hardware-description">Detects CO2, ammonia, benzene, smoke, and other air pollutants. Crucial for Indian cities with air quality issues.</p>
+                            <ul class="hardware-features">
+                                <li>Detects: NH3, NOx, alcohol, benzene, smoke, CO2</li>
+                                <li>Analog output (ADC required)</li>
+                                <li>Heating time: 24-48 hours for calibration</li>
+                                <li>5V operation</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Delhi/Mumbai air quality monitors, industrial safety, ventilation control</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹149), Electroncomponents (₹179)</p>
+                        </div>
+
+                        <!-- Soil Moisture -->
+                        <div class="hardware-card">
+                            <h3>Capacitive Soil Moisture Sensor</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹150-350</span>
+                                <span class="spec-tag">Agriculture</span>
+                                <span class="spec-tag">Analog</span>
+                            </div>
+                            <p class="hardware-description">Measures soil water content without corrosion. Essential for precision farming and irrigation automation.</p>
+                            <ul class="hardware-features">
+                                <li>Capacitive sensing (no probe corrosion)</li>
+                                <li>Analog output (0-3.3V)</li>
+                                <li>Waterproof construction</li>
+                                <li>3-5.5V operation</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Smart irrigation, greenhouse farming, agricultural research</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹249), ThinkRobotics (₹299)</p>
+                        </div>
+
+                        <!-- PIR Motion -->
+                        <div class="hardware-card">
+                            <h3>HC-SR501 PIR Motion Sensor</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹80-200</span>
+                                <span class="spec-tag">Beginner</span>
+                                <span class="spec-tag">Digital</span>
+                            </div>
+                            <p class="hardware-description">Detects human motion via infrared. Ultra-cheap, ultra-reliable. The heart of smart security systems.</p>
+                            <ul class="hardware-features">
+                                <li>Detection range: 3-7 meters</li>
+                                <li>120° detection angle</li>
+                                <li>Digital HIGH when motion detected</li>
+                                <li>Adjustable sensitivity & delay</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Security systems, automatic lighting, occupancy detection</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹99), Amazon India (₹149)</p>
+                        </div>
+
+                        <!-- Ultrasonic Distance -->
+                        <div class="hardware-card">
+                            <h3>HC-SR04 Ultrasonic Distance Sensor</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹70-180</span>
+                                <span class="spec-tag">Beginner</span>
+                                <span class="spec-tag">Digital</span>
+                            </div>
+                            <p class="hardware-description">Measures distance using ultrasonic pulses. Perfect for parking sensors, tank level monitoring, and obstacle detection.</p>
+                            <ul class="hardware-features">
+                                <li>Range: 2cm to 4 meters</li>
+                                <li>Accuracy: ±3mm</li>
+                                <li>15° beam angle</li>
+                                <li>5V operation, 2mA current</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Water tank monitoring, parking assistance, waste bin fill detection</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹89), Amazon India (₹129)</p>
+                        </div>
+
+                        <!-- GPS Module -->
+                        <div class="hardware-card">
+                            <h3>NEO-6M GPS Module</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹350-700</span>
+                                <span class="spec-tag">Intermediate</span>
+                                <span class="spec-tag">UART</span>
+                            </div>
+                            <p class="hardware-description">Add precise location tracking to your IoT device. Essential for vehicle tracking, asset monitoring, and outdoor deployments.</p>
+                            <ul class="hardware-features">
+                                <li>50-channel GPS receiver</li>
+                                <li>2.5m positional accuracy</li>
+                                <li>UART output (NMEA protocol)</li>
+                                <li>Built-in EEPROM, battery backup</li>
+                                <li>-161 dBm sensitivity</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Fleet tracking, delivery monitoring, agricultural equipment tracking</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹449), ThinkRobotics (₹549)</p>
+                        </div>
+
+                        <!-- Current Sensor -->
+                        <div class="hardware-card">
+                            <h3>ACS712 Current Sensor (5A/20A/30A)</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹120-300</span>
+                                <span class="spec-tag">Industrial</span>
+                                <span class="spec-tag">Analog</span>
+                            </div>
+                            <p class="hardware-description">Measure AC/DC current without breaking the circuit. Monitor power consumption, detect equipment failures, prevent overload.</p>
+                            <ul class="hardware-features">
+                                <li>Hall-effect current sensing</li>
+                                <li>Versions: 5A, 20A, 30A</li>
+                                <li>Analog voltage output</li>
+                                <li>Electrical isolation (safe)</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Energy monitoring, predictive maintenance, solar panel monitoring</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹199), Electroncomponents (₹249)</p>
+                        </div>
+
+                        <!-- Relay Module -->
+                        <div class="hardware-card">
+                            <h3>4-Channel 5V Relay Module</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹180-400</span>
+                                <span class="spec-tag">Actuator</span>
+                                <span class="spec-tag">Digital Control</span>
+                            </div>
+                            <p class="hardware-description">Control high-voltage AC appliances with low-voltage microcontrollers. Turn lights, motors, pumps on/off remotely.</p>
+                            <ul class="hardware-features">
+                                <li>4 independent relays</li>
+                                <li>Control 220V AC or 30V DC (10A max)</li>
+                                <li>Optocoupler isolation (safe)</li>
+                                <li>LED indicators per channel</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Home automation, irrigation control, industrial equipment switching</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹249), Amazon India (₹299)</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Communication Modules -->
+                <div id="communication" class="content-section">
+                    <h2>Communication Modules</h2>
+                    <p style="line-height: 1.8; margin-bottom: var(--space-6);">How your devices talk to each other and the cloud. Choose based on range, power, bandwidth, and cost requirements.</p>
+
+                    <div class="hardware-grid">
+
+                        <!-- LoRa Module -->
+                        <div class="hardware-card">
+                            <h3>LoRa SX1278 433MHz Module</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹400-800</span>
+                                <span class="spec-tag">Long Range</span>
+                                <span class="spec-tag">Low Power</span>
+                            </div>
+                            <p class="hardware-description">Long-range communication up to 10km in open areas. Perfect for rural deployments, agriculture, and city-wide sensor networks.</p>
+                            <ul class="hardware-features">
+                                <li>Range: 2-10km (line of sight)</li>
+                                <li>Low power: 100mA TX, 10mA RX</li>
+                                <li>433MHz (license-free in India)</li>
+                                <li>SPI interface</li>
+                                <li>LoRaWAN compatible</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Smart agriculture, rural IoT, city-wide air quality networks</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹549), ThinkRobotics (₹649)</p>
+                        </div>
+
+                        <!-- NRF24L01 -->
+                        <div class="hardware-card">
+                            <h3>NRF24L01+ 2.4GHz Transceiver</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹100-250</span>
+                                <span class="spec-tag">Short Range</span>
+                                <span class="spec-tag">Low Cost</span>
+                            </div>
+                            <p class="hardware-description">Cheap wireless communication for sensor networks within buildings. Create mesh networks of sensors without WiFi.</p>
+                            <ul class="hardware-features">
+                                <li>Range: 30-100 meters</li>
+                                <li>2.4GHz ISM band</li>
+                                <li>2Mbps data rate</li>
+                                <li>Ultra-low power (26μA standby)</li>
+                                <li>Multi-device networks (6 pipes)</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Wireless sensor networks, remote controls, home automation</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹129), Amazon India (₹179)</p>
+                        </div>
+
+                        <!-- GSM Module -->
+                        <div class="hardware-card">
+                            <h3>SIM800L GSM/GPRS Module</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹350-700</span>
+                                <span class="spec-tag">Cellular</span>
+                                <span class="spec-tag">SMS + Data</span>
+                            </div>
+                            <p class="hardware-description">Connect anywhere with cellular coverage. Send SMS alerts, make HTTP requests over 2G. Perfect for remote monitoring.</p>
+                            <ul class="hardware-features">
+                                <li>2G GSM/GPRS connectivity</li>
+                                <li>Send/receive SMS</li>
+                                <li>HTTP requests over GPRS</li>
+                                <li>Voice calls (with speaker/mic)</li>
+                                <li>Works with any Indian SIM (Jio 2G not supported)</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Remote locations without WiFi, SMS alerts, vehicle tracking</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹449), Amazon India (₹599), Note: Use Airtel/Vodafone SIM</p>
+                        </div>
+
+                        <!-- Zigbee Module -->
+                        <div class="hardware-card">
+                            <h3>XBee S2C Zigbee Module</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹1,200-2,000</span>
+                                <span class="spec-tag">Mesh Network</span>
+                                <span class="spec-tag">Industrial</span>
+                            </div>
+                            <p class="hardware-description">Industrial-grade mesh networking. Self-healing networks with hundreds of nodes. Used in smart homes and factories.</p>
+                            <ul class="hardware-features">
+                                <li>Mesh networking (up to 65,000 nodes)</li>
+                                <li>Range: 120m indoor, 1200m outdoor</li>
+                                <li>Low power (1μA sleep mode)</li>
+                                <li>128-bit AES encryption</li>
+                                <li>Self-healing routes</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Smart factories, building automation, large sensor deployments</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Import from Digi.com, Mouser ships to India</p>
+                        </div>
+
+                        <!-- Bluetooth Module -->
+                        <div class="hardware-card">
+                            <h3>HC-05 Bluetooth Module</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹200-400</span>
+                                <span class="spec-tag">Short Range</span>
+                                <span class="spec-tag">Simple</span>
+                            </div>
+                            <p class="hardware-description">Classic Bluetooth for phone-to-device communication. Great for configuration, debugging, and short-range control.</p>
+                            <ul class="hardware-features">
+                                <li>Bluetooth 2.0 (classic)</li>
+                                <li>Range: 10 meters</li>
+                                <li>UART interface (easy serial)</li>
+                                <li>Master or slave mode</li>
+                                <li>Android/iOS compatible</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Phone-controlled devices, wireless debugging, proximity sensors</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹249), Amazon India (₹299)</p>
+                        </div>
+
+                        <!-- Ethernet Module -->
+                        <div class="hardware-card">
+                            <h3>W5500 Ethernet Module</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">₹400-800</span>
+                                <span class="spec-tag">Wired</span>
+                                <span class="spec-tag">Reliable</span>
+                            </div>
+                            <p class="hardware-description">Wired network connectivity for industrial reliability. No WiFi interference, secure, and always-on connectivity.</p>
+                            <ul class="hardware-features">
+                                <li>10/100 Mbps Ethernet</li>
+                                <li>Hardwired TCP/IP stack</li>
+                                <li>8 independent sockets</li>
+                                <li>SPI interface to MCU</li>
+                                <li>No packet loss, deterministic latency</li>
+                            </ul>
+                            <p class="vendor-info"><strong>Use Cases:</strong> Industrial automation, critical infrastructure, factory IoT</p>
+                            <p class="vendor-info"><strong>Indian Vendors:</strong> Robu.in (₹549), ThinkRobotics (₹649)</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Cloud Platforms -->
+                <div id="platforms" class="content-section">
+                    <h2>Cloud Platforms & Services</h2>
+                    <p style="line-height: 1.8; margin-bottom: var(--space-6);">Where your data lives and gets analyzed. From free hobbyist platforms to enterprise-grade infrastructure.</p>
+
+                    <div class="hardware-grid">
+
+                        <!-- ThingSpeak -->
+                        <div class="platform-card">
+                            <h3>ThingSpeak</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">Free</span>
+                                <span class="spec-tag">Beginner Friendly</span>
+                                <span class="spec-tag">MATLAB Integration</span>
+                            </div>
+                            <p class="hardware-description" style="line-height: 1.8; margin-bottom: var(--space-5);">The easiest way to get started. Send sensor data via HTTP, visualize instantly, run analytics with MATLAB.</p>
+
+                            <div class="platform-features">
+                                <div class="platform-feature-item">
+                                    <h4>Free Tier</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">3 million messages/year, 4 channels, public or private</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>REST API</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Simple HTTP GET/POST to log data, retrieve with JSON</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Visualizations</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Real-time charts, graphs, gauges built-in</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>MATLAB Analytics</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Run MATLAB scripts on your data automatically</p>
+                                </div>
+                            </div>
+                            <p class="vendor-info" style="line-height: 1.8;"><strong>Best For:</strong> Beginners, student projects, prototyping, sensor data logging</p>
+                            <p class="vendor-info"><strong>URL:</strong> thingspeak.com</p>
+                        </div>
+
+                        <!-- Blynk -->
+                        <div class="platform-card">
+                            <h3>Blynk</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">Free - $15/month</span>
+                                <span class="spec-tag">Mobile Apps</span>
+                                <span class="spec-tag">Drag & Drop</span>
+                            </div>
+                            <p class="hardware-description" style="line-height: 1.8; margin-bottom: var(--space-5);">Build professional mobile apps for your IoT devices without coding. Drag-and-drop interface builder.</p>
+
+                            <div class="platform-features">
+                                <div class="platform-feature-item">
+                                    <h4>Free Tier</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">1 device, basic widgets, mobile + web dashboard</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Mobile Apps</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">iOS & Android apps with custom UI (buttons, sliders, charts)</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Notifications</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Push notifications, email alerts, webhooks</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Libraries</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Arduino, ESP32, Python, Node.js libraries</p>
+                                </div>
+                            </div>
+                            <p class="vendor-info" style="line-height: 1.8;"><strong>Best For:</strong> Smart home projects, mobile-controlled devices, consumer IoT prototypes</p>
+                            <p class="vendor-info"><strong>URL:</strong> blynk.io</p>
+                        </div>
+
+                        <!-- AWS IoT Core -->
+                        <div class="platform-card">
+                            <h3>AWS IoT Core</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">Pay-as-you-go</span>
+                                <span class="spec-tag">Enterprise</span>
+                                <span class="spec-tag">Scalable</span>
+                            </div>
+                            <p class="hardware-description" style="line-height: 1.8; margin-bottom: var(--space-5);">Industrial-grade IoT platform. Handle billions of messages, integrate with AWS services (Lambda, S3, DynamoDB).</p>
+
+                            <div class="platform-features">
+                                <div class="platform-feature-item">
+                                    <h4>Device SDK</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">C, Python, Java, JavaScript libraries with MQTT</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Device Shadow</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Virtual device state even when offline</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Rules Engine</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Route messages to databases, analytics, ML models</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Security</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">X.509 certificates, IAM policies, encryption</p>
+                                </div>
+                            </div>
+                            <p class="vendor-info" style="line-height: 1.8;"><strong>Pricing:</strong> Free tier: 250,000 messages/month for 12 months, then $1/million messages</p>
+                            <p class="vendor-info" style="line-height: 1.8;"><strong>Best For:</strong> Production deployments, scalable systems, enterprise IoT</p>
+                            <p class="vendor-info"><strong>URL:</strong> aws.amazon.com/iot-core</p>
+                        </div>
+
+                        <!-- Azure IoT Hub -->
+                        <div class="platform-card">
+                            <h3>Azure IoT Hub</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">$10-$2,500/month</span>
+                                <span class="spec-tag">Enterprise</span>
+                                <span class="spec-tag">Microsoft Ecosystem</span>
+                            </div>
+                            <p class="hardware-description" style="line-height: 1.8; margin-bottom: var(--space-5);">Microsoft's IoT platform. Excellent integration with Azure services, Power BI, and Microsoft 365.</p>
+
+                            <div class="platform-features">
+                                <div class="platform-feature-item">
+                                    <h4>Bidirectional Messaging</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Send commands to devices, receive telemetry</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Device Twins</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Store device metadata, sync state</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Edge Computing</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Azure IoT Edge for local processing</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Analytics</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Stream Analytics, Time Series Insights</p>
+                                </div>
+                            </div>
+                            <p class="vendor-info" style="line-height: 1.8;"><strong>Pricing:</strong> Free tier: 8,000 messages/day, then from $10/month for 400,000 messages/day</p>
+                            <p class="vendor-info" style="line-height: 1.8;"><strong>Best For:</strong> Enterprise Windows/Microsoft ecosystems, hybrid cloud-edge deployments</p>
+                            <p class="vendor-info"><strong>URL:</strong> azure.microsoft.com/en-in/products/iot-hub</p>
+                        </div>
+
+                        <!-- Adafruit IO -->
+                        <div class="platform-card">
+                            <h3>Adafruit IO</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">Free - $10/month</span>
+                                <span class="spec-tag">Maker Friendly</span>
+                                <span class="spec-tag">MQTT + HTTP</span>
+                            </div>
+                            <p class="hardware-description" style="line-height: 1.8; margin-bottom: var(--space-5);">By makers, for makers. Simple, well-documented, and perfect for learning IoT cloud connectivity.</p>
+
+                            <div class="platform-features">
+                                <div class="platform-feature-item">
+                                    <h4>Free Tier</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">10 feeds, 30 data points/min, 30 days storage</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Dashboards</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Drag-and-drop blocks (charts, gauges, toggles)</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Libraries</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Arduino, Python, CircuitPython official support</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Actions</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Triggers, webhooks, IFTTT integration</p>
+                                </div>
+                            </div>
+                            <p class="vendor-info" style="line-height: 1.8;"><strong>Best For:</strong> Hobbyists, learning MQTT, quick prototypes, classroom projects</p>
+                            <p class="vendor-info"><strong>URL:</strong> io.adafruit.com</p>
+                        </div>
+
+                        <!-- Google Cloud IoT -->
+                        <div class="platform-card">
+                            <h3>Google Cloud IoT Core (Retiring)</h3>
+                            <div class="hardware-specs">
+                                <span class="spec-tag price">Deprecated</span>
+                                <span class="spec-tag">Use Alternatives</span>
+                            </div>
+                            <p class="hardware-description" style="line-height: 1.8; margin-bottom: var(--space-5);"><strong>Note:</strong> Google Cloud IoT Core is being retired (August 2023). Google recommends migrating to third-party solutions or using Google Cloud Pub/Sub directly.</p>
+
+                            <div class="platform-features">
+                                <div class="platform-feature-item">
+                                    <h4>Alternative: Cloud Pub/Sub</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Use Google Cloud Pub/Sub for messaging</p>
+                                </div>
+                                <div class="platform-feature-item">
+                                    <h4>Partners</h4>
+                                    <p style="font-size: var(--text-sm); line-height: 1.6;">Google recommends ClearBlade, Litmus, Losant</p>
+                                </div>
+                            </div>
+                            <p class="vendor-info" style="line-height: 1.8;"><strong>Recommendation:</strong> Use AWS IoT Core or Azure IoT Hub instead for new projects</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Buying Guide -->
+                <div id="buying-guide" class="content-section">
+                    <div class="buying-guide">
+                        <h3>Indian Vendors & Buying Guide</h3>
+                        <p style="line-height: 1.8; margin-bottom: var(--space-5);">Trusted online electronics vendors in India with wide selection, good support, and reliable shipping.</p>
+
+                        <div class="vendor-list">
+
+                            <div class="vendor-item">
+                                <h4>Robu.in</h4>
+                                <p>One of India's largest robotics and IoT component stores. Wide selection, competitive pricing, fast shipping from Pune.</p>
+                                <p><strong>Best For:</strong> Development boards, sensors, actuators</p>
+                                <p><strong>Shipping:</strong> All India, 3-7 days</p>
+                                <p class="vendor-url">robu.in</p>
+                            </div>
+
+                            <div class="vendor-item">
+                                <h4>ThinkRobotics</h4>
+                                <p>Chennai-based vendor with curated IoT kits and components. Good starter kits for students.</p>
+                                <p><strong>Best For:</strong> Beginner kits, Arduino bundles, educational projects</p>
+                                <p><strong>Shipping:</strong> All India, 4-8 days</p>
+                                <p class="vendor-url">thinkrobotics.com</p>
+                            </div>
+
+                            <div class="vendor-item">
+                                <h4>Electroncomponents</h4>
+                                <p>Mumbai-based electronics distributor. Good for sensors and small components in bulk.</p>
+                                <p><strong>Best For:</strong> Sensors, modules, breadboards, wires</p>
+                                <p><strong>Shipping:</strong> All India, 5-10 days</p>
+                                <p class="vendor-url">electroncomponents.com</p>
+                            </div>
+
+                            <div class="vendor-item">
+                                <h4>Rarecomponents</h4>
+                                <p>Bangalore vendor specializing in hard-to-find components and development boards.</p>
+                                <p><strong>Best For:</strong> Raspberry Pi boards, niche sensors, specialized modules</p>
+                                <p><strong>Shipping:</strong> All India, 3-6 days</p>
+                                <p class="vendor-url">rarecomponents.com</p>
+                            </div>
+
+                            <div class="vendor-item">
+                                <h4>Amazon India</h4>
+                                <p>Wide selection from multiple sellers. Good for mainstream components with fast delivery (Prime).</p>
+                                <p><strong>Best For:</strong> Arduino boards, popular sensors, quick delivery</p>
+                                <p><strong>Shipping:</strong> 1-2 days (Prime), 3-7 days (standard)</p>
+                                <p class="vendor-url">amazon.in</p>
+                            </div>
+
+                            <div class="vendor-item">
+                                <h4>Mouser Electronics (International)</h4>
+                                <p>Global distributor shipping to India. For specialized industrial components not available locally.</p>
+                                <p><strong>Best For:</strong> Industrial sensors, Zigbee modules, professional-grade components</p>
+                                <p><strong>Shipping:</strong> International, 7-14 days + customs</p>
+                                <p class="vendor-url">mouser.in</p>
+                            </div>
+
+                        </div>
+
+                        <div style="margin-top: var(--space-8); padding: var(--space-6); background: var(--color-white); border-left: 4px solid var(--color-electric-blue);">
+                            <h4 style="font-size: var(--text-lg); font-weight: var(--font-bold); margin-bottom: var(--space-3);">Buying Tips for Indian Makers</h4>
+                            <ul style="margin-left: var(--space-4); line-height: 1.8;">
+                                <li><strong>Start Small:</strong> Begin with a starter kit (ESP32 + sensors bundle, ~₹1,500) before buying components individually</li>
+                                <li><strong>Check Reviews:</strong> Verify seller ratings on Amazon/Flipkart for component authenticity</li>
+                                <li><strong>Power Supplies:</strong> Buy quality 5V/3.3V power supplies—cheap ones damage boards</li>
+                                <li><strong>GSM/LTE Modules:</strong> Verify SIM compatibility (Jio doesn't support 2G; use Airtel/Vodafone)</li>
+                                <li><strong>Import Duties:</strong> For orders >₹2,000 from international vendors, expect 42% customs + GST</li>
+                                <li><strong>Clone vs. Original:</strong> Arduino clones work fine and cost 50% less; ESP32 clones are reliable too</li>
+                                <li><strong>Shipping:</strong> Robu/ThinkRobotics have better packaging than Amazon for fragile sensors</li>
+                                <li><strong>Bulk Discounts:</strong> Email vendors directly for student/institution discounts (10-20% off)</li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-top: var(--space-6); padding: var(--space-6); background: var(--color-gray-50); border: 2px solid var(--color-black);">
+                            <h4 style="font-size: var(--text-lg); font-weight: var(--font-bold); margin-bottom: var(--space-3);">Recommended First Purchase (Under ₹2,000)</h4>
+                            <p style="line-height: 1.8; margin-bottom: var(--space-4);">Everything you need to build your first 3-4 IoT projects:</p>
+                            <ul style="margin-left: var(--space-4); line-height: 1.8;">
+                                <li><strong>ESP32 DevKit (2 units):</strong> ₹400 — one for testing, one for deployment</li>
+                                <li><strong>DHT22 Sensor:</strong> ₹200 — temperature & humidity</li>
+                                <li><strong>MQ-135 Air Quality Sensor:</strong> ₹150 — detect pollutants</li>
+                                <li><strong>HC-SR501 PIR Motion Sensor:</strong> ₹100 — motion detection</li>
+                                <li><strong>HC-SR04 Ultrasonic Sensor:</strong> ₹90 — distance measurement</li>
+                                <li><strong>4-Channel Relay Module:</strong> ₹250 — control AC appliances</li>
+                                <li><strong>Breadboard + Jumper Wires:</strong> ₹200 — prototyping</li>
+                                <li><strong>Micro-USB Cables (2):</strong> ₹100 — programming & power</li>
+                                <li><strong>5V 2A Power Supply:</strong> ₹150 — stable power</li>
+                                <li><strong>Resistors, LEDs, Buttons Kit:</strong> ₹200 — basics</li>
+                            </ul>
+                            <p style="margin-top: var(--space-4); line-height: 1.8;"><strong>Total: ~₹1,840</strong> | Available as pre-made kit on Robu.in (~₹1,599)</p>
+                            <p style="margin-top: var(--space-3); padding: var(--space-3); background: var(--color-electric-blue); color: var(--color-white); font-weight: var(--font-bold);">With this kit, you can build: Temperature monitor, air quality station, motion-activated lights, smart irrigation controller</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Continue Your Journey -->
+                <div class="content-section">
+                    <h2>Continue Your Journey</h2>
+                    <div class="getting-started">
+
+                        <div class="approach-card">
+                            <h3 class="approach-number">01</h3>
+                            <h4 class="approach-title">Build Your First Project</h4>
+                            <p class="approach-description">Start with the <a href="iot-projects.html#temperature-monitor" style="color: var(--color-electric-blue); text-decoration: underline;">Smart Temperature Monitor</a> project using an ESP32 and DHT22 sensor. Total cost: under ₹1,000.</p>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3 class="approach-number">02</h3>
+                            <h4 class="approach-title">Explore Fundamentals</h4>
+                            <p class="approach-description">Read <a href="iot-fundamentals.html" style="color: var(--color-electric-blue); text-decoration: underline;">IoT Fundamentals</a> to understand architecture, protocols, and design principles.</p>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3 class="approach-number">03</h3>
+                            <h4 class="approach-title">Practice Design Thinking</h4>
+                            <p class="approach-description">Try the design exercises in <a href="iot-activities.html" style="color: var(--color-electric-blue); text-decoration: underline;">Activities</a>—learn to make protocol decisions and architecture tradeoffs.</p>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3 class="approach-number">04</h3>
+                            <h4 class="approach-title">Join Communities</h4>
+                            <p class="approach-description">Connect with Indian IoT makers on <a href="https://hackster.io" target="_blank" style="color: var(--color-electric-blue); text-decoration: underline;">Hackster.io</a>, <a href="https://forum.arduino.cc" target="_blank" style="color: var(--color-electric-blue); text-decoration: underline;">Arduino Forums</a>, and local maker spaces.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu" id="verticalMenu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Close menu on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('mainMenuOverlay').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

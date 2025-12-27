@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Design Canvas - Virtual World Layout Tool | Emerging Tech Hub</title>
+    <meta name="description" content="Interactive tool to sketch and plan virtual space layouts. Design room shapes, add interaction points, and plan spatial flow for metaverse environments.">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+.canvas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tool-panel {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tool-section {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    padding-right: var(--space-4);
+    border-right: var(--border-width) solid var(--color-gray-300);
+}
+
+.tool-section:last-child {
+    border-right: none;
+}
+
+.tool-section label {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tool-btn {
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-width) solid var(--color-black);
+    background: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tool-btn:hover {
+    background: var(--color-gray-100);
+}
+
+.tool-btn.active {
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    border-color: var(--color-electric-blue);
+}
+
+.canvas-wrapper {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-4);
+    position: relative;
+}
+
+#designCanvas {
+    border: var(--border-width) solid var(--color-gray-300);
+    cursor: crosshair;
+    display: block;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 19px,
+            var(--color-gray-200) 19px,
+            var(--color-gray-200) 20px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 19px,
+            var(--color-gray-200) 19px,
+            var(--color-gray-200) 20px
+        );
+}
+
+.legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border: var(--border-width) solid var(--color-black);
+}
+
+.info-panel {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-4);
+    margin-top: var(--space-4);
+}
+
+.info-panel h3 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+}
+
+.info-panel p {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    margin-bottom: var(--space-2);
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .tool-panel { flex-direction: column; align-items: stretch; }
+    .tool-section { border-right: none; border-bottom: var(--border-width) solid var(--color-gray-300); padding-bottom: var(--space-3); }
+    #designCanvas { width: 100% !important; height: 400px !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Space Designer</p>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">How to Use</div>
+                    <div class="info-box-content">
+                        1. Select a tool (Room, Entry, etc.)<br>
+                        2. Click and drag on canvas to draw<br>
+                        3. Add labels by clicking on shapes<br>
+                        4. Export your design when done
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Design Tips</div>
+                    <div class="info-box-content">
+                        • Plan entry experience first<br>
+                        • Create sight lines to focal points<br>
+                        • Balance open and intimate spaces<br>
+                        • Consider user flow and navigation
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Navigation</div>
+                    <div class="info-box-content">
+                        <a href="metaverse-landing.html">← Back to Metaverse Hub</a><br>
+                        <a href="metaverse-activities.html">Design Activities</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Space Design Canvas</h1>
+                <p class="fundamentals-subtitle">Sketch and plan virtual space layouts with this interactive design tool</p>
+            </div>
+
+            <div class="fundamentals-content">
+                <div class="canvas-container">
+
+                    <!-- Instructions -->
+                    <div style="background: #f8f9fa; border: 4px solid var(--color-electric-blue); padding: var(--space-6); margin-bottom: var(--space-6);">
+                        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-bottom: var(--space-4); color: var(--color-electric-blue);">🎨 How to Use This Tool</h3>
+
+                        <div style="margin-bottom: var(--space-4);">
+                            <h4 style="font-weight: var(--font-bold); margin-bottom: var(--space-2);">Tool Purpose:</h4>
+                            <p style="line-height: 1.6; margin-bottom: var(--space-3);">This top-down design canvas helps you plan virtual space layouts BEFORE building them in 3D platforms. Think of it as a blueprint or floor plan for your metaverse experience.</p>
+                        </div>
+
+                        <div style="margin-bottom: var(--space-4);">
+                            <h4 style="font-weight: var(--font-bold); margin-bottom: var(--space-2);">Basic Usage:</h4>
+                            <ol style="line-height: 1.8; padding-left: var(--space-5);">
+                                <li><strong>Select a Tool:</strong> Click a shape or marker button (e.g., "Room", "Entry Point")</li>
+                                <li><strong>Draw on Canvas:</strong> Click and drag on the grid to create shapes</li>
+                                <li><strong>Layer Elements:</strong> Add multiple rooms, then overlay markers for entry/focal/interaction points</li>
+                                <li><strong>Export:</strong> Save your design as PNG to share with team or use as reference</li>
+                            </ol>
+                        </div>
+
+                        <div style="margin-bottom: var(--space-4);">
+                            <h4 style="font-weight: var(--font-bold); margin-bottom: var(--space-2);">Spatial Design Best Practices:</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-3);">
+                                <div style="background: white; padding: var(--space-3); border-left: 3px solid var(--color-electric-blue);">
+                                    <strong>1. Scale & Proportion</strong>
+                                    <p style="font-size: var(--text-sm); margin-top: var(--space-1);">Virtual spaces feel larger than 2D. A 10x10m room feels spacious in VR. Start with smaller spaces than you think you need.</p>
+                                </div>
+                                <div style="background: white; padding: var(--space-3); border-left: 3px solid var(--color-electric-blue);">
+                                    <strong>2. Entry Experience</strong>
+                                    <p style="font-size: var(--text-sm); margin-top: var(--space-1);">Always design the entry point first. Users should immediately understand where to go. Use sight lines to guide them to the first focal point.</p>
+                                </div>
+                                <div style="background: white; padding: var(--space-3); border-left: 3px solid var(--color-electric-blue);">
+                                    <strong>3. Spatial Hierarchy</strong>
+                                    <p style="font-size: var(--text-sm); margin-top: var(--space-1);">Create variation: Open social areas (circular spaces) → transition zones (corridors) → intimate focus areas (smaller rooms).</p>
+                                </div>
+                                <div style="background: white; padding: var(--space-3); border-left: 3px solid var(--color-electric-blue);">
+                                    <strong>4. Interaction Zones</strong>
+                                    <p style="font-size: var(--text-sm); margin-top: var(--space-1);">Place interaction zones where users naturally pause: near focal points, at path intersections, in alcoves off main areas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: white; padding: var(--space-4); border: 2px solid var(--color-electric-blue);">
+                            <strong>💡 Workflow Tip:</strong> Design sequence for effective spaces:<br>
+                            1️⃣ Place Entry Point → 2️⃣ Add Main Social/Hub Room → 3️⃣ Create Focal Points (art, stage, exhibits) → 4️⃣ Add Corridors for flow → 5️⃣ Mark Interaction Zones → 6️⃣ Add Secondary Rooms for specific activities
+                        </div>
+                    </div>
+
+                    <!-- Tool Panel -->
+                    <div class="tool-panel">
+                        <div class="tool-section">
+                            <label>Shape Tools:</label>
+                            <button class="tool-btn active" data-tool="room">Room</button>
+                            <button class="tool-btn" data-tool="circle">Circular Space</button>
+                            <button class="tool-btn" data-tool="corridor">Corridor</button>
+                        </div>
+
+                        <div class="tool-section">
+                            <label>Markers:</label>
+                            <button class="tool-btn" data-tool="entry">Entry Point</button>
+                            <button class="tool-btn" data-tool="focal">Focal Point</button>
+                            <button class="tool-btn" data-tool="interaction">Interaction Zone</button>
+                        </div>
+
+                        <div class="tool-section">
+                            <label>Actions:</label>
+                            <button class="tool-btn" id="clearBtn">Clear All</button>
+                            <button class="tool-btn" id="exportBtn">Export Image</button>
+                        </div>
+                    </div>
+
+                    <!-- Canvas -->
+                    <div class="canvas-wrapper">
+                        <canvas id="designCanvas" width="1000" height="600"></canvas>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: rgba(64, 64, 255, 0.2); border-color: #4040ff;"></div>
+                            <span>Room / Space</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: rgba(64, 64, 255, 0.1); border-color: #4040ff;"></div>
+                            <span>Circular Space</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: rgba(0, 200, 0, 0.3);"></div>
+                            <span>Entry Point</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: rgba(255, 150, 0, 0.3);"></div>
+                            <span>Focal Point</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: rgba(255, 0, 150, 0.3);"></div>
+                            <span>Interaction Zone</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: rgba(100, 100, 100, 0.3);"></div>
+                            <span>Corridor</span>
+                        </div>
+                    </div>
+
+                    <!-- Info Panel -->
+                    <div class="info-panel">
+                        <h3>Design Principles Reminder</h3>
+                        <p><strong>Entry Experience:</strong> Start by placing entry points. First impressions matter in virtual spaces.</p>
+                        <p><strong>Sight Lines:</strong> Ensure users can see focal points from entry areas to encourage exploration.</p>
+                        <p><strong>Spatial Rhythm:</strong> Alternate between open spaces (social areas) and intimate zones (focused activities).</p>
+                        <p><strong>Flow & Navigation:</strong> Create clear paths without dead ends. Guide users naturally through the space.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse Hub</a>
+                    <a href="metaverse-field-kit.html" class="main-menu-link">Field Kit</a>
+                    <a href="metaverse-activities.html" class="main-menu-link">Activities</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const canvas = document.getElementById('designCanvas');
+        const ctx = canvas.getContext('2d');
+        let currentTool = 'room';
+        let isDrawing = false;
+        let startX, startY;
+        const shapes = [];
+
+        function toggleMainMenu() {
+            document.getElementById('mainMenuOverlay').classList.toggle('active');
+        }
+
+        // Tool selection
+        document.querySelectorAll('.tool-btn[data-tool]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tool-btn[data-tool]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentTool = this.getAttribute('data-tool');
+            });
+        });
+
+        // Mouse events for drawing
+        canvas.addEventListener('mousedown', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            startX = e.clientX - rect.left;
+            startY = e.clientY - rect.top;
+
+            if (['entry', 'focal', 'interaction'].includes(currentTool)) {
+                // Markers are single-click
+                addMarker(startX, startY, currentTool);
+            } else {
+                isDrawing = true;
+            }
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const currentX = e.clientX - rect.left;
+            const currentY = e.clientY - rect.top;
+
+            // Clear and redraw
+            redrawCanvas();
+
+            // Draw preview
+            drawShape(startX, startY, currentX, currentY, currentTool, true);
+        });
+
+        canvas.addEventListener('mouseup', (e) => {
+            if (!isDrawing) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const endX = e.clientX - rect.left;
+            const endY = e.clientY - rect.top;
+
+            // Save shape
+            shapes.push({
+                type: currentTool,
+                x1: startX,
+                y1: startY,
+                x2: endX,
+                y2: endY
+            });
+
+            isDrawing = false;
+            redrawCanvas();
+        });
+
+        function addMarker(x, y, type) {
+            shapes.push({
+                type: type,
+                x: x,
+                y: y,
+                radius: 20
+            });
+            redrawCanvas();
+        }
+
+        function drawShape(x1, y1, x2, y2, type, isPreview = false) {
+            ctx.globalAlpha = isPreview ? 0.5 : 0.8;
+
+            const width = x2 - x1;
+            const height = y2 - y1;
+
+            switch(type) {
+                case 'room':
+                    ctx.fillStyle = 'rgba(64, 64, 255, 0.2)';
+                    ctx.strokeStyle = '#4040ff';
+                    ctx.lineWidth = 2;
+                    ctx.fillRect(x1, y1, width, height);
+                    ctx.strokeRect(x1, y1, width, height);
+                    break;
+
+                case 'circle':
+                    const radius = Math.sqrt(width * width + height * height) / 2;
+                    const centerX = x1 + width / 2;
+                    const centerY = y1 + height / 2;
+                    ctx.fillStyle = 'rgba(64, 64, 255, 0.1)';
+                    ctx.strokeStyle = '#4040ff';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, Math.abs(radius), 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                    break;
+
+                case 'corridor':
+                    ctx.fillStyle = 'rgba(100, 100, 100, 0.3)';
+                    ctx.strokeStyle = '#666';
+                    ctx.lineWidth = 2;
+                    ctx.fillRect(x1, y1, width, height);
+                    ctx.strokeRect(x1, y1, width, height);
+                    break;
+            }
+
+            ctx.globalAlpha = 1;
+        }
+
+        function drawMarker(x, y, radius, type) {
+            let color;
+            let label;
+
+            switch(type) {
+                case 'entry':
+                    color = 'rgba(0, 200, 0, 0.5)';
+                    label = 'E';
+                    break;
+                case 'focal':
+                    color = 'rgba(255, 150, 0, 0.5)';
+                    label = 'F';
+                    break;
+                case 'interaction':
+                    color = 'rgba(255, 0, 150, 0.5)';
+                    label = 'I';
+                    break;
+            }
+
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#000';
+            ctx.font = 'bold 14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(label, x, y);
+        }
+
+        function redrawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            shapes.forEach(shape => {
+                if (shape.radius !== undefined) {
+                    // It's a marker
+                    drawMarker(shape.x, shape.y, shape.radius, shape.type);
+                } else {
+                    // It's a shape
+                    drawShape(shape.x1, shape.y1, shape.x2, shape.y2, shape.type);
+                }
+            });
+        }
+
+        // Clear button
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            if (confirm('Clear all shapes? This cannot be undone.')) {
+                shapes.length = 0;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        });
+
+        // Export button
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            // Create a temporary canvas with white background
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+
+            // Fill white background
+            tempCtx.fillStyle = '#ffffff';
+            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+            // Draw grid
+            tempCtx.strokeStyle = '#e0e0e0';
+            tempCtx.lineWidth = 1;
+            for (let i = 0; i < tempCanvas.width; i += 20) {
+                tempCtx.beginPath();
+                tempCtx.moveTo(i, 0);
+                tempCtx.lineTo(i, tempCanvas.height);
+                tempCtx.stroke();
+            }
+            for (let i = 0; i < tempCanvas.height; i += 20) {
+                tempCtx.beginPath();
+                tempCtx.moveTo(0, i);
+                tempCtx.lineTo(tempCanvas.width, i);
+                tempCtx.stroke();
+            }
+
+            // Copy current canvas content
+            tempCtx.drawImage(canvas, 0, 0);
+
+            // Download
+            const link = document.createElement('a');
+            link.download = 'metaverse-space-design.png';
+            link.href = tempCanvas.toDataURL();
+            link.click();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('mainMenuOverlay').classList.remove('active');
+            }
+            // Keyboard shortcuts for tools
+            if (e.key === 'r') document.querySelector('[data-tool="room"]').click();
+            if (e.key === 'c') document.querySelector('[data-tool="circle"]').click();
+            if (e.key === 'e') document.querySelector('[data-tool="entry"]').click();
+            if (e.key === 'f') document.querySelector('[data-tool="focal"]').click();
+        });
+    </script>
+</body>
+</html>

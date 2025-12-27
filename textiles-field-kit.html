@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Textiles Field Kit - Tools, Kits & Resources | Emerging Tech Hub</title>
+    <meta name="description" content="Essential tools and resources for e-textile makers. LilyPad Arduino guides, material suppliers, design templates, and visual programming for smart textiles.">
+    <meta name="keywords" content="e-textile kits, LilyPad Arduino, Flora, conductive materials, soft circuits, wearable tools, textile programming, maker resources">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Resource Card Styling */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.resource-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.resource-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.resource-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.resource-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+}
+
+.resource-description {
+    line-height: 1.8;
+    margin-bottom: var(--space-5);
+}
+
+.resource-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.resource-list {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.resource-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
+.resource-link {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    font-size: var(--text-sm);
+    border-radius: 4px;
+    transition: all var(--transition-base);
+}
+
+.resource-link:hover {
+    background: var(--color-black);
+    transform: translateX(4px);
+}
+
+/* Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.comparison-table th,
+.comparison-table td {
+    border: 2px solid var(--color-black);
+    padding: var(--space-3);
+    text-align: left;
+    line-height: 1.6;
+}
+
+.comparison-table th {
+    background: var(--color-black);
+    color: var(--color-white);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    letter-spacing: 0.05em;
+}
+
+.comparison-table tr:hover {
+    background: var(--color-gray-50);
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .resources-grid { grid-template-columns: 1fr !important; }
+    .comparison-table { font-size: var(--text-sm); }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Maker Resources</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Resource Types</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#starter-kits" class="experimental-nav-link">Starter Kits</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#materials" class="experimental-nav-link">Material Library</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#design-tools" class="experimental-nav-link">Design Tools</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#visual-programming" class="experimental-nav-link">Visual Programming</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="textiles-landing.html">← Back to Textiles Hub</a>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Getting Started</div>
+                    <div class="info-box-content">
+                        Begin with a starter kit for your first project, then expand your material library as you explore.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Smart Textiles Field Kit</h1>
+                <p class="fundamentals-subtitle">Essential tools, kits, and resources for making e-textiles and wearable technology—from beginner starter kits to design templates</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Starter Kits Section -->
+                <section class="content-section" id="starter-kits">
+                    <h2>🎒 Starter Kits & Platforms</h2>
+                    <p style="line-height: 1.8;">Complete kits with everything you need to start making e-textiles. Perfect for beginners and educators.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <span class="resource-badge">Recommended</span>
+                            <h3>LilyPad Arduino Starter Kit</h3>
+                            <div class="resource-description">
+                                <p><strong>Price:</strong> $60-80 | <strong>Best For:</strong> Complete beginners</p>
+                                <p>The classic e-textile platform designed by Leah Buechley at MIT. Washable, sewable Arduino with matching LED, sensor, and power components. Large sewable holes make connections easy.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What's Included:</h4>
+                                <ul class="resource-list">
+                                    <li>LilyPad Arduino main board</li>
+                                    <li>LED modules in multiple colors</li>
+                                    <li>Light sensor and button inputs</li>
+                                    <li>Vibration motor</li>
+                                    <li>Battery holder and batteries</li>
+                                    <li>Conductive thread and needles</li>
+                                    <li>Instruction booklet with projects</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Perfect For:</h4>
+                                <ul class="resource-list">
+                                    <li>First e-textile project</li>
+                                    <li>Learning soft circuits fundamentals</li>
+                                    <li>Educational workshops</li>
+                                    <li>People with basic sewing skills</li>
+                                </ul>
+
+                                <a href="https://www.sparkfun.com/products/13927" target="_blank" rel="noopener noreferrer" class="resource-link">Get Started →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <span class="resource-badge">Popular</span>
+                            <h3>Adafruit Flora Wearables Kit</h3>
+                            <div class="resource-description">
+                                <p><strong>Price:</strong> $65-90 | <strong>Best For:</strong> LED-focused projects</p>
+                                <p>Adafruit's wearable platform with excellent LED support including NeoPixels. Slightly smaller form factor than LilyPad with strong community and extensive tutorials.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What's Included:</h4>
+                                <ul class="resource-list">
+                                    <li>Flora main board</li>
+                                    <li>NeoPixel RGB LEDs</li>
+                                    <li>Accelerometer sensor</li>
+                                    <li>USB cable for programming</li>
+                                    <li>Battery and holder</li>
+                                    <li>Conductive thread sampler</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Advantages:</h4>
+                                <ul class="resource-list">
+                                    <li>Excellent online tutorials at learn.adafruit.com</li>
+                                    <li>NeoPixel support for color-changing effects</li>
+                                    <li>Active community forums</li>
+                                    <li>Easy to expand with Adafruit sensors</li>
+                                </ul>
+
+                                <a href="https://www.adafruit.com/product/1405" target="_blank" rel="noopener noreferrer" class="resource-link">Get Started →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>SparkFun Inventors Kit for Wearables</h3>
+                            <div class="resource-description">
+                                <p><strong>Price:</strong> $95-110 | <strong>Best For:</strong> Comprehensive learning</p>
+                                <p>Most complete beginner kit with extensive project guide and variety of components. Excellent for self-guided learning.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What Makes It Special:</h4>
+                                <ul class="resource-list">
+                                    <li>15+ guided projects with online videos</li>
+                                    <li>Wide variety of sensors (accelerometer, light, sound)</li>
+                                    <li>Multiple actuators (LEDs, buzzer, vibration motor)</li>
+                                    <li>Includes alligator clips for breadboard prototyping first</li>
+                                    <li>Comprehensive guidebook explains concepts deeply</li>
+                                </ul>
+
+                                <a href="https://www.sparkfun.com/products/15821" target="_blank" rel="noopener noreferrer" class="resource-link">Get Started →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Micro:bit Wearables Kit</h3>
+                            <div class="resource-description">
+                                <p><strong>Price:</strong> $50-65 | <strong>Best For:</strong> Visual programming</p>
+                                <p>BBC micro:bit-based kit with visual block programming. Great for people hesitant about coding or younger makers.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Key Features:</h4>
+                                <ul class="resource-list">
+                                    <li>Block-based visual programming (no text coding required)</li>
+                                    <li>Built-in sensors (accelerometer, compass, buttons)</li>
+                                    <li>5x5 LED display for output</li>
+                                    <li>Battery pack for wearable use</li>
+                                    <li>Works with LilyPad components</li>
+                                </ul>
+
+                                <a href="https://microbit.org/projects/make-it-code-it/wearables/" target="_blank" rel="noopener noreferrer" class="resource-link">Get Started →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Platform Comparison -->
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); margin-top: var(--space-12); margin-bottom: var(--space-6);">Platform Comparison</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Best For</th>
+                                <th>Programming</th>
+                                <th>Price</th>
+                                <th>Community</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>LilyPad Arduino</strong></td>
+                                <td>Traditional e-textiles, education</td>
+                                <td>Arduino IDE (C++)</td>
+                                <td>$60-80</td>
+                                <td>Large, established</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adafruit Flora</strong></td>
+                                <td>LED projects, NeoPixels</td>
+                                <td>Arduino IDE (C++)</td>
+                                <td>$65-90</td>
+                                <td>Very active, excellent tutorials</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Micro:bit</strong></td>
+                                <td>Visual programming, beginners</td>
+                                <td>MakeCode blocks or Python</td>
+                                <td>$50-65</td>
+                                <td>Large, education-focused</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gemma M0</strong></td>
+                                <td>Tiny wearables, advanced users</td>
+                                <td>CircuitPython</td>
+                                <td>$10-15 (board only)</td>
+                                <td>Python-focused makers</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Materials Section -->
+                <section class="content-section" id="materials">
+                    <h2>🧵 Material Library & Suppliers</h2>
+                    <p style="line-height: 1.8;">Where to source conductive threads, fabrics, sensors, and components. Includes supplier recommendations and material characteristics.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h3>Conductive Threads</h3>
+                            <div class="resource-description">
+                                <p>Essential for creating soft circuits by sewing electrical connections. Different materials for different needs.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Thread Types:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Silver-Plated Thread:</strong> Best for most projects. Low resistance (~10Ω/ft), strong, flexible. SparkFun, Adafruit ($7-15 per 30ft)</li>
+                                    <li><strong>Stainless Steel Thread:</strong> More affordable, higher resistance (~50Ω/ft). Good for LEDs, not high-current. Less Embroidery ($5-10 per 30ft)</li>
+                                    <li><strong>Copper Thread:</strong> Lowest resistance but tarnishes. Best for short traces. Various suppliers ($8-12 per 30ft)</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Buying Guide:</h4>
+                                <ul class="resource-list">
+                                    <li>Start with silver-plated for best results</li>
+                                    <li>Buy 60-100ft for starter projects</li>
+                                    <li>Store in sealed bags to prevent tarnish</li>
+                                    <li>Test resistance with multimeter before using</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Conductive Fabrics</h3>
+                            <div class="resource-description">
+                                <p>Fabric-form conductive materials for sensors, traces, and capacitive touch interfaces.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Fabric Types:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Copper Taffeta:</strong> Highly conductive, good for shielding and touch. LessEMF.com ($15-25 per yard)</li>
+                                    <li><strong>Conductive Knit:</strong> Stretchy, comfortable. Good for wearable traces. Adafruit, V-Technical Textiles ($20-30 per yard)</li>
+                                    <li><strong>Velostat:</strong> Pressure-sensitive material essential for sensors. Adafruit ($4-8 per sheet)</li>
+                                    <li><strong>Conductive Ripstop:</strong> Durable, lightweight. Good for outdoor wearables. ($18-28 per yard)</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Suppliers:</h4>
+                                <ul class="resource-list">
+                                    <li>LessEMF.com - Wide variety, bulk options</li>
+                                    <li>V-Technical Textiles - High-quality fabrics</li>
+                                    <li>Adafruit - Small quantities, fast shipping</li>
+                                    <li>SparkFun - Beginner-friendly selection</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Sewable Electronics</h3>
+                            <div class="resource-description">
+                                <p>LEDs, sensors, and actuators designed to be sewn into fabric with large connection holes.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Essential Components:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>LEDs:</strong> LilyPad LEDs ($2-3 each), NeoPixels RGB ($6-8 each)</li>
+                                    <li><strong>Sensors:</strong> Light ($5-8), accelerometer ($8-12), temperature ($6-10)</li>
+                                    <li><strong>Input:</strong> Buttons ($3-5), slide switches ($3-5)</li>
+                                    <li><strong>Output:</strong> Vibration motors ($3-6), small buzzers ($4-7)</li>
+                                    <li><strong>Power:</strong> Battery holders ($2-5), rechargeable LiPo ($10-20)</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Shopping Tips:</h4>
+                                <ul class="resource-list">
+                                    <li>Buy multiples of LEDs and basic sensors</li>
+                                    <li>Check voltage/current requirements match your power source</li>
+                                    <li>Look for "sewable" or "wearable" versions with large holes</li>
+                                    <li>Consider breakout boards for advanced sensors</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Tools & Supplies</h3>
+                            <div class="resource-description">
+                                <p>Beyond electronics: essential tools for constructing e-textile projects.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Must-Have Tools:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Sewing:</strong> Sharp needles, embroidery scissors, thimble</li>
+                                    <li><strong>Testing:</strong> Multimeter (essential!), alligator clips, helping hands</li>
+                                    <li><strong>Adhesives:</strong> Fabric glue, E6000, heat-shrink tubing</li>
+                                    <li><strong>Insulation:</strong> Clear nail polish, fabric paint, Mod Podge</li>
+                                    <li><strong>Planning:</strong> Chalk or fabric markers, graph paper</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Nice to Have:</h4>
+                                <ul class="resource-list">
+                                    <li>Soldering iron (for permanent connections)</li>
+                                    <li>Sewing machine (for non-conductive seams)</li>
+                                    <li>Embroidery hoop (keeps fabric taut)</li>
+                                    <li>Wire strippers (for working with wire)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Design Tools Section -->
+                <section class="content-section" id="design-tools">
+                    <h2>📐 Design Tools & Templates</h2>
+                    <p style="line-height: 1.8;">Circuit templates, interaction frameworks, and planning tools for wearable projects. Digital and printable resources.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h3>Circuit Planning Templates</h3>
+                            <div class="resource-description">
+                                <p>Plan your soft circuits before sewing to avoid mistakes and short circuits.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Available Templates:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Soft Circuit Worksheet:</strong> Sketch components and trace routes (Kobakant)</li>
+                                    <li><strong>LilyPad Templates:</strong> Printable component footprints (SparkFun)</li>
+                                    <li><strong>Body Placement Guide:</strong> Map component locations on body outline</li>
+                                    <li><strong>Power Budget Calculator:</strong> Ensure battery can power your circuit</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">How to Use:</h4>
+                                <ul class="resource-list">
+                                    <li>Draw component placement on garment sketch</li>
+                                    <li>Plan positive traces (usually use red markers)</li>
+                                    <li>Plan negative traces avoiding crossing positive</li>
+                                    <li>Calculate total current draw from battery</li>
+                                    <li>Test on breadboard before sewing if possible</li>
+                                </ul>
+
+                                <a href="https://www.kobakant.at/DIY/" target="_blank" rel="noopener noreferrer" class="resource-link">Access Templates →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Fritzing for Soft Circuits</h3>
+                            <div class="resource-description">
+                                <p>Open-source tool for designing electronic circuits with wearable components library.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What It Does:</h4>
+                                <ul class="resource-list">
+                                    <li>Visual circuit design with drag-drop components</li>
+                                    <li>LilyPad and Flora parts libraries included</li>
+                                    <li>Generates schematic and connection diagrams</li>
+                                    <li>Helps plan complex multi-component circuits</li>
+                                    <li>Share designs with others</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Getting Started:</h4>
+                                <ul class="resource-list">
+                                    <li>Download free from fritzing.org</li>
+                                    <li>Install LilyPad parts library</li>
+                                    <li>Follow tutorials on SparkFun and Adafruit</li>
+                                    <li>Use for planning before buying components</li>
+                                </ul>
+
+                                <a href="https://fritzing.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Download Free →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Interaction Design Framework</h3>
+                            <div class="resource-description">
+                                <p>Templates for designing wearable interactions and user experiences.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Design Thinking Tools:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>User Scenario Template:</strong> Who wears it, when, and why?</li>
+                                    <li><strong>Interaction Flow:</strong> Input → Processing → Output sequence</li>
+                                    <li><strong>Body Context Map:</strong> Where on body, what activities?</li>
+                                    <li><strong>Technical Specification:</strong> Requirements for makers/engineers</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Key Questions:</h4>
+                                <ul class="resource-list">
+                                    <li>What is the core interaction you're designing?</li>
+                                    <li>How does the wearer discover and activate it?</li>
+                                    <li>What feedback tells them it's working?</li>
+                                    <li>How does it behave in edge cases or failures?</li>
+                                    <li>What maintenance or care is required?</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Documentation Templates</h3>
+                            <div class="resource-description">
+                                <p>Record your making process for future reference and sharing with community.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What to Document:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Concept:</strong> Initial sketches and inspiration</li>
+                                    <li><strong>Circuit Diagram:</strong> Fritzing or hand-drawn schematic</li>
+                                    <li><strong>Materials List:</strong> Everything used with sources and costs</li>
+                                    <li><strong>Process Photos:</strong> Key steps in construction</li>
+                                    <li><strong>Code:</strong> Commented Arduino/Python code</li>
+                                    <li><strong>Challenges:</strong> Problems encountered and solutions</li>
+                                    <li><strong>Outcomes:</strong> Final photos and testing results</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Sharing Platforms:</h4>
+                                <ul class="resource-list">
+                                    <li>Instructables.com - Step-by-step tutorials</li>
+                                    <li>Hackster.io - Tech project documentation</li>
+                                    <li>GitHub - Code and technical specs</li>
+                                    <li>Personal blog/portfolio</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Visual Programming Section -->
+                <section class="content-section" id="visual-programming">
+                    <h2>🔲 Visual Programming & No-Code Tools</h2>
+                    <p style="line-height: 1.8;">Beginner-friendly coding tools for programming wearables without text-based programming. Great for designers and non-programmers.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <span class="resource-badge">Recommended</span>
+                            <h3>Micro:bit MakeCode</h3>
+                            <div class="resource-description">
+                                <p>Visual block-based programming for micro:bit wearables. Easiest entry point for non-programmers.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What You Can Do:</h4>
+                                <ul class="resource-list">
+                                    <li>Drag-drop blocks to create programs</li>
+                                    <li>Access built-in sensors (accelerometer, buttons, compass)</li>
+                                    <li>Control LEDs, sound, and external components</li>
+                                    <li>Instant simulation before uploading to hardware</li>
+                                    <li>Switch to Python when ready for text coding</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Perfect For:</h4>
+                                <ul class="resource-list">
+                                    <li>Complete coding beginners</li>
+                                    <li>Quick prototyping of wearable behaviors</li>
+                                    <li>Educational workshops</li>
+                                    <li>Testing interaction ideas before complex coding</li>
+                                </ul>
+
+                                <a href="https://makecode.microbit.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Start Coding →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Arduino Blocks (BlocklyDuino)</h3>
+                            <div class="resource-description">
+                                <p>Visual programming for LilyPad and Flora boards. Bridge between blocks and Arduino code.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">How It Works:</h4>
+                                <ul class="resource-list">
+                                    <li>Create programs using visual blocks</li>
+                                    <li>See generated Arduino code in real-time</li>
+                                    <li>Learn Arduino syntax by seeing code equivalents</li>
+                                    <li>Upload to LilyPad/Flora hardware</li>
+                                    <li>Gradually transition to text-based coding</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Learning Path:</h4>
+                                <ul class="resource-list">
+                                    <li>Start with blocks for simple LED control</li>
+                                    <li>Add sensor inputs and conditional logic</li>
+                                    <li>Observe generated code to understand syntax</li>
+                                    <li>Modify generated code for advanced features</li>
+                                    <li>Eventually write Arduino code directly</li>
+                                </ul>
+
+                                <a href="https://wiki.edurobotics.com/blocklyduino/" target="_blank" rel="noopener noreferrer" class="resource-link">Try It Out →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>CircuitPython for Beginners</h3>
+                            <div class="resource-description">
+                                <p>Simplified Python for wearable electronics. Easier than Arduino C++ for people familiar with Python.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Why CircuitPython:</h4>
+                                <ul class="resource-list">
+                                    <li>Edit code directly on board (no upload step)</li>
+                                    <li>Instant feedback when saving file</li>
+                                    <li>Simpler syntax than Arduino C++</li>
+                                    <li>Extensive libraries for sensors and LEDs</li>
+                                    <li>Works on Gemma, Circuit Playground, and newer Flora</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Getting Started:</h4>
+                                <ul class="resource-list">
+                                    <li>Board appears as USB drive when connected</li>
+                                    <li>Edit code.py file in any text editor</li>
+                                    <li>Save file and code runs immediately</li>
+                                    <li>Use print() statements for debugging</li>
+                                    <li>Excellent tutorials at learn.adafruit.com</li>
+                                </ul>
+
+                                <a href="https://circuitpython.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Learn More →</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>MIT App Inventor for Wearables</h3>
+                            <div class="resource-description">
+                                <p>Create mobile apps that communicate with wearables via Bluetooth. Visual programming for both app and Arduino.</p>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Capabilities:</h4>
+                                <ul class="resource-list">
+                                    <li>Design mobile app interface visually</li>
+                                    <li>Program app behavior with blocks</li>
+                                    <li>Send/receive data from wearable via Bluetooth</li>
+                                    <li>Create custom controls for your wearable</li>
+                                    <li>No Android coding required</li>
+                                </ul>
+
+                                <h4 style="font-size: var(--text-base); font-weight: var(--font-bold); margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Example Projects:</h4>
+                                <ul class="resource-list">
+                                    <li>Phone app to control LED colors on wearable</li>
+                                    <li>Display wearable sensor data on phone</li>
+                                    <li>Trigger wearable actions from phone notifications</li>
+                                    <li>Log wearable activity to phone for analysis</li>
+                                </ul>
+
+                                <a href="https://appinventor.mit.edu/" target="_blank" rel="noopener noreferrer" class="resource-link">Start Building →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 4px solid var(--color-black);">
+                    <a href="textiles-landing.html" style="display: inline-block; padding: var(--space-3) var(--space-6); background: var(--color-electric-blue); color: var(--color-white); text-decoration: none; font-weight: var(--font-bold); border-radius: 4px;">← Back to Smart Textiles Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making Simple Robots - Arduino & Raspberry Pi | Emerging Tech Hub</title>
+    <meta name="description" content="Build your first robot step-by-step with maker-friendly tools, visual programming, and affordable kits for creative technologists.">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <link rel="stylesheet" href="robotics-fundamentals.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Robotics Fundamentals</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Robotics Fundamentals</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="robotics-design-first.html" class="experimental-nav-link">Design-First Robotics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robot-behavior-design.html" class="experimental-nav-link">Robot Behavior Design</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robot-anatomy.html" class="experimental-nav-link">Robot Anatomy</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="making-simple-robots.html" class="experimental-nav-link active">Making Simple Robots</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="autonomy-and-ai.html" class="experimental-nav-link">Autonomy & AI</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-applications.html" class="experimental-nav-link">Robotics Applications</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="robotics-landing.html">← Back to Robotics Hub</a><br>
+                        <a href="robot-anatomy.html">← Previous: Robot Anatomy</a><br>
+                        <a href="autonomy-and-ai.html">Next: Autonomy & AI →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu (Mobile) -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Making Simple Robots - Arduino & Raspberry Pi for Beginners</h1>
+                <p class="fundamentals-subtitle">
+                    Build your first robot step-by-step with maker-friendly tools, visual programming, and affordable kits for creative technologists.
+                    Learn through hands-on projects that go from parts to working robots in hours, not months.
+                </p>
+            </div>
+
+            <div class="fundamentals-content">
+
+                <!-- Getting Started - Choosing Your Platform -->
+                <section class="content-section" id="choosing-platform">
+                    <h2>Getting Started - Choosing Your Platform</h2>
+                    <p>The first big decision: Arduino or Raspberry Pi? Both are excellent beginner platforms, but they excel at different things. Choose based on what kind of robot you want to make, not which sounds cooler.</p>
+
+                    <div class="highlight-box">
+                        <h3>No Wrong Choice</h3>
+                        <p>There's no "best" platform - only the right platform for your specific project. Arduino is perfect for motor control and sensor reactions. Raspberry Pi is ideal for vision and AI. Many makers end up learning both.</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>🎯 Platform Analogy</h4>
+                        <p><strong>Like choosing tools:</strong> Arduino is like a precision screwdriver set - perfect for specific hardware tasks. Raspberry Pi is like a Swiss Army knife - more versatile but sometimes overkill. Match the tool to the job.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Arduino Path - Hardware Control Focus</div>
+                            <div class="feature-description">
+                                <p><strong>Best for beginners who want to:</strong></p>
+                                <ul>
+                                    <li>Learn electronics and physical computing</li>
+                                    <li>Build robots that respond to sensors quickly</li>
+                                    <li>Keep projects simple and battery-powered</li>
+                                    <li>Focus on hardware rather than software</li>
+                                </ul>
+                                <p><strong>Starting cost:</strong> $25-40 for Arduino Uno kit</p>
+                                <p><strong>Programming:</strong> Arduino IDE (simplified C++), also block-based options like mBlock</p>
+                                <p><strong>Strengths:</strong> Real-time sensor response, low power consumption, simpler setup, massive tutorial library</p>
+                                <p><strong>Limitations:</strong> No internet/WiFi (unless ESP32), no computer vision, limited memory, single program at a time</p>
+                                <p><strong>Choose Arduino if:</strong> Your robot needs precise motor control, quick reactions, long battery life, and doesn't need AI or vision</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Raspberry Pi Path - Computation Power</div>
+                            <div class="feature-description">
+                                <p><strong>Best for beginners who want to:</strong></p>
+                                <ul>
+                                    <li>Add camera vision and AI to robots</li>
+                                    <li>Connect robots to internet/WiFi</li>
+                                    <li>Run complex programs and multitask</li>
+                                    <li>Learn Python programming</li>
+                                </ul>
+                                <p><strong>Starting cost:</strong> $55-80 for Raspberry Pi 4 kit</p>
+                                <p><strong>Programming:</strong> Python (beginner-friendly), also JavaScript, C++, visual options</p>
+                                <p><strong>Strengths:</strong> Runs full Linux OS, computer vision, AI/ML, web servers, multiple programs, internet connectivity</p>
+                                <p><strong>Limitations:</strong> Higher power consumption, more expensive, slower sensor response, requires SD card and careful shutdown</p>
+                                <p><strong>Choose Raspberry Pi if:</strong> Your robot needs camera vision, face recognition, voice control, complex AI, or internet connectivity</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Decision Matrix - Which is Right for You?</div>
+                            <div class="feature-description">
+                                <p><strong>Arduino wins for:</strong></p>
+                                <ul>
+                                    <li>Lower cost ($25 vs $55+)</li>
+                                    <li>Simpler for absolute beginners</li>
+                                    <li>Better battery life (hours vs 30-60 minutes)</li>
+                                    <li>More reliable motor control timing</li>
+                                    <li>Smaller, lighter builds</li>
+                                    <li>Direct sensor-to-motor reactions</li>
+                                </ul>
+                                <p><strong>Raspberry Pi wins for:</strong></p>
+                                <ul>
+                                    <li>Computer vision projects</li>
+                                    <li>Internet/IoT connectivity</li>
+                                    <li>AI and machine learning</li>
+                                    <li>Voice recognition</li>
+                                    <li>Multiple simultaneous tasks</li>
+                                    <li>Complex decision-making</li>
+                                </ul>
+                                <p><strong>Hybrid approach:</strong> Use both - Pi for vision/AI, Arduino for motor control. This is common in advanced hobby robots.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">What You'll Need - Basic Tools & Budget</div>
+                            <div class="feature-description">
+                                <p><strong>Essential tools (one-time purchase ~$30-50):</strong></p>
+                                <ul>
+                                    <li>Soldering iron kit ($20-30) - Not immediately necessary, but useful</li>
+                                    <li>Wire cutters/strippers ($5-10)</li>
+                                    <li>Small screwdriver set ($5-10)</li>
+                                    <li>Breadboard and jumper wires ($8-12)</li>
+                                    <li>Multimeter ($10-20) - For troubleshooting</li>
+                                </ul>
+                                <p><strong>Budget estimates for first robot:</strong></p>
+                                <ul>
+                                    <li><strong>Arduino starter kit:</strong> $50-80 total (board, sensors, motors, kit)</li>
+                                    <li><strong>Raspberry Pi starter kit:</strong> $120-180 total (board, camera, motors, SD card, power)</li>
+                                    <li><strong>Pre-made robot kit:</strong> $70-120 (everything included)</li>
+                                </ul>
+                                <p><strong>Workspace needs:</strong> Desk space, laptop/computer, good lighting, patience</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Beginner-Friendly Robot Kits -->
+                <section class="content-section" id="robot-kits">
+                    <h2>Beginner-Friendly Robot Kits</h2>
+                    <p>Kits are the fastest way to get started - everything included, guaranteed compatibility, step-by-step instructions. Once you complete a kit, you'll understand the components well enough to design custom robots.</p>
+
+                    <div class="highlight-box">
+                        <h3>Kit vs Custom: The Learning Path</h3>
+                        <p>Start with a kit to learn the basics without getting stuck on compatibility issues. Then build 1-2 custom robots using individual components. This progression teaches you both the "how" (from kits) and the "why" (from custom building).</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Elegoo Smart Robot Car V4.0 (~$70)</div>
+                            <div class="feature-description">
+                                <p><strong>Platform:</strong> Arduino-based (includes Arduino-compatible board)</p>
+                                <p><strong>What's included:</strong></p>
+                                <ul>
+                                    <li>4-wheel drive chassis with motors</li>
+                                    <li>Ultrasonic distance sensor for obstacle avoidance</li>
+                                    <li>Line-following sensors</li>
+                                    <li>Infrared remote control</li>
+                                    <li>Battery holder and all wires/screws</li>
+                                </ul>
+                                <p><strong>Learning path:</strong> 12 lessons from basic assembly to autonomous navigation</p>
+                                <p><strong>Programming:</strong> Arduino IDE (C++), sample code provided</p>
+                                <p><strong>Best for:</strong> Complete beginners who want hands-on electronics experience</p>
+                                <p><strong>Time to first working robot:</strong> 2-4 hours assembly + programming</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Makeblock mBot (~$90)</div>
+                            <div class="feature-description">
+                                <p><strong>Platform:</strong> Arduino-based with mBlock visual programming</p>
+                                <p><strong>What's included:</strong></p>
+                                <ul>
+                                    <li>Pre-assembled metal chassis (minimal building required)</li>
+                                    <li>Light sensor and line-following sensor</li>
+                                    <li>Ultrasonic sensor and buzzer</li>
+                                    <li>Bluetooth module for app control</li>
+                                    <li>LED matrix display add-on available</li>
+                                </ul>
+                                <p><strong>Learning path:</strong> Scratch-based programming (drag-and-drop blocks), no coding experience needed</p>
+                                <p><strong>Programming:</strong> mBlock (Scratch 3.0 for Arduino), also supports Arduino IDE</p>
+                                <p><strong>Best for:</strong> Kids/educators, those intimidated by text coding, classroom settings</p>
+                                <p><strong>Time to first working robot:</strong> 30-60 minutes assembly, immediate programming</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">SunFounder PiCar-X (~$120)</div>
+                            <div class="feature-description">
+                                <p><strong>Platform:</strong> Raspberry Pi (NOT included - add $55 for Pi 4)</p>
+                                <p><strong>What's included:</strong></p>
+                                <ul>
+                                    <li>Ackermann steering chassis (car-like steering)</li>
+                                    <li>Wide-angle camera module</li>
+                                    <li>Ultrasonic sensor on servo-controlled gimbal</li>
+                                    <li>Grayscale sensor for line tracking</li>
+                                    <li>Robot HAT board for easy Pi connection</li>
+                                </ul>
+                                <p><strong>Learning path:</strong> Python programming, computer vision tutorials, AI examples</p>
+                                <p><strong>Programming:</strong> Python with Jupyter notebooks, web interface for remote control</p>
+                                <p><strong>Best for:</strong> Intermediate learners ready for AI/vision projects, Python programmers</p>
+                                <p><strong>Time to first working robot:</strong> 3-5 hours assembly + Pi setup</p>
+                                <p><strong>Total cost:</strong> ~$180 with Raspberry Pi 4</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Comparison Table - Which Kit Matches Your Goals?</div>
+                            <div class="feature-description">
+                                <p><strong>Choose Elegoo Smart Car if you want to:</strong></p>
+                                <ul>
+                                    <li>Learn electronics and hardware fundamentals</li>
+                                    <li>Start with simplest option</li>
+                                    <li>Keep budget under $70</li>
+                                    <li>Focus on sensor-motor coordination</li>
+                                </ul>
+                                <p><strong>Choose Makeblock mBot if you want to:</strong></p>
+                                <ul>
+                                    <li>Avoid text-based coding (use visual blocks)</li>
+                                    <li>Get started fastest (pre-assembled)</li>
+                                    <li>Teach robotics to kids/beginners</li>
+                                    <li>Later transition to Arduino code</li>
+                                </ul>
+                                <p><strong>Choose SunFounder PiCar-X if you want to:</strong></p>
+                                <ul>
+                                    <li>Learn computer vision and AI</li>
+                                    <li>Program in Python</li>
+                                    <li>Build internet-connected robots</li>
+                                    <li>Have budget for more advanced platform</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">05</div>
+                            <div class="feature-title">Where to Buy & Community Resources</div>
+                            <div class="feature-description">
+                                <p><strong>Trusted retailers:</strong></p>
+                                <ul>
+                                    <li><strong>Amazon:</strong> Fast shipping, easy returns, all kits available</li>
+                                    <li><strong>Elegoo.com:</strong> Direct from manufacturer, latest versions</li>
+                                    <li><strong>Makeblock Store:</strong> Official mBot kits, educational bundles</li>
+                                    <li><strong>Adafruit / SparkFun:</strong> Curated quality parts, great tutorials</li>
+                                </ul>
+                                <p><strong>Community support:</strong></p>
+                                <ul>
+                                    <li><strong>r/arduino subreddit:</strong> Huge community, quick help</li>
+                                    <li><strong>Arduino Forum:</strong> Official support, thousands of projects</li>
+                                    <li><strong>YouTube:</strong> Video tutorials for every kit</li>
+                                    <li><strong>Instructables:</strong> Step-by-step project guides</li>
+                                </ul>
+                                <p><strong>Documentation:</strong> All kits include PDF guides, wiring diagrams, and example code</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">06</div>
+                            <div class="feature-title">Kit vs Custom Build Trade-offs</div>
+                            <div class="feature-description">
+                                <p><strong>Kits are better for:</strong></p>
+                                <ul>
+                                    <li>First robot experience - guaranteed success</li>
+                                    <li>Learning fundamentals without frustration</li>
+                                    <li>Understanding how components work together</li>
+                                    <li>Getting started quickly (hours not weeks)</li>
+                                    <li>Having step-by-step guidance</li>
+                                </ul>
+                                <p><strong>Custom builds are better for:</strong></p>
+                                <ul>
+                                    <li>Unique robot designs and behaviors</li>
+                                    <li>Learning component selection skills</li>
+                                    <li>Budget optimization (sometimes cheaper)</li>
+                                    <li>Specific project requirements</li>
+                                    <li>Deeper understanding of systems</li>
+                                </ul>
+                                <p><strong>Recommended path:</strong> Complete 1-2 kits to learn fundamentals, then transition to custom builds for your unique ideas</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- First Robot Project: Obstacle-Avoiding Car -->
+                <section class="content-section" id="first-project">
+                    <h2>First Robot Project: Obstacle-Avoiding Car</h2>
+                    <p>Let's build your first robot from scratch using an Arduino, two motors, and an ultrasonic sensor. This is the classic "hello world" of robotics - a car that drives forward and turns away from obstacles automatically.</p>
+
+                    <div class="highlight-box">
+                        <h3>What You'll Learn</h3>
+                        <p>This project teaches the core robotics loop: sense (ultrasonic sensor), think (Arduino decisions), act (motor movements). Master this pattern and you understand the foundation of all mobile robots.</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>🎯 Project Analogy</h4>
+                        <p><strong>Like learning to cook:</strong> This is your first recipe - simple ingredients, clear steps, predictable result. Once you can make this "dish," you understand enough to experiment and create your own "recipes" (robot designs).</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">STEP 1</div>
+                            <div class="feature-title">Assembly - Chassis, Motors, Wheels Setup</div>
+                            <div class="feature-description">
+                                <p><strong>Parts needed:</strong></p>
+                                <ul>
+                                    <li>2WD or 4WD chassis kit (~$15-20 on Amazon)</li>
+                                    <li>2x TT gear motors (usually included with chassis)</li>
+                                    <li>2-4 wheels (included)</li>
+                                    <li>Battery holder for 4x AA batteries</li>
+                                    <li>Small zip ties or double-sided tape</li>
+                                </ul>
+                                <p><strong>Assembly steps:</strong></p>
+                                <ol>
+                                    <li><strong>Attach motors:</strong> Screw TT motors to chassis mounting holes</li>
+                                    <li><strong>Attach wheels:</strong> Press wheels onto motor shafts (friction fit)</li>
+                                    <li><strong>Add caster wheel:</strong> If 2WD, attach ball caster to front/back for balance</li>
+                                    <li><strong>Mount battery holder:</strong> Use zip ties or tape to secure underneath chassis</li>
+                                </ol>
+                                <p><strong>Time required:</strong> 20-30 minutes</p>
+                                <p><strong>Tips:</strong> Don't overtighten screws (can crack acrylic chassis), test wheels spin freely</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">STEP 2</div>
+                            <div class="feature-title">Wiring - Connecting Sensors and Motors to Arduino</div>
+                            <div class="feature-description">
+                                <p><strong>Additional parts needed:</strong></p>
+                                <ul>
+                                    <li>Arduino Uno ($25) or Nano ($12)</li>
+                                    <li>L298N motor driver board ($4)</li>
+                                    <li>HC-SR04 ultrasonic sensor ($3)</li>
+                                    <li>Breadboard and jumper wires ($8)</li>
+                                </ul>
+                                <p><strong>Wiring connections:</strong></p>
+                                <ul>
+                                    <li><strong>Motor driver to Arduino:</strong>
+                                        <ul>
+                                            <li>IN1 → Pin 7, IN2 → Pin 6 (left motor control)</li>
+                                            <li>IN3 → Pin 5, IN4 → Pin 4 (right motor control)</li>
+                                            <li>ENA → Pin 9, ENB → Pin 10 (speed control PWM)</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Motors to driver:</strong> Connect left motor to OUT1/OUT2, right motor to OUT3/OUT4</li>
+                                    <li><strong>Ultrasonic sensor to Arduino:</strong> VCC → 5V, GND → GND, Trig → Pin 12, Echo → Pin 11</li>
+                                    <li><strong>Power:</strong> Battery pack to motor driver power input, motor driver 5V out to Arduino VIN</li>
+                                </ul>
+                                <p><strong>Time required:</strong> 30-45 minutes</p>
+                                <p><strong>Pro tip:</strong> Label wires with tape as you connect them - makes debugging easier</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">STEP 3</div>
+                            <div class="feature-title">Upload Code - Using Arduino IDE, First Program</div>
+                            <div class="feature-description">
+                                <p><strong>Software setup:</strong></p>
+                                <ol>
+                                    <li>Download Arduino IDE from arduino.cc (free)</li>
+                                    <li>Install USB drivers (automatic on Mac/Linux)</li>
+                                    <li>Connect Arduino to computer via USB cable</li>
+                                    <li>Select board type (Tools → Board → Arduino Uno)</li>
+                                    <li>Select port (Tools → Port → /dev/cu.usbmodem...)</li>
+                                </ol>
+                                <p><strong>The code concept:</strong></p>
+                                <ul>
+                                    <li><strong>Loop:</strong> Continuously check distance sensor</li>
+                                    <li><strong>Logic:</strong> If distance > 20cm, drive forward; if < 20cm, stop, back up, turn</li>
+                                    <li><strong>Functions:</strong> forward(), backward(), turnLeft(), turnRight(), stop()</li>
+                                </ul>
+                                <p><strong>Where to find code:</strong></p>
+                                <ul>
+                                    <li>Search "Arduino obstacle avoiding car code" on GitHub</li>
+                                    <li>Copy example code into Arduino IDE</li>
+                                    <li>Click "Upload" button (right arrow icon)</li>
+                                </ul>
+                                <p><strong>Time required:</strong> 15-30 minutes (first time setup + upload)</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">STEP 4</div>
+                            <div class="feature-title">Testing - Debug Checklist</div>
+                            <div class="feature-description">
+                                <p><strong>First test - motors only:</strong></p>
+                                <ul>
+                                    <li>Comment out sensor code, upload simple motor test</li>
+                                    <li>Both wheels should spin forward</li>
+                                    <li>If one spins backward, swap its two motor wires</li>
+                                    <li>If too fast/slow, adjust PWM values (0-255)</li>
+                                </ul>
+                                <p><strong>Second test - sensor only:</strong></p>
+                                <ul>
+                                    <li>Upload code that prints distance to Serial Monitor</li>
+                                    <li>Open Tools → Serial Monitor</li>
+                                    <li>Should see distance values updating (in cm)</li>
+                                    <li>Wave hand in front - numbers should change</li>
+                                </ul>
+                                <p><strong>Final test - full autonomous mode:</strong></p>
+                                <ul>
+                                    <li>Disconnect USB, power from batteries only</li>
+                                    <li>Place on floor in open area</li>
+                                    <li>Power on - should drive forward</li>
+                                    <li>Put obstacle in path - should stop, backup, turn</li>
+                                </ul>
+                                <p><strong>Common fixes:</strong> Check all connections, ensure batteries are fresh, verify motor driver power switch is ON</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">STEP 5</div>
+                            <div class="feature-title">Improvements - Adding Features</div>
+                            <div class="feature-description">
+                                <p><strong>Easy upgrades (30 min each):</strong></p>
+                                <ul>
+                                    <li><strong>Add LED eyes:</strong> Connect 2 LEDs to pins, blink when turning</li>
+                                    <li><strong>Add buzzer:</strong> Beep when obstacle detected (warning sound)</li>
+                                    <li><strong>Speed control:</strong> Add potentiometer to adjust speed on the fly</li>
+                                    <li><strong>Better decisions:</strong> Check left AND right before turning</li>
+                                </ul>
+                                <p><strong>Intermediate upgrades (1-2 hours):</strong></p>
+                                <ul>
+                                    <li><strong>Line following:</strong> Add 2-3 IR sensors underneath, follow black line</li>
+                                    <li><strong>Bluetooth control:</strong> Add HC-05 module, control via phone app</li>
+                                    <li><strong>Light seeking:</strong> Add photoresistors, drive toward bright areas</li>
+                                    <li><strong>Servo scanner:</strong> Mount ultrasonic on servo, scan left/right for best path</li>
+                                </ul>
+                                <p><strong>Advanced upgrades (3+ hours):</strong></p>
+                                <ul>
+                                    <li><strong>Maze solving:</strong> Implement wall-following algorithm</li>
+                                    <li><strong>Speed tracking:</strong> Add wheel encoders for precise distance measurement</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">STEP 6</div>
+                            <div class="feature-title">Next Projects - Ideas for Expansion</div>
+                            <div class="feature-description">
+                                <p><strong>Once you've mastered obstacle avoidance:</strong></p>
+                                <p><strong>Similar difficulty level:</strong></p>
+                                <ul>
+                                    <li><strong>Line-following robot:</strong> Uses IR sensors to follow black tape track</li>
+                                    <li><strong>Light-seeking robot:</strong> Uses photoresistors to find brightest area</li>
+                                    <li><strong>Remote-controlled car:</strong> Add RF or Bluetooth remote control</li>
+                                </ul>
+                                <p><strong>Step up challenges:</strong></p>
+                                <ul>
+                                    <li><strong>Wall-following maze solver:</strong> Always keeps right wall at fixed distance</li>
+                                    <li><strong>Object-following robot:</strong> Maintains distance from moving object</li>
+                                    <li><strong>Multi-sensor fusion:</strong> Combine ultrasonic, IR, and touch sensors</li>
+                                </ul>
+                                <p><strong>Major projects (upgrade to Raspberry Pi):</strong></p>
+                                <ul>
+                                    <li><strong>Face-following robot:</strong> Uses camera and OpenCV</li>
+                                    <li><strong>Voice-controlled robot:</strong> Responds to speech commands</li>
+                                    <li><strong>Autonomous delivery bot:</strong> Navigates to specific locations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Visual Programming (No Code Required) -->
+                <section class="content-section" id="visual-programming">
+                    <h2>Visual Programming - No Code Required</h2>
+                    <p>Not ready for text-based coding? Visual programming tools let you build robot logic by dragging and connecting blocks - like digital Lego. Perfect for beginners, educators, and rapid prototyping.</p>
+
+                    <div class="highlight-box">
+                        <h3>Visual Programming as Gateway</h3>
+                        <p>Block-based programming isn't "cheating" - it's scaffolding. You'll learn all the same concepts (loops, conditionals, variables) without getting stuck on syntax. Many professionals use visual tools for quick prototyping.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">mBlock - Scratch for Arduino</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> Visual programming environment based on Scratch 3.0, specifically designed for Arduino and mBot robots</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>Drag blocks like "when button pressed", "move forward", "if distance < 20"</li>
+                                    <li>Connect blocks like puzzle pieces to create program flow</li>
+                                    <li>Click green flag to test, click upload to transfer to Arduino</li>
+                                </ul>
+                                <p><strong>Best features:</strong></p>
+                                <ul>
+                                    <li>Live mode - test code while connected to computer</li>
+                                    <li>Upload mode - run independently after disconnecting</li>
+                                    <li>Built-in blocks for common sensors/motors</li>
+                                    <li>AI/ML extensions for advanced projects</li>
+                                </ul>
+                                <p><strong>Cost:</strong> Free download from mblock.cc</p>
+                                <p><strong>Best for:</strong> Complete beginners, educators, kids 8+, Makeblock mBot owners</p>
+                                <p><strong>Transition path:</strong> Shows Arduino code equivalent - learn by comparison</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Arduino Blockly - Web-Based Visual Coding</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> Web-based visual programming that generates Arduino C++ code automatically</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>Access via web browser (ardublockly.embeddedlog.com)</li>
+                                    <li>Drag blocks to create logic</li>
+                                    <li>See real Arduino code generated in real-time</li>
+                                    <li>Copy code to Arduino IDE to upload</li>
+                                </ul>
+                                <p><strong>Best features:</strong></p>
+                                <ul>
+                                    <li>Works on any computer with browser (no installation)</li>
+                                    <li>Shows equivalent text code side-by-side</li>
+                                    <li>Supports all standard Arduino boards</li>
+                                    <li>Great for learning code syntax gradually</li>
+                                </ul>
+                                <p><strong>Cost:</strong> Free, open-source</p>
+                                <p><strong>Best for:</strong> Students learning C++ syntax, classroom environments with web access</p>
+                                <p><strong>Limitation:</strong> Still requires Arduino IDE for uploading to board</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Microsoft MakeCode - For micro:bit Robots</div>
+                            <div class="feature-description">
+                                <p><strong>What it is:</strong> Microsoft's visual programming platform for BBC micro:bit-based robots</p>
+                                <p><strong>How it works:</strong></p>
+                                <ul>
+                                    <li>Web-based editor at makecode.microbit.org</li>
+                                    <li>Drag blocks or use JavaScript/Python alternatives</li>
+                                    <li>Simulator shows results before uploading</li>
+                                    <li>Download .hex file and copy to micro:bit</li>
+                                </ul>
+                                <p><strong>Best features:</strong></p>
+                                <ul>
+                                    <li>Built-in simulator - test without hardware</li>
+                                    <li>Switch between blocks/JavaScript/Python instantly</li>
+                                    <li>Extensions for servo motors, neopixels, sensors</li>
+                                    <li>Huge library of shared projects</li>
+                                </ul>
+                                <p><strong>Cost:</strong> Free, micro:bit board ~$15-20</p>
+                                <p><strong>Best for:</strong> Younger learners (8-14), small wearable robots, quick prototypes</p>
+                                <p><strong>Note:</strong> micro:bit is simpler than Arduino but less powerful - good stepping stone</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">When to Transition to Text Code</div>
+                            <div class="feature-description">
+                                <p><strong>You're ready to transition when:</strong></p>
+                                <ul>
+                                    <li>You understand what loops and conditionals do</li>
+                                    <li>You can explain your program logic in words</li>
+                                    <li>You're curious about the generated code</li>
+                                    <li>You want more control and flexibility</li>
+                                    <li>Block-based tools feel limiting</li>
+                                </ul>
+                                <p><strong>Smooth transition strategies:</strong></p>
+                                <ul>
+                                    <li><strong>Side-by-side learning:</strong> Use tools that show text code equivalent (Arduino Blockly)</li>
+                                    <li><strong>Modify generated code:</strong> Start with blocks, then tweak the text version</li>
+                                    <li><strong>Recreate projects:</strong> Build same robot in blocks, then in text code</li>
+                                    <li><strong>Use comments:</strong> Explain each line in plain language</li>
+                                </ul>
+                                <p><strong>Why text code eventually wins:</strong></p>
+                                <ul>
+                                    <li>More powerful and flexible</li>
+                                    <li>Faster for complex programs</li>
+                                    <li>Better for troubleshooting</li>
+                                    <li>Professional tool (blocks are training wheels)</li>
+                                </ul>
+                                <p><strong>Bottom line:</strong> Use visual tools as long as they're useful, transition when you're ready - not before</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Common Problems & Solutions -->
+                <section class="content-section" id="troubleshooting">
+                    <h2>Common Problems & Solutions</h2>
+                    <p>Every robot builder hits the same obstacles. Here's your troubleshooting guide for the most common issues, saving you hours of frustration and web searching.</p>
+
+                    <div class="highlight-box">
+                        <h3>Debugging is Normal</h3>
+                        <p>Professional roboticists spend 70% of their time debugging. If your first robot doesn't work immediately, you're having the normal experience. These solutions will get you unstuck quickly.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Robot Won't Move - Motor & Power Troubleshooting</div>
+                            <div class="feature-description">
+                                <p><strong>Symptom:</strong> Nothing happens when you turn on the robot, motors don't spin</p>
+                                <p><strong>Checklist:</strong></p>
+                                <ul>
+                                    <li><strong>Check power switch:</strong> Motor driver has ON/OFF switch - easy to miss</li>
+                                    <li><strong>Test batteries:</strong> Use multimeter, should read ~6V for 4xAA pack</li>
+                                    <li><strong>Verify motor driver connections:</strong> Battery → motor driver power input</li>
+                                    <li><strong>Check motor wires:</strong> Ensure firmly connected to motor driver outputs</li>
+                                    <li><strong>Test motors directly:</strong> Touch motor wires to battery - should spin</li>
+                                </ul>
+                                <p><strong>If only one motor spins:</strong></p>
+                                <ul>
+                                    <li>Check that motor's wire connections</li>
+                                    <li>Verify pins are set correctly in code (IN1-4)</li>
+                                    <li>Test with motor test code (simple forward spin)</li>
+                                </ul>
+                                <p><strong>If motors spin weakly:</strong> Fresh batteries needed, or too much weight on chassis</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">Sensors Not Working - Connection & Calibration Issues</div>
+                            <div class="feature-description">
+                                <p><strong>Symptom:</strong> Ultrasonic sensor returns 0, or random values, or doesn't detect obstacles</p>
+                                <p><strong>Ultrasonic sensor fixes:</strong></p>
+                                <ul>
+                                    <li><strong>Check wiring:</strong> VCC→5V, GND→GND, Trig→Pin12, Echo→Pin11</li>
+                                    <li><strong>Test with Serial Monitor:</strong> Print distance values, should update continuously</li>
+                                    <li><strong>Distance range:</strong> Only works 2cm-4m, too close returns 0</li>
+                                    <li><strong>Surface matters:</strong> Soft materials (carpet, curtains) don't reflect well</li>
+                                </ul>
+                                <p><strong>Line sensor not detecting:</strong></p>
+                                <ul>
+                                    <li>Check height above surface (5-10mm ideal)</li>
+                                    <li>Use thick black tape (electrical tape works well)</li>
+                                    <li>Calibrate threshold values in code (test on actual surface)</li>
+                                </ul>
+                                <p><strong>Light sensor issues:</strong></p>
+                                <ul>
+                                    <li>Check if analog pin (A0-A5), not digital pin</li>
+                                    <li>Test range with Serial Monitor - should show 0-1023</li>
+                                    <li>May need strong light difference to detect</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Code Won't Upload - Driver & Port Problems</div>
+                            <div class="feature-description">
+                                <p><strong>Symptom:</strong> Arduino IDE shows "Upload Error" or "Port not found"</p>
+                                <p><strong>Port selection issues:</strong></p>
+                                <ul>
+                                    <li><strong>Windows:</strong> Go to Device Manager → Ports, note COM number, select in Arduino IDE</li>
+                                    <li><strong>Mac:</strong> Tools → Port, select /dev/cu.usbmodem...</li>
+                                    <li><strong>Linux:</strong> Tools → Port, select /dev/ttyUSB0 or /dev/ttyACM0</li>
+                                    <li><strong>Not showing up?</strong> Try different USB cable (some are power-only, no data)</li>
+                                </ul>
+                                <p><strong>Driver issues (Windows):</strong></p>
+                                <ul>
+                                    <li>Download CH340 driver for cheap Arduino clones</li>
+                                    <li>Official Arduino boards usually auto-install drivers</li>
+                                    <li>Restart computer after driver install</li>
+                                </ul>
+                                <p><strong>Wrong board selected:</strong></p>
+                                <ul>
+                                    <li>Tools → Board → Arduino Uno (or whatever board you have)</li>
+                                    <li>If using Nano, also select processor type (ATmega328P old bootloader for clones)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Erratic Behavior - Timing & Logic Debugging</div>
+                            <div class="feature-description">
+                                <p><strong>Symptom:</strong> Robot moves unpredictably, ignores commands, acts randomly</p>
+                                <p><strong>Common causes:</strong></p>
+                                <ul>
+                                    <li><strong>Loose connections:</strong> Wires jiggle during movement, intermittent contact</li>
+                                    <li><strong>Voltage drop:</strong> Weak batteries cause Arduino to reset randomly</li>
+                                    <li><strong>Sensor noise:</strong> Interference from motor wiring near sensor wires</li>
+                                    <li><strong>Logic errors:</strong> If/else conditions need testing</li>
+                                </ul>
+                                <p><strong>Debugging strategies:</strong></p>
+                                <ul>
+                                    <li><strong>Serial Monitor debugging:</strong> Print sensor values and decision points</li>
+                                    <li><strong>LED indicators:</strong> Flash LED when conditions are met</li>
+                                    <li><strong>Simplify code:</strong> Comment out everything except basic motor control</li>
+                                    <li><strong>Add delays:</strong> Small delays (50-100ms) after sensor reads</li>
+                                    <li><strong>Separate power:</strong> Use separate batteries for motors vs Arduino (advanced)</li>
+                                </ul>
+                                <p><strong>Sensor reading too fast:</strong> Add delay(100) in main loop for stability</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">05</div>
+                            <div class="feature-title">Battery Issues - Power & Charging Solutions</div>
+                            <div class="feature-description">
+                                <p><strong>Symptom:</strong> Robot works when USB connected, fails on battery power</p>
+                                <p><strong>Power troubleshooting:</strong></p>
+                                <ul>
+                                    <li><strong>Voltage check:</strong> Measure battery pack with multimeter
+                                        <ul>
+                                            <li>4x AA: Should be ~6V (1.5V each)</li>
+                                            <li>LiPo single cell: Should be 3.7-4.2V</li>
+                                            <li>Below these values: Battery is dead</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Current draw:</strong> Motors can draw 500mA+ each, weak batteries can't supply enough</li>
+                                    <li><strong>Connection test:</strong> Wiggle battery holder wires - should never lose power</li>
+                                </ul>
+                                <p><strong>Battery life tips:</strong></p>
+                                <ul>
+                                    <li>Use fresh alkaline AA or rechargeable NiMH (1.2V per cell)</li>
+                                    <li>LiPo batteries last longer but need careful handling</li>
+                                    <li>Turn off when not in use</li>
+                                    <li>Lower motor speed = longer runtime</li>
+                                </ul>
+                                <p><strong>Charging LiPo batteries:</strong> Always use proper LiPo charger, never let voltage drop below 3.0V per cell</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">06</div>
+                            <div class="feature-title">Getting Help - Communities, Forums, Documentation</div>
+                            <div class="feature-description">
+                                <p><strong>Before asking for help, gather:</strong></p>
+                                <ul>
+                                    <li>Clear description of problem</li>
+                                    <li>Photos of wiring setup</li>
+                                    <li>Full code (use pastebin or GitHub gist)</li>
+                                    <li>Error messages (exact text)</li>
+                                    <li>What you've already tried</li>
+                                </ul>
+                                <p><strong>Best help resources:</strong></p>
+                                <ul>
+                                    <li><strong>r/arduino subreddit:</strong> Very active, beginner-friendly</li>
+                                    <li><strong>Arduino Forum:</strong> Official support, searchable archives</li>
+                                    <li><strong>Discord servers:</strong> Real-time help (search "Arduino Discord")</li>
+                                    <li><strong>Stack Overflow:</strong> For specific coding questions</li>
+                                </ul>
+                                <p><strong>Local resources:</strong></p>
+                                <ul>
+                                    <li>Maker spaces often have Arduino nights</li>
+                                    <li>Library makerspaces may offer workshops</li>
+                                    <li>Local robotics clubs (search Meetup.com)</li>
+                                </ul>
+                                <p><strong>Professional attitude:</strong> Show you've tried debugging first, be specific, thank helpers</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="content-section">
+                    <h2>From Parts to Working Robots</h2>
+                    <p>Building your first robot is equal parts technical learning and confidence building. The technical skills - wiring, coding, troubleshooting - develop through practice. The confidence comes from that first moment when your robot moves on its own.</p>
+
+                    <div class="highlight-box">
+                        <h3>The Maker Mindset</h3>
+                        <p>Professional roboticists aren't people who never encounter problems - they're people who've learned to debug systematically. Every stuck wire, mysterious error, and unexpected behavior is building your troubleshooting intuition.</p>
+                    </div>
+
+                    <p>Start with a kit or the obstacle-avoiding car project. Get it working. Then modify it - change behaviors, add sensors, experiment. That's when the real learning happens, and when you'll discover what kind of robots you want to build next.</p>
+
+                    <p>In the next section on Autonomy and AI, we'll explore how to add intelligence to your robots - computer vision, machine learning, and decision-making algorithms that enable truly autonomous behavior.</p>
+                </section>
+
+                <!-- Continue Learning Section -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Next</div>
+                            <h4>Autonomy & AI in Robotics</h4>
+                            <p>Add intelligence to your robots with computer vision, machine learning, and autonomous decision-making capabilities.</p>
+                            <a href="autonomy-and-ai.html" class="learning-link">Continue →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Related</div>
+                            <h4>Robotics Flashcards</h4>
+                            <p>Practice and review concepts through interactive flashcards covering robotics fundamentals, components, and applications.</p>
+                            <a href="robotics-flashcards.html" class="learning-link">Review ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Practice</div>
+                            <h4>Robotics Activities</h4>
+                            <p>Apply what you've learned through hands-on robot design exercises, case studies, and maker challenges.</p>
+                            <a href="robotics-activities.html" class="learning-link">Practice ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="robotics-landing.html" class="path-link">← Back to Robotics Hub</a>
+                        <a href="autonomy-and-ai.html" class="path-link primary">Next: Autonomy & AI →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-branding">
+                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="disclaimer.html">Disclaimer</a>
+                        <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

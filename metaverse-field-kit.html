@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metaverse Field Kit - Tools & Resources for Creators | Emerging Tech Hub</title>
+    <meta name="description" content="Essential tools, templates, and resources for building in the metaverse. No-code platforms, design templates, and collaboration guides for creators.">
+    <meta name="keywords" content="metaverse tools, no-code metaverse, Mozilla Hubs, Spatial, VR creation tools, metaverse templates, virtual world builder">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Tool Card Styles */
+.tool-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-top: var(--space-6);
+}
+
+.tool-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+}
+
+.tool-card:hover {
+    border-color: var(--color-electric-blue);
+}
+
+.tool-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: var(--border-width) solid var(--color-gray-300);
+}
+
+.tool-header h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.difficulty-badge {
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: var(--space-1) var(--space-3);
+    border: var(--border-width) solid var(--color-black);
+}
+
+.difficulty-badge.easy {
+    background: var(--color-gray-100);
+    color: var(--color-gray-800);
+}
+
+.difficulty-badge.moderate {
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    border-color: var(--color-electric-blue);
+}
+
+.tool-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    color: var(--color-electric-blue);
+}
+
+.tool-description p strong {
+    font-weight: var(--font-bold);
+}
+
+.step-list,
+.capability-list,
+.resource-list {
+    margin-left: var(--space-4);
+    margin-top: var(--space-2);
+}
+
+.step-list li,
+.capability-list li,
+.resource-list li {
+    margin-bottom: var(--space-2);
+    line-height: 1.6;
+}
+
+/* Comparison Matrix */
+.comparison-matrix {
+    margin-top: var(--space-6);
+}
+
+.comparison-matrix h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-4);
+}
+
+.matrix-table {
+    width: 100%;
+    margin-top: var(--space-4);
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-white);
+    border: var(--border-width) solid var(--color-black);
+}
+
+.styled-table thead th {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: var(--space-3) var(--space-2);
+    text-align: left;
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-right: var(--border-width) solid var(--color-white);
+}
+
+.styled-table thead th:last-child {
+    border-right: none;
+}
+
+.styled-table tbody td {
+    padding: var(--space-3) var(--space-2);
+    border-bottom: var(--border-width) solid var(--color-gray-300);
+    border-right: var(--border-width) solid var(--color-gray-300);
+    font-size: var(--text-sm);
+}
+
+.styled-table tbody td:last-child {
+    border-right: none;
+}
+
+.styled-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.styled-table tbody tr:hover {
+    background: var(--color-gray-50);
+}
+
+.styled-table strong {
+    font-weight: var(--font-bold);
+}
+
+/* Decision Guide */
+.decision-guide {
+    margin-top: var(--space-6);
+}
+
+.decision-guide h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-4);
+}
+
+.decision-flowchart {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-4);
+}
+
+.decision-step {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-4);
+    transition: all var(--transition-base);
+}
+
+.decision-step:hover {
+    border-color: var(--color-electric-blue);
+}
+
+.decision-step h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.decision-step ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.decision-step li {
+    padding-left: var(--space-3);
+    margin-bottom: var(--space-2);
+    position: relative;
+    font-size: var(--text-sm);
+}
+
+.decision-step li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-electric-blue);
+}
+
+/* Resource Categories */
+.resource-categories {
+    margin-top: var(--space-6);
+}
+
+.resource-category {
+    margin-bottom: var(--space-8);
+}
+
+.resource-category h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-4);
+    color: var(--color-electric-blue);
+}
+
+.resource-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+.resource-item {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-4);
+    transition: all var(--transition-base);
+}
+
+.resource-item:hover {
+    border-color: var(--color-electric-blue);
+    background: var(--color-white);
+}
+
+.resource-item h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+}
+
+.resource-item p {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    margin-bottom: var(--space-2);
+}
+
+.resource-item p strong {
+    font-weight: var(--font-bold);
+}
+
+.resource-item p em {
+    font-style: italic;
+    color: var(--color-gray-600);
+}
+
+/* Tech Concepts */
+.tech-concepts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+}
+
+.concept-card {
+    background: var(--color-gray-50);
+    border: var(--border-width) solid var(--color-gray-300);
+    padding: var(--space-6);
+}
+
+.concept-card h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-3);
+}
+
+.concept-card p strong {
+    font-weight: var(--font-bold);
+    color: var(--color-electric-blue);
+}
+
+.concept-card ul {
+    margin-left: var(--space-4);
+    margin-top: var(--space-2);
+}
+
+.concept-card li {
+    margin-bottom: var(--space-2);
+    line-height: 1.6;
+}
+
+.concept-card li strong {
+    font-weight: var(--font-bold);
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .feature-grid, .tool-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Metaverse Field Kit</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Resources</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#platforms" class="experimental-nav-link">No-Code Platforms</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#templates" class="experimental-nav-link">Design Templates</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#comparison" class="experimental-nav-link">Platform Comparison</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#assets" class="experimental-nav-link">Asset Resources</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#technical" class="experimental-nav-link">Technical Literacy</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Start</div>
+                    <div class="info-box-content">
+                        Begin with Mozilla Hubs or Spatial for easiest entry to metaverse creation without coding.
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Navigation</div>
+                    <div class="info-box-content">
+                        <a href="metaverse-landing.html">← Back to Metaverse Hub</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Metaverse Field Kit</h1>
+                <p class="fundamentals-subtitle">Essential tools, templates, and resources for building virtual experiences—no coding required</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <div class="content-section">
+                    <p class="section-intro">
+                        This field kit provides everything you need to start creating metaverse experiences, from no-code platform guides to design templates and collaboration frameworks. Whether you're a designer, product manager, or creative technologist, these resources help you move from concept to reality.
+                    </p>
+                </div>
+
+                <!-- No-Code Platform Guides -->
+                <section class="content-section" id="platforms">
+                    <h2>🛠️ No-Code Platform Guides</h2>
+                    <p class="section-text">
+                        Start building virtual experiences immediately with these accessible platforms. Each guide provides quick-start instructions, capabilities overview, and best use cases.
+                    </p>
+
+                    <div class="tool-grid">
+
+                        <!-- Mozilla Hubs -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>Mozilla Hubs + Spoke Editor</h3>
+                                <span class="difficulty-badge easy">Easiest</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> Web-based social VR platform. No installation, works in browser. Spoke editor for room creation.</p>
+
+                                <h4>Quick Start (5 Steps):</h4>
+                                <ol class="step-list">
+                                    <li>Visit <strong>hubs.mozilla.com</strong> and create free account</li>
+                                    <li>Click "Create a Room" to generate instant meeting space</li>
+                                    <li>Use <strong>spoke.mozilla.com</strong> to customize your room</li>
+                                    <li>Drag-and-drop 3D models, images, videos into scene</li>
+                                    <li>Publish and share your room link—anyone can join</li>
+                                </ol>
+
+                                <h4>What You Can Build Without Coding:</h4>
+                                <ul class="capability-list">
+                                    <li>Virtual meeting rooms with custom environments</li>
+                                    <li>Art galleries with images and 3D models</li>
+                                    <li>Educational spaces with embedded videos</li>
+                                    <li>Event venues for presentations or gatherings</li>
+                                </ul>
+
+                                <h4>Asset Resources:</h4>
+                                <ul class="resource-list">
+                                    <li>Spoke includes environment templates (office, gallery, outdoor)</li>
+                                    <li>Import GLB models from Sketchfab or Google Poly alternatives</li>
+                                    <li>Use built-in lighting and spawn point tools</li>
+                                </ul>
+
+                                <h4>Pricing & Limitations:</h4>
+                                <ul>
+                                    <li><strong>Free tier:</strong> Up to 25 concurrent users per room</li>
+                                    <li><strong>Limitations:</strong> Graphics quality modest; limited interactivity</li>
+                                    <li><strong>Best for:</strong> Quick prototypes, accessible meetings, education</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Spatial -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>Spatial</h3>
+                                <span class="difficulty-badge easy">Easy</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> Professional metaverse platform with high visual quality. Works in VR, desktop, and mobile.</p>
+
+                                <h4>Quick Start:</h4>
+                                <ol class="step-list">
+                                    <li>Download Spatial app or visit <strong>spatial.io</strong></li>
+                                    <li>Create account and photorealistic avatar from selfie</li>
+                                    <li>Choose template (gallery, office, event space)</li>
+                                    <li>Customize space using web-based builder</li>
+                                    <li>Upload 3D models, images, or NFTs</li>
+                                    <li>Share space link for others to join</li>
+                                </ol>
+
+                                <h4>What You Can Build:</h4>
+                                <ul class="capability-list">
+                                    <li>High-fidelity virtual offices and workspaces</li>
+                                    <li>NFT galleries and art exhibitions</li>
+                                    <li>Product showcases and brand experiences</li>
+                                    <li>Professional presentations and events</li>
+                                </ul>
+
+                                <h4>Key Features:</h4>
+                                <ul>
+                                    <li>Templates for common use cases</li>
+                                    <li>Photorealistic avatar customization</li>
+                                    <li>Screen sharing and media integration</li>
+                                    <li>Persistent spaces that save state</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Professional meetings, virtual offices, high-quality presentations, brand activations</p>
+                            </div>
+                        </div>
+
+                        <!-- Frame.io / Frame VR -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>Frame VR</h3>
+                                <span class="difficulty-badge easy">Easy</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> Simple 3D gallery builder for showcasing work in VR/desktop.</p>
+
+                                <h4>Quick Start:</h4>
+                                <ol class="step-list">
+                                    <li>Visit <strong>framevr.io</strong></li>
+                                    <li>Select gallery template or blank canvas</li>
+                                    <li>Upload images, 3D models, or videos</li>
+                                    <li>Arrange in 3D space using simple tools</li>
+                                    <li>Publish and share URL</li>
+                                </ol>
+
+                                <h4>What You Can Build:</h4>
+                                <ul class="capability-list">
+                                    <li>Portfolio galleries for designers and artists</li>
+                                    <li>3D product showcases</li>
+                                    <li>Simple event spaces</li>
+                                    <li>Virtual exhibitions</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Artists, designers, and creators wanting quick 3D galleries without technical complexity</p>
+                            </div>
+                        </div>
+
+                        <!-- VRChat Worlds -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>VRChat World Creation</h3>
+                                <span class="difficulty-badge moderate">Moderate</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> User-generated content platform with Unity-based world creation.</p>
+
+                                <h4>What You Need to Know:</h4>
+                                <p>VRChat requires Unity development knowledge. It's included here because it offers maximum creative control, but has a significant learning curve.</p>
+
+                                <h4>Getting Started:</h4>
+                                <ol class="step-list">
+                                    <li>Download Unity (specific version for VRChat compatibility)</li>
+                                    <li>Install VRChat SDK from vrchat.com</li>
+                                    <li>Follow VRChat Creator documentation</li>
+                                    <li>Use pre-made world prefabs as starting points</li>
+                                    <li>Upload and test worlds in VRChat</li>
+                                </ol>
+
+                                <h4>Learning Resources:</h4>
+                                <ul>
+                                    <li>VRChat Creator Docs: <strong>docs.vrchat.com</strong></li>
+                                    <li>YouTube tutorials for VRChat world building</li>
+                                    <li>Community Discord for support</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Creators willing to learn Unity for maximum customization and access to large social VR community</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Design Templates -->
+                <section class="content-section" id="templates">
+                    <h2>📋 Design Templates</h2>
+                    <p class="section-text">
+                        Downloadable templates and frameworks for planning virtual experiences before building them.
+                    </p>
+
+                    <div class="feature-grid">
+
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <div class="feature-title">Space Planning Template</div>
+                            <div class="feature-description">
+                                <p><strong>Purpose:</strong> Plan 3D layouts using 2D sketching</p>
+                                <p><strong>What it includes:</strong></p>
+                                <ul>
+                                    <li>Top-down grid for spatial layout</li>
+                                    <li>Scale reference guide (human scale)</li>
+                                    <li>Zones for different activities</li>
+                                    <li>Sight line and flow mapping</li>
+                                </ul>
+                                <p><strong>When to use:</strong> Before building any virtual space, sketch the layout to plan navigation and spatial relationships</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <div class="feature-title">User Journey Map</div>
+                            <div class="feature-description">
+                                <p><strong>Purpose:</strong> Map user experience flow through virtual environment</p>
+                                <p><strong>What it includes:</strong></p>
+                                <ul>
+                                    <li>Entry experience planning</li>
+                                    <li>Key interaction points</li>
+                                    <li>Decision branches and paths</li>
+                                    <li>Emotional journey stages</li>
+                                </ul>
+                                <p><strong>When to use:</strong> Planning event spaces, exhibits, or guided experiences where user flow matters</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <div class="feature-title">Social Interaction Framework</div>
+                            <div class="feature-description">
+                                <p><strong>Purpose:</strong> Design for social presence and interaction</p>
+                                <p><strong>What it includes:</strong></p>
+                                <ul>
+                                    <li>Capacity planning worksheet</li>
+                                    <li>Social vs private space zones</li>
+                                    <li>Communication channel plan</li>
+                                    <li>Moderation considerations</li>
+                                </ul>
+                                <p><strong>When to use:</strong> Designing community spaces, social events, or multiplayer experiences</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <div class="feature-title">Avatar Design Specification</div>
+                            <div class="feature-description">
+                                <p><strong>Purpose:</strong> Communicate avatar requirements to 3D artists</p>
+                                <p><strong>What it includes:</strong></p>
+                                <ul>
+                                    <li>Style reference guide</li>
+                                    <li>Technical specifications (poly count, rigging)</li>
+                                    <li>Customization options needed</li>
+                                    <li>Animation requirements</li>
+                                </ul>
+                                <p><strong>When to use:</strong> Working with 3D artists to create custom avatars</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">05</div>
+                            <div class="feature-title">Platform Brief Template</div>
+                            <div class="feature-description">
+                                <p><strong>Purpose:</strong> Communicate project requirements to engineers</p>
+                                <p><strong>What it includes:</strong></p>
+                                <ul>
+                                    <li>Project goals and success metrics</li>
+                                    <li>Target audience and use cases</li>
+                                    <li>Technical requirements checklist</li>
+                                    <li>Platform selection rationale</li>
+                                </ul>
+                                <p><strong>When to use:</strong> Collaborating with technical teams on metaverse projects</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Platform Comparison Tools -->
+                <section class="content-section" id="comparison">
+                    <h2>⚖️ Platform Comparison Tools</h2>
+                    <p class="section-text">
+                        Decision-making frameworks to choose the right platform for your project.
+                    </p>
+
+                    <div class="comparison-matrix">
+                        <h3>Social VR Platform Matrix</h3>
+                        <p style="margin-bottom: var(--space-4); font-size: var(--text-sm);">Comparison of social/collaborative metaverse platforms for meetings, galleries, and social experiences.</p>
+                        <div class="matrix-table">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Platform</th>
+                                        <th>Ease of Use</th>
+                                        <th>Visual Quality</th>
+                                        <th>No Installation</th>
+                                        <th>Cost</th>
+                                        <th>Best For</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Mozilla Hubs</strong></td>
+                                        <td>★★★★★</td>
+                                        <td>★★★☆☆</td>
+                                        <td>✓ Yes</td>
+                                        <td>Free</td>
+                                        <td>Quick meetings, education</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Spatial</strong></td>
+                                        <td>★★★★☆</td>
+                                        <td>★★★★★</td>
+                                        <td>✓ Yes (web)</td>
+                                        <td>Free + paid</td>
+                                        <td>Professional presentations</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Frame VR</strong></td>
+                                        <td>★★★★★</td>
+                                        <td>★★★★☆</td>
+                                        <td>✓ Yes</td>
+                                        <td>Free + paid</td>
+                                        <td>Galleries, portfolios</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>VRChat</strong></td>
+                                        <td>★★☆☆☆</td>
+                                        <td>★★★★★</td>
+                                        <td>✗ No</td>
+                                        <td>Free</td>
+                                        <td>Custom experiences, social</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Roblox</strong></td>
+                                        <td>★★★☆☆</td>
+                                        <td>★★★☆☆</td>
+                                        <td>✗ No</td>
+                                        <td>Free</td>
+                                        <td>Games, young audience</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="comparison-matrix" style="margin-top: var(--space-8);">
+                        <h3>Prototyping & Design Tools Matrix (2024-2025)</h3>
+                        <p style="margin-bottom: var(--space-4); font-size: var(--text-sm);">Specialized tools for VR/AR prototyping, spatial UI design, and content creation.</p>
+                        <div class="matrix-table">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tool</th>
+                                        <th>Ease of Use</th>
+                                        <th>Platform</th>
+                                        <th>Cost</th>
+                                        <th>Best For</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>ShapesXR</strong></td>
+                                        <td>★★★★★</td>
+                                        <td>VR (Quest)</td>
+                                        <td>Free trial + paid</td>
+                                        <td>Spatial UI/UX prototyping in VR</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mixamo</strong></td>
+                                        <td>★★★★★</td>
+                                        <td>Web</td>
+                                        <td>100% Free</td>
+                                        <td>Character animation (2,000+ motions)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>A-Frame + MindAR</strong></td>
+                                        <td>★★★☆☆</td>
+                                        <td>Web AR</td>
+                                        <td>Free (open-source)</td>
+                                        <td>Web AR without app install</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>8th Wall</strong></td>
+                                        <td>★★★☆☆</td>
+                                        <td>Web AR</td>
+                                        <td>$99-$699/mo</td>
+                                        <td>Enterprise web AR with AI</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Lens Studio</strong></td>
+                                        <td>★★★★☆</td>
+                                        <td>Snapchat AR</td>
+                                        <td>Free</td>
+                                        <td>Social AR (800M+ users)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ready Player Me</strong></td>
+                                        <td>★★★★★</td>
+                                        <td>Web/SDK</td>
+                                        <td>Free</td>
+                                        <td>Cross-platform avatars</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>PlugXR</strong></td>
+                                        <td>★★★★★</td>
+                                        <td>Web AR</td>
+                                        <td>Free tier + paid</td>
+                                        <td>No-code AR creation</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>GMetriXR</strong></td>
+                                        <td>★★★★☆</td>
+                                        <td>VR/AR/Web</td>
+                                        <td>Paid</td>
+                                        <td>Enterprise training/marketing</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="decision-guide">
+                        <h3>Social VR Platform Decision Guide</h3>
+                        <div class="decision-flowchart">
+
+                            <div class="decision-step">
+                                <h4>Choose Mozilla Hubs if:</h4>
+                                <ul>
+                                    <li>You need a space ready in under 30 minutes</li>
+                                    <li>Accessibility is priority (no download required)</li>
+                                    <li>Budget is zero</li>
+                                    <li>Use case: education, team meetings, quick prototypes</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Choose Spatial if:</h4>
+                                <ul>
+                                    <li>Visual quality matters (client presentations, brand experiences)</li>
+                                    <li>You want professional virtual office space</li>
+                                    <li>NFT display is important</li>
+                                    <li>Use case: professional meetings, high-end showcases</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Choose VRChat if:</h4>
+                                <ul>
+                                    <li>You have Unity development resources</li>
+                                    <li>You need maximum customization</li>
+                                    <li>Target audience is VR enthusiasts</li>
+                                    <li>Use case: creative experiments, community-driven spaces</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Choose Roblox if:</h4>
+                                <ul>
+                                    <li>Building game-like experiences</li>
+                                    <li>Target audience is younger users</li>
+                                    <li>Creator monetization is goal</li>
+                                    <li>Use case: educational games, branded experiences for youth</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="decision-guide" style="margin-top: var(--space-8);">
+                        <h3>Prototyping & Creation Tool Decision Guide</h3>
+                        <div class="decision-flowchart">
+
+                            <div class="decision-step">
+                                <h4>Use ShapesXR if:</h4>
+                                <ul>
+                                    <li>You're designing spatial UI/UX for Vision Pro, Quest, or VR apps</li>
+                                    <li>You have access to VR headset (Quest recommended)</li>
+                                    <li>You want to prototype in 3D space, not on flat screen</li>
+                                    <li>Team needs shareable VR prototypes for collaboration</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Use Mixamo if:</h4>
+                                <ul>
+                                    <li>You need character animations for VR/3D experiences</li>
+                                    <li>You don't have motion capture equipment</li>
+                                    <li>Budget is $0 (completely free, commercial use allowed)</li>
+                                    <li>Use case: Animated NPCs, character showcases, VRChat avatars</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Use A-Frame + MindAR if:</h4>
+                                <ul>
+                                    <li>You're comfortable with HTML/JavaScript coding</li>
+                                    <li>You want web AR without app store submission</li>
+                                    <li>Open-source and community support are important</li>
+                                    <li>Use case: AR business cards, museum exhibits, WebXR games</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Use 8th Wall if:</h4>
+                                <ul>
+                                    <li>Building professional/enterprise web AR campaigns</li>
+                                    <li>Need maximum device compatibility (5B devices)</li>
+                                    <li>Budget allows $99-$699/month for production</li>
+                                    <li>Use case: Brand activations, location-based AR, e-commerce try-on</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Use Lens Studio if:</h4>
+                                <ul>
+                                    <li>You want to reach 800M+ Snapchat users instantly</li>
+                                    <li>Creating social AR filters, face effects, or AR games</li>
+                                    <li>2025 AI features appeal to you (AI-powered creation)</li>
+                                    <li>Use case: Viral AR effects, brand filters, social marketing</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Use Ready Player Me if:</h4>
+                                <ul>
+                                    <li>You need cross-platform avatar system (works in 7,000+ apps)</li>
+                                    <li>Don't want to build custom avatar creator</li>
+                                    <li>Free SDK integration is important</li>
+                                    <li>Use case: Metaverse apps needing instant avatar creation</li>
+                                </ul>
+                            </div>
+
+                            <div class="decision-step">
+                                <h4>Use PlugXR or GMetriXR if:</h4>
+                                <ul>
+                                    <li>You need no-code AR/VR creation (zero programming)</li>
+                                    <li>Building enterprise training or marketing experiences</li>
+                                    <li>Analytics and tracking are required</li>
+                                    <li>Use case: Corporate training modules, product showcases</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Advanced Creation & Prototyping Tools -->
+                <section class="content-section" id="advanced-tools">
+                    <h2>🚀 Advanced Creation & Prototyping Tools (2024-2025)</h2>
+                    <p class="section-text">
+                        Latest specialized tools for VR prototyping, character animation, web AR, and spatial computing. These tools represent the cutting edge of metaverse creation in 2024-2025.
+                    </p>
+
+                    <div class="tool-grid">
+
+                        <!-- ShapesXR -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>ShapesXR</h3>
+                                <span class="difficulty-badge easy">Easy</span>
+                                <span class="badge-new" style="background: #4040ff; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">2024-2025</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> VR-native prototyping tool for spatial computing UI/UX design. Create interactive 3D prototypes inside VR headsets using hand tracking or controllers.</p>
+
+                                <h4>Recent Updates (2024-2025):</h4>
+                                <ul>
+                                    <li><strong>PBR Shaders:</strong> Physically-based rendering for realistic materials</li>
+                                    <li><strong>"Attach to Body":</strong> Create UI elements that follow user's hands, head, or body</li>
+                                    <li><strong>Industry Adoption:</strong> 300,000+ projects created, becoming standard for spatial UI/UX</li>
+                                    <li><strong>Quest 3 Support:</strong> Optimized for latest VR hardware</li>
+                                </ul>
+
+                                <h4>Quick Start:</h4>
+                                <ol class="step-list">
+                                    <li>Install ShapesXR on Meta Quest or compatible VR headset</li>
+                                    <li>Create account at <strong>shapesxr.com</strong></li>
+                                    <li>Use hand tracking or controllers to draw 3D shapes in space</li>
+                                    <li>Add interactivity with visual scripting (no code)</li>
+                                    <li>Test prototypes immediately in VR</li>
+                                    <li>Share links for team review</li>
+                                </ol>
+
+                                <h4>What You Can Build:</h4>
+                                <ul class="capability-list">
+                                    <li>Spatial UI prototypes for Vision Pro, Quest apps</li>
+                                    <li>Interactive 3D mockups for client presentations</li>
+                                    <li>VR training simulations and walkthroughs</li>
+                                    <li>Immersive data visualizations</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>UX designers, product designers, and spatial computing teams prototyping VR/AR interfaces without coding</p>
+                            </div>
+                        </div>
+
+                        <!-- Mixamo -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>Mixamo</h3>
+                                <span class="difficulty-badge easy">Easy</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> Adobe's free character animation platform with automatic rigging and motion capture library. Upload custom 3D characters and animate them instantly.</p>
+
+                                <h4>Key Features:</h4>
+                                <ul>
+                                    <li><strong>Auto-Rigging:</strong> Upload any humanoid 3D model, Mixamo automatically creates skeleton</li>
+                                    <li><strong>Motion Library:</strong> 2,000+ motion capture animations (walk, run, dance, combat, emotes)</li>
+                                    <li><strong>100% Free:</strong> No subscription, all animations free to use commercially</li>
+                                    <li><strong>Format Support:</strong> Export to FBX for Unity, Blender, Unreal, VRChat</li>
+                                </ul>
+
+                                <h4>Quick Start:</h4>
+                                <ol class="step-list">
+                                    <li>Visit <strong>mixamo.com</strong> (free Adobe account required)</li>
+                                    <li>Choose character from library OR upload your own 3D model</li>
+                                    <li>If uploading: Tool auto-detects joints, confirm placement</li>
+                                    <li>Browse animation library, preview on your character</li>
+                                    <li>Customize animation speed, arm spacing, trim length</li>
+                                    <li>Download FBX with animation baked in</li>
+                                </ol>
+
+                                <h4>What You Can Build:</h4>
+                                <ul class="capability-list">
+                                    <li>Animated NPCs for VRChat, VR experiences</li>
+                                    <li>Character showcases with emotes and gestures</li>
+                                    <li>Cinematic sequences for metaverse narratives</li>
+                                    <li>Game-ready characters with combat/interaction animations</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Anyone needing character animations without motion capture equipment or animation skills. Perfect for indie developers and metaverse creators.</p>
+                            </div>
+                        </div>
+
+                        <!-- A-Frame & MindAR -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>A-Frame & MindAR</h3>
+                                <span class="difficulty-badge moderate">Moderate</span>
+                                <span class="badge-new" style="background: #4040ff; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">Active 2024-2025</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> Open-source web-based AR frameworks. A-Frame creates VR/AR with HTML, MindAR adds computer vision for image/face tracking.</p>
+
+                                <h4>Why Web AR Matters:</h4>
+                                <ul>
+                                    <li><strong>No App Install:</strong> Users access via web browser, works on iOS/Android</li>
+                                    <li><strong>Instant Access:</strong> Share via URL or QR code</li>
+                                    <li><strong>Cross-Platform:</strong> Same code runs on mobile, desktop, VR headsets</li>
+                                </ul>
+
+                                <h4>A-Frame Basics:</h4>
+                                <ol class="step-list">
+                                    <li>Learn HTML basics (if not already familiar)</li>
+                                    <li>Visit <strong>aframe.io</strong> for documentation</li>
+                                    <li>Create 3D scenes using HTML tags like <code>&lt;a-box&gt;</code>, <code>&lt;a-sphere&gt;</code></li>
+                                    <li>Add VR mode with one line of code</li>
+                                    <li>Host on GitHub Pages or any web server</li>
+                                </ol>
+
+                                <h4>MindAR Capabilities:</h4>
+                                <ul>
+                                    <li><strong>Image Tracking:</strong> Show AR content when camera sees specific images</li>
+                                    <li><strong>Face Tracking:</strong> AR masks, filters, face effects</li>
+                                    <li><strong>Integration:</strong> Works seamlessly with A-Frame</li>
+                                    <li>Visit <strong>github.com/hiukim/mind-ar-js</strong> for setup</li>
+                                </ul>
+
+                                <h4>What You Can Build:</h4>
+                                <ul class="capability-list">
+                                    <li>AR business cards (scan card → see 3D portfolio)</li>
+                                    <li>Museum exhibits with AR overlays</li>
+                                    <li>Product packaging AR experiences</li>
+                                    <li>WebXR games accessible via browser</li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Developers comfortable with HTML/JavaScript wanting to create accessible AR experiences without app stores. Active community, well-documented.</p>
+                            </div>
+                        </div>
+
+                        <!-- 8th Wall -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>8th Wall (Niantic)</h3>
+                                <span class="difficulty-badge moderate">Moderate</span>
+                                <span class="badge-new" style="background: #4040ff; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">2024-2025</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> Niantic's enterprise web AR platform reaching 5 billion devices. Most advanced web AR with world tracking, occlusion, and GenAI integration.</p>
+
+                                <h4>Recent Updates (2024):</h4>
+                                <ul>
+                                    <li><strong>GenAI Integration:</strong> AI-powered 3D asset generation directly in platform</li>
+                                    <li><strong>Reality Engine:</strong> Deploy to web, mobile apps, VR simultaneously</li>
+                                    <li><strong>Geospatial AR:</strong> Persistent AR anchored to real-world locations</li>
+                                    <li><strong>Visual Positioning System (VPS):</strong> Accurate AR placement using computer vision</li>
+                                </ul>
+
+                                <h4>Getting Started:</h4>
+                                <ol class="step-list">
+                                    <li>Visit <strong>8thwall.com</strong>, create account (free trial available)</li>
+                                    <li>Use Cloud Editor for browser-based development</li>
+                                    <li>Choose template: World AR, Image Target, Face Effects</li>
+                                    <li>Customize with JavaScript (three.js or A-Frame)</li>
+                                    <li>Test on phone via QR code instantly</li>
+                                    <li>Publish: Get shareable URL</li>
+                                </ol>
+
+                                <h4>What You Can Build:</h4>
+                                <ul class="capability-list">
+                                    <li>Location-based AR experiences (tourism, retail)</li>
+                                    <li>Brand activations with AI-generated 3D content</li>
+                                    <li>Web AR games with real-world physics</li>
+                                    <li>Virtual try-on experiences for e-commerce</li>
+                                </ul>
+
+                                <h4>Pricing Note:</h4>
+                                <p>Free tier available for development. Paid plans for production/commercial use ($99-$699/month depending on traffic).</p>
+
+                                <h4>Best For:</h4>
+                                <p>Professional AR campaigns, brands, agencies needing enterprise-grade web AR with maximum device compatibility.</p>
+                            </div>
+                        </div>
+
+                        <!-- Ready Player Me -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>Ready Player Me</h3>
+                                <span class="difficulty-badge easy">Easy</span>
+                                <span class="badge-new" style="background: #4040ff; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">PlayerZero 2024</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> Cross-platform avatar creator used in 7,000+ apps and games. Create photorealistic or stylized avatars that work across metaverse platforms.</p>
+
+                                <h4>Recent Developments (2024):</h4>
+                                <ul>
+                                    <li><strong>PlayerZero:</strong> Consumer platform launched Oct 2024 - create avatars, collect digital fashion</li>
+                                    <li><strong>AI Asset Generation:</strong> AI-powered creation of avatar accessories and outfits</li>
+                                    <li><strong>Interoperability:</strong> One avatar works in VRChat, Spatial, Mozilla Hubs, web experiences</li>
+                                    <li><strong>Developer SDK:</strong> Free integration for apps and games</li>
+                                </ul>
+
+                                <h4>For Users (Creating Avatars):</h4>
+                                <ol class="step-list">
+                                    <li>Visit <strong>readyplayer.me</strong></li>
+                                    <li>Take selfie OR upload photo for instant avatar</li>
+                                    <li>Customize: body, face, hair, clothing, accessories</li>
+                                    <li>Export GLB file for use in VR/3D apps</li>
+                                    <li>OR: Connect to supported platforms directly</li>
+                                </ol>
+
+                                <h4>For Developers (Integration):</h4>
+                                <ul>
+                                    <li>Free SDK for Unity, Unreal, Web (JavaScript)</li>
+                                    <li>Users create avatars via web widget in your app</li>
+                                    <li>API delivers optimized 3D model</li>
+                                    <li>Documentation: <strong>docs.readyplayer.me</strong></li>
+                                </ul>
+
+                                <h4>Best For:</h4>
+                                <p>Anyone needing quick photorealistic avatars, or developers building metaverse apps who want instant avatar creation without building custom systems.</p>
+                            </div>
+                        </div>
+
+                        <!-- Lens Studio -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>Lens Studio (Snapchat)</h3>
+                                <span class="difficulty-badge moderate">Moderate</span>
+                                <span class="badge-new" style="background: #4040ff; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">Major 2025 Update</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <p><strong>What it is:</strong> Snapchat's free AR creation platform with 800M+ monthly active users. Desktop app for creating AR lenses (filters, effects, games).</p>
+
+                                <h4>Major 2025 Updates:</h4>
+                                <ul>
+                                    <li><strong>AI-Powered Creation:</strong> Generate 3D assets and effects using AI prompts</li>
+                                    <li><strong>Mobile Access:</strong> Build lenses on mobile devices, not just desktop</li>
+                                    <li><strong>Lens+ Monetization:</strong> Creators can sell premium AR effects</li>
+                                    <li><strong>Gaming Enhancements:</strong> More powerful scripting for AR games</li>
+                                    <li><strong>Real-time 3D Body Tracking:</strong> Full-body AR beyond just face</li>
+                                </ul>
+
+                                <h4>Getting Started:</h4>
+                                <ol class="step-list">
+                                    <li>Download <strong>Lens Studio</strong> (free, Mac/Windows) from <strong>ar.snap.com</strong></li>
+                                    <li>Complete built-in tutorials (AR Beginner series)</li>
+                                    <li>Choose template: Face Effects, World AR, Landmarker, Games</li>
+                                    <li>Customize using visual editor + JavaScript scripting</li>
+                                    <li>Test on phone via Snapchat app instantly</li>
+                                    <li>Publish to Snapchat for public use</li>
+                                </ol>
+
+                                <h4>What You Can Build:</h4>
+                                <ul class="capability-list">
+                                    <li>Face filters with makeup, accessories, distortion effects</li>
+                                    <li>World AR: Place 3D objects in real environment</li>
+                                    <li>AR games played through Snapchat camera</li>
+                                    <li>Location-specific lenses for landmarks/events</li>
+                                    <li>AI-generated artistic effects</li>
+                                </ul>
+
+                                <h4>Reach & Distribution:</h4>
+                                <p>Publish to 800M+ Snapchat users instantly. Viral lenses can reach millions. Sponsored lenses available for brands.</p>
+
+                                <h4>Best For:</h4>
+                                <p>AR creators, social media marketers, and brands wanting mass reach. 2025 AI features make it accessible for non-technical creators.</p>
+                            </div>
+                        </div>
+
+                        <!-- Additional No-Code Tools Grid -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>More No-Code Platforms (2024-2025)</h3>
+                                <span class="difficulty-badge easy">Easy - Moderate</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <h4>HTC VIVERSE Create</h4>
+                                <p><strong>What it is:</strong> No-code VR world builder for HTC Vive ecosystem. Drag-and-drop interface for creating social VR spaces.</p>
+                                <ul>
+                                    <li>Pre-made environment templates</li>
+                                    <li>Asset library for quick setup</li>
+                                    <li>Publish to VIVERSE platform</li>
+                                    <li>Visit: <strong>viverse.com</strong></li>
+                                </ul>
+
+                                <h4>PlugXR</h4>
+                                <p><strong>What it is:</strong> Cloud-based no-code AR platform. Create AR experiences via web dashboard, no programming needed.</p>
+                                <ul>
+                                    <li>Drag-and-drop AR editor</li>
+                                    <li>Image tracking, face filters, spatial AR</li>
+                                    <li>Analytics dashboard</li>
+                                    <li>Free tier available, visit: <strong>plugxr.com</strong></li>
+                                </ul>
+
+                                <h4>GMetriXR</h4>
+                                <p><strong>What it is:</strong> No-code platform for enterprise VR/AR training and marketing experiences.</p>
+                                <ul>
+                                    <li>Templates for product showcases, training modules</li>
+                                    <li>Deploy to VR headsets, mobile AR, web</li>
+                                    <li>Analytics and tracking</li>
+                                    <li>Visit: <strong>gmetri.com</strong></li>
+                                </ul>
+
+                                <h4>ZapWorks</h4>
+                                <p><strong>What it is:</strong> Zappar's AR creation suite with Designer (no-code) and Studio (advanced scripting) options.</p>
+                                <ul>
+                                    <li>WebAR deployment (no app needed)</li>
+                                    <li>Face tracking, image tracking, world tracking</li>
+                                    <li>Visit: <strong>zap.works</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Open Source & Advanced Tools -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>Open Source & Developer Tools</h3>
+                                <span class="difficulty-badge advanced">Advanced</span>
+                            </div>
+
+                            <div class="tool-description">
+                                <h4>Open Brush (formerly Tilt Brush)</h4>
+                                <p><strong>What it is:</strong> Open-source VR painting tool. Create 3D art in VR, export as models.</p>
+                                <ul>
+                                    <li>Free, community-maintained since Google discontinued Tilt Brush</li>
+                                    <li>Works on Quest, PCVR</li>
+                                    <li>Export GLB for use in metaverse experiences</li>
+                                    <li><strong>openbrush.app</strong></li>
+                                </ul>
+
+                                <h4>VR Builder (Unity)</h4>
+                                <p><strong>What it is:</strong> Open-source Unity tool for creating VR training without coding.</p>
+                                <ul>
+                                    <li>Visual node-based editor</li>
+                                    <li>Templates for training scenarios</li>
+                                    <li>Requires Unity knowledge</li>
+                                    <li><strong>github.com/MindPort-GmbH/VR-Builder</strong></li>
+                                </ul>
+
+                                <h4>OpenXR SDK</h4>
+                                <p><strong>What it is:</strong> Cross-platform VR/AR standard. Develop once, deploy to any headset (Quest, Vive, Pico, etc.).</p>
+                                <ul>
+                                    <li>Industry standard API</li>
+                                    <li>Supported by Unity, Unreal</li>
+                                    <li>For developers building custom VR apps</li>
+                                    <li><strong>khronos.org/openxr</strong></li>
+                                </ul>
+
+                                <h4>Apple Reality Composer</h4>
+                                <p><strong>What it is:</strong> Apple's AR authoring tool for iOS/Vision Pro. Mac app for creating AR experiences.</p>
+                                <ul>
+                                    <li>Visual editor, no code required</li>
+                                    <li>Integrates with Xcode for advanced features</li>
+                                    <li>Deploy to iPhone/iPad via AR Quick Look</li>
+                                    <li>Free with Mac</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Tool Selection Guide -->
+                    <div class="decision-guide" style="margin-top: var(--space-8);">
+                        <h3>Choosing the Right Advanced Tool</h3>
+
+                        <div class="decision-step">
+                            <h4>For VR/Spatial UI Prototyping:</h4>
+                            <p><strong>ShapesXR</strong> - Design Vision Pro/Quest interfaces in VR, no coding. Industry standard for spatial UI/UX teams.</p>
+                        </div>
+
+                        <div class="decision-step">
+                            <h4>For Character Animation:</h4>
+                            <p><strong>Mixamo</strong> - Free, instant character rigging + 2,000 animations. Perfect for adding life to 3D characters.</p>
+                        </div>
+
+                        <div class="decision-step">
+                            <h4>For Web AR (No App Install):</h4>
+                            <p><strong>A-Frame + MindAR</strong> - Free, open-source, great for developers. <strong>8th Wall</strong> - Premium enterprise solution with AI features.</p>
+                        </div>
+
+                        <div class="decision-step">
+                            <h4>For Social AR (Mass Reach):</h4>
+                            <p><strong>Lens Studio</strong> - Access to 800M+ Snapchat users. 2025 AI features make creation easier than ever.</p>
+                        </div>
+
+                        <div class="decision-step">
+                            <h4>For Cross-Platform Avatars:</h4>
+                            <p><strong>Ready Player Me</strong> - Free SDK, works everywhere. Users create once, use in 7,000+ apps.</p>
+                        </div>
+
+                        <div class="decision-step">
+                            <h4>For Enterprise AR/VR:</h4>
+                            <p><strong>GMetriXR, PlugXR</strong> - No-code platforms with analytics and templates for corporate training/marketing.</p>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Asset Resources -->
+                <section class="content-section" id="assets">
+                    <h2>🎨 Asset Resources</h2>
+                    <p class="section-text">
+                        Free and paid resources for 3D models, textures, sounds, and avatars.
+                    </p>
+
+                    <div class="resource-categories">
+
+                        <div class="resource-category">
+                            <h3>3D Model Libraries</h3>
+                            <div class="resource-list-grid">
+                                <div class="resource-item">
+                                    <h4>Sketchfab</h4>
+                                    <p><strong>sketchfab.com</strong> - Largest 3D model marketplace. Free and paid models in GLB format.</p>
+                                    <p><em>Best for:</em> Finding ready-made props, environments, characters</p>
+                                </div>
+                                <div class="resource-item">
+                                    <h4>Poly Haven</h4>
+                                    <p><strong>polyhaven.com</strong> - 100% free high-quality 3D assets with CC0 license.</p>
+                                    <p><em>Best for:</em> Professional quality free assets</p>
+                                </div>
+                                <div class="resource-item">
+                                    <h4>TurboSquid</h4>
+                                    <p><strong>turbosquid.com</strong> - Professional 3D models, mostly paid.</p>
+                                    <p><em>Best for:</em> High-quality professional projects</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resource-category">
+                            <h3>Textures & Materials</h3>
+                            <div class="resource-list-grid">
+                                <div class="resource-item">
+                                    <h4>Poly Haven (Textures)</h4>
+                                    <p>Free PBR textures - seamless, high quality</p>
+                                </div>
+                                <div class="resource-item">
+                                    <h4>Texture Haven</h4>
+                                    <p>Free HDRIs for lighting environments</p>
+                                </div>
+                                <div class="resource-item">
+                                    <h4>CC0 Textures</h4>
+                                    <p><strong>cc0textures.com</strong> - Free photogrammetry textures</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resource-category">
+                            <h3>Sound & Audio</h3>
+                            <div class="resource-list-grid">
+                                <div class="resource-item">
+                                    <h4>Freesound</h4>
+                                    <p><strong>freesound.org</strong> - Community-uploaded sounds, various licenses</p>
+                                </div>
+                                <div class="resource-item">
+                                    <h4>Ambient Sound Library</h4>
+                                    <p>Environmental ambience for virtual spaces</p>
+                                </div>
+                                <div class="resource-item">
+                                    <h4>YouTube Audio Library</h4>
+                                    <p>Free music and sound effects</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resource-category">
+                            <h3>Avatar Systems</h3>
+                            <div class="resource-list-grid">
+                                <div class="resource-item">
+                                    <h4>Ready Player Me</h4>
+                                    <p><strong>readyplayer.me</strong> - Cross-platform avatar creator, free</p>
+                                    <p><em>Best for:</em> Quick photorealistic avatars</p>
+                                </div>
+                                <div class="resource-item">
+                                    <h4>VRoid Studio</h4>
+                                    <p>Free anime-style avatar creator</p>
+                                    <p><em>Best for:</em> Custom stylized avatars</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Technical Literacy -->
+                <section class="content-section" id="technical">
+                    <h2>🔧 Technical Literacy for Designers</h2>
+                    <p class="section-text">
+                        Conceptual understanding of technical topics to collaborate effectively with engineers—no coding required.
+                    </p>
+
+                    <div class="tech-concepts">
+
+                        <div class="concept-card">
+                            <h3>Game Engines (Unity & Unreal)</h3>
+                            <p><strong>What they are:</strong> Software platforms for creating 3D interactive experiences.</p>
+                            <p><strong>What you need to know:</strong></p>
+                            <ul>
+                                <li><strong>Unity:</strong> Most common for VRChat, many mobile VR apps. C# programming.</li>
+                                <li><strong>Unreal:</strong> Higher visual quality, used in high-end VR. Visual scripting available.</li>
+                                <li><strong>For designers:</strong> You don't need to code, but understanding engine capabilities helps scope projects realistically.</li>
+                            </ul>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>File Formats Guide</h3>
+                            <p><strong>Common 3D formats:</strong></p>
+                            <ul>
+                                <li><strong>GLB/GLTF:</strong> Web-standard format. Works in Hubs, Spatial, web platforms.</li>
+                                <li><strong>FBX:</strong> Widely supported in Unity/Unreal. Industry standard.</li>
+                                <li><strong>OBJ:</strong> Simple format, good for static models but no animations.</li>
+                                <li><strong>USD/USDZ:</strong> Apple's format for AR experiences.</li>
+                            </ul>
+                            <p><strong>For designers:</strong> Request GLB for web platforms, FBX for Unity/Unreal projects.</p>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Performance Considerations</h3>
+                            <p><strong>What affects performance:</strong></p>
+                            <ul>
+                                <li><strong>Polygon count:</strong> Number of triangles in 3D models. Higher = prettier but slower.</li>
+                                <li><strong>Texture resolution:</strong> Larger textures look better but use more memory.</li>
+                                <li><strong>Draw calls:</strong> How many objects engine has to render. Fewer is faster.</li>
+                                <li><strong>Real-time lighting:</strong> Dynamic lights are expensive; baked lighting is faster.</li>
+                            </ul>
+                            <p><strong>For designers:</strong> Balance visual quality with performance. Test on target devices early.</p>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Collaboration Guide</h3>
+                            <p><strong>Working with engineers effectively:</strong></p>
+                            <ul>
+                                <li><strong>Provide reference:</strong> Show examples of desired look, feel, interactions</li>
+                                <li><strong>Ask constraints:</strong> What's technically possible? What's the budget (time/money)?</li>
+                                <li><strong>Iterate together:</strong> Review builds frequently, adjust based on technical reality</li>
+                                <li><strong>Learn the basics:</strong> Understanding technical constraints makes you a better designer</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Continue Learning -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Next</div>
+                            <h4>Metaverse Activities</h4>
+                            <p>Apply what you've learned through hands-on exercises and design challenges.</p>
+                            <a href="metaverse-activities.html" class="learning-link">Continue →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Practice</div>
+                            <h4>Metaverse Flashcards</h4>
+                            <p>Review concepts through 60 interactive flashcards covering all metaverse topics.</p>
+                            <a href="metaverse-flashcards.html" class="learning-link">Practice ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Study</div>
+                            <h4>Essential Readings</h4>
+                            <p>Deepen your knowledge with curated research and articles.</p>
+                            <a href="metaverse-readings.html" class="learning-link">Read ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="metaverse-landing.html" class="path-link">← Back to Metaverse Hub</a>
+                        <a href="metaverse-activities.html" class="path-link primary">Next: Activities →</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse Hub</a>
+                    <a href="ai-landing.html" class="main-menu-link">AI Lab</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Lab</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics Lab</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

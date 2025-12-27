@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Fundamentals - What is Blockchain Technology? | Emerging Technology Hub</title>
+    <meta name="description" content="Learn blockchain fundamentals and distributed ledger technology. Understand what blockchain is, how it works, cryptography basics, and real-world applications for beginners.">
+    <meta name="keywords" content="blockchain fundamentals, what is blockchain, distributed ledger, blockchain basics, cryptocurrency basics, blockchain for beginners">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/blockchain-fundamentals.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+
+    /* Landing page specific */
+    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
+    .section-nav-list { gap: var(--space-3) !important; }
+    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
+    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
+    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
+    .section-description { font-size: var(--text-base) !important; }
+    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Core Concepts</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Blockchain Basics</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="blockchain-fundamentals.html" class="experimental-nav-link active">Introduction</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="cryptocurrency-basics.html" class="experimental-nav-link">Cryptocurrency</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="smart-contracts.html" class="experimental-nav-link">Smart Contracts</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="consensus-mechanisms.html" class="experimental-nav-link">Consensus</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="defi-basics.html" class="experimental-nav-link">DeFi</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="blockchain-governance.html" class="experimental-nav-link">Governance</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="blockchain-landing.html">← Back to Blockchain Lab</a><br>
+                        <a href="cryptocurrency-basics.html">Next: Cryptocurrency →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Blockchain Fundamentals</h1>
+                <p class="fundamentals-subtitle">Understanding distributed ledgers, decentralization, and the foundations of blockchain technology</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>What is Blockchain?</h2>
+                    <p>Blockchain is a distributed digital ledger technology that maintains a continuously growing list of records, called blocks, which are linked and secured using cryptography. Each block contains a cryptographic hash of the previous block, a timestamp, and transaction data.</p>
+
+                    <p>Think of blockchain as a digital ledger book that's shared among thousands of people worldwide. Unlike traditional ledgers controlled by a single entity, this ledger is maintained collectively, with every participant having an identical copy. When new transactions occur, they're grouped into blocks and added to the chain only after the network agrees they're valid.</p>
+
+                    <div class="highlight-box">
+                        <h3>Key Insight</h3>
+                        <p>Blockchain's revolutionary power lies not in any single innovation, but in combining existing technologies—cryptography, distributed networks, and consensus mechanisms—to create trustless, transparent, and immutable systems.</p>
+                    </div>
+                </section>
+
+                <!-- Core Properties -->
+                <section class="content-section">
+                    <h2>Core Properties of Blockchain</h2>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h4>Decentralization</h4>
+                            <p>No single point of control or failure. The network operates through distributed consensus rather than central authority.</p>
+                        </div>
+
+                        <div class="property-card">
+                            <h4>Transparency</h4>
+                            <p>All transactions are visible to network participants, creating an open and auditable system.</p>
+                        </div>
+
+                        <div class="property-card">
+                            <h4>Immutability</h4>
+                            <p>Once data is recorded in a block and confirmed by the network, it becomes extremely difficult to alter or delete.</p>
+                        </div>
+
+                        <div class="property-card">
+                            <h4>Security</h4>
+                            <p>Cryptographic hashing and consensus mechanisms protect against fraud, tampering, and unauthorized changes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- How Blockchain Works -->
+                <section class="content-section">
+                    <h2>How Blockchain Works</h2>
+
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Transaction Initiation</h4>
+                                <p>A user initiates a transaction (transfer of value, data, or digital assets) which is digitally signed with their private key.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Network Broadcast</h4>
+                                <p>The transaction is broadcast to the peer-to-peer network where thousands of nodes receive and validate it.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Validation</h4>
+                                <p>Network nodes verify the transaction using predetermined rules, checking digital signatures and account balances.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Block Creation</h4>
+                                <p>Valid transactions are collected into a block along with other transactions, timestamp, and hash of the previous block.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Consensus</h4>
+                                <p>The network uses a consensus mechanism (like Proof of Work or Proof of Stake) to agree on the new block.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>Block Addition</h4>
+                                <p>Once consensus is reached, the new block is added to the blockchain and distributed across the entire network.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cryptographic Foundations -->
+                <section class="content-section">
+                    <h2>Cryptographic Foundations</h2>
+
+                    <div class="crypto-concepts">
+                        <div class="crypto-item">
+                            <h4>Hash Functions</h4>
+                            <p>Mathematical functions that convert input data of any size into a fixed-size string of characters. In blockchain, SHA-256 is commonly used to create unique "fingerprints" for blocks.</p>
+                            <div class="example-box">
+                                <strong>Example:</strong> "Hello World" → 2c74fd17edafd80e8447b0d46741ee243b7eb74dd2149a0ab1b9246fb30382f27943
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Digital Signatures</h4>
+                            <p>Cryptographic mechanisms using public-private key pairs to verify transaction authenticity. Only the holder of the private key can create valid signatures.</p>
+                            <div class="example-box">
+                                <strong>Analogy:</strong> Like a handwritten signature, but mathematically impossible to forge and easy to verify.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Merkle Trees</h4>
+                            <p>Binary tree structures that efficiently summarize all transactions in a block, enabling quick verification without downloading entire transaction history.</p>
+                            <div class="example-box">
+                                <strong>Benefit:</strong> Allows lightweight clients to verify transactions with minimal data requirements.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Types of Blockchain -->
+                <section class="content-section">
+                    <h2>Types of Blockchain Networks</h2>
+
+                    <div class="blockchain-types">
+                        <div class="type-card">
+                            <h4>Public Blockchain</h4>
+                            <div class="type-details">
+                                <p><strong>Access:</strong> Open to everyone</p>
+                                <p><strong>Control:</strong> Fully decentralized</p>
+                                <p><strong>Examples:</strong> Bitcoin, Ethereum</p>
+                                <p><strong>Use Case:</strong> Cryptocurrencies, DeFi, public records</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Private Blockchain</h4>
+                            <div class="type-details">
+                                <p><strong>Access:</strong> Restricted to specific participants</p>
+                                <p><strong>Control:</strong> Centralized authority</p>
+                                <p><strong>Examples:</strong> Enterprise solutions</p>
+                                <p><strong>Use Case:</strong> Internal company processes, supply chain</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Consortium Blockchain</h4>
+                            <div class="type-details">
+                                <p><strong>Access:</strong> Semi-decentralized</p>
+                                <p><strong>Control:</strong> Group of organizations</p>
+                                <p><strong>Examples:</strong> Banking consortiums</p>
+                                <p><strong>Use Case:</strong> Inter-organizational collaboration</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Hybrid Blockchain</h4>
+                            <div class="type-details">
+                                <p><strong>Access:</strong> Controlled public access</p>
+                                <p><strong>Control:</strong> Mixed governance</p>
+                                <p><strong>Examples:</strong> Government applications</p>
+                                <p><strong>Use Case:</strong> Regulated industries, public services</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Real-World Applications -->
+                <section class="content-section">
+                    <h2>Real-World Applications</h2>
+
+                    <div class="applications-grid">
+                        <div class="application-item">
+                            <h4>Digital Currency</h4>
+                            <p>Bitcoin and other cryptocurrencies enable peer-to-peer digital payments without traditional banking intermediaries.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Supply Chain Tracking</h4>
+                            <p>Walmart uses blockchain to trace food products from farm to store, enabling rapid identification of contamination sources.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Digital Identity</h4>
+                            <p>Estonia's e-Residency program uses blockchain for secure digital identity verification and government services.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Smart Contracts</h4>
+                            <p>Insurance companies use blockchain smart contracts to automatically process claims based on verified data sources.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Voting Systems</h4>
+                            <p>Blockchain-based voting ensures transparency, prevents tampering, and enables remote participation in elections.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Real Estate</h4>
+                            <p>Property ownership records on blockchain eliminate title fraud and streamline property transfers.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Challenges and Limitations -->
+                <section class="content-section">
+                    <h2>Current Challenges</h2>
+
+                    <div class="challenges-list">
+                        <div class="challenge-item">
+                            <h4>Scalability</h4>
+                            <p>Bitcoin processes ~7 transactions per second vs. Visa's 24,000. Solutions like Lightning Network and sharding are being developed.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h4>Energy Consumption</h4>
+                            <p>Proof of Work consensus (Bitcoin) consumes significant energy. Alternative mechanisms like Proof of Stake reduce energy usage by 99%.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h4>Regulatory Uncertainty</h4>
+                            <p>Evolving government regulations create uncertainty for businesses and users adopting blockchain technology.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h4>User Experience</h4>
+                            <p>Complex key management and technical interfaces limit mainstream adoption. Improving UX is a key focus area.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Next Steps -->
+                <section class="content-section">
+                    <h2>Continue Learning</h2>
+                    <p>Now that you understand blockchain fundamentals, explore specific areas:</p>
+
+                    <div class="next-steps">
+                        <a href="cryptocurrency-basics.html" class="next-step-card">
+                            <h4>Cryptocurrency Basics</h4>
+                            <p>Learn about digital currencies, wallets, and the economics of crypto systems</p>
+                        </a>
+
+                        <a href="smart-contracts.html" class="next-step-card">
+                            <h4>Smart Contracts</h4>
+                            <p>Understand programmable contracts and decentralized applications (DApps)</p>
+                        </a>
+
+                        <a href="consensus-mechanisms.html" class="next-step-card">
+                            <h4>Consensus Mechanisms</h4>
+                            <p>Deep dive into how blockchain networks reach agreement and maintain security</p>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

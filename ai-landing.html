@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Hub - Artificial Intelligence Fundamentals for Non-Technical Learners</title>
+    <meta name="description" content="Master AI fundamentals with hands-on learning. Explore machine learning, neural networks, and AI ethics through interactive flashcards, workshops, and practical projects designed for beginners.">
+    <meta name="keywords" content="AI learning, artificial intelligence course, machine learning basics, neural networks, AI ethics, AI for beginners, non-technical AI education, AI fundamentals">
+    <meta name="author" content="Studio Poetics - Emerging Technology Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/ai-landing.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eth.poetics.studio/ai-landing.html">
+    <meta property="og:title" content="AI Learning Hub - Artificial Intelligence Fundamentals">
+    <meta property="og:description" content="Master AI fundamentals with hands-on learning. Interactive courses on machine learning, neural networks, and AI ethics for non-technical learners.">
+    <meta property="og:site_name" content="Emerging Technology Hub">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://eth.poetics.studio/ai-landing.html">
+    <meta property="twitter:title" content="AI Learning Hub - Artificial Intelligence Fundamentals">
+    <meta property="twitter:description" content="Master AI fundamentals with hands-on learning. Interactive courses on machine learning, neural networks, and AI ethics for non-technical learners.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Artificial Intelligence Fundamentals",
+      "description": "Comprehensive AI learning program covering machine learning, neural networks, ethics, and practical applications",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "Emerging Technology Hub",
+        "url": "https://eth.poetics.studio"
+      },
+      "educationalLevel": "Beginner",
+      "teaches": [
+        "AI Basics",
+        "Machine Learning",
+        "Neural Networks",
+        "AI Ethics",
+        "Data Science Fundamentals"
+      ],
+      "courseMode": "online",
+      "isAccessibleForFree": true
+    }
+    </script>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+
+    /* Landing page specific */
+    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
+    .section-nav-list { gap: var(--space-3) !important; }
+    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
+    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
+    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
+    .section-description { font-size: var(--text-base) !important; }
+    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
+}
+
+        /* AI Landing Page Specific Styles */
+        /* AI Landing Page Specific Styles */
+        .ai-section-nav {
+            position: sticky;
+            top: 0;
+            background: var(--color-white);
+            border-bottom: var(--border-width) solid var(--color-black);
+            padding: var(--space-4) var(--space-8);
+            margin-right: 60px;
+            z-index: 50;
+        }
+
+        .section-nav-list {
+            display: flex;
+            gap: var(--space-6);
+            flex-wrap: wrap;
+        }
+
+        .section-nav-link {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-black);
+            text-decoration: none;
+            padding: var(--space-2) var(--space-4);
+            border: var(--border-width) solid transparent;
+            transition: all var(--transition-fast);
+        }
+
+        .section-nav-link:hover,
+        .section-nav-link.active {
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .ai-content-section {
+            padding: var(--space-16) var(--space-8);
+            margin-right: 60px;
+            border-bottom: var(--border-width) solid var(--color-black);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ai-content-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-number {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-electric-blue);
+            margin-bottom: var(--space-2);
+        }
+
+        .section-title {
+            font-size: var(--text-6xl);
+            font-weight: var(--font-black);
+            line-height: 0.8;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-6);
+        }
+
+        .section-description {
+            font-size: var(--text-xl);
+            line-height: 1.4;
+            margin-bottom: var(--space-8);
+            max-width: 600px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .section-item {
+            background: var(--color-gray-50);
+            padding: var(--space-6);
+            border: var(--border-width) solid var(--color-gray-200);
+            transition: all var(--transition-base);
+        }
+
+        .section-item:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .trl-highlight {
+            border: 2px solid var(--color-electric-blue) !important;
+            background: var(--color-electric-blue-bg);
+        }
+
+        .trl-highlight:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .item-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-3);
+        }
+
+        .item-description {
+            font-size: var(--text-base);
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--border-width);
+            background: var(--color-black);
+            margin-top: var(--space-8);
+        }
+
+        .feature-card {
+            background: var(--color-white);
+            padding: var(--space-8);
+            transition: all var(--transition-base);
+        }
+
+        .feature-card:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: var(--color-gray-200);
+            color: var(--color-gray-600);
+            padding: var(--space-1) var(--space-3);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: var(--space-3);
+        }
+
+        .available-badge {
+            display: inline-block;
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            padding: var(--space-1) var(--space-3);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: var(--space-3);
+        }
+    </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Artificial Intelligence Lab</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">AI Sections</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#fundamentals" class="experimental-nav-link">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#readings" class="experimental-nav-link">Readings</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#flashcards" class="experimental-nav-link">Flashcards</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#fieldkit" class="experimental-nav-link">Field Kit</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#activities" class="experimental-nav-link">Activities</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Available Now</div>
+                    <div class="info-box-content">All sections complete: Fundamentals, Readings, Flashcards, Field Kit, and Activities.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Progress</div>
+                    <div class="info-box-content">
+                        52 Flash Cards<br>
+                        15 Core Activities<br>
+                        8 Foundation Topics
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Section Navigation -->
+            <div class="ai-section-nav">
+                <nav class="section-nav-list">
+                    <a href="#fundamentals" class="section-nav-link active">Fundamentals</a>
+                    <a href="#readings" class="section-nav-link">Readings</a>
+                    <a href="#flashcards" class="section-nav-link">Flashcards</a>
+                    <a href="#fieldkit" class="section-nav-link">Field Kit</a>
+                    <a href="#activities" class="section-nav-link">Activities</a>
+                </nav>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="experimental-hero experimental-fade-in">
+                <div class="hero-content">
+                    <h1 class="experimental-title">Artificial Intelligence +</h1>
+                    <h2 class="experimental-subtitle">Machine Learning Laboratory</h2>
+
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <span class="experimental-date">AI</span>
+                        <span class="experimental-arrow">→</span>
+                        <span class="experimental-date">∞</span>
+                    </div>
+
+                    <p class="hero-description">
+                        Comprehensive exploration of artificial intelligence, machine learning, and cognitive computing. From neural networks to generative AI, master the technologies shaping our digital future.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#fundamentals" class="experimental-btn experimental-btn--primary">Start Learning</a>
+                        <a href="flashcards-experimental.html" class="experimental-btn">Flash Cards</a>
+                        <a href="#activities" class="experimental-btn">Activities</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fundamentals Section -->
+            <div id="fundamentals" class="ai-content-section">
+                <div class="section-number">01</div>
+                <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
+                <p class="section-description">Master the core concepts that form the foundation of artificial intelligence and machine learning.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='ai-basics.html'">
+                        <h3 class="item-title">AI Basics</h3>
+                        <p class="item-description">What is AI? Understanding the fundamental concepts, history, and applications of artificial intelligence.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='machine-learning.html'">
+                        <h3 class="item-title">Machine Learning</h3>
+                        <p class="item-description">Supervised, unsupervised, and reinforcement learning. Core algorithms and their applications.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='neural-networks.html'">
+                        <h3 class="item-title">Neural Networks</h3>
+                        <p class="item-description">How artificial neurons work, network architectures, and deep learning principles.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='data-and-training.html'">
+                        <h3 class="item-title">Data & Training</h3>
+                        <p class="item-description">Data preparation, training processes, overfitting, and model evaluation techniques.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-ethics.html'">
+                        <h3 class="item-title">AI Ethics</h3>
+                        <p class="item-description">Bias, fairness, transparency, and responsible AI development practices.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='future-of-ai.html'">
+                        <h3 class="item-title">Future of AI</h3>
+                        <p class="item-description">Emerging trends, AGI, quantum ML, and the evolving landscape of AI technology.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Readings Section -->
+            <div id="readings" class="ai-content-section">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
+                <p class="section-description">Curated collection of essential papers, articles, and research publications in AI and machine learning.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='ai-readings.html#foundational'">
+                        <h3 class="item-title">Classic Papers</h3>
+                        <p class="item-description">Seminal works that shaped the field: Turing Test, McCulloch-Pitts, Backpropagation, and foundational AI research.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-readings.html#modern'">
+                        <h3 class="item-title">Modern Research</h3>
+                        <p class="item-description">Latest breakthroughs in transformers, diffusion models, large language models, and contemporary AI advances.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-readings.html#industry'">
+                        <h3 class="item-title">Industry Reports</h3>
+                        <p class="item-description">AI adoption trends, market analysis, implementation case studies, and business applications.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-readings.html#ethics'">
+                        <h3 class="item-title">Ethics & Policy</h3>
+                        <p class="item-description">Governance frameworks, regulatory developments, ethical AI guidelines, and responsible AI practices.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-readings.html'">
+                        <h3 class="item-title">All Readings</h3>
+                        <p class="item-description">Complete collection of essential AI papers with downloadable PDFs, summaries, and business insights.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-readings.html'">
+                        <h3 class="item-title">Reading Guide</h3>
+                        <p class="item-description">Structured approach to understanding AI literature for business leaders, students, and product managers.</p>
+                    </div>
+                    <div class="section-item trl-highlight" onclick="window.location.href='ai-trl-radar.html'">
+                        <h3 class="item-title">TRL Radar Visualization</h3>
+                        <p class="item-description">Interactive Technology Readiness Level mapping of AI systems from research concepts to deployed solutions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flashcards Section -->
+            <div id="flashcards" class="ai-content-section">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
+                <p class="section-description">Interactive learning cards covering 52 essential AI concepts, methods, and applications.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='flashcards-experimental.html'">
+                        <h3 class="item-title">Start Flashcards</h3>
+                        <p class="item-description">Begin your interactive learning journey with our comprehensive AI flashcard deck.</p>
+                    </div>
+                    <div class="section-item" onclick="exploreSection('flashcards', 'foundation')">
+                        <h3 class="item-title">Foundation Cards</h3>
+                        <p class="item-description">Core concepts every AI practitioner should know. Perfect for beginners.</p>
+                    </div>
+                    <div class="section-item" onclick="exploreSection('flashcards', 'methods')">
+                        <h3 class="item-title">Methods & Algorithms</h3>
+                        <p class="item-description">Key algorithms, techniques, and methodologies in machine learning.</p>
+                    </div>
+                    <div class="section-item" onclick="exploreSection('flashcards', 'applications')">
+                        <h3 class="item-title">Real-World Applications</h3>
+                        <p class="item-description">How AI is used in industry, from computer vision to natural language processing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Field Kit Section -->
+            <div id="fieldkit" class="ai-content-section">
+                <div class="section-number">04</div>
+                <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
+                <p class="section-description">Practical tools, platforms, and resources for working with AI - including local/offline tools like Ollama, Stable Diffusion, and ComfyUI.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='ai-field-kit.html#no-code'" style="cursor: pointer;">
+                        <h3 class="item-title">No-Code AI Tools</h3>
+                        <p class="item-description">Teachable Machine, Runway ML, Lobe - build AI models without coding.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-field-kit.html#local-offline'" style="cursor: pointer;">
+                        <h3 class="item-title">Local & Offline AI</h3>
+                        <p class="item-description">Ollama, Stable Diffusion, ComfyUI, LM Studio - run AI on your computer with complete privacy.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-field-kit.html#frameworks'" style="cursor: pointer;">
+                        <h3 class="item-title">ML Frameworks</h3>
+                        <p class="item-description">TensorFlow, PyTorch, Scikit-learn, Fast.ai - build custom AI models.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-field-kit.html#model-hubs'" style="cursor: pointer;">
+                        <h3 class="item-title">Model Hubs & APIs</h3>
+                        <p class="item-description">Hugging Face, OpenAI API, Claude, Replicate - pre-trained models ready to use.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-field-kit.html#datasets'" style="cursor: pointer;">
+                        <h3 class="item-title">Datasets & Resources</h3>
+                        <p class="item-description">Kaggle, Roboflow, Google Dataset Search - data for training AI models.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-field-kit.html'" style="cursor: pointer;">
+                        <h3 class="item-title">All Field Kit Resources</h3>
+                        <p class="item-description">Complete guide to AI tools, platforms, and development environments for all skill levels.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activities Section -->
+            <div id="activities" class="ai-content-section">
+                <div class="section-number">05</div>
+                <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
+                <p class="section-description">Hands-on projects, design exercises, and real-world case studies - all designed for non-technical learners.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='ai-activities.html#no-code-projects'" style="cursor: pointer;">
+                        <h3 class="item-title">No-Code AI Projects</h3>
+                        <p class="item-description">Build image classifiers, chat with documents locally, create AI art, and more - no programming required.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-activities.html#design-exercises'" style="cursor: pointer;">
+                        <h3 class="item-title">AI Design Exercises</h3>
+                        <p class="item-description">Feasibility analysis, ethics audits, and product specs - strategic thinking about AI products.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-activities.html#team-scenarios'" style="cursor: pointer;">
+                        <h3 class="item-title">Team Scenarios</h3>
+                        <p class="item-description">Collaborative workshops: prioritization, ethics committees, and build-vs-buy decisions.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-activities.html#case-studies'" style="cursor: pointer;">
+                        <h3 class="item-title">Case Study Analysis</h3>
+                        <p class="item-description">Learn from real deployments: GitHub Copilot, Spotify, Amazon Hiring AI, and Duolingo.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-activities.html'" style="cursor: pointer;">
+                        <h3 class="item-title">All Activities</h3>
+                        <p class="item-description">Complete collection of hands-on AI learning experiences for designers and non-engineers.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-field-kit.html#local-offline'" style="cursor: pointer;">
+                        <h3 class="item-title">Get Started with Tools</h3>
+                        <p class="item-description">Set up Ollama, Stable Diffusion, or ComfyUI to complete the hands-on projects.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Section exploration
+        function exploreSection(section, subsection) {
+            console.log('Exploring:', section, subsection);
+
+            // Handle flashcards separately - direct navigation
+            if (section === 'flashcards') {
+                window.location.href = 'flashcards-experimental.html';
+                return;
+            }
+
+            // For all available sections, provide actual functionality
+            const availableSections = ['fundamentals', 'readings', 'fieldkit', 'activities'];
+
+            if (availableSections.includes(section)) {
+                // Create interactive content modals or navigate to content
+                showInteractiveContent(section, subsection);
+            } else {
+                alert(`${section} section is coming soon! Stay tuned for updates.`);
+            }
+        }
+
+        // Show interactive content in a modal or new page
+        function showInteractiveContent(section, subsection) {
+            // Create a modal overlay for content
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8); z-index: 1000; display: flex;
+                align-items: center; justify-content: center; padding: 2rem;
+            `;
+
+            const content = document.createElement('div');
+            content.style.cssText = `
+                background: white; padding: 2rem; border-radius: 8px; max-width: 800px;
+                max-height: 80vh; overflow-y: auto; position: relative;
+            `;
+
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.style.cssText = `
+                position: absolute; top: 1rem; right: 1rem; border: none;
+                background: #f0f0f0; width: 2rem; height: 2rem; border-radius: 50%;
+                cursor: pointer; font-size: 1.2rem;
+            `;
+            closeBtn.onclick = () => document.body.removeChild(modal);
+
+            // Generate content based on section and subsection
+            const contentHTML = generateSectionContent(section, subsection);
+            content.innerHTML = contentHTML;
+            content.appendChild(closeBtn);
+
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+        }
+
+        // Generate actual content for each section
+        function generateSectionContent(section, subsection) {
+            const contentMap = {
+                fundamentals: {
+                    basics: `
+                        <h2>AI Basics</h2>
+                        <p>Welcome to the fundamentals of Artificial Intelligence!</p>
+                        <h3>Key Concepts:</h3>
+                        <ul>
+                            <li><strong>Artificial Intelligence:</strong> Computer systems that can perform tasks typically requiring human intelligence</li>
+                            <li><strong>Machine Learning:</strong> AI systems that improve through experience without explicit programming</li>
+                            <li><strong>Algorithms:</strong> Step-by-step procedures for calculations and problem-solving</li>
+                            <li><strong>Data:</strong> The fuel that powers AI systems</li>
+                        </ul>
+                        <h3>Learning Path:</h3>
+                        <p>1. Understand what AI is and isn't<br>
+                        2. Learn about different types of AI<br>
+                        3. Explore real-world applications<br>
+                        4. Practice with simple examples</p>
+                        <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Start with AI Flashcards</a>
+                    `,
+                    ml: `
+                        <h2>Machine Learning</h2>
+                        <p>Dive deep into the core of modern AI!</p>
+                        <h3>Types of Machine Learning:</h3>
+                        <ul>
+                            <li><strong>Supervised Learning:</strong> Learning with labeled examples (classification, regression)</li>
+                            <li><strong>Unsupervised Learning:</strong> Finding patterns in unlabeled data (clustering, dimensionality reduction)</li>
+                            <li><strong>Reinforcement Learning:</strong> Learning through interaction and rewards</li>
+                        </ul>
+                        <h3>Common Algorithms:</h3>
+                        <p>• Linear Regression<br>• Decision Trees<br>• Random Forest<br>• Support Vector Machines<br>• Neural Networks</p>
+                        <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Practice ML Concepts</a>
+                    `,
+                    neural: `
+                        <h2>Neural Networks</h2>
+                        <p>Explore the brain-inspired approach to AI!</p>
+                        <h3>Key Components:</h3>
+                        <ul>
+                            <li><strong>Neurons:</strong> Basic processing units</li>
+                            <li><strong>Layers:</strong> Input, hidden, and output layers</li>
+                            <li><strong>Weights & Biases:</strong> Parameters that get learned</li>
+                            <li><strong>Activation Functions:</strong> Non-linear transformations</li>
+                        </ul>
+                        <h3>Deep Learning Architectures:</h3>
+                        <p>• Feedforward Networks<br>• Convolutional Neural Networks (CNNs)<br>• Recurrent Neural Networks (RNNs)<br>• Transformers</p>
+                        <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Learn Neural Network Terms</a>
+                    `
+                },
+                readings: {
+                    classics: `
+                        <h2>Classic AI Papers</h2>
+                        <p>Essential readings that shaped the field of AI:</p>
+                        <h3>Must-Read Papers:</h3>
+                        <ul>
+                            <li><strong>"Computing Machinery and Intelligence" (1950)</strong> - Alan Turing<br>Introduced the famous Turing Test</li>
+                            <li><strong>"Perceptrons" (1969)</strong> - Marvin Minsky & Seymour Papert<br>Early work on neural networks</li>
+                            <li><strong>"Learning representations by back-propagating errors" (1986)</strong> - Rumelhart, Hinton & Williams<br>The backpropagation algorithm</li>
+                            <li><strong>"A Logical Calculus of Ideas Immanent in Nervous Activity" (1943)</strong> - McCulloch & Pitts<br>Mathematical model of neural networks</li>
+                        </ul>
+                        <p><em>These papers are available through academic databases and many are freely accessible online.</em></p>
+                    `,
+                    modern: `
+                        <h2>Modern AI Research</h2>
+                        <p>Recent breakthroughs transforming AI:</p>
+                        <h3>Transformer Revolution:</h3>
+                        <ul>
+                            <li><strong>"Attention Is All You Need" (2017)</strong> - Vaswani et al.<br>Introduced the Transformer architecture</li>
+                            <li><strong>"BERT: Pre-training of Deep Bidirectional Transformers" (2018)</strong><br>Revolutionized NLP</li>
+                            <li><strong>"Language Models are Few-Shot Learners" (2020)</strong> - GPT-3 paper<br>Demonstrated emergent abilities in large models</li>
+                        </ul>
+                        <h3>Computer Vision Advances:</h3>
+                        <ul>
+                            <li><strong>DALL-E and CLIP papers</strong> - Text-to-image generation</li>
+                            <li><strong>Diffusion Models</strong> - New approach to generative modeling</li>
+                        </ul>
+                    `
+                },
+                fieldkit: {
+                    templates: `
+                        <h2>AI Project Templates</h2>
+                        <p>Ready-to-use templates for common AI projects:</p>
+                        <h3>Available Templates:</h3>
+                        <ul>
+                            <li><strong>Image Classification</strong> - CNN-based image classifier with data preprocessing</li>
+                            <li><strong>Text Analysis</strong> - NLP pipeline for sentiment analysis and text classification</li>
+                            <li><strong>Time Series Prediction</strong> - LSTM/Transformer models for forecasting</li>
+                            <li><strong>Recommendation System</strong> - Collaborative and content-based filtering</li>
+                            <li><strong>Object Detection</strong> - YOLO/R-CNN implementation template</li>
+                        </ul>
+                        <p><strong>Languages:</strong> Python, Jupyter Notebooks<br>
+                        <strong>Frameworks:</strong> TensorFlow, PyTorch, scikit-learn</p>
+                        <p><em>Templates include data loading, preprocessing, model training, evaluation, and deployment code.</em></p>
+                    `,
+                    code: `
+                        <h2>Code Examples</h2>
+                        <p>Production-ready code samples and implementations:</p>
+                        <h3>Framework Examples:</h3>
+                        <ul>
+                            <li><strong>TensorFlow/Keras:</strong> Complete model training pipelines</li>
+                            <li><strong>PyTorch:</strong> Research-oriented implementations</li>
+                            <li><strong>scikit-learn:</strong> Traditional ML algorithms</li>
+                            <li><strong>Hugging Face:</strong> Pre-trained model usage</li>
+                        </ul>
+                        <h3>Code Categories:</h3>
+                        <p>• Data preprocessing and feature engineering<br>
+                        • Model architecture definitions<br>
+                        • Training loops and optimization<br>
+                        • Evaluation and metrics<br>
+                        • Model serving and deployment</p>
+                        <p><em>All examples include documentation and best practices.</em></p>
+                    `
+                },
+                activities: {
+                    workshops: `
+                        <h2>Interactive Workshops</h2>
+                        <p>Hands-on learning sessions for practical AI skills:</p>
+                        <h3>Available Workshops:</h3>
+                        <ul>
+                            <li><strong>Build Your First Neural Network</strong> - 2 hours<br>Create and train a neural network from scratch</li>
+                            <li><strong>Computer Vision Bootcamp</strong> - 4 hours<br>Image classification with CNNs</li>
+                            <li><strong>NLP Fundamentals</strong> - 3 hours<br>Text processing and language models</li>
+                            <li><strong>ML Model Deployment</strong> - 2 hours<br>Taking models from development to production</li>
+                        </ul>
+                        <h3>Workshop Format:</h3>
+                        <p>• Live coding sessions<br>• Interactive exercises<br>• Q&A with instructors<br>• Take-home projects</p>
+                        <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Prepare with Flashcards</a>
+                    `,
+                    simulations: `
+                        <h2>AI Simulations</h2>
+                        <p>Virtual environments to experiment with AI algorithms:</p>
+                        <h3>Available Simulations:</h3>
+                        <ul>
+                            <li><strong>Neural Network Playground</strong><br>Visualize how neural networks learn</li>
+                            <li><strong>Reinforcement Learning Grid World</strong><br>Watch agents learn to navigate environments</li>
+                            <li><strong>Gradient Descent Visualizer</strong><br>See optimization algorithms in action</li>
+                            <li><strong>Clustering Algorithm Demo</strong><br>Interactive k-means and other clustering methods</li>
+                        </ul>
+                        <h3>Features:</h3>
+                        <p>• Real-time parameter adjustment<br>• Step-by-step algorithm execution<br>• Interactive data visualization<br>• Experiment with different datasets</p>
+                    `
+                }
+            };
+
+            return contentMap[section]?.[subsection] || `
+                <h2>${subsection.charAt(0).toUpperCase() + subsection.slice(1)}</h2>
+                <p>Interactive content for ${section} - ${subsection} is being developed!</p>
+                <p>This will include practical exercises, tutorials, and hands-on activities.</p>
+                <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Try AI Flashcards</a>
+            `;
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active navigation on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.ai-content-section');
+            const navLinks = document.querySelectorAll('.section-nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

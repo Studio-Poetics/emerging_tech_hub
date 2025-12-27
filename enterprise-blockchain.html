@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Blockchain Adoption Strategy</title>
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+        .enterprise-dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-4);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--color-electric-blue), var(--color-purple));
+            color: var(--color-white);
+            padding: var(--space-6) var(--space-4);
+            border-radius: var(--radius-large);
+            margin-bottom: var(--space-6);
+            text-align: center;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .decision-card {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            padding: var(--space-4);
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-smooth);
+        }
+
+        .decision-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .decision-option {
+            background: var(--color-grey-100);
+            border: 2px solid var(--color-grey-200);
+            border-radius: var(--radius-medium);
+            padding: var(--space-3);
+            margin: var(--space-2) 0;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .decision-option:hover {
+            background: var(--color-grey-200);
+            border-color: var(--color-electric-blue);
+        }
+
+        .decision-option.selected {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .stakeholder-panel {
+            background: var(--color-grey-50);
+            border-left: 4px solid var(--color-electric-blue);
+            padding: var(--space-3);
+            margin: var(--space-3) 0;
+            border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+        }
+
+        .impact-meter {
+            width: 100%;
+            height: 8px;
+            background: var(--color-grey-200);
+            border-radius: var(--radius-small);
+            margin: var(--space-2) 0;
+            overflow: hidden;
+        }
+
+        .impact-fill {
+            height: 100%;
+            border-radius: var(--radius-small);
+            transition: width var(--transition-smooth);
+        }
+
+        .positive { background: var(--color-success); }
+        .negative { background: var(--color-danger); }
+        .neutral { background: var(--color-warning); }
+
+        .scenario-simulator {
+            background: linear-gradient(135deg, var(--color-purple), var(--color-electric-blue));
+            color: var(--color-white);
+            padding: var(--space-6);
+            border-radius: var(--radius-large);
+            margin: var(--space-6) 0;
+        }
+
+        .scenario-controls {
+            display: flex;
+            gap: var(--space-3);
+            margin: var(--space-4) 0;
+            flex-wrap: wrap;
+        }
+
+        .scenario-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-medium);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .scenario-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .scenario-button.active {
+            background: var(--color-white);
+            color: var(--color-electric-blue);
+        }
+
+        .metrics-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-4) 0;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-medium);
+            padding: var(--space-3);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-1);
+        }
+
+        .risk-assessment {
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+            border-left: 4px solid var(--color-warning);
+        }
+
+        .risk-level {
+            display: inline-block;
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-small);
+            font-size: var(--text-sm);
+            font-weight: var(--font-semibold);
+            margin-left: var(--space-2);
+        }
+
+        .risk-low { background: var(--color-success); color: var(--color-white); }
+        .risk-medium { background: var(--color-warning); color: var(--color-white); }
+        .risk-high { background: var(--color-danger); color: var(--color-white); }
+
+        .implementation-timeline {
+            background: var(--color-white);
+            padding: var(--space-4);
+            border-radius: var(--radius-large);
+            margin: var(--space-4) 0;
+        }
+
+        .timeline-phase {
+            position: relative;
+            padding-left: var(--space-8);
+            margin-bottom: var(--space-4);
+        }
+
+        .timeline-phase::before {
+            content: '';
+            position: absolute;
+            left: var(--space-3);
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--color-electric-blue);
+        }
+
+        .timeline-phase::after {
+            content: '';
+            position: absolute;
+            left: calc(var(--space-3) - 4px);
+            top: var(--space-2);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-electric-blue);
+        }
+
+        .final-report {
+            background: linear-gradient(135deg, var(--color-success), var(--color-electric-blue));
+            color: var(--color-white);
+            padding: var(--space-6);
+            border-radius: var(--radius-large);
+            margin: var(--space-6) 0;
+        }
+
+        .recommendation-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-medium);
+            padding: var(--space-4);
+            margin: var(--space-3) 0;
+        }
+
+        .progress-indicator {
+            background: var(--color-grey-200);
+            height: 8px;
+            border-radius: var(--radius-small);
+            margin: var(--space-4) 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            border-radius: var(--radius-small);
+            transition: width var(--transition-smooth);
+        }
+
+        .section {
+            margin-bottom: var(--space-8);
+            opacity: 0.3;
+            transition: opacity var(--transition-smooth);
+        }
+
+        .section.active {
+            opacity: 1;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 50%;
+            right: var(--space-4);
+            transform: translateY(-50%);
+            background: var(--color-white);
+            border-radius: var(--radius-large);
+            padding: var(--space-2);
+            box-shadow: var(--shadow-large);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-grey-300);
+            margin: var(--space-2);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .nav-dot.completed {
+            background: var(--color-success);
+        }
+
+        .nav-dot.active {
+            background: var(--color-electric-blue);
+            transform: scale(1.3);
+        }
+    </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="enterprise-dashboard">
+        <div class="section-header">
+            <h1><span class="emoji">🏢</span> Enterprise Blockchain Adoption Strategy</h1>
+            <p>Navigate the complex landscape of enterprise blockchain implementation</p>
+            <div class="progress-indicator">
+                <div class="progress-fill" id="overallProgress" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation" id="navigation">
+            <div class="nav-dot" onclick="scrollToSection(0)" title="Executive Overview"></div>
+            <div class="nav-dot" onclick="scrollToSection(1)" title="Business Case Analysis"></div>
+            <div class="nav-dot" onclick="scrollToSection(2)" title="Technology Assessment"></div>
+            <div class="nav-dot" onclick="scrollToSection(3)" title="Pilot Program Design"></div>
+            <div class="nav-dot" onclick="scrollToSection(4)" title="Risk Management"></div>
+            <div class="nav-dot" onclick="scrollToSection(5)" title="Organizational Readiness"></div>
+            <div class="nav-dot" onclick="scrollToSection(6)" title="Implementation Roadmap"></div>
+            <div class="nav-dot" onclick="scrollToSection(7)" title="Final Strategy"></div>
+        </div>
+
+        <!-- Section 1: Executive Overview -->
+        <div class="section active" id="section-0">
+            <h2><span class="emoji">📋</span> Executive Overview & Context</h2>
+            <div class="section-grid">
+                <div class="decision-card">
+                    <h3>Company Profile</h3>
+                    <p><strong>GlobalTech Manufacturing</strong> - A Fortune 500 company with complex supply chains, multiple business units, and regulatory requirements across 15 countries.</p>
+
+                    <h4>Current Challenges:</h4>
+                    <ul>
+                        <li>Supply chain transparency and traceability</li>
+                        <li>Cross-border payment inefficiencies</li>
+                        <li>Document authenticity verification</li>
+                        <li>Partner collaboration and trust</li>
+                        <li>Regulatory compliance reporting</li>
+                    </ul>
+                </div>
+
+                <div class="decision-card">
+                    <h3>Market Context</h3>
+                    <div class="stakeholder-panel">
+                        <h4><span class="emoji">📊</span> Industry Trends</h4>
+                        <p><strong>42%</strong> of Fortune 500 companies exploring blockchain</p>
+                        <p><strong>$67B</strong> projected blockchain market by 2026</p>
+                        <p><strong>73%</strong> of projects still in pilot phase</p>
+                    </div>
+
+                    <div class="stakeholder-panel">
+                        <h4><span class="emoji">⚡</span> Competitive Pressure</h4>
+                        <p>Two major competitors have announced blockchain initiatives. Industry leader launched supply chain tracking solution last quarter.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-simulator">
+                <h3><span class="emoji">🎯</span> Strategic Positioning Exercise</h3>
+                <p>How should GlobalTech position its blockchain strategy?</p>
+
+                <div class="scenario-controls">
+                    <button class="scenario-button" onclick="setPosition('pioneer')">First Mover Pioneer</button>
+                    <button class="scenario-button" onclick="setPosition('fast-follower')">Fast Follower</button>
+                    <button class="scenario-button" onclick="setPosition('conservative')">Conservative Adopter</button>
+                </div>
+
+                <div id="positioning-analysis" class="metrics-dashboard" style="display: none;">
+                    <div class="metric-card">
+                        <div class="metric-value" id="market-advantage">0</div>
+                        <div>Market Advantage</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="risk-exposure">0</div>
+                        <div>Risk Exposure</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="investment-required">$0M</div>
+                        <div>Investment Required</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="timeline-months">0</div>
+                        <div>Timeline (Months)</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="scenario-button" onclick="completeSection(0)" style="margin-top: var(--space-4);">Continue to Business Case Analysis</button>
+        </div>
+
+        <!-- Section 2: Business Case Analysis -->
+        <div class="section" id="section-1">
+            <h2><span class="emoji">💼</span> Business Case Analysis</h2>
+
+            <div class="section-grid">
+                <div class="decision-card">
+                    <h3>Primary Use Case Selection</h3>
+                    <p>Choose the initial blockchain implementation focus:</p>
+
+                    <div class="decision-option" onclick="selectUseCase('supply-chain')">
+                        <h4><span class="emoji">🔗</span> Supply Chain Traceability</h4>
+                        <p>Track products from raw materials to end customer</p>
+                        <small>ROI Potential: High | Complexity: Medium | Timeline: 12-18 months</small>
+                    </div>
+
+                    <div class="decision-option" onclick="selectUseCase('payments')">
+                        <h4><span class="emoji">💰</span> Cross-Border Payments</h4>
+                        <p>Streamline international supplier payments</p>
+                        <small>ROI Potential: Medium | Complexity: High | Timeline: 18-24 months</small>
+                    </div>
+
+                    <div class="decision-option" onclick="selectUseCase('credentials')">
+                        <h4><span class="emoji">📜</span> Digital Credentials</h4>
+                        <p>Verify certifications and compliance documents</p>
+                        <small>ROI Potential: Medium | Complexity: Low | Timeline: 6-12 months</small>
+                    </div>
+
+                    <div class="decision-option" onclick="selectUseCase('contracts')">
+                        <h4><span class="emoji">📋</span> Smart Contracts</h4>
+                        <p>Automate supplier agreements and payments</p>
+                        <small>ROI Potential: High | Complexity: High | Timeline: 24+ months</small>
+                    </div>
+                </div>
+
+                <div class="decision-card">
+                    <h3>Business Impact Assessment</h3>
+                    <div id="impact-analysis" style="display: none;">
+                        <div class="stakeholder-panel">
+                            <h4>Financial Impact</h4>
+                            <p>Cost Savings: <span id="cost-savings">$0M</span> annually</p>
+                            <div class="impact-meter">
+                                <div class="impact-fill positive" id="savings-meter" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="stakeholder-panel">
+                            <h4>Operational Efficiency</h4>
+                            <p>Process Time Reduction: <span id="time-reduction">0%</span></p>
+                            <div class="impact-meter">
+                                <div class="impact-fill positive" id="efficiency-meter" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="stakeholder-panel">
+                            <h4>Risk Mitigation</h4>
+                            <p>Fraud Reduction: <span id="fraud-reduction">0%</span></p>
+                            <div class="impact-meter">
+                                <div class="impact-fill positive" id="risk-meter" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-simulator">
+                <h3><span class="emoji">📈</span> ROI Calculator</h3>
+                <p>Adjust parameters to see projected return on investment:</p>
+
+                <div class="section-grid">
+                    <div>
+                        <label>Implementation Cost: $<span id="impl-cost-display">5.0</span>M</label>
+                        <input type="range" min="2" max="15" value="5" step="0.5" id="impl-cost" onchange="updateROI()">
+                    </div>
+                    <div>
+                        <label>Annual Savings: $<span id="annual-savings-display">2.0</span>M</label>
+                        <input type="range" min="0.5" max="8" value="2" step="0.5" id="annual-savings" onchange="updateROI()">
+                    </div>
+                </div>
+
+                <div class="metrics-dashboard">
+                    <div class="metric-card">
+                        <div class="metric-value" id="payback-period">2.5</div>
+                        <div>Payback Period (Years)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="roi-percentage">40%</div>
+                        <div>5-Year ROI</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="npv-value">$3.2M</div>
+                        <div>NPV (5 years)</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="scenario-button" onclick="completeSection(1)" style="margin-top: var(--space-4);">Proceed to Technology Assessment</button>
+        </div>
+
+        <!-- Section 3: Technology Assessment -->
+        <div class="section" id="section-2">
+            <h2><span class="emoji">⚙️</span> Technology Platform Assessment</h2>
+
+            <div class="section-grid">
+                <div class="decision-card">
+                    <h3>Blockchain Platform Selection</h3>
+
+                    <div class="decision-option" onclick="selectPlatform('ethereum')">
+                        <h4><span class="emoji">💎</span> Ethereum</h4>
+                        <p>Public blockchain with smart contract capability</p>
+                        <div class="stakeholder-panel">
+                            <strong>Pros:</strong> Mature ecosystem, extensive tooling<br>
+                            <strong>Cons:</strong> High gas fees, scalability limits<br>
+                            <strong>Best for:</strong> Public-facing applications
+                        </div>
+                    </div>
+
+                    <div class="decision-option" onclick="selectPlatform('hyperledger')">
+                        <h4><span class="emoji">🔒</span> Hyperledger Fabric</h4>
+                        <p>Permissioned enterprise blockchain framework</p>
+                        <div class="stakeholder-panel">
+                            <strong>Pros:</strong> Enterprise-focused, permissioned access<br>
+                            <strong>Cons:</strong> Complex setup, smaller ecosystem<br>
+                            <strong>Best for:</strong> Private consortium networks
+                        </div>
+                    </div>
+
+                    <div class="decision-option" onclick="selectPlatform('polygon')">
+                        <h4><span class="emoji">🚀</span> Polygon</h4>
+                        <p>Layer 2 scaling solution for Ethereum</p>
+                        <div class="stakeholder-panel">
+                            <strong>Pros:</strong> Low fees, Ethereum compatibility<br>
+                            <strong>Cons:</strong> Still evolving, dependency on Ethereum<br>
+                            <strong>Best for:</strong> Cost-effective smart contracts
+                        </div>
+                    </div>
+
+                    <div class="decision-option" onclick="selectPlatform('r3-corda')">
+                        <h4><span class="emoji">🏦</span> R3 Corda</h4>
+                        <p>Enterprise DLT platform for financial services</p>
+                        <div class="stakeholder-panel">
+                            <strong>Pros:</strong> Privacy-focused, regulatory compliance<br>
+                            <strong>Cons:</strong> Limited to financial use cases<br>
+                            <strong>Best for:</strong> Financial and trade finance
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decision-card">
+                    <h3>Technical Architecture Decisions</h3>
+                    <div id="architecture-choices">
+                        <h4>Network Type</h4>
+                        <div class="decision-option" onclick="setArchChoice('network', 'public')">
+                            <strong>Public Network</strong> - Open, transparent, higher costs
+                        </div>
+                        <div class="decision-option" onclick="setArchChoice('network', 'private')">
+                            <strong>Private Network</strong> - Controlled access, lower costs
+                        </div>
+                        <div class="decision-option" onclick="setArchChoice('network', 'consortium')">
+                            <strong>Consortium</strong> - Partner network, shared governance
+                        </div>
+
+                        <h4 style="margin-top: var(--space-4);">Data Privacy</h4>
+                        <div class="decision-option" onclick="setArchChoice('privacy', 'transparent')">
+                            <strong>Transparent</strong> - All data visible to participants
+                        </div>
+                        <div class="decision-option" onclick="setArchChoice('privacy', 'selective')">
+                            <strong>Selective Disclosure</strong> - Choose what to share
+                        </div>
+                        <div class="decision-option" onclick="setArchChoice('privacy', 'zero-knowledge')">
+                            <strong>Zero-Knowledge</strong> - Prove without revealing data
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="risk-assessment">
+                <h3><span class="emoji">⚠️</span> Technical Risk Assessment</h3>
+                <div id="tech-risks">
+                    <div class="stakeholder-panel">
+                        <h4>Scalability Risk <span class="risk-level risk-medium">Medium</span></h4>
+                        <p>Current throughput may not handle peak transaction volumes. Consider layer 2 solutions or alternative consensus mechanisms.</p>
+                    </div>
+
+                    <div class="stakeholder-panel">
+                        <h4>Integration Complexity <span class="risk-level risk-high">High</span></h4>
+                        <p>Connecting blockchain to existing ERP, CRM, and legacy systems requires significant development effort.</p>
+                    </div>
+
+                    <div class="stakeholder-panel">
+                        <h4>Security Vulnerabilities <span class="risk-level risk-medium">Medium</span></h4>
+                        <p>Smart contract bugs and private key management pose security risks. Implement thorough testing and security protocols.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="scenario-button" onclick="completeSection(2)" style="margin-top: var(--space-4);">Design Pilot Program</button>
+        </div>
+
+        <!-- Section 4: Pilot Program Design -->
+        <div class="section" id="section-3">
+            <h2><span class="emoji">🧪</span> Pilot Program Design</h2>
+
+            <div class="section-grid">
+                <div class="decision-card">
+                    <h3>Pilot Scope Definition</h3>
+
+                    <h4>Geographic Scope</h4>
+                    <div class="decision-option" onclick="setPilotScope('geo', 'single-region')">
+                        <strong>Single Region</strong> - North American operations only
+                        <small>Lower complexity, faster implementation</small>
+                    </div>
+                    <div class="decision-option" onclick="setPilotScope('geo', 'multi-region')">
+                        <strong>Multi-Region</strong> - North America + Europe
+                        <small>Better representation, higher complexity</small>
+                    </div>
+
+                    <h4 style="margin-top: var(--space-3);">Partner Involvement</h4>
+                    <div class="decision-option" onclick="setPilotScope('partners', 'internal-only')">
+                        <strong>Internal Only</strong> - GlobalTech operations only
+                        <small>Full control, limited real-world testing</small>
+                    </div>
+                    <div class="decision-option" onclick="setPilotScope('partners', 'key-suppliers')">
+                        <strong>Key Suppliers</strong> - Include 3-5 major suppliers
+                        <small>Realistic testing, coordination challenges</small>
+                    </div>
+                    <div class="decision-option" onclick="setPilotScope('partners', 'full-ecosystem')">
+                        <strong>Full Ecosystem</strong> - Suppliers, distributors, customers
+                        <small>Complete validation, high complexity</small>
+                    </div>
+                </div>
+
+                <div class="decision-card">
+                    <h3>Success Metrics & KPIs</h3>
+                    <div class="stakeholder-panel">
+                        <h4><span class="emoji">📊</span> Operational Metrics</h4>
+                        <p><strong>Transaction Volume:</strong> Process 10,000+ transactions</p>
+                        <p><strong>Response Time:</strong> < 3 seconds per query</p>
+                        <p><strong>Uptime:</strong> 99.5% availability</p>
+                    </div>
+
+                    <div class="stakeholder-panel">
+                        <h4><span class="emoji">💰</span> Business Metrics</h4>
+                        <p><strong>Cost Reduction:</strong> 15% decrease in processing costs</p>
+                        <p><strong>Time Savings:</strong> 40% faster verification processes</p>
+                        <p><strong>Error Reduction:</strong> 80% fewer manual errors</p>
+                    </div>
+
+                    <div class="stakeholder-panel">
+                        <h4><span class="emoji">👥</span> Adoption Metrics</h4>
+                        <p><strong>User Adoption:</strong> 85% of target users active</p>
+                        <p><strong>Partner Engagement:</strong> 70% of partners participating</p>
+                        <p><strong>Satisfaction Score:</strong> 4.0+ out of 5.0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-simulator">
+                <h3><span class="emoji">⏱️</span> Pilot Timeline Planner</h3>
+                <div class="implementation-timeline">
+                    <div class="timeline-phase">
+                        <h4>Phase 1: Setup & Development (Months 1-3)</h4>
+                        <ul>
+                            <li>Platform setup and configuration</li>
+                            <li>Smart contract development</li>
+                            <li>Integration with existing systems</li>
+                            <li>Security testing and audits</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-phase">
+                        <h4>Phase 2: Internal Testing (Months 4-5)</h4>
+                        <ul>
+                            <li>Internal user training</li>
+                            <li>System integration testing</li>
+                            <li>Performance optimization</li>
+                            <li>Bug fixes and improvements</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-phase">
+                        <h4>Phase 3: Partner Onboarding (Months 6-7)</h4>
+                        <ul>
+                            <li>Partner technical integration</li>
+                            <li>User training and support</li>
+                            <li>Pilot program launch</li>
+                            <li>Performance monitoring</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-phase">
+                        <h4>Phase 4: Evaluation & Scaling (Months 8-9)</h4>
+                        <ul>
+                            <li>Results analysis and reporting</li>
+                            <li>Stakeholder feedback collection</li>
+                            <li>Scaling strategy development</li>
+                            <li>Business case refinement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="scenario-controls">
+                    <button class="scenario-button" onclick="adjustTimeline('accelerated')">Accelerated Timeline (-2 months)</button>
+                    <button class="scenario-button" onclick="adjustTimeline('standard')">Standard Timeline</button>
+                    <button class="scenario-button" onclick="adjustTimeline('conservative')">Conservative Timeline (+3 months)</button>
+                </div>
+
+                <div class="metrics-dashboard">
+                    <div class="metric-card">
+                        <div class="metric-value" id="pilot-duration">9</div>
+                        <div>Total Duration (Months)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="pilot-cost">$2.1M</div>
+                        <div>Pilot Budget</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="pilot-risk">Medium</div>
+                        <div>Risk Level</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="scenario-button" onclick="completeSection(3)" style="margin-top: var(--space-4);">Assess Risk Management</button>
+        </div>
+
+        <!-- Section 5: Risk Management -->
+        <div class="section" id="section-4">
+            <h2><span class="emoji">🛡️</span> Enterprise Risk Management</h2>
+
+            <div class="section-grid">
+                <div class="decision-card">
+                    <h3>Risk Categories & Mitigation</h3>
+
+                    <div class="risk-assessment">
+                        <h4>Technology Risks <span class="risk-level risk-high">High</span></h4>
+                        <p><strong>Risk:</strong> Platform failure or security breach</p>
+                        <p><strong>Mitigation:</strong></p>
+                        <div class="decision-option" onclick="selectRiskMitigation('tech', 'backup-systems')">
+                            Implement redundant backup systems
+                        </div>
+                        <div class="decision-option" onclick="selectRiskMitigation('tech', 'security-audits')">
+                            Regular security audits and penetration testing
+                        </div>
+                        <div class="decision-option" onclick="selectRiskMitigation('tech', 'gradual-rollout')">
+                            Gradual rollout with rollback capabilities
+                        </div>
+                    </div>
+
+                    <div class="risk-assessment">
+                        <h4>Regulatory Risks <span class="risk-level risk-medium">Medium</span></h4>
+                        <p><strong>Risk:</strong> Changing regulations or compliance requirements</p>
+                        <p><strong>Mitigation:</strong></p>
+                        <div class="decision-option" onclick="selectRiskMitigation('regulatory', 'legal-counsel')">
+                            Engage specialized legal counsel
+                        </div>
+                        <div class="decision-option" onclick="selectRiskMitigation('regulatory', 'compliance-framework')">
+                            Develop comprehensive compliance framework
+                        </div>
+                        <div class="decision-option" onclick="selectRiskMitigation('regulatory', 'industry-participation')">
+                            Active participation in industry standards
+                        </div>
+                    </div>
+
+                    <div class="risk-assessment">
+                        <h4>Business Risks <span class="risk-level risk-medium">Medium</span></h4>
+                        <p><strong>Risk:</strong> Partner resistance or adoption failure</p>
+                        <p><strong>Mitigation:</strong></p>
+                        <div class="decision-option" onclick="selectRiskMitigation('business', 'incentive-programs')">
+                            Create partner incentive programs
+                        </div>
+                        <div class="decision-option" onclick="selectRiskMitigation('business', 'change-management')">
+                            Comprehensive change management program
+                        </div>
+                        <div class="decision-option" onclick="selectRiskMitigation('business', 'parallel-systems')">
+                            Run parallel systems during transition
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decision-card">
+                    <h3>Governance Framework</h3>
+
+                    <h4>Decision Authority</h4>
+                    <div class="decision-option" onclick="setGovernance('authority', 'centralized')">
+                        <strong>Centralized</strong> - GlobalTech makes all decisions
+                        <small>Fast decisions, potential partner resistance</small>
+                    </div>
+                    <div class="decision-option" onclick="setGovernance('authority', 'consensus')">
+                        <strong>Consensus-Based</strong> - Major partners vote on changes
+                        <small>Partner buy-in, slower decision making</small>
+                    </div>
+                    <div class="decision-option" onclick="setGovernance('authority', 'council')">
+                        <strong>Governance Council</strong> - Representative council
+                        <small>Balanced approach, coordination overhead</small>
+                    </div>
+
+                    <h4 style="margin-top: var(--space-3);">Data Governance</h4>
+                    <div class="stakeholder-panel">
+                        <p><strong>Data Ownership:</strong> Each partner owns their contributed data</p>
+                        <p><strong>Access Controls:</strong> Role-based permissions with audit trails</p>
+                        <p><strong>Data Quality:</strong> Automated validation and cleansing rules</p>
+                        <p><strong>Privacy Compliance:</strong> GDPR, CCPA, and industry-specific requirements</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-simulator">
+                <h3><span class="emoji">🎲</span> Risk Scenario Simulator</h3>
+                <p>Test how your risk management strategies handle different scenarios:</p>
+
+                <div class="scenario-controls">
+                    <button class="scenario-button" onclick="runRiskScenario('cyber-attack')">Cyber Security Attack</button>
+                    <button class="scenario-button" onclick="runRiskScenario('regulatory-change')">Regulatory Changes</button>
+                    <button class="scenario-button" onclick="runRiskScenario('partner-exit')">Major Partner Exit</button>
+                    <button class="scenario-button" onclick="runRiskScenario('technology-failure')">Technology Failure</button>
+                </div>
+
+                <div id="scenario-results" style="display: none;">
+                    <div class="recommendation-card">
+                        <h4 id="scenario-title">Scenario: Cyber Security Attack</h4>
+                        <p id="scenario-description">A sophisticated attack targets the blockchain network...</p>
+
+                        <div class="metrics-dashboard">
+                            <div class="metric-card">
+                                <div class="metric-value" id="impact-score">7.2</div>
+                                <div>Impact Score (1-10)</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="response-time">2.4</div>
+                                <div>Response Time (Hours)</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="recovery-cost">$1.2M</div>
+                                <div>Recovery Cost</div>
+                            </div>
+                        </div>
+
+                        <p id="scenario-outcome">Based on your risk mitigation choices, the system recovers within acceptable parameters...</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="scenario-button" onclick="completeSection(4)" style="margin-top: var(--space-4);">Evaluate Organizational Readiness</button>
+        </div>
+
+        <!-- Section 6: Organizational Readiness -->
+        <div class="section" id="section-5">
+            <h2><span class="emoji">🏗️</span> Organizational Readiness Assessment</h2>
+
+            <div class="section-grid">
+                <div class="decision-card">
+                    <h3>Skills & Capabilities Assessment</h3>
+
+                    <div class="stakeholder-panel">
+                        <h4><span class="emoji">💻</span> Technical Capabilities</h4>
+                        <p><strong>Current State:</strong> Limited blockchain expertise</p>
+                        <p><strong>Gap Analysis:</strong> Need 15-20 trained developers and architects</p>
+
+                        <h4>Training Strategy:</h4>
+                        <div class="decision-option" onclick="setTrainingStrategy('internal')">
+                            <strong>Internal Training Program</strong> - 6-month intensive program
+                            <small>Cost: $500K, Timeline: 6 months</small>
+                        </div>
+                        <div class="decision-option" onclick="setTrainingStrategy('external-hire')">
+                            <strong>External Hiring</strong> - Recruit blockchain experts
+                            <small>Cost: $2M annually, Timeline: 3 months</small>
+                        </div>
+                        <div class="decision-option" onclick="setTrainingStrategy('consultant-partnership')">
+                            <strong>Consultant Partnership</strong> - Work with blockchain consultancy
+                            <small>Cost: $3M project cost, Timeline: Immediate</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decision-card">
+                    <h3>Change Management Strategy</h3>
+
+                    <div class="stakeholder-panel">
+                        <h4><span class="emoji">👥</span> Stakeholder Analysis</h4>
+                        <p><strong>Champions (20%):</strong> Innovation team, some IT leaders</p>
+                        <p><strong>Neutral (50%):</strong> Most operational staff</p>
+                        <p><strong>Resistors (30%):</strong> Risk management, some business units</p>
+                    </div>
+
+                    <h4>Communication Strategy:</h4>
+                    <div class="decision-option" onclick="setCommunicationStrategy('top-down')">
+                        <strong>Top-Down Mandate</strong> - Executive-driven rollout
+                        <small>Fast implementation, potential resistance</small>
+                    </div>
+                    <div class="decision-option" onclick="setCommunicationStrategy('grassroots')">
+                        <strong>Grassroots Adoption</strong> - Build from successful pilots
+                        <small>Natural adoption, slower timeline</small>
+                    </div>
+                    <div class="decision-option" onclick="setCommunicationStrategy('hybrid')">
+                        <strong>Hybrid Approach</strong> - Executive support + pilot successes
+                        <small>Balanced approach, moderate timeline</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-simulator">
+                <h3><span class="emoji">📈</span> Organizational Readiness Score</h3>
+
+                <div class="metrics-dashboard">
+                    <div class="metric-card">
+                        <div class="metric-value" id="technical-readiness">65%</div>
+                        <div>Technical Readiness</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="cultural-readiness">72%</div>
+                        <div>Cultural Readiness</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="financial-readiness">88%</div>
+                        <div>Financial Readiness</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="overall-readiness">75%</div>
+                        <div>Overall Readiness</div>
+                    </div>
+                </div>
+
+                <div class="recommendation-card">
+                    <h4><span class="emoji">💡</span> Readiness Improvement Plan</h4>
+                    <div id="improvement-recommendations">
+                        <p><strong>Priority 1:</strong> Establish blockchain center of excellence</p>
+                        <p><strong>Priority 2:</strong> Launch internal education program</p>
+                        <p><strong>Priority 3:</strong> Create innovation lab for experimentation</p>
+                        <p><strong>Priority 4:</strong> Develop partner onboarding playbook</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="scenario-button" onclick="completeSection(5)" style="margin-top: var(--space-4);">Create Implementation Roadmap</button>
+        </div>
+
+        <!-- Section 7: Implementation Roadmap -->
+        <div class="section" id="section-6">
+            <h2><span class="emoji">🗺️</span> Strategic Implementation Roadmap</h2>
+
+            <div class="implementation-timeline" style="background: var(--color-white);">
+                <div class="timeline-phase">
+                    <h4>Year 1: Foundation & Pilot (Months 1-12)</h4>
+                    <div class="section-grid">
+                        <div>
+                            <h5>Q1: Setup & Preparation</h5>
+                            <ul>
+                                <li>Establish blockchain center of excellence</li>
+                                <li>Platform selection and setup</li>
+                                <li>Initial team training</li>
+                                <li>Regulatory compliance review</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5>Q2-Q3: Pilot Development</h5>
+                            <ul>
+                                <li>Smart contract development</li>
+                                <li>System integration</li>
+                                <li>Security testing</li>
+                                <li>Partner onboarding</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5>Q4: Pilot Launch</h5>
+                            <ul>
+                                <li>Limited production deployment</li>
+                                <li>Performance monitoring</li>
+                                <li>User feedback collection</li>
+                                <li>Results analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <h4>Year 2: Expansion & Optimization (Months 13-24)</h4>
+                    <div class="section-grid">
+                        <div>
+                            <h5>Q1: Scale Planning</h5>
+                            <ul>
+                                <li>Pilot results evaluation</li>
+                                <li>Scaling strategy refinement</li>
+                                <li>Additional use case development</li>
+                                <li>Partner ecosystem expansion</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5>Q2-Q3: Regional Rollout</h5>
+                            <ul>
+                                <li>Multi-region deployment</li>
+                                <li>Additional partner onboarding</li>
+                                <li>Performance optimization</li>
+                                <li>Process automation</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5>Q4: Business Integration</h5>
+                            <ul>
+                                <li>Full operational integration</li>
+                                <li>ROI measurement</li>
+                                <li>Process documentation</li>
+                                <li>Success case studies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-phase">
+                    <h4>Year 3+: Innovation & Growth (Months 25+)</h4>
+                    <div class="section-grid">
+                        <div>
+                            <h5>Advanced Features</h5>
+                            <ul>
+                                <li>AI integration for analytics</li>
+                                <li>IoT device connectivity</li>
+                                <li>Advanced smart contracts</li>
+                                <li>Cross-chain interoperability</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5>Market Leadership</h5>
+                            <ul>
+                                <li>Industry standard development</li>
+                                <li>Platform as a service offering</li>
+                                <li>Ecosystem orchestration</li>
+                                <li>Competitive differentiation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-simulator">
+                <h3><span class="emoji">💰</span> Investment Planning</h3>
+
+                <div class="metrics-dashboard">
+                    <div class="metric-card">
+                        <div class="metric-value" id="year1-investment">$5.2M</div>
+                        <div>Year 1 Investment</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="year2-investment">$3.8M</div>
+                        <div>Year 2 Investment</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="year3-investment">$2.1M</div>
+                        <div>Year 3 Investment</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="total-investment">$11.1M</div>
+                        <div>Total 3-Year Investment</div>
+                    </div>
+                </div>
+
+                <div class="recommendation-card">
+                    <h4><span class="emoji">🎯</span> Success Milestones</h4>
+                    <p><strong>6 Months:</strong> Successful pilot launch with key metrics achieved</p>
+                    <p><strong>12 Months:</strong> Positive ROI demonstrated, partner satisfaction > 4.0</p>
+                    <p><strong>18 Months:</strong> Multi-region deployment, 50+ partners onboarded</p>
+                    <p><strong>24 Months:</strong> Full operational integration, $5M+ annual savings</p>
+                    <p><strong>36 Months:</strong> Industry leadership position, platform expansion opportunities</p>
+                </div>
+            </div>
+
+            <button class="scenario-button" onclick="completeSection(6)" style="margin-top: var(--space-4);">Generate Final Strategy Report</button>
+        </div>
+
+        <!-- Section 8: Final Strategy Report -->
+        <div class="section" id="section-7">
+            <div class="final-report">
+                <h2><span class="emoji">🎯</span> Executive Strategy Recommendation</h2>
+
+                <div class="recommendation-card">
+                    <h3>Strategic Summary</h3>
+                    <p id="strategy-summary">Based on your decisions throughout this analysis, GlobalTech should proceed with a measured blockchain adoption strategy focused on supply chain traceability as the primary use case.</p>
+                </div>
+
+                <div class="section-grid" style="margin-top: var(--space-4);">
+                    <div class="recommendation-card">
+                        <h4><span class="emoji">✅</span> Recommended Approach</h4>
+                        <div id="recommended-approach">
+                            <p><strong>Primary Use Case:</strong> <span id="final-use-case">Supply Chain Traceability</span></p>
+                            <p><strong>Platform:</strong> <span id="final-platform">Hyperledger Fabric</span></p>
+                            <p><strong>Implementation:</strong> <span id="final-timeline">9-month pilot, 24-month full deployment</span></p>
+                            <p><strong>Investment:</strong> <span id="final-investment">$11.1M over 3 years</span></p>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <h4><span class="emoji">📊</span> Expected Outcomes</h4>
+                        <div id="expected-outcomes">
+                            <p><strong>ROI:</strong> <span id="final-roi">245% over 5 years</span></p>
+                            <p><strong>Cost Savings:</strong> <span id="final-savings">$8.5M annually by Year 3</span></p>
+                            <p><strong>Efficiency Gains:</strong> <span id="final-efficiency">40% faster processes</span></p>
+                            <p><strong>Risk Reduction:</strong> <span id="final-risk-reduction">65% fewer compliance issues</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-card">
+                    <h4><span class="emoji">🚀</span> Next Steps</h4>
+                    <ol>
+                        <li><strong>Board Approval:</strong> Present this strategy to the board for funding approval</li>
+                        <li><strong>Team Assembly:</strong> Hire blockchain center of excellence leader and core team</li>
+                        <li><strong>Partner Engagement:</strong> Begin discussions with key suppliers for pilot participation</li>
+                        <li><strong>Technology Setup:</strong> Initiate platform evaluation and proof of concept development</li>
+                        <li><strong>Regulatory Review:</strong> Engage legal team for comprehensive compliance assessment</li>
+                    </ol>
+                </div>
+
+                <div class="recommendation-card">
+                    <h4><span class="emoji">⚡</span> Critical Success Factors</h4>
+                    <ul>
+                        <li><strong>Executive Commitment:</strong> Sustained C-level support throughout implementation</li>
+                        <li><strong>Partner Collaboration:</strong> Strong relationships with key ecosystem participants</li>
+                        <li><strong>Technical Excellence:</strong> Robust, secure, and scalable platform implementation</li>
+                        <li><strong>Change Management:</strong> Comprehensive organizational change and adoption strategy</li>
+                        <li><strong>Performance Monitoring:</strong> Continuous measurement and optimization of business outcomes</li>
+                    </ul>
+                </div>
+
+                <div class="scenario-controls" style="margin-top: var(--space-6);">
+                    <button class="scenario-button" onclick="downloadReport()" style="background: var(--color-white); color: var(--color-electric-blue);">
+                        <span class="emoji">📄</span> Download Strategy Report
+                    </button>
+                    <button class="scenario-button" onclick="restartAnalysis()" style="background: rgba(255, 255, 255, 0.2);">
+                        <span class="emoji">🔄</span> Restart Analysis
+                    </button>
+                    <button class="scenario-button" onclick="window.location.href='blockchain-activities.html'" style="background: rgba(255, 255, 255, 0.2);">
+                        <span class="emoji">🏠</span> Back to Activities
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state management
+        let enterpriseState = {
+            currentSection: 0,
+            decisions: {
+                positioning: null,
+                useCase: null,
+                platform: null,
+                networkType: null,
+                privacy: null,
+                pilotScope: {
+                    geo: null,
+                    partners: null
+                },
+                riskMitigation: {
+                    tech: null,
+                    regulatory: null,
+                    business: null
+                },
+                governance: {
+                    authority: null
+                },
+                training: null,
+                communication: null,
+                timeline: 'standard'
+            },
+            scores: {
+                technical: 65,
+                business: 78,
+                financial: 88,
+                organizational: 75
+            },
+            metrics: {
+                implementation_cost: 5.0,
+                annual_savings: 2.0,
+                payback_period: 2.5,
+                roi_percentage: 40,
+                npv_value: 3.2
+            }
+        };
+
+        // Initialize the application
+        function initializeApp() {
+            updateProgress();
+            updateNavigation();
+        }
+
+        // Strategic positioning
+        function setPosition(position) {
+            enterpriseState.decisions.positioning = position;
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.scenario-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const metrics = {
+                'pioneer': { advantage: 85, risk: 75, investment: 15, timeline: 18 },
+                'fast-follower': { advantage: 65, risk: 45, investment: 8, timeline: 12 },
+                'conservative': { advantage: 35, risk: 25, investment: 5, timeline: 24 }
+            };
+
+            const selected = metrics[position];
+            document.getElementById('market-advantage').textContent = selected.advantage;
+            document.getElementById('risk-exposure').textContent = selected.risk;
+            document.getElementById('investment-required').textContent = `$${selected.investment}M`;
+            document.getElementById('timeline-months').textContent = selected.timeline;
+
+            document.getElementById('positioning-analysis').style.display = 'grid';
+        }
+
+        // Use case selection
+        function selectUseCase(useCase) {
+            enterpriseState.decisions.useCase = useCase;
+
+            // Remove selected class from all options
+            document.querySelectorAll('.decision-option').forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            const impacts = {
+                'supply-chain': { savings: 8.5, time: 65, fraud: 80 },
+                'payments': { savings: 12.2, time: 45, fraud: 60 },
+                'credentials': { savings: 3.8, time: 85, fraud: 95 },
+                'contracts': { savings: 15.6, time: 70, fraud: 75 }
+            };
+
+            const selected = impacts[useCase];
+            document.getElementById('cost-savings').textContent = `$${selected.savings}M`;
+            document.getElementById('time-reduction').textContent = `${selected.time}%`;
+            document.getElementById('fraud-reduction').textContent = `${selected.fraud}%`;
+
+            // Update meters
+            document.getElementById('savings-meter').style.width = `${Math.min(selected.savings * 6, 100)}%`;
+            document.getElementById('efficiency-meter').style.width = `${selected.time}%`;
+            document.getElementById('risk-meter').style.width = `${selected.fraud}%`;
+
+            document.getElementById('impact-analysis').style.display = 'block';
+            updateROI();
+        }
+
+        // ROI Calculator
+        function updateROI() {
+            const implCost = parseFloat(document.getElementById('impl-cost').value);
+            const annualSavings = parseFloat(document.getElementById('annual-savings').value);
+
+            enterpriseState.metrics.implementation_cost = implCost;
+            enterpriseState.metrics.annual_savings = annualSavings;
+
+            // Update displays
+            document.getElementById('impl-cost-display').textContent = implCost.toFixed(1);
+            document.getElementById('annual-savings-display').textContent = annualSavings.toFixed(1);
+
+            // Calculate metrics
+            const paybackPeriod = implCost / annualSavings;
+            const fiveYearROI = ((annualSavings * 5 - implCost) / implCost * 100);
+            const npv = (annualSavings * 5 - implCost);
+
+            document.getElementById('payback-period').textContent = paybackPeriod.toFixed(1);
+            document.getElementById('roi-percentage').textContent = `${Math.round(fiveYearROI)}%`;
+            document.getElementById('npv-value').textContent = `$${npv.toFixed(1)}M`;
+
+            enterpriseState.metrics.payback_period = paybackPeriod;
+            enterpriseState.metrics.roi_percentage = fiveYearROI;
+            enterpriseState.metrics.npv_value = npv;
+        }
+
+        // Platform selection
+        function selectPlatform(platform) {
+            enterpriseState.decisions.platform = platform;
+
+            document.querySelectorAll('#section-2 .decision-option').forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            // Update risk assessment based on platform choice
+            updateTechnicalRisks(platform);
+        }
+
+        function updateTechnicalRisks(platform) {
+            const risks = {
+                'ethereum': { scalability: 'High', integration: 'Medium', security: 'Medium' },
+                'hyperledger': { scalability: 'Low', integration: 'High', security: 'Low' },
+                'polygon': { scalability: 'Low', integration: 'Medium', security: 'Medium' },
+                'r3-corda': { scalability: 'Medium', integration: 'High', security: 'Low' }
+            };
+
+            // Update risk levels in the UI (implementation would update the risk cards)
+        }
+
+        // Architecture choices
+        function setArchChoice(category, choice) {
+            enterpriseState.decisions[category === 'network' ? 'networkType' : 'privacy'] = choice;
+
+            // Visual feedback for selection
+            const categoryOptions = event.currentTarget.parentElement.querySelectorAll('.decision-option');
+            categoryOptions.forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        // Pilot program scope
+        function setPilotScope(category, scope) {
+            enterpriseState.decisions.pilotScope[category] = scope;
+
+            document.querySelectorAll(`h4:contains("${category === 'geo' ? 'Geographic' : 'Partner'}") + .decision-option`)
+                .forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        // Timeline adjustment
+        function adjustTimeline(timeline) {
+            enterpriseState.decisions.timeline = timeline;
+
+            document.querySelectorAll('.scenario-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const durations = {
+                'accelerated': { months: 7, cost: 2.8, risk: 'High' },
+                'standard': { months: 9, cost: 2.1, risk: 'Medium' },
+                'conservative': { months: 12, cost: 1.8, risk: 'Low' }
+            };
+
+            const selected = durations[timeline];
+            document.getElementById('pilot-duration').textContent = selected.months;
+            document.getElementById('pilot-cost').textContent = `$${selected.cost}M`;
+            document.getElementById('pilot-risk').textContent = selected.risk;
+        }
+
+        // Risk mitigation selection
+        function selectRiskMitigation(category, strategy) {
+            enterpriseState.decisions.riskMitigation[category] = strategy;
+
+            // Visual feedback
+            event.currentTarget.classList.add('selected');
+        }
+
+        // Risk scenario simulation
+        function runRiskScenario(scenario) {
+            document.querySelectorAll('.scenario-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const scenarios = {
+                'cyber-attack': {
+                    title: 'Scenario: Cyber Security Attack',
+                    description: 'A sophisticated ransomware attack targets the blockchain network, attempting to encrypt critical smart contracts and demand payment.',
+                    impact: 7.2,
+                    responseTime: 2.4,
+                    cost: '$1.2M',
+                    outcome: 'Based on your risk mitigation choices, the backup systems activate automatically, and the attack is contained within 2.4 hours with minimal operational disruption.'
+                },
+                'regulatory-change': {
+                    title: 'Scenario: Regulatory Changes',
+                    description: 'New data privacy regulations require significant changes to how blockchain data is stored and accessed.',
+                    impact: 5.8,
+                    responseTime: 168,
+                    cost: '$800K',
+                    outcome: 'Your compliance framework and legal counsel enable adaptation to new regulations within 7 days, maintaining operational continuity.'
+                },
+                'partner-exit': {
+                    title: 'Scenario: Major Partner Exit',
+                    description: 'Your largest supply chain partner decides to exit the blockchain network due to internal policy changes.',
+                    impact: 6.5,
+                    responseTime: 72,
+                    cost: '$400K',
+                    outcome: 'The governance framework facilitates smooth transition, and backup partners are onboarded within 3 days with minimal disruption.'
+                },
+                'technology-failure': {
+                    title: 'Scenario: Technology Platform Failure',
+                    description: 'A critical bug in the blockchain platform causes transaction failures and potential data integrity issues.',
+                    impact: 8.1,
+                    responseTime: 4.2,
+                    cost: '$1.8M',
+                    outcome: 'Redundant systems and rollback capabilities minimize impact, though recovery requires significant technical effort and partner coordination.'
+                }
+            };
+
+            const selected = scenarios[scenario];
+            document.getElementById('scenario-title').textContent = selected.title;
+            document.getElementById('scenario-description').textContent = selected.description;
+            document.getElementById('impact-score').textContent = selected.impact.toFixed(1);
+            document.getElementById('response-time').textContent = selected.responseTime;
+            document.getElementById('recovery-cost').textContent = selected.cost;
+            document.getElementById('scenario-outcome').textContent = selected.outcome;
+
+            document.getElementById('scenario-results').style.display = 'block';
+        }
+
+        // Governance and organizational choices
+        function setGovernance(category, choice) {
+            enterpriseState.decisions.governance[category] = choice;
+
+            document.querySelectorAll(`h4:contains("${category}") + .decision-option`)
+                .forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        function setTrainingStrategy(strategy) {
+            enterpriseState.decisions.training = strategy;
+
+            document.querySelectorAll('#section-5 .decision-option').forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+
+            // Update readiness scores based on training choice
+            updateReadinessScores();
+        }
+
+        function setCommunicationStrategy(strategy) {
+            enterpriseState.decisions.communication = strategy;
+
+            event.currentTarget.classList.add('selected');
+            updateReadinessScores();
+        }
+
+        function updateReadinessScores() {
+            // Recalculate readiness scores based on decisions
+            let technical = 65, cultural = 72, financial = 88;
+
+            if (enterpriseState.decisions.training === 'external-hire') technical += 15;
+            if (enterpriseState.decisions.training === 'consultant-partnership') technical += 10;
+            if (enterpriseState.decisions.communication === 'hybrid') cultural += 10;
+
+            const overall = Math.round((technical + cultural + financial) / 3);
+
+            document.getElementById('technical-readiness').textContent = `${technical}%`;
+            document.getElementById('cultural-readiness').textContent = `${cultural}%`;
+            document.getElementById('overall-readiness').textContent = `${overall}%`;
+
+            enterpriseState.scores.technical = technical;
+            enterpriseState.scores.organizational = cultural;
+        }
+
+        // Section management
+        function completeSection(sectionIndex) {
+            // Mark current section as completed
+            const navDots = document.querySelectorAll('.nav-dot');
+            navDots[sectionIndex].classList.add('completed');
+            navDots[sectionIndex].classList.remove('active');
+
+            // Move to next section
+            if (sectionIndex < 7) {
+                enterpriseState.currentSection = sectionIndex + 1;
+                scrollToSection(enterpriseState.currentSection);
+            }
+
+            updateProgress();
+        }
+
+        function scrollToSection(sectionIndex) {
+            // Update section visibility
+            document.querySelectorAll('.section').forEach((section, index) => {
+                if (index === sectionIndex) {
+                    section.classList.add('active');
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+
+            // Update navigation
+            enterpriseState.currentSection = sectionIndex;
+            updateNavigation();
+        }
+
+        function updateNavigation() {
+            const navDots = document.querySelectorAll('.nav-dot');
+            navDots.forEach((dot, index) => {
+                if (index === enterpriseState.currentSection) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function updateProgress() {
+            const progress = (enterpriseState.currentSection / 7) * 100;
+            document.getElementById('overallProgress').style.width = `${progress}%`;
+        }
+
+        // Final report generation
+        function generateFinalReport() {
+            // Update final recommendations based on all decisions
+            updateFinalRecommendations();
+        }
+
+        function updateFinalRecommendations() {
+            // Use case
+            document.getElementById('final-use-case').textContent =
+                enterpriseState.decisions.useCase ?
+                enterpriseState.decisions.useCase.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) :
+                'Supply Chain Traceability';
+
+            // Platform
+            document.getElementById('final-platform').textContent =
+                enterpriseState.decisions.platform ?
+                enterpriseState.decisions.platform.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) :
+                'Hyperledger Fabric';
+
+            // Timeline
+            const timeline = enterpriseState.decisions.timeline;
+            const timelineText = timeline === 'accelerated' ? '7-month pilot, 18-month deployment' :
+                               timeline === 'conservative' ? '12-month pilot, 30-month deployment' :
+                               '9-month pilot, 24-month deployment';
+            document.getElementById('final-timeline').textContent = timelineText;
+
+            // ROI
+            document.getElementById('final-roi').textContent = `${Math.round(enterpriseState.metrics.roi_percentage)}% over 5 years`;
+
+            // Cost savings (based on use case and annual savings)
+            const annualSavings = enterpriseState.metrics.annual_savings * 4.25; // Scale up for full implementation
+            document.getElementById('final-savings').textContent = `$${annualSavings.toFixed(1)}M annually by Year 3`;
+        }
+
+        // Utility functions
+        function downloadReport() {
+            // In a real implementation, this would generate and download a PDF report
+            alert('Strategy report would be generated and downloaded. This is a demo implementation.');
+        }
+
+        function restartAnalysis() {
+            if (confirm('Are you sure you want to restart the analysis? All progress will be lost.')) {
+                location.reload();
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+
+            // Auto-generate final report when reaching the last section
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        const target = mutation.target;
+                        if (target.id === 'section-7' && target.classList.contains('active')) {
+                            generateFinalReport();
+                        }
+                    }
+                });
+            });
+
+            observer.observe(document.getElementById('section-7'), { attributes: true });
+        });
+    </script>
+</body>
+</html>

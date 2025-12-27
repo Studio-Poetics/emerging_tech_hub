@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet of Things (IoT) Learning Hub - Connected Devices, Smart Systems & IIoT</title>
+    <meta name="description" content="Master IoT with hands-on projects. Learn about connected devices, IIoT, MQTT protocols, and build smart systems from sensors to cloud platforms.">
+    <meta name="keywords" content="IoT, Internet of Things, IIoT, smart devices, connected systems, MQTT, sensor networks, smart home, industrial IoT, Arduino, ESP32">
+    <meta name="author" content="Studio Poetics - Emerging Technology Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/iot-landing.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eth.poetics.studio/iot-landing.html">
+    <meta property="og:title" content="Internet of Things Learning Hub - IoT & Connected Systems">
+    <meta property="og:description" content="Master IoT with hands-on projects. Learn connected devices, IIoT, and smart systems through practical tutorials.">
+    <meta property="og:site_name" content="Emerging Technology Hub">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://eth.poetics.studio/iot-landing.html">
+    <meta property="twitter:title" content="Internet of Things Learning Hub - IoT & Connected Systems">
+    <meta property="twitter:description" content="Master IoT with hands-on projects. Learn connected devices, IIoT, and smart systems through practical tutorials.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Internet of Things Fundamentals",
+      "description": "Comprehensive IoT education covering connected devices, IIoT, smart systems, and sensor networks",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "Emerging Technology Hub",
+        "url": "https://eth.poetics.studio"
+      },
+      "educationalLevel": "Beginner to Intermediate",
+      "teaches": [
+        "IoT Fundamentals",
+        "Industrial IoT (IIoT)",
+        "Smart Devices",
+        "Sensor Networks",
+        "MQTT Protocols"
+      ],
+      "courseMode": "online",
+      "isAccessibleForFree": true
+    }
+    </script>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+
+    /* Landing page specific */
+    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
+    .section-nav-list { gap: var(--space-3) !important; }
+    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
+    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
+    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
+    .section-description { font-size: var(--text-base) !important; }
+    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Connected Worlds</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Internet of Things</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#fundamentals" class="experimental-nav-link">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#readings" class="experimental-nav-link">Readings</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#projects" class="experimental-nav-link">Projects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#activities" class="experimental-nav-link">Activities</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#fieldkit" class="experimental-nav-link">Field Kit</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">For Makers & Designers</div>
+                    <div class="info-box-content">Build connected systems that sense, think, and communicate—from smart home devices to industrial IoT applications.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">What's Available</div>
+                    <div class="info-box-content">
+                        Fundamentals Guide<br>
+                        Hands-On Projects<br>
+                        Field Kit<br>
+                        Status: <strong style="color: #10b981;">Active</strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="experimental-hero experimental-fade-in">
+                <div class="hero-content">
+                    <h1 class="experimental-title text-reveal">Internet of Things</h1>
+                    <h2 class="experimental-subtitle">When everyday objects wake up and start talking</h2>
+
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <span class="experimental-date">1999</span>
+                        <span class="experimental-arrow">→</span>
+                        <span class="experimental-date">Present</span>
+                    </div>
+
+                    <p class="hero-description">
+                        Explore the world where computation seeps into everyday objects. Learn to build systems where sensors sense, microcontrollers think, and actuators respond—creating connected environments that adapt, learn, and enhance human experience. From smart homes to industrial automation, discover how IoT is transforming the physical world into a responsive, intelligent network.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="iot-fundamentals.html" class="experimental-btn experimental-btn--primary">Start Learning</a>
+                        <a href="index.html" class="experimental-btn">← Back to Hub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="ai-content-sections">
+
+                <!-- Fundamentals Section -->
+                <div id="fundamentals" class="ai-content-section">
+                    <div class="section-number">00</div>
+                    <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Begin with stories and intuition—learn IoT through playful-technical narratives that make connected systems feel approachable and imaginative.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='iot-fundamentals.html'" style="cursor: pointer;">
+                            <h3 class="item-title">What is IoT?</h3>
+                            <p class="item-description" style="line-height: 1.8;">Discover how everyday objects gained the power to sense, think, and communicate—told through metaphor, analogy, and gentle storytelling.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-fundamentals.html#anatomy'" style="cursor: pointer;">
+                            <h3 class="item-title">Anatomy of IoT Systems</h3>
+                            <p class="item-description" style="line-height: 1.8;">Explore sensors, microcontrollers, connectivity, and actuators—the building blocks of every connected device.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-fundamentals.html#iiot'" style="cursor: pointer;">
+                            <h3 class="item-title">Industrial IoT (IIoT)</h3>
+                            <p class="item-description" style="line-height: 1.8;">Meet IoT's serious sibling—where connected sensors transform factories, power grids, and infrastructure at massive scale.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-fundamentals.html#pioneers'" style="cursor: pointer;">
+                            <h3 class="item-title">Pioneers & Landmark Projects</h3>
+                            <p class="item-description" style="line-height: 1.8;">Study the visionaries who built IoT and the projects that defined what's possible—from the Internet Toaster to Nest to smart cities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Readings Section -->
+                <div id="readings" class="ai-content-section">
+                    <div class="section-number">01</div>
+                    <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Curated resources on IoT architecture, communication protocols, security considerations, and real-world implementations.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='iot-readings.html'" style="cursor: pointer;">
+                            <h3 class="item-title">IoT Architecture & Design Patterns</h3>
+                            <p class="item-description" style="line-height: 1.8;">System-level thinking—how to architect robust, scalable IoT solutions from device layer to cloud platform.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-readings.html#protocols'" style="cursor: pointer;">
+                            <h3 class="item-title">Communication Protocols</h3>
+                            <p class="item-description" style="line-height: 1.8;">Deep dives into MQTT, CoAP, LoRaWAN, Zigbee—understanding when and why to use each protocol.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-readings.html#security'" style="cursor: pointer;">
+                            <h3 class="item-title">Security & Privacy</h3>
+                            <p class="item-description" style="line-height: 1.8;">Securing connected devices, protecting user privacy, and preventing IoT botnets and attack vectors.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-readings.html#industrial'" style="cursor: pointer;">
+                            <h3 class="item-title">IIoT & Industry 4.0</h3>
+                            <p class="item-description" style="line-height: 1.8;">Industrial applications, predictive maintenance, digital twins, and smart manufacturing case studies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div id="projects" class="ai-content-section">
+                    <div class="section-number">02</div>
+                    <h2 class="section-title">Hands-On Projects<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Build real IoT systems from scratch—sensor networks, smart home devices, environmental monitors, and industrial prototypes.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='iot-projects.html#temperature-monitor'" style="cursor: pointer;">
+                            <h3 class="item-title">Smart Temperature Monitor</h3>
+                            <p class="item-description" style="line-height: 1.8;">Build a WiFi-connected temperature and humidity monitor with real-time data logging to the cloud—perfect beginner project.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-projects.html#voice-control'" style="cursor: pointer;">
+                            <h3 class="item-title">Voice-Controlled LED System</h3>
+                            <p class="item-description" style="line-height: 1.8;">Create a smart home device controlled by Google Assistant or Alexa—learn MQTT protocols and cloud integrations.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-projects.html#soil-monitor'" style="cursor: pointer;">
+                            <h3 class="item-title">Agricultural Soil Monitor</h3>
+                            <p class="item-description" style="line-height: 1.8;">Deploy solar-powered soil sensors for precision farming—monitor moisture, pH, and nutrients with automated alerts.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-projects.html#air-quality'" style="cursor: pointer;">
+                            <h3 class="item-title">Air Quality Monitor</h3>
+                            <p class="item-description" style="line-height: 1.8;">Track PM2.5, CO2, and VOCs in real-time—build your own environmental monitoring station for Indian cities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activities Section -->
+                <div id="activities" class="ai-content-section">
+                    <div class="section-number">03</div>
+                    <h2 class="section-title">Design Activities<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Practice IoT design thinking through team exercises, architecture challenges, and real-world case studies.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='iot-activities.html#design-exercises'" style="cursor: pointer;">
+                            <h3 class="item-title">Design Exercises</h3>
+                            <p class="item-description" style="line-height: 1.8;">Practice designing connected products from scratch—elderly care devices, water management systems, and smart retail solutions.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-activities.html#architecture-challenges'" style="cursor: pointer;">
+                            <h3 class="item-title">Architecture Challenges</h3>
+                            <p class="item-description" style="line-height: 1.8;">Make critical technical decisions—protocol selection, edge vs. cloud tradeoffs, and scaling from prototype to production.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-activities.html#team-scenarios'" style="cursor: pointer;">
+                            <h3 class="item-title">Team Scenarios</h3>
+                            <p class="item-description" style="line-height: 1.8;">Collaborative activities—design sprints, privacy impact assessments, and security incident response simulations.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-activities.html#case-studies'" style="cursor: pointer;">
+                            <h3 class="item-title">Case Studies</h3>
+                            <p class="item-description" style="line-height: 1.8;">Learn from real-world successes and failures—Nest, Juicero, Surat Smart City, Mirai botnet, and India Smart Grid.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Kit Section -->
+                <div id="fieldkit" class="ai-content-section">
+                    <div class="section-number">04</div>
+                    <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Essential hardware, development boards, sensors, and platforms for building IoT systems—from beginner-friendly to industrial-grade.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='iot-field-kit.html#boards'" style="cursor: pointer;">
+                            <h3 class="item-title">Development Boards</h3>
+                            <p class="item-description" style="line-height: 1.8;">ESP32, Arduino, Raspberry Pi with Indian pricing (₹200-7,500)—comparison guides, specs, and use cases for every project.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-field-kit.html#sensors'" style="cursor: pointer;">
+                            <h3 class="item-title">Sensors & Actuators</h3>
+                            <p class="item-description" style="line-height: 1.8;">Complete catalog: temperature, humidity, air quality, soil moisture, motion, GPS, current sensors, and relay modules.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-field-kit.html#communication'" style="cursor: pointer;">
+                            <h3 class="item-title">Communication Modules</h3>
+                            <p class="item-description" style="line-height: 1.8;">LoRa, GSM, Zigbee, Bluetooth, NRF24, Ethernet—choose the right protocol for your range and power requirements.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='iot-field-kit.html#platforms'" style="cursor: pointer;">
+                            <h3 class="item-title">Cloud Platforms & Buying Guide</h3>
+                            <p class="item-description" style="line-height: 1.8;">ThingSpeak, Blynk, AWS IoT, Azure IoT Hub—plus trusted Indian vendors (Robu.in, ThinkRobotics) with starter kit recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu" id="verticalMenu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Close menu on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('mainMenuOverlay').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

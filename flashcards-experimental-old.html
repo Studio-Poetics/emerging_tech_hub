@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Flash Cards + Labo School of Technology</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        /* Additional styles for experimental flashcards */
+        .flashcard-environment {
+            background: var(--color-white);
+            min-height: 100vh;
+        }
+
+        .flashcard-hero {
+            padding: var(--space-16) var(--space-8);
+            margin-right: 60px;
+            border-bottom: var(--border-width) solid var(--color-black);
+        }
+
+        .flashcard-container {
+            padding: var(--space-8);
+            margin-right: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        .experimental-flashcard {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            perspective: 1000px;
+            margin-bottom: var(--space-8);
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flashcard-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: var(--color-white);
+            border: var(--border-width-4) solid var(--color-black);
+            padding: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .flashcard-front {
+            text-align: center;
+        }
+
+        .flashcard-meta {
+            position: absolute;
+            top: var(--space-4);
+            left: var(--space-4);
+            right: var(--space-4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flashcard-number {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .flashcard-category {
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: var(--space-1) var(--space-2);
+            border: var(--border-width) solid var(--color-black);
+        }
+
+        .flashcard-question {
+            font-size: var(--text-5xl);
+            font-weight: var(--font-black);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-6);
+            text-transform: uppercase;
+        }
+
+        .flashcard-hint {
+            font-size: var(--text-xl);
+            font-weight: var(--font-normal);
+            line-height: 1.2;
+            opacity: 0.7;
+        }
+
+        .flashcard-section {
+            margin-bottom: var(--space-6);
+        }
+
+        .flashcard-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-label {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-2);
+            color: var(--color-electric-blue);
+        }
+
+        .section-content {
+            font-size: var(--text-base);
+            line-height: 1.4;
+            font-weight: var(--font-medium);
+        }
+
+        .example-box {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            padding: var(--space-4);
+            margin-top: var(--space-3);
+            font-style: italic;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .progress-display {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .progress-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: var(--space-4);
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-8);
+            margin-bottom: var(--space-6);
+        }
+
+        .progress-stat {
+            text-align: center;
+        }
+
+        .progress-value {
+            font-size: var(--text-3xl);
+            font-weight: var(--font-black);
+            display: block;
+            margin-bottom: var(--space-1);
+        }
+
+        .progress-label {
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+
+        .progress-bar-container {
+            width: 300px;
+            height: 4px;
+            background: var(--color-gray-200);
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .flashcard-hero {
+                padding: var(--space-8) var(--space-4);
+                margin-right: 40px;
+            }
+
+            .flashcard-container {
+                padding: var(--space-4);
+                margin-right: 40px;
+            }
+
+            .experimental-flashcard {
+                height: 400px;
+            }
+
+            .flashcard-question {
+                font-size: var(--text-3xl);
+            }
+
+            .flashcard-hint {
+                font-size: var(--text-lg);
+            }
+
+            .flashcard-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .experimental-btn {
+                width: 200px;
+            }
+
+            .progress-stats {
+                flex-direction: column;
+                gap: var(--space-4);
+            }
+        }
+    </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">AI Design Flash Cards</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Navigation</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="index.html" class="experimental-nav-link">Home</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="flashcards-experimental.html" class="experimental-nav-link active">AI Flash Cards</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="concepts.html" class="experimental-nav-link">Concepts</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="activities.html" class="experimental-nav-link">Activities</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Study Tips</div>
+                    <div class="info-box-content">Click cards to flip them and reveal detailed information. Use keyboard arrows to navigate between cards.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Categories</div>
+                    <div class="info-box-content">
+                        Foundation • Methods<br>
+                        Activities • Advanced<br>
+                        All levels supported
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Learning Lab</div>
+                    <div class="info-box-content">
+                        Interactive Typography Projection<br>
+                        Visible: All the time<br>
+                        52 cards total
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main flashcard-environment">
+
+            <!-- Hero Section -->
+            <div class="flashcard-hero">
+                <h1 class="experimental-title">AI Flash Cards +</h1>
+                <h2 class="experimental-subtitle">Interactive Learning Lab</h2>
+                <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                    <span class="experimental-date">01</span>
+                    <span class="experimental-arrow">→</span>
+                    <span class="experimental-date">52</span>
+                </div>
+            </div>
+
+            <!-- Flashcard Container -->
+            <div class="flashcard-container">
+
+                <!-- Progress Display -->
+                <div class="progress-display">
+                    <h3 class="progress-title">Study Progress</h3>
+                    <div class="progress-stats">
+                        <div class="progress-stat">
+                            <span class="progress-value" id="currentCard">01</span>
+                            <span class="progress-label">Current</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-value" id="totalCards">52</span>
+                            <span class="progress-label">Total</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="progress-value" id="progressPercent">2%</span>
+                            <span class="progress-label">Complete</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progressBarFill" style="width: 2%;"></div>
+                    </div>
+                </div>
+
+                <!-- Flashcard -->
+                <div class="experimental-flashcard">
+                    <div class="flashcard-inner" id="flashcardInner">
+
+                        <!-- Front Face -->
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-meta">
+                                <span class="flashcard-number" id="cardNumber">01</span>
+                                <span class="flashcard-category" id="cardCategory">Foundation</span>
+                            </div>
+
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                                <h1 class="flashcard-question" id="cardTitle">Machine Learning</h1>
+                                <p class="flashcard-hint" id="cardQuestion">What is the fundamental concept behind machine learning?</p>
+                            </div>
+
+                            <div style="font-size: var(--text-sm); opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em;">
+                                Click to reveal answer
+                            </div>
+                        </div>
+
+                        <!-- Back Face -->
+                        <div class="flashcard-face flashcard-back">
+                            <div class="flashcard-meta">
+                                <span class="flashcard-number" id="cardNumberBack">01</span>
+                                <span class="flashcard-category" id="cardCategoryBack">Foundation</span>
+                            </div>
+
+                            <div class="flashcard-section">
+                                <div class="section-label">Core Concept</div>
+                                <div class="section-content" id="cardExplanation">
+                                    Machine learning is a subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed for every task.
+                                </div>
+                            </div>
+
+                            <div class="flashcard-section">
+                                <div class="section-label">Key Principle</div>
+                                <div class="section-content" id="cardPrinciple">
+                                    Instead of following pre-programmed instructions, ML systems identify patterns in data and use these patterns to make predictions or decisions on new, unseen data.
+                                </div>
+                            </div>
+
+                            <div class="flashcard-section">
+                                <div class="section-label">Example</div>
+                                <div class="section-content">
+                                    <div class="example-box" id="cardExample">
+                                        Email spam detection: The system learns from thousands of emails labeled as "spam" or "not spam" to automatically classify new incoming emails.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flashcard-controls">
+                    <button class="experimental-btn" id="prevBtn">← Previous</button>
+                    <button class="experimental-btn experimental-btn--primary" id="flipBtn">Flip Card</button>
+                    <button class="experimental-btn" id="nextBtn">Next →</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text">Flash Cards</div>
+        </div>
+
+    </div>
+
+    <script src="flashcards.js"></script>
+    <script>
+        // Use the complete 52-card dataset from flashcards.js
+        // const flashcardsData = [ (now loaded from external file)
+            {
+                id: 1,
+                category: "Foundation",
+                title: "Machine Learning",
+                question: "What is the fundamental concept behind machine learning?",
+                explanation: "Machine learning is a subset of artificial intelligence that enables computers to learn and improve from experience without being explicitly programmed for every task.",
+                principle: "Instead of following pre-programmed instructions, ML systems identify patterns in data and use these patterns to make predictions or decisions on new, unseen data.",
+                example: "Email spam detection: The system learns from thousands of emails labeled as 'spam' or 'not spam' to automatically classify new incoming emails."
+            },
+            {
+                id: 2,
+                category: "Foundation",
+                title: "Neural Networks",
+                question: "How do neural networks mimic the human brain?",
+                explanation: "Neural networks are computing systems inspired by biological neural networks. They consist of interconnected nodes (neurons) that process information using a connectionist approach.",
+                principle: "Information flows through layers of artificial neurons, each applying weighted connections and activation functions to transform input data into meaningful output.",
+                example: "Image recognition: A neural network trained on millions of cat photos learns to identify features like whiskers, ears, and eyes to recognize cats in new images."
+            },
+            {
+                id: 3,
+                category: "Method",
+                title: "Deep Learning",
+                question: "What makes deep learning different from traditional machine learning?",
+                explanation: "Deep learning uses neural networks with multiple hidden layers to automatically extract features from raw data, eliminating the need for manual feature engineering.",
+                principle: "Each layer learns increasingly complex representations: early layers detect edges, middle layers identify shapes, and deeper layers recognize complete objects.",
+                example: "Autonomous vehicles: Deep learning processes camera feeds to identify pedestrians, traffic signs, and road conditions without manually programming what to look for."
+            },
+            {
+                id: 4,
+                category: "Activity",
+                title: "Data Preparation",
+                question: "Why is data quality crucial for AI success?",
+                explanation: "AI systems are only as good as the data they learn from. Poor quality data leads to biased, inaccurate, or unreliable AI models.",
+                principle: "The principle 'garbage in, garbage out' applies strongly to AI. Clean, representative, and well-labeled data is essential for training effective models.",
+                example: "Medical diagnosis AI: Training on diverse patient data from different demographics ensures the AI works accurately across all population groups."
+            },
+            {
+                id: 5,
+                category: "Advanced",
+                title: "Generative AI",
+                question: "How do generative AI models create new content?",
+                explanation: "Generative AI models learn the statistical patterns and structures in training data to generate new, similar content that wasn't in the original dataset.",
+                principle: "These models understand the underlying distribution of data and can sample from this learned distribution to create novel but realistic outputs.",
+                example: "GPT models: Trained on vast amounts of text, they generate human-like responses by predicting the most likely next words based on context and learned patterns."
+            }
+        ];
+
+        let currentCardIndex = 0;
+        let isFlipped = false;
+
+        // Initialize the flashcard system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCard(currentCardIndex);
+            setupEventListeners();
+            updateProgress();
+        });
+
+        function setupEventListeners() {
+            // Card flipping
+            document.getElementById('flashcardInner').addEventListener('click', flipCard);
+            document.getElementById('flipBtn').addEventListener('click', flipCard);
+
+            // Navigation
+            document.getElementById('prevBtn').addEventListener('click', () => navigateCard(-1));
+            document.getElementById('nextBtn').addEventListener('click', () => navigateCard(1));
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        navigateCard(-1);
+                        break;
+                    case 'ArrowRight':
+                        navigateCard(1);
+                        break;
+                    case ' ':
+                    case 'Enter':
+                        e.preventDefault();
+                        flipCard();
+                        break;
+                }
+            });
+        }
+
+        function loadCard(index) {
+            const card = flashcardsData[index];
+            if (!card) return;
+
+            // Update front face
+            document.getElementById('cardNumber').textContent = String(card.id).padStart(2, '0');
+            document.getElementById('cardCategory').textContent = card.category;
+            document.getElementById('cardTitle').textContent = card.title;
+            document.getElementById('cardQuestion').textContent = card.question;
+
+            // Update back face
+            document.getElementById('cardNumberBack').textContent = String(card.id).padStart(2, '0');
+            document.getElementById('cardCategoryBack').textContent = card.category;
+            document.getElementById('cardExplanation').textContent = card.explanation;
+            document.getElementById('cardPrinciple').textContent = card.principle;
+            document.getElementById('cardExample').textContent = card.example;
+
+            // Reset flip state
+            isFlipped = false;
+            document.getElementById('flashcardInner').classList.remove('flipped');
+            document.getElementById('flipBtn').textContent = 'Flip Card';
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === flashcardsData.length - 1;
+        }
+
+        function flipCard() {
+            const flashcard = document.getElementById('flashcardInner');
+            flashcard.classList.toggle('flipped');
+            isFlipped = !isFlipped;
+
+            // Update flip button text
+            document.getElementById('flipBtn').textContent = isFlipped ? 'Show Question' : 'Show Answer';
+        }
+
+        function navigateCard(direction) {
+            const newIndex = currentCardIndex + direction;
+
+            if (newIndex >= 0 && newIndex < flashcardsData.length) {
+                currentCardIndex = newIndex;
+                loadCard(currentCardIndex);
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const current = currentCardIndex + 1;
+            const total = flashcardsData.length;
+            const percentage = Math.round((current / total) * 100);
+
+            document.getElementById('currentCard').textContent = String(current).padStart(2, '0');
+            document.getElementById('totalCards').textContent = String(total).padStart(2, '0');
+            document.getElementById('progressPercent').textContent = percentage + '%';
+            document.getElementById('progressBarFill').style.width = percentage + '%';
+        }
+    </script>
+</body>
+</html>

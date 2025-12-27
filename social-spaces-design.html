@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Spaces Design - Community Building in Virtual Worlds | Emerging Technology Hub</title>
+    <meta name="description" content="Master social space design for the metaverse. Learn community design, presence mechanics, moderation, and creating meaningful social interactions.">
+    <meta name="keywords" content="social space design, community design, metaverse social, presence mechanics, virtual community, social interaction design, metaverse moderation">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/social-spaces-design.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--space-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Metaverse Fundamentals</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Metaverse Topics</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="metaverse-basics.html" class="experimental-nav-link">Metaverse Basics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="spatial-design-principles.html" class="experimental-nav-link">Spatial Design</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="avatar-identity-design.html" class="experimental-nav-link">Avatar & Identity</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="virtual-architecture.html" class="experimental-nav-link">Virtual Architecture</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="metaverse-economy.html" class="experimental-nav-link">Virtual Economies</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="social-spaces-design.html" class="experimental-nav-link active">Social Spaces</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="metaverse-landing.html">← Back to Metaverse Hub</a><br>
+                        <a href="metaverse-readings.html">Next: Readings →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Social Spaces Design</h1>
+                <p class="fundamentals-subtitle">Creating communities, fostering presence, enabling connection, and designing for meaningful social interaction in virtual worlds</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>The Social Heart of the Metaverse</h2>
+                    <p>The metaverse's promise isn't graphics or technology - it's genuine human connection in digital space. Social spaces that work create belonging, enable authentic interaction, and foster communities that persist beyond individual sessions. Spaces that fail feel empty, awkward, or hostile despite perfect technical execution.</p>
+
+                    <p>Designing for social interaction is complex: it's part architecture, part community management, part psychology, and part systems design. You're creating conditions for human behavior to emerge, not dictating it. The best social spaces feel alive precisely because they enable unexpected, authentic moments.</p>
+
+                    <div class="highlight-box">
+                        <h3>Core Principle</h3>
+                        <p>You can't force community, but you can design spaces and systems that make community likely. Good social design removes friction, creates opportunities, and gets out of the way.</p>
+                    </div>
+                </section>
+
+                <!-- Presence and Connection -->
+                <section class="content-section">
+                    <h2>Designing for Presence and Connection</h2>
+                    <p>Presence - the feeling of "being there" with others - is what separates metaverse from video calls or chat. How do you design for it?</p>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h3>Spatial Audio</h3>
+                            <p>Voice that gets quieter with distance, pans left/right based on position. Creates natural conversation bubbles and intimate moments.</p>
+                            <div class="example-box">
+                                <strong>Impact:</strong> Walk away from loud group → volume drops. Move close to someone → intimate conversation. Natural like physical space.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Body Language and Gesture</h3>
+                            <p>Leaning in shows interest. Turning away shows disengagement. Avatars that express body language create richer social dynamics.</p>
+                            <div class="example-box">
+                                <strong>Design:</strong> Enable hand gestures, head tracking, full-body tracking where possible. People unconsciously use body language they can't verbalize.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Shared Focus</h3>
+                            <p>Looking at the same thing together creates connection. Group attention on artwork, performance, or shared screen bonds people.</p>
+                            <div class="example-box">
+                                <strong>Pattern:</strong> Provide objects/events worth looking at together. Campfire, art, performance - shared attention = shared experience.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Synchronous Activity</h3>
+                            <p>Doing things together creates bonds. Dancing, building, playing games - coordinated action is inherently social.</p>
+                            <div class="example-box">
+                                <strong>Examples:</strong> Group dances, collaborative building, multiplayer games, synchronized emotes, shared rituals
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Presence Design Checklist</h3>
+                        <ul>
+                            <li>✓ Spatial audio that creates natural conversation zones</li>
+                            <li>✓ Avatar expressiveness (gesture, posture, gaze)</li>
+                            <li>✓ Shared objects of attention and interest</li>
+                            <li>✓ Activities people can do together</li>
+                            <li>✓ Visual indicators of others' presence and state</li>
+                            <li>✓ Low latency for responsive interaction</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Community Lifecycle -->
+                <section class="content-section">
+                    <h2>Community Lifecycle and Growth</h2>
+                    <p>Communities evolve through predictable stages. Design for the stage you're in:</p>
+
+                    <div class="platform-grid">
+                        <div class="platform-card">
+                            <h3>Genesis (0-50 people)</h3>
+                            <div class="platform-examples">Finding First Members</div>
+                            <p>Intimate, everyone knows everyone. Founders set culture actively. High engagement per person.</p>
+                            <div class="creator-opportunity">
+                                <strong>Design For:</strong> Intimate spaces, founder presence, personal onboarding, shared purpose<br>
+                                <strong>Avoid:</strong> Empty-feeling large spaces, automated systems, impersonal experiences
+                            </div>
+                        </div>
+
+                        <div class="platform-card">
+                            <h3>Growth (50-500 people)</h3>
+                            <div class="platform-examples">Scaling Community</div>
+                            <p>Not everyone knows everyone. Subgroups form. Culture must be documented and reinforced systemically.</p>
+                            <div class="creator-opportunity">
+                                <strong>Design For:</strong> Multiple zones for subgroups, clear norms/guidelines, community leaders, discovery mechanisms<br>
+                                <strong>Challenge:</strong> Maintaining intimacy while scaling, preventing cliques from excluding newcomers
+                            </div>
+                        </div>
+
+                        <div class="platform-card">
+                            <h3>Maturity (500+ people)</h3>
+                            <div class="platform-examples">Established Community</div>
+                            <p>Complex social structure. Multiple overlapping subgroups. Systems and norms largely self-sustaining.</p>
+                            <div class="creator-opportunity">
+                                <strong>Design For:</strong> Layered moderation, subgroup autonomy, variety of spaces and activities, onboarding systems<br>
+                                <strong>Risk:</strong> Stagnation, established users vs newcomers tension, mission drift
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Onboarding and Welcoming -->
+                <section class="content-section">
+                    <h2>Onboarding and Welcoming Newcomers</h2>
+                    <p>First 5 minutes determine if someone stays or leaves. Design intentional welcome experiences:</p>
+
+                    <div class="approach-cards">
+                        <div class="approach-card">
+                            <h3>Guided Entry</h3>
+                            <p>Don't drop people into chaos. Spawn in welcoming area. Clear signage. Friendly greeters (human or bot). Obvious first steps.</p>
+                            <div class="example-box">
+                                <strong>Pattern:</strong> Entrance → orientation area (quiet, clear info) → choice of where to go next → main social space
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Greeter Systems</h3>
+                            <p>Designated welcomers who help newcomers. Can be volunteers, moderators, or automated bots with human backup.</p>
+                            <div class="example-box">
+                                <strong>Greeter Role:</strong> Say hello, explain space, answer questions, introduce to others, prevent lonely wandering
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Low-Stakes Socialization</h3>
+                            <p>Give newcomers easy ways to participate without pressure. Emote reactions, simple games, observation spots.</p>
+                            <div class="example-box">
+                                <strong>Examples:</strong> Campfire with opt-in seating, spectator areas for events, reaction systems, collaborative art walls
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Progressive Complexity</h3>
+                            <p>Don't overwhelm. Reveal features and depth gradually as users demonstrate interest and engagement.</p>
+                            <div class="example-box">
+                                <strong>Stages:</strong> Basic navigation → social features → advanced activities → creation tools → community leadership
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Moderation and Safety -->
+                <section class="content-section">
+                    <h2>Moderation, Safety, and Conflict</h2>
+                    <p>Virtual worlds amplify both the best and worst of human behavior. Proactive safety design is essential:</p>
+
+                    <div class="challenges-list">
+                        <div class="challenge-item">
+                            <h3>Personal Space and Boundaries</h3>
+                            <p><strong>Issue:</strong> Avatars can get uncomfortably close. No physical discomfort signal like in real world.</p>
+                            <p><strong>Solution:</strong> Personal space bubbles (avatars fade/blur if too close), mute/block easily accessible, safe zones, optional personal boundaries.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h3>Harassment and Toxicity</h3>
+                            <p><strong>Issue:</strong> Verbal abuse, following, griefing, sexual harassment - all happen in virtual spaces.</p>
+                            <p><strong>Solution:</strong> Easy mute/block, report systems, moderator presence, clear community guidelines, consequences for violations, survivor support.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h3>Content Moderation</h3>
+                            <p><strong>Issue:</strong> Offensive avatars, builds, or uploaded content.</p>
+                            <p><strong>Solution:</strong> Pre-moderation for uploads (manual or AI), user reporting, moderator tools to hide/remove, clear content policy.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h3>Conflict Resolution</h3>
+                            <p><strong>Issue:</strong> Disagreements, misunderstandings, community drama.</p>
+                            <p><strong>Approach:</strong> Clear escalation path, trained moderators, restorative justice when appropriate, private resolution spaces, transparency in big decisions.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h3>Privacy and Recording</h3>
+                            <p><strong>Issue:</strong> People screenshotting, recording, or sharing conversations without consent.</p>
+                            <p><strong>Balance:</strong> Make recording policies clear. Indicate when recording. Consider private/public zones. Can't fully prevent, but can set norms.</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>Safety by Design Principles</h3>
+                        <ul>
+                            <li>Make safety tools visible and easy to use (don't hide in menus)</li>
+                            <li>Default to safety - opt-in to greater exposure</li>
+                            <li>Provide immediate relief (mute/block instant) plus long-term accountability (moderation)</li>
+                            <li>Multiple escalation levels: self-service → automated → human moderator</li>
+                            <li>Transparency about what happens after reports</li>
+                            <li>Support reporters/survivors, not just punish violators</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Designing for Different Social Modes -->
+                <section class="content-section">
+                    <h2>Supporting Different Social Modes</h2>
+                    <p>People want different things from social spaces at different times. Enable multiple modes:</p>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h3>Active Socializing</h3>
+                            <p>Central spaces, high energy, conversation-focused. Dancing, events, parties, networking.</p>
+                            <div class="example-box">
+                                <strong>Design:</strong> Open floor plans, good acoustics for groups, activity focal points, energy and movement
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Parallel Play</h3>
+                            <p>Being together while doing separate things. Reading near others, building alongside friends, coworking.</p>
+                            <div class="example-box">
+                                <strong>Design:</strong> Individual work spaces in social contexts, library reading rooms, studios with multiple stations
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Deep Conversation</h3>
+                            <p>Intimate discussion between 2-4 people. Needs quiet, comfortable seating, low distraction.</p>
+                            <div class="example-box">
+                                <strong>Design:</strong> Corner nooks, separate conversation rooms, outdoor benches, enclosed booths
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Observation and Lurking</h3>
+                            <p>Watching without participating. Legitimate social mode, not necessarily negative.</p>
+                            <div class="example-box">
+                                <strong>Design:</strong> Balconies, edges, spectator zones. Don't force participation. Let people ease in.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Events and Gatherings -->
+                <section class="content-section">
+                    <h2>Designing Events and Gatherings</h2>
+                    <p>Planned events drive engagement and create memorable moments. Design spaces that support various event types:</p>
+
+                    <div class="approach-cards">
+                        <div class="approach-card">
+                            <h3>Recurring Rituals</h3>
+                            <p>Weekly meetups, monthly showcases, daily hangouts. Predictability builds habit and community rhythm.</p>
+                            <div class="example-box">
+                                <strong>Examples:</strong> Friday night DJ sets, Sunday community meetings, daily meditation sessions, weekly talent shows
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Spectacle Events</h3>
+                            <p>Concerts, product launches, conferences. Large scale, high production, limited duration.</p>
+                            <div class="example-box">
+                                <strong>Design Needs:</strong> Capacity for crowds, clear sight lines, stage/presentation area, good acoustics, entry/exit flow
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Participatory Events</h3>
+                            <p>Workshops, game nights, building jams, art collaborations. Active involvement vs passive viewing.</p>
+                            <div class="example-box">
+                                <strong>Design Needs:</strong> Tools for participation, space for creation, ability to see others' work, sharing mechanisms
+                            </div>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Emergent Gatherings</h3>
+                            <p>Unplanned moments when people spontaneously gather. Enable rather than prevent.</p>
+                            <div class="example-box">
+                                <strong>Support:</strong> Flexible spaces, moveable furniture, easy invitations, "join" systems, no permission needed to gather
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Community Governance -->
+                <section class="content-section">
+                    <h2>Community Governance and Decision-Making</h2>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h3>Founder-Led</h3>
+                            <p>Creator/owner makes decisions. Clear, fast, but doesn't scale well. Works for small communities with strong vision.</p>
+                            <div class="example-box">
+                                <strong>Transition Point:</strong> Around 100-200 people, founder can't know everyone. Need systems or burnout inevitable.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Moderator Teams</h3>
+                            <p>Distributed decision-making among trusted members. Scales better. Requires training, communication, alignment.</p>
+                            <div class="example-box">
+                                <strong>Structure:</strong> Clear roles, escalation paths, regular meetings, shared tools, documentation of decisions
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Democratic/DAO</h3>
+                            <p>Community votes on decisions. Inclusive but slow, can be gamed, requires high engagement.</p>
+                            <div class="example-box">
+                                <strong>Works Best For:</strong> Major decisions (rules changes), not daily operations. Combine with delegated authority.
+                            </div>
+                        </div>
+
+                        <div class="property-card">
+                            <h3>Hybrid Models</h3>
+                            <p>Different systems for different decisions. Daily moderation = team. Major changes = vote. Vision = founder.</p>
+                            <div class="example-box">
+                                <strong>Clarity:</strong> Document who decides what. Unclear governance creates endless conflict.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Practical Design Workflow -->
+                <section class="content-section">
+                    <h2>Building a Thriving Social Space</h2>
+
+                    <div class="getting-started">
+                        <div class="step-card">
+                            <div class="step-number">01</div>
+                            <h3>Define Your Community</h3>
+                            <p>Who is this for? What brings them together? What behaviors do you want to enable? Be specific.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">02</div>
+                            <h3>Start Small and Intimate</h3>
+                            <p>Don't build for 1000 people when you have 10. Grow spaces as community grows. Intimacy builds culture.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">03</div>
+                            <h3>Create Clear Norms Early</h3>
+                            <p>What's acceptable? What's not? Document it. Model it. Enforce it consistently. Culture is what you tolerate.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">04</div>
+                            <h3>Design for Safety First</h3>
+                            <p>Easy mute/block, clear reporting, moderation plan, safe zones. Prevention is easier than fixing harm.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">05</div>
+                            <h3>Give People Reasons to Return</h3>
+                            <p>Recurring events, friend groups, ongoing projects, roles and recognition. One-time visits don't build community.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">06</div>
+                            <h3>Listen and Iterate</h3>
+                            <p>Community members know what they need. Ask them. Watch behavior. Adjust based on how space is actually used.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Summary -->
+                <section class="content-section">
+                    <h2>Key Takeaways</h2>
+                    <div class="key-takeaways">
+                        <ul>
+                            <li><strong>Presence is designed, not automatic</strong> - spatial audio, gesture, shared focus create "being there together"</li>
+                            <li><strong>Communities evolve through stages</strong> - design for your current size, not your aspirations</li>
+                            <li><strong>Onboarding makes or breaks community</strong> - first 5 minutes determine if people stay</li>
+                            <li><strong>Safety must be proactive</strong> - design boundaries, moderation, and conflict resolution from the start</li>
+                            <li><strong>Support multiple social modes</strong> - active, parallel, intimate, observational - all are valid</li>
+                            <li><strong>Events create rhythm and memory</strong> - recurring rituals build habit, spectacles create moments</li>
+                            <li><strong>Governance scales governance</strong> - founder-led doesn't work past 100-200 people</li>
+                            <li><strong>Culture is what you reinforce</strong> - through space design, moderation, and celebration of desired behaviors</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Continue Learning Section -->
+                <div class="continue-learning-section">
+                    <h3>Continue Your Journey</h3>
+
+                    <div class="learning-path-grid">
+                        <div class="learning-card next-topic">
+                            <div class="card-badge">Next</div>
+                            <h4>Metaverse Readings</h4>
+                            <p>Explore curated research papers, articles, and resources on spatial design and virtual worlds.</p>
+                            <a href="metaverse-readings.html" class="learning-link">Continue →</a>
+                        </div>
+
+                        <div class="learning-card related-topic">
+                            <div class="card-badge">Review</div>
+                            <h4>All Fundamentals</h4>
+                            <p>Review all six metaverse fundamental topics from basics to social design.</p>
+                            <a href="metaverse-landing.html#fundamentals" class="learning-link">Review ↗</a>
+                        </div>
+
+                        <div class="learning-card practice-topic">
+                            <div class="card-badge">Practice</div>
+                            <h4>Case Studies</h4>
+                            <p>Analyze successful virtual communities and social space designs.</p>
+                            <a href="metaverse-activities.html#case-studies" class="learning-link">Analyze ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="learning-path-nav">
+                        <a href="metaverse-economy.html" class="path-link">← Previous: Virtual Economies</a>
+                        <a href="metaverse-readings.html" class="path-link primary">Next: Readings →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <div class="footer-branding">
+                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="disclaimer.html">Disclaimer</a>
+                        <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Economics Laboratory - Blockchain Activities</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Token Design Workshop</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Lab Modules</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#introduction" class="experimental-nav-link">Introduction</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#token-basics" class="experimental-nav-link">Token Basics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#supply-demand" class="experimental-nav-link">Supply & Demand</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#incentive-design" class="experimental-nav-link">Incentive Design</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#network-effects" class="experimental-nav-link">Network Effects</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#final-project" class="experimental-nav-link">Design Challenge</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Your Token</div>
+                    <div class="info-box-content" id="user-token-info">
+                        <div>Name: <span id="token-name">Not Created</span></div>
+                        <div>Supply: <span id="token-supply">0</span></div>
+                        <div>Price: <span id="token-price">$0.00</span></div>
+                        <div>Market Cap: <span id="market-cap">$0</span></div>
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="blockchain-activities.html">← Back to Activities</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Crypto Economics Laboratory</h1>
+                <p class="fundamentals-subtitle">Design sustainable token economies through interactive experimentation</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction Section -->
+                <section class="content-section" id="introduction">
+                    <h2><span class="emoji">🔬</span> Welcome to the Economics Lab</h2>
+
+                    <div class="lab-introduction">
+                        <p><strong>The Challenge:</strong> Most cryptocurrency projects fail not because of technical issues, but because of poor economic design. How do you create a token that generates real value rather than just speculative hype?</p>
+
+                        <p>In this laboratory, you'll experiment with the fundamental forces that make blockchain networks valuable: <strong>utility</strong>, <strong>scarcity</strong>, <strong>incentives</strong>, and <strong>network effects</strong>.</p>
+                    </div>
+
+                    <div class="economic-principles">
+                        <h3>Core Economic Principles</h3>
+                        <div class="principles-grid">
+                            <div class="principle-card">
+                                <h4><span class="emoji">⚖️</span> Supply & Demand</h4>
+                                <p>Token value emerges from the balance between how many tokens exist and how many people want them</p>
+                            </div>
+                            <div class="principle-card">
+                                <h4><span class="emoji">🎯</span> Utility vs Speculation</h4>
+                                <p>Tokens that provide real utility create sustainable value, while pure speculation creates bubbles</p>
+                            </div>
+                            <div class="principle-card">
+                                <h4><span class="emoji">🔄</span> Network Effects</h4>
+                                <p>The more people use a network, the more valuable it becomes for everyone else</p>
+                            </div>
+                            <div class="principle-card">
+                                <h4><span class="emoji">🎮</span> Incentive Alignment</h4>
+                                <p>Participants should benefit from behaviors that make the network more valuable</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="learning-objectives">
+                        <h3>What You'll Master</h3>
+                        <ul>
+                            <li>How to design token economies that create real value</li>
+                            <li>Why most cryptocurrency projects fail economically</li>
+                            <li>The relationship between token utility and price stability</li>
+                            <li>How to align individual incentives with network health</li>
+                        </ul>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" onclick="startLab()">
+                            Begin Economics Experiments
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Token Basics Section -->
+                <section class="content-section locked-section" id="token-basics">
+                    <h2><span class="emoji">🪙</span> Token Design Fundamentals</h2>
+
+                    <div class="token-creator">
+                        <h3>Create Your Token</h3>
+                        <p>Every great blockchain network starts with a well-designed token. Let's create yours!</p>
+
+                        <div class="creation-form">
+                            <div class="form-group">
+                                <label for="tokenName">Token Name:</label>
+                                <input type="text" id="tokenName" placeholder="e.g., AwesomeCoin" maxlength="20">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tokenPurpose">Primary Purpose:</label>
+                                <select id="tokenPurpose">
+                                    <option value="">Choose primary function...</option>
+                                    <option value="currency">Digital Currency (Medium of Exchange)</option>
+                                    <option value="utility">Utility Token (Access to Services)</option>
+                                    <option value="governance">Governance Token (Voting Rights)</option>
+                                    <option value="security">Security Token (Share of Ownership)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tokenSupply">Initial Supply:</label>
+                                <select id="tokenSupply">
+                                    <option value="1000000">1 Million (Small network)</option>
+                                    <option value="100000000">100 Million (Medium network)</option>
+                                    <option value="10000000000">10 Billion (Large network)</option>
+                                    <option value="unlimited">Unlimited (Inflationary)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="distributionModel">Distribution Model:</label>
+                                <select id="distributionModel">
+                                    <option value="">Choose distribution...</option>
+                                    <option value="fair-launch">Fair Launch (Public mining/staking)</option>
+                                    <option value="ico">Initial Coin Offering (ICO)</option>
+                                    <option value="airdrop">Airdrop (Free distribution)</option>
+                                    <option value="gradual">Gradual Release (Vesting schedule)</option>
+                                </select>
+                            </div>
+
+                            <button class="experimental-btn experimental-btn--primary" onclick="createToken()">
+                                Create Token
+                            </button>
+                        </div>
+
+                        <div class="token-analysis" id="token-analysis" style="display: none;">
+                            <h4>Economic Analysis</h4>
+                            <div id="analysis-content">
+                                <!-- Analysis will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" id="continue-supply-demand" onclick="unlockSection('supply-demand')" disabled>
+                            Explore Supply & Demand Dynamics
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Supply & Demand Section -->
+                <section class="content-section locked-section" id="supply-demand">
+                    <h2><span class="emoji">📈</span> Supply & Demand Laboratory</h2>
+
+                    <div class="market-simulator">
+                        <h3>Market Dynamics Simulator</h3>
+                        <p>Observe how changes in supply and demand affect your token's price and market behavior.</p>
+
+                        <div class="simulation-interface">
+                            <div class="market-controls">
+                                <h4>Market Variables</h4>
+
+                                <div class="control-group">
+                                    <label for="demandLevel">Market Demand:</label>
+                                    <input type="range" id="demandLevel" min="10" max="100" value="50">
+                                    <span id="demandValue">Medium (50)</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="supplyInflation">Supply Growth Rate:</label>
+                                    <input type="range" id="supplyInflation" min="0" max="20" value="5">
+                                    <span id="inflationValue">5% per year</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="utilityScore">Token Utility:</label>
+                                    <input type="range" id="utilityScore" min="10" max="100" value="30">
+                                    <span id="utilityValue">Low (30)</span>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="marketSentiment">Market Sentiment:</label>
+                                    <select id="marketSentiment">
+                                        <option value="bear">Bear Market (-20%)</option>
+                                        <option value="neutral" selected>Neutral (0%)</option>
+                                        <option value="bull">Bull Market (+50%)</option>
+                                        <option value="bubble">Bubble (+200%)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="market-visualization">
+                                <h4>Price Chart</h4>
+                                <canvas id="priceChart" width="400" height="200"></canvas>
+
+                                <div class="market-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Current Price:</span>
+                                        <span class="metric-value" id="current-price">$1.00</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Market Cap:</span>
+                                        <span class="metric-value" id="current-mcap">$1M</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">24h Volume:</span>
+                                        <span class="metric-value" id="volume">$100K</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Volatility:</span>
+                                        <span class="metric-value" id="volatility">Medium</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="simulation-controls">
+                            <button class="experimental-btn" onclick="runSimulation()">Run 1 Year Simulation</button>
+                            <button class="experimental-btn" onclick="addMarketShock()">Market Shock Event</button>
+                            <button class="experimental-btn" onclick="resetSimulation()">Reset Market</button>
+                        </div>
+
+                        <div class="market-insights" id="market-insights" style="display: none;">
+                            <h4>Market Analysis</h4>
+                            <div id="insights-content">
+                                <!-- Insights will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-learnings">
+                        <h3><span class="emoji">💡</span> Key Economic Insights</h3>
+                        <div class="learning-cards">
+                            <div class="learning-card">
+                                <h4>Inflation Impact</h4>
+                                <p>Increasing token supply faster than demand leads to price depreciation. This is why Bitcoin has a fixed supply cap.</p>
+                            </div>
+                            <div class="learning-card">
+                                <h4>Utility Premium</h4>
+                                <p>Tokens with real utility maintain value better during market downturns than purely speculative tokens.</p>
+                            </div>
+                            <div class="learning-card">
+                                <h4>Market Cycles</h4>
+                                <p>All cryptocurrency markets are cyclical. Sustainable projects focus on building utility during bear markets.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" id="continue-incentives" onclick="unlockSection('incentive-design')" disabled>
+                            Design Incentive Mechanisms
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Incentive Design Section -->
+                <section class="content-section locked-section" id="incentive-design">
+                    <h2><span class="emoji">🎯</span> Incentive Mechanism Design</h2>
+
+                    <div class="incentive-workshop">
+                        <h3>The Incentive Challenge</h3>
+                        <p>Design reward systems that encourage behaviors that make your network more valuable and secure.</p>
+
+                        <div class="network-simulation">
+                            <div class="participant-types">
+                                <h4>Network Participants</h4>
+                                <div class="participants-grid">
+                                    <div class="participant-card" id="users">
+                                        <h5><span class="emoji">👥</span> Users</h5>
+                                        <div class="participant-stats">
+                                            <div>Count: <span id="user-count">1000</span></div>
+                                            <div>Activity: <span id="user-activity">Low</span></div>
+                                            <div>Tokens Held: <span id="user-tokens">10%</span></div>
+                                        </div>
+                                        <div class="participant-motivation">
+                                            <strong>Wants:</strong> Useful services, low fees
+                                        </div>
+                                    </div>
+
+                                    <div class="participant-card" id="validators">
+                                        <h5><span class="emoji">🔒</span> Validators</h5>
+                                        <div class="participant-stats">
+                                            <div>Count: <span id="validator-count">100</span></div>
+                                            <div>Uptime: <span id="validator-uptime">95%</span></div>
+                                            <div>Tokens Staked: <span id="staked-tokens">30%</span></div>
+                                        </div>
+                                        <div class="participant-motivation">
+                                            <strong>Wants:</strong> Steady rewards, low risk
+                                        </div>
+                                    </div>
+
+                                    <div class="participant-card" id="developers">
+                                        <h5><span class="emoji">💻</span> Developers</h5>
+                                        <div class="participant-stats">
+                                            <div>Count: <span id="developer-count">50</span></div>
+                                            <div>Activity: <span id="dev-activity">Medium</span></div>
+                                            <div>Tokens Earned: <span id="dev-tokens">5%</span></div>
+                                        </div>
+                                        <div class="participant-motivation">
+                                            <strong>Wants:</strong> Recognition, funding for projects
+                                        </div>
+                                    </div>
+
+                                    <div class="participant-card" id="investors">
+                                        <h5><span class="emoji">💰</span> Investors</h5>
+                                        <div class="participant-stats">
+                                            <div>Count: <span id="investor-count">500</span></div>
+                                            <div>Holdings: <span id="investor-holdings">55%</span></div>
+                                            <div>Liquidity: <span id="liquidity-provided">Medium</span></div>
+                                        </div>
+                                        <div class="participant-motivation">
+                                            <strong>Wants:</strong> Price appreciation, yield
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="incentive-designer">
+                                <h4>Design Your Incentive System</h4>
+
+                                <div class="incentive-options">
+                                    <div class="incentive-category">
+                                        <h5>User Incentives</h5>
+                                        <div class="incentive-controls">
+                                            <label>
+                                                <input type="checkbox" id="usage-rewards">
+                                                Usage Rewards (Pay users for activity)
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="referral-bonus">
+                                                Referral Bonuses (Reward user growth)
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="loyalty-program">
+                                                Loyalty Program (Long-term user benefits)
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="incentive-category">
+                                        <h5>Validator Incentives</h5>
+                                        <div class="incentive-controls">
+                                            <label>
+                                                <input type="checkbox" id="block-rewards">
+                                                Block Rewards (Fixed payment per block)
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="uptime-bonus">
+                                                Uptime Bonuses (Extra for high availability)
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="slashing-penalty">
+                                                Slashing Penalties (Punish bad behavior)
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="incentive-category">
+                                        <h5>Developer Incentives</h5>
+                                        <div class="incentive-controls">
+                                            <label>
+                                                <input type="checkbox" id="dev-grants">
+                                                Development Grants (Fund new features)
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="bug-bounties">
+                                                Bug Bounties (Reward security research)
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" id="revenue-share">
+                                                Revenue Sharing (Share platform fees)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="experimental-btn experimental-btn--primary" onclick="simulateIncentives()">
+                                    Test Incentive System
+                                </button>
+                            </div>
+
+                            <div class="simulation-results" id="incentive-results" style="display: none;">
+                                <h4>Network Health Analysis</h4>
+                                <div id="network-health">
+                                    <!-- Results will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="design-principles">
+                        <h3><span class="emoji">⚖️</span> Incentive Design Principles</h3>
+                        <div class="principles-list">
+                            <div class="principle-item">
+                                <h4>Alignment</h4>
+                                <p>Individual rewards should align with network health. What's good for participants should be good for the network.</p>
+                            </div>
+                            <div class="principle-item">
+                                <h4>Sustainability</h4>
+                                <p>Incentive systems must work in both bull and bear markets. Unsustainable rewards lead to collapse.</p>
+                            </div>
+                            <div class="principle-item">
+                                <h4>Progressive Decentralization</h4>
+                                <p>Early centralized control should gradually shift to community governance as the network matures.</p>
+                            </div>
+                            <div class="principle-item">
+                                <h4>Anti-Gaming</h4>
+                                <p>Participants will try to game the system. Design incentives that make gaming unprofitable or impossible.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" id="continue-network-effects" onclick="unlockSection('network-effects')" disabled>
+                            Explore Network Effects
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Network Effects Section -->
+                <section class="content-section locked-section" id="network-effects">
+                    <h2><span class="emoji">🌐</span> Network Effects & Adoption</h2>
+
+                    <div class="network-growth-lab">
+                        <h3>Network Growth Dynamics</h3>
+                        <p>Understand how network effects create exponential value growth and competitive advantages.</p>
+
+                        <div class="growth-simulator">
+                            <div class="network-state">
+                                <h4>Current Network State</h4>
+                                <div class="network-metrics">
+                                    <div class="metric-display">
+                                        <span class="metric-number" id="total-users">0</span>
+                                        <span class="metric-label">Total Users</span>
+                                    </div>
+                                    <div class="metric-display">
+                                        <span class="metric-number" id="daily-transactions">0</span>
+                                        <span class="metric-label">Daily Transactions</span>
+                                    </div>
+                                    <div class="metric-display">
+                                        <span class="metric-number" id="network-value">$0</span>
+                                        <span class="metric-label">Network Value</span>
+                                    </div>
+                                    <div class="metric-display">
+                                        <span class="metric-number" id="adoption-rate">0%</span>
+                                        <span class="metric-label">Adoption Rate</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="growth-strategies">
+                                <h4>Growth Strategy Selection</h4>
+                                <div class="strategy-options">
+                                    <button class="strategy-btn" onclick="executeStrategy('viral-marketing')">
+                                        <h5><span class="emoji">📢</span> Viral Marketing</h5>
+                                        <p>Aggressive user acquisition campaign</p>
+                                        <span class="cost">Cost: High</span>
+                                    </button>
+
+                                    <button class="strategy-btn" onclick="executeStrategy('partnership')">
+                                        <h5><span class="emoji">🤝</span> Strategic Partnership</h5>
+                                        <p>Partner with established platform</p>
+                                        <span class="cost">Cost: Medium</span>
+                                    </button>
+
+                                    <button class="strategy-btn" onclick="executeStrategy('feature-improvement')">
+                                        <h5><span class="emoji">⚡</span> Feature Improvement</h5>
+                                        <p>Enhance user experience and utility</p>
+                                        <span class="cost">Cost: Low</span>
+                                    </button>
+
+                                    <button class="strategy-btn" onclick="executeStrategy('liquidity-mining')">
+                                        <h5><span class="emoji">💎</span> Liquidity Mining</h5>
+                                        <p>Reward early adopters with tokens</p>
+                                        <span class="cost">Cost: Very High</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="network-visualization">
+                                <h4>Network Growth Visualization</h4>
+                                <canvas id="networkChart" width="400" height="200"></canvas>
+                            </div>
+
+                            <div class="growth-analysis" id="growth-analysis" style="display: none;">
+                                <h4>Growth Analysis</h4>
+                                <div id="growth-insights">
+                                    <!-- Growth insights will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="network-effects-theory">
+                        <h3><span class="emoji">📚</span> Types of Network Effects</h3>
+                        <div class="effects-grid">
+                            <div class="effect-card">
+                                <h4><span class="emoji">👥</span> Direct Network Effects</h4>
+                                <p><strong>Example:</strong> Social networks, communication platforms</p>
+                                <p>Value increases directly with each new user who can interact with existing users</p>
+                            </div>
+
+                            <div class="effect-card">
+                                <h4><span class="emoji">📊</span> Data Network Effects</h4>
+                                <p><strong>Example:</strong> Search engines, recommendation systems</p>
+                                <p>More users generate more data, improving the product for everyone</p>
+                            </div>
+
+                            <div class="effect-card">
+                                <h4><span class="emoji">🛠️</span> Two-Sided Network Effects</h4>
+                                <p><strong>Example:</strong> App stores, marketplaces</p>
+                                <p>More users attract more developers, which attracts more users</p>
+                            </div>
+
+                            <div class="effect-card">
+                                <h4><span class="emoji">🔗</span> Protocol Network Effects</h4>
+                                <p><strong>Example:</strong> Internet, blockchain networks</p>
+                                <p>More adoption makes the protocol more valuable and harder to replace</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metcalfes-law">
+                        <h3><span class="emoji">📐</span> Metcalfe's Law in Action</h3>
+                        <div class="law-explanation">
+                            <p><strong>Metcalfe's Law:</strong> The value of a network is proportional to the square of the number of connected users.</p>
+
+                            <div class="law-demo">
+                                <div class="network-size-selector">
+                                    <label for="networkSize">Network Size:</label>
+                                    <input type="range" id="networkSize" min="2" max="100" value="10" oninput="updateMetcalfesDemo()">
+                                    <span id="networkSizeValue">10 users</span>
+                                </div>
+
+                                <div class="metcalfes-result">
+                                    <div class="result-item">
+                                        <span class="result-label">Possible Connections:</span>
+                                        <span class="result-value" id="connections">45</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-label">Network Value:</span>
+                                        <span class="result-value" id="metcalfe-value">$450</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="next-step-action">
+                        <button class="experimental-btn experimental-btn--primary" id="continue-final-project" onclick="unlockSection('final-project')" disabled>
+                            Final Design Challenge
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Final Project Section -->
+                <section class="content-section locked-section" id="final-project">
+                    <h2><span class="emoji">🏆</span> Design Challenge: Build a Sustainable Token Economy</h2>
+
+                    <div class="final-challenge">
+                        <h3>The Ultimate Test</h3>
+                        <p>Use everything you've learned to design a token economy for a real-world use case. Your design will be stress-tested against market conditions and user behaviors.</p>
+
+                        <div class="use-case-selection">
+                            <h4>Choose Your Challenge</h4>
+                            <div class="use-cases-grid">
+                                <div class="use-case-card" onclick="selectUseCase('social-media')">
+                                    <h5><span class="emoji">📱</span> Decentralized Social Media</h5>
+                                    <p>Create a token economy for a platform where users own their data and earn from their content</p>
+                                    <div class="difficulty">Difficulty: Hard</div>
+                                </div>
+
+                                <div class="use-case-card" onclick="selectUseCase('carbon-credits')">
+                                    <h5><span class="emoji">🌱</span> Carbon Credit Marketplace</h5>
+                                    <p>Design incentives for verified carbon reduction and trading of environmental credits</p>
+                                    <div class="difficulty">Difficulty: Expert</div>
+                                </div>
+
+                                <div class="use-case-card" onclick="selectUseCase('learning-platform')">
+                                    <h5><span class="emoji">🎓</span> Learn-to-Earn Education</h5>
+                                    <p>Build a system where students earn tokens for learning and teachers earn for quality education</p>
+                                    <div class="difficulty">Difficulty: Medium</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="design-workspace" id="design-workspace" style="display: none;">
+                            <h4 id="challenge-title">Design Challenge</h4>
+                            <div id="challenge-description">
+                                <!-- Challenge details will be populated here -->
+                            </div>
+
+                            <div class="design-form">
+                                <div class="design-section">
+                                    <h5>Token Economics</h5>
+                                    <div class="form-group">
+                                        <label>Token Distribution Model:</label>
+                                        <select id="final-distribution">
+                                            <option value="">Choose model...</option>
+                                            <option value="mining">Mining/Staking Rewards</option>
+                                            <option value="activity">Activity-Based Rewards</option>
+                                            <option value="contribution">Contribution-Based</option>
+                                            <option value="hybrid">Hybrid Approach</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Supply Mechanism:</label>
+                                        <select id="final-supply">
+                                            <option value="">Choose supply...</option>
+                                            <option value="fixed">Fixed Supply (Deflationary)</option>
+                                            <option value="inflation">Controlled Inflation</option>
+                                            <option value="elastic">Elastic Supply</option>
+                                            <option value="burning">Burn Mechanism</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="design-section">
+                                    <h5>Incentive Mechanisms</h5>
+                                    <div class="incentive-checkboxes" id="final-incentives">
+                                        <!-- Incentive options will be populated based on use case -->
+                                    </div>
+                                </div>
+
+                                <div class="design-section">
+                                    <h5>Governance Model</h5>
+                                    <div class="form-group">
+                                        <label>Decision Making:</label>
+                                        <select id="governance-model">
+                                            <option value="">Choose governance...</option>
+                                            <option value="token-voting">Token-Weighted Voting</option>
+                                            <option value="quadratic">Quadratic Voting</option>
+                                            <option value="delegation">Liquid Democracy</option>
+                                            <option value="council">Elected Council</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button class="experimental-btn experimental-btn--primary" onclick="submitDesign()">
+                                    Submit Token Design
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="design-evaluation" id="design-evaluation" style="display: none;">
+                            <h4>Design Evaluation</h4>
+                            <div id="evaluation-results">
+                                <!-- Evaluation results will be shown here -->
+                            </div>
+
+                            <div class="stress-test-results" id="stress-test-results">
+                                <!-- Stress test results will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="graduation">
+                        <h3><span class="emoji">🎓</span> Congratulations!</h3>
+                        <p>You've completed the Crypto Economics Laboratory and gained deep insights into token design. You now understand:</p>
+
+                        <div class="achievements">
+                            <div class="achievement">
+                                <h4><span class="emoji">⚖️</span> Economic Fundamentals</h4>
+                                <p>How supply, demand, and utility interact in token markets</p>
+                            </div>
+                            <div class="achievement">
+                                <h4><span class="emoji">🎯</span> Incentive Design</h4>
+                                <p>How to align individual behavior with network health</p>
+                            </div>
+                            <div class="achievement">
+                                <h4><span class="emoji">🌐</span> Network Effects</h4>
+                                <p>How to build and leverage network effects for growth</p>
+                            </div>
+                            <div class="achievement">
+                                <h4><span class="emoji">🏗️</span> System Design</span></h4>
+                                <p>How to design sustainable, long-term token economies</p>
+                            </div>
+                        </div>
+
+                        <div class="next-learning">
+                            <h4>Continue Your Journey</h4>
+                            <div class="learning-recommendations">
+                                <button class="experimental-btn" onclick="goToActivity('governance')">
+                                    <span class="emoji">🏛️</span> Decentralized Governance Workshop
+                                </button>
+                                <button class="experimental-btn" onclick="goToActivity('consensus')">
+                                    <span class="emoji">🤝</span> Consensus Mechanism Simulator
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="blockchain-activities.html" class="main-menu-link">Blockchain Activities</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Lab state
+        let labState = {
+            userToken: null,
+            currentSection: 'introduction',
+            marketData: {
+                price: 1.00,
+                marketCap: 1000000,
+                volume: 100000
+            },
+            networkMetrics: {
+                users: 0,
+                transactions: 0,
+                value: 0,
+                adoptionRate: 0
+            }
+        };
+
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Lab initialization
+        function startLab() {
+            unlockSection('token-basics');
+        }
+
+        // Section unlocking
+        function unlockSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const navLink = document.querySelector(`a[href="#${sectionId}"]`);
+
+            section.classList.remove('locked-section');
+            if (navLink) {
+                navLink.style.color = 'var(--color-electric-blue)';
+            }
+
+            // Scroll to section
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Token creation
+        function createToken() {
+            const name = document.getElementById('tokenName').value;
+            const purpose = document.getElementById('tokenPurpose').value;
+            const supply = document.getElementById('tokenSupply').value;
+            const distribution = document.getElementById('distributionModel').value;
+
+            if (!name || !purpose || !supply || !distribution) {
+                alert('Please fill in all fields to create your token.');
+                return;
+            }
+
+            labState.userToken = {
+                name,
+                purpose,
+                supply: supply === 'unlimited' ? 'Unlimited' : parseInt(supply),
+                distribution,
+                price: 1.00
+            };
+
+            updateTokenDisplay();
+            showTokenAnalysis();
+            document.getElementById('continue-supply-demand').disabled = false;
+        }
+
+        function updateTokenDisplay() {
+            const token = labState.userToken;
+            document.getElementById('token-name').textContent = token.name;
+            document.getElementById('token-supply').textContent = token.supply === 'Unlimited' ? '∞' : token.supply.toLocaleString();
+            document.getElementById('token-price').textContent = `$${token.price.toFixed(2)}`;
+            document.getElementById('market-cap').textContent = token.supply === 'Unlimited' ? '∞' : `$${((token.supply * token.price) / 1000000).toFixed(1)}M`;
+        }
+
+        function showTokenAnalysis() {
+            const analysis = document.getElementById('token-analysis');
+            const content = document.getElementById('analysis-content');
+            const token = labState.userToken;
+
+            const analysisText = {
+                currency: 'As a digital currency, your token needs high liquidity and stable value. Consider mechanisms to reduce volatility.',
+                utility: 'Utility tokens derive value from platform usage. Focus on creating real utility and burning mechanisms.',
+                governance: 'Governance tokens need broad distribution to ensure decentralization. Avoid whale concentration.',
+                security: 'Security tokens represent ownership stakes. Ensure regulatory compliance and clear value proposition.'
+            };
+
+            const distributionAnalysis = {
+                'fair-launch': 'Fair launch ensures community ownership but may lack initial funding.',
+                'ico': 'ICO provides funding but may concentrate ownership among early investors.',
+                'airdrop': 'Airdrops create wide distribution but may attract farmers who dump tokens.',
+                'gradual': 'Gradual release prevents dumping but requires careful vesting schedules.'
+            };
+
+            content.innerHTML = `
+                <div class="analysis-results">
+                    <div class="analysis-item">
+                        <h5>Purpose Analysis</h5>
+                        <p>${analysisText[token.purpose]}</p>
+                    </div>
+                    <div class="analysis-item">
+                        <h5>Distribution Analysis</h5>
+                        <p>${distributionAnalysis[token.distribution]}</p>
+                    </div>
+                    <div class="analysis-item">
+                        <h5>Supply Strategy</h5>
+                        <p>${token.supply === 'Unlimited' ? 'Unlimited supply allows flexibility but requires careful inflation control to maintain value.' : `Fixed supply of ${token.supply.toLocaleString()} creates scarcity but may limit network growth.`}</p>
+                    </div>
+                </div>
+            `;
+
+            analysis.style.display = 'block';
+        }
+
+        // Market simulation
+        function runSimulation() {
+            const demand = parseInt(document.getElementById('demandLevel').value);
+            const inflation = parseInt(document.getElementById('supplyInflation').value);
+            const utility = parseInt(document.getElementById('utilityScore').value);
+            const sentiment = document.getElementById('marketSentiment').value;
+
+            // Calculate price impact
+            let priceMultiplier = 1;
+            priceMultiplier *= (demand / 50); // Demand factor
+            priceMultiplier *= (utility / 50); // Utility factor
+            priceMultiplier *= (1 - inflation / 100); // Inflation factor
+
+            // Sentiment multiplier
+            const sentimentMultipliers = {
+                bear: 0.8,
+                neutral: 1,
+                bull: 1.5,
+                bubble: 3
+            };
+            priceMultiplier *= sentimentMultipliers[sentiment];
+
+            const newPrice = labState.userToken.price * priceMultiplier;
+            const volatility = calculateVolatility(demand, utility, sentiment);
+
+            // Update displays
+            labState.userToken.price = newPrice;
+            updateTokenDisplay();
+
+            document.getElementById('current-price').textContent = `$${newPrice.toFixed(2)}`;
+            document.getElementById('current-mcap').textContent = labState.userToken.supply === 'Unlimited' ? '∞' : `$${((labState.userToken.supply * newPrice) / 1000000).toFixed(1)}M`;
+            document.getElementById('volume').textContent = `$${(100000 * priceMultiplier).toFixed(0)}`;
+            document.getElementById('volatility').textContent = volatility;
+
+            showMarketInsights(demand, inflation, utility, sentiment, volatility);
+            document.getElementById('continue-incentives').disabled = false;
+        }
+
+        function calculateVolatility(demand, utility, sentiment) {
+            let volatilityScore = 0;
+            volatilityScore += Math.abs(demand - 50) / 10; // Extreme demand = high volatility
+            volatilityScore += (100 - utility) / 20; // Low utility = high volatility
+            volatilityScore += sentiment === 'bubble' ? 8 : sentiment === 'bear' ? 6 : 2;
+
+            if (volatilityScore < 3) return 'Low';
+            if (volatilityScore < 6) return 'Medium';
+            return 'High';
+        }
+
+        function showMarketInsights(demand, inflation, utility, sentiment, volatility) {
+            const insights = document.getElementById('market-insights');
+            const content = document.getElementById('insights-content');
+
+            let mainInsight = '';
+            if (utility < 30) {
+                mainInsight = 'Low utility makes your token vulnerable to speculation and market crashes.';
+            } else if (inflation > 10) {
+                mainInsight = 'High supply growth is putting downward pressure on price.';
+            } else if (demand > 80) {
+                mainInsight = 'High demand is driving price appreciation, but be wary of bubbles.';
+            } else {
+                mainInsight = 'Your token has balanced fundamentals for sustainable growth.';
+            }
+
+            content.innerHTML = `
+                <div class="insight-summary">
+                    <h5>Key Insight</h5>
+                    <p>${mainInsight}</p>
+                </div>
+                <div class="market-factors">
+                    <div class="factor ${demand > 70 ? 'positive' : demand < 30 ? 'negative' : 'neutral'}">
+                        Demand: ${demand > 70 ? 'Strong' : demand < 30 ? 'Weak' : 'Moderate'}
+                    </div>
+                    <div class="factor ${inflation < 5 ? 'positive' : inflation > 10 ? 'negative' : 'neutral'}">
+                        Inflation: ${inflation < 5 ? 'Controlled' : inflation > 10 ? 'High' : 'Moderate'}
+                    </div>
+                    <div class="factor ${utility > 70 ? 'positive' : utility < 30 ? 'negative' : 'neutral'}">
+                        Utility: ${utility > 70 ? 'High' : utility < 30 ? 'Low' : 'Medium'}
+                    </div>
+                </div>
+            `;
+
+            insights.style.display = 'block';
+        }
+
+        // Incentive simulation
+        function simulateIncentives() {
+            const incentives = {
+                usageRewards: document.getElementById('usage-rewards').checked,
+                referralBonus: document.getElementById('referral-bonus').checked,
+                loyaltyProgram: document.getElementById('loyalty-program').checked,
+                blockRewards: document.getElementById('block-rewards').checked,
+                uptimeBonus: document.getElementById('uptime-bonus').checked,
+                slashingPenalty: document.getElementById('slashing-penalty').checked,
+                devGrants: document.getElementById('dev-grants').checked,
+                bugBounties: document.getElementById('bug-bounties').checked,
+                revenueShare: document.getElementById('revenue-share').checked
+            };
+
+            const networkHealth = calculateNetworkHealth(incentives);
+            showNetworkHealth(networkHealth);
+            document.getElementById('continue-network-effects').disabled = false;
+        }
+
+        function calculateNetworkHealth(incentives) {
+            let userActivity = 30;
+            let validatorPerformance = 80;
+            let developerActivity = 40;
+            let networkSecurity = 70;
+
+            // User incentives impact
+            if (incentives.usageRewards) userActivity += 25;
+            if (incentives.referralBonus) userActivity += 15;
+            if (incentives.loyaltyProgram) userActivity += 10;
+
+            // Validator incentives impact
+            if (incentives.blockRewards) validatorPerformance += 10;
+            if (incentives.uptimeBonus) validatorPerformance += 15;
+            if (incentives.slashingPenalty) {
+                validatorPerformance += 5;
+                networkSecurity += 15;
+            }
+
+            // Developer incentives impact
+            if (incentives.devGrants) developerActivity += 20;
+            if (incentives.bugBounties) {
+                developerActivity += 15;
+                networkSecurity += 10;
+            }
+            if (incentives.revenueShare) developerActivity += 25;
+
+            return {
+                userActivity: Math.min(userActivity, 100),
+                validatorPerformance: Math.min(validatorPerformance, 100),
+                developerActivity: Math.min(developerActivity, 100),
+                networkSecurity: Math.min(networkSecurity, 100)
+            };
+        }
+
+        function showNetworkHealth(health) {
+            const results = document.getElementById('incentive-results');
+            const content = document.getElementById('network-health');
+
+            const overallHealth = (health.userActivity + health.validatorPerformance + health.developerActivity + health.networkSecurity) / 4;
+
+            content.innerHTML = `
+                <div class="health-overview">
+                    <div class="overall-score ${overallHealth > 80 ? 'excellent' : overallHealth > 60 ? 'good' : 'needs-improvement'}">
+                        <h5>Overall Network Health</h5>
+                        <div class="score">${overallHealth.toFixed(0)}/100</div>
+                    </div>
+                </div>
+
+                <div class="health-metrics">
+                    <div class="health-metric">
+                        <span class="metric-name">User Activity</span>
+                        <div class="metric-bar">
+                            <div class="bar-fill" style="width: ${health.userActivity}%"></div>
+                        </div>
+                        <span class="metric-value">${health.userActivity}/100</span>
+                    </div>
+                    <div class="health-metric">
+                        <span class="metric-name">Validator Performance</span>
+                        <div class="metric-bar">
+                            <div class="bar-fill" style="width: ${health.validatorPerformance}%"></div>
+                        </div>
+                        <span class="metric-value">${health.validatorPerformance}/100</span>
+                    </div>
+                    <div class="health-metric">
+                        <span class="metric-name">Developer Activity</span>
+                        <div class="metric-bar">
+                            <div class="bar-fill" style="width: ${health.developerActivity}%"></div>
+                        </div>
+                        <span class="metric-value">${health.developerActivity}/100</span>
+                    </div>
+                    <div class="health-metric">
+                        <span class="metric-name">Network Security</span>
+                        <div class="metric-bar">
+                            <div class="bar-fill" style="width: ${health.networkSecurity}%"></div>
+                        </div>
+                        <span class="metric-value">${health.networkSecurity}/100</span>
+                    </div>
+                </div>
+
+                <div class="health-insights">
+                    <h5>Optimization Suggestions</h5>
+                    <ul>
+                        ${health.userActivity < 60 ? '<li>Consider adding user incentives to boost platform adoption</li>' : ''}
+                        ${health.validatorPerformance < 80 ? '<li>Implement stronger validator incentives to improve network reliability</li>' : ''}
+                        ${health.developerActivity < 60 ? '<li>Developer incentives needed to drive innovation and ecosystem growth</li>' : ''}
+                        ${health.networkSecurity < 75 ? '<li>Add security incentives and penalties to strengthen network protection</li>' : ''}
+                        ${overallHealth > 80 ? '<li>Excellent incentive design! Your network is well-balanced for sustainable growth.</li>' : ''}
+                    </ul>
+                </div>
+            `;
+
+            results.style.display = 'block';
+        }
+
+        // Network effects simulation
+        function executeStrategy(strategy) {
+            const strategies = {
+                'viral-marketing': { users: 10000, cost: 500000, effectiveness: 0.7 },
+                'partnership': { users: 25000, cost: 200000, effectiveness: 0.9 },
+                'feature-improvement': { users: 3000, cost: 50000, effectiveness: 0.95 },
+                'liquidity-mining': { users: 50000, cost: 1000000, effectiveness: 0.6 }
+            };
+
+            const selected = strategies[strategy];
+            const currentUsers = labState.networkMetrics.users;
+
+            // Calculate actual impact with network effects
+            const networkEffect = Math.pow(currentUsers + selected.users, 1.5) - Math.pow(currentUsers, 1.5);
+            const newUsers = currentUsers + (selected.users * selected.effectiveness);
+            const newValue = networkEffect * 10; // $10 per network effect unit
+
+            labState.networkMetrics.users = Math.floor(newUsers);
+            labState.networkMetrics.transactions = Math.floor(newUsers * 2.5);
+            labState.networkMetrics.value = Math.floor(newValue);
+            labState.networkMetrics.adoptionRate = Math.min((newUsers / 1000000) * 100, 100);
+
+            updateNetworkDisplay();
+            showGrowthAnalysis(strategy, selected, newUsers - currentUsers);
+            document.getElementById('continue-final-project').disabled = false;
+        }
+
+        function updateNetworkDisplay() {
+            const metrics = labState.networkMetrics;
+            document.getElementById('total-users').textContent = metrics.users.toLocaleString();
+            document.getElementById('daily-transactions').textContent = metrics.transactions.toLocaleString();
+            document.getElementById('network-value').textContent = `$${(metrics.value / 1000000).toFixed(1)}M`;
+            document.getElementById('adoption-rate').textContent = `${metrics.adoptionRate.toFixed(2)}%`;
+        }
+
+        function showGrowthAnalysis(strategy, data, actualGrowth) {
+            const analysis = document.getElementById('growth-analysis');
+            const content = document.getElementById('growth-insights');
+
+            const strategyNames = {
+                'viral-marketing': 'Viral Marketing Campaign',
+                'partnership': 'Strategic Partnership',
+                'feature-improvement': 'Feature Improvement',
+                'liquidity-mining': 'Liquidity Mining Program'
+            };
+
+            const effectiveness = (actualGrowth / data.users) * 100;
+
+            content.innerHTML = `
+                <div class="strategy-result">
+                    <h5>${strategyNames[strategy]} Results</h5>
+                    <div class="result-metrics">
+                        <div class="result-item">
+                            <span>Target Growth:</span>
+                            <span>${data.users.toLocaleString()} users</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Actual Growth:</span>
+                            <span>${actualGrowth.toLocaleString()} users</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Effectiveness:</span>
+                            <span>${effectiveness.toFixed(0)}%</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Cost per User:</span>
+                            <span>$${(data.cost / actualGrowth).toFixed(2)}</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Network Value Created:</span>
+                            <span>$${((labState.networkMetrics.value - (labState.networkMetrics.value / (1 + actualGrowth / (labState.networkMetrics.users - actualGrowth)))) / 1000000).toFixed(1)}M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="network-effect-explanation">
+                    <p><strong>Network Effect Impact:</strong> Adding ${actualGrowth.toLocaleString()} users created disproportionate value due to network effects. Each new user can interact with all existing users, creating exponential value growth.</p>
+                </div>
+            `;
+
+            analysis.style.display = 'block';
+        }
+
+        // Metcalfe's Law demonstration
+        function updateMetcalfesDemo() {
+            const size = parseInt(document.getElementById('networkSize').value);
+            const connections = (size * (size - 1)) / 2;
+            const value = connections * 10; // $10 per connection
+
+            document.getElementById('networkSizeValue').textContent = `${size} users`;
+            document.getElementById('connections').textContent = connections.toLocaleString();
+            document.getElementById('metcalfe-value').textContent = `$${value.toLocaleString()}`;
+        }
+
+        // Final design challenge
+        function selectUseCase(useCase) {
+            const workspace = document.getElementById('design-workspace');
+            const title = document.getElementById('challenge-title');
+            const description = document.getElementById('challenge-description');
+            const incentivesContainer = document.getElementById('final-incentives');
+
+            const useCases = {
+                'social-media': {
+                    title: 'Decentralized Social Media Token Design',
+                    description: `
+                        <div class="challenge-details">
+                            <h5>The Challenge</h5>
+                            <p>Design a token economy for a decentralized social media platform where:</p>
+                            <ul>
+                                <li>Users own their data and can monetize their content</li>
+                                <li>Content creators earn based on engagement and quality</li>
+                                <li>Users are incentivized to curate and moderate content</li>
+                                <li>The platform remains sustainable without traditional advertising</li>
+                            </ul>
+
+                            <h5>Key Stakeholders</h5>
+                            <div class="stakeholders">
+                                <span class="stakeholder">Content Creators</span>
+                                <span class="stakeholder">Casual Users</span>
+                                <span class="stakeholder">Content Curators</span>
+                                <span class="stakeholder">Moderators</span>
+                                <span class="stakeholder">Developers</span>
+                            </div>
+                        </div>
+                    `,
+                    incentives: [
+                        { id: 'content-rewards', label: 'Content Creation Rewards' },
+                        { id: 'curation-rewards', label: 'Content Curation Rewards' },
+                        { id: 'moderation-rewards', label: 'Community Moderation' },
+                        { id: 'engagement-rewards', label: 'User Engagement Bonuses' },
+                        { id: 'data-ownership', label: 'Data Ownership Rights' }
+                    ]
+                },
+                'carbon-credits': {
+                    title: 'Carbon Credit Marketplace Token Design',
+                    description: `
+                        <div class="challenge-details">
+                            <h5>The Challenge</h5>
+                            <p>Create a token system for verified carbon credits that:</p>
+                            <ul>
+                                <li>Incentivizes real, measurable carbon reduction</li>
+                                <li>Enables transparent trading of environmental credits</li>
+                                <li>Rewards validators who verify carbon reduction claims</li>
+                                <li>Encourages long-term environmental sustainability</li>
+                            </ul>
+
+                            <h5>Key Stakeholders</h5>
+                            <div class="stakeholders">
+                                <span class="stakeholder">Carbon Producers</span>
+                                <span class="stakeholder">Carbon Buyers</span>
+                                <span class="stakeholder">Validators</span>
+                                <span class="stakeholder">Environmental Organizations</span>
+                                <span class="stakeholder">Governments</span>
+                            </div>
+                        </div>
+                    `,
+                    incentives: [
+                        { id: 'reduction-rewards', label: 'Carbon Reduction Rewards' },
+                        { id: 'validation-rewards', label: 'Verification Rewards' },
+                        { id: 'long-term-staking', label: 'Long-term Environmental Staking' },
+                        { id: 'impact-multipliers', label: 'Impact Multipliers' },
+                        { id: 'transparency-bonus', label: 'Transparency Bonuses' }
+                    ]
+                },
+                'learning-platform': {
+                    title: 'Learn-to-Earn Education Token Design',
+                    description: `
+                        <div class="challenge-details">
+                            <h5>The Challenge</h5>
+                            <p>Build a token economy for an education platform where:</p>
+                            <ul>
+                                <li>Students earn tokens for completed courses and achievements</li>
+                                <li>Teachers earn based on student success and course quality</li>
+                                <li>Peer tutoring and knowledge sharing are rewarded</li>
+                                <li>Quality content and accurate assessments are incentivized</li>
+                            </ul>
+
+                            <h5>Key Stakeholders</h5>
+                            <div class="stakeholders">
+                                <span class="stakeholder">Students</span>
+                                <span class="stakeholder">Teachers</span>
+                                <span class="stakeholder">Content Creators</span>
+                                <span class="stakeholder">Peer Tutors</span>
+                                <span class="stakeholder">Platform Operators</span>
+                            </div>
+                        </div>
+                    `,
+                    incentives: [
+                        { id: 'learning-rewards', label: 'Learning Achievement Rewards' },
+                        { id: 'teaching-rewards', label: 'Teaching Quality Rewards' },
+                        { id: 'peer-tutoring', label: 'Peer Tutoring Incentives' },
+                        { id: 'content-creation', label: 'Educational Content Creation' },
+                        { id: 'assessment-rewards', label: 'Assessment and Grading' }
+                    ]
+                }
+            };
+
+            const selected = useCases[useCase];
+            title.textContent = selected.title;
+            description.innerHTML = selected.description;
+
+            // Populate incentive checkboxes
+            incentivesContainer.innerHTML = selected.incentives.map(incentive => `
+                <label>
+                    <input type="checkbox" id="${incentive.id}">
+                    ${incentive.label}
+                </label>
+            `).join('');
+
+            workspace.style.display = 'block';
+        }
+
+        function submitDesign() {
+            const distribution = document.getElementById('final-distribution').value;
+            const supply = document.getElementById('final-supply').value;
+            const governance = document.getElementById('governance-model').value;
+
+            if (!distribution || !supply || !governance) {
+                alert('Please complete all sections of your token design.');
+                return;
+            }
+
+            const selectedIncentives = Array.from(document.querySelectorAll('#final-incentives input[type="checkbox"]:checked')).map(cb => cb.id);
+
+            const design = {
+                distribution,
+                supply,
+                governance,
+                incentives: selectedIncentives
+            };
+
+            evaluateDesign(design);
+        }
+
+        function evaluateDesign(design) {
+            const evaluation = document.getElementById('design-evaluation');
+            const results = document.getElementById('evaluation-results');
+
+            // Scoring system
+            let score = 0;
+            let feedback = [];
+
+            // Distribution model scoring
+            const distributionScores = {
+                'mining': { score: 7, feedback: 'Mining provides security but may centralize over time.' },
+                'activity': { score: 8, feedback: 'Activity-based rewards align well with platform usage.' },
+                'contribution': { score: 9, feedback: 'Contribution-based distribution encourages value creation.' },
+                'hybrid': { score: 8, feedback: 'Hybrid approach provides flexibility but adds complexity.' }
+            };
+            const distScore = distributionScores[design.distribution];
+            score += distScore.score;
+            feedback.push(`Distribution: ${distScore.feedback}`);
+
+            // Supply mechanism scoring
+            const supplyScores = {
+                'fixed': { score: 6, feedback: 'Fixed supply creates scarcity but may limit growth incentives.' },
+                'inflation': { score: 8, feedback: 'Controlled inflation can fund ongoing development.' },
+                'elastic': { score: 7, feedback: 'Elastic supply responds to demand but adds complexity.' },
+                'burning': { score: 9, feedback: 'Burn mechanisms create deflationary pressure and value accrual.' }
+            };
+            const supScore = supplyScores[design.supply];
+            score += supScore.score;
+            feedback.push(`Supply: ${supScore.feedback}`);
+
+            // Governance scoring
+            const govScores = {
+                'token-voting': { score: 7, feedback: 'Token voting is simple but may favor large holders.' },
+                'quadratic': { score: 9, feedback: 'Quadratic voting reduces whale influence and improves fairness.' },
+                'delegation': { score: 8, feedback: 'Liquid democracy combines direct and representative voting.' },
+                'council': { score: 6, feedback: 'Elected councils are efficient but less decentralized.' }
+            };
+            const govScore = govScores[design.governance];
+            score += govScore.score;
+            feedback.push(`Governance: ${govScore.feedback}`);
+
+            // Incentives bonus
+            const incentiveBonus = Math.min(design.incentives.length * 2, 10);
+            score += incentiveBonus;
+            feedback.push(`Incentives: ${design.incentives.length} mechanisms selected provide comprehensive coverage.`);
+
+            const totalScore = Math.min(score, 10);
+            const grade = totalScore >= 9 ? 'Excellent' : totalScore >= 7 ? 'Good' : totalScore >= 5 ? 'Needs Improvement' : 'Poor';
+
+            results.innerHTML = `
+                <div class="evaluation-summary">
+                    <h5>Design Evaluation Results</h5>
+                    <div class="score-display">
+                        <span class="score ${grade.toLowerCase().replace(' ', '-')}">${totalScore.toFixed(1)}/10</span>
+                        <span class="grade">${grade}</span>
+                    </div>
+                </div>
+
+                <div class="detailed-feedback">
+                    <h5>Detailed Feedback</h5>
+                    <ul>
+                        ${feedback.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="improvement-suggestions">
+                    <h5>Improvement Suggestions</h5>
+                    <ul>
+                        ${totalScore < 7 ? '<li>Consider adding more diverse incentive mechanisms</li>' : ''}
+                        ${design.governance === 'token-voting' ? '<li>Explore quadratic voting to reduce whale influence</li>' : ''}
+                        ${design.supply === 'fixed' && design.distribution !== 'mining' ? '<li>Fixed supply with non-mining distribution may not provide ongoing incentives</li>' : ''}
+                        ${design.incentives.length < 3 ? '<li>More incentive mechanisms would create a more robust economy</li>' : ''}
+                        ${totalScore >= 9 ? '<li>Excellent design! Consider stress testing in different market conditions.</li>' : ''}
+                    </ul>
+                </div>
+            `;
+
+            evaluation.style.display = 'block';
+
+            // Show stress test after a delay
+            setTimeout(() => runStressTest(design, totalScore), 2000);
+        }
+
+        function runStressTest(design, baseScore) {
+            const stressTest = document.getElementById('stress-test-results');
+
+            const scenarios = [
+                { name: 'Bear Market (-80% demand)', impact: design.supply === 'burning' ? -1 : -2 },
+                { name: 'Whale Accumulation', impact: design.governance === 'quadratic' ? -0.5 : -2 },
+                { name: 'Regulatory Pressure', impact: design.distribution === 'gradual' ? -0.5 : -1 },
+                { name: 'Competitor Launch', impact: design.incentives.length > 3 ? -0.5 : -1.5 },
+                { name: 'Network Congestion', impact: design.supply === 'elastic' ? -0.5 : -1 }
+            ];
+
+            let stressResults = scenarios.map(scenario => {
+                const survivability = Math.max(baseScore + scenario.impact, 0);
+                return {
+                    ...scenario,
+                    survivability,
+                    status: survivability > 7 ? 'Strong' : survivability > 4 ? 'Moderate' : 'Weak'
+                };
+            });
+
+            stressTest.innerHTML = `
+                <h4>Stress Test Results</h4>
+                <p>How well does your design handle challenging scenarios?</p>
+
+                <div class="stress-scenarios">
+                    ${stressResults.map(result => `
+                        <div class="stress-scenario">
+                            <div class="scenario-name">${result.name}</div>
+                            <div class="survivability-bar">
+                                <div class="bar-fill ${result.status.toLowerCase()}" style="width: ${(result.survivability / 10) * 100}%"></div>
+                            </div>
+                            <div class="survivability-score">${result.status}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="stress-summary">
+                    <p><strong>Overall Resilience:</strong> ${stressResults.every(r => r.survivability > 5) ? 'Your design shows strong resilience to market challenges.' : 'Some scenarios present significant risks to your token economy.'}</p>
+                </div>
+            `;
+
+            stressTest.style.display = 'block';
+        }
+
+        // Input event listeners
+        document.getElementById('demandLevel').addEventListener('input', function() {
+            document.getElementById('demandValue').textContent = `${this.value < 30 ? 'Low' : this.value > 70 ? 'High' : 'Medium'} (${this.value})`;
+        });
+
+        document.getElementById('supplyInflation').addEventListener('input', function() {
+            document.getElementById('inflationValue').textContent = `${this.value}% per year`;
+        });
+
+        document.getElementById('utilityScore').addEventListener('input', function() {
+            document.getElementById('utilityValue').textContent = `${this.value < 30 ? 'Low' : this.value > 70 ? 'High' : 'Medium'} (${this.value})`;
+        });
+
+        // Navigation functions
+        function goToActivity(activity) {
+            const urls = {
+                'governance': 'blockchain-activities.html#simulations',
+                'consensus': 'consensus-simulator.html'
+            };
+
+            window.location.href = urls[activity] || 'blockchain-activities.html';
+        }
+
+        // Initialize Metcalfe's demo
+        updateMetcalfesDemo();
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* Lab-specific styles */
+        .locked-section {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .lab-introduction {
+            background: var(--color-gray-50);
+            border-left: 4px solid var(--color-electric-blue);
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .principle-card {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .creation-form {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-4);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+            color: var(--color-black);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: var(--space-3);
+            border: var(--border-width) solid var(--color-gray-200);
+            border-radius: 4px;
+            font-size: var(--text-base);
+        }
+
+        .token-analysis {
+            background: var(--color-gray-50);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .simulation-interface {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .market-controls {
+            margin-bottom: var(--space-6);
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+
+        .control-group label {
+            min-width: 120px;
+            font-weight: var(--font-semibold);
+        }
+
+        .control-group input[type="range"] {
+            flex: 1;
+        }
+
+        .market-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .metric-label {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+        }
+
+        .metric-value {
+            font-size: var(--text-lg);
+            font-weight: var(--font-bold);
+            color: var(--color-black);
+        }
+
+        .participants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .participant-card {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+        }
+
+        .participant-stats {
+            margin: var(--space-2) 0;
+            font-size: var(--text-sm);
+        }
+
+        .participant-motivation {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+            font-style: italic;
+        }
+
+        .incentive-category {
+            margin-bottom: var(--space-4);
+        }
+
+        .incentive-controls {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .incentive-controls label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            cursor: pointer;
+        }
+
+        .network-metrics {
+            display: flex;
+            justify-content: space-around;
+            margin: var(--space-6) 0;
+        }
+
+        .metric-display {
+            text-align: center;
+        }
+
+        .metric-number {
+            display: block;
+            font-size: var(--text-3xl);
+            font-weight: var(--font-bold);
+            color: var(--color-electric-blue);
+        }
+
+        .strategy-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-4) 0;
+        }
+
+        .strategy-btn {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-align: left;
+        }
+
+        .strategy-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .cost {
+            font-size: var(--text-xs);
+            color: var(--color-gray-600);
+        }
+
+        .strategy-btn:hover .cost {
+            color: var(--color-white);
+        }
+
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .effect-card {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+        }
+
+        .law-demo {
+            background: var(--color-gray-50);
+            padding: var(--space-4);
+            border-radius: 8px;
+            margin: var(--space-4) 0;
+        }
+
+        .metcalfes-result {
+            display: flex;
+            justify-content: space-around;
+            margin-top: var(--space-4);
+        }
+
+        .result-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result-label {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+        }
+
+        .result-value {
+            font-size: var(--text-lg);
+            font-weight: var(--font-bold);
+            color: var(--color-electric-blue);
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin: var(--space-6) 0;
+        }
+
+        .use-case-card {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-6);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .use-case-card:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .difficulty {
+            font-size: var(--text-xs);
+            background: var(--color-gray-200);
+            color: var(--color-gray-700);
+            padding: var(--space-1) var(--space-2);
+            border-radius: 12px;
+            margin-top: var(--space-2);
+        }
+
+        .use-case-card:hover .difficulty {
+            background: var(--color-white);
+            color: var(--color-electric-blue);
+        }
+
+        .stakeholders {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin: var(--space-3) 0;
+        }
+
+        .stakeholder {
+            background: var(--color-gray-100);
+            color: var(--color-gray-700);
+            padding: var(--space-1) var(--space-2);
+            font-size: var(--text-xs);
+            border-radius: 12px;
+        }
+
+        .health-metric {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+
+        .metric-name {
+            min-width: 120px;
+            font-size: var(--text-sm);
+            font-weight: var(--font-semibold);
+        }
+
+        .metric-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 1s ease;
+        }
+
+        .bar-fill.strong {
+            background: var(--color-green);
+        }
+
+        .bar-fill.moderate {
+            background: var(--color-yellow);
+        }
+
+        .bar-fill.weak {
+            background: var(--color-red);
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-6) 0;
+        }
+
+        .achievement {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-4);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .learning-recommendations {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: var(--space-4) 0;
+        }
+
+        .score-display {
+            text-align: center;
+            margin: var(--space-4) 0;
+        }
+
+        .score {
+            font-size: var(--text-4xl);
+            font-weight: var(--font-bold);
+            margin-right: var(--space-2);
+        }
+
+        .score.excellent {
+            color: var(--color-green);
+        }
+
+        .score.good {
+            color: var(--color-electric-blue);
+        }
+
+        .score.needs-improvement {
+            color: var(--color-yellow);
+        }
+
+        .grade {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-700);
+        }
+
+        .stress-scenarios {
+            margin: var(--space-4) 0;
+        }
+
+        .stress-scenario {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+
+        .scenario-name {
+            min-width: 180px;
+            font-size: var(--text-sm);
+        }
+
+        .survivability-bar {
+            flex: 1;
+            height: 12px;
+            background: var(--color-gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .survivability-score {
+            min-width: 80px;
+            text-align: center;
+            font-weight: var(--font-semibold);
+            font-size: var(--text-sm);
+        }
+
+        .next-step-action {
+            margin: var(--space-8) 0;
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .market-metrics, .participants-grid, .strategy-options, .effects-grid, .use-cases-grid, .achievements {
+                grid-template-columns: 1fr;
+            }
+
+            .control-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .metcalfes-result {
+                flex-direction: column;
+                gap: var(--space-2);
+            }
+
+            .learning-recommendations {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

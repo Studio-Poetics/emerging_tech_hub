@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Technology Radar - TRL Visualization</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        /* Clean Radar Visualization Styles */
+        body {
+            background: var(--color-white);
+            color: var(--color-black);
+            overflow-x: hidden;
+            font-family: var(--font-primary);
+        }
+
+        .radar-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-white);
+        }
+
+        .radar-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .radar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin: 0;
+        }
+
+        .radar-subtitle {
+            font-size: 12px;
+            color: var(--color-gray-600);
+            margin: 5px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trl-info-btn {
+            background: var(--color-electric-blue) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-electric-blue) !important;
+        }
+
+        .trl-info-btn:hover {
+            background: var(--color-electric-blue-dark) !important;
+            border-color: var(--color-electric-blue-dark) !important;
+            color: var(--color-white) !important;
+        }
+
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-group {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 5px 10px;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            color: var(--color-gray-700);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: var(--color-electric-blue-bg);
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--color-electric-blue);
+            border-color: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .radar-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zoom-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 18px;
+            color: var(--color-electric-blue);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .info-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-research { background: var(--color-electric-blue); color: var(--color-white); }
+        .meta-industry { background: var(--color-gray-800); color: var(--color-white); }
+        .meta-fiction { background: var(--color-gray-600); color: var(--color-white); }
+        .meta-experimental { background: var(--color-electric-blue-dark); color: var(--color-white); }
+
+        .info-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .references-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .references-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+
+        .reference-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--color-gray-600);
+        }
+
+        .reference-link {
+            color: var(--color-electric-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .progress-item {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.8s ease;
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--color-gray-500);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .trl-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 200;
+        }
+
+        .trl-info-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .trl-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin-bottom: 15px;
+        }
+
+        .trl-info-content {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .trl-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trl-level-item {
+            padding: 8px;
+            background: var(--color-gray-50);
+            border-radius: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .trl-level-number {
+            font-weight: 600;
+            color: var(--color-electric-blue);
+        }
+
+        .close-info-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-info-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend-title {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 10px;
+            color: var(--color-gray-700);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        /* Loading animation */
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00f5ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Tablet layout adjustments to prevent overlap */
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+
+        /* Mobile layout: stack panels and shrink canvas to avoid overlap */
+        @media (max-width: 768px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
+            }
+
+            .radar-title {
+                font-size: 18px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 60vh;
+            }
+
+            .controls-panel {
+                position: static;
+                top: auto;
+                right: auto;
+                margin: 10px 16px 0 16px;
+            }
+
+            .legend {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="radar-container">
+        <div class="radar-header">
+            <h1 class="radar-title">AI TECHNOLOGY RADAR</h1>
+            <p class="radar-subtitle">Technology Readiness Level Visualization</p>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <div class="control-label">Filter by Origin</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="research">RESEARCH</button>
+                    <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                    <button class="filter-btn" data-filter="fiction">SCI-FI</button>
+                    <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Time Period</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-time="2025">2025</button>
+                    <button class="filter-btn" data-time="2020">2020</button>
+                    <button class="filter-btn" data-time="2015">2015</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Learn More</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn trl-info-btn" onclick="toggleTRLInfo()">WHAT IS TRL?</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+            <button class="zoom-btn" id="zoomOut" title="Zoom Out">−</button>
+            <button class="zoom-btn" id="resetZoom" title="Reset Zoom">⌂</button>
+        </div>
+
+        <svg class="radar-canvas" id="radarSvg"></svg>
+
+        <div class="trl-info-panel" id="trlInfoPanel">
+            <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
+            <div class="trl-info-title">Technology Readiness Levels (TRL)</div>
+            <div class="trl-info-content">
+                Technology Readiness Levels are a systematic metric used to assess the maturity of a particular technology. Originally developed by NASA, the TRL scale ranges from 1 (basic research) to 9 (proven operational capability). For AI systems, TRL assessment considers factors like data quality, model robustness, system integration, and real-world performance under diverse conditions.
+            </div>
+            <div class="trl-levels-grid">
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 1-2</div>
+                    <div>Basic Research</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 3</div>
+                    <div>Proof of Concept</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 4</div>
+                    <div>Lab Validation</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 5</div>
+                    <div>Simulated Environment</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 6</div>
+                    <div>Prototype Demo</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 7</div>
+                    <div>System Integration</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 8</div>
+                    <div>System Complete</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 9</div>
+                    <div>Proven Operational</div>
+                </div>
+                <div class="trl-level-item" style="grid-column: span 1; background: var(--color-electric-blue-bg);">
+                    <div class="trl-level-number">Click & Explore</div>
+                    <div>Interactive Technologies</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">TRL Levels</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a3a3a3;"></div>
+                <span>TRL 1-3: Research</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #525252;"></div>
+                <span>TRL 4-6: Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4040ff;"></div>
+                <span>TRL 7-9: Deployment</span>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfoPanel()">×</button>
+            <div id="infoPanelContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">Initializing Radar...</div>
+    </div>
+
+    <script>
+        // Enhanced technology data with more concepts and temporal progression
+        const technologyData = {
+            2015: [
+                { id: 'deep-learning', name: 'Deep Learning', category: 'research', trl: 4, angle: 0, progress: { research: 60, funding: 70, timeline: 40, consensus: 65 } },
+                { id: 'cnn', name: 'Convolutional Neural Networks', category: 'industry', trl: 6, angle: 20, progress: { research: 80, funding: 75, timeline: 70, consensus: 85 } },
+                { id: 'rnn', name: 'Recurrent Neural Networks', category: 'research', trl: 5, angle: 40, progress: { research: 70, funding: 60, timeline: 50, consensus: 70 } },
+                { id: 'agi', name: 'Artificial General Intelligence', category: 'fiction', trl: 1, angle: 60, progress: { research: 5, funding: 10, timeline: 2, consensus: 5 } },
+                { id: 'neural-implants', name: 'Neural Implants', category: 'experimental', trl: 2, angle: 80, progress: { research: 20, funding: 25, timeline: 10, consensus: 15 } },
+                { id: 'speech-recognition', name: 'Speech Recognition', category: 'industry', trl: 7, angle: 100, progress: { research: 85, funding: 90, timeline: 80, consensus: 90 } },
+                { id: 'computer-vision', name: 'Computer Vision', category: 'industry', trl: 6, angle: 120, progress: { research: 75, funding: 80, timeline: 70, consensus: 80 } },
+                { id: 'reinforcement-learning', name: 'Reinforcement Learning', category: 'research', trl: 3, angle: 140, progress: { research: 50, funding: 45, timeline: 30, consensus: 45 } },
+                { id: 'nlp', name: 'Natural Language Processing', category: 'research', trl: 4, angle: 160, progress: { research: 55, funding: 50, timeline: 40, consensus: 55 } },
+                { id: 'machine-consciousness', name: 'Machine Consciousness', category: 'fiction', trl: 1, angle: 180, progress: { research: 2, funding: 5, timeline: 1, consensus: 3 } },
+                { id: 'autonomous-vehicles', name: 'Autonomous Vehicles', category: 'industry', trl: 4, angle: 200, progress: { research: 60, funding: 85, timeline: 50, consensus: 65 } },
+                { id: 'quantum-ai', name: 'Quantum AI', category: 'research', trl: 1, angle: 220, progress: { research: 15, funding: 20, timeline: 5, consensus: 10 } },
+                { id: 'recommendation-systems', name: 'Recommendation Systems', category: 'industry', trl: 8, angle: 240, progress: { research: 90, funding: 95, timeline: 90, consensus: 95 } },
+                { id: 'image-recognition', name: 'Image Recognition', category: 'industry', trl: 7, angle: 260, progress: { research: 85, funding: 90, timeline: 85, consensus: 90 } },
+                { id: 'chatbots', name: 'Chatbots', category: 'industry', trl: 5, angle: 280, progress: { research: 60, funding: 70, timeline: 60, consensus: 65 } },
+                { id: 'gan', name: 'Generative Adversarial Networks', category: 'research', trl: 3, angle: 300, progress: { research: 40, funding: 35, timeline: 25, consensus: 35 } },
+                { id: 'transfer-learning', name: 'Transfer Learning', category: 'research', trl: 4, angle: 320, progress: { research: 50, funding: 45, timeline: 40, consensus: 50 } },
+                { id: 'neural-architecture-search', name: 'Neural Architecture Search', category: 'research', trl: 2, angle: 340, progress: { research: 25, funding: 20, timeline: 15, consensus: 20 } }
+            ],
+            2020: [
+                { id: 'deep-learning', name: 'Deep Learning', category: 'industry', trl: 7, angle: 0, progress: { research: 90, funding: 95, timeline: 85, consensus: 92 } },
+                { id: 'transformers', name: 'Transformer Architecture', category: 'research', trl: 5, angle: 10, progress: { research: 75, funding: 80, timeline: 65, consensus: 75 } },
+                { id: 'gpt', name: 'GPT Models', category: 'research', trl: 4, angle: 20, progress: { research: 70, funding: 85, timeline: 60, consensus: 70 } },
+                { id: 'bert', name: 'BERT and Language Models', category: 'industry', trl: 6, angle: 30, progress: { research: 85, funding: 90, timeline: 80, consensus: 85 } },
+                { id: 'cnn', name: 'Convolutional Neural Networks', category: 'industry', trl: 8, angle: 40, progress: { research: 95, funding: 95, timeline: 90, consensus: 95 } },
+                { id: 'agi', name: 'Artificial General Intelligence', category: 'fiction', trl: 1, angle: 60, progress: { research: 10, funding: 20, timeline: 5, consensus: 8 } },
+                { id: 'neural-implants', name: 'Neural Implants', category: 'experimental', trl: 3, angle: 80, progress: { research: 35, funding: 40, timeline: 25, consensus: 30 } },
+                { id: 'speech-recognition', name: 'Speech Recognition', category: 'industry', trl: 8, angle: 100, progress: { research: 95, funding: 98, timeline: 95, consensus: 96 } },
+                { id: 'computer-vision', name: 'Computer Vision', category: 'industry', trl: 8, angle: 120, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'reinforcement-learning', name: 'Reinforcement Learning', category: 'research', trl: 5, angle: 140, progress: { research: 70, funding: 65, timeline: 55, consensus: 65 } },
+                { id: 'nlp', name: 'Natural Language Processing', category: 'industry', trl: 7, angle: 160, progress: { research: 85, funding: 90, timeline: 80, consensus: 85 } },
+                { id: 'autonomous-vehicles', name: 'Autonomous Vehicles', category: 'industry', trl: 5, angle: 200, progress: { research: 75, funding: 95, timeline: 65, consensus: 75 } },
+                { id: 'quantum-ai', name: 'Quantum AI', category: 'research', trl: 2, angle: 220, progress: { research: 25, funding: 35, timeline: 15, consensus: 20 } },
+                { id: 'recommendation-systems', name: 'Recommendation Systems', category: 'industry', trl: 9, angle: 240, progress: { research: 98, funding: 100, timeline: 98, consensus: 99 } },
+                { id: 'image-recognition', name: 'Image Recognition', category: 'industry', trl: 9, angle: 260, progress: { research: 95, funding: 98, timeline: 95, consensus: 96 } },
+                { id: 'gan', name: 'Generative Adversarial Networks', category: 'research', trl: 5, angle: 300, progress: { research: 70, funding: 65, timeline: 55, consensus: 65 } },
+                { id: 'few-shot-learning', name: 'Few-shot Learning', category: 'research', trl: 4, angle: 310, progress: { research: 55, funding: 50, timeline: 40, consensus: 50 } },
+                { id: 'multimodal-ai', name: 'Multimodal AI', category: 'research', trl: 4, angle: 320, progress: { research: 60, funding: 55, timeline: 45, consensus: 55 } },
+                { id: 'explainable-ai', name: 'Explainable AI', category: 'research', trl: 4, angle: 330, progress: { research: 50, funding: 55, timeline: 40, consensus: 50 } },
+                { id: 'federated-learning', name: 'Federated Learning', category: 'research', trl: 4, angle: 340, progress: { research: 45, funding: 50, timeline: 35, consensus: 45 } },
+                { id: 'neural-architecture-search', name: 'Neural Architecture Search', category: 'research', trl: 4, angle: 350, progress: { research: 50, funding: 45, timeline: 35, consensus: 45 } }
+            ],
+            2025: [
+                { id: 'foundation-models', name: 'Foundation Models', category: 'industry', trl: 7, angle: 0, progress: { research: 85, funding: 95, timeline: 80, consensus: 85 } },
+                { id: 'llm', name: 'Large Language Models', category: 'industry', trl: 8, angle: 10, progress: { research: 90, funding: 98, timeline: 88, consensus: 90 } },
+                { id: 'multimodal-llm', name: 'Multimodal LLMs', category: 'industry', trl: 6, angle: 20, progress: { research: 75, funding: 85, timeline: 70, consensus: 75 } },
+                { id: 'ai-agents', name: 'AI Agents', category: 'industry', trl: 6, angle: 30, progress: { research: 70, funding: 80, timeline: 65, consensus: 70 } },
+                { id: 'code-generation', name: 'AI Code Generation', category: 'industry', trl: 7, angle: 40, progress: { research: 80, funding: 90, timeline: 75, consensus: 80 } },
+                { id: 'diffusion-models', name: 'Diffusion Models', category: 'industry', trl: 7, angle: 50, progress: { research: 85, funding: 90, timeline: 80, consensus: 85 } },
+                { id: 'agi', name: 'Artificial General Intelligence', category: 'fiction', trl: 2, angle: 60, progress: { research: 20, funding: 35, timeline: 10, consensus: 15 } },
+                { id: 'brain-computer-interface', name: 'Brain-Computer Interface', category: 'experimental', trl: 4, angle: 70, progress: { research: 50, funding: 60, timeline: 40, consensus: 45 } },
+                { id: 'neuromorphic-computing', name: 'Neuromorphic Computing', category: 'research', trl: 3, angle: 80, progress: { research: 40, funding: 45, timeline: 30, consensus: 35 } },
+                { id: 'embodied-ai', name: 'Embodied AI', category: 'research', trl: 4, angle: 90, progress: { research: 55, funding: 50, timeline: 40, consensus: 50 } },
+                { id: 'autonomous-vehicles-l4', name: 'Level 4 Autonomous Vehicles', category: 'industry', trl: 6, angle: 100, progress: { research: 80, funding: 95, timeline: 70, consensus: 75 } },
+                { id: 'medical-ai', name: 'Medical Diagnostic AI', category: 'industry', trl: 7, angle: 110, progress: { research: 85, funding: 90, timeline: 80, consensus: 85 } },
+                { id: 'robotics-ai', name: 'AI-Powered Robotics', category: 'industry', trl: 6, angle: 120, progress: { research: 75, funding: 85, timeline: 70, consensus: 75 } },
+                { id: 'quantum-ml', name: 'Quantum Machine Learning', category: 'research', trl: 2, angle: 130, progress: { research: 30, funding: 40, timeline: 20, consensus: 25 } },
+                { id: 'continual-learning', name: 'Continual Learning', category: 'research', trl: 3, angle: 140, progress: { research: 45, funding: 40, timeline: 30, consensus: 40 } },
+                { id: 'causal-ai', name: 'Causal AI', category: 'research', trl: 3, angle: 150, progress: { research: 40, funding: 35, timeline: 25, consensus: 35 } },
+                { id: 'edge-ai', name: 'Edge AI', category: 'industry', trl: 7, angle: 160, progress: { research: 80, funding: 85, timeline: 75, consensus: 80 } },
+                { id: 'federated-learning', name: 'Federated Learning', category: 'industry', trl: 6, angle: 170, progress: { research: 70, funding: 75, timeline: 65, consensus: 70 } },
+                { id: 'synthetic-data', name: 'Synthetic Data Generation', category: 'industry', trl: 6, angle: 180, progress: { research: 75, funding: 80, timeline: 70, consensus: 75 } },
+                { id: 'ai-safety', name: 'AI Safety & Alignment', category: 'research', trl: 3, angle: 190, progress: { research: 35, funding: 45, timeline: 25, consensus: 30 } },
+                { id: 'digital-twins', name: 'AI-Powered Digital Twins', category: 'industry', trl: 6, angle: 200, progress: { research: 70, funding: 80, timeline: 65, consensus: 70 } },
+                { id: 'neural-rendering', name: 'Neural Rendering', category: 'research', trl: 5, angle: 210, progress: { research: 65, funding: 60, timeline: 50, consensus: 60 } },
+                { id: 'protein-folding', name: 'AI Protein Folding', category: 'industry', trl: 7, angle: 220, progress: { research: 85, funding: 80, timeline: 75, consensus: 80 } },
+                { id: 'climate-ai', name: 'Climate AI Models', category: 'research', trl: 5, angle: 230, progress: { research: 60, funding: 70, timeline: 50, consensus: 60 } },
+                { id: 'swarm-intelligence', name: 'Swarm Intelligence', category: 'experimental', trl: 3, angle: 240, progress: { research: 35, funding: 30, timeline: 25, consensus: 30 } },
+                { id: 'ai-creativity', name: 'AI Creative Tools', category: 'industry', trl: 6, angle: 250, progress: { research: 70, funding: 85, timeline: 65, consensus: 70 } },
+                { id: 'virtual-assistants', name: 'Advanced Virtual Assistants', category: 'industry', trl: 7, angle: 260, progress: { research: 80, funding: 90, timeline: 75, consensus: 80 } },
+                { id: 'ai-chip-design', name: 'AI Chip Design', category: 'industry', trl: 6, angle: 270, progress: { research: 75, funding: 85, timeline: 70, consensus: 75 } },
+                { id: 'emotion-ai', name: 'Emotion AI', category: 'research', trl: 4, angle: 280, progress: { research: 50, funding: 55, timeline: 40, consensus: 50 } },
+                { id: 'ai-drug-discovery', name: 'AI Drug Discovery', category: 'industry', trl: 6, angle: 290, progress: { research: 75, funding: 85, timeline: 65, consensus: 70 } },
+                { id: 'ai-governance', name: 'AI Governance Systems', category: 'research', trl: 3, angle: 300, progress: { research: 30, funding: 40, timeline: 20, consensus: 25 } },
+                { id: 'meta-learning', name: 'Meta-Learning', category: 'research', trl: 4, angle: 310, progress: { research: 55, funding: 50, timeline: 40, consensus: 50 } },
+                { id: 'neural-compression', name: 'Neural Compression', category: 'research', trl: 5, angle: 320, progress: { research: 60, funding: 55, timeline: 45, consensus: 55 } },
+                { id: 'ai-reasoning', name: 'AI Reasoning Systems', category: 'research', trl: 4, angle: 330, progress: { research: 50, funding: 55, timeline: 35, consensus: 45 } },
+                { id: 'machine-consciousness', name: 'Machine Consciousness', category: 'fiction', trl: 1, angle: 340, progress: { research: 5, funding: 10, timeline: 2, consensus: 3 } },
+                { id: 'singularity', name: 'Technological Singularity', category: 'fiction', trl: 1, angle: 350, progress: { research: 3, funding: 5, timeline: 1, consensus: 2 } },
+                { id: 'swarm-intelligence', name: 'Swarm Intelligence', category: 'experimental', trl: 3, angle: 0, progress: { research: 35, funding: 30, timeline: 25, consensus: 30 } },
+                { id: 'nlp-production', name: 'Production NLP Systems', category: 'industry', trl: 7, angle: 15, progress: { research: 90, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'fraud-detection', name: 'AI Fraud Detection', category: 'industry', trl: 7, angle: 30, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'search-engines', name: 'AI-Powered Search', category: 'industry', trl: 8, angle: 45, progress: { research: 95, funding: 98, timeline: 92, consensus: 95 } },
+                { id: 'translation', name: 'Neural Translation', category: 'industry', trl: 8, angle: 60, progress: { research: 92, funding: 95, timeline: 90, consensus: 93 } },
+                { id: 'spam-detection', name: 'Spam Detection', category: 'industry', trl: 9, angle: 75, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+                { id: 'robotics-ai', name: 'Advanced Robotics', category: 'industry', trl: 5, angle: 90, progress: { research: 70, funding: 80, timeline: 60, consensus: 70 } }
+            ]
+        };
+
+        // Visualization state
+        let currentYear = 2025;
+        let currentFilter = 'all';
+        let selectedTech = null;
+
+        // D3 setup
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const maxRadius = Math.min(width, height) * 0.4;
+
+        const svg = d3.select('#radarSvg')
+            .attr('width', width)
+            .attr('height', height);
+
+        // Color schemes - Updated for clean design
+        const categoryColors = {
+            research: 'var(--color-electric-blue)',
+            industry: 'var(--color-gray-800)',
+            fiction: 'var(--color-gray-600)',
+            experimental: 'var(--color-electric-blue-dark)'
+        };
+
+        const trlColors = d3.scaleLinear()
+            .domain([1, 5, 9])
+            .range(['#a3a3a3', '#525252', '#4040ff']);
+
+        // Zoom functionality
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        let zoomTransform = d3.zoomIdentity;
+
+        // Comprehensive technology descriptions and references
+        const techDescriptions = {
+            'agi': {
+                description: 'Artificial General Intelligence represents the hypothetical ability of an AI agent to understand or learn any intellectual task that a human being can. Unlike narrow AI systems that excel at specific tasks, AGI would possess general cognitive abilities comparable to humans across diverse domains. Current research focuses on foundation models, emergent behaviors, and multi-task learning, but true AGI remains a distant goal with significant theoretical and practical challenges including the hard problem of consciousness, common sense reasoning, and transfer learning across vastly different domains.',
+                references: [
+                    'Goertzel, B. (2014). Artificial General Intelligence: Concept, State of the Art, and Future Prospects. Journal of Artificial General Intelligence.',
+                    'Russell, S. (2019). Human Compatible: Artificial Intelligence and the Problem of Control. Viking.',
+                    'Marcus, G. (2018). Deep Learning: A Critical Appraisal. arXiv:1801.00631.'
+                ]
+            },
+            'llm': {
+                description: 'Large Language Models are neural networks trained on vast amounts of text data to predict the next word in a sequence. These models, exemplified by GPT-4, Claude, and PaLM, have demonstrated remarkable emergent abilities including few-shot learning, reasoning, and code generation. They represent a paradigm shift in natural language processing, moving from task-specific models to general-purpose foundation models that can be adapted for numerous applications. Current challenges include hallucination, bias, computational costs, and alignment with human values.',
+                references: [
+                    'Brown, T. et al. (2020). Language Models are Few-Shot Learners. Advances in Neural Information Processing Systems.',
+                    'Wei, J. et al. (2022). Emergent Abilities of Large Language Models. Transactions on Machine Learning Research.',
+                    'Ouyang, L. et al. (2022). Training language models to follow instructions with human feedback. arXiv:2203.02155.'
+                ]
+            },
+            'foundation-models': {
+                description: 'Foundation models are large-scale models trained on broad data that can be adapted to a wide range of downstream tasks. Unlike traditional machine learning approaches that train models for specific tasks, foundation models provide a general-purpose base that can be fine-tuned or prompted for various applications. This paradigm has revolutionized AI development by reducing the need for task-specific data collection and model training. Examples include GPT for language, CLIP for vision-language understanding, and emerging multimodal models.',
+                references: [
+                    'Bommasani, R. et al. (2021). On the Opportunities and Risks of Foundation Models. arXiv:2108.07258.',
+                    'Radford, A. et al. (2021). Learning Transferable Visual Models From Natural Language Supervision. ICML.',
+                    'Chowdhery, A. et al. (2022). PaLM: Scaling Language Modeling with Pathways. arXiv:2204.02311.'
+                ]
+            },
+            'quantum-ml': {
+                description: 'Quantum Machine Learning explores the intersection of quantum computing and machine learning, investigating how quantum mechanical phenomena like superposition and entanglement might accelerate certain computational tasks. While still largely theoretical, QML research includes quantum neural networks, variational quantum circuits, and quantum advantage in optimization problems. Current limitations include noise in quantum hardware, limited qubit counts, and unclear theoretical advantages for most practical machine learning tasks.',
+                references: [
+                    'Biamonte, J. et al. (2017). Quantum machine learning. Nature 549, 195–202.',
+                    'Cerezo, M. et al. (2021). Variational quantum algorithms. Nature Reviews Physics 3, 625–644.',
+                    'Huang, H. et al. (2021). Power of data in quantum machine learning. Nature Communications 12, 2631.'
+                ]
+            },
+            'brain-computer-interface': {
+                description: 'Brain-Computer Interfaces enable direct communication between the brain and external devices, bypassing traditional neuromuscular pathways. Current applications include helping paralyzed patients control computers or prosthetic devices. Advanced research explores bidirectional interfaces that could enhance cognitive abilities or treat neurological conditions. Challenges include signal stability, biocompatibility, surgical risks, and ethical considerations around cognitive enhancement and privacy.',
+                references: [
+                    'Lebedev, M. A. & Nicolelis, M. A. L. (2017). Brain-machine interfaces: From basic science to neuroprosthetics and neurorehabilitation. Physiological Reviews 97, 767–837.',
+                    'Musk, E. et al. (2019). An integrated brain-machine interface platform with thousands of channels. Journal of Medical Internet Research 21, e16194.',
+                    'Yudell, M. et al. (2020). Neural dust: An ultrasonic, low power solution for chronic brain-machine interfaces. arXiv:2008.09913.'
+                ]
+            },
+            'autonomous-vehicles-l4': {
+                description: 'Level 4 autonomous vehicles can perform all driving functions under specific conditions without human intervention, though a human driver may still be present. Unlike Level 5 (full automation), L4 systems operate within defined operational design domains such as specific geographic areas, weather conditions, or road types. Current deployments include robotaxis in limited urban areas and highway automation. Key challenges include edge case handling, sensor reliability, regulatory approval, and public acceptance.',
+                references: [
+                    'SAE International. (2021). Taxonomy and Definitions for Terms Related to Driving Automation Systems. SAE J3016.',
+                    'Thorn, E. et al. (2018). A framework for automated driving system testable cases and scenarios. NHTSA Report DOT HS 812 623.',
+                    'Kalra, N. & Paddock, S. M. (2016). Driving to safety: How many miles of driving would it take to demonstrate autonomous vehicle reliability? Transportation Research Part A 94, 182–193.'
+                ]
+            },
+            'medical-ai': {
+                description: 'Medical AI encompasses artificial intelligence applications in healthcare, including diagnostic imaging, drug discovery, clinical decision support, and personalized treatment recommendations. AI systems have achieved superhuman performance in specific tasks like diabetic retinopathy detection and protein structure prediction. However, deployment requires extensive validation, regulatory approval, and integration with clinical workflows. Critical challenges include data privacy, algorithmic bias, interpretability, and maintaining physician-AI collaboration.',
+                references: [
+                    'Topol, E. J. (2019). High-performance medicine: the convergence of human and artificial intelligence. Nature Medicine 25, 44–56.',
+                    'Liu, X. et al. (2019). A comparison of deep learning performance against health-care professionals in detecting diseases from medical imaging. The Lancet Digital Health 1, e271–e297.',
+                    'Rajkomar, A. et al. (2019). Machine learning in medicine. New England Journal of Medicine 380, 1347–1358.'
+                ]
+            },
+            'neuromorphic-computing': {
+                description: 'Neuromorphic computing mimics the neural structure and processing methods of biological brains using specialized hardware architectures. These systems process information using spikes rather than continuous signals, potentially offering ultra-low power consumption and real-time learning capabilities. Applications include edge AI, robotics, and sensory processing. Current research focuses on memristive devices, spiking neural networks, and event-driven computation, though widespread commercial deployment remains limited.',
+                references: [
+                    'Schuman, C. D. et al. (2017). A survey of neuromorphic computing and neural networks in hardware. arXiv:1705.06963.',
+                    'Roy, K. et al. (2019). Towards spike-based machine intelligence with neuromorphic computing. Nature 575, 607–617.',
+                    'Indiveri, G. & Liu, S. C. (2015). Memory and information processing in neuromorphic systems. Proceedings of the IEEE 103, 1379–1397.'
+                ]
+            },
+            'multimodal-llm': {
+                description: 'Multimodal Large Language Models extend traditional text-only LLMs by incorporating visual, audio, and other sensory modalities. Examples include GPT-4V (Vision), DALL-E 3, and Claude 3 which can understand and generate content across text and images. These models represent a significant advancement toward more human-like AI understanding. For instance, GPT-4V can analyze medical images, interpret charts and graphs, solve visual puzzles, and generate detailed descriptions of photographs. Commercial applications include automated content moderation, medical imaging assistance, educational tutoring with visual materials, and accessibility tools for visually impaired users. Current challenges include hallucination in visual descriptions, high computational costs, and ensuring consistent performance across different modalities.',
+                references: [
+                    'OpenAI. (2023). GPT-4V(ision) System Card. Technical Report.',
+                    'Alayrac, J. B. et al. (2022). Flamingo: a Visual Language Model for Few-Shot Learning. NeurIPS.',
+                    'Li, J. et al. (2023). BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders. ICML.'
+                ]
+            },
+            'ai-agents': {
+                description: 'AI Agents are autonomous systems that can perceive their environment, make decisions, and take actions to achieve specific goals. Unlike static models, agents can interact with external tools, APIs, and databases to complete complex tasks. Examples include AutoGPT, which can break down high-level goals into subtasks, LangChain agents that use multiple tools for research and analysis, and commercial applications like customer service bots that can access databases and initiate workflows. Key capabilities include task planning, tool usage, memory management, and error recovery. Current implementations are being used for automated research, code debugging, customer support, and content creation pipelines. Challenges include reliability, cost management, safety considerations, and ensuring agents remain aligned with user intentions while operating autonomously.',
+                references: [
+                    'Wang, L. et al. (2023). A Survey on Large Language Model based Autonomous Agents. arXiv:2308.11432.',
+                    'Schick, T. et al. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. arXiv:2302.04761.',
+                    'Yao, S. et al. (2023). ReAct: Synergizing Reasoning and Acting in Language Models. ICLR.'
+                ]
+            },
+            'diffusion-models': {
+                description: 'Diffusion Models are generative AI systems that create high-quality images, audio, and other content by learning to reverse a noise corruption process. They work by gradually adding noise to training data, then learning to reverse this process to generate new samples. DALL-E 2, Midjourney, and Stable Diffusion are prominent examples that have revolutionized creative industries. These models excel at text-to-image generation, image editing, style transfer, and super-resolution. Commercial applications span advertising, gaming, film production, architectural visualization, and personal creative tools. For example, Adobe Firefly integrates diffusion models into Creative Suite, while companies like Runway use them for video generation. Recent advances include ControlNet for precise image control, DreamBooth for personalization, and emerging video diffusion models. Challenges include computational requirements, copyright concerns, and potential misuse for deepfakes.',
+                references: [
+                    'Ho, J. et al. (2020). Denoising Diffusion Probabilistic Models. NeurIPS.',
+                    'Rombach, R. et al. (2022). High-Resolution Image Synthesis with Latent Diffusion Models. CVPR.',
+                    'Ramesh, A. et al. (2022). Hierarchical Text-Conditional Image Generation with CLIP Latents. arXiv:2204.06125.'
+                ]
+            },
+            'code-generation': {
+                description: 'AI Code Generation involves systems that can automatically write, complete, and debug code across multiple programming languages. GitHub Copilot, based on OpenAI Codex, has been adopted by millions of developers, while tools like Tabnine, Replit Ghostwriter, and Amazon CodeWhisperer provide similar capabilities. These systems can generate entire functions from natural language descriptions, autocomplete code in real-time, translate between programming languages, and even debug existing code. Examples include writing API integrations, creating test cases, generating boilerplate code, and converting legacy code to modern frameworks. Productivity studies show 30-50% faster development times for routine tasks. Enterprise applications include automated code review, legacy system modernization, and rapid prototyping. Current limitations include potential security vulnerabilities in generated code, copyright concerns over training data, and the need for human oversight to ensure code quality and correctness.',
+                references: [
+                    'Chen, M. et al. (2021). Evaluating Large Language Models Trained on Code. arXiv:2107.03374.',
+                    'Nijkamp, E. et al. (2022). CodeGen: An Open Large Language Model for Code. arXiv:2203.13474.',
+                    'Li, Y. et al. (2022). Competition-level code generation with AlphaCode. Science 378, 1092-1097.'
+                ]
+            },
+            'edge-ai': {
+                description: 'Edge AI brings artificial intelligence processing directly to local devices rather than relying on cloud servers, enabling real-time decision making with reduced latency and improved privacy. Examples include smartphone cameras with real-time object detection, smart home devices with voice processing, autonomous vehicle sensors, and industrial IoT systems. Apple\'s Neural Engine, Google\'s Tensor Processing Units, and specialized chips from companies like Qualcomm and NVIDIA enable AI inference on mobile and embedded devices. Applications span facial recognition in cameras, predictive maintenance in manufacturing, real-time language translation, and autonomous robot navigation. Benefits include reduced bandwidth usage, improved privacy (data stays local), lower latency, and operation in environments with poor connectivity. Challenges include limited computational power, memory constraints, power consumption optimization, and the complexity of deploying large models on resource-constrained devices.',
+                references: [
+                    'Li, E. et al. (2019). Edge AI: On-Demand Accelerating Deep Neural Network Inference via Edge Computing. IEEE Transactions on Wireless Communications.',
+                    'Zhou, Z. et al. (2019). Edge Intelligence: Paving the Last Mile of Artificial Intelligence with Edge Computing. Proceedings of the IEEE.',
+                    'Wang, X. et al. (2020). Convergence of Edge Computing and Deep Learning: A Comprehensive Survey. IEEE Communications Surveys & Tutorials.'
+                ]
+            },
+            'ai-drug-discovery': {
+                description: 'AI Drug Discovery uses machine learning to accelerate pharmaceutical research and development, potentially reducing the typical 10-15 year timeline and billion-dollar costs. AlphaFold by DeepMind revolutionized protein structure prediction, while companies like Atomwise, Recursion Pharmaceuticals, and Insilico Medicine apply AI to molecule design and drug repurposing. AI applications include target identification, lead compound optimization, toxicity prediction, and clinical trial optimization. Notable successes include COVID-19 drug repurposing efforts, Roche\'s partnership with Genentech for cancer drugs, and multiple AI-designed compounds entering clinical trials. For example, Exscientia\'s DSP-1181 became the first AI-designed drug to enter human clinical trials. The technology analyzes vast molecular databases, predicts protein-drug interactions, and optimizes compound properties for efficacy and safety. Current challenges include data quality and availability, regulatory acceptance of AI-designed compounds, and the need for extensive validation in biological systems.',
+                references: [
+                    'Jumper, J. et al. (2021). Highly accurate protein structure prediction with AlphaFold. Nature 596, 583-589.',
+                    'Mak, K. K. & Pichika, M. R. (2019). Artificial intelligence in drug development: present status and future prospects. Drug Discovery Today 24, 773-780.',
+                    'Paul, D. et al. (2021). Artificial intelligence in drug discovery and development. Drug Discovery Today 26, 80-93.'
+                ]
+            },
+            'protein-folding': {
+                description: 'AI Protein Folding prediction represents one of the most significant breakthroughs in computational biology, solving a 50-year-old grand challenge. DeepMind\'s AlphaFold achieved remarkable accuracy in predicting 3D protein structures from amino acid sequences, with implications for drug discovery, disease understanding, and synthetic biology. The AlphaFold Protein Structure Database now contains over 200 million predicted structures, freely available to researchers worldwide. Applications include understanding genetic diseases caused by misfolded proteins, designing new enzymes for industrial processes, developing targeted therapies for cancer and Alzheimer\'s, and creating novel biomaterials. For example, researchers are using AlphaFold predictions to design COVID-19 treatments, understand antibiotic resistance mechanisms, and develop new vaccines. The technology combines deep learning with physics-based constraints and evolutionary information. While revolutionary, current limitations include predicting protein complexes, conformational changes, and the effects of post-translational modifications.',
+                references: [
+                    'Jumper, J. et al. (2021). Highly accurate protein structure prediction with AlphaFold. Nature 596, 583-589.',
+                    'Varadi, M. et al. (2022). AlphaFold Protein Structure Database: massively expanding the structural coverage of protein-sequence space. Nucleic Acids Research 50, D439-D444.',
+                    'Baek, M. et al. (2021). Accurate prediction of protein structures and interactions using a three-track neural network. Science 373, 871-876.'
+                ]
+            },
+            'embodied-ai': {
+                description: 'Embodied AI focuses on creating intelligent agents that learn and operate through physical interaction with their environment, going beyond text and image processing to understand the physical world. Examples include Boston Dynamics\' robots, household robots like Amazon Astro, and research platforms studying sensorimotor learning. This field combines computer vision, robotics, and AI to enable robots to navigate, manipulate objects, and understand spatial relationships. Applications include warehouse automation, eldercare assistance, search and rescue operations, and domestic help robots. Research areas include sim-to-real transfer, where robots trained in simulation adapt to real environments, multi-modal perception combining vision, touch, and proprioception, and learning from demonstration. Challenges include the reality gap between simulation and real-world physics, safety in human environments, robust perception in varying conditions, and the high cost of robotic hardware for widespread deployment. Current progress shows promise in specialized domains but general-purpose embodied AI remains an active research frontier.',
+                references: [
+                    'Duan, Y. et al. (2017). One-Shot Imitation Learning. NeurIPS.',
+                    'James, S. et al. (2022). RLBench: The Robot Learning Benchmark & Learning Environment. IEEE Robotics and Automation Letters.',
+                    'Shridhar, M. et al. (2022). CLIPort: What and Where Pathways for Robotic Manipulation. CoRL.'
+                ]
+            },
+            'swarm-intelligence': {
+                description: 'Swarm Intelligence involves creating collective AI systems that mimic the behavior of social organisms like ants, bees, or birds to solve complex problems through decentralized coordination. These systems use simple agents following local rules to achieve emergent intelligent behavior at the system level. Applications include optimization problems, robotics coordination, traffic management, and distributed computing. For example, ant colony optimization algorithms are used in logistics for route planning, while particle swarm optimization helps in neural network training. In robotics, swarm systems coordinate multiple drones for search and rescue operations or agricultural monitoring. Amazon uses swarm robotics in their fulfillment centers for coordinated package handling, while military applications include coordinated drone swarms for surveillance. Benefits include robustness through redundancy, scalability, and the ability to handle dynamic environments. Current research focuses on large-scale coordination protocols, learning algorithms for swarm behavior, and real-world deployment challenges including communication constraints and fault tolerance.',
+                references: [
+                    'Dorigo, M. & Birattari, M. (2007). Swarm intelligence. Scholarpedia 2, 1462.',
+                    'Beni, G. (2005). From swarm intelligence to swarm robotics. In Swarm Robotics. Springer.',
+                    'Bayindir, L. (2016). A review of swarm robotics tasks. Neurocomputing 172, 292-321.'
+                ]
+            },
+            'nlp-production': {
+                description: 'Production NLP Systems represent mature natural language processing technologies deployed at enterprise scale for real-world applications. These systems handle tasks like sentiment analysis, text classification, named entity recognition, and document processing in production environments. Examples include customer service chatbots processing millions of queries daily, content moderation systems filtering social media posts, automated document analysis in legal and financial sectors, and real-time translation services. Microsoft\'s Azure Cognitive Services, Google Cloud Natural Language API, and AWS Comprehend serve thousands of enterprises. Salesforce Einstein uses production NLP for automated email classification and lead scoring, while Netflix employs NLP for content recommendation and subtitle generation. Key characteristics include high availability (99.9%+ uptime), scalability (handling millions of requests per day), low latency (sub-second response times), and robust error handling. Current focus areas include multilingual support, domain adaptation, and reducing computational costs while maintaining accuracy across diverse use cases.',
+                references: [
+                    'Manning, C. D. (2015). Computational linguistics and deep learning. Computational Linguistics 41, 701-707.',
+                    'Rogers, A. et al. (2020). A primer on neural network models for natural language processing. Journal of AI Research 57, 345-420.',
+                    'Kenton, J. D. M. W. & Toutanova, L. K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. NAACL.'
+                ]
+            },
+            'fraud-detection': {
+                description: 'AI Fraud Detection systems use machine learning to identify suspicious activities and prevent financial crimes in real-time. These systems analyze patterns in transaction data, user behavior, and network relationships to detect anomalies that may indicate fraud. Applications include credit card fraud prevention, identity theft detection, money laundering detection, and insurance fraud identification. PayPal processes over 19 billion transactions annually using AI fraud detection with a false positive rate under 0.1%, while Mastercard\'s Decision Intelligence platform prevents $20 billion in fraud annually. Visa\'s Advanced Authorization uses over 500 risk attributes to score transactions in real-time. The technology combines supervised learning (using labeled fraud examples), unsupervised learning (anomaly detection), and graph analytics (relationship analysis). For example, banks use these systems to flag suspicious wire transfers within milliseconds, while insurance companies detect fraudulent claims by analyzing damage photos and historical patterns. Benefits include reduced financial losses, improved customer protection, and regulatory compliance. Challenges include adapting to evolving fraud tactics, reducing false positives, and maintaining system performance under high transaction volumes.',
+                references: [
+                    'Dal Pozzolo, A. et al. (2015). Learned lessons in credit card fraud detection from a practitioner perspective. Expert Systems with Applications 41, 4915-4928.',
+                    'Abdallah, A. et al. (2016). Fraud detection system: A survey. Journal of Network and Computer Applications 68, 90-113.',
+                    'Ngai, E. W. T. et al. (2011). The application of data mining techniques in financial fraud detection. Decision Support Systems 50, 559-569.'
+                ]
+            },
+            'search-engines': {
+                description: 'AI-Powered Search represents the evolution of information retrieval systems using advanced machine learning to understand user intent and deliver more relevant results. Modern search engines use transformer models, neural ranking, and semantic understanding to interpret queries and match them with appropriate content. Google processes over 8.5 billion searches daily using AI systems like BERT, MUM, and RankBrain to understand context, intent, and meaning beyond simple keyword matching. Microsoft\'s Bing uses GPT-4 integration for conversational search and direct answer generation. Enterprise applications include Elasticsearch\'s machine learning features for log analysis, Amazon\'s Kendra for intelligent document search, and Algolia\'s AI-powered e-commerce search. The technology incorporates natural language understanding, personalization algorithms, real-time indexing, and multimodal search capabilities. For example, Pinterest\'s visual search allows users to find products by uploading images, while Spotify\'s search understands natural language queries like "happy workout music." Recent advances include conversational search interfaces, voice search optimization, and integration with large language models for synthesized answers. Challenges include handling information freshness, combating misinformation, maintaining search quality across diverse languages and domains, and balancing relevance with user privacy.',
+                references: [
+                    'Mitra, B. & Craswell, N. (2018). An introduction to neural information retrieval. Foundations and Trends in Information Retrieval 13, 1-126.',
+                    'Guo, J. et al. (2016). Deep relevance ranking using enhanced document-query interactions. EMNLP.',
+                    'Nalisnick, E. et al. (2016). Improving document ranking with dual word embeddings. WWW.'
+                ]
+            },
+            'translation': {
+                description: 'Neural Translation systems use deep learning to automatically translate text between languages, achieving near-human quality for many language pairs. These systems replaced statistical machine translation by using encoder-decoder architectures, attention mechanisms, and transformer models to better capture linguistic nuances and context. Google Translate serves over 500 million users daily, supporting 133 languages with over 100 billion words translated daily. DeepL achieves superior quality for European languages, while Microsoft Translator powers real-time conversation translation in Skype and Teams. The technology enables real-time conversation translation, document translation, and website localization. Applications include international e-commerce (Amazon translates product descriptions automatically), customer support (Zendesk provides multilingual chat support), and accessibility services (YouTube auto-generates translated captions). Facebook translates over 6 billion posts daily across 160 languages. Recent advances include zero-shot translation (translating between language pairs not seen during training), multilingual models like Google\'s Universal Sentence Encoder supporting 16 billion language pairs, and integration with speech recognition for real-time spoken language translation. Challenges include handling low-resource languages, maintaining cultural context, dealing with idiomatic expressions, and ensuring translation accuracy for specialized domains like medical or legal texts.',
+                references: [
+                    'Bahdanau, D. et al. (2015). Neural machine translation by jointly learning to align and translate. ICLR.',
+                    'Vaswani, A. et al. (2017). Attention is all you need. NeurIPS.',
+                    'Johnson, M. et al. (2017). Google\'s multilingual neural machine translation system. Transactions of the ACL 5, 339-351.'
+                ]
+            },
+            'spam-detection': {
+                description: 'Spam Detection represents one of the most mature and successful applications of machine learning, protecting billions of email users from unwanted and malicious messages. These systems analyze email content, sender reputation, network patterns, and user behavior to classify messages as spam or legitimate. Gmail\'s spam filter achieves over 99.9% accuracy while maintaining false positive rates below 0.05%, processing over 300 billion emails annually. Microsoft Outlook blocks 5 billion spam emails daily, while Yahoo Mail filters 15 billion emails per day. The technology has evolved from rule-based systems to sophisticated machine learning models using features like text analysis, image recognition (to detect spam images), and behavioral patterns. Applications extend beyond email to include SMS spam prevention (carriers block billions of spam texts annually), comment moderation on social platforms (YouTube removes millions of spam comments daily), and social media content filtering. Advanced techniques include analyzing email headers, checking against reputation databases, and using ensemble methods combining multiple algorithms. For example, SpamAssassin uses over 1,000 tests per email, while commercial services like Barracuda and Proofpoint protect enterprise environments. Challenges include adapting to evolving spam tactics (like image-based spam and AI-generated content), handling multilingual content, processing attachments and embedded content, and maintaining user privacy while analyzing sensitive communications.',
+                references: [
+                    'Sahami, M. et al. (1998). A Bayesian approach to filtering junk e-mail. AAAI Workshop on Learning for Text Categorization.',
+                    'Blanzieri, E. & Bryl, A. (2008). A survey of learning-based techniques of email spam filtering. Artificial Intelligence Review 29, 63-92.',
+                    'Khonji, M. et al. (2013). Phishing detection: a literature survey. IEEE Communications Surveys & Tutorials 15, 2091-2121.'
+                ]
+            },
+            'robotics-ai': {
+                description: 'Advanced Robotics powered by AI represents the integration of artificial intelligence with robotic systems to create autonomous machines capable of complex tasks in dynamic environments. These systems combine computer vision, natural language processing, motion planning, and machine learning to interact intelligently with their surroundings. Examples include Boston Dynamics\' Atlas and Spot robots for inspection and rescue operations, Amazon\'s fulfillment center robots handling millions of packages daily, and Tesla\'s manufacturing robots with AI-powered quality control. Surgical robots like da Vinci use AI for precision enhancement, while autonomous mobile robots (AMRs) navigate warehouses and hospitals. Key applications span manufacturing automation (BMW uses AI robots for quality inspection), logistics (FedEx employs autonomous sorting robots), healthcare (robots assist in surgery and patient care), and service industries (hotels use robots for cleaning and delivery). The technology incorporates real-time perception, adaptive control, human-robot collaboration, and learning from demonstration. For example, collaborative robots (cobots) work alongside humans in assembly lines, adjusting their behavior based on human actions. Agricultural robots use AI for crop monitoring and harvesting, while cleaning robots like Roomba adapt to home layouts. Current challenges include ensuring safety in human environments, achieving reliable manipulation of diverse objects, handling unstructured environments, and reducing costs for widespread deployment.',
+                references: [
+                    'Siciliano, B. & Khatib, O. (2016). Springer Handbook of Robotics. Springer International Publishing.',
+                    'Billard, A. et al. (2008). Robot programming by demonstration. In Springer handbook of robotics.',
+                    'Kober, J. et al. (2013). Reinforcement learning in robotics: A survey. The International Journal of Robotics Research 32, 1238-1274.'
+                ]
+            }
+        };
+
+        // Initialize visualization
+        function initVisualization() {
+            setupZoom();
+            setTimeout(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderRadar();
+            }, 1500);
+        }
+
+        // Setup zoom functionality
+        function setupZoom() {
+            const zoom = d3.zoom()
+                .scaleExtent([minZoom, maxZoom])
+                .on('zoom', handleZoom);
+
+            svg.call(zoom);
+
+            // Zoom control buttons
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                svg.transition().duration(300).call(
+                    zoom.scaleBy, 1.5
+                );
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                svg.transition().duration(300).call(
+                    zoom.scaleBy, 1 / 1.5
+                );
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                svg.transition().duration(500).call(
+                    zoom.transform,
+                    d3.zoomIdentity
+                );
+            });
+        }
+
+        function handleZoom(event) {
+            zoomTransform = event.transform;
+            svg.select('.radar-content').attr('transform', zoomTransform);
+        }
+
+        function renderRadar() {
+            // Clear previous content
+            svg.selectAll('*').remove();
+
+            // Create main group for zoomable content
+            const radarContent = svg.append('g')
+                .attr('class', 'radar-content');
+
+            // Create defs for gradients and effects
+            const defs = svg.append('defs');
+
+            // Subtle shadow filter
+            const shadow = defs.append('filter')
+                .attr('id', 'shadow')
+                .attr('x', '-50%')
+                .attr('y', '-50%')
+                .attr('width', '200%')
+                .attr('height', '200%');
+
+            shadow.append('feDropShadow')
+                .attr('dx', 2)
+                .attr('dy', 2)
+                .attr('stdDeviation', 3)
+                .attr('flood-color', '#000')
+                .attr('flood-opacity', 0.2);
+
+            // Background circle
+            radarContent.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', maxRadius)
+                .attr('fill', '#f8fafc')
+                .attr('stroke', '#e2e8f0')
+                .attr('stroke-width', 2);
+
+            // Draw TRL rings
+            for (let i = 1; i <= 9; i++) {
+                const radius = (maxRadius / 9) * i;
+
+                radarContent.append('circle')
+                    .attr('cx', centerX)
+                    .attr('cy', centerY)
+                    .attr('r', radius)
+                    .attr('fill', 'none')
+                    .attr('stroke', '#cbd5e1')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.6);
+
+                // TRL labels
+                if (i % 3 === 0) {
+                    radarContent.append('text')
+                        .attr('x', centerX + radius + 10)
+                        .attr('y', centerY + 5)
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '12px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(`TRL ${i}`);
+                }
+            }
+
+            // Draw radial grid lines
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const x2 = centerX + Math.cos(angle) * maxRadius;
+                const y2 = centerY + Math.sin(angle) * maxRadius;
+
+                radarContent.append('line')
+                    .attr('x1', centerX)
+                    .attr('y1', centerY)
+                    .attr('x2', x2)
+                    .attr('y2', y2)
+                    .attr('stroke', '#e2e8f0')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.5);
+            }
+
+            // Get current data
+            const data = technologyData[currentYear] || technologyData[2025];
+            const filteredData = currentFilter === 'all' ?
+                data : data.filter(d => d.category === currentFilter);
+
+            // Draw technology nodes
+            const techGroups = radarContent.selectAll('.tech-node')
+                .data(filteredData)
+                .enter()
+                .append('g')
+                .attr('class', 'tech-node')
+                .style('cursor', 'pointer')
+                .on('click', (event, d) => showTechInfo(d))
+                .on('mouseover', function(event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 12)
+                        .attr('filter', 'url(#shadow)');
+                })
+                .on('mouseout', function(event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 8)
+                        .attr('filter', 'none');
+                });
+
+            techGroups.each(function(d) {
+                const group = d3.select(this);
+                const radius = (maxRadius / 9) * d.trl;
+                const angleRad = (d.angle - 90) * Math.PI / 180;
+                const x = centerX + Math.cos(angleRad) * radius;
+                const y = centerY + Math.sin(angleRad) * radius;
+
+                // Node circle with better contrast
+                const nodeColor = getContrastColor(d.category, d.trl);
+                group.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 8)
+                    .attr('fill', nodeColor.fill)
+                    .attr('stroke', nodeColor.stroke)
+                    .attr('stroke-width', 2);
+
+                // Node label (shown only for important nodes to avoid clutter)
+                if (d.trl >= 6 || d.category === 'fiction') {
+                    const labelRadius = radius + 25;
+                    const labelX = centerX + Math.cos(angleRad) * labelRadius;
+                    const labelY = centerY + Math.sin(angleRad) * labelRadius;
+
+                    group.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '10px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(d.name.length > 15 ? d.name.substring(0, 15) + '...' : d.name);
+                }
+            });
+
+            // Draw connections between related technologies
+            drawConnections(filteredData);
+
+            // Animate entrance
+            svg.selectAll('.tech-node')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 50)
+                .style('opacity', 1);
+        }
+
+        // Helper function to get high contrast colors
+        function getContrastColor(category, trl) {
+            const colors = {
+                research: { fill: '#4040ff', stroke: '#1e1e8f' },
+                industry: { fill: '#1e293b', stroke: '#0f172a' },
+                fiction: { fill: '#64748b', stroke: '#475569' },
+                experimental: { fill: '#3030dd', stroke: '#1e1e8f' }
+            };
+            return colors[category] || colors.research;
+        }
+
+        function drawConnections(data) {
+            // Define relationships between technologies
+            const connections = [
+                ['foundation-models', 'llm'],
+                ['llm', 'multimodal-llm'],
+                ['llm', 'ai-agents'],
+                ['ai-agents', 'code-generation'],
+                ['diffusion-models', 'ai-creativity'],
+                ['neuromorphic-computing', 'edge-ai'],
+                ['brain-computer-interface', 'medical-ai'],
+                ['quantum-ml', 'ai-reasoning'],
+                ['agi', 'machine-consciousness'],
+                ['continual-learning', 'meta-learning'],
+                ['ai-safety', 'ai-governance']
+            ];
+
+            const connectionGroup = svg.select('.radar-content').append('g').attr('class', 'connections');
+
+            connections.forEach(([source, target]) => {
+                const sourceNode = data.find(d => d.id === source);
+                const targetNode = data.find(d => d.id === target);
+
+                if (sourceNode && targetNode) {
+                    const sourceRadius = (maxRadius / 9) * sourceNode.trl;
+                    const targetRadius = (maxRadius / 9) * targetNode.trl;
+                    const sourceAngle = (sourceNode.angle - 90) * Math.PI / 180;
+                    const targetAngle = (targetNode.angle - 90) * Math.PI / 180;
+
+                    const sourceX = centerX + Math.cos(sourceAngle) * sourceRadius;
+                    const sourceY = centerY + Math.sin(sourceAngle) * sourceRadius;
+                    const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+                    const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+                    // Create curved path
+                    const midX = (sourceX + targetX) / 2;
+                    const midY = (sourceY + targetY) / 2;
+                    const controlX = midX + (centerX - midX) * 0.3;
+                    const controlY = midY + (centerY - midY) * 0.3;
+
+                    const path = `M ${sourceX},${sourceY} Q ${controlX},${controlY} ${targetX},${targetY}`;
+
+                    connectionGroup.append('path')
+                        .attr('d', path)
+                        .attr('stroke', '#3b82f6')
+                        .attr('stroke-width', 1.5)
+                        .attr('fill', 'none')
+                        .attr('opacity', 0.6)
+                        .attr('stroke-dasharray', '5,5');
+                }
+            });
+        }
+
+        function showTechInfo(tech) {
+            selectedTech = tech;
+            const infoPanel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
+
+            const techInfo = techDescriptions[tech.id] || {};
+            const description = techInfo.description || getTechDescription(tech);
+            const references = techInfo.references || [];
+
+            content.innerHTML = `
+                <h2 class="info-title">${tech.name}</h2>
+                <div class="info-meta">
+                    <span class="meta-badge meta-${tech.category}">${tech.category.toUpperCase()}</span>
+                    <span class="meta-badge" style="background: ${trlColors(tech.trl)}; color: white;">TRL ${tech.trl}</span>
+                    <span class="meta-badge" style="background: var(--color-gray-700); color: white;">Year: ${currentYear}</span>
+                </div>
+                <div class="info-description">
+                    ${description}
+                </div>
+                <div class="progress-grid">
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <div class="progress-label">${key}</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%;"></div>
+                            </div>
+                            <div class="progress-value">${value}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${references.length > 0 ? `
+                    <div class="references-section">
+                        <div class="references-title">Key References</div>
+                        ${references.map(ref => `
+                            <div class="reference-item">• ${ref}</div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            `;
+
+            infoPanel.classList.add('active');
+        }
+
+        function getTechDescription(tech) {
+            const descriptions = {
+                'agi': 'Artificial General Intelligence represents the long-term goal of creating AI systems with human-level cognitive abilities across all domains.',
+                'llm': 'Large Language Models like GPT-4 have revolutionized natural language processing and are driving the current AI transformation.',
+                'foundation-models': 'Foundation models are large-scale pre-trained models that can be adapted for multiple downstream tasks.',
+                'quantum-ml': 'Quantum Machine Learning explores how quantum computing could accelerate certain AI algorithms.',
+                'brain-computer-interface': 'Direct neural interfaces enabling communication between the brain and external devices.',
+                'autonomous-vehicles-l4': 'Level 4 autonomous vehicles can operate without human intervention in specific conditions.',
+                'neuromorphic-computing': 'Brain-inspired computing architectures designed for efficient AI processing.',
+                'medical-ai': 'AI systems that assist in medical diagnosis and treatment, often matching expert performance.',
+                'machine-consciousness': 'The theoretical possibility of creating AI systems with subjective experience and self-awareness.'
+            };
+
+            return descriptions[tech.id] || `${tech.name} is an important technology in the AI landscape with current TRL level of ${tech.trl}.`;
+        }
+
+        function closeInfoPanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+            selectedTech = null;
+        }
+
+        function toggleTRLInfo() {
+            const trlInfoPanel = document.getElementById('trlInfoPanel');
+            trlInfoPanel.classList.toggle('active');
+        }
+
+        // Event handlers
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderRadar();
+            });
+        });
+
+        document.querySelectorAll('[data-time]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-time]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentYear = parseInt(this.dataset.time);
+                renderRadar();
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            location.reload(); // Simple approach for responsive behavior
+        });
+
+        // Initialize
+        initVisualization();
+    </script>
+</body>
+</html>

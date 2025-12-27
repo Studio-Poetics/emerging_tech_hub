@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning - Emerging Tech Hub</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+
+    /* Landing page specific */
+    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
+    .section-nav-list { gap: var(--space-3) !important; }
+    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
+    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
+    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
+    .section-description { font-size: var(--text-base) !important; }
+    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Fundamentals</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">AI Fundamentals</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="ai-basics.html" class="experimental-nav-link">AI Basics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="machine-learning.html" class="experimental-nav-link active">Machine Learning</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="neural-networks.html" class="experimental-nav-link">Neural Networks</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="data-and-training.html" class="experimental-nav-link">Data & Training</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="ai-ethics.html" class="experimental-nav-link">AI Ethics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="future-of-ai.html" class="experimental-nav-link">Future of AI</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="ai-landing.html">← Back to AI Hub</a><br>
+                        <a href="ai-basics.html">← Previous: AI Basics</a><br>
+                        <a href="neural-networks.html">Next: Neural Networks →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Machine Learning</h1>
+                <p class="fundamentals-subtitle">How computers learn from experience to make predictions and decisions without being explicitly programmed</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>What is Machine Learning?</h2>
+
+                    <p>Imagine teaching a child to recognize dogs. Instead of listing every possible feature ("dogs have four legs, fur, tails..."), you show them hundreds of photos labeled "dog" or "not dog." Eventually, they learn to identify dogs in new photos they've never seen before.</p>
+
+                    <p>Machine Learning works similarly. It's a way of teaching computers to recognize patterns and make predictions by showing them lots of examples, rather than programming every possible rule manually.</p>
+
+                    <div class="highlight-box">
+                        <h3>Simple Definition</h3>
+                        <p>Machine Learning is like giving a computer the ability to learn from experience. The more examples it sees, the better it gets at making predictions or decisions about new situations.</p>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>📚 Real-Life Analogy</h4>
+                        <p><strong>Like Learning to Drive:</strong> You don't memorize every possible traffic situation. Instead, you practice in many different conditions until you can handle new roads confidently. Machine learning works the same way—computers "practice" on data until they can handle new situations.</p>
+                    </div>
+                </section>
+
+                <!-- Why Machine Learning Matters -->
+                <section class="content-section">
+                    <h2>Why Machine Learning Changed Everything</h2>
+
+                    <p>Traditional computer programs follow strict rules: "If this happens, do that." But the real world is messy and unpredictable. How do you write rules for recognizing a face in any lighting, or understanding speech with any accent?</p>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-item">
+                            <h4>Traditional Programming</h4>
+                            <p>✏️ Programmer writes detailed rules</p>
+                            <p>⚙️ Computer follows rules exactly</p>
+                            <p>📋 Works only for predicted situations</p>
+                            <p>🔧 Requires manual updates for new cases</p>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>Machine Learning</h4>
+                            <p>📊 Computer learns from examples</p>
+                            <p>🧠 Finds patterns humans might miss</p>
+                            <p>🔄 Adapts to new situations</p>
+                            <p>📈 Improves automatically with more data</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- The Three Types of Learning -->
+                <section class="content-section">
+                    <h2>The Three Ways Machines Learn</h2>
+
+                    <div class="learning-types">
+                        <div class="learning-type-card">
+                            <h3>1. Supervised Learning</h3>
+                            <p class="learning-subtitle">Learning with a Teacher</p>
+
+                            <div class="analogy-box">
+                                <p><strong>Like studying for an exam:</strong> You have textbooks with questions AND answers. You study these examples until you can answer new questions on the test.</p>
+                            </div>
+
+                            <p><strong>How it works:</strong> Show the computer thousands of examples with the "correct answer" already provided. It learns to predict the right answer for new examples.</p>
+
+                            <div class="examples-list">
+                                <h4>Real Examples:</h4>
+                                <ul>
+                                    <li><strong>Email Spam Detection:</strong> Train on emails labeled "spam" or "not spam"</li>
+                                    <li><strong>Medical Diagnosis:</strong> Learn from X-rays labeled with known conditions</li>
+                                    <li><strong>House Price Prediction:</strong> Study sold houses with their final prices</li>
+                                    <li><strong>Movie Recommendations:</strong> Learn from ratings people gave to movies</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="learning-type-card">
+                            <h3>2. Unsupervised Learning</h3>
+                            <p class="learning-subtitle">Learning without a Teacher</p>
+
+                            <div class="analogy-box">
+                                <p><strong>Like exploring a new city:</strong> No one tells you where the shopping district, restaurants, or parks are. You explore and naturally start to see patterns—certain areas have similar types of businesses.</p>
+                            </div>
+
+                            <p><strong>How it works:</strong> Give the computer data without any "answers." It finds hidden patterns, groups, or structures that humans might not have noticed.</p>
+
+                            <div class="examples-list">
+                                <h4>Real Examples:</h4>
+                                <ul>
+                                    <li><strong>Customer Segmentation:</strong> Group customers by shopping behavior</li>
+                                    <li><strong>Market Research:</strong> Find hidden trends in survey responses</li>
+                                    <li><strong>Fraud Detection:</strong> Spot unusual patterns in transactions</li>
+                                    <li><strong>Gene Research:</strong> Discover relationships in DNA data</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="learning-type-card">
+                            <h3>3. Reinforcement Learning</h3>
+                            <p class="learning-subtitle">Learning through Trial and Error</p>
+
+                            <div class="analogy-box">
+                                <p><strong>Like training a pet:</strong> You don't show them exactly what to do. Instead, you give treats for good behavior and gentle corrections for mistakes. They learn through experience.</p>
+                            </div>
+
+                            <p><strong>How it works:</strong> The computer tries different actions and gets "rewards" or "penalties." Over time, it learns which actions lead to the best outcomes.</p>
+
+                            <div class="examples-list">
+                                <h4>Real Examples:</h4>
+                                <ul>
+                                    <li><strong>Game AI:</strong> AlphaGo learning to play Go by playing millions of games</li>
+                                    <li><strong>Autonomous Vehicles:</strong> Learning optimal driving through simulation</li>
+                                    <li><strong>Trading Algorithms:</strong> Learning when to buy/sell stocks</li>
+                                    <li><strong>Chatbots:</strong> Learning to give helpful responses</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Historical Journey -->
+                <section class="content-section">
+                    <h2>The Journey of Machine Learning</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1950s</div>
+                            <div class="timeline-content">
+                                <h4>The Vision</h4>
+                                <p>Arthur Samuel creates the first machine learning program—a checkers game that improved by playing against itself. He coins the term "machine learning."</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">1960s-80s</div>
+                            <div class="timeline-content">
+                                <h4>Early Experiments</h4>
+                                <p>Researchers create simple learning algorithms, but computers are too slow and data too scarce for practical applications.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">1990s</div>
+                            <div class="timeline-content">
+                                <h4>Practical Breakthrough</h4>
+                                <p>IBM's Deep Blue beats world chess champion Garry Kasparov. Machine learning starts solving real business problems like fraud detection.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2000s</div>
+                            <div class="timeline-content">
+                                <h4>The Internet Explosion</h4>
+                                <p>Suddenly, there's massive amounts of data from web searches, social media, and online shopping. Machine learning powers Google search and Amazon recommendations.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2010s</div>
+                            <div class="timeline-content">
+                                <h4>Deep Learning Revolution</h4>
+                                <p>Computers finally powerful enough for "deep learning." Breakthroughs in image recognition, speech, and language understanding change everything.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020s</div>
+                            <div class="timeline-content">
+                                <h4>AI Everywhere</h4>
+                                <p>ChatGPT, DALL-E, and other AI tools become accessible to everyone. Machine learning is now part of daily life for billions of people.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- How Businesses Use ML -->
+                <section class="content-section">
+                    <h2>How Modern Businesses Use Machine Learning</h2>
+
+                    <div class="business-applications">
+                        <div class="application-category">
+                            <h3>E-Commerce & Retail</h3>
+                            <div class="application-examples">
+                                <div class="example-item">
+                                    <h4>Personalized Recommendations</h4>
+                                    <p>"People who bought this also bought..." Amazon's recommendation engine drives 35% of their revenue.</p>
+                                </div>
+                                <div class="example-item">
+                                    <h4>Dynamic Pricing</h4>
+                                    <p>Uber adjusts prices based on demand. Airlines change ticket prices hundreds of times per day.</p>
+                                </div>
+                                <div class="example-item">
+                                    <h4>Inventory Optimization</h4>
+                                    <p>Walmart predicts which products to stock in each store based on local preferences and weather.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="application-category">
+                            <h3>Healthcare</h3>
+                            <div class="application-examples">
+                                <div class="example-item">
+                                    <h4>Medical Imaging</h4>
+                                    <p>AI can spot skin cancer in photos as accurately as dermatologists, making diagnosis faster and more accessible.</p>
+                                </div>
+                                <div class="example-item">
+                                    <h4>Drug Discovery</h4>
+                                    <p>What used to take 10+ years now takes 2-3 years. AI helps identify promising drug compounds faster.</p>
+                                </div>
+                                <div class="example-item">
+                                    <h4>Predictive Healthcare</h4>
+                                    <p>Predict which patients might develop complications, allowing preventive intervention.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="application-category">
+                            <h3>Finance</h3>
+                            <div class="application-examples">
+                                <div class="example-item">
+                                    <h4>Fraud Prevention</h4>
+                                    <p>Credit card companies catch fraudulent transactions in real-time, often before you know your card was stolen.</p>
+                                </div>
+                                <div class="example-item">
+                                    <h4>Credit Scoring</h4>
+                                    <p>Banks use hundreds of data points to assess loan risk, making lending more fair and accessible.</p>
+                                </div>
+                                <div class="example-item">
+                                    <h4>Algorithmic Trading</h4>
+                                    <p>AI makes thousands of trading decisions per second, accounting for 70%+ of stock market volume.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Common Misconceptions -->
+                <section class="content-section">
+                    <h2>What Machine Learning Can't Do (Yet)</h2>
+
+                    <div class="misconceptions">
+                        <div class="misconception-item">
+                            <h4>❌ "AI will automate away all jobs"</h4>
+                            <p>✅ <strong>Reality:</strong> ML excels at specific tasks but struggles with general reasoning, creativity, and complex problem-solving that requires human context and empathy.</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <h4>❌ "Machine learning is always accurate"</h4>
+                            <p>✅ <strong>Reality:</strong> ML systems make mistakes, especially with data they haven't seen before. They're powerful tools but need human oversight.</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <h4>❌ "More data always means better results"</h4>
+                            <p>✅ <strong>Reality:</strong> Quality matters more than quantity. Bad data leads to bad predictions, no matter how much you have.</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <h4>❌ "AI systems are neutral and unbiased"</h4>
+                            <p>✅ <strong>Reality:</strong> ML systems reflect the biases in their training data. They can perpetuate or amplify human prejudices.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interactive Quiz -->
+                <section class="content-section">
+                    <h2>Test Your Understanding</h2>
+
+                    <div class="quiz-container" id="mlQuiz">
+                        <div class="quiz-question" data-question="1">
+                            <h4>Question 1: Netflix recommends movies you might like based on your viewing history. What type of machine learning is this?</h4>
+                            <div class="quiz-options">
+                                <button class="quiz-option" data-answer="wrong">Unsupervised Learning</button>
+                                <button class="quiz-option" data-answer="correct">Supervised Learning</button>
+                                <button class="quiz-option" data-answer="wrong">Reinforcement Learning</button>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <p><strong>Correct!</strong> Netflix uses supervised learning—they train on data where they know what movies users watched and rated, then predict what new users might like.</p>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question" data-question="2">
+                            <h4>Question 2: A company wants to group their customers into different types without knowing the groups in advance. Which approach should they use?</h4>
+                            <div class="quiz-options">
+                                <button class="quiz-option" data-answer="correct">Unsupervised Learning</button>
+                                <button class="quiz-option" data-answer="wrong">Supervised Learning</button>
+                                <button class="quiz-option" data-answer="wrong">Traditional Programming</button>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <p><strong>Correct!</strong> Unsupervised learning is perfect for discovering hidden patterns or groups in data when you don't know what you're looking for in advance.</p>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question" data-question="3">
+                            <h4>Question 3: What's the main advantage of machine learning over traditional programming?</h4>
+                            <div class="quiz-options">
+                                <button class="quiz-option" data-answer="wrong">It's always more accurate</button>
+                                <button class="quiz-option" data-answer="correct">It can handle unpredictable, complex situations</button>
+                                <button class="quiz-option" data-answer="wrong">It requires less data</button>
+                            </div>
+                            <div class="quiz-explanation" style="display: none;">
+                                <p><strong>Correct!</strong> Machine learning shines in complex, unpredictable situations where writing explicit rules would be impossible or impractical.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hands-on Activities -->
+                <section class="content-section">
+                    <h2>Try It Yourself</h2>
+
+                    <div class="activities-grid">
+                        <div class="activity-card">
+                            <h4>Pattern Recognition Challenge</h4>
+                            <p><strong>Goal:</strong> Experience how machines learn to recognize patterns</p>
+                            <div class="activity-steps">
+                                <p><strong>What to do:</strong></p>
+                                <ol>
+                                    <li>Look at your email spam folder</li>
+                                    <li>Find 5 common patterns in spam emails (certain words, subjects, formatting)</li>
+                                    <li>Create your own "spam detection rules"</li>
+                                    <li>Test them on 10 new emails</li>
+                                </ol>
+                                <p><strong>Learning:</strong> You'll discover why rule-based systems are limited and why machine learning is needed for complex pattern recognition.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <h4>Recommendation System</h4>
+                            <p><strong>Goal:</strong> Understand how recommendation engines work</p>
+                            <div class="activity-steps">
+                                <p><strong>What to do:</strong></p>
+                                <ol>
+                                    <li>List 10 movies you love and 10 you hate</li>
+                                    <li>Find 3 friends with similar tastes (who liked the same movies)</li>
+                                    <li>Ask what else they enjoyed that you haven't seen</li>
+                                    <li>Watch one of their recommendations</li>
+                                </ol>
+                                <p><strong>Learning:</strong> This is exactly how Netflix works—finding users with similar preferences and making recommendations based on what similar users enjoyed.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <h4>Business Prediction Game</h4>
+                            <p><strong>Goal:</strong> Practice making data-driven predictions</p>
+                            <div class="activity-steps">
+                                <p><strong>What to do:</strong></p>
+                                <ol>
+                                    <li>Pick a local coffee shop you visit</li>
+                                    <li>Track patterns: busy times, weather impact, day of week</li>
+                                    <li>After one week, predict tomorrow's busy periods</li>
+                                    <li>Check if you were right!</li>
+                                </ol>
+                                <p><strong>Learning:</strong> You'll understand how businesses use historical data to make future predictions and optimize operations.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <h4>AI Assistant Experiment</h4>
+                            <p><strong>Goal:</strong> Explore how AI learns from interaction</p>
+                            <div class="activity-steps">
+                                <p><strong>What to do:</strong></p>
+                                <ol>
+                                    <li>Use ChatGPT or Siri for one specific task (e.g., recipe suggestions)</li>
+                                    <li>Note when it gives good vs. poor responses</li>
+                                    <li>Try rephrasing your questions to get better results</li>
+                                    <li>Document what communication styles work best</li>
+                                </ol>
+                                <p><strong>Learning:</strong> You'll discover how AI systems are trained on human feedback and why the quality of your input affects the output.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Takeaways -->
+                <section class="content-section">
+                    <h2>Key Takeaways for Business Leaders</h2>
+
+                    <div class="takeaways-grid">
+                        <div class="takeaway-item">
+                            <h4>Start with the Problem, Not the Technology</h4>
+                            <p>Don't ask "How can we use AI?" Ask "What business problems do we have that might benefit from pattern recognition or prediction?"</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>Data is Your Foundation</h4>
+                            <p>Machine learning is only as good as your data. Invest in collecting, cleaning, and organizing data before thinking about AI solutions.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>Think Narrow, Not General</h4>
+                            <p>Current AI excels at specific tasks. Look for well-defined problems with clear success metrics, not vague "make everything smarter" goals.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>Human-AI Collaboration</h4>
+                            <p>The best results come from combining AI's pattern recognition with human judgment, creativity, and domain expertise.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>Start Small and Iterate</h4>
+                            <p>Begin with pilot projects that can demonstrate value quickly. Learn from these before scaling to larger initiatives.</p>
+                        </div>
+
+                        <div class="takeaway-item">
+                            <h4>Consider Ethics Early</h4>
+                            <p>Think about bias, fairness, and transparency from the beginning. These become much harder to fix after systems are deployed.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Navigation -->
+                <div class="content-navigation">
+                    <a href="ai-basics.html" class="nav-button nav-back">← Previous: AI Basics</a>
+                    <a href="ai-landing.html" class="nav-button">AI Hub</a>
+                    <a href="neural-networks.html" class="nav-button nav-next">Next: Neural Networks →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu" id="verticalMenu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    const explanation = question.querySelector('.quiz-explanation');
+
+                    // Disable all options
+                    allOptions.forEach(opt => opt.disabled = true);
+
+                    // Show result
+                    if (this.dataset.answer === 'correct') {
+                        this.style.backgroundColor = 'var(--color-electric-blue)';
+                        this.style.color = 'white';
+                    } else {
+                        this.style.backgroundColor = '#dc2626';
+                        this.style.color = 'white';
+                        // Show correct answer
+                        const correctOption = question.querySelector('[data-answer="correct"]');
+                        correctOption.style.backgroundColor = 'var(--color-electric-blue)';
+                        correctOption.style.color = 'white';
+                    }
+
+                    // Show explanation
+                    explanation.style.display = 'block';
+                });
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

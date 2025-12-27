@@ -1,0 +1,484 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "category": "Robot Anatomy",
+      "question": "Servo Motor",
+      "hint": "Precise position control",
+      "answer": "An actuator that can move to and hold a specific position. Unlike continuous rotation motors, servos rotate to exact angles (typically 0-180°).",
+      "example": "Used in robot arms, grippers, and any application requiring precise angular positioning like camera pan/tilt mechanisms."
+    },
+    {
+      "id": 2,
+      "category": "Robot Anatomy",
+      "question": "Ultrasonic Sensor",
+      "hint": "Sound-based distance measurement",
+      "answer": "A sensor that measures distance by emitting ultrasonic sound waves and measuring how long they take to bounce back from objects.",
+      "example": "Commonly used for obstacle avoidance in mobile robots. Effective range typically 2cm to 4m, works in any lighting."
+    },
+    {
+      "id": 3,
+      "category": "Robot Anatomy",
+      "question": "IMU",
+      "hint": "Inertial Measurement Unit",
+      "answer": "A sensor that measures orientation, acceleration, and rotational velocity. Combines accelerometer, gyroscope, and sometimes magnetometer.",
+      "example": "Essential for drones to maintain stable flight and for mobile robots to track their orientation and movement."
+    },
+    {
+      "id": 4,
+      "category": "Robot Anatomy",
+      "question": "H-Bridge",
+      "hint": "Motor direction control",
+      "answer": "An electronic circuit that allows a motor to be driven forward or backward. Essential for controlling DC motor direction.",
+      "example": "Used in differential drive robots to control left and right wheels independently for steering."
+    },
+    {
+      "id": 5,
+      "category": "Robot Anatomy",
+      "question": "LiDAR",
+      "hint": "Light Detection and Ranging",
+      "answer": "A sensor that uses laser light to measure distances to surrounding objects, creating detailed 3D maps of the environment.",
+      "example": "Critical for autonomous vehicles and navigation robots. Creates point clouds showing exact positions of obstacles."
+    },
+    {
+      "id": 6,
+      "category": "Movement & Behavior",
+      "question": "Differential Drive",
+      "hint": "Two-wheel steering",
+      "answer": "A robot locomotion method using two independently powered wheels. Steering is achieved by varying the relative speeds of the wheels.",
+      "example": "Most common design for mobile robots. Turn left by slowing left wheel, turn right by slowing right wheel."
+    },
+    {
+      "id": 7,
+      "category": "Movement & Behavior",
+      "question": "Degrees of Freedom",
+      "hint": "DOF - independent movements",
+      "answer": "The number of independent ways a robot or robot component can move. A robot arm might have 6 DOF: 3 for position, 3 for orientation.",
+      "example": "A simple pan-tilt camera has 2 DOF. A humanoid arm typically has 7 DOF for human-like movement range."
+    },
+    {
+      "id": 8,
+      "category": "Movement & Behavior",
+      "question": "Inverse Kinematics",
+      "hint": "Position to joint angles",
+      "answer": "The math that calculates what joint angles are needed to position a robot's end effector (like a gripper) at a desired location.",
+      "example": "For a robot arm to grab an object at coordinates (x,y,z), inverse kinematics determines how much each joint should rotate."
+    },
+    {
+      "id": 9,
+      "category": "Movement & Behavior",
+      "question": "Gait",
+      "hint": "Walking pattern",
+      "answer": "The pattern of leg movements used by legged robots to walk. Different gaits (like walk, trot, gallop) offer different speeds and stability.",
+      "example": "A quadruped robot might use a trot gait (diagonal legs move together) for speed or a creep gait for stability."
+    },
+    {
+      "id": 10,
+      "category": "Movement & Behavior",
+      "question": "Dead Reckoning",
+      "hint": "Position from wheel rotation",
+      "answer": "Estimating a robot's position by counting wheel rotations and calculating distance traveled. Accumulates error over time.",
+      "example": "A robot tracks it moved 2 meters forward and turned 90°. Error builds up from wheel slip and imprecise turns."
+    },
+    {
+      "id": 11,
+      "category": "Autonomy Levels",
+      "question": "Teleoperation",
+      "hint": "Remote human control",
+      "answer": "Level 0 autonomy. A human directly controls every robot movement in real-time, often with video feedback.",
+      "example": "Bomb disposal robots, surgical robots, and ROVs are teleoperated for safety and precision."
+    },
+    {
+      "id": 12,
+      "category": "Autonomy Levels",
+      "question": "Reactive Behavior",
+      "hint": "Stimulus-response, no planning",
+      "answer": "Simple autonomy based on immediate sensor inputs triggering actions. No memory or planning, just rules: if sensor X, then action Y.",
+      "example": "A vacuum robot bumping into walls and turning away. Simple but effective for basic navigation."
+    },
+    {
+      "id": 13,
+      "category": "Autonomy Levels",
+      "question": "SLAM",
+      "hint": "Simultaneous Localization and Mapping",
+      "answer": "An algorithm that allows a robot to build a map of an unknown environment while simultaneously tracking its position within that map.",
+      "example": "Enables robots to navigate new spaces autonomously. Used in warehouse robots, vacuum robots, and self-driving cars."
+    },
+    {
+      "id": 14,
+      "category": "Autonomy Levels",
+      "question": "Path Planning",
+      "hint": "Finding routes to goals",
+      "answer": "The process of determining a collision-free path from a robot's current position to a goal position given a map of the environment.",
+      "example": "Algorithms like A* or RRT find optimal paths around obstacles. Critical for mobile robot navigation."
+    },
+    {
+      "id": 15,
+      "category": "Autonomy Levels",
+      "question": "Behavior Tree",
+      "hint": "Hierarchical decision-making",
+      "answer": "A structured way to organize robot behaviors hierarchically, with complex behaviors built from simpler sub-behaviors.",
+      "example": "A 'patrol' behavior might contain 'navigate to waypoint', 'observe area', and 'return' sub-behaviors."
+    },
+    {
+      "id": 16,
+      "category": "Applications",
+      "question": "Cobot",
+      "hint": "Collaborative robot",
+      "answer": "A robot designed to work safely alongside humans. Features force-limiting, rounded surfaces, and intuitive programming.",
+      "example": "Factory assembly cobots like UR robots can hand tools to workers and assist with repetitive tasks safely."
+    },
+    {
+      "id": 17,
+      "category": "Applications",
+      "question": "AGV",
+      "hint": "Automated Guided Vehicle",
+      "answer": "A mobile robot used for material handling in warehouses and factories. Follows pre-defined paths using magnetic tape, lasers, or navigation systems.",
+      "example": "Amazon's warehouse robots move shelves to human pickers, dramatically increasing warehouse efficiency."
+    },
+    {
+      "id": 18,
+      "category": "Applications",
+      "question": "Soft Robotics",
+      "hint": "Compliant, flexible robots",
+      "answer": "Robots made from soft, flexible materials that can safely interact with delicate objects and humans. Often pneumatically or hydraulically actuated.",
+      "example": "Soft grippers can handle fruit without bruising. Soft wearable robots assist human movement safely."
+    },
+    {
+      "id": 19,
+      "category": "Applications",
+      "question": "Swarm Robotics",
+      "hint": "Many simple robots coordinating",
+      "answer": "Systems of many simple robots that coordinate through local interactions to achieve complex collective behaviors.",
+      "example": "Inspired by ant colonies, robot swarms can map areas, move objects, or form structures through simple rules."
+    },
+    {
+      "id": 20,
+      "category": "Applications",
+      "question": "Prosthetic",
+      "hint": "Artificial limb",
+      "answer": "A robotic device that replaces a missing body part, especially limbs. Advanced versions use muscle signals (EMG) for control.",
+      "example": "Modern prosthetic hands can grip objects and provide sensory feedback to users through neural interfaces."
+    },
+    {
+      "id": 21,
+      "category": "Maker Tools",
+      "question": "Arduino",
+      "hint": "Microcontroller platform",
+      "answer": "An open-source electronics platform with easy-to-use hardware and software. Perfect for learning robotics fundamentals and prototyping.",
+      "example": "Arduino Uno is the standard board for beginners. Programs in C/C++ or visual block coding."
+    },
+    {
+      "id": 22,
+      "category": "Maker Tools",
+      "question": "Raspberry Pi",
+      "hint": "Single-board computer",
+      "answer": "A small, affordable computer that can run Linux and complex programs. More powerful than Arduino, used for computer vision and AI in robots.",
+      "example": "Raspberry Pi 4 can run OpenCV for object detection, making it ideal for vision-guided robots."
+    },
+    {
+      "id": 23,
+      "category": "Maker Tools",
+      "question": "PWM",
+      "hint": "Pulse Width Modulation",
+      "answer": "A technique for controlling power to motors and LEDs by rapidly switching them on/off. Duty cycle determines effective power level.",
+      "example": "To run a motor at 50% speed, PWM rapidly switches it on/off with equal on/off times."
+    },
+    {
+      "id": 24,
+      "category": "Maker Tools",
+      "question": "I2C",
+      "hint": "Inter-Integrated Circuit",
+      "answer": "A communication protocol allowing multiple sensors and devices to connect to a microcontroller using only two wires.",
+      "example": "Connect IMU, display, and sensors all on same I2C bus with unique addresses for each device."
+    },
+    {
+      "id": 25,
+      "category": "Maker Tools",
+      "question": "ROS",
+      "hint": "Robot Operating System",
+      "answer": "Industry-standard middleware providing structure and tools for robot software. Not an OS but a framework for robot programs to communicate.",
+      "example": "Professional mobile robots use ROS to integrate sensors, navigation, vision, and control in a modular architecture."
+    },
+    {
+      "id": 26,
+      "category": "Robot Anatomy",
+      "question": "Gripper",
+      "hint": "End effector for grasping",
+      "answer": "The 'hand' of a robot arm. Can be parallel-jaw, suction, or multi-fingered. Designed for specific grasping tasks.",
+      "example": "Parallel-jaw grippers work like pliers, suction grippers for flat objects, soft grippers for delicate items."
+    },
+    {
+      "id": 27,
+      "category": "Robot Anatomy",
+      "question": "Encoder",
+      "hint": "Position/speed sensor",
+      "answer": "A sensor that measures rotation of motors or wheels. Counts ticks as shaft rotates, enabling precise position and speed control.",
+      "example": "Quadrature encoders on robot wheels measure exact distance traveled for accurate navigation."
+    },
+    {
+      "id": 28,
+      "category": "Robot Anatomy",
+      "question": "RGB-D Camera",
+      "hint": "Color + depth camera",
+      "answer": "A camera that captures both color images and depth information for each pixel. Enables 3D perception of the environment.",
+      "example": "Intel RealSense and Microsoft Kinect provide RGB-D for object recognition, 3D mapping, and gesture control."
+    },
+    {
+      "id": 29,
+      "category": "Robot Anatomy",
+      "question": "Stepper Motor",
+      "hint": "Precise step-by-step rotation",
+      "answer": "A motor that rotates in precise, discrete steps (often 1.8° per step). Can hold position without feedback and doesn't need encoders.",
+      "example": "3D printers use steppers for precise positioning. CNC machines use them for accurate movement control."
+    },
+    {
+      "id": 30,
+      "category": "Robot Anatomy",
+      "question": "Force Sensor",
+      "hint": "Measures applied force",
+      "answer": "A sensor that measures forces applied to it. Used for detecting contact, measuring grip strength, or enabling force control.",
+      "example": "Robot grippers use force sensors to grip objects firmly without crushing them. Cobots detect human contact."
+    },
+    {
+      "id": 31,
+      "category": "Movement & Behavior",
+      "question": "Locomotion",
+      "hint": "How robots move",
+      "answer": "The method a robot uses to move through its environment: wheeled, legged, tracked, flying, swimming, or hybrid systems.",
+      "example": "Wheels for smooth terrain, legs for stairs/rough ground, tracks for extreme terrain, propellers for flight."
+    },
+    {
+      "id": 32,
+      "category": "Movement & Behavior",
+      "question": "Trajectory",
+      "hint": "Path through space over time",
+      "answer": "The complete path a robot or robot part follows, including position, velocity, and acceleration at each point in time.",
+      "example": "A robot arm moving from point A to B follows a trajectory that avoids obstacles and maintains smooth motion."
+    },
+    {
+      "id": 33,
+      "category": "Movement & Behavior",
+      "question": "Easing",
+      "hint": "Smooth acceleration/deceleration",
+      "answer": "Gradually accelerating at the start and decelerating at the end of movements to create smooth, natural-looking robot motion.",
+      "example": "Makes robot movements less jerky and robotic. Borrowed from animation principles for more human-like motion."
+    },
+    {
+      "id": 34,
+      "category": "Movement & Behavior",
+      "question": "Compliant Motion",
+      "hint": "Force-guided movement",
+      "answer": "Robot movement that responds to forces, allowing flexible interaction with the environment rather than following rigid paths.",
+      "example": "A robot arm can slide along a surface maintaining contact force, or comply when bumping objects."
+    },
+    {
+      "id": 35,
+      "category": "Movement & Behavior",
+      "question": "Legibility",
+      "hint": "Understandable motion",
+      "answer": "Designing robot movements that clearly communicate intent to humans. Important for human-robot collaboration and safety.",
+      "example": "A delivery robot slowing down and 'looking' at you before crossing your path telegraphs its intention."
+    },
+    {
+      "id": 36,
+      "category": "Autonomy Levels",
+      "question": "Computer Vision",
+      "hint": "Visual perception",
+      "answer": "Enabling robots to understand and interpret visual information from cameras. Includes object detection, tracking, and scene understanding.",
+      "example": "Self-driving cars use vision to detect lanes, pedestrians, and traffic signs. Bin-picking robots identify parts visually."
+    },
+    {
+      "id": 37,
+      "category": "Autonomy Levels",
+      "question": "Sensor Fusion",
+      "hint": "Combining multiple sensors",
+      "answer": "Combining data from multiple sensor types to get more accurate and reliable perception than any single sensor provides.",
+      "example": "Self-driving cars fuse camera, LiDAR, radar, and GPS for robust perception in all conditions."
+    },
+    {
+      "id": 38,
+      "category": "Autonomy Levels",
+      "question": "PID Control",
+      "hint": "Proportional-Integral-Derivative",
+      "answer": "A common control algorithm that adjusts robot actions based on error (P), accumulated error (I), and rate of error change (D).",
+      "example": "Line-following robots use PID to smoothly center on the line instead of zigzagging."
+    },
+    {
+      "id": 39,
+      "category": "Autonomy Levels",
+      "question": "Localization",
+      "hint": "Knowing where you are",
+      "answer": "The process of determining a robot's position within a known map using sensor data and filtering techniques.",
+      "example": "Particle filters help robots estimate their position by matching sensor readings to map expectations."
+    },
+    {
+      "id": 40,
+      "category": "Autonomy Levels",
+      "question": "Obstacle Avoidance",
+      "hint": "Reactive collision prevention",
+      "answer": "Using sensors to detect and navigate around obstacles in real-time without pre-planning entire paths.",
+      "example": "Simple approach: if obstacle detected left, turn right. Advanced: dynamic window approach for smooth avoidance."
+    },
+    {
+      "id": 41,
+      "category": "Applications",
+      "question": "Exoskeleton",
+      "hint": "Wearable robot",
+      "answer": "A powered external framework worn by a person to augment their strength, endurance, or capabilities.",
+      "example": "Medical exoskeletons help paralyzed individuals walk. Industrial exoskeletons reduce strain in manufacturing."
+    },
+    {
+      "id": 42,
+      "category": "Applications",
+      "question": "UAV/Drone",
+      "hint": "Unmanned Aerial Vehicle",
+      "answer": "A flying robot that can be remotely controlled or fly autonomously. Used for photography, delivery, inspection, and more.",
+      "example": "Quadcopters are most common. Multi-rotor drones offer stability, fixed-wing drones offer range and efficiency."
+    },
+    {
+      "id": 43,
+      "category": "Applications",
+      "question": "Social Robot",
+      "hint": "Designed for human interaction",
+      "answer": "A robot specifically designed to interact with and assist humans through natural communication like speech, gestures, and emotional expression.",
+      "example": "Pepper greets customers in retail. Paro therapeutic seal provides comfort to elderly patients."
+    },
+    {
+      "id": 44,
+      "category": "Applications",
+      "question": "Pick and Place",
+      "hint": "Industrial manipulation",
+      "answer": "A fundamental industrial robot task: picking up objects from one location and placing them precisely in another location.",
+      "example": "Assembly lines use pick-and-place for packaging, sorting parts, and assembling products at high speed."
+    },
+    {
+      "id": 45,
+      "category": "Applications",
+      "question": "Last Mile Delivery",
+      "hint": "Autonomous delivery robots",
+      "answer": "Small autonomous robots that deliver packages, food, or goods over the final leg of delivery from depot to customer.",
+      "example": "Starship sidewalk robots and Nuro street robots handle last-mile delivery in urban areas."
+    },
+    {
+      "id": 46,
+      "category": "Maker Tools",
+      "question": "Breadboard",
+      "hint": "Solderless prototyping",
+      "answer": "A tool for building temporary electronic circuits without soldering. Rows and columns of connected holes for easy component placement.",
+      "example": "Test sensor and motor circuits quickly before committing to permanent soldered connections."
+    },
+    {
+      "id": 47,
+      "category": "Maker Tools",
+      "question": "GPIO",
+      "hint": "General Purpose Input/Output",
+      "answer": "Pins on a microcontroller or computer that can be programmed to either read input signals or output control signals.",
+      "example": "Raspberry Pi has 40 GPIO pins that can read sensors, control LEDs, motors, and communicate with devices."
+    },
+    {
+      "id": 48,
+      "category": "Maker Tools",
+      "question": "CAD",
+      "hint": "Computer-Aided Design",
+      "answer": "Software for designing robot parts and assemblies in 3D. Essential for custom robot fabrication and 3D printing.",
+      "example": "Fusion 360, SolidWorks, or FreeCAD for designing robot chassis, mounts, and custom parts."
+    },
+    {
+      "id": 49,
+      "category": "Maker Tools",
+      "question": "URDF",
+      "hint": "Unified Robot Description Format",
+      "answer": "An XML format for describing a robot's physical structure, joints, and sensors. Standard in ROS for robot simulation and control.",
+      "example": "URDF files describe link lengths, joint types, and mass properties for physics simulation in Gazebo."
+    },
+    {
+      "id": 50,
+      "category": "Maker Tools",
+      "question": "Serial Monitor",
+      "hint": "Debugging via text output",
+      "answer": "A tool for viewing text messages sent from a microcontroller to a computer via USB. Essential for debugging robot code.",
+      "example": "Print sensor values to serial monitor to verify sensors are working correctly during development."
+    },
+    {
+      "id": 51,
+      "category": "Robot Anatomy",
+      "question": "Linear Actuator",
+      "hint": "Push/pull motion",
+      "answer": "An actuator that creates motion in a straight line rather than rotation. Extends and retracts to push or pull.",
+      "example": "Used for lifting mechanisms, robot legs, or any application needing linear motion instead of rotation."
+    },
+    {
+      "id": 52,
+      "category": "Movement & Behavior",
+      "question": "Wheeled Omnidirectional",
+      "hint": "Moves in any direction",
+      "answer": "Robots that can move instantly in any direction without rotating first. Uses mecanum or omni wheels.",
+      "example": "Warehouse robots use mecanum wheels to slide sideways while carrying shelves in tight aisles."
+    },
+    {
+      "id": 53,
+      "category": "Autonomy Levels",
+      "question": "Machine Learning for Robots",
+      "hint": "Robots that learn from data",
+      "answer": "Using neural networks and ML algorithms to enable robots to learn behaviors from demonstration or experience.",
+      "example": "Robots learning to grasp novel objects or navigate new environments through trial and error."
+    },
+    {
+      "id": 54,
+      "category": "Applications",
+      "question": "Surgical Robot",
+      "hint": "Precision medical robotics",
+      "answer": "Robots that assist surgeons with precision, stability, and access to hard-to-reach areas. Often teleoperated with motion scaling.",
+      "example": "Da Vinci surgical system enables minimally invasive surgery with enhanced dexterity and precision."
+    },
+    {
+      "id": 55,
+      "category": "Applications",
+      "question": "Agricultural Robot",
+      "hint": "Farming automation",
+      "answer": "Robots designed for farming tasks like planting, weeding, harvesting, or monitoring crop health using computer vision.",
+      "example": "Autonomous tractors, fruit-picking robots, and drones that detect plant diseases from aerial imagery."
+    },
+    {
+      "id": 56,
+      "category": "Maker Tools",
+      "question": "3D Printing for Robots",
+      "hint": "Custom part fabrication",
+      "answer": "Using additive manufacturing to create custom robot parts, brackets, chassis, and components rapidly and affordably.",
+      "example": "Print custom motor mounts, sensor housings, or entire robot chassis designed in CAD software."
+    },
+    {
+      "id": 57,
+      "category": "Movement & Behavior",
+      "question": "Uncanny Valley",
+      "hint": "Almost-human = creepy",
+      "answer": "The phenomenon where robots that look almost but not quite human trigger revulsion. Important consideration for social robot design.",
+      "example": "Stylized cartoon robots feel friendly. Nearly photorealistic robots feel eerie. Design for either extreme, avoid the middle."
+    },
+    {
+      "id": 58,
+      "category": "Autonomy Levels",
+      "question": "Edge Cases",
+      "hint": "Rare challenging scenarios",
+      "answer": "Unusual or rare situations that autonomous robots struggle with because they weren't extensively trained on them.",
+      "example": "Self-driving cars must handle countless edge cases: construction zones, hand signals, unusual weather."
+    },
+    {
+      "id": 59,
+      "category": "Applications",
+      "question": "Inspection Robot",
+      "hint": "Accessing dangerous areas",
+      "answer": "Robots designed to inspect infrastructure like pipelines, bridges, or disaster sites where human access is dangerous or impossible.",
+      "example": "Climbing robots inspect wind turbines. Swimming robots inspect underwater pipelines. Drones inspect power lines."
+    },
+    {
+      "id": 60,
+      "category": "Applications",
+      "question": "Companion Robot",
+      "hint": "Emotional connection",
+      "answer": "Robots designed to provide companionship, reduce loneliness, and offer emotional support through interaction.",
+      "example": "Paro therapeutic seal for dementia patients. Sony Aibo robot dog for pet companionship without care burden."
+    }
+  ]
+}

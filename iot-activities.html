@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Activities - Design Exercises & Case Studies | Emerging Tech Hub</title>
+    <meta name="description" content="Apply IoT knowledge through design exercises, architecture challenges, and real-world case study analysis. Learn to design connected products and solve IoT deployment challenges.">
+    <meta name="keywords" content="IoT exercises, connected product design, IoT architecture, case studies, design thinking, product management, IoT challenges">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+/* Activity Card Styles */
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    margin-top: var(--space-8);
+}
+
+.activity-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.activity-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+}
+
+.activity-number {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 48px;
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-4);
+}
+
+.activity-card:hover .activity-number {
+    background: var(--color-electric-blue);
+}
+
+.activity-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-6);
+}
+
+.activity-description {
+    line-height: 1.8;
+}
+
+.activity-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.activity-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.instruction-list {
+    margin-left: var(--space-4);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.instruction-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+    padding-left: var(--space-2);
+}
+
+.instruction-list li strong {
+    font-weight: var(--font-bold);
+}
+
+/* Case Study Cards */
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+}
+
+.case-study-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.case-study-card:hover {
+    border-color: var(--color-electric-blue);
+}
+
+.case-study-card h3 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .case-study-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Activities & Exercises</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Activity Types</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#design-exercises" class="experimental-nav-link">Design Exercises</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#architecture" class="experimental-nav-link">Architecture Challenges</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#collaborative" class="experimental-nav-link">Team Scenarios</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#case-studies" class="experimental-nav-link">Case Studies</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">For Whom?</div>
+                    <div class="info-box-content">
+                        Designers, product managers, students, and teams learning to build connected products.
+                    </div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="iot-landing.html">← Back to IoT Hub</a><br>
+                        <a href="iot-fundamentals.html">Fundamentals Guide</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">IoT Activities & Exercises</h1>
+                <p class="fundamentals-subtitle">Design challenges, architecture exercises, team scenarios, and case studies to develop IoT product thinking</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Design Exercises -->
+                <section id="design-exercises" class="content-section">
+                    <h2>Design Exercises</h2>
+                    <p>Practice designing IoT products with these structured exercises. Focus on user needs, conceptual models, and interusability.</p>
+
+                    <div class="activity-grid">
+                        <!-- Exercise 1 -->
+                        <div class="activity-card">
+                            <div class="activity-number">1</div>
+                            <h3 class="activity-title">Design a Connected Product from Scratch</h3>
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Practice the complete design process for an IoT product—from problem identification to conceptual model to interaction design.</p>
+
+                                <h4>The Challenge</h4>
+                                <p>Choose one scenario and design a connected product solution:</p>
+                                <ul class="instruction-list">
+                                    <li><strong>Elderly Care:</strong> Design a system to help elderly people living alone stay safe while maintaining independence.</li>
+                                    <li><strong>Water Management:</strong> Design an IoT system for apartment complexes in cities like Bengaluru to reduce water waste.</li>
+                                    <li><strong>Small Business:</strong> Design a connected inventory system for kirana stores to track stock and prevent shortages.</li>
+                                </ul>
+
+                                <h4>Deliverables</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>User Research:</strong> Who are the users? What problems do they face? What are their constraints (tech literacy, budget)?</li>
+                                    <li><strong>System Architecture:</strong> What sensors/actuators are needed? Where does processing happen (edge vs. cloud)?</li>
+                                    <li><strong>Conceptual Model:</strong> How will users understand how the system works? Draw diagrams showing device relationships.</li>
+                                    <li><strong>Interface Design:</strong> Sketch app screens, physical controls, notification patterns. How do users interact?</li>
+                                    <li><strong>Privacy & Security:</strong> What data is collected? Where is it stored? How is it protected?</li>
+                                    <li><strong>Failure Modes:</strong> What happens when Wi-Fi drops? When sensors fail? How does the system degrade gracefully?</li>
+                                </ul>
+
+                                <h4>Evaluation Criteria</h4>
+                                <p>Does your design solve a real problem? Is the conceptual model clear? Have you considered privacy? Does it work when connectivity fails? What's the total cost for users?</p>
+                            </div>
+                        </div>
+
+                        <!-- Exercise 2 -->
+                        <div class="activity-card">
+                            <div class="activity-number">2</div>
+                            <h3 class="activity-title">Protocol Selection Decision Matrix</h3>
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Learn to choose the right communication protocol for specific IoT use cases.</p>
+
+                                <h4>The Challenge</h4>
+                                <p>For each scenario below, justify which protocol(s) you'd use and why:</p>
+
+                                <ul class="instruction-list">
+                                    <li><strong>Scenario A:</strong> Smart parking system with 500 sensors across a 2 km² city center. Sensors update every 30 seconds when cars enter/exit. Battery-powered, must last 3+ years.</li>
+                                    <li><strong>Scenario B:</strong> Home automation with 20 devices (lights, locks, sensors). Real-time control required. Always powered. Users expect instant response.</li>
+                                    <li><strong>Scenario C:</strong> Agricultural sensors in rural fields with no Wi-Fi. 50 sensors spread across 10 acres. Update hourly. Solar + battery powered.</li>
+                                    <li><strong>Scenario D:</strong> Industrial factory with 200 vibration sensors on machinery. Need sub-second latency for anomaly detection. Wired power available.</li>
+                                </ul>
+
+                                <h4>For Each Scenario, Document:</h4>
+                                <ul class="instruction-list">
+                                    <li>Which protocol(s) you'd choose: MQTT, CoAP, LoRaWAN, Zigbee, HTTP/REST, or others</li>
+                                    <li>Justification: Why this protocol fits the constraints (range, power, latency, cost)</li>
+                                    <li>Trade-offs: What you're giving up by choosing this protocol</li>
+                                    <li>Architecture: Sketch how devices, gateways, and cloud services connect</li>
+                                </ul>
+
+                                <h4>Learning Outcomes</h4>
+                                <p>Understand there's no one-size-fits-all protocol. Learn to evaluate trade-offs between power, range, latency, cost, and complexity.</p>
+                            </div>
+                        </div>
+
+                        <!-- Exercise 3 -->
+                        <div class="activity-card">
+                            <div class="activity-number">3</div>
+                            <h3 class="activity-title">Privacy Impact Assessment</h3>
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Practice evaluating and mitigating privacy risks in IoT systems.</p>
+
+                                <h4>The Scenario</h4>
+                                <p>You're designing a fitness tracker for the Indian market. It monitors:</p>
+                                <ul class="instruction-list">
+                                    <li>Heart rate (continuous)</li>
+                                    <li>Location via GPS (during workouts)</li>
+                                    <li>Sleep patterns (nightly)</li>
+                                    <li>Activity type (running, cycling, yoga)</li>
+                                </ul>
+
+                                <h4>Your Task</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Identify Privacy Risks:</strong> What sensitive information can be inferred? (health conditions, daily routines, home/work locations)</li>
+                                    <li><strong>Regulatory Compliance:</strong> How does India's Digital Personal Data Protection Act (2023) apply? What consent is required?</li>
+                                    <li><strong>Data Minimization:</strong> What data is absolutely necessary? What can be processed locally vs. sent to cloud?</li>
+                                    <li><strong>User Controls:</strong> Design privacy settings. What granular controls should users have?</li>
+                                    <li><strong>Transparency:</strong> How do you explain data collection in simple language? Draft a one-paragraph privacy notice.</li>
+                                    <li><strong>Technical Safeguards:</strong> Encryption? Anonymization? Data retention policies?</li>
+                                </ul>
+
+                                <h4>Bonus Challenge</h4>
+                                <p>How would your design change if this device was for children under 18? What additional protections are needed?</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture Challenges -->
+                <section id="architecture" class="content-section">
+                    <h2>Architecture Challenges</h2>
+                    <p>System-level thinking: design IoT architectures that scale, perform, and remain maintainable.</p>
+
+                    <div class="activity-grid">
+                        <!-- Challenge 1 -->
+                        <div class="activity-card">
+                            <div class="activity-number">4</div>
+                            <h3 class="activity-title">Edge vs. Cloud Decision Framework</h3>
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Learn to decide what processing happens at the edge vs. the cloud.</p>
+
+                                <h4>The Scenario</h4>
+                                <p>You're building a security camera system for residential complexes in Indian cities (think gated communities with 50-200 homes). Cameras need to:</p>
+                                <ul class="instruction-list">
+                                    <li>Detect people, vehicles, animals</li>
+                                    <li>Recognize residents vs. strangers (optional facial recognition)</li>
+                                    <li>Send alerts for suspicious activity</li>
+                                    <li>Store footage for 30 days</li>
+                                    <li>Allow residents to view live streams via mobile app</li>
+                                </ul>
+
+                                <h4>Design Decisions</h4>
+                                <p>For each function, decide: edge or cloud? Document your reasoning.</p>
+
+                                <ul class="instruction-list">
+                                    <li><strong>Object Detection:</strong> Edge or cloud? Consider: 20 cameras × 24/7 video = massive bandwidth if sent to cloud.</li>
+                                    <li><strong>Facial Recognition:</strong> Privacy concerns with cloud storage. Edge device capability? Cost?</li>
+                                    <li><strong>Alert Logic:</strong> What triggers an alert? Where does this logic run?</li>
+                                    <li><strong>Storage:</strong> Local NVR? Cloud storage? Hybrid? Cost analysis for 50 cameras × 30 days.</li>
+                                    <li><strong>Model Updates:</strong> How do you deploy improved detection models to cameras in the field?</li>
+                                </ul>
+
+                                <h4>Calculate Costs</h4>
+                                <p>Estimate monthly costs for full-cloud vs. hybrid architecture. Consider: bandwidth, storage, compute, hardware.</p>
+                            </div>
+                        </div>
+
+                        <!-- Challenge 2 -->
+                        <div class="activity-card">
+                            <div class="activity-number">5</div>
+                            <h3 class="activity-title">Scaling from Prototype to Production</h3>
+                            <div class="activity-description">
+                                <p><strong>Objective:</strong> Understand challenges of taking an IoT system from 10 devices to 10,000.</p>
+
+                                <h4>The Scenario</h4>
+                                <p>Your air quality monitor startup (from the projects section) was successful! Initial deployment: 50 monitors across Delhi NCR. Now orders are coming in:</p>
+                                <ul class="instruction-list">
+                                    <li>Municipal Corporation wants 5,000 units for city-wide deployment</li>
+                                    <li>3 other cities (Mumbai, Bengaluru, Kolkata) want 2,000 units each</li>
+                                    <li>Schools and offices: 3,000+ units</li>
+                                </ul>
+
+                                <h4>Architecture Challenges to Solve</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Device Management:</strong> How do you remotely manage 15,000+ devices? Firmware updates? Configuration changes?</li>
+                                    <li><strong>Data Ingestion:</strong> Your Raspberry Pi + InfluxDB setup handles 50 devices. Will it handle 15,000? What needs to change?</li>
+                                    <li><strong>API Rate Limits:</strong> If using ThingSpeak free tier (15-sec update limit), it won't scale. What's the solution?</li>
+                                    <li><strong>Provisioning:</strong> How do 15,000 devices get Wi-Fi credentials and cloud endpoints? Manual entry won't work.</li>
+                                    <li><strong>Monitoring:</strong> How do you know which devices are offline? Alerting for 15,000 devices?</li>
+                                    <li><strong>Costs:</strong> Cloud ingestion, storage, and compute costs at scale. Calculate monthly AWS/Azure bills.</li>
+                                </ul>
+
+                                <h4>Design the Production Architecture</h4>
+                                <p>Sketch a system architecture that handles 15,000+ devices. Consider: load balancers, message queues (Kafka?), time-series databases (InfluxDB, TimescaleDB), device management platforms.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Collaborative Scenarios -->
+                <section id="collaborative" class="content-section">
+                    <h2>Team Scenarios</h2>
+                    <p>Group activities simulating real-world IoT product development. Best for classroom or workshop settings.</p>
+
+                    <div class="activity-grid">
+                        <!-- Scenario 1 -->
+                        <div class="activity-card">
+                            <div class="activity-number">6</div>
+                            <h3 class="activity-title">IoT Product Design Sprint (2-3 hours)</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 4-6 people | <strong>Duration:</strong> 2-3 hours</p>
+
+                                <h4>The Brief</h4>
+                                <p>Your team has been hired to design an IoT system for managing waste collection in Indian cities. Current challenges:</p>
+                                <ul class="instruction-list">
+                                    <li>Garbage bins overflow before collection trucks arrive</li>
+                                    <li>Collection routes are fixed, not optimized by actual fill levels</li>
+                                    <li>No visibility into which areas need priority collection</li>
+                                    <li>Fuel wasted visiting empty bins, overflows missed at full bins</li>
+                                </ul>
+
+                                <h4>Team Roles</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Product Manager:</strong> Defines requirements, prioritizes features, manages scope</li>
+                                    <li><strong>UX Designer:</strong> Designs interfaces for sanitation workers and city managers</li>
+                                    <li><strong>IoT Architect:</strong> Designs sensor network, connectivity, data flow</li>
+                                    <li><strong>Data Scientist:</strong> Designs route optimization algorithms</li>
+                                    <li><strong>Business Analyst:</strong> Calculates ROI, pricing model, go-to-market</li>
+                                </ul>
+
+                                <h4>Sprint Activities (30 min each)</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Phase 1 - Research:</strong> Identify stakeholders (sanitation workers, city officials, residents). Define success metrics.</li>
+                                    <li><strong>Phase 2 - Ideate:</strong> Brainstorm solutions. What sensors? What data? How often to update?</li>
+                                    <li><strong>Phase 3 - Design:</strong> Sketch system architecture. Design dashboards/apps.</li>
+                                    <li><strong>Phase 4 - Present:</strong> 10-minute pitch to "city officials" (instructor/other teams). Defend design decisions.</li>
+                                </ul>
+
+                                <h4>Evaluation</h4>
+                                <p>Did the team consider constraints (cost, battery life, connectivity)? Is the solution deployable in Indian cities? What's the ROI for municipalities?</p>
+                            </div>
+                        </div>
+
+                        <!-- Scenario 2 -->
+                        <div class="activity-card">
+                            <div class="activity-number">7</div>
+                            <h3 class="activity-title">Security Incident Response Simulation</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 3-5 people | <strong>Duration:</strong> 90 minutes</p>
+
+                                <h4>The Scenario</h4>
+                                <p>Your company deployed 10,000 smart locks across hotels in India. You receive reports:</p>
+                                <ul class="instruction-list">
+                                    <li>50+ locks opened unexpectedly at 3 AM without authorized credentials</li>
+                                    <li>Hotel security footage shows rooms were entered</li>
+                                    <li>Logs show commands came from legitimate cloud servers</li>
+                                    <li>Media gets wind of the story—"IoT Smart Locks Hacked"</li>
+                                </ul>
+
+                                <h4>Team Roles & Responsibilities</h4>
+                                <ul class="instruction-list">
+                                    <li><strong>Security Lead:</strong> Investigate how the breach happened. Analyze logs.</li>
+                                    <li><strong>Engineering:</strong> Design fix. How to patch 10,000 deployed devices?</li>
+                                    <li><strong>Product/Customer Success:</strong> Communicate with hotels. What do you tell them?</li>
+                                    <li><strong>Legal/Compliance:</strong> Regulatory requirements. Do you report to authorities?</li>
+                                    <li><strong>PR/Communications:</strong> Draft public statement. Handle media inquiries.</li>
+                                </ul>
+
+                                <h4>Discussion Points</h4>
+                                <ul class="instruction-list">
+                                    <li>What likely went wrong? (Compromised API keys? Cloud misconfiguration? Supply chain attack?)</li>
+                                    <li>How do you remotely patch devices without making things worse?</li>
+                                    <li>How do you prevent this in future designs?</li>
+                                    <li>What's the communication strategy to customers and media?</li>
+                                </ul>
+
+                                <h4>Learning Outcomes</h4>
+                                <p>Security isn't just technical—it's organizational. Practice cross-functional coordination during incidents.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Case Studies -->
+                <section id="case-studies" class="content-section">
+                    <h2>Real-World Case Studies</h2>
+                    <p>Analyze successful (and failed) IoT deployments. What worked? What didn't? What would you do differently?</p>
+
+                    <div class="case-study-grid">
+                        <div class="case-study-card">
+                            <h3>Case Study: Nest Thermostat</h3>
+                            <p><strong>Success Story</strong></p>
+                            <p>Read about Nest's design decisions (learning algorithms, auto-schedule, beautiful hardware). Analyze: What made it succeed when prior smart thermostats failed? How did design+UX differentiate it? Why did Google pay $3.2B?</p>
+                            <p><strong>Discussion:</strong> Apply lessons to Indian context. Would Nest's approach work for AC control in Indian homes?</p>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Case Study: Juicero (Failed)</h3>
+                            <p><strong>Failure Analysis</strong></p>
+                            <p>$700 Wi-Fi-connected juicer that squeezed proprietary juice packs. Bloomberg discovered you could squeeze packs by hand—no machine needed. Company raised $120M, shut down in 2017.</p>
+                            <p><strong>Discussion:</strong> What went wrong? When is IoT unnecessary? How to avoid building IoT solutions looking for problems?</p>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Case Study: Surat Smart City</h3>
+                            <p><strong>Indian Success</strong></p>
+                            <p>6,000+ sensors across Surat for traffic, air quality, waste, lighting. 60% energy savings. Improved emergency response times. Study the implementation challenges and solutions.</p>
+                            <p><strong>Discussion:</strong> How did they handle connectivity across the city? Device management at scale? What lessons apply to other Indian cities?</p>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Case Study: Mirai Botnet</h3>
+                            <p><strong>Security Disaster</strong></p>
+                            <p>600,000+ IoT devices (cameras, DVRs) compromised using default passwords. Launched largest DDoS attack in history. Took down major websites (Twitter, Netflix, Reddit).</p>
+                            <p><strong>Discussion:</strong> How could this have been prevented? What's your responsibility as IoT manufacturer? Should governments regulate IoT security?</p>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Case Study: India Smart Grid</h3>
+                            <p><strong>National Scale</strong></p>
+                            <p>25 million smart meters deployed across 14 states. Reduced power theft, enabled dynamic pricing, improved grid reliability. Largest IoT deployment in India.</p>
+                            <p><strong>Discussion:</strong> Challenges of deploying at national scale? How to handle regions with poor connectivity? Change management for consumers?</p>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Case Study: Ring Doorbell Privacy Concerns</h3>
+                            <p><strong>Privacy Controversy</strong></p>
+                            <p>Ring shared video footage with police without user consent. Employees had access to customer camera feeds. Public backlash led to policy changes.</p>
+                            <p><strong>Discussion:</strong> Where's the line between security and privacy? How should IoT companies handle law enforcement requests? Design better privacy controls.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Continue Learning -->
+                <section class="content-section" style="margin-top: 5rem;">
+                    <h2>Continue Learning</h2>
+                    <div class="next-steps">
+                        <a href="iot-fundamentals.html" class="next-step-card">
+                            <h4>IoT Fundamentals</h4>
+                            <p>Revisit core concepts, design principles, and key people shaping IoT</p>
+                        </a>
+
+                        <a href="iot-projects.html" class="next-step-card">
+                            <h4>Hands-On Projects</h4>
+                            <p>Build real IoT systems to apply what you've learned</p>
+                        </a>
+
+                        <a href="iot-readings.html" class="next-step-card">
+                            <h4>Research & Readings</h4>
+                            <p>Deep dive into protocols, security, and real-world implementations</p>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

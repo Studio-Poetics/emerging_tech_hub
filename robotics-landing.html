@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Learning Hub - Autonomous Systems & Robot Programming Education</title>
+    <meta name="description" content="Learn robotics fundamentals and autonomous systems programming. Explore robot design, AI integration, sensors, and automation through hands-on projects for beginners and enthusiasts.">
+    <meta name="keywords" content="robotics learning, autonomous systems, robot programming, robotics education, robot design, automation, robotics for beginners, AI robotics, sensor integration">
+    <meta name="author" content="Studio Poetics - Emerging Technology Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/robotics-landing.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eth.poetics.studio/robotics-landing.html">
+    <meta property="og:title" content="Robotics Learning Hub - Autonomous Systems & Robot Programming">
+    <meta property="og:description" content="Learn robotics fundamentals and autonomous systems programming through hands-on projects for beginners and enthusiasts.">
+    <meta property="og:site_name" content="Emerging Technology Hub">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://eth.poetics.studio/robotics-landing.html">
+    <meta property="twitter:title" content="Robotics Learning Hub - Autonomous Systems & Robot Programming">
+    <meta property="twitter:description" content="Learn robotics fundamentals and autonomous systems programming through hands-on projects for beginners and enthusiasts.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Robotics & Autonomous Systems Fundamentals",
+      "description": "Comprehensive robotics education covering robot design, programming, AI integration, and automation",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "Emerging Technology Hub",
+        "url": "https://eth.poetics.studio"
+      },
+      "educationalLevel": "Beginner",
+      "teaches": [
+        "Robotics Fundamentals",
+        "Autonomous Systems",
+        "Robot Programming",
+        "Sensor Integration",
+        "AI Robotics"
+      ],
+      "courseMode": "online",
+      "isAccessibleForFree": true
+    }
+    </script>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+
+    /* Landing page specific */
+    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
+    .section-nav-list { gap: var(--space-3) !important; }
+    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
+    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
+    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
+    .section-description { font-size: var(--text-base) !important; }
+    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
+}
+
+        /* Robotics Landing Page Specific Styles */
+        .robotics-section-nav {
+            position: sticky;
+            top: 0;
+            background: var(--color-white);
+            border-bottom: var(--border-width) solid var(--color-black);
+            padding: var(--space-4) var(--space-8);
+            margin-right: 60px;
+            z-index: 50;
+        }
+
+        .section-nav-list {
+            display: flex;
+            gap: var(--space-6);
+            flex-wrap: wrap;
+        }
+
+        .section-nav-link {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-black);
+            text-decoration: none;
+            padding: var(--space-2) var(--space-4);
+            border: var(--border-width) solid transparent;
+            transition: all var(--transition-fast);
+        }
+
+        .section-nav-link:hover,
+        .section-nav-link.active {
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .robotics-content-section {
+            padding: var(--space-16) var(--space-8);
+            margin-right: 60px;
+            border-bottom: var(--border-width) solid var(--color-black);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .robotics-content-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-number {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-electric-blue);
+            margin-bottom: var(--space-2);
+        }
+
+        .section-title {
+            font-size: var(--text-6xl);
+            font-weight: var(--font-black);
+            line-height: 0.8;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-6);
+        }
+
+        .section-description {
+            font-size: var(--text-xl);
+            line-height: 1.4;
+            margin-bottom: var(--space-8);
+            max-width: 600px;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .feature-card, .section-item {
+            background: var(--color-gray-50);
+            padding: var(--space-6);
+            border: var(--border-width) solid var(--color-gray-200);
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .feature-card:hover, .section-item:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .feature-card:hover h3,
+        .feature-card:hover p,
+        .section-item:hover h3,
+        .section-item:hover p {
+            color: var(--color-white);
+        }
+
+        .item-title, .section-item h3 {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-3);
+        }
+
+        .item-description, .section-item p {
+            font-size: var(--text-base);
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .available-badge, .coming-soon-badge {
+            display: inline-block;
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: var(--space-1) var(--space-3);
+            border: var(--border-width) solid var(--color-black);
+            margin-left: var(--space-3);
+        }
+
+        .available-badge {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .coming-soon-badge {
+            background: transparent;
+            color: var(--color-black);
+        }
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Autonomous Systems</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Robotics</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#fundamentals" class="experimental-nav-link">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#readings" class="experimental-nav-link">Readings</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#flashcards" class="experimental-nav-link">Flashcards</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#fieldkit" class="experimental-nav-link">Field Kit</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#activities" class="experimental-nav-link">Activities</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Available Now</div>
+                    <div class="info-box-content">6 Fundamentals pages available covering design-first robotics, behavior, anatomy, making, autonomy, and applications.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Progress</div>
+                    <div class="info-box-content">
+                        6 Fundamentals Topics<br>
+                        Coming: Flashcards<br>
+                        Coming: Field Kit & Activities
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Section Navigation -->
+            <div class="robotics-section-nav">
+                <nav class="section-nav-list">
+                    <a href="#fundamentals" class="section-nav-link active">Fundamentals</a>
+                    <a href="#readings" class="section-nav-link">Readings</a>
+                    <a href="#flashcards" class="section-nav-link">Flashcards</a>
+                    <a href="#fieldkit" class="section-nav-link">Field Kit</a>
+                    <a href="#activities" class="section-nav-link">Activities</a>
+                </nav>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="experimental-hero experimental-fade-in">
+                <div class="hero-content">
+                    <h1 class="experimental-title text-reveal">Robotics</h1>
+                    <h2 class="experimental-subtitle">Autonomous Systems & Mechanical Intelligence</h2>
+
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <span class="experimental-date">2024-2025</span>
+                        <span class="experimental-arrow">→</span>
+                        <span class="experimental-date">Available Now</span>
+                    </div>
+
+                    <p class="hero-description">
+                        Delving into mechanical intelligence, control systems, and human-robot interaction through kinetic sculptures and autonomous systems that bridge the gap between art and engineering.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#fundamentals" class="experimental-btn experimental-btn--primary">Explore Fundamentals</a>
+                        <a href="index.html" class="experimental-btn">← Back to Hub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="robotics-content-sections">
+
+                <!-- Fundamentals Section -->
+                <div id="fundamentals" class="robotics-content-section">
+                    <div class="section-number">01</div>
+                    <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
+                    <p class="section-description">Design-first approach to robotics: form, behavior, components, making, autonomy, and real-world applications for creative technologists.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='robotics-design-first.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Design-First Robotics</h3>
+                            <p class="item-description">Robot as artifact, form follows function, movement as communication, HRI principles, and design case studies.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robot-behavior-design.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Robot Behavior Design</h3>
+                            <p class="item-description">Movement vocabulary, personality through motion, interaction patterns, designing trust, and behavior prototyping.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robot-anatomy.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Robot Anatomy for Designers</h3>
+                            <p class="item-description">Components explained: sensors (what robots perceive), actuators (how they act), controllers, and choosing the right parts.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='making-simple-robots.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Making Simple Robots</h3>
+                            <p class="item-description">Arduino and Raspberry Pi basics, beginner kits, first robot project walkthrough, visual programming with Blockly.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='autonomy-and-ai.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Autonomy & AI</h3>
+                            <p class="item-description">Levels of autonomy, rule-based vs. learning systems, computer vision basics, and designing for graceful failure.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-applications.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Robotics Applications</h3>
+                            <p class="item-description">Industry use cases, service robots, social robots, healthcare, creative robotics, and emerging opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Readings Section -->
+                <div id="readings" class="robotics-content-section">
+                    <div class="section-number">02</div>
+                    <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
+                    <p class="section-description">Curated research papers and resources on robot design, HRI, autonomous systems, and real-world applications. 24 verified sources from MIT Press, IEEE, Springer, and leading institutions.</p>
+
+                    <div class="section-grid">
+                        <div class="feature-card" onclick="window.location.href='robotics-readings.html#design-interaction'" style="cursor: pointer;">
+                            <h3 class="item-title">Design & Human-Robot Interaction</h3>
+                            <p class="item-description">Research on robot behavior design, social robotics, uncanny valley, and ethics. Includes Breazeal's sociable robots and Reeves & Nass' media equation.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-readings.html#maker-culture'" style="cursor: pointer;">
+                            <h3 class="item-title">Maker Culture & DIY Robotics</h3>
+                            <p class="item-description">Arduino and Raspberry Pi resources, open-source projects, ROS documentation, and the maker movement philosophy.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-readings.html#autonomy-ai'" style="cursor: pointer;">
+                            <h3 class="item-title">Autonomy & AI Integration</h3>
+                            <p class="item-description">Probabilistic robotics, SLAM, computer vision, end-to-end learning, and robot learning from demonstration research.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-readings.html#applications'" style="cursor: pointer;">
+                            <h3 class="item-title">Real-World Applications</h3>
+                            <p class="item-description">Collaborative robots, autonomous vehicles, surgical robotics, Mars rovers, and service robot case studies.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-readings.html#ethics-society'" style="cursor: pointer;">
+                            <h3 class="item-title">Ethics & Society</h3>
+                            <p class="item-description">Automation impact, moral machines, safety standards, and the future of work with robots. Critical perspectives on technology and society.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-readings.html'" style="cursor: pointer; background: var(--color-electric-blue); color: var(--color-white); border-color: var(--color-electric-blue);">
+                            <h3 class="item-title">→ Browse All Readings</h3>
+                            <p class="item-description">Explore the complete curated library of robotics research and resources</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flashcards Section -->
+                <div id="flashcards" class="robotics-content-section">
+                    <div class="section-number">03</div>
+                    <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
+                    <p class="section-description">Master robotics concepts through active recall. 60 interactive flashcards covering robot anatomy, movement, autonomy, applications, and maker tools.</p>
+
+                    <div class="section-grid">
+                        <div class="feature-card" style="cursor: default;">
+                            <h3 class="item-title">Robot Anatomy (15 cards)</h3>
+                            <p class="item-description">Servo motors, sensors (ultrasonic, LiDAR, IMU, force), actuators, encoders, and essential robot components.</p>
+                        </div>
+                        <div class="feature-card" style="cursor: default;">
+                            <h3 class="item-title">Movement & Behavior (12 cards)</h3>
+                            <p class="item-description">Differential drive, kinematics, gaits, locomotion, legibility, and animation principles for robots.</p>
+                        </div>
+                        <div class="feature-card" style="cursor: default;">
+                            <h3 class="item-title">Autonomy Levels (10 cards)</h3>
+                            <p class="item-description">SLAM, path planning, computer vision, sensor fusion, PID control, and autonomous navigation concepts.</p>
+                        </div>
+                        <div class="feature-card" style="cursor: default;">
+                            <h3 class="item-title">Applications (13 cards)</h3>
+                            <p class="item-description">Cobots, AGVs, social robots, soft robotics, prosthetics, surgical robots, and delivery systems.</p>
+                        </div>
+                        <div class="feature-card" style="cursor: default;">
+                            <h3 class="item-title">Maker Tools (10 cards)</h3>
+                            <p class="item-description">Arduino, Raspberry Pi, PWM, I2C, ROS, GPIO, breadboards, and essential robotics development tools.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-flashcards.html'" style="cursor: pointer; background: var(--color-electric-blue); color: var(--color-white); border-color: var(--color-electric-blue);">
+                            <h3 class="item-title">→ Start Learning</h3>
+                            <p class="item-description">Practice with interactive flashcards and track your progress</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Kit Section -->
+                <div id="fieldkit" class="robotics-content-section">
+                    <div class="section-number">04</div>
+                    <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
+                    <p class="section-description">Essential tools, kits, and resources for building robots. From beginner Arduino setups to advanced simulation platforms and design templates.</p>
+
+                    <div class="section-grid">
+                        <div class="feature-card" onclick="window.location.href='robotics-field-kit.html#maker-kits'" style="cursor: pointer;">
+                            <h3 class="item-title">Maker Kits & Platforms</h3>
+                            <p class="item-description">Arduino starter kits, Raspberry Pi robots, pre-built platforms (mBot, Sphero), and open-source projects (InMoov, Otto DIY).</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-field-kit.html#design-tools'" style="cursor: pointer;">
+                            <h3 class="item-title">Design Tools & Templates</h3>
+                            <p class="item-description">Robot specification documents, behavior design state machines, and designer-engineer collaboration frameworks.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-field-kit.html#visual-programming'" style="cursor: pointer;">
+                            <h3 class="item-title">Visual & Low-Code Programming</h3>
+                            <p class="item-description">Blockly for robotics, Scratch extensions, and ROS basics for designers. Program robots without traditional coding.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-field-kit.html#simulation'" style="cursor: pointer;">
+                            <h3 class="item-title">Robot Simulation Tools</h3>
+                            <p class="item-description">Webots, Gazebo, browser-based simulators, and motion planning visualizers. Test designs before building hardware.</p>
+                        </div>
+                        <div class="feature-card" style="cursor: default;">
+                            <h3 class="item-title">Platform Comparison Guide</h3>
+                            <p class="item-description">Arduino vs Raspberry Pi decision matrix, cost comparisons, and use case recommendations for different projects.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-field-kit.html'" style="cursor: pointer; background: var(--color-electric-blue); color: var(--color-white); border-color: var(--color-electric-blue);">
+                            <h3 class="item-title">→ Access Field Kit</h3>
+                            <p class="item-description">Browse complete collection of maker resources and tools</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activities Section -->
+                <div id="activities" class="robotics-content-section">
+                    <div class="section-number">05</div>
+                    <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
+                    <p class="section-description">Apply your knowledge through hands-on maker projects, collaborative design scenarios, and real-world case study analysis.</p>
+
+                    <div class="section-grid">
+                        <div class="feature-card" onclick="window.location.href='robotics-activities.html#maker-projects'" style="cursor: pointer;">
+                            <h3 class="item-title">Individual Maker Projects</h3>
+                            <p class="item-description">Paper robot prototypes, build Arduino line-following robot with step-by-step guide, and robot context design exercises.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-activities.html#design-scenarios'" style="cursor: pointer;">
+                            <h3 class="item-title">Collaborative Design Scenarios</h3>
+                            <p class="item-description">Design team simulations, ethical dilemma discussions, and application brainstorming workshops with structured frameworks.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-activities.html#case-studies'" style="cursor: pointer;">
+                            <h3 class="item-title">Boston Dynamics Analysis</h3>
+                            <p class="item-description">Deep dive into Spot and Atlas robots. Understand movement mastery, commercial pivot, and lessons for designers.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-activities.html#case-studies'" style="cursor: pointer;">
+                            <h3 class="item-title">Social Robots: Jibo vs Pepper</h3>
+                            <p class="item-description">Compare failed consumer robot with successful business robot. Learn what makes social robots viable.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-activities.html#case-studies'" style="cursor: pointer;">
+                            <h3 class="item-title">Collaborative Robots in Manufacturing</h3>
+                            <p class="item-description">How cobots are changing factory work. Human-robot collaboration case study with safety and design insights.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='robotics-activities.html'" style="cursor: pointer; background: var(--color-electric-blue); color: var(--color-white); border-color: var(--color-electric-blue);">
+                            <h3 class="item-title">→ Start Activities</h3>
+                            <p class="item-description">Practice with hands-on projects and case studies</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu" id="verticalMenu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Text reveal animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const textRevealElements = document.querySelectorAll('.text-reveal');
+            textRevealElements.forEach((element, index) => {
+                element.style.animationDelay = (index * 0.2) + 's';
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Technology Readiness Levels - Emerging Tech Hub</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+        /* TRL Visualization Specific Styles */
+        .trl-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .trl-controls {
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+        }
+
+        .filter-button {
+            padding: var(--space-2) var(--space-3);
+            border: var(--border-width) solid var(--color-gray-300);
+            background: var(--color-white);
+            color: var(--color-gray-700);
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-button:hover {
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .filter-button.active {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .trl-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-3);
+            margin-bottom: var(--space-8);
+            padding: var(--space-4);
+            background: var(--color-gray-50);
+            border: var(--border-width) solid var(--color-gray-200);
+        }
+
+        .trl-level {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-xs);
+            font-weight: var(--font-medium);
+        }
+
+        .trl-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+        }
+
+        .trl-visualization {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: var(--space-2);
+            margin-bottom: var(--space-8);
+            min-height: 600px;
+        }
+
+        .trl-column {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-200);
+            padding: var(--space-3);
+            position: relative;
+        }
+
+        .trl-column-header {
+            position: sticky;
+            top: 0;
+            background: var(--color-gray-900);
+            color: var(--color-white);
+            padding: var(--space-2);
+            margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-3)) var(--space-3);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-align: center;
+        }
+
+        .tech-item {
+            background: var(--color-white);
+            border: var(--border-width) solid var(--color-gray-300);
+            margin-bottom: var(--space-2);
+            padding: var(--space-3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .tech-item:hover {
+            border-color: var(--color-electric-blue);
+            box-shadow: 0 2px 8px rgba(64, 64, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .tech-item.research { border-left: 4px solid #8B5CF6; }
+        .tech-item.industry { border-left: 4px solid #10B981; }
+        .tech-item.fiction { border-left: 4px solid #F59E0B; }
+        .tech-item.experimental { border-left: 4px solid #EF4444; }
+
+        .tech-name {
+            font-size: var(--text-sm);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-1);
+            color: var(--color-black);
+        }
+
+        .tech-category {
+            font-size: var(--text-xs);
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-1);
+        }
+
+        .tech-progress {
+            font-size: var(--text-xs);
+            color: var(--color-gray-500);
+        }
+
+        .tech-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: var(--space-4);
+        }
+
+        .tech-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-white);
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: var(--space-6);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: none;
+            border: none;
+            font-size: var(--text-xl);
+            cursor: pointer;
+            color: var(--color-gray-600);
+        }
+
+        .modal-close:hover {
+            color: var(--color-black);
+        }
+
+        .modal-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+            color: var(--color-black);
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+            font-size: var(--text-sm);
+        }
+
+        .meta-item {
+            padding: var(--space-1) var(--space-2);
+            background: var(--color-gray-100);
+            font-weight: var(--font-medium);
+        }
+
+        .modal-description {
+            margin-bottom: var(--space-4);
+            line-height: 1.6;
+            color: var(--color-gray-700);
+        }
+
+        .progress-indicators {
+            display: grid;
+            gap: var(--space-3);
+        }
+
+        .progress-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-2);
+            background: var(--color-gray-50);
+        }
+
+        .progress-bar {
+            width: 100px;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .trl-visualization {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-4);
+            }
+
+            .trl-column-header {
+                font-size: var(--text-sm);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .trl-visualization {
+                grid-template-columns: 1fr;
+            }
+
+            .trl-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                justify-content: center;
+            }
+        }
+    </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Technology Readiness</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Visualization</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#overview" class="experimental-nav-link">Overview</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#matrix" class="experimental-nav-link">TRL Matrix</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#insights" class="experimental-nav-link">Insights</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="ai-landing.html">← Back to AI Hub</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero" id="overview">
+                <h1 class="fundamentals-title">AI Technology Readiness Levels</h1>
+                <p class="fundamentals-subtitle">Interactive visualization mapping AI technologies from research concepts to deployed systems based on 2025 industry progress</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>Understanding Technology Readiness Levels (TRL)</h2>
+                    <p>Technology Readiness Levels (TRL) are a systematic metric used to assess the maturity of a particular technology. Originally developed by NASA, the TRL scale ranges from 1 (basic research) to 9 (proven operational capability).</p>
+
+                    <div class="highlight-box">
+                        <h3>TRL Scale for AI Systems</h3>
+                        <p>For AI and machine learning systems, TRL assessment considers factors like data quality, model robustness, system integration, and real-world performance under diverse conditions.</p>
+                    </div>
+
+                    <div class="trl-legend">
+                        <div class="trl-level">
+                            <div class="trl-color" style="background: #FEF3C7;"></div>
+                            <span>TRL 1-2: Basic Research</span>
+                        </div>
+                        <div class="trl-level">
+                            <div class="trl-color" style="background: #FED7AA;"></div>
+                            <span>TRL 3: Proof of Concept</span>
+                        </div>
+                        <div class="trl-level">
+                            <div class="trl-color" style="background: #FECACA;"></div>
+                            <span>TRL 4: Lab Validation</span>
+                        </div>
+                        <div class="trl-level">
+                            <div class="trl-color" style="background: #DDD6FE;"></div>
+                            <span>TRL 5: Simulated Environment</span>
+                        </div>
+                        <div class="trl-level">
+                            <div class="trl-color" style="background: #C7D2FE;"></div>
+                            <span>TRL 6: Prototype Demo</span>
+                        </div>
+                        <div class="trl-level">
+                            <div class="trl-color" style="background: #BFDBFE;"></div>
+                            <span>TRL 7: System Integration</span>
+                        </div>
+                        <div class="trl-level">
+                            <div class="trl-color" style="background: #A7F3D0;"></div>
+                            <span>TRL 8: System Complete</span>
+                        </div>
+                        <div class="trl-level">
+                            <div class="trl-color" style="background: #86EFAC;"></div>
+                            <span>TRL 9: Proven Operational</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Controls -->
+                <section class="content-section" id="matrix">
+                    <h2>Interactive TRL Matrix</h2>
+                    <p>Explore AI technologies across different categories and readiness levels. Click on any technology to see detailed information.</p>
+
+                    <div class="trl-container">
+                        <div class="trl-controls">
+                            <div class="filter-group">
+                                <span>Filter by Category:</span>
+                                <button class="filter-button active" data-filter="all">All</button>
+                                <button class="filter-button" data-filter="research">Research</button>
+                                <button class="filter-button" data-filter="industry">Industry</button>
+                                <button class="filter-button" data-filter="fiction">Sci-Fi</button>
+                                <button class="filter-button" data-filter="experimental">Experimental</button>
+                            </div>
+                        </div>
+
+                        <!-- TRL Visualization Grid -->
+                        <div class="trl-visualization" id="trlGrid">
+                            <!-- TRL 1 -->
+                            <div class="trl-column" data-trl="1">
+                                <div class="trl-column-header">TRL 1<br>Basic Research</div>
+                                <div class="tech-item fiction" data-tech="agi">
+                                    <div class="tech-category">Sci-Fi Concept</div>
+                                    <div class="tech-name">Artificial General Intelligence</div>
+                                    <div class="tech-progress">Theoretical foundations</div>
+                                </div>
+                                <div class="tech-item fiction" data-tech="consciousness">
+                                    <div class="tech-category">Sci-Fi Concept</div>
+                                    <div class="tech-name">Machine Consciousness</div>
+                                    <div class="tech-progress">Philosophical research</div>
+                                </div>
+                                <div class="tech-item research" data-tech="quantum-ml">
+                                    <div class="tech-category">Research</div>
+                                    <div class="tech-name">Quantum Machine Learning</div>
+                                    <div class="tech-progress">Early algorithms</div>
+                                </div>
+                            </div>
+
+                            <!-- TRL 2 -->
+                            <div class="trl-column" data-trl="2">
+                                <div class="trl-column-header">TRL 2<br>Applied Research</div>
+                                <div class="tech-item research" data-tech="neuromorphic">
+                                    <div class="tech-category">Research</div>
+                                    <div class="tech-name">Neuromorphic Computing</div>
+                                    <div class="tech-progress">Hardware prototypes</div>
+                                </div>
+                                <div class="tech-item experimental" data-tech="brain-ai">
+                                    <div class="tech-category">Experimental</div>
+                                    <div class="tech-name">Brain-AI Interfaces</div>
+                                    <div class="tech-progress">Lab demonstrations</div>
+                                </div>
+                                <div class="tech-item research" data-tech="causality">
+                                    <div class="tech-category">Research</div>
+                                    <div class="tech-name">Causal AI</div>
+                                    <div class="tech-progress">Mathematical frameworks</div>
+                                </div>
+                            </div>
+
+                            <!-- TRL 3 -->
+                            <div class="trl-column" data-trl="3">
+                                <div class="trl-column-header">TRL 3<br>Proof of Concept</div>
+                                <div class="tech-item research" data-tech="multimodal">
+                                    <div class="tech-category">Research</div>
+                                    <div class="tech-name">Advanced Multimodal AI</div>
+                                    <div class="tech-progress">Research prototypes</div>
+                                </div>
+                                <div class="tech-item experimental" data-tech="swarm-ai">
+                                    <div class="tech-category">Experimental</div>
+                                    <div class="tech-name">Swarm Intelligence</div>
+                                    <div class="tech-progress">Simulation studies</div>
+                                </div>
+                                <div class="tech-item research" data-tech="continual">
+                                    <div class="tech-category">Research</div>
+                                    <div class="tech-name">Continual Learning</div>
+                                    <div class="tech-progress">Academic demos</div>
+                                </div>
+                            </div>
+
+                            <!-- TRL 4 -->
+                            <div class="trl-column" data-trl="4">
+                                <div class="trl-column-header">TRL 4<br>Lab Validation</div>
+                                <div class="tech-item research" data-tech="foundation-models">
+                                    <div class="tech-category">Research</div>
+                                    <div class="tech-name">Specialized Foundation Models</div>
+                                    <div class="tech-progress">Domain-specific validation</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="ai-drug">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">AI Drug Discovery</div>
+                                    <div class="tech-progress">Clinical validation</div>
+                                </div>
+                                <div class="tech-item experimental" data-tech="ai-creativity">
+                                    <div class="tech-category">Experimental</div>
+                                    <div class="tech-name">AI Creative Tools</div>
+                                    <div class="tech-progress">Artist collaborations</div>
+                                </div>
+                            </div>
+
+                            <!-- TRL 5 -->
+                            <div class="trl-column" data-trl="5">
+                                <div class="trl-column-header">TRL 5<br>Simulated Environment</div>
+                                <div class="tech-item industry" data-tech="autonomous-vehicles">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Level 4 Autonomous Vehicles</div>
+                                    <div class="tech-progress">Controlled testing</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="robotics">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Advanced Robotics</div>
+                                    <div class="tech-progress">Warehouse deployment</div>
+                                </div>
+                                <div class="tech-item research" data-tech="embodied-ai">
+                                    <div class="tech-category">Research</div>
+                                    <div class="tech-name">Embodied AI</div>
+                                    <div class="tech-progress">Simulation environments</div>
+                                </div>
+                            </div>
+
+                            <!-- TRL 6 -->
+                            <div class="trl-column" data-trl="6">
+                                <div class="trl-column-header">TRL 6<br>Prototype Demo</div>
+                                <div class="tech-item industry" data-tech="medical-ai">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Medical Diagnostic AI</div>
+                                    <div class="tech-progress">Hospital pilots</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="ai-assistants">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Advanced AI Assistants</div>
+                                    <div class="tech-progress">Beta testing</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="code-generation">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">AI Code Generation</div>
+                                    <div class="tech-progress">Developer tools</div>
+                                </div>
+                            </div>
+
+                            <!-- TRL 7 -->
+                            <div class="trl-column" data-trl="7">
+                                <div class="trl-column-header">TRL 7<br>System Integration</div>
+                                <div class="tech-item industry" data-tech="nlp-production">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Production NLP Systems</div>
+                                    <div class="tech-progress">Enterprise deployment</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="computer-vision">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Computer Vision</div>
+                                    <div class="tech-progress">Manufacturing integration</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="fraud-detection">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">AI Fraud Detection</div>
+                                    <div class="tech-progress">Financial systems</div>
+                                </div>
+                            </div>
+
+                            <!-- TRL 8 -->
+                            <div class="trl-column" data-trl="8">
+                                <div class="trl-column-header">TRL 8<br>System Complete</div>
+                                <div class="tech-item industry" data-tech="recommendation">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Recommendation Systems</div>
+                                    <div class="tech-progress">Platform-wide deployment</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="search-engines">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">AI-Powered Search</div>
+                                    <div class="tech-progress">Global deployment</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="translation">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Neural Translation</div>
+                                    <div class="tech-progress">Real-time services</div>
+                                </div>
+                            </div>
+
+                            <!-- TRL 9 -->
+                            <div class="trl-column" data-trl="9">
+                                <div class="trl-column-header">TRL 9<br>Proven Operational</div>
+                                <div class="tech-item industry" data-tech="image-recognition">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Image Recognition</div>
+                                    <div class="tech-progress">Ubiquitous deployment</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="speech-recognition">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Speech Recognition</div>
+                                    <div class="tech-progress">Consumer devices</div>
+                                </div>
+                                <div class="tech-item industry" data-tech="spam-detection">
+                                    <div class="tech-category">Industry</div>
+                                    <div class="tech-name">Spam Detection</div>
+                                    <div class="tech-progress">Email systems</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Insights Section -->
+                <section class="content-section" id="insights">
+                    <h2>Key Insights from the TRL Analysis</h2>
+
+                    <div class="insight-cards">
+                        <div class="insight-card">
+                            <h3>The Generality-Readiness Trade-off</h3>
+                            <p>Higher TRLs are more achievable for narrow, specialized AI systems. As we move toward more general AI capabilities, the readiness levels decrease significantly.</p>
+                        </div>
+
+                        <div class="insight-card">
+                            <h3>Industry vs Research Timelines</h3>
+                            <p>Industry applications tend to cluster in TRL 6-9, focusing on proven technologies. Research concepts occupy TRL 1-4, exploring next-generation capabilities.</p>
+                        </div>
+
+                        <div class="insight-card">
+                            <h3>Science Fiction Inspiration</h3>
+                            <p>Many concepts from science fiction (AGI, consciousness) remain at TRL 1-2, serving as inspiration for long-term research directions rather than near-term deployments.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu" id="verticalMenu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Technology Detail Modal -->
+        <div class="tech-modal" id="techModal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeTechModal()">×</button>
+                <div id="modalContent">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Technology data with detailed information
+        const techData = {
+            'agi': {
+                name: 'Artificial General Intelligence',
+                category: 'Sci-Fi Concept',
+                trl: 1,
+                description: 'AI systems that can understand, learn, and apply intelligence across a wide range of tasks at a level comparable to human intelligence.',
+                progress: {
+                    'Research': 15,
+                    'Funding': 25,
+                    'Timeline': 5,
+                    'Consensus': 10
+                },
+                details: 'Current research focuses on foundation models and emergent behaviors, but true AGI remains a distant goal with significant theoretical and practical challenges.',
+                keyPlayers: 'OpenAI, DeepMind, Anthropic, academic institutions',
+                timeline: '2035-2050+ (highly speculative)'
+            },
+            'consciousness': {
+                name: 'Machine Consciousness',
+                category: 'Sci-Fi Concept',
+                trl: 1,
+                description: 'AI systems that would possess self-awareness, subjective experiences, and phenomenal consciousness.',
+                progress: {
+                    'Research': 5,
+                    'Funding': 10,
+                    'Timeline': 2,
+                    'Consensus': 3
+                },
+                details: 'Primarily philosophical research with no clear pathway to implementation. The hard problem of consciousness remains unsolved.',
+                keyPlayers: 'Academic philosophy and cognitive science departments',
+                timeline: 'Unknown - may not be achievable'
+            },
+            'quantum-ml': {
+                name: 'Quantum Machine Learning',
+                category: 'Research',
+                trl: 1,
+                description: 'Leveraging quantum computing principles to potentially accelerate machine learning algorithms.',
+                progress: {
+                    'Research': 30,
+                    'Funding': 35,
+                    'Timeline': 20,
+                    'Consensus': 25
+                },
+                details: 'Early-stage research with some promising algorithms, but limited by current quantum hardware capabilities.',
+                keyPlayers: 'IBM, Google, Rigetti, academic quantum research groups',
+                timeline: '2030-2040 for practical applications'
+            },
+            'neuromorphic': {
+                name: 'Neuromorphic Computing',
+                category: 'Research',
+                trl: 2,
+                description: 'Hardware architectures that mimic neural structures and processing methods of biological brains.',
+                progress: {
+                    'Research': 45,
+                    'Funding': 40,
+                    'Timeline': 35,
+                    'Consensus': 50
+                },
+                details: 'Several working prototypes exist, with potential for ultra-low power AI processing. Intel Loihi and IBM TrueNorth are leading examples.',
+                keyPlayers: 'Intel, IBM, BrainChip, various research institutions',
+                timeline: '2025-2030 for specialized applications'
+            },
+            'brain-ai': {
+                name: 'Brain-AI Interfaces',
+                category: 'Experimental',
+                trl: 2,
+                description: 'Direct interfaces between human brains and AI systems for enhanced cognitive capabilities.',
+                progress: {
+                    'Research': 25,
+                    'Funding': 30,
+                    'Timeline': 15,
+                    'Consensus': 20
+                },
+                details: 'Early demonstrations of brain-computer interfaces exist, but integration with AI systems is largely experimental.',
+                keyPlayers: 'Neuralink, Synchron, Meta Reality Labs, academic neuroscience labs',
+                timeline: '2030-2040 for basic applications'
+            },
+            'autonomous-vehicles': {
+                name: 'Level 4 Autonomous Vehicles',
+                category: 'Industry',
+                trl: 5,
+                description: 'Self-driving vehicles capable of handling most driving scenarios without human intervention in defined conditions.',
+                progress: {
+                    'Research': 75,
+                    'Funding': 85,
+                    'Timeline': 60,
+                    'Consensus': 70
+                },
+                details: 'Extensive testing in controlled environments. Limited deployments in specific geographical areas and conditions.',
+                keyPlayers: 'Waymo, Tesla, Cruise, Aurora, traditional automakers',
+                timeline: '2025-2030 for widespread deployment'
+            },
+            'medical-ai': {
+                name: 'Medical Diagnostic AI',
+                category: 'Industry',
+                trl: 6,
+                description: 'AI systems that can assist in medical diagnosis, often matching or exceeding human specialist performance.',
+                progress: {
+                    'Research': 80,
+                    'Funding': 75,
+                    'Timeline': 70,
+                    'Consensus': 85
+                },
+                details: 'Multiple systems approved by regulatory bodies for specific diagnostic tasks. Ongoing integration into healthcare workflows.',
+                keyPlayers: 'Google Health, IBM Watson Health, various medical AI startups',
+                timeline: '2024-2027 for broad adoption'
+            },
+            'recommendation': {
+                name: 'Recommendation Systems',
+                category: 'Industry',
+                trl: 8,
+                description: 'AI systems that predict user preferences and suggest relevant content, products, or services.',
+                progress: {
+                    'Research': 95,
+                    'Funding': 100,
+                    'Timeline': 95,
+                    'Consensus': 100
+                },
+                details: 'Mature technology deployed across major platforms. Continuous refinement and personalization improvements.',
+                keyPlayers: 'Netflix, Amazon, YouTube, Spotify, social media platforms',
+                timeline: 'Already deployed and continuously improving'
+            },
+            'image-recognition': {
+                name: 'Image Recognition',
+                category: 'Industry',
+                trl: 9,
+                description: 'AI systems capable of identifying and classifying objects, faces, and scenes in images with high accuracy.',
+                progress: {
+                    'Research': 98,
+                    'Funding': 100,
+                    'Timeline': 100,
+                    'Consensus': 100
+                },
+                details: 'Proven operational capability across numerous applications. Superhuman performance in many specific tasks.',
+                keyPlayers: 'Google, Facebook, Amazon, Apple, Microsoft',
+                timeline: 'Operationally deployed since ~2015'
+            }
+        };
+
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const techItems = document.querySelectorAll('.tech-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    // Filter tech items
+                    techItems.forEach(item => {
+                        if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Tech item click handlers
+            techItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const techId = this.getAttribute('data-tech');
+                    showTechModal(techId);
+                });
+            });
+        });
+
+        function showTechModal(techId) {
+            const tech = techData[techId];
+            if (!tech) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <h2 class="modal-title">${tech.name}</h2>
+                <div class="modal-meta">
+                    <span class="meta-item">Category: ${tech.category}</span>
+                    <span class="meta-item">TRL: ${tech.trl}</span>
+                    <span class="meta-item">Timeline: ${tech.timeline}</span>
+                </div>
+                <div class="modal-description">
+                    <p><strong>Description:</strong> ${tech.description}</p>
+                    <p><strong>Current Status:</strong> ${tech.details}</p>
+                    <p><strong>Key Players:</strong> ${tech.keyPlayers}</p>
+                </div>
+                <div class="progress-indicators">
+                    <h4>Development Progress</h4>
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <span>${key}</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%"></div>
+                            </div>
+                            <span>${value}%</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('techModal').classList.add('active');
+        }
+
+        function closeTechModal() {
+            document.getElementById('techModal').classList.remove('active');
+        }
+
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTechModal();
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.experimental-nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Computing Learning Hub - IoT, Distributed Systems & Edge AI Education</title>
+    <meta name="description" content="Master edge computing with hands-on IoT projects. Learn distributed systems, edge AI deployment, TinyML, and real-world edge architecture through practical tutorials.">
+    <meta name="keywords" content="edge computing, IoT, distributed systems, edge AI, TinyML, fog computing, sensor networks, MQTT, edge ML deployment, industrial IoT">
+    <meta name="author" content="Studio Poetics - Emerging Technology Hub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/edge-landing.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eth.poetics.studio/edge-landing.html">
+    <meta property="og:title" content="Edge Computing Learning Hub - IoT & Distributed Systems">
+    <meta property="og:description" content="Master edge computing with hands-on IoT projects. Learn distributed systems and edge AI deployment through practical tutorials.">
+    <meta property="og:site_name" content="Emerging Technology Hub">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://eth.poetics.studio/edge-landing.html">
+    <meta property="twitter:title" content="Edge Computing Learning Hub - IoT & Distributed Systems">
+    <meta property="twitter:description" content="Master edge computing with hands-on IoT projects. Learn distributed systems and edge AI deployment through practical tutorials.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Edge Computing & IoT Fundamentals",
+      "description": "Comprehensive edge computing education covering IoT systems, distributed architecture, and edge AI deployment",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "Emerging Technology Hub",
+        "url": "https://eth.poetics.studio"
+      },
+      "educationalLevel": "Beginner to Intermediate",
+      "teaches": [
+        "Edge Computing Fundamentals",
+        "IoT Architecture",
+        "Distributed Systems",
+        "Edge AI Deployment",
+        "TinyML"
+      ],
+      "courseMode": "online",
+      "isAccessibleForFree": true
+    }
+    </script>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+
+    /* Landing page specific */
+    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
+    .section-nav-list { gap: var(--space-3) !important; }
+    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
+    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
+    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
+    .section-description { font-size: var(--text-base) !important; }
+    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Distributed Computing</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Edge Computing</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#fundamentals" class="experimental-nav-link">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#readings" class="experimental-nav-link">Readings</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#flashcards" class="experimental-nav-link">Flashcards</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#fieldkit" class="experimental-nav-link">Field Kit</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#activities" class="experimental-nav-link">Activities</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">For Developers & Architects</div>
+                    <div class="info-box-content">Learn to design edge computing systems and deploy AI at the edge—practical IoT and distributed systems skills.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">What's Available</div>
+                    <div class="info-box-content">
+                        Fundamentals Guide<br>
+                        60 Flashcards<br>
+                        25 Readings<br>
+                        IoT Projects<br>
+                        Status: <strong style="color: #10b981;">Active</strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="experimental-hero experimental-fade-in">
+                <div class="hero-content">
+                    <h1 class="experimental-title text-reveal">Edge Computing</h1>
+                    <h2 class="experimental-subtitle">IoT, Distributed Systems & Edge AI</h2>
+
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <span class="experimental-date">2024</span>
+                        <span class="experimental-arrow">→</span>
+                        <span class="experimental-date">Active</span>
+                    </div>
+
+                    <p class="hero-description">
+                        Master distributed computing at the network edge. Learn to build IoT sensor networks, deploy machine learning models on edge devices, and architect systems that process data locally for real-time response with minimal latency.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="edge-fundamentals.html" class="experimental-btn experimental-btn--primary">Start Learning</a>
+                        <a href="index.html" class="experimental-btn">← Back to Hub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="ai-content-sections">
+
+                <!-- Fundamentals Section -->
+                <div id="fundamentals" class="ai-content-section">
+                    <div class="section-number">00</div>
+                    <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Start here to understand edge computing from the ground up—designed for non-engineers, designers, makers, students, and product managers.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='edge-fundamentals.html'" style="cursor: pointer;">
+                            <h3 class="item-title">What is Edge Computing?</h3>
+                            <p class="item-description" style="line-height: 1.8;">Learn the basics of distributed computing, why edge computing matters, and how it complements cloud infrastructure.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-fundamentals.html#core-properties'" style="cursor: pointer;">
+                            <h3 class="item-title">Core Properties</h3>
+                            <p class="item-description" style="line-height: 1.8;">Understand low latency, bandwidth efficiency, privacy, reliability, and why these properties make edge computing essential.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-fundamentals.html#architecture'" style="cursor: pointer;">
+                            <h3 class="item-title">Architecture Components</h3>
+                            <p class="item-description" style="line-height: 1.8;">Explore edge devices, gateways, servers, communication protocols, and how they work together in a distributed system.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-fundamentals.html#applications'" style="cursor: pointer;">
+                            <h3 class="item-title">Real-World Applications</h3>
+                            <p class="item-description" style="line-height: 1.8;">See edge computing in action—from autonomous vehicles to smart cities, healthcare, retail, and industrial IoT.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Readings Section -->
+                <div id="readings" class="ai-content-section">
+                    <div class="section-number">01</div>
+                    <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Curated academic and industry resources on edge computing fundamentals, IoT architecture, distributed systems, and real-world deployments.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='edge-readings.html#fundamentals'" style="cursor: pointer;">
+                            <h3 class="item-title">Edge Computing Fundamentals</h3>
+                            <p class="item-description" style="line-height: 1.8;">Core concepts, architectural patterns, and strategic understanding of when to use edge computing versus cloud-only approaches.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-readings.html#iot-sensors'" style="cursor: pointer;">
+                            <h3 class="item-title">IoT & Sensor Networks</h3>
+                            <p class="item-description" style="line-height: 1.8;">Connecting physical devices with distributed sensors, communication protocols (MQTT, LoRaWAN), and network architectures.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-readings.html#distributed'" style="cursor: pointer;">
+                            <h3 class="item-title">Distributed Systems</h3>
+                            <p class="item-description" style="line-height: 1.8;">System-level thinking: orchestration, synchronization, fault tolerance, CAP theorem, and edge-cloud data consistency.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-readings.html#edge-ai'" style="cursor: pointer;">
+                            <h3 class="item-title">Edge AI & Machine Learning</h3>
+                            <p class="item-description" style="line-height: 1.8;">Running ML models on edge devices: TinyML, model optimization, quantization, YOLO deployment, and federated learning.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-readings.html#deployments'" style="cursor: pointer;">
+                            <h3 class="item-title">Real-World Deployments</h3>
+                            <p class="item-description" style="line-height: 1.8;">Case studies from smart cities, retail, healthcare, autonomous vehicles, and 5G MEC implementations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flashcards Section -->
+                <div id="flashcards" class="ai-content-section">
+                    <div class="section-number">02</div>
+                    <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Interactive learning system with 60 flashcards covering edge concepts, IoT fundamentals, distributed architecture, and edge AI.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='edge-flashcards.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Edge Computing Concepts (12 cards)</h3>
+                            <p class="item-description" style="line-height: 1.8;">Edge computing, fog computing, cloudlet, MEC, latency reduction, bandwidth optimization, and offline operation.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-flashcards.html'" style="cursor: pointer;">
+                            <h3 class="item-title">IoT Fundamentals (12 cards)</h3>
+                            <p class="item-description" style="line-height: 1.8;">Sensors, actuators, MQTT, CoAP, LoRaWAN, NB-IoT, digital twins, OTA updates, and IoT gateways.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-flashcards.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Distributed Architecture (12 cards)</h3>
+                            <p class="item-description" style="line-height: 1.8;">CAP theorem, eventual consistency, replication, load balancing, failover, and edge-cloud synchronization.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-flashcards.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Edge AI & ML (12 cards)</h3>
+                            <p class="item-description" style="line-height: 1.8;">Model quantization, pruning, TinyML, federated learning, Edge TPU, and hybrid inference patterns.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-flashcards.html'" style="cursor: pointer;">
+                            <h3 class="item-title">Applications (12 cards)</h3>
+                            <p class="item-description" style="line-height: 1.8;">Smart cities, Industry 4.0, autonomous vehicles, retail analytics, healthcare monitoring, and CDNs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Kit Section -->
+                <div id="fieldkit" class="ai-content-section">
+                    <div class="section-number">03</div>
+                    <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Hardware, platforms, and tools for building edge computing systems—from Raspberry Pi to NVIDIA Jetson to Edge Impulse.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='edge-field-kit.html#hardware'" style="cursor: pointer;">
+                            <h3 class="item-title">Edge Hardware</h3>
+                            <p class="item-description" style="line-height: 1.8;">Raspberry Pi, NVIDIA Jetson, Google Coral, Arduino/ESP32—complete comparison with prices, ML performance, and use cases.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-field-kit.html#ml-platforms'" style="cursor: pointer;">
+                            <h3 class="item-title">ML Platforms</h3>
+                            <p class="item-description" style="line-height: 1.8;">Edge Impulse (highly recommended), TensorFlow Lite, Roboflow, NVIDIA TAO—end-to-end edge ML workflows.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-field-kit.html#vision-models'" style="cursor: pointer;">
+                            <h3 class="item-title">Vision Models</h3>
+                            <p class="item-description" style="line-height: 1.8;">YOLO v5-v10, MobileNet, EfficientNet, MediaPipe, and 2023-2024 models (FastViT, RT-DETR) optimized for edge.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-field-kit.html#iot-platforms'" style="cursor: pointer;">
+                            <h3 class="item-title">IoT Platforms</h3>
+                            <p class="item-description" style="line-height: 1.8;">AWS IoT Greengrass, Azure IoT Edge, Google Cloud IoT, Balena fleet management, and Node-RED visual programming.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activities Section -->
+                <div id="activities" class="ai-content-section">
+                    <div class="section-number">04</div>
+                    <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
+                    <p class="section-description" style="line-height: 1.8;">Hands-on IoT projects, architecture exercises, team scenarios, and production system case studies.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" onclick="window.location.href='edge-activities.html#iot-projects'" style="cursor: pointer;">
+                            <h3 class="item-title">IoT Projects</h3>
+                            <p class="item-description" style="line-height: 1.8;">Build multi-node sensor networks, deploy edge AI object detection, create edge-to-cloud pipelines, and train TinyML models.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-activities.html#design-exercises'" style="cursor: pointer;">
+                            <h3 class="item-title">Architecture Exercises</h3>
+                            <p class="item-description" style="line-height: 1.8;">Cloud vs edge decision frameworks, network topology design, and cost analysis for edge deployments.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-activities.html#collaborative'" style="cursor: pointer;">
+                            <h3 class="item-title">Team Scenarios</h3>
+                            <p class="item-description" style="line-height: 1.8;">Smart building IoT design sprints, industrial edge implementation planning, and deployment logistics workshops.</p>
+                        </div>
+                        <div class="feature-card" onclick="window.location.href='edge-activities.html#case-studies'" style="cursor: pointer;">
+                            <h3 class="item-title">Case Studies</h3>
+                            <p class="item-description" style="line-height: 1.8;">Analyze AWS Greengrass, Tesla FSD Computer, Google Nest, and Siemens MindSphere production deployments.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu" id="verticalMenu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Close menu on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('mainMenuOverlay').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
