@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Activities - Build & Experiment | Emerging Tech Hub</title>
+    <meta name="description"
+        content="Hands-on quantum computing activities. Visualize superposition with a coin toss and create quantum entanglement (Bell States).">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+    <style>
+        .activity-box {
+            border: 1px solid var(--color-gray-800);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+
+        .visual-coin {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: gold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 1rem auto;
+            border: 4px solid orange;
+        }
+
+        .spinning {
+            animation: spin 0.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="quantum-landing.html"
+                            style="color: inherit; text-decoration: none;">Quantum Computing</a></h1>
+                    <p class="brand-subtitle">Activities</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Lab Experiments</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#superposition" class="experimental-nav-link">Exp 1: Superposition</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#entanglement" class="experimental-nav-link">Exp 2: Entanglement</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Quantum Lab</h1>
+                <p class="fundamentals-subtitle">Hands-on thought experiments and code patterns to visualize quantum
+                    strangeness.</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Superposition Activity -->
+                <section class="content-section" id="superposition">
+                    <span class="section-number">01</span>
+                    <h2>Experiment 1: The Quantum Coin (Superposition)</h2>
+                    <p>A classical coin is either Heads or Tails. A quantum coin (Qubit) spinning in the air is
+                        <strong>both</strong>.</p>
+
+                    <div class="activity-box">
+                        <h3 class="item-title">Visualization</h3>
+                        <div class="visual-coin spinning" id="coin">?</div>
+                        <p style="text-align: center; margin-top: 1rem;">
+                            State: <strong>(|H⟩ + |T⟩) / √2</strong>
+                        </p>
+                        <p style="text-align: center; font-size: 0.9em; color: #666;">
+                            While spinning, it is in Superposition. It only "chooses" a state when it lands
+                            (Measurement).
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Entanglement Activity -->
+                <section class="content-section" id="entanglement">
+                    <span class="section-number">02</span>
+                    <h2>Experiment 2: The "Hello World" of Quantum (Bell State)</h2>
+                    <p>Creating a Bell State demonstrates <strong>Entanglement</strong>. We will entangle two qubits so
+                        that measuring one immediately determines the state of the other.</p>
+
+                    <div class="activity-box">
+                        <h3 class="item-title">Qiskit Code Pattern</h3>
+                        <p class="item-description">Run this python code to create entanglement yourself:</p>
+                        <pre class="code-block">
+from qiskit import QuantumCircuit
+
+# 1. Create a Quantum Circuit with 2 Qubits
+qc = QuantumCircuit(2)
+
+# 2. Put Qubit 0 into Superposition (H-gate)
+qc.h(0)
+
+# 3. Entangle Qubit 0 and Qubit 1 (CNOT-gate)
+# This says: "If Qubit 0 acts, do the same to Qubit 1"
+qc.cx(0, 1)
+
+# Result: The qubits are now inseparable.
+# |00⟩ + |11⟩
+                        </pre>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div
+                    style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 2px solid var(--color-black);">
+                    <a href="quantum-landing.html" class="experimental-btn">← Back to Quantum Hub</a>
+                    <a href="quantum-flashcards.html" class="experimental-btn experimental-btn--primary">Review Terms
+                        →</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

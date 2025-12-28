@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-Robotics Activities - Hands-On Projects & Case Studies | Emerging Tech Hub</title>
+    <meta name="description" content="Hands-on bio-robotics projects for non-technical learners. Grow wearables, design sixth senses, analyze Stelarc, Eduardo Kac, and Neri Oxman's pioneering work.">
+    <meta name="keywords" content="bio-robotics projects, bio-art activities, Stelarc Third Hand, GFP Bunny, Silk Pavilion, body modification, speculative design exercises">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+.activity-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    margin-bottom: var(--space-8);
+    transition: all var(--transition-base);
+}
+
+.activity-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.activity-number {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.activity-title {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.activity-description {
+    line-height: 1.8;
+}
+
+.activity-description h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.activity-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.instruction-list {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-5);
+    list-style-type: decimal;
+}
+
+.instruction-list li {
+    margin-bottom: var(--space-3);
+    line-height: 1.8;
+}
+
+.case-study-card {
+    background: var(--color-gray-50);
+    border-left: 4px solid var(--color-electric-blue);
+    padding: var(--space-8);
+    margin-bottom: var(--space-8);
+}
+
+.case-study-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+}
+
+.case-study-card h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.case-study-card ul {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.case-study-card li {
+    margin-bottom: var(--space-2);
+    line-height: 1.8;
+}
+
+.analysis-questions {
+    background: var(--color-white);
+    border: 2px solid var(--color-electric-blue);
+    padding: var(--space-4);
+    margin-top: var(--space-5);
+    list-style-type: none !important;
+    margin-left: 0 !important;
+}
+
+.analysis-questions li {
+    padding-left: var(--space-6);
+    position: relative;
+}
+
+.analysis-questions li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-electric-blue);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="biorobotics-landing.html" style="color: inherit; text-decoration: none;">Bio-Robotics</a></h1>
+                    <p class="brand-subtitle">Activities</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Sections</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#no-code-projects" class="experimental-nav-link">No-Code Making</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#design-exercises" class="experimental-nav-link">Design Exercises</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#team-scenarios" class="experimental-nav-link">Team Scenarios</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#case-studies" class="experimental-nav-link">Case Studies</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">For Everyone</div>
+                    <div class="info-box-content">All activities designed for non-technical learners. No coding or engineering required.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Real Projects</div>
+                    <div class="info-box-content">Learn from actual bio-art pioneers: Stelarc, Kac, Oxman, Harbisson, and more.</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Bio-Robotics Activities</h1>
+                <p class="fundamentals-subtitle">Hands-On Projects, Design Exercises & Real-World Case Studies</p>
+                <div style="display: flex; gap: var(--space-4); margin-top: var(--space-6);">
+                    <a href="biorobotics-landing.html" class="experimental-btn">← Back to Bio-Robotics</a>
+                    <a href="biorobotics-field-kit.html" class="experimental-btn">Get Making Tools</a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="fundamentals-content">
+
+                <!-- No-Code Projects Section -->
+                <section class="content-section" id="no-code-projects">
+                    <h2>🛠️ No-Code Making Projects</h2>
+                    <p style="line-height: 1.8;">Hands-on projects anyone can do. Grow materials, design wearables, speculate on future bodies.</p>
+
+                    <div class="activity-card">
+                        <div class="activity-number">Project 01</div>
+                        <h3 class="activity-title">Grow Your Own Wearable</h3>
+                        <div class="activity-description">
+                            <p><strong>Level:</strong> Beginner | <strong>Time:</strong> 2-3 weeks (growing) + 3-4 hours (design) | <strong>Cost:</strong> $15-30</p>
+                            <p>Grow kombucha leather (SCOBY) and turn it into a wearable accessory. Experience what Neri Oxman calls "Material Ecology" - co-creating with living organisms.</p>
+
+                            <h4>What You'll Learn:</h4>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li>How living materials grow and behave</li>
+                                <li>Patience - nature works on its own timeline</li>
+                                <li>Material properties (flexibility, durability, texture)</li>
+                                <li>The feeling of wearing something you grew</li>
+                            </ul>
+
+                            <h4>Process:</h4>
+                            <ol class="instruction-list">
+                                <li><strong>Week 1-3: Grow SCOBY:</strong> Follow kombucha leather recipe from Field Kit. Watch it grow daily.</li>
+                                <li><strong>Harvest:</strong> Remove thick cellulose layer when 1/4" thick</li>
+                                <li><strong>Clean & Dry:</strong> Rinse gently, lay flat to dry for 3-5 days</li>
+                                <li><strong>Design:</strong> Sketch your accessory (bracelet, patch, small bag)</li>
+                                <li><strong>Cut & Shape:</strong> Use scissors and craft knife</li>
+                                <li><strong>Assemble:</strong> Stitch or glue into final form</li>
+                                <li><strong>Wear & Document:</strong> Take photos, note how it feels</li>
+                            </ol>
+
+                            <h4>Reflection Questions:</h4>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li>How does wearing something you grew change your relationship to materials?</li>
+                                <li>What if all our clothing grew like this?</li>
+                                <li>How did waiting for it to grow affect your patience?</li>
+                                <li>What would you grow next?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="activity-number">Project 02</div>
+                        <h3 class="activity-title">Design a Sixth Sense Wearable</h3>
+                        <div class="activity-description">
+                            <p><strong>Level:</strong> Beginner | <strong>Time:</strong> 2-3 hours | <strong>Cost:</strong> Free (paper prototype)</p>
+                            <p>Design a wearable that gives you a new sense. Inspired by Neil Harbisson's antenna (hearing colors) and Madeline Schwartzman's body architecture work.</p>
+
+                            <h4>Choose Your New Sense:</h4>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li><strong>Magnetic Sense:</strong> Feel Earth's magnetic field like birds</li>
+                                <li><strong>UV Exposure:</strong> Sense sun damage in real-time</li>
+                                <li><strong>Air Quality:</strong> Feel pollution levels</li>
+                                <li><strong>Emotion Detection:</strong> Sense others' stress or mood</li>
+                                <li><strong>Time Perception:</strong> Physical sensation of time passing</li>
+                                <li><strong>Distance Sensing:</strong> Echolocation like bats</li>
+                            </ul>
+
+                            <h4>Design Process:</h4>
+                            <ol class="instruction-list">
+                                <li><strong>Pick Your Sense:</strong> What would change your daily life most?</li>
+                                <li><strong>Body Placement:</strong> Where would you wear it? (wrist, neck, head, finger?)</li>
+                                <li><strong>Communication Method:</strong> How does it tell you info? (vibration, heat, pressure, sound?)</li>
+                                <li><strong>Sketch Form:</strong> Draw multiple views of your device</li>
+                                <li><strong>Paper Prototype:</strong> Build rough model from cardboard/paper</li>
+                                <li><strong>User Manual:</strong> Write instructions for wearing and using it</li>
+                                <li><strong>Test with Friends:</strong> Can they understand your concept?</li>
+                            </ol>
+
+                            <h4>Reflection:</h4>
+                            <p><strong>Question:</strong> How would having this sense change your behavior? Would you make different decisions? What new habits would you develop?</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="activity-number">Project 03</div>
+                        <h3 class="activity-title">Body Mapping & Sensory Architecture</h3>
+                        <div class="activity-description">
+                            <p><strong>Level:</strong> Beginner | <strong>Time:</strong> Full day tracking + 2-3 hours mapping | <strong>Cost:</strong> Free</p>
+                            <p>Map your daily sensory experiences like an architect maps a building. Identify where you could sense more. Design speculative body extensions.</p>
+
+                            <h4>Day 1: Track Everything</h4>
+                            <p>For one full day, note every sensation:</p>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li><strong>Sight:</strong> What do you look at? Colors, shapes, movements?</li>
+                                <li><strong>Sound:</strong> What do you hear? Background noise, conversations, music?</li>
+                                <li><strong>Touch:</strong> Textures, temperatures, pressure points</li>
+                                <li><strong>Smell:</strong> Food, nature, urban smells, people</li>
+                                <li><strong>Taste:</strong> Everything you eat/drink</li>
+                                <li><strong>Proprioception:</strong> Body awareness, balance, posture</li>
+                            </ul>
+
+                            <h4>Day 2: Create Visual Map</h4>
+                            <ol class="instruction-list">
+                                <li>Draw outline of human body (yours)</li>
+                                <li>Use colors to show sensory intensity (red=high, blue=low)</li>
+                                <li>Mark "sensory hotspots" - where you sense most</li>
+                                <li>Mark "dead zones" - where you could sense more</li>
+                                <li>Add notes about surprising sensations</li>
+                            </ol>
+
+                            <h4>Day 3: Design Extensions</h4>
+                            <p>For each "dead zone," design a body extension:</p>
+                            <ol class="instruction-list">
+                                <li>What would you want to sense there?</li>
+                                <li>Sketch the extension (be wild - it's speculative!)</li>
+                                <li>How would it attach to body?</li>
+                                <li>How would it communicate info to you?</li>
+                            </ol>
+
+                            <h4>Present Your "Augmented Body":</h4>
+                            <p>Create a poster showing: original body map + proposed extensions + explanations of each modification.</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="activity-number">Project 04</div>
+                        <h3 class="activity-title">Living System Co-Creation</h3>
+                        <div class="activity-description">
+                            <p><strong>Level:</strong> Intermediate | <strong>Time:</strong> 3-4 weeks (growing) | <strong>Cost:</strong> $30-50</p>
+                            <p>Grow mycelium structures and explore who's really the designer - you or the organism? Experience Neri Oxman's Material Ecology principles firsthand.</p>
+
+                            <h4>Setup:</h4>
+                            <ol class="instruction-list">
+                                <li>Get mushroom growing kit (oyster mushrooms recommended)</li>
+                                <li>Prepare containers/molds in different shapes</li>
+                                <li>Set up documentation system (daily photos, journal)</li>
+                            </ol>
+
+                            <h4>Growing & Documenting:</h4>
+                            <ol class="instruction-list">
+                                <li><strong>Day 1:</strong> Mix substrate with spawn, pack into molds</li>
+                                <li><strong>Days 2-21:</strong> Document daily (photos, notes on growth patterns)</li>
+                                <li><strong>Observations:</strong> Where does it grow fastest? Does it follow your design or make its own?</li>
+                                <li><strong>Interventions:</strong> Try adjusting moisture, light, temperature - see how mycelium responds</li>
+                                <li><strong>Harvest:</strong> When fully colonized, dry to preserve</li>
+                            </ol>
+
+                            <h4>Key Questions to Explore:</h4>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li><strong>Control vs. Collaboration:</strong> How much control do you really have?</li>
+                                <li><strong>Designer Role:</strong> Are you designing or just providing conditions?</li>
+                                <li><strong>Unexpected Beauty:</strong> Did mycelium create patterns you didn't plan?</li>
+                                <li><strong>Patience:</strong> How does working with living time differ from industrial time?</li>
+                            </ul>
+
+                            <h4>Final Reflection:</h4>
+                            <p><strong>Write:</strong> "Who is the designer of this object - me or the mycelium?" Support your answer with evidence from your documentation.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Design Exercises Section -->
+                <section class="content-section" id="design-exercises">
+                    <h2>✏️ Design Exercises</h2>
+                    <p style="line-height: 1.8;">Solo exercises to practice thinking like a bio-robotics designer.</p>
+
+                    <div class="activity-card">
+                        <div class="activity-number">Exercise 01</div>
+                        <h3 class="activity-title">Bio-Ethics Futures Workshop</h3>
+                        <div class="activity-description">
+                            <p><strong>Time:</strong> 2-3 hours | <strong>Best For:</strong> Solo or small groups</p>
+
+                            <h4>The Scenario:</h4>
+                            <p>It's 2045. You can enhance <strong>ONE</strong> human capability with bio-robotics technology. The enhancement works perfectly and is affordable. What do you choose?</p>
+
+                            <h4>Step 1: Choose Your Enhancement</h4>
+                            <p>Pick from: Enhanced vision, super memory, empathy sensing, faster healing, never need sleep, enhanced strength, feel electromagnetic fields, photosynthesis (make energy from sun), or invent your own.</p>
+
+                            <h4>Step 2: Work Through Consequences</h4>
+                            <ol class="instruction-list">
+                                <li><strong>Personal Impact:</strong> How does your daily life change?</li>
+                                <li><strong>Access Question:</strong> Who gets it? Everyone or only some people? Why?</li>
+                                <li><strong>Social Changes:</strong> If 50% of people have it, what happens to society?</li>
+                                <li><strong>Unintended Consequences:</strong> What goes wrong that nobody predicted?</li>
+                                <li><strong>Regulation:</strong> Should government control who gets enhancements?</li>
+                            </ol>
+
+                            <h4>Step 3: Write "Future News Article"</h4>
+                            <p>Date it 2050. Write 300-500 word news article about your enhancement - its benefits, problems, and social impact. Include "quotes" from people who have it and people who don't.</p>
+
+                            <h4>Reflection:</h4>
+                            <p><strong>Question:</strong> After working through consequences, do you still think this enhancement is a good idea? Why or why not?</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="activity-number">Exercise 02</div>
+                        <h3 class="activity-title">Material Storytelling</h3>
+                        <div class="activity-description">
+                            <p><strong>Time:</strong> 2-3 hours | <strong>Solo Activity</strong></p>
+
+                            <h4>Choose a Bio-Material:</h4>
+                            <p>Spider silk, mycelium, bacterial cellulose, algae, chitin, or synthetic biology protein.</p>
+
+                            <h4>Research & Tell Its Story:</h4>
+                            <ol class="instruction-list">
+                                <li><strong>Origin:</strong> Where does it come from in nature?</li>
+                                <li><strong>Properties:</strong> What makes it special? (strength, flexibility, growth pattern)</li>
+                                <li><strong>Current Uses:</strong> How do humans use it now?</li>
+                                <li><strong>Potential Futures:</strong> What could it become?</li>
+                                <li><strong>Speculative Question:</strong> If this material could talk, what would it want to become?</li>
+                            </ol>
+
+                            <h4>Create Your Story:</h4>
+                            <p>Choose format:</p>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li><strong>Illustrated Story:</strong> Comic or picture book about the material's journey</li>
+                                <li><strong>Short Film Script:</strong> 3-5 minute screenplay</li>
+                                <li><strong>Product Catalog:</strong> "2050 Materials Catalog" featuring your material</li>
+                                <li><strong>Material Biography:</strong> Write its life story as if it's alive</li>
+                            </ul>
+
+                            <h4>Include:</h4>
+                            <p>Scientific facts + creative speculation + emotional connection + visual elements.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Team Scenarios Section -->
+                <section class="content-section" id="team-scenarios">
+                    <h2>👥 Collaborative Team Scenarios</h2>
+                    <p style="line-height: 1.8;">Group activities for workshops, classrooms, or design teams.</p>
+
+                    <div class="activity-card">
+                        <div class="activity-number">Scenario 01</div>
+                        <h3 class="activity-title">Bio-Design Ethics Committee</h3>
+                        <div class="activity-description">
+                            <p><strong>Participants:</strong> 5-8 people | <strong>Time:</strong> 2-3 hours</p>
+
+                            <h4>Setup:</h4>
+                            <p>Your ethics committee must review 4 controversial bio-robotics proposals. Vote on which to approve.</p>
+
+                            <h4>Roles (assign to participants):</h4>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li><strong>Artist/Designer:</strong> Values creative freedom and exploration</li>
+                                <li><strong>Ethicist:</strong> Focuses on moral implications</li>
+                                <li><strong>Scientist:</strong> Concerned with feasibility and safety</li>
+                                <li><strong>Public Advocate:</strong> Represents general public interest</li>
+                                <li><strong>Investor:</strong> Considers commercial viability</li>
+                                <li><strong>Regulator:</strong> Thinks about laws and precedents</li>
+                            </ul>
+
+                            <h4>Proposals to Review:</h4>
+
+                            <p><strong>Proposal A: Living Art Installation</strong><br>
+                            Artist wants to create human ear on lab rat (Eduardo Kac-style). Ear will be made from artist's own cells. Rat will live in gallery for 3 months, then be euthanized.</p>
+
+                            <p><strong>Proposal B: DIY Bio-Hacking Kits</strong><br>
+                            Company wants to sell at-home kits for genetic modification of skin cells. Marketed as "custom your biology." No medical oversight required.</p>
+
+                            <p><strong>Proposal C: Child Tracking Implants</strong><br>
+                            Parents can implant GPS + health monitors in children under 12. Company argues it prevents kidnapping and monitors health. Removable at age 18.</p>
+
+                            <p><strong>Proposal D: Human-Animal Chimeras for Organ Farming</strong><br>
+                            Grow human organs inside pigs for transplant. Addresses organ shortage. Animals destroyed after harvest.</p>
+
+                            <h4>Process:</h4>
+                            <ol class="instruction-list">
+                                <li>Each person reads all proposals (15 min)</li>
+                                <li>Discuss each proposal from your role's perspective (20 min each)</li>
+                                <li>Vote: Approve, Reject, or Approve with Conditions</li>
+                                <li>Debrief: Were there any easy answers? Where did you disagree most?</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <div class="activity-number">Scenario 02</div>
+                        <h3 class="activity-title">Post-Human Fashion Week</h3>
+                        <div class="activity-description">
+                            <p><strong>Participants:</strong> 4-6 teams of 2-3 people | <strong>Time:</strong> 3-4 hours</p>
+
+                            <h4>The Challenge:</h4>
+                            <p>Design a fashion collection for post-human bodies. Present at "runway show" at end.</p>
+
+                            <h4>Requirements:</h4>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li><strong>3-5 "Looks":</strong> Sketch or describe each outfit</li>
+                                <li><strong>Living Materials:</strong> At least one piece must use bio-materials</li>
+                                <li><strong>Body Modifications:</strong> Design for augmented or modified bodies</li>
+                                <li><strong>Functionality:</strong> Each look must serve a purpose beyond aesthetics</li>
+                                <li><strong>Story:</strong> Collection must tell a coherent story about future of embodiment</li>
+                            </ul>
+
+                            <h4>Possible Themes:</h4>
+                            <ul class="instruction-list" style="list-style-type: disc;">
+                                <li><strong>Interspecies Fashion:</strong> Clothing that bridges human-animal divide</li>
+                                <li><strong>Sensory Couture:</strong> Fashion that gives you new senses</li>
+                                <li><strong>Living Garments:</strong> Clothes that grow, heal, and adapt</li>
+                                <li><strong>Post-Gender Bodies:</strong> Fashion for bodies beyond binary</li>
+                            </ul>
+
+                            <h4>Runway Show Format:</h4>
+                            <ol class="instruction-list">
+                                <li><strong>Team presents (10 min each):</strong> Show sketches, explain materials, tell story</li>
+                                <li><strong>Audience Q&A (5 min):</strong> Questions about functionality, materials, ethics</li>
+                                <li><strong>Voting:</strong> Most innovative, most wearable, most provocative</li>
+                            </ol>
+
+                            <p><strong>Deliverables:</strong> Sketches of 3-5 looks + materials list + designer statement (200 words) + presentation.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Case Studies Section -->
+                <section class="content-section" id="case-studies">
+                    <h2>📚 Real-World Case Study Analysis</h2>
+                    <p style="line-height: 1.8;">Learn from actual bio-robotics and bio-art pioneers. Analyze what they did, why it matters, and what it means for the future.</p>
+
+                    <div class="case-study-card">
+                        <h3>Stelarc's Third Hand: The Obsolete Body</h3>
+                        <p><strong>Artist:</strong> Stelarc (Australia) | <strong>Years Active:</strong> 1980s-present</p>
+                        <p>Stelarc attached a robotic third hand to his right arm, controlled by EMG signals from his abdominal and leg muscles. The hand can grip, pinch, rotate, and manipulate objects independently of his biological hands.</p>
+
+                        <h4>The Project:</h4>
+                        <ul>
+                            <li>Prosthetic hand is not replacing anything - it's an <strong>addition</strong></li>
+                            <li>Controlled by muscle signals from distant parts of body</li>
+                            <li>Forces you to think differently: now have three hands to coordinate</li>
+                            <li>Performed with Third Hand publicly for decades - writing, drawing, picking up objects</li>
+                            <li>Part of larger body of work exploring body modification and technological enhancement</li>
+                        </ul>
+
+                        <h4>Key Concept: "The Body is Obsolete"</h4>
+                        <p>Stelarc argues that human body in its current form is outdated. Technology allows us to redesign ourselves. Why accept biological limitations?</p>
+
+                        <h4>Why It Matters:</h4>
+                        <ul>
+                            <li><strong>Challenges "Normal":</strong> Who says two hands is correct? Why not three, or four?</li>
+                            <li><strong>Enhancement vs. Replacement:</strong> Prosthetics usually replace missing parts. This adds to healthy body.</li>
+                            <li><strong>Neural Plasticity:</strong> Brain can learn to control third hand - shows human adaptability</li>
+                            <li><strong>Speculative Made Real:</strong> Turned sci-fi concept into lived performance</li>
+                        </ul>
+
+                        <h4>Provocations:</h4>
+                        <ul class="analysis-questions">
+                            <li><strong>Question:</strong> Should we enhance healthy bodies, or only "fix" disabled ones?</li>
+                            <li><strong>Question:</strong> If third hands became common, how would society change? (architecture, tools, jobs?)</li>
+                            <li><strong>Question:</strong> Is the human body really "obsolete" or is that going too far?</li>
+                            <li><strong>Question:</strong> Would YOU want a third hand? Why or why not?</li>
+                        </ul>
+
+                        <h4>Your Analysis:</h4>
+                        <p><strong>Write 300-500 words answering:</strong> Is Stelarc right that the body is obsolete? What would you modify about your own body if you could?</p>
+                    </div>
+
+                    <div class="case-study-card">
+                        <h3>Eduardo Kac's GFP Bunny: Alba the Glowing Rabbit</h3>
+                        <p><strong>Artist:</strong> Eduardo Kac (Brazil/USA) | <strong>Year:</strong> 2000</p>
+                        <p>Kac commissioned French scientists to create Alba - a rabbit genetically modified with green fluorescent protein (GFP) from jellyfish. Under blue light, Alba glows green. This was the first major transgenic art project.</p>
+
+                        <h4>What Happened:</h4>
+                        <ul>
+                            <li>Kac wanted to adopt Alba and make her part of his family</li>
+                            <li>Scientists created Alba successfully - she really did glow</li>
+                            <li>Lab refused to release Alba to Kac - ethical concerns</li>
+                            <li>Alba lived her life in the lab, never becoming part of Kac's "transgenic social environment"</li>
+                            <li>Project became famous anyway - sparked global debate</li>
+                        </ul>
+
+                        <h4>The Controversy:</h4>
+                        <ul>
+                            <li><strong>Pro:</strong> Highlights what's already happening in science labs - making it visible</li>
+                            <li><strong>Pro:</strong> No different than centuries of dog breeding - we already modify animals</li>
+                            <li><strong>Con:</strong> Creating life for aesthetic purposes is unethical</li>
+                            <li><strong>Con:</strong> Alba didn't consent - animals can't choose to be art</li>
+                            <li><strong>Con:</strong> Opens door to frivolous genetic modification</li>
+                        </ul>
+
+                        <h4>Why It Matters:</h4>
+                        <ul>
+                            <li><strong>Living Art:</strong> Can living beings be art materials? Where's the line?</li>
+                            <li><strong>Ethics of Creation:</strong> If we can create modified life, should we?</li>
+                            <li><strong>Visibility:</strong> Made hidden lab work public, forcing conversation</li>
+                            <li><strong>Designer Babies:</strong> If we modify rabbits for art, what about humans?</li>
+                        </ul>
+
+                        <h4>Provocations:</h4>
+                        <ul class="analysis-questions">
+                            <li><strong>Question:</strong> Is there a moral difference between Alba and a designer dog breed?</li>
+                            <li><strong>Question:</strong> Did Kac cross an ethical line, or is this important art?</li>
+                            <li><strong>Question:</strong> Should artists have the right to create living works?</li>
+                            <li><strong>Question:</strong> Would your answer change if Alba had been a plant instead of an animal?</li>
+                        </ul>
+
+                        <h4>Your Analysis:</h4>
+                        <p><strong>Debate format:</strong> Prepare arguments both FOR and AGAINST the GFP Bunny project. Which side is more convincing?</p>
+                    </div>
+
+                    <div class="case-study-card">
+                        <h3>Neri Oxman's Silk Pavilion: Co-Fabrication with Nature</h3>
+                        <p><strong>Designer:</strong> Neri Oxman & Mediated Matter Group (MIT) | <strong>Years:</strong> 2013 (Pavilion I), 2019 (Pavilion II)</p>
+                        <p>Oxman created structures where robots laid down scaffolding, then 17,000 silkworms filled in the gaps with natural silk. Human-machine-nature collaboration at architectural scale.</p>
+
+                        <h4>How It Worked:</h4>
+                        <ul>
+                            <li><strong>Step 1:</strong> Computational design created 3D structure optimized for silkworm behavior</li>
+                            <li><strong>Step 2:</strong> Robotic arm "printed" scaffolding using silk-like polymer</li>
+                            <li><strong>Step 3:</strong> 17,000 silkworms placed on structure</li>
+                            <li><strong>Step 4:</strong> Worms naturally filled gaps, creating dense silk panels</li>
+                            <li><strong>Step 5:</strong> Worms removed, structure completed</li>
+                        </ul>
+
+                        <h4>Material Ecology Principles:</h4>
+                        <ul>
+                            <li><strong>Co-Fabrication:</strong> Multiple agents (human, robot, insect) build together</li>
+                            <li><strong>Nature as Designer:</strong> Silkworms don't follow instructions - they follow instincts</li>
+                            <li><strong>Computational Biology:</strong> Algorithm predicted how worms would behave</li>
+                            <li><strong>Material Intelligence:</strong> Silk responds to environment (humidity, temperature)</li>
+                        </ul>
+
+                        <h4>Why It Matters:</h4>
+                        <ul>
+                            <li><strong>New Paradigm:</strong> Building WITH nature, not just FROM nature</li>
+                            <li><strong>Scalable:</strong> Proved bio-fabrication can work at architectural scale</li>
+                            <li><strong>Sustainable:</strong> Silk is biodegradable, carbon-neutral, requires minimal energy</li>
+                            <li><strong>Beautiful:</strong> Demonstrated bio-design can be aesthetic + functional</li>
+                        </ul>
+
+                        <h4>Provocations:</h4>
+                        <ul class="analysis-questions">
+                            <li><strong>Question:</strong> Who designed Silk Pavilion - Oxman, the robots, or the silkworms?</li>
+                            <li><strong>Question:</strong> Could we build entire buildings this way? Bridges? Cities?</li>
+                            <li><strong>Question:</strong> What other organisms could we co-fabricate with?</li>
+                            <li><strong>Question:</strong> Is using 17,000 silkworms ethical if they're not harmed?</li>
+                        </ul>
+
+                        <h4>Your Analysis:</h4>
+                        <p><strong>Design Challenge:</strong> Choose an organism (bacteria, fungi, plants, insects). Design a structure you could co-fabricate with them. Explain: What does organism do naturally? How do you guide it? What do you build together?</p>
+                    </div>
+
+                    <div class="case-study-card">
+                        <h3>Neil Harbisson's Antenna: Hearing Color</h3>
+                        <p><strong>Subject:</strong> Neil Harbisson (Spain/UK) | <strong>Year Implanted:</strong> 2004</p>
+                        <p>Born completely colorblind (achromatopsia), Harbisson had antenna implanted in skull that converts color frequencies to sound frequencies. He literally hears colors. UK government officially recognized antenna in his passport photo - making him first legally recognized cyborg.</p>
+
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Camera on antenna detects color in front of him</li>
+                            <li>Software converts color wavelength to sound frequency</li>
+                            <li>Sound transmitted through bone conduction to inner ear</li>
+                            <li>Red = low notes, Violet = high notes (like musical scale)</li>
+                            <li>With practice, Neil learned to "hear" 360 colors</li>
+                        </ul>
+
+                        <h4>Evolution:</h4>
+                        <ul>
+                            <li><strong>Early Years:</strong> Could only hear visible spectrum (red-violet)</li>
+                            <li><strong>Later:</strong> Extended to infrared and ultraviolet - now hears colors humans can't see</li>
+                            <li><strong>Present:</strong> Experiments with receiving color signals over internet - "telepathic" color sharing</li>
+                        </ul>
+
+                        <h4>Key Questions:</h4>
+                        <ul>
+                            <li><strong>Is he hearing color or hearing sound?</strong> Does it matter? His brain treats it as color.</li>
+                            <li><strong>Sensory Substitution:</strong> Vision replaced by hearing - brain adapts</li>
+                            <li><strong>Enhancement + Disability:</strong> Started as disability aid, became superhuman enhancement</li>
+                            <li><strong>Identity:</strong> Antenna is legally part of his body - not a device</li>
+                        </ul>
+
+                        <h4>Why It Matters:</h4>
+                        <ul>
+                            <li><strong>Neural Plasticity:</strong> Brain can learn entirely new senses</li>
+                            <li><strong>Legal Recognition:</strong> First time government accepted body modification as identity</li>
+                            <li><strong>Disability → Superpower:</strong> Moved from "fixing" disability to exceeding typical human</li>
+                            <li><strong>Art & Life:</strong> Harbisson is also artist - his entire life is performance</li>
+                        </ul>
+
+                        <h4>Provocations:</h4>
+                        <ul class="analysis-questions">
+                            <li><strong>Question:</strong> If everyone had Harbisson's antenna, would we still call colorblindness a disability?</li>
+                            <li><strong>Question:</strong> Should governments regulate body modifications? Who decides what's "too far"?</li>
+                            <li><strong>Question:</strong> What sense would YOU want added to your body?</li>
+                            <li><strong>Question:</strong> Is there a difference between born cyborg vs. choosing to become one?</li>
+                        </ul>
+
+                        <h4>Your Analysis:</h4>
+                        <p><strong>Write 400-600 words:</strong> Design your own sensory substitution or augmentation. What would you sense? How would it work? How would it change your daily life? What problems might it create?</p>
+                    </div>
+
+                    <div class="case-study-card">
+                        <h3>Amy Karle's Regenerative Reliquary: Growing Bones</h3>
+                        <p><strong>Artist:</strong> Amy Karle (USA) | <strong>Years:</strong> 2016-2018</p>
+                        <p>Karle 3D-printed scaffolds shaped like human hand bones, seeded them with stem cells, and placed them in bioreactors. The cells began growing real bone tissue on the scaffolds - art exploring tissue engineering and regenerative medicine.</p>
+
+                        <h4>The Process:</h4>
+                        <ul>
+                            <li>3D scanned Karle's own hand to get exact bone structure</li>
+                            <li>3D printed biodegradable scaffolds in shape of hand bones</li>
+                            <li>Seeded scaffolds with human mesenchymal stem cells (bone-forming cells)</li>
+                            <li>Placed in bioreactor with nutrients for cells to grow</li>
+                            <li>Monitored for several weeks as cells multiplied and began forming bone</li>
+                            <li>Exhibited in gallery while growing - living sculpture</li>
+                        </ul>
+
+                        <h4>What Happened:</h4>
+                        <ul>
+                            <li>Cells successfully attached to scaffold and began differentiating into bone cells</li>
+                            <li>Partial bone tissue formation occurred (not full functional bones)</li>
+                            <li>Project demonstrated potential of tissue engineering at artistic scale</li>
+                            <li>Raised questions about death, relics, and future of body parts</li>
+                        </ul>
+
+                        <h4>Themes Explored:</h4>
+                        <ul>
+                            <li><strong>Regenerative Medicine:</strong> Could we grow replacement organs/limbs?</li>
+                            <li><strong>Digital + Biological:</strong> 3D scanning meets cellular growth</li>
+                            <li><strong>Relics & Immortality:</strong> Growing parts of yourself - what does it mean?</li>
+                            <li><strong>Art as Research:</strong> Using art to explore cutting-edge science</li>
+                        </ul>
+
+                        <h4>Why It Matters:</h4>
+                        <ul>
+                            <li><strong>Medical Future:</strong> Preview of future where we "print" replacement body parts</li>
+                            <li><strong>Accessible Speculation:</strong> Makes complex science tangible through art</li>
+                            <li><strong>Body Questions:</strong> What is "body" if we can grow it in lab?</li>
+                            <li><strong>Death & Preservation:</strong> New way to think about relics and remains</li>
+                        </ul>
+
+                        <h4>Provocations:</h4>
+                        <ul class="analysis-questions">
+                            <li><strong>Question:</strong> If you could grow a backup version of any body part, what would you choose?</li>
+                            <li><strong>Question:</strong> Are lab-grown body parts "you" or just biological material?</li>
+                            <li><strong>Question:</strong> Should we grow entire bodies for organ harvesting?</li>
+                            <li><strong>Question:</strong> How does this change our relationship to death and mortality?</li>
+                        </ul>
+
+                        <h4>Your Analysis:</h4>
+                        <p><strong>Speculative Design:</strong> It's 2040. Growing replacement body parts is common. Design a "Body Part Library" - what services does it offer? How do people use it? What ethical rules does it follow? Create website mockup or service blueprint.</p>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 2px solid var(--color-black);">
+                    <a href="biorobotics-landing.html" class="experimental-btn">← Back to Bio-Robotics Hub</a>
+                    <a href="biorobotics-field-kit.html" class="experimental-btn experimental-btn--primary">Get Making Tools</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics Hub</a>
+                    <a href="biorobotics-field-kit.html" class="main-menu-link">Field Kit</a>
+                    <a href="biorobotics-activities.html" class="main-menu-link">Activities</a>
+                    <a href="biorobotics-readings.html" class="main-menu-link">Readings</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Close menu on escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('mainMenuOverlay').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

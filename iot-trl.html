@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Technology Radar - TRL Visualization</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        /* Clean Radar Visualization Styles */
+        body {
+            background: var(--color-white);
+            color: var(--color-black);
+            overflow-x: hidden;
+            font-family: var(--font-primary);
+        }
+
+        .radar-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-white);
+        }
+
+        .radar-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .radar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin: 0;
+        }
+
+        .radar-subtitle {
+            font-size: 12px;
+            color: var(--color-gray-600);
+            margin: 5px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trl-info-btn {
+            background: var(--color-electric-blue) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-electric-blue) !important;
+        }
+
+        .trl-info-btn:hover {
+            background: var(--color-electric-blue-dark) !important;
+            border-color: var(--color-electric-blue-dark) !important;
+            color: var(--color-white) !important;
+        }
+
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-group {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 5px 10px;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            color: var(--color-gray-700);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: var(--color-electric-blue-bg);
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--color-electric-blue);
+            border-color: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .radar-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zoom-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 18px;
+            color: var(--color-electric-blue);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .info-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-research {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .meta-industry {
+            background: var(--color-gray-800);
+            color: var(--color-white);
+        }
+
+        .meta-emerging {
+            background: var(--color-gray-600);
+            color: var(--color-white);
+        }
+
+        .meta-experimental {
+            background: var(--color-electric-blue-dark);
+            color: var(--color-white);
+        }
+
+        .info-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .references-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .references-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+
+        .reference-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--color-gray-600);
+        }
+
+        .reference-link {
+            color: var(--color-electric-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .progress-item {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.8s ease;
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--color-gray-500);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .trl-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 200;
+        }
+
+        .trl-info-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .trl-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin-bottom: 15px;
+        }
+
+        .trl-info-content {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .trl-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trl-level-item {
+            padding: 8px;
+            background: var(--color-gray-50);
+            border-radius: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .trl-level-number {
+            font-weight: 600;
+            color: var(--color-electric-blue);
+        }
+
+        .close-info-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-info-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend-title {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 10px;
+            color: var(--color-gray-700);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00f5ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
+            }
+
+            .radar-title {
+                font-size: 18px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 60vh;
+            }
+
+            .controls-panel {
+                position: static;
+                top: auto;
+                right: auto;
+                margin: 10px 16px 0 16px;
+            }
+
+            .legend {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+</head>
+
+<body>
+    <div class="radar-container">
+        <div class="radar-header">
+            <h1 class="radar-title">IOT TECHNOLOGY RADAR</h1>
+            <p class="radar-subtitle">Technology Readiness Level Visualization</p>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <div class="control-label">Filter by Origin</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="research">RESEARCH</button>
+                    <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                    <button class="filter-btn" data-filter="emerging">EMERGING</button>
+                    <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Time Period</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-time="2025">2025</button>
+                    <button class="filter-btn" data-time="2020">2020</button>
+                    <button class="filter-btn" data-time="2015">2015</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Learn More</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn trl-info-btn" onclick="toggleTRLInfo()">WHAT IS TRL?</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Navigate</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
+                    <button class="filter-btn" onclick="window.location.href='iot-landing.html'">LANDING</button>
+                </div>
+                <div class="filter-buttons" style="margin-top: 5px;">
+                    <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
+                        <option value="">EXPLORE OTHER TRL RADARS ▼</option>
+                        <option value="ai-trl.html">AI & Machine Learning</option>
+                        <option value="blockchain-trl.html">Blockchain</option>
+                        <option value="biorobotics-trl.html">Bio-Robotics</option>
+                        <option value="edge-trl.html">Edge Computing</option>
+                        <option value="interfaces-trl.html">Future Interfaces</option>
+                        <option value="iot-trl.html" disabled selected>Internet of Things</option>
+                        <option value="metaverse-trl.html">Metaverse</option>
+                        <option value="quantum-trl.html">Quantum Computing</option>
+                        <option value="robotics-trl.html">Robotics</option>
+                        <option value="textiles-trl.html">Smart Textiles</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+            <button class="zoom-btn" id="zoomOut" title="Zoom Out">−</button>
+            <button class="zoom-btn" id="resetZoom" title="Reset Zoom">⌂</button>
+        </div>
+
+        <svg class="radar-canvas" id="radarSvg"></svg>
+
+        <div class="trl-info-panel" id="trlInfoPanel">
+            <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
+            <div class="trl-info-title">Technology Readiness Levels (TRL)</div>
+            <div class="trl-info-content">
+                Technology Readiness Levels for IoT assess the maturity of connected device technologies, connectivity
+                protocols, data platforms, and deployment ecosystems. TRL evaluation considers hardware reliability,
+                network coverage, power efficiency, security standards, interoperability, and real-world operational
+                scale across consumer, industrial, and smart city applications.
+            </div>
+            <div class="trl-levels-grid">
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 1-2</div>
+                    <div>Basic Research</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 3</div>
+                    <div>Proof of Concept</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 4</div>
+                    <div>Lab Validation</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 5</div>
+                    <div>Field Testing</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 6</div>
+                    <div>Pilot Deployment</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 7</div>
+                    <div>Network Integration</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 8</div>
+                    <div>Ecosystem Complete</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 9</div>
+                    <div>Proven Operational</div>
+                </div>
+                <div class="trl-level-item" style="grid-column: span 1; background: var(--color-electric-blue-bg);">
+                    <div class="trl-level-number">Click & Explore</div>
+                    <div>Interactive Technologies</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">TRL Levels</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a3a3a3;"></div>
+                <span>TRL 1-3: Research</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #525252;"></div>
+                <span>TRL 4-6: Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4040ff;"></div>
+                <span>TRL 7-9: Deployment</span>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfoPanel()">×</button>
+            <div id="infoPanelContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">Initializing Radar...</div>
+    </div>
+
+    <script>
+        const technologyData = {
+            2015: [
+                { id: 'smart-home', name: 'Smart Home Devices', category: 'emerging', trl: 6, angle: 0, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'industrial-sensors', name: 'Industrial IoT Sensors', category: 'industry', trl: 7, angle: 20, progress: { research: 75, funding: 80, timeline: 70, consensus: 78 } },
+                { id: 'wearables', name: 'Fitness Trackers & Wearables', category: 'industry', trl: 7, angle: 40, progress: { research: 70, funding: 85, timeline: 75, consensus: 80 } },
+                { id: 'rfid', name: 'RFID Systems', category: 'industry', trl: 9, angle: 60, progress: { research: 95, funding: 98, timeline: 95, consensus: 97 } },
+                { id: 'zigbee', name: 'Zigbee/Z-Wave Protocols', category: 'industry', trl: 7, angle: 80, progress: { research: 75, funding: 70, timeline: 70, consensus: 72 } },
+                { id: 'cellular-iot', name: 'Cellular M2M (2G/3G)', category: 'industry', trl: 8, angle: 100, progress: { research: 85, funding: 90, timeline: 85, consensus: 88 } },
+                { id: 'iot-platforms', name: 'IoT Cloud Platforms', category: 'research', trl: 5, angle: 120, progress: { research: 55, funding: 60, timeline: 50, consensus: 58 } },
+                { id: 'smart-meters', name: 'Smart Utility Meters', category: 'industry', trl: 7, angle: 140, progress: { research: 70, funding: 80, timeline: 75, consensus: 78 } },
+                { id: 'connected-cars', name: 'Connected Vehicle Systems', category: 'emerging', trl: 5, angle: 160, progress: { research: 60, funding: 70, timeline: 55, consensus: 63 } },
+                { id: 'agriculture-iot', name: 'Agricultural IoT', category: 'research', trl: 4, angle: 180, progress: { research: 40, funding: 35, timeline: 30, consensus: 38 } },
+                { id: 'smart-cities', name: 'Smart City Infrastructure', category: 'research', trl: 3, angle: 200, progress: { research: 30, funding: 40, timeline: 25, consensus: 33 } },
+                { id: 'lorawan', name: 'LoRaWAN Networks', category: 'research', trl: 4, angle: 220, progress: { research: 35, funding: 30, timeline: 25, consensus: 32 } },
+                { id: 'wifi', name: 'WiFi for IoT', category: 'industry', trl: 7, angle: 240, progress: { research: 80, funding: 85, timeline: 80, consensus: 83 } },
+                { id: 'bluetooth', name: 'Bluetooth LE', category: 'industry', trl: 6, angle: 260, progress: { research: 65, funding: 70, timeline: 65, consensus: 68 } },
+                { id: 'gps-tracking', name: 'GPS Asset Tracking', category: 'industry', trl: 8, angle: 280, progress: { research: 85, funding: 90, timeline: 85, consensus: 88 } },
+                { id: 'iot-security', name: 'IoT Security Standards', category: 'research', trl: 3, angle: 300, progress: { research: 35, funding: 30, timeline: 25, consensus: 32 } },
+                { id: 'gateway-devices', name: 'IoT Gateway Hardware', category: 'emerging', trl: 5, angle: 320, progress: { research: 50, funding: 55, timeline: 50, consensus: 53 } },
+                { id: 'edge-processing', name: 'Edge Computing for IoT', category: 'research', trl: 3, angle: 340, progress: { research: 30, funding: 35, timeline: 25, consensus: 32 } }
+            ],
+            2020: [
+                { id: 'smart-home', name: 'Smart Home Ecosystems', category: 'industry', trl: 8, angle: 0, progress: { research: 85, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'industrial-iot', name: 'Industrial IoT (Industry 4.0)', category: 'industry', trl: 8, angle: 15, progress: { research: 88, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'wearables', name: 'Health & Fitness Wearables', category: 'industry', trl: 8, angle: 30, progress: { research: 90, funding: 98, timeline: 92, consensus: 95 } },
+                { id: '5g-iot', name: '5G IoT Connectivity', category: 'emerging', trl: 6, angle: 45, progress: { research: 70, funding: 85, timeline: 65, consensus: 73 } },
+                { id: 'nb-iot', name: 'NB-IoT / LTE-M', category: 'industry', trl: 7, angle: 60, progress: { research: 78, funding: 82, timeline: 75, consensus: 80 } },
+                { id: 'edge-computing', name: 'Edge Computing Platforms', category: 'emerging', trl: 7, angle: 75, progress: { research: 75, funding: 80, timeline: 70, consensus: 77 } },
+                { id: 'iot-security', name: 'IoT Security Standards', category: 'emerging', trl: 6, angle: 90, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'smart-cities', name: 'Smart City Deployments', category: 'emerging', trl: 7, angle: 105, progress: { research: 75, funding: 85, timeline: 70, consensus: 78 } },
+                { id: 'precision-farming', name: 'Precision Agriculture', category: 'emerging', trl: 7, angle: 120, progress: { research: 70, funding: 75, timeline: 68, consensus: 73 } },
+                { id: 'healthcare-iot', name: 'Remote Patient Monitoring', category: 'industry', trl: 7, angle: 135, progress: { research: 75, funding: 82, timeline: 72, consensus: 78 } },
+                { id: 'asset-tracking', name: 'Global Asset Tracking', category: 'industry', trl: 8, angle: 150, progress: { research: 85, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'smart-grid', name: 'Smart Grid Management', category: 'industry', trl: 8, angle: 165, progress: { research: 82, funding: 88, timeline: 80, consensus: 85 } },
+                { id: 'lorawan', name: 'LoRaWAN Networks', category: 'industry', trl: 7, angle: 180, progress: { research: 75, funding: 70, timeline: 70, consensus: 73 } },
+                { id: 'digital-twins', name: 'Digital Twin Technology', category: 'research', trl: 5, angle: 195, progress: { research: 60, funding: 65, timeline: 55, consensus: 62 } },
+                { id: 'ipv6-iot', name: 'IPv6 for IoT', category: 'emerging', trl: 6, angle: 210, progress: { research: 65, funding: 60, timeline: 60, consensus: 63 } },
+                { id: 'bluetooth-mesh', name: 'Bluetooth Mesh Networks', category: 'emerging', trl: 6, angle: 225, progress: { research: 60, funding: 65, timeline: 58, consensus: 63 } },
+                { id: 'predictive-maintenance', name: 'Predictive Maintenance', category: 'emerging', trl: 7, angle: 240, progress: { research: 70, funding: 78, timeline: 68, consensus: 73 } },
+                { id: 'supply-chain-iot', name: 'Supply Chain IoT', category: 'industry', trl: 7, angle: 255, progress: { research: 72, funding: 80, timeline: 70, consensus: 75 } },
+                { id: 'energy-management', name: 'Building Energy Management', category: 'industry', trl: 7, angle: 270, progress: { research: 75, funding: 80, timeline: 72, consensus: 77 } },
+                { id: 'fleet-management', name: 'Fleet Management Systems', category: 'industry', trl: 8, angle: 285, progress: { research: 85, funding: 90, timeline: 82, consensus: 87 } },
+                { id: 'environmental-sensors', name: 'Environmental Monitoring', category: 'emerging', trl: 6, angle: 300, progress: { research: 68, funding: 72, timeline: 65, consensus: 70 } },
+                { id: 'retail-iot', name: 'Smart Retail Solutions', category: 'emerging', trl: 6, angle: 315, progress: { research: 65, funding: 75, timeline: 62, consensus: 68 } },
+                { id: 'wifi6', name: 'WiFi 6 for IoT', category: 'emerging', trl: 6, angle: 330, progress: { research: 70, funding: 75, timeline: 65, consensus: 72 } },
+                { id: 'edge-ai', name: 'Edge AI Processing', category: 'research', trl: 5, angle: 345, progress: { research: 55, funding: 65, timeline: 50, consensus: 58 } }
+            ],
+            2025: [
+                { id: 'matter-protocol', name: 'Matter Smart Home Standard', category: 'industry', trl: 8, angle: 0, progress: { research: 88, funding: 95, timeline: 85, consensus: 92 } },
+                { id: 'industrial-iot', name: 'Industrial IoT Platforms', category: 'industry', trl: 9, angle: 12, progress: { research: 95, funding: 100, timeline: 95, consensus: 98 } },
+                { id: '5g-iot', name: '5G IoT Connectivity', category: 'industry', trl: 8, angle: 24, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'nb-iot', name: 'NB-IoT (Narrowband IoT)', category: 'industry', trl: 9, angle: 36, progress: { research: 95, funding: 98, timeline: 95, consensus: 97 } },
+                { id: 'edge-ai', name: 'Edge AI & ML', category: 'industry', trl: 8, angle: 48, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'digital-twins', name: 'Industrial Digital Twins', category: 'industry', trl: 8, angle: 60, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'iot-security', name: 'IoT Security Standards', category: 'industry', trl: 8, angle: 72, progress: { research: 85, funding: 90, timeline: 82, consensus: 87 } },
+                { id: 'smart-cities', name: 'Smart City Infrastructure', category: 'industry', trl: 8, angle: 84, progress: { research: 88, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'precision-agriculture', name: 'Precision Agriculture', category: 'industry', trl: 8, angle: 96, progress: { research: 85, funding: 90, timeline: 82, consensus: 87 } },
+                { id: 'healthcare-iot', name: 'Remote Healthcare IoT', category: 'industry', trl: 8, angle: 108, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'connected-vehicles', name: 'V2X Communication', category: 'industry', trl: 8, angle: 120, progress: { research: 82, funding: 90, timeline: 78, consensus: 85 } },
+                { id: 'smart-buildings', name: 'Smart Building Management', category: 'industry', trl: 8, angle: 132, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'wearables', name: 'Health Wearables & Smartwatches', category: 'industry', trl: 9, angle: 144, progress: { research: 95, funding: 100, timeline: 95, consensus: 98 } },
+                { id: 'asset-tracking', name: 'Global Asset Tracking', category: 'industry', trl: 9, angle: 156, progress: { research: 92, funding: 98, timeline: 92, consensus: 95 } },
+                { id: 'wifi6e', name: 'WiFi 6E IoT Devices', category: 'industry', trl: 8, angle: 168, progress: { research: 85, funding: 90, timeline: 82, consensus: 87 } },
+                { id: 'thread', name: 'Thread Protocol (IPv6 Mesh)', category: 'industry', trl: 8, angle: 180, progress: { research: 82, funding: 88, timeline: 78, consensus: 85 } },
+                { id: 'environmental-monitoring', name: 'Environmental IoT Networks', category: 'industry', trl: 8, angle: 192, progress: { research: 80, funding: 85, timeline: 78, consensus: 82 } },
+                { id: 'retail-iot', name: 'Smart Retail IoT', category: 'industry', trl: 8, angle: 204, progress: { research: 82, funding: 90, timeline: 78, consensus: 85 } },
+                { id: 'energy-harvesting', name: 'Energy Harvesting IoT', category: 'emerging', trl: 6, angle: 216, progress: { research: 70, funding: 65, timeline: 62, consensus: 68 } },
+                { id: 'satellite-iot', name: 'Satellite IoT Connectivity', category: 'industry', trl: 7, angle: 228, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
+                { id: 'iot-blockchain', name: 'Blockchain for IoT', category: 'emerging', trl: 6, angle: 240, progress: { research: 68, funding: 72, timeline: 62, consensus: 70 } },
+                { id: 'quantum-safe-iot', name: 'Quantum-Safe IoT Encryption', category: 'research', trl: 4, angle: 252, progress: { research: 50, funding: 55, timeline: 42, consensus: 52 } },
+                { id: 'ambient-computing', name: 'Ambient Computing Systems', category: 'emerging', trl: 6, angle: 264, progress: { research: 65, funding: 75, timeline: 60, consensus: 68 } },
+                { id: 'swarm-robotics', name: 'IoT Swarm Robotics', category: 'research', trl: 5, angle: 276, progress: { research: 55, funding: 60, timeline: 48, consensus: 58 } },
+                { id: 'water-management', name: 'Smart Water Management', category: 'industry', trl: 7, angle: 288, progress: { research: 75, funding: 82, timeline: 72, consensus: 78 } },
+                { id: 'waste-management', name: 'Smart Waste Management', category: 'industry', trl: 7, angle: 300, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+                { id: 'air-quality', name: 'Air Quality Monitoring Networks', category: 'industry', trl: 8, angle: 312, progress: { research: 80, funding: 85, timeline: 75, consensus: 82 } },
+                { id: 'parking-systems', name: 'Smart Parking Systems', category: 'industry', trl: 8, angle: 324, progress: { research: 78, funding: 85, timeline: 75, consensus: 80 } },
+                { id: 'lighting-systems', name: 'Smart Street Lighting', category: 'industry', trl: 8, angle: 336, progress: { research: 82, funding: 88, timeline: 78, consensus: 85 } },
+                { id: 'india-stack-iot', name: 'India Stack IoT Integration', category: 'emerging', trl: 6, angle: 348, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } }
+            ]
+        };
+
+        const techDescriptions = {
+            'matter-protocol': {
+                description: 'Matter is a unified smart home connectivity standard launched in October 2022, backed by Amazon, Apple, Google, Samsung, and hundreds of other companies through the Connectivity Standards Alliance. As of December 2025, over 1,500 Matter-certified devices are available across 200+ brands spanning lights, locks, thermostats, sensors, and appliances. Matter operates over WiFi, Thread, and Ethernet, enabling seamless interoperability where an Amazon Echo can control Apple HomeKit devices, Google Home can manage Samsung SmartThings products, and vice versa. The protocol uses IP-based communication with robust security (certificate-based authentication, encrypted connections) and local control reducing cloud dependencies. Major benefits include simplified setup with QR code pairing, multi-admin allowing one device to work with multiple ecosystems simultaneously, and future-proof architecture. Challenges being addressed include expanding device categories, improving Thread border router availability, and achieving broader manufacturer adoption.',
+                references: [
+                    'Connectivity Standards Alliance. (2025). Matter 1.3 Specification and Certified Products.',
+                    'Google Home Developer. (2025). Building Matter-Enabled Smart Home Devices.',
+                    'Apple HomeKit. (2024). Matter Integration Guide for iOS and HomePod.'
+                ]
+            },
+            'industrial-iot': {
+                description: 'Industrial IoT (IIoT) has reached full maturity as foundational infrastructure for Industry 4.0, with global market exceeding $300 billion in 2025. Major manufacturers including Siemens, GE, ABB, and Schneider Electric deploy IIoT platforms connecting millions of sensors, machines, and production systems. In India, companies like Tata Steel, Mahindra, L&T, and Reliance use IIoT for predictive maintenance reducing downtime by 30-50%, quality control with real-time defect detection, energy optimization cutting costs 15-25%, and supply chain visibility. Applications span condition monitoring (vibration, temperature, pressure sensors), machine vision for quality inspection, robotic automation, inventory tracking, and environmental compliance. Platforms like Siemens MindSphere, GE Predix, and Azure Industrial IoT enable data analytics, digital twins, and AI/ML integration. Benefits include 20-30% productivity gains, 25-40% maintenance cost reduction, and enhanced worker safety. Challenges include cybersecurity for OT networks, integrating legacy equipment, and skills gaps requiring specialized training.',
+                references: [
+                    'McKinsey & Company. (2025). The Industrial IoT: Unlocking the Potential of Connected Products.',
+                    'Siemens. (2025). MindSphere Industrial IoT Platform: Use Cases and ROI Analysis.',
+                    'Confederation of Indian Industry. (2024). Industry 4.0 and IIoT Adoption in Indian Manufacturing.'
+                ]
+            },
+            '5g-iot': {
+                description: '5G IoT connectivity has achieved widespread deployment globally with over 2 billion 5G IoT connections expected by end of 2025. India launched 5G services in October 2022 with Jio, Airtel, and Vi rapidly expanding coverage to 500+ cities. 5G enables massive IoT deployments with 1 million devices per km² density, ultra-reliable low-latency communication (1ms latency) for critical applications, and network slicing for dedicated IoT services. Use cases include autonomous vehicles requiring real-time V2X communication, remote surgery with haptic feedback, smart factory automation with synchronized robotics, AR/VR applications, and massive sensor networks for smart cities. 5G NR-Light (RedCap) offers mid-tier IoT connectivity balancing performance and cost. Major deployments span smart manufacturing (Bosch, Mahindra using private 5G networks), port automation (Mumbai, Chennai ports), smart agriculture with autonomous tractors, and connected ambulances with live vitals streaming. Benefits include up to 100x speed improvement over 4G, sub-millisecond latency, and 90% energy efficiency gains. Challenges include infrastructure costs, device availability, and spectrum allocation.',
+                references: [
+                    '3GPP. (2025). 5G NR Release 17 and 18: IoT Enhancements and RedCap Specifications.',
+                    'GSMA. (2025). The Mobile Economy India: 5G IoT Market Analysis.',
+                    'Ericsson. (2024). 5G for Industry 4.0: Deployment Guide and Use Cases.'
+                ]
+            },
+            'nb-iot': {
+                description: 'Narrowband IoT (NB-IoT) is the mature cellular LPWAN standard with over 200 million global connections by December 2025, providing low-cost, low-power wide-area connectivity. In India, Jio, Airtel, and BSNL offer NB-IoT coverage for smart meters, asset tracking, agriculture, and smart cities. NB-IoT operates in licensed spectrum with excellent building penetration, 10-year battery life on AA batteries, and coverage extending 100+ km in rural areas. Devices cost ₹300-800 with monthly connectivity as low as ₹5-10. Major use cases include 250+ million smart electricity meters in India, water meter AMR (Automatic Meter Reading), agricultural soil sensors tracking moisture and nutrients, livestock tracking, cold chain monitoring, parking sensors, and street light management. Benefits include carrier-grade reliability, strong security with SIM-based authentication, seamless roaming, and coexistence with existing LTE networks. Challenges include limited data throughput (200 kbps), latency (1-10 seconds), and competition from unlicensed LPWAN technologies.',
+                references: [
+                    '3GPP. (2024). NB-IoT Release 16 and 17: Enhanced Features and Performance.',
+                    'GSMA. (2025). NB-IoT Deployment Tracker: Global Coverage and Use Cases.',
+                    'Reliance Jio. (2024). NB-IoT Network Coverage and Smart Metering Solutions in India.'
+                ]
+            },
+            'edge-ai': {
+                description: 'Edge AI brings machine learning inference directly to IoT devices and edge servers, enabling real-time decision making without cloud latency. As of December 2025, Edge AI is deployed across billions of devices in smartphones (Apple Neural Engine, Google Tensor), security cameras with on-device person/vehicle detection, industrial equipment for predictive maintenance, autonomous vehicles, smart agriculture with crop disease identification, and retail analytics. Chipmakers including Qualcomm, NVIDIA (Jetson series), Google (Coral TPU), Intel (Movidius), and MediaTek offer specialized AI accelerators. Benefits include sub-10ms latency for critical applications, 90% reduction in cloud costs, improved privacy (data stays local), and operation in offline environments. Applications span real-time defect detection in manufacturing (accuracy >98%), voice assistants with local processing, health monitoring with instant alerts, and smart security with facial recognition. Challenges include model compression to fit resource constraints, power consumption management, and updating deployed models.',
+                references: [
+                    'NVIDIA. (2025). Jetson Platform for Edge AI: Performance Benchmarks and Applications.',
+                    'Google Coral. (2024). Edge TPU: Machine Learning Inference at the Edge.',
+                    'McKinsey & Company. (2024). The Future is at the Edge: How Edge AI is Transforming Industries.'
+                ]
+            },
+            'digital-twins': {
+                description: 'Digital twins create virtual replicas of physical assets, processes, or systems enabling real-time monitoring, simulation, and optimization. By December 2025, digital twin technology is established in manufacturing, energy, healthcare, and smart cities with market size exceeding $70 billion. In India, companies like Larsen & Toubro, Tata Motors, and Godrej use digital twins for factory optimization, product development, and predictive maintenance. Applications include jet engines (GE monitors thousands of engines reducing maintenance costs 20%), power plants optimizing efficiency 10-15%, smart buildings reducing energy consumption 25%, infrastructure monitoring bridges and tunnels, and urban planning simulating traffic and utility loads. Digital twins combine IoT sensor data, AI/ML analytics, simulation models, and visualization. Benefits include 30-50% faster product development, 25-40% reduction in downtime, and 15-25% operational cost savings. Integration with AR/VR enables immersive visualization. Challenges include data quality requirements, computational complexity, interoperability standards, and initial implementation costs.',
+                references: [
+                    'Gartner. (2025). Digital Twin Technology: Market Analysis and Adoption Trends.',
+                    'GE Digital. (2024). Industrial Digital Twins: ROI Case Studies and Implementation Guide.',
+                    'Microsoft Azure. (2025). Azure Digital Twins: Platform Architecture and Industry Applications.'
+                ]
+            },
+            'smart-cities': {
+                description: 'Smart city IoT infrastructure has matured with major deployments globally managing traffic, utilities, environment, safety, and citizen services. As of December 2025, India\'s Smart Cities Mission covers 100 cities with investments exceeding ₹2 trillion. Leading examples include Surat (smart street lights, traffic management, CCTV), Pune (integrated command center, smart parking, waste management), Bhubaneswar (IoT-based garbage tracking, water quality monitoring), and Indore (smart water meters, air quality sensors). Technologies deployed include 10+ million smart street lights saving 60-70% energy, 500,000+ surveillance cameras with AI analytics, 5,000+ air quality sensors, smart parking in 50+ cities, and intelligent traffic management reducing congestion 20-30%. Benefits include improved public safety, 30-40% energy savings, better resource management, and enhanced quality of life. Integrated command centers provide unified dashboards for emergency response. Challenges include funding sustainability, data privacy concerns, interoperability between vendors, and ensuring inclusivity.',
+                references: [
+                    'Ministry of Housing and Urban Affairs. (2024). Smart Cities Mission: Progress Report and Impact Assessment.',
+                    'ICLEI South Asia. (2025). IoT for Sustainable Smart Cities in India: Best Practices.',
+                    'World Economic Forum. (2024). Smart City Playbook: IoT Deployment Strategies.'
+                ]
+            },
+            'precision-agriculture': {
+                description: 'Precision agriculture uses IoT sensors, drones, satellites, and AI to optimize farming operations, increasing yields 15-30% while reducing water and fertilizer usage 20-40%. By December 2025, precision agriculture is adopted on 50+ million hectares globally, with India seeing rapid growth especially in Punjab, Haryana, Maharashtra, and Karnataka. Technologies include soil moisture sensors guiding irrigation (saving 30-50% water), weather stations for micro-climate monitoring, drone-based crop health monitoring using multispectral imaging, automated irrigation systems, variable rate fertilizer application, pest detection through computer vision, and livestock monitoring via GPS collars and health sensors. Indian companies like CropIn, Fasal, AgroStar provide IoT platforms serving millions of farmers. Benefits include higher crop yields, reduced input costs, water conservation, early disease detection, and data-driven decision making. Government initiatives like PM-KISAN and Digital Agriculture provide subsidies and training. Challenges include high initial costs, connectivity in rural areas, farmer education, and maintenance requirements.',
+                references: [
+                    'FAO. (2024). Digital Agriculture and Precision Farming: Global Status Report.',
+                    'ICAR. (2025). IoT-Based Precision Agriculture in India: Adoption and Impact Study.',
+                    'CropIn. (2024). Precision Agriculture Technology: Case Studies from Indian Farmers.'
+                ]
+            },
+            'healthcare-iot': {
+                description: 'Healthcare IoT encompasses remote patient monitoring, medical device connectivity, and hospital operations with global market exceeding $180 billion in 2025. Applications include continuous glucose monitors for diabetes (FreeStyle Libre, Dexcom), wearable ECG monitors detecting atrial fibrillation, blood pressure monitors with automatic readings, smart pill dispensers ensuring medication adherence, and hospital asset tracking for equipment and patients. In India, telemedicine platforms like Practo, Apollo 24/7 integrate IoT devices for remote consultations. Benefits include early disease detection reducing hospitalizations 20-30%, chronic disease management improving outcomes, elderly care with fall detection and activity monitoring, and hospital efficiency gains 15-25%. COVID-19 accelerated adoption with pulse oximeters and thermometers connected to health monitoring systems. Regulatory frameworks like FDA clearance and CE marking ensure device safety. Challenges include data privacy (HIPAA, GDPR compliance), device accuracy validation, integration with electronic health records, reimbursement policies, and cybersecurity.',
+                references: [
+                    'WHO. (2024). Digital Health and IoT: Guidelines for Implementation.',
+                    'FDA. (2025). Medical Device IoT: Regulatory Framework and Cybersecurity Guidance.',
+                    'Ministry of Health, India. (2024). National Digital Health Mission: IoT Device Integration.'
+                ]
+            },
+            'wearables': {
+                description: 'Health wearables and smartwatches have achieved mass market adoption with over 500 million devices shipped globally in 2024. Apple Watch dominates premium segment with advanced health features including FDA-cleared ECG, irregular heart rhythm notifications, blood oxygen monitoring, fall detection, and crash detection. Samsung Galaxy Watch, Fitbit (Google), Garmin, and Indian brands like Noise, boAt offer alternatives across ₹2,000-₹50,000 price range. Features span continuous heart rate monitoring, sleep tracking with REM/deep sleep analysis, stress monitoring via HRV, menstrual cycle tracking, VO2 max estimation, and GPS for outdoor activities. Integration with smartphones enables notifications, calls, payments (Apple Pay, Google Pay), and third-party apps. Health insights help users improve fitness, detect potential issues (studies show Apple Watch AFib detection prevented strokes), and maintain wellness goals. Challenges include battery life (1-7 days typical), accuracy validation for medical claims, data privacy, and e-waste management.',
+                references: [
+                    'IDC. (2025). Wearable Devices Market Analysis: Shipments, Trends, and Forecasts.',
+                    'Apple. (2024). Apple Watch Health Studies: AFib, Heart Health, and Research Partnerships.',
+                    'Stanford Medicine. (2024). Digital Health and Wearables: Clinical Validation Studies.'
+                ]
+            },
+            'satellite-iot': {
+                description: 'Satellite IoT provides global connectivity for remote areas lacking terrestrial networks, enabling applications in maritime, aviation, mining, oil & gas, and agriculture. As of December 2025, constellation operators including Starlink, Iridium, Orbcomm, Kineis, and Skylo offer IoT services with millions of connected devices. Starlink partnered with T-Mobile for satellite-to-phone connectivity. India\'s ISRO launched NavIC-based IoT services for fishermen, disaster management, and asset tracking. Use cases include ship tracking for fishing vessels, cargo containers with theft/tampering alerts, remote pipeline monitoring, wildlife tracking for conservation, agricultural sensors in remote farms, and emergency beacons. Devices transmit small data packets (few bytes to kilobytes) with latency of seconds to minutes. Benefits include true global coverage including oceans and polar regions, resilience to terrestrial network failures, and long battery life (years). Challenges include higher costs than terrestrial IoT, limited data throughput, latency, and regulatory spectrum allocations.',
+                references: [
+                    'Iridium. (2025). Iridium Certus IoT: Global Satellite Connectivity for Industrial Applications.',
+                    'SpaceX. (2024). Starlink Direct to Cell: Satellite IoT Integration.',
+                    'ISRO. (2024). NavIC-based IoT Services: Coverage and Applications in India.'
+                ]
+            },
+            'ambient-computing': {
+                description: 'Ambient computing creates environments where technology seamlessly responds to user presence and context without explicit commands, using distributed sensors, AI, and edge processing. Examples include smart homes adjusting temperature, lighting, and music based on occupancy and preferences, offices with presence-aware climate control and booking systems, retail stores with personalized recommendations via beacons, and vehicles adapting seats, mirrors, and entertainment to drivers. Google\'s Ambient mode transforms displays into context-aware information surfaces. Amazon\'s Alexa Guard Plus provides ambient home monitoring. Technologies enabling ambient computing include mmWave radar for presence detection, computer vision identifying activities, voice interfaces understanding natural language, and ML models predicting user intent. Benefits include enhanced convenience, energy efficiency (25-35% savings), improved accessibility for elderly and disabled users, and frictionless experiences. Challenges include privacy concerns with always-on sensing, complexity of context understanding, interoperability between devices, and user acceptance of autonomous systems.',
+                references: [
+                    'Gartner. (2024). Ambient Computing: Technology Trends and Market Opportunities.',
+                    'Google. (2025). Ambient Mode and Contextual AI: Design Principles and Applications.',
+                    'MIT Technology Review. (2024). The Future of Ambient Intelligence in Smart Spaces.'
+                ]
+            },
+            'connected-vehicles': {
+                description: 'V2X (Vehicle-to-Everything) communication allows cars to talk to traffic lights, other cars, and pedestrians. By 2025, 40% of new cars sold in India feature embedded SIMs (eSIM) for over-the-air updates and telemetry. Tata Motors and Mahindra use this for "connected car" apps that track health, location, and driving behavior.',
+                references: [
+                    'S&P Global Mobility. (2025). V2X Deployment Forecast.',
+                    'Tata Motors. (2024). ZConnect App capabilities.'
+                ]
+            },
+            'smart-buildings': {
+                description: 'Smart Building Management Systems (BMS) integrate HVAC, lighting, security, and occupancy sensors into a unified "brain". 2025 systems use AI to predict thermal loads, reducing energy spend by 30%. Indian realty giants like DLF and Godrej Properties fit new commercial projects with Honeywell or Schneider Electric BMS.',
+                references: [
+                    'Schneider Electric. (2025). The Future of Buildings.',
+                    'IGBC (Indian Green Building Council). (2024). Smart Building Standards.'
+                ]
+            },
+            'asset-tracking': {
+                description: 'Global Asset Tracking combines GPS, BLE, and cellular triangulation to monitor high-value cargo (vaccines, electronics) in real-time. 2025 trackers are "print-on-label" smart tags costing <$1, allowing granular tracking of individual packages rather than just containers.',
+                references: [
+                    'DHL. (2025). Logistics Trend Radar.',
+                    'Wiliot. (2024). Ambient IoT Pixels.'
+                ]
+            },
+            'wifi6e': {
+                description: 'WiFi 6E and WiFi 7 devices utilize the 6GHz spectrum for interference-free, gigabit-speed IoT connectivity. Critical for high-bandwidth industrial cameras and AR inspections where legacy 2.4/5GHz channels are congested.',
+                references: [
+                    'Wi-Fi Alliance. (2025). Wi-Fi 7 Impact on IoT.',
+                    'Broadcom. (2024). 6GHz IoT solutions.'
+                ]
+            },
+            'thread': {
+                description: 'Thread is an IPv6-based mesh networking protocol designed for low-power smart home devices. Unlike Bluetooth, it forms a self-healing mesh where lights and plugs extend the network range. It is the backbone of the "Matter" standard.',
+                references: [
+                    'Thread Group. (2025). Thread 1.4 Specification.',
+                    'Google Nest. (2024). Thread border router implementation.'
+                ]
+            },
+            'environmental-monitoring': {
+                description: 'Environmental IoT Networks deploy dense grids of sensors to detect forest fires, floods, and landslides early. In India, such systems are deployed in the Western Ghats and Himalayas for disaster resilience, transmitting data via LoRaWAN to central warning centers.',
+                references: [
+                    'NDMA (National Disaster Management Authority). (2025). Early Warning Systems.',
+                    'IISc Bangalore. (2024). Sensor networks for landslide detection.'
+                ]
+            },
+            'retail-iot': {
+                description: 'Smart Retail IoT enables cashier-less checkout (like Amazon Go), smart shelves that track inventory weight, and digital price tags (ESL) that update instantly. Indian retailers like Reliance Retail pilot these for dynamic pricing and inventory reduction.',
+                references: [
+                    'RetailAI. (2025). Frictionless Shopping Trends.',
+                    'SES-imagotag. (2024). VUSION Digital Labels.'
+                ]
+            },
+            'energy-harvesting': {
+                description: 'Energy Harvesting IoT devices run without batteries, drawing power from indoor light, RF waves, or temperature differentials. This "install and forget" model enables deploying millions of sensors in walls or bridges without maintenance costs.',
+                references: [
+                    'EnOcean. (2025). Sustainable IoT whitepaper.',
+                    'Powercast. (2024). RF wireless power success stories.'
+                ]
+            },
+            'iot-blockchain': {
+                description: 'Blockchain for IoT secures machine-to-machine transactions. Devices can autonomously buy data or electricity (e.g., EV chargers paying for power) using smart contracts, ensuring auditability and eliminating middlemen.',
+                references: [
+                    'IOTA Foundation. (2025). Tangle for IoT micropayments.',
+                    'IoTeX. (2024). DePIN architecture.'
+                ]
+            },
+            'quantum-safe-iot': {
+                description: 'Quantum-Safe IoT Encryption upgrades device firmware with cryptographic algorithms (NIST crystals-kyber) resistant to future quantum computer attacks. Critical for long-lifespan devices like smart meters and cars deployed today.',
+                references: [
+                    'NIST. (2024). Post-Quantum Cryptography Standardization.',
+                    'Infineon. (2025). Quantum-resistant secure elements.'
+                ]
+            },
+            'swarm-robotics': {
+                description: 'IoT Swarm Robotics coordinates hundreds of simple robots to perform complex tasks like search-and-rescue or warehouse sorting. They communicate locally to form patterns without a central controller, mimicking ant colonies.',
+                references: [
+                    'Harvard Wyss Institute. (2025). Kilobots swarm updates.',
+                    'Amazon Robotics. (2024). Warehouse swarm coordination.'
+                ]
+            },
+            'water-management': {
+                description: 'Smart Water Management uses flow meters and quality sensors to detect leaks and contamination. In cities like Bangalore, IoT-valves automatically regulate supply based on reservoir levels, reducing non-revenue water loss by 40%.',
+                references: [
+                    'Jal Jeevan Mission. (2025). Smart water grid implementations.',
+                    'Bosch. (2024). AquaEasy smart aquaculture.'
+                ]
+            },
+            'waste-management': {
+                description: 'Smart Waste Management fits bins with ultrasonic fill-level sensors. Garbage trucks optimize routes to collect only full bins. Deployment in Indore and Mysore has reduced fuel consumption by 30% and improved cleanliness scores.',
+                references: [
+                    'Smart Waste. (2025). Route optimization algorithms.',
+                    'Swachh Bharat Mission. (2024). Technology in waste management.'
+                ]
+            },
+            'air-quality': {
+                description: 'Air Quality Monitoring Networks (AQI) provide hyperlocal pollution data. Unlike expensive government stations, low-cost IoT sensors (PurpleAir style) deployed by citizens create a dense map of PM2.5 hotspots, aiding policy enforcement.',
+                references: [
+                    'IQAir. (2025). World Air Quality Report.',
+                    'IIT Kanpur. (2024). Low-cost sensor calibration techniques.'
+                ]
+            },
+            'parking-systems': {
+                description: 'Smart Parking Systems use ground sensors or cameras to detect empty spots. Drivers find spots via app, reducing circling traffic. Integrated with FASTag in India for seamless entry/exit payments in malls and office parks.',
+                references: [
+                    'Park+ India. (2025). Digital parking adoption stats.',
+                    'Siemens Mobility. (2024). Smart parking impact on congestion.'
+                ]
+            },
+            'lighting-systems': {
+                description: 'Smart Street Lighting dims automatically when roads are empty and brightens for pedestrians, saving 60% energy. Poles also serve as 5G small cells and EV charging points, acting as the backbone of smart city infrastructure.',
+                references: [
+                    'Signify (Philips). (2025). InterAct City lighting.',
+                    'EESL India. (2024). SLNP (Street Lighting National Programme) updates.'
+                ]
+            },
+            'india-stack-iot': {
+                description: 'India Stack IoT Integration connects devices to national digital infrastructure (Aadhaar, UPI). Examples include biometric attendance systems, UPI-enabled vending machines, and lockers. This "Public Digital Good" approach accelerates IoT adoption in public services.',
+                references: [
+                    'iSPIRT. (2025). India Stack 2.0 and IoT.',
+                    'NPCI. (2024). UPI Lite for IoT payments.'
+                ]
+            },
+            'iot-security': {
+                description: 'IoT Security Standards (TRL 8) enforce "Secure by Design" principles. Regulations now mandate no default passwords, regular firmware updates, and hardware roots of trust (TPM). This mitigates botnets like Mirai that previously exploited weak IP cameras.',
+                references: [
+                    'ETSI. (2024). EN 303 645 Standard for Consumer IoT Security.',
+                    'DoT India. (2025). M2M Security Guidelines.'
+                ]
+            }
+        };
+
+        const techConnections = [
+            ['matter-protocol', 'thread'],
+            ['5g-iot', 'edge-ai'],
+            ['5g-iot', 'connected-vehicles'],
+            ['nb-iot', 'smart-cities'],
+            ['industrial-iot', 'digital-twins'],
+            ['industrial-iot', 'edge-ai'],
+            ['precision-agriculture', 'satellite-iot'],
+            ['healthcare-iot', 'wearables'],
+            ['smart-cities', 'environmental-monitoring'],
+            ['smart-cities', 'parking-systems'],
+            ['edge-ai', 'digital-twins'],
+            ['iot-security', 'quantum-safe-iot']
+        ];
+
+        // ========== GENERIC VISUALIZATION CODE - NO CHANGES NEEDED ==========
+
+        let currentYear = 2025;
+        let currentFilter = 'all';
+        let selectedTech = null;
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const maxRadius = Math.min(width, height) * 0.4;
+
+        const svg = d3.select('#radarSvg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const categoryColors = {
+            research: 'var(--color-electric-blue)',
+            industry: 'var(--color-gray-800)',
+            emerging: 'var(--color-gray-600)',
+            experimental: 'var(--color-electric-blue-dark)'
+        };
+
+        const trlColors = d3.scaleLinear()
+            .domain([1, 5, 9])
+            .range(['#a3a3a3', '#525252', '#4040ff']);
+
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        let zoomTransform = d3.zoomIdentity;
+
+        function initVisualization() {
+            setupZoom();
+            setTimeout(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderRadar();
+            }, 1500);
+        }
+
+        function setupZoom() {
+            const zoom = d3.zoom()
+                .scaleExtent([minZoom, maxZoom])
+                .on('zoom', handleZoom);
+
+            svg.call(zoom);
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+            });
+        }
+
+        function handleZoom(event) {
+            zoomTransform = event.transform;
+            svg.select('.radar-content').attr('transform', zoomTransform);
+        }
+
+        function renderRadar() {
+            svg.selectAll('*').remove();
+
+            const radarContent = svg.append('g').attr('class', 'radar-content');
+            const defs = svg.append('defs');
+
+            const shadow = defs.append('filter')
+                .attr('id', 'shadow')
+                .attr('x', '-50%')
+                .attr('y', '-50%')
+                .attr('width', '200%')
+                .attr('height', '200%');
+
+            shadow.append('feDropShadow')
+                .attr('dx', 2)
+                .attr('dy', 2)
+                .attr('stdDeviation', 3)
+                .attr('flood-color', '#000')
+                .attr('flood-opacity', 0.2);
+
+            radarContent.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', maxRadius)
+                .attr('fill', '#f8fafc')
+                .attr('stroke', '#e2e8f0')
+                .attr('stroke-width', 2);
+
+            for (let i = 1; i <= 9; i++) {
+                const radius = (maxRadius / 9) * i;
+
+                radarContent.append('circle')
+                    .attr('cx', centerX)
+                    .attr('cy', centerY)
+                    .attr('r', radius)
+                    .attr('fill', 'none')
+                    .attr('stroke', '#cbd5e1')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.6);
+
+                if (i % 3 === 0) {
+                    radarContent.append('text')
+                        .attr('x', centerX + radius + 10)
+                        .attr('y', centerY + 5)
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '12px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(`TRL ${i}`);
+                }
+            }
+
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const x2 = centerX + Math.cos(angle) * maxRadius;
+                const y2 = centerY + Math.sin(angle) * maxRadius;
+
+                radarContent.append('line')
+                    .attr('x1', centerX)
+                    .attr('y1', centerY)
+                    .attr('x2', x2)
+                    .attr('y2', y2)
+                    .attr('stroke', '#e2e8f0')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.5);
+            }
+
+            const data = technologyData[currentYear] || technologyData[2025];
+            const filteredData = currentFilter === 'all' ? data : data.filter(d => d.category === currentFilter);
+
+            const techGroups = radarContent.selectAll('.tech-node')
+                .data(filteredData)
+                .enter()
+                .append('g')
+                .attr('class', 'tech-node')
+                .style('cursor', 'pointer')
+                .on('click', (event, d) => showTechInfo(d))
+                .on('mouseover', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 12)
+                        .attr('filter', 'url(#shadow)');
+                })
+                .on('mouseout', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 8)
+                        .attr('filter', 'none');
+                });
+
+            techGroups.each(function (d) {
+                const group = d3.select(this);
+                const radius = (maxRadius / 9) * d.trl;
+                const angleRad = (d.angle - 90) * Math.PI / 180;
+                const x = centerX + Math.cos(angleRad) * radius;
+                const y = centerY + Math.sin(angleRad) * radius;
+
+                const nodeColor = getContrastColor(d.category, d.trl);
+                group.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 8)
+                    .attr('fill', nodeColor.fill)
+                    .attr('stroke', nodeColor.stroke)
+                    .attr('stroke-width', 2);
+
+                if (d.trl >= 6 || d.category === 'emerging') {
+                    const labelRadius = radius + 25;
+                    const labelX = centerX + Math.cos(angleRad) * labelRadius;
+                    const labelY = centerY + Math.sin(angleRad) * labelRadius;
+
+                    group.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '10px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(d.name.length > 15 ? d.name.substring(0, 15) + '...' : d.name);
+                }
+            });
+
+            drawConnections(filteredData);
+
+            svg.selectAll('.tech-node')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 50)
+                .style('opacity', 1);
+        }
+
+        function getContrastColor(category, trl) {
+            const colors = {
+                research: { fill: '#4040ff', stroke: '#1e1e8f' },
+                industry: { fill: '#1e293b', stroke: '#0f172a' },
+                emerging: { fill: '#64748b', stroke: '#475569' },
+                experimental: { fill: '#3030dd', stroke: '#1e1e8f' }
+            };
+            return colors[category] || colors.research;
+        }
+
+        function drawConnections(data) {
+            const connectionGroup = svg.select('.radar-content').append('g').attr('class', 'connections');
+
+            techConnections.forEach(([source, target]) => {
+                const sourceNode = data.find(d => d.id === source);
+                const targetNode = data.find(d => d.id === target);
+
+                if (sourceNode && targetNode) {
+                    const sourceRadius = (maxRadius / 9) * sourceNode.trl;
+                    const targetRadius = (maxRadius / 9) * targetNode.trl;
+                    const sourceAngle = (sourceNode.angle - 90) * Math.PI / 180;
+                    const targetAngle = (targetNode.angle - 90) * Math.PI / 180;
+
+                    const sourceX = centerX + Math.cos(sourceAngle) * sourceRadius;
+                    const sourceY = centerY + Math.sin(sourceAngle) * sourceRadius;
+                    const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+                    const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+                    const midX = (sourceX + targetX) / 2;
+                    const midY = (sourceY + targetY) / 2;
+                    const controlX = midX + (centerX - midX) * 0.3;
+                    const controlY = midY + (centerY - midY) * 0.3;
+
+                    const path = `M ${sourceX},${sourceY} Q ${controlX},${controlY} ${targetX},${targetY}`;
+
+                    connectionGroup.append('path')
+                        .attr('d', path)
+                        .attr('stroke', '#3b82f6')
+                        .attr('stroke-width', 1.5)
+                        .attr('fill', 'none')
+                        .attr('opacity', 0.6)
+                        .attr('stroke-dasharray', '5,5');
+                }
+            });
+        }
+
+        function showTechInfo(tech) {
+            selectedTech = tech;
+            const infoPanel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
+
+            const techInfo = techDescriptions[tech.id] || {};
+            const description = techInfo.description || `${tech.name} is an IoT technology with TRL level ${tech.trl}.`;
+            const references = techInfo.references || [];
+
+            content.innerHTML = `
+                <h2 class="info-title">${tech.name}</h2>
+                <div class="info-meta">
+                    <span class="meta-badge meta-${tech.category}">${tech.category.toUpperCase()}</span>
+                    <span class="meta-badge" style="background: ${trlColors(tech.trl)}; color: white;">TRL ${tech.trl}</span>
+                    <span class="meta-badge" style="background: var(--color-gray-700); color: white;">Year: ${currentYear}</span>
+                </div>
+                <div class="info-description">
+                    ${description}
+                </div>
+                <div class="progress-grid">
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <div class="progress-label">${key}</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%;"></div>
+                            </div>
+                            <div class="progress-value">${value}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${references.length > 0 ? `
+                    <div class="references-section">
+                        <div class="references-title">Key References</div>
+                        ${references.map(ref => `
+                            <div class="reference-item">• ${ref}</div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            `;
+
+            infoPanel.classList.add('active');
+        }
+
+        function closeInfoPanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+            selectedTech = null;
+        }
+
+        function toggleTRLInfo() {
+            const trlInfoPanel = document.getElementById('trlInfoPanel');
+            trlInfoPanel.classList.toggle('active');
+        }
+
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderRadar();
+            });
+        });
+
+        document.querySelectorAll('[data-time]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-time]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentYear = parseInt(this.dataset.time);
+                renderRadar();
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            location.reload();
+        });
+
+        initVisualization();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Technology Radar - TRL Visualization</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        /* Clean Radar Visualization Styles */
+        body {
+            background: var(--color-white);
+            color: var(--color-black);
+            overflow-x: hidden;
+            font-family: var(--font-primary);
+        }
+
+        .radar-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-white);
+        }
+
+        .radar-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .radar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin: 0;
+        }
+
+        .radar-subtitle {
+            font-size: 12px;
+            color: var(--color-gray-600);
+            margin: 5px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trl-info-btn {
+            background: var(--color-electric-blue) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-electric-blue) !important;
+        }
+
+        .trl-info-btn:hover {
+            background: var(--color-electric-blue-dark) !important;
+            border-color: var(--color-electric-blue-dark) !important;
+            color: var(--color-white) !important;
+        }
+
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-group {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 5px 10px;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            color: var(--color-gray-700);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: var(--color-electric-blue-bg);
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--color-electric-blue);
+            border-color: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .radar-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zoom-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 18px;
+            color: var(--color-electric-blue);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .info-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-research {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .meta-industry {
+            background: var(--color-gray-800);
+            color: var(--color-white);
+        }
+
+        .meta-emerging {
+            background: var(--color-gray-600);
+            color: var(--color-white);
+        }
+
+        .meta-experimental {
+            background: var(--color-electric-blue-dark);
+            color: var(--color-white);
+        }
+
+        .info-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .references-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .references-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+
+        .reference-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--color-gray-600);
+        }
+
+        .reference-link {
+            color: var(--color-electric-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .progress-item {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.8s ease;
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--color-gray-500);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .trl-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 200;
+        }
+
+        .trl-info-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .trl-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin-bottom: 15px;
+        }
+
+        .trl-info-content {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .trl-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trl-level-item {
+            padding: 8px;
+            background: var(--color-gray-50);
+            border-radius: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .trl-level-number {
+            font-weight: 600;
+            color: var(--color-electric-blue);
+        }
+
+        .close-info-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-info-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend-title {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 10px;
+            color: var(--color-gray-700);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00f5ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
+            }
+
+            .radar-title {
+                font-size: 18px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 60vh;
+            }
+
+            .controls-panel {
+                position: static;
+                top: auto;
+                right: auto;
+                margin: 10px 16px 0 16px;
+            }
+
+            .legend {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+</head>
+
+<body>
+    <div class="radar-container">
+        <div class="radar-header">
+            <h1 class="radar-title">BLOCKCHAIN TECHNOLOGY RADAR</h1>
+            <p class="radar-subtitle">Technology Readiness Level Visualization</p>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <div class="control-label">Filter by Origin</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="research">RESEARCH</button>
+                    <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                    <button class="filter-btn" data-filter="emerging">EMERGING</button>
+                    <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Time Period</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-time="2025">2025</button>
+                    <button class="filter-btn" data-time="2020">2020</button>
+                    <button class="filter-btn" data-time="2015">2015</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Learn More</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn trl-info-btn" onclick="toggleTRLInfo()">WHAT IS TRL?</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Navigate</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
+                    <button class="filter-btn" onclick="window.location.href='blockchain-landing.html'">LANDING</button>
+                </div>
+                <div class="filter-buttons" style="margin-top: 5px;">
+                    <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
+                        <option value="">EXPLORE OTHER TRL RADARS ▼</option>
+                        <option value="ai-trl.html">AI & Machine Learning</option>
+                        <option value="blockchain-trl.html" disabled selected>Blockchain</option>
+                        <option value="biorobotics-trl.html">Bio-Robotics</option>
+                        <option value="edge-trl.html">Edge Computing</option>
+                        <option value="interfaces-trl.html">Future Interfaces</option>
+                        <option value="iot-trl.html">Internet of Things</option>
+                        <option value="metaverse-trl.html">Metaverse</option>
+                        <option value="quantum-trl.html">Quantum Computing</option>
+                        <option value="robotics-trl.html">Robotics</option>
+                        <option value="textiles-trl.html">Smart Textiles</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+            <button class="zoom-btn" id="zoomOut" title="Zoom Out">−</button>
+            <button class="zoom-btn" id="resetZoom" title="Reset Zoom">⌂</button>
+        </div>
+
+        <svg class="radar-canvas" id="radarSvg"></svg>
+
+        <div class="trl-info-panel" id="trlInfoPanel">
+            <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
+            <div class="trl-info-title">Technology Readiness Levels (TRL)</div>
+            <div class="trl-info-content">
+                Technology Readiness Levels are a systematic metric used to assess the maturity of blockchain
+                technologies. For blockchain, TRL assessment considers factors like network security, transaction
+                throughput, smart contract reliability, consensus mechanism stability, and real-world adoption across
+                diverse use cases.
+            </div>
+            <div class="trl-levels-grid">
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 1-2</div>
+                    <div>Basic Research</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 3</div>
+                    <div>Proof of Concept</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 4</div>
+                    <div>Lab Validation</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 5</div>
+                    <div>Testnet Environment</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 6</div>
+                    <div>Mainnet Demo</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 7</div>
+                    <div>Network Integration</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 8</div>
+                    <div>Ecosystem Complete</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 9</div>
+                    <div>Proven Operational</div>
+                </div>
+                <div class="trl-level-item" style="grid-column: span 1; background: var(--color-electric-blue-bg);">
+                    <div class="trl-level-number">Click & Explore</div>
+                    <div>Interactive Technologies</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">TRL Levels</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a3a3a3;"></div>
+                <span>TRL 1-3: Research</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #525252;"></div>
+                <span>TRL 4-6: Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4040ff;"></div>
+                <span>TRL 7-9: Deployment</span>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfoPanel()">×</button>
+            <div id="infoPanelContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">Initializing Radar...</div>
+    </div>
+
+    <script>
+        const technologyData = {
+            2015: [
+                { id: 'bitcoin', name: 'Bitcoin', category: 'industry', trl: 8, angle: 0, progress: { research: 90, funding: 85, timeline: 85, consensus: 90 } },
+                { id: 'ethereum', name: 'Ethereum', category: 'emerging', trl: 5, angle: 20, progress: { research: 60, funding: 65, timeline: 55, consensus: 60 } },
+                { id: 'smart-contracts', name: 'Smart Contracts', category: 'research', trl: 4, angle: 40, progress: { research: 50, funding: 45, timeline: 40, consensus: 45 } },
+                { id: 'proof-of-work', name: 'Proof of Work', category: 'industry', trl: 8, angle: 60, progress: { research: 85, funding: 90, timeline: 85, consensus: 85 } },
+                { id: 'crypto-wallets', name: 'Cryptocurrency Wallets', category: 'industry', trl: 7, angle: 80, progress: { research: 75, funding: 80, timeline: 75, consensus: 80 } },
+                { id: 'supply-chain', name: 'Supply Chain Tracking', category: 'research', trl: 2, angle: 100, progress: { research: 25, funding: 20, timeline: 15, consensus: 20 } },
+                { id: 'defi', name: 'Decentralized Finance (DeFi)', category: 'research', trl: 1, angle: 120, progress: { research: 10, funding: 15, timeline: 5, consensus: 10 } },
+                { id: 'nfts', name: 'Non-Fungible Tokens (NFTs)', category: 'research', trl: 1, angle: 140, progress: { research: 5, funding: 10, timeline: 3, consensus: 5 } },
+                { id: 'permissioned', name: 'Permissioned Blockchain', category: 'research', trl: 4, angle: 160, progress: { research: 45, funding: 40, timeline: 35, consensus: 40 } },
+                { id: 'consensus', name: 'Consensus Mechanisms', category: 'research', trl: 6, angle: 180, progress: { research: 65, funding: 60, timeline: 60, consensus: 65 } },
+                { id: 'mining', name: 'Mining Technology', category: 'industry', trl: 7, angle: 200, progress: { research: 80, funding: 85, timeline: 80, consensus: 85 } },
+                { id: 'distributed-ledger', name: 'Distributed Ledger Tech', category: 'research', trl: 5, angle: 220, progress: { research: 55, funding: 50, timeline: 45, consensus: 50 } },
+                { id: 'blockchain-explorer', name: 'Blockchain Explorers', category: 'industry', trl: 6, angle: 240, progress: { research: 70, funding: 75, timeline: 70, consensus: 75 } },
+                { id: 'token-standards', name: 'Token Standards', category: 'research', trl: 3, angle: 260, progress: { research: 35, funding: 30, timeline: 25, consensus: 30 } },
+                { id: 'p2p-networks', name: 'P2P Network Protocol', category: 'industry', trl: 7, angle: 280, progress: { research: 75, funding: 80, timeline: 75, consensus: 80 } },
+                { id: 'cryptography', name: 'Cryptographic Primitives', category: 'industry', trl: 8, angle: 300, progress: { research: 90, funding: 95, timeline: 90, consensus: 95 } },
+                { id: 'exchanges', name: 'Cryptocurrency Exchanges', category: 'industry', trl: 6, angle: 320, progress: { research: 65, funding: 75, timeline: 65, consensus: 70 } },
+                { id: 'blockchain-storage', name: 'Blockchain Data Storage', category: 'research', trl: 3, angle: 340, progress: { research: 30, funding: 25, timeline: 20, consensus: 25 } }
+            ],
+            2020: [
+                { id: 'bitcoin', name: 'Bitcoin', category: 'industry', trl: 9, angle: 0, progress: { research: 98, funding: 100, timeline: 98, consensus: 99 } },
+                { id: 'ethereum', name: 'Ethereum', category: 'industry', trl: 8, angle: 15, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'smart-contracts', name: 'Smart Contracts', category: 'industry', trl: 8, angle: 30, progress: { research: 85, funding: 90, timeline: 85, consensus: 88 } },
+                { id: 'defi', name: 'Decentralized Finance (DeFi)', category: 'emerging', trl: 7, angle: 45, progress: { research: 75, funding: 85, timeline: 70, consensus: 75 } },
+                { id: 'nfts', name: 'Non-Fungible Tokens (NFTs)', category: 'emerging', trl: 6, angle: 60, progress: { research: 60, funding: 70, timeline: 55, consensus: 60 } },
+                { id: 'layer2', name: 'Layer 2 Solutions', category: 'research', trl: 5, angle: 75, progress: { research: 55, funding: 60, timeline: 50, consensus: 55 } },
+                { id: 'proof-of-stake', name: 'Proof of Stake', category: 'research', trl: 7, angle: 90, progress: { research: 80, funding: 75, timeline: 70, consensus: 75 } },
+                { id: 'cross-chain', name: 'Cross-chain Bridges', category: 'research', trl: 4, angle: 105, progress: { research: 45, funding: 50, timeline: 40, consensus: 45 } },
+                { id: 'enterprise', name: 'Enterprise Blockchain', category: 'industry', trl: 7, angle: 120, progress: { research: 75, funding: 85, timeline: 75, consensus: 80 } },
+                { id: 'stablecoins', name: 'Stablecoins', category: 'industry', trl: 8, angle: 135, progress: { research: 85, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'dao', name: 'Decentralized Autonomous Orgs', category: 'emerging', trl: 6, angle: 150, progress: { research: 60, funding: 65, timeline: 55, consensus: 60 } },
+                { id: 'supply-chain', name: 'Supply Chain Solutions', category: 'emerging', trl: 6, angle: 165, progress: { research: 65, funding: 70, timeline: 60, consensus: 65 } },
+                { id: 'identity', name: 'Blockchain Identity', category: 'research', trl: 4, angle: 180, progress: { research: 45, funding: 40, timeline: 35, consensus: 40 } },
+                { id: 'oracles', name: 'Oracle Networks', category: 'research', trl: 5, angle: 195, progress: { research: 50, funding: 55, timeline: 45, consensus: 50 } },
+                { id: 'privacy-coins', name: 'Privacy Cryptocurrencies', category: 'emerging', trl: 6, angle: 210, progress: { research: 65, funding: 60, timeline: 55, consensus: 60 } },
+                { id: 'amm', name: 'Automated Market Makers', category: 'emerging', trl: 6, angle: 225, progress: { research: 70, funding: 75, timeline: 65, consensus: 70 } },
+                { id: 'yield-farming', name: 'Yield Farming Protocols', category: 'emerging', trl: 5, angle: 240, progress: { research: 55, funding: 65, timeline: 50, consensus: 55 } },
+                { id: 'cbdc', name: 'Central Bank Digital Currency', category: 'research', trl: 3, angle: 255, progress: { research: 35, funding: 45, timeline: 30, consensus: 35 } },
+                { id: 'tokenization', name: 'Asset Tokenization', category: 'research', trl: 4, angle: 270, progress: { research: 40, funding: 50, timeline: 35, consensus: 40 } },
+                { id: 'sharding', name: 'Blockchain Sharding', category: 'research', trl: 3, angle: 285, progress: { research: 35, funding: 40, timeline: 25, consensus: 30 } },
+                { id: 'zk-proofs', name: 'Zero-Knowledge Proofs', category: 'research', trl: 4, angle: 300, progress: { research: 45, funding: 40, timeline: 35, consensus: 40 } },
+                { id: 'ipfs', name: 'Decentralized Storage (IPFS)', category: 'research', trl: 5, angle: 315, progress: { research: 50, funding: 55, timeline: 45, consensus: 50 } },
+                { id: 'governance', name: 'On-chain Governance', category: 'emerging', trl: 5, angle: 330, progress: { research: 55, funding: 60, timeline: 50, consensus: 55 } },
+                { id: 'atomic-swaps', name: 'Atomic Swaps', category: 'research', trl: 4, angle: 345, progress: { research: 40, funding: 35, timeline: 30, consensus: 35 } }
+            ],
+            2025: [
+                { id: 'bitcoin', name: 'Bitcoin', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+                { id: 'ethereum', name: 'Ethereum (Post-Merge)', category: 'industry', trl: 9, angle: 12, progress: { research: 98, funding: 100, timeline: 98, consensus: 99 } },
+                { id: 'smart-contracts', name: 'Smart Contract Platforms', category: 'industry', trl: 9, angle: 24, progress: { research: 95, funding: 98, timeline: 95, consensus: 97 } },
+                { id: 'defi', name: 'Decentralized Finance (DeFi)', category: 'industry', trl: 8, angle: 36, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'nfts', name: 'Non-Fungible Tokens (NFTs)', category: 'industry', trl: 8, angle: 48, progress: { research: 85, funding: 90, timeline: 85, consensus: 88 } },
+                { id: 'layer2', name: 'Layer 2 Scaling Solutions', category: 'industry', trl: 8, angle: 60, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'proof-of-stake', name: 'Proof of Stake Consensus', category: 'industry', trl: 9, angle: 72, progress: { research: 95, funding: 98, timeline: 95, consensus: 97 } },
+                { id: 'cross-chain', name: 'Cross-chain Interoperability', category: 'industry', trl: 7, angle: 84, progress: { research: 80, funding: 85, timeline: 75, consensus: 80 } },
+                { id: 'enterprise', name: 'Enterprise Blockchain', category: 'industry', trl: 8, angle: 96, progress: { research: 88, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'stablecoins', name: 'Regulated Stablecoins', category: 'industry', trl: 9, angle: 108, progress: { research: 92, funding: 98, timeline: 92, consensus: 95 } },
+                { id: 'dao', name: 'Decentralized Autonomous Orgs', category: 'industry', trl: 8, angle: 120, progress: { research: 85, funding: 90, timeline: 82, consensus: 88 } },
+                { id: 'supply-chain', name: 'Supply Chain Solutions', category: 'industry', trl: 8, angle: 132, progress: { research: 85, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'tokenization', name: 'Real-World Asset Tokenization', category: 'industry', trl: 7, angle: 144, progress: { research: 80, funding: 88, timeline: 75, consensus: 82 } },
+                { id: 'zk-rollups', name: 'ZK-Rollups', category: 'industry', trl: 7, angle: 156, progress: { research: 82, funding: 85, timeline: 78, consensus: 83 } },
+                { id: 'blockchain-gaming', name: 'Blockchain Gaming', category: 'industry', trl: 7, angle: 168, progress: { research: 75, funding: 85, timeline: 72, consensus: 78 } },
+                { id: 'web3-identity', name: 'Web3 Identity Systems', category: 'emerging', trl: 6, angle: 180, progress: { research: 70, funding: 75, timeline: 65, consensus: 72 } },
+                { id: 'voting', name: 'Blockchain Voting Systems', category: 'research', trl: 5, angle: 192, progress: { research: 55, funding: 60, timeline: 50, consensus: 58 } },
+                { id: 'quantum-resistant', name: 'Quantum-Resistant Crypto', category: 'research', trl: 4, angle: 204, progress: { research: 45, funding: 50, timeline: 40, consensus: 48 } },
+                { id: 'decentralized-storage', name: 'Decentralized Storage', category: 'industry', trl: 7, angle: 216, progress: { research: 78, funding: 82, timeline: 75, consensus: 80 } },
+                { id: 'interoperability', name: 'Blockchain Interoperability', category: 'industry', trl: 7, angle: 228, progress: { research: 80, funding: 85, timeline: 78, consensus: 82 } },
+                { id: 'cbdc', name: 'Central Bank Digital Currency', category: 'emerging', trl: 6, angle: 240, progress: { research: 70, funding: 85, timeline: 65, consensus: 73 } },
+                { id: 'mev', name: 'MEV Protection Solutions', category: 'emerging', trl: 6, angle: 252, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'account-abstraction', name: 'Account Abstraction', category: 'emerging', trl: 6, angle: 264, progress: { research: 70, funding: 75, timeline: 65, consensus: 72 } },
+                { id: 'modular-blockchain', name: 'Modular Blockchain Architecture', category: 'research', trl: 5, angle: 276, progress: { research: 60, funding: 65, timeline: 55, consensus: 62 } },
+                { id: 'zk-evm', name: 'ZK-EVM Technology', category: 'emerging', trl: 6, angle: 288, progress: { research: 72, funding: 78, timeline: 68, consensus: 74 } },
+                { id: 'liquid-staking', name: 'Liquid Staking Derivatives', category: 'industry', trl: 7, angle: 300, progress: { research: 80, funding: 85, timeline: 78, consensus: 82 } },
+                { id: 'restaking', name: 'Restaking Protocols', category: 'emerging', trl: 6, angle: 312, progress: { research: 68, funding: 72, timeline: 62, consensus: 70 } },
+                { id: 'ai-blockchain', name: 'AI-Blockchain Integration', category: 'research', trl: 4, angle: 324, progress: { research: 50, funding: 55, timeline: 45, consensus: 52 } },
+                { id: 'blockchain-iot', name: 'Blockchain for IoT', category: 'emerging', trl: 6, angle: 336, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'depin', name: 'Decentralized Physical Infrastructure', category: 'emerging', trl: 6, angle: 348, progress: { research: 70, funding: 75, timeline: 65, consensus: 72 } }
+            ]
+        };
+
+        const techDescriptions = {
+            'bitcoin': {
+                description: 'Bitcoin is the first and most established cryptocurrency, operating as a decentralized peer-to-peer digital currency. With over 16 years of operational history, Bitcoin has proven its security model and censorship resistance. As of December 2025, Bitcoin processes hundreds of thousands of transactions daily with a market capitalization exceeding $1 trillion. The network has achieved remarkable uptime with 99.98% availability since inception. Current developments include Lightning Network for instant micropayments, Taproot upgrade for enhanced privacy and smart contract capabilities, and ongoing research into quantum resistance. Bitcoin serves as digital gold, a store of value, and increasingly as legal tender in countries like El Salvador.',
+                references: [
+                    'Nakamoto, S. (2008). Bitcoin: A Peer-to-Peer Electronic Cash System. bitcoin.org.',
+                    'Antonopoulos, A. M. (2024). Mastering Bitcoin 3rd Edition. O\'Reilly Media.',
+                    'Bitcoin Core Development Team. (2025). Bitcoin Protocol Updates. github.com/bitcoin/bitcoin'
+                ]
+            },
+            'ethereum': {
+                description: 'Ethereum completed its historic transition to Proof-of-Stake in September 2022 (The Merge), reducing energy consumption by 99.95%. As of December 2025, Ethereum is the leading smart contract platform with over $100 billion in Total Value Locked (TVL) across DeFi protocols. The platform processes millions of transactions daily through its Layer 1 network and Layer 2 scaling solutions. Recent upgrades include EIP-4844 (proto-danksharding) dramatically reducing L2 costs, account abstraction (EIP-4337) improving user experience, and ongoing development toward full danksharding for massive scalability. Ethereum hosts the largest developer ecosystem in blockchain with thousands of active projects spanning DeFi, NFTs, DAOs, and enterprise applications. The network is secured by over 1 million validators staking more than 30 million ETH.',
+                references: [
+                    'Buterin, V. (2023). Ethereum Roadmap: The Surge, Scourge, Verge, Purge, and Splurge. ethereum.org.',
+                    'Ethereum Foundation. (2025). Post-Merge Network Statistics and Analysis.',
+                    'Antonopoulos, A. M. & Wood, G. (2024). Mastering Ethereum 2nd Edition. O\'Reilly Media.'
+                ]
+            },
+            'smart-contracts': {
+                description: 'Smart contracts are self-executing programs that automatically enforce and execute agreements when predefined conditions are met, eliminating need for intermediaries. By December 2025, smart contracts power a $200+ billion economy across DeFi, NFTs, supply chain, gaming, and enterprise applications. Major platforms include Ethereum (most established), Solana (high throughput), Polygon (Ethereum scaling), Avalanche (subnets), and enterprise solutions like Hyperledger. Smart contracts enable atomic swaps, automated market makers, lending protocols, insurance products, and complex multi-party agreements. Current innovations include formal verification for security, cross-chain smart contracts, AI-assisted contract generation, and standardized templates for common use cases. Security remains paramount with ongoing development of better auditing tools, bug bounty programs, and insurance protocols.',
+                references: [
+                    'Szabo, N. (1997). Formalizing and Securing Relationships on Public Networks. First Monday.',
+                    'ConsenSys Diligence. (2025). Smart Contract Security Best Practices.',
+                    'Trail of Bits. (2025). Annual Smart Contract Security Report.'
+                ]
+            },
+            'defi': {
+                description: 'Decentralized Finance (DeFi) represents a parallel financial system built on blockchain, offering lending, borrowing, trading, and yield generation without traditional intermediaries. As of December 2025, DeFi protocols manage over $150 billion in Total Value Locked across major platforms like Aave (lending), Uniswap (decentralized exchange), Curve (stablecoin swaps), and Compound (money markets). The ecosystem has matured significantly with institutional adoption, regulatory frameworks emerging in major jurisdictions, and integration with traditional finance (TradFi). Key innovations include Real-World Asset (RWA) tokenization bringing trillions in traditional assets on-chain, sophisticated risk management protocols, under-collateralized lending with credit scoring, and advanced derivatives markets. Major use cases span yield farming (4-15% APY on stablecoins), flash loans, algorithmic stablecoins, decentralized insurance, and prediction markets. Challenges include regulatory compliance, oracle reliability, smart contract risks, and market volatility.',
+                references: [
+                    'Schär, F. (2021). Decentralized Finance: On Blockchain- and Smart Contract-Based Financial Markets. Federal Reserve Bank of St. Louis Review.',
+                    'DeFi Pulse. (2025). DeFi Market Analysis and Protocol Rankings.',
+                    'Messari. (2025). State of DeFi Report Q4 2025.'
+                ]
+            },
+            'layer2': {
+                description: 'Layer 2 scaling solutions process transactions off the main Ethereum chain while inheriting its security, dramatically reducing costs and increasing throughput. As of December 2025, L2s process more transactions than Ethereum L1 with costs 50-100x lower. Major L2s include Arbitrum and Optimism (Optimistic Rollups), zkSync and Starknet (ZK-Rollups), and Polygon zkEVM. Combined L2 TVL exceeds $40 billion with millions of daily active users. The EIP-4844 upgrade (March 2024) introduced blob transactions, reducing L2 costs by another 10x to fractions of a cent per transaction. Emerging technologies include validiums for even higher throughput, volitions allowing users to choose data availability, and recursive proofs for unlimited scalability. L2s enable new use cases like blockchain gaming, social media, micropayments, and mass consumer applications previously cost-prohibitive on L1.',
+                references: [
+                    'L2Beat. (2025). Layer 2 Ecosystem Analysis and TVL Tracking.',
+                    'Ethereum Foundation. (2024). EIP-4844: Proto-Danksharding Implementation Guide.',
+                    'Matter Labs. (2025). zkSync Era: Production ZK-Rollup Performance Metrics.'
+                ]
+            },
+            'stablecoins': {
+                description: 'Stablecoins are cryptocurrencies designed to maintain stable value, typically pegged to fiat currencies like the US dollar. As of December 2025, stablecoin market capitalization exceeds $200 billion with daily transaction volumes rivaling Visa and Mastercard. Major types include fiat-backed (USDC, USDT), crypto-collateralized (DAI), and algorithmic designs. USDC and USDT dominate with over $150 billion combined market cap, used extensively in DeFi, international remittances, and as trading pairs. Regulatory frameworks have emerged globally with the EU\'s MiCA regulation and US stablecoin legislation establishing reserve requirements, auditing standards, and consumer protections. Stablecoins enable instant global payments at minimal cost, earning yield through DeFi protocols, and serving as a bridge between traditional finance and crypto. Central banks worldwide are studying and launching their own CBDCs partially inspired by stablecoin innovations. Use cases span cross-border payments (90% cheaper than traditional remittances), merchant payments, payroll, and as a stable store of value in volatile economies.',
+                references: [
+                    'Circle. (2025). USDC Transparency and Reserve Reports.',
+                    'Bank for International Settlements. (2024). Stablecoins and Their Impact on Monetary Policy.',
+                    'European Commission. (2024). Markets in Crypto-Assets (MiCA) Regulation Implementation.'
+                ]
+            },
+            'supply-chain': {
+                description: 'Blockchain supply chain solutions provide end-to-end transparency and traceability for goods from origin to consumer. As of December 2025, major global companies including Walmart, Maersk, BMW, and Nestlé have deployed blockchain systems tracking billions of dollars in products. IBM Food Trust tracks millions of food items, reducing recall investigation time from weeks to seconds. VeChain and OriginTrail specialize in supply chain verification with luxury goods authentication preventing $400+ billion in annual counterfeit losses. Blockchain enables real-time visibility into product location, condition monitoring via IoT sensors, automated compliance documentation, and immutable proof of authenticity. Use cases include pharmaceutical tracking (preventing counterfeit drugs), conflict-free mineral certification, organic food verification, carbon footprint tracking, and luxury goods provenance. Integration with IoT devices provides real-time temperature, location, and condition data, while smart contracts automate payments and quality checks. Benefits include reduced fraud, faster recalls, improved sustainability tracking, and enhanced consumer trust.',
+                references: [
+                    'IBM Food Trust. (2025). Blockchain in Food Supply Chain: Case Studies and Metrics.',
+                    'VeChain Foundation. (2025). Enterprise Blockchain for Supply Chain Management.',
+                    'World Economic Forum. (2024). Blockchain for Supply Chains: Deployment Toolkit and Guidelines.'
+                ]
+            },
+            'tokenization': {
+                description: 'Real-World Asset (RWA) tokenization represents physical and traditional financial assets as blockchain tokens, enabling fractional ownership, 24/7 trading, and programmable compliance. As of December 2025, tokenized RWAs exceed $15 billion on-chain with projections to reach trillions as traditional finance embraces blockchain. Assets being tokenized include real estate (fractional property ownership), private equity, bonds, commodities (gold, oil), art, collectibles, and carbon credits. Major platforms include Centrifuge, Maple Finance, and Ondo Finance connecting DeFi with institutional-grade assets. Traditional finance giants like BlackRock, Franklin Templeton, and JPMorgan have launched tokenized funds and securities. Benefits include 24/7 liquidity, reduced transaction costs, programmable compliance, atomic settlement, and accessibility for smaller investors. Singapore, Switzerland, and UAE have established clear regulatory frameworks enabling tokenized securities. Use cases span real estate crowdfunding, invoice factoring, trade finance, and bringing institutional investments to DeFi yield opportunities.',
+                references: [
+                    'BlackRock. (2024). Tokenization: The Future of Financial Markets.',
+                    'Boston Consulting Group. (2025). Tokenization of Real-World Assets: Market Size and Projections.',
+                    'Monetary Authority of Singapore. (2024). Guidelines for Tokenized Securities and Digital Asset Custody.'
+                ]
+            },
+            'web3-identity': {
+                description: 'Web3 identity systems enable user-controlled digital identities where individuals own and manage their personal data rather than relying on centralized platforms. As of December 2025, decentralized identifiers (DIDs) and verifiable credentials are being adopted for KYC compliance, professional certifications, educational records, and authentication. Solutions like ENS (Ethereum Name Service) have over 3 million registered names serving as blockchain usernames and payment addresses. Soulbound tokens (SBTs) represent non-transferable credentials like diplomas, certifications, and reputation scores. Polygon ID and Worldcoin offer privacy-preserving identity verification. Use cases include portable social graphs (own your followers across platforms), reusable KYC compliance, professional credential verification, gating access to content or services, and reputation systems for lending. Privacy technologies like zero-knowledge proofs enable proving attributes (age, accreditation) without revealing underlying data. Challenges include recovery mechanisms if users lose access, balancing privacy with compliance requirements, and achieving mainstream adoption.',
+                references: [
+                    'W3C. (2024). Decentralized Identifiers (DIDs) v1.0 Specification.',
+                    'Ethereum Name Service. (2025). ENS Protocol and Usage Statistics.',
+                    'Polygon Labs. (2025). Polygon ID: Privacy-Preserving Identity Solutions.'
+                ]
+            },
+            'zk-rollups': {
+                description: 'ZK-Rollups use zero-knowledge proofs to batch hundreds of transactions into a single proof verified on-chain, achieving Ethereum security with drastically lower costs and higher throughput. As of December 2025, ZK-Rollups like zkSync Era, Starknet, Polygon zkEVM, and Scroll process millions of transactions daily with sub-cent fees. Unlike Optimistic Rollups requiring 7-day withdrawal periods, ZK-Rollups enable instant finality once proofs are verified. Technical innovations include zkEVMs (EVM-compatible ZK-Rollups) allowing easy migration of existing Ethereum applications, recursive proofs for unlimited scaling, and hardware acceleration for faster proof generation. Use cases span DeFi (low-cost trading and yield farming), NFT minting and trading, blockchain gaming, micropayments, and privacy-preserving applications. Major advantages include Ethereum-level security, capital efficiency (instant withdrawals), and dramatic cost reductions. Challenges being addressed include proof generation time, hardware requirements, and achieving full EVM equivalence.',
+                references: [
+                    'Matter Labs. (2025). zkSync Era: Performance and Adoption Metrics.',
+                    'Starkware. (2025). STARK Proof Technology: Security and Performance Analysis.',
+                    'Ethereum Foundation. (2024). ZK-Rollups: Security Model and Trust Assumptions.'
+                ]
+            },
+            'dao': {
+                description: 'Decentralized Autonomous Organizations (DAOs) are blockchain-based entities governed by smart contracts and token-holder voting, enabling democratic decision-making without traditional hierarchical management. As of December 2025, over 15,000 DAOs manage more than $30 billion in assets across governance, investment, philanthropy, and social coordination. Major DAOs include MakerDAO (governing the DAI stablecoin with billions in TVL), Uniswap (governing the largest DEX), Arbitrum (L2 protocol governance), and PleasrDAO (collective art ownership). Investment DAOs pool capital for NFTs, startups, and DeFi protocols. Service DAOs coordinate freelancers for marketing, development, and operations. Grant DAOs like Gitcoin have distributed hundreds of millions to public goods and open-source development. Governance innovations include delegation, quadratic voting, rage-quit mechanisms, and reputation-weighted voting. Tools like Snapshot, Tally, and Governor facilitate proposal creation, discussion, and execution. Challenges include voter apathy, plutocracy risks, coordination complexity, and regulatory uncertainty around legal status.',
+                references: [
+                    'a16z Crypto. (2024). The DAO Governance Playbook: Best Practices and Case Studies.',
+                    'DeepDAO. (2025). DAO Ecosystem Analytics: Membership, Treasury, and Governance Activity.',
+                    'Vitalik Buterin. (2024). Moving Beyond Coin Voting Governance. ethereum.org.'
+                ]
+            },
+            'blockchain-gaming': {
+                description: 'Blockchain gaming integrates true digital ownership, play-to-earn mechanics, and interoperable assets across games. As of December 2025, blockchain games attract millions of daily players with top titles like Axie Infinity, The Sandbox, Illuvium, and Parallel generating substantial economic activity. Players truly own in-game assets as NFTs, tradeable on open markets and sometimes usable across multiple games. Play-to-earn models enable players to earn cryptocurrency rewards, creating economic opportunities particularly in developing countries. Innovations include free-to-play models reducing entry barriers, high-quality AAA game development, Layer 2 deployment for negligible transaction costs, and eSports tournaments with blockchain-verified prizes and achievements. Major game studios including Ubisoft, Square Enix, and Epic Games are exploring blockchain integration. Challenges include balancing fun gameplay with earning mechanics, preventing bot farms, achieving mainstream game quality, and managing token economies to avoid ponzi-like dynamics.',
+                references: [
+                    'DappRadar. (2025). Blockchain Gaming Industry Report Q4 2025.',
+                    'Immutable. (2025). State of Web3 Gaming: Players, Economics, and Growth.',
+                    'Newzoo. (2025). Blockchain Gaming Market Analysis and Forecasts.'
+                ]
+            },
+            'cross-chain': {
+                description: 'Cross-chain interoperability enables assets and data to move between different blockchain networks, connecting isolated ecosystems. As of December 2025, bridges and interoperability protocols facilitate billions in monthly volume despite security challenges. Solutions include wrapped tokens (WBTC), messaging protocols (LayerZero, Axelar), and multi-chain ecosystems (Polkadot, Cosmos). Cross-chain bridges enable users to move assets between Ethereum, BNB Chain, Polygon, Arbitrum, and other networks for better yield opportunities, lower fees, or specific applications. Security remains paramount after several major bridge hacks in 2021-2022 resulted in over $2 billion stolen. Modern solutions employ multi-signature validation, zero-knowledge proofs, optimistic verification, and economic security through staking. Interoperability enables unified liquidity, cross-chain DeFi, multi-chain NFTs, and chain-agnostic dApps. Projects like Chainlink CCIP provide secure cross-chain messaging, while intent-based bridges like Across Protocol optimize for speed and cost.',
+                references: [
+                    'LayerZero Labs. (2025). Cross-Chain Messaging Protocol: Security Model and Architecture.',
+                    'Chainlink Labs. (2025). CCIP: Cross-Chain Interoperability Protocol Documentation.',
+                    'L2Beat. (2025). Bridge Risk Assessment and Security Analysis.'
+                ]
+            },
+            'liquid-staking': {
+                description: 'Liquid staking allows users to stake cryptocurrency (earning 3-5% APY) while receiving liquid derivative tokens (like stETH, rETH) usable in DeFi, solving the capital efficiency problem of traditional staking lockups. As of December 2025, liquid staking represents over $50 billion in value with Lido dominating Ethereum liquid staking with 30%+ of all staked ETH. Users stake ETH with protocols like Lido, Rocket Pool, or Frax and receive liquid staking derivatives that can be used as collateral for loans, liquidity provision in DEXs, or yield farming, while still earning staking rewards. This creates capital efficiency as the same capital earns both staking yield and additional DeFi yields. Concerns include centralization (Lido\'s dominance approaching critical thresholds), slashing risks, smart contract vulnerabilities, and potential for depegging events. Newer protocols like DVT (Distributed Validator Technology) improve decentralization and resilience. Liquid staking has become foundational DeFi infrastructure with deep integration across lending, DEXs, and yield protocols.',
+                references: [
+                    'Lido Finance. (2025). Liquid Staking Protocol Metrics and Governance.',
+                    'Rocket Pool. (2025). Decentralized Liquid Staking: Technical Architecture and Security.',
+                    'Ethereum Foundation. (2024). Validator Economics and Liquid Staking Impact Analysis.'
+                ]
+            },
+            'cbdc': {
+                description: 'Central Bank Digital Currencies (CBDCs) are government-issued digital currencies built on blockchain or similar technologies, representing fiat money in digital form. As of December 2025, over 130 countries (representing 98% of global GDP) are exploring CBDCs with China\'s Digital Yuan already processing billions in transactions, Eurozone progressing toward Digital Euro, and pilot programs in India, Brazil, and Australia. CBDCs offer instant settlement, programmable money (targeted stimulus, expiring vouchers), financial inclusion reaching unbanked populations, reduced cash handling costs, and improved monetary policy transmission. China\'s e-CNY has 260+ million users for retail payments and cross-border trade. Design choices include retail vs wholesale CBDCs, account-based vs token-based, centralized vs distributed ledgers, and privacy vs surveillance tradeoffs. Benefits include cheaper cross-border payments, improved tax compliance, and financial stability. Concerns include privacy implications, disintermediation of commercial banks, cybersecurity risks, and technical complexity.',
+                references: [
+                    'Bank for International Settlements. (2025). CBDC Tracker and Development Report.',
+                    'People\'s Bank of China. (2025). Digital Yuan Progress Report and Usage Statistics.',
+                    'European Central Bank. (2024). Digital Euro Investigation Phase Findings.'
+                ]
+            },
+            'nfts': {
+                description: 'Non-Fungible Tokens (NFTs) have evolved from digital art speculation to functional utility layers for ownership. By 2025, NFTs serve as digital receipts for physical assets (real estate deeds, luxury good authentication), access keys (tickets, membership passes), and gaming assets. "Phygital" goods—physical items paired with digital counterparts—are standard in high-end retail. Dynamic NFTs change metadata based on external conditions, used in gaming and loyalty programs. The market has normalized, prioritizing utility over collectibility.',
+                references: [
+                    'DappRadar. (2025). The Utility NFT Market Report.',
+                    'Harvard Business Review. (2024). How Brands are Using NFTs for Customer Loyalty.'
+                ]
+            },
+            'proof-of-stake': {
+                description: 'Proof of Stake (PoS) has become the dominant consensus mechanism for smart contract platforms due to its energy efficiency (>99% less energy than PoW) and economic security model. Validators stake capital (native tokens) to secure the network, slashing the stake of malicious actors. Ethereum\'s successful transition in 2022 set the standard. 2025 research focuses on Single Slot Finality (SSF) to make transaction reversals impossible within seconds and lowering the minimum stake requirements to improve decentralization.',
+                references: [
+                    'Ethereum Foundation. (2025). Proof of Stake vs Proof of Work: Energy and Security Analysis.',
+                    'Vitalik Buterin. (2024). Paths toward Single Slot Finality.'
+                ]
+            },
+            'enterprise': {
+                description: 'Enterprise Blockchain focuses on permissioned or hybrid ledgers for business consortia. Solutions like Hyperledger Fabric, R3 Corda, and Quorum are mature (TRL 8), handling backend settlements for banks, logistics data for shipping giants, and insurance claims processing. The trend in 2025 is towards privacy-preserving public chains (using ZK proofs) rather than purely private walled gardens, allowing enterprises to leverage global liquidity while keeping sensitive data off-chain (Basel III compliance).',
+                references: [
+                    'Hyperledger Foundation. (2025). Enterprise Blockchain Adoption Report.',
+                    'Forbes. (2025). Blockchain 50: How major companies are using distributed ledgers.'
+                ]
+            },
+            'voting': {
+                description: 'Blockchain Voting Systems aim to increase transparency and auditability of elections and governance. While national elections remain cautious due to device security risks, blockchain voting is standard for DAOs and some shareholder meetings. Zero-knowledge proofs allow voters to prove eligibility and cast a vote without revealing their identity or vote choice publicly, ensuring both privacy and verifiability ("receipt-free" voting).',
+                references: [
+                    'MIT Technology Review. (2024). The state of digital democracy technologies.',
+                    'Snapshot Labs. (2025). Governance participation metrics in Web3.'
+                ]
+            },
+            'quantum-resistant': {
+                description: 'Quantum-Resistant Cryptography (Post-Quantum Cryptography) protects blockchains from future quantum computers capable of breaking current elliptic curve signatures (ECDSA/BLS). With NIST standardizing algorithms like CRYSTALS-Dilithium and FALCON in 2024, blockchains are upgrading. Ethereum and Bitcoin explore soft forks to introduce quantum-safe signature schemes. This is a critical preemptive security measure (TRL 4) to future-proof trillions of dollars in digital value.',
+                references: [
+                    'NIST. (2024). Post-Quantum Cryptography Standardization.',
+                    'Ethereum Research. (2025). Roadmap to Quantum Security.'
+                ]
+            },
+            'decentralized-storage': {
+                description: 'Decentralized Storage networks like Filecoin, Arweave, and Storj offer censorship-resistant, permanent, and cheaper alternatives to AWS/Google Cloud. Data is sharded, encrypted, and distributed across a global network of storage providers. By 2025, adoption has surged for storing NFT metadata, archiving scientific data, and hosting decentralized frontend websites. Compute-over-data features now allow processing data where it is stored, reducing bandwidth costs.',
+                references: [
+                    'Filecoin Foundation. (2025). State of the Decentralized Web.',
+                    'Messari. (2025). DePIN Sector Analysis: Storage Networks.'
+                ]
+            },
+            'interoperability': {
+                description: 'Blockchain Interoperability protocols connect fragmented networks into a "Internet of Blockchains." Unlike simple bridges, standards like Chainlink CCIP (Cross-Chain Interoperability Protocol), Cosmos IBC (Inter-Blockchain Communication), and Polkadot XCM allow complex message passing—triggering a smart contract on Chain A based on an event on Chain B. This enables "chain abstraction," where users interact with a single interface without knowing which chain the application lives on.',
+                references: [
+                    'Chainlink. (2025). Cross-Chain Interoperability Protocol Adoption.',
+                    'Cosmos. (2025). The Interchain Future: IBC Expansion.'
+                ]
+            },
+            'mev': {
+                description: 'Maximal Extractable Value (MEV) Protection Solutions address the issue of bots front-running or sandwiching user transactions for profit. Solutions like Flashbots MEV-Share and encrypted mempools help return this value to users or the protocol rather than searchers. In 2025, managing MEV is central to supply chain fairness. Proposer-Builder Separation (PBS) enshrined in protocol designs ensures validators focus on security while specialized builders optimize block construction.',
+                references: [
+                    'Flashbots. (2025). The MEV Supply Chain: Transparency and redistribution.',
+                    'Paradigm. (2024). MEV Economics and Market Structure.'
+                ]
+            },
+            'account-abstraction': {
+                description: 'Account Abstraction (ERC-4337) upgrades crypto wallets from simple key-pairs later to fully programmable "Smart Accounts." This enables Web2-like UX: social login (Google/Apple), password recovery without seed phrases, sponsored gas fees (apps pay for users), and transaction batching. By 2025, this is the default for new users, removing the steep learning curve of private key management.',
+                references: [
+                    'Visa Crypto. (2024). Rethinking Digital Transactions with Account Abstraction.',
+                    'Ethereum Foundation. (2025). ERC-4337 Adoption Statistics.'
+                ]
+            },
+            'modular-blockchain': {
+                description: 'Modular Blockchain Architecture separates the core functions of a blockchain—Execution, Settlement, Consensus, and Data Availability (DA)—into specialized layers. Celestia and EigenDA focus solely on cheap Data Availability, while rollups handle execution. This specialization allows the ecosystem to scale millions of transactions per second (TPS) without compromising security, as each layer is optimized for its specific task.',
+                references: [
+                    'Celestia. (2024). The Modular Blockchain Stack.',
+                    'Bankless. (2025). Monolithic vs Modular Blockchains.'
+                ]
+            },
+            'zk-evm': {
+                description: 'Zero-Knowledge Ethereum Virtual Machines (zk-EVMs) allow developers to deploy existing Ethereum smart contracts directly onto ZK-Rollups without code changes. Solutions from Polygon, zkSync, and Scroll have reached parity with Ethereum. They combine the developer experience of Ethereum with the scalability and mathematical security guarantees of Zero-Knowledge proofs, considered the "Holy Grail" of scaling.',
+                references: [
+                    'Vitalik Buterin. (2023). The different types of ZK-EVMs.',
+                    'Polygon Labs. (2025). zkEVM Prover Performance Benchmarks.'
+                ]
+            },
+            'restaking': {
+                description: 'Restaking, pioneered by EigenLayer, allows staked ETH to be reused to secure other protocols (oracles, bridges, sidechains) simultaneously. This "pooled security" model enables new innovations to launch without needing to bootstrap their own multi-billion dollar validator set. While increasing capital efficiency, it introduces complex slashing risks and systemic leverage, which 2025 risk management frameworks actively monitor.',
+                references: [
+                    'EigenLayer. (2024). The Restaking Whitepaper.',
+                    'Gauntlet. (2025). Systemic Risks in Restaking Economies.'
+                ]
+            },
+            'ai-blockchain': {
+                description: 'AI-Blockchain Integration (Crypto x AI) addresses the verification crisis of the AI era. Blockchains provide immutable provenance for training data and verify the authenticity of content (fighting deepfakes) using cryptographic watermarks. Decentralized Compute Networks (like Gensyn, Akash) pool global GPU resources to train models, offering a censorship-resistant alternative to centralized AI labs. "Agentic" workflows use crypto wallets to allow AI agents to hold money and pay for services autonomously.',
+                references: [
+                    'Messari. (2025). State of AI x Crypto.',
+                    'Coinbase. (2024). The intersection of AI and Blockchain.'
+                ]
+            },
+            'blockchain-iot': {
+                description: 'Blockchain for IoT secures the "Machine Economy." Devices can autonomously transact and share data securely. IOTA and Helium are key examples. Helium, a DePIN project, uses token incentives to crowdsource wireless coverage (LoRaWAN, 5G) for IoT devices. Blockchain ensures data integrity for smart cities and industrial IoT, preventing tampered sensor data from causing physical world failures.',
+                references: [
+                    'Helium Foundation. (2025). Network Coverage and Usage Report.',
+                    'IEEE Internet of Things Journal. (2024). Blockchain for Industrial IoT Security.'
+                ]
+            },
+            'depin': {
+                description: 'Decentralized Physical Infrastructure Networks (DePIN) use token incentives to build real-world physical infrastructure. Examples include Hivemapper (dashcams building maps), Render (GPU rendering), and Filecoin (storage). By 2025, DePIN has proven it can build infrastructure 10-100x faster and cheaper than traditional centralized companies by crowdsourcing capital and labor from millions of participants.',
+                references: [
+                    'Messari. (2025). The DePIN Sector Map.',
+                    'Multicoin Capital. (2024). Proof of Physical Work.'
+                ]
+            }
+        };
+
+        const techConnections = [
+            ['bitcoin', 'ethereum'],
+            ['ethereum', 'smart-contracts'],
+            ['ethereum', 'layer2'],
+            ['ethereum', 'proof-of-stake'],
+            ['smart-contracts', 'defi'],
+            ['smart-contracts', 'nfts'],
+            ['smart-contracts', 'dao'],
+            ['layer2', 'zk-rollups'],
+            ['layer2', 'blockchain-gaming'],
+            ['defi', 'stablecoins'],
+            ['defi', 'liquid-staking'],
+            ['tokenization', 'supply-chain'],
+            ['cross-chain', 'interoperability'],
+            ['web3-identity', 'dao'],
+            ['proof-of-stake', 'liquid-staking']
+        ];
+
+        // ========== GENERIC VISUALIZATION CODE - NO CHANGES NEEDED ==========
+
+        let currentYear = 2025;
+        let currentFilter = 'all';
+        let selectedTech = null;
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const maxRadius = Math.min(width, height) * 0.4;
+
+        const svg = d3.select('#radarSvg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const categoryColors = {
+            research: 'var(--color-electric-blue)',
+            industry: 'var(--color-gray-800)',
+            emerging: 'var(--color-gray-600)',
+            experimental: 'var(--color-electric-blue-dark)'
+        };
+
+        const trlColors = d3.scaleLinear()
+            .domain([1, 5, 9])
+            .range(['#a3a3a3', '#525252', '#4040ff']);
+
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        let zoomTransform = d3.zoomIdentity;
+
+        function initVisualization() {
+            setupZoom();
+            setTimeout(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderRadar();
+            }, 1500);
+        }
+
+        function setupZoom() {
+            const zoom = d3.zoom()
+                .scaleExtent([minZoom, maxZoom])
+                .on('zoom', handleZoom);
+
+            svg.call(zoom);
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+            });
+        }
+
+        function handleZoom(event) {
+            zoomTransform = event.transform;
+            svg.select('.radar-content').attr('transform', zoomTransform);
+        }
+
+        function renderRadar() {
+            svg.selectAll('*').remove();
+
+            const radarContent = svg.append('g').attr('class', 'radar-content');
+            const defs = svg.append('defs');
+
+            const shadow = defs.append('filter')
+                .attr('id', 'shadow')
+                .attr('x', '-50%')
+                .attr('y', '-50%')
+                .attr('width', '200%')
+                .attr('height', '200%');
+
+            shadow.append('feDropShadow')
+                .attr('dx', 2)
+                .attr('dy', 2)
+                .attr('stdDeviation', 3)
+                .attr('flood-color', '#000')
+                .attr('flood-opacity', 0.2);
+
+            radarContent.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', maxRadius)
+                .attr('fill', '#f8fafc')
+                .attr('stroke', '#e2e8f0')
+                .attr('stroke-width', 2);
+
+            for (let i = 1; i <= 9; i++) {
+                const radius = (maxRadius / 9) * i;
+
+                radarContent.append('circle')
+                    .attr('cx', centerX)
+                    .attr('cy', centerY)
+                    .attr('r', radius)
+                    .attr('fill', 'none')
+                    .attr('stroke', '#cbd5e1')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.6);
+
+                if (i % 3 === 0) {
+                    radarContent.append('text')
+                        .attr('x', centerX + radius + 10)
+                        .attr('y', centerY + 5)
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '12px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(`TRL ${i}`);
+                }
+            }
+
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const x2 = centerX + Math.cos(angle) * maxRadius;
+                const y2 = centerY + Math.sin(angle) * maxRadius;
+
+                radarContent.append('line')
+                    .attr('x1', centerX)
+                    .attr('y1', centerY)
+                    .attr('x2', x2)
+                    .attr('y2', y2)
+                    .attr('stroke', '#e2e8f0')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.5);
+            }
+
+            const data = technologyData[currentYear] || technologyData[2025];
+            const filteredData = currentFilter === 'all' ? data : data.filter(d => d.category === currentFilter);
+
+            const techGroups = radarContent.selectAll('.tech-node')
+                .data(filteredData)
+                .enter()
+                .append('g')
+                .attr('class', 'tech-node')
+                .style('cursor', 'pointer')
+                .on('click', (event, d) => showTechInfo(d))
+                .on('mouseover', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 12)
+                        .attr('filter', 'url(#shadow)');
+                })
+                .on('mouseout', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 8)
+                        .attr('filter', 'none');
+                });
+
+            techGroups.each(function (d) {
+                const group = d3.select(this);
+                const radius = (maxRadius / 9) * d.trl;
+                const angleRad = (d.angle - 90) * Math.PI / 180;
+                const x = centerX + Math.cos(angleRad) * radius;
+                const y = centerY + Math.sin(angleRad) * radius;
+
+                const nodeColor = getContrastColor(d.category, d.trl);
+                group.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 8)
+                    .attr('fill', nodeColor.fill)
+                    .attr('stroke', nodeColor.stroke)
+                    .attr('stroke-width', 2);
+
+                if (d.trl >= 6 || d.category === 'emerging') {
+                    const labelRadius = radius + 25;
+                    const labelX = centerX + Math.cos(angleRad) * labelRadius;
+                    const labelY = centerY + Math.sin(angleRad) * labelRadius;
+
+                    group.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '10px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(d.name.length > 15 ? d.name.substring(0, 15) + '...' : d.name);
+                }
+            });
+
+            drawConnections(filteredData);
+
+            svg.selectAll('.tech-node')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 50)
+                .style('opacity', 1);
+        }
+
+        function getContrastColor(category, trl) {
+            const colors = {
+                research: { fill: '#4040ff', stroke: '#1e1e8f' },
+                industry: { fill: '#1e293b', stroke: '#0f172a' },
+                emerging: { fill: '#64748b', stroke: '#475569' },
+                experimental: { fill: '#3030dd', stroke: '#1e1e8f' }
+            };
+            return colors[category] || colors.research;
+        }
+
+        function drawConnections(data) {
+            const connectionGroup = svg.select('.radar-content').append('g').attr('class', 'connections');
+
+            techConnections.forEach(([source, target]) => {
+                const sourceNode = data.find(d => d.id === source);
+                const targetNode = data.find(d => d.id === target);
+
+                if (sourceNode && targetNode) {
+                    const sourceRadius = (maxRadius / 9) * sourceNode.trl;
+                    const targetRadius = (maxRadius / 9) * targetNode.trl;
+                    const sourceAngle = (sourceNode.angle - 90) * Math.PI / 180;
+                    const targetAngle = (targetNode.angle - 90) * Math.PI / 180;
+
+                    const sourceX = centerX + Math.cos(sourceAngle) * sourceRadius;
+                    const sourceY = centerY + Math.sin(sourceAngle) * sourceRadius;
+                    const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+                    const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+                    const midX = (sourceX + targetX) / 2;
+                    const midY = (sourceY + targetY) / 2;
+                    const controlX = midX + (centerX - midX) * 0.3;
+                    const controlY = midY + (centerY - midY) * 0.3;
+
+                    const path = `M ${sourceX},${sourceY} Q ${controlX},${controlY} ${targetX},${targetY}`;
+
+                    connectionGroup.append('path')
+                        .attr('d', path)
+                        .attr('stroke', '#3b82f6')
+                        .attr('stroke-width', 1.5)
+                        .attr('fill', 'none')
+                        .attr('opacity', 0.6)
+                        .attr('stroke-dasharray', '5,5');
+                }
+            });
+        }
+
+        function showTechInfo(tech) {
+            selectedTech = tech;
+            const infoPanel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
+
+            const techInfo = techDescriptions[tech.id] || {};
+            const description = techInfo.description || `${tech.name} is a blockchain technology with TRL level ${tech.trl}.`;
+            const references = techInfo.references || [];
+
+            content.innerHTML = `
+                <h2 class="info-title">${tech.name}</h2>
+                <div class="info-meta">
+                    <span class="meta-badge meta-${tech.category}">${tech.category.toUpperCase()}</span>
+                    <span class="meta-badge" style="background: ${trlColors(tech.trl)}; color: white;">TRL ${tech.trl}</span>
+                    <span class="meta-badge" style="background: var(--color-gray-700); color: white;">Year: ${currentYear}</span>
+                </div>
+                <div class="info-description">
+                    ${description}
+                </div>
+                <div class="progress-grid">
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <div class="progress-label">${key}</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%;"></div>
+                            </div>
+                            <div class="progress-value">${value}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${references.length > 0 ? `
+                    <div class="references-section">
+                        <div class="references-title">Key References</div>
+                        ${references.map(ref => `
+                            <div class="reference-item">• ${ref}</div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            `;
+
+            infoPanel.classList.add('active');
+        }
+
+        function closeInfoPanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+            selectedTech = null;
+        }
+
+        function toggleTRLInfo() {
+            const trlInfoPanel = document.getElementById('trlInfoPanel');
+            trlInfoPanel.classList.toggle('active');
+        }
+
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderRadar();
+            });
+        });
+
+        document.querySelectorAll('[data-time]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-time]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentYear = parseInt(this.dataset.time);
+                renderRadar();
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            location.reload();
+        });
+
+        initVisualization();
+    </script>
+</body>
+
+</html>

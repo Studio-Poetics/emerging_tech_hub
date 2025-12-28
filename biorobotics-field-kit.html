@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-Robotics Field Kit - Creative Tools for Body Architecture & Bio-Design | Emerging Tech Hub</title>
+    <meta name="description"
+        content="Creative resources for bio-robotics exploration. DIY bio-material recipes, speculative design tools, artist studios, exhibitions, and making guides for non-technical creatives.">
+    <meta name="keywords"
+        content="bio-design tools, DIY bio-materials, kombucha leather, mycelium, speculative design, bio-art resources, body architecture, living materials">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+        /* Resource Card Styling */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-8);
+        }
+
+        .resource-card {
+            background: var(--color-white);
+            border: var(--border-width-4) solid var(--color-black);
+            padding: var(--space-8);
+            transition: all var(--transition-base);
+        }
+
+        .resource-card:hover {
+            border-color: var(--color-electric-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-card h3 {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+        }
+
+        .resource-badge {
+            display: inline-block;
+            padding: var(--space-1) var(--space-3);
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-4);
+        }
+
+        .resource-description {
+            line-height: 1.8;
+            margin-bottom: var(--space-5);
+        }
+
+        .resource-description p {
+            margin-bottom: var(--space-4);
+            line-height: 1.8;
+        }
+
+        .resource-description h4 {
+            font-size: var(--text-base);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: var(--space-5);
+            margin-bottom: var(--space-3);
+            color: var(--color-electric-blue);
+        }
+
+        .resource-list {
+            margin-left: var(--space-4);
+            margin-bottom: var(--space-5);
+        }
+
+        .resource-list li {
+            margin-bottom: var(--space-3);
+            line-height: 1.8;
+        }
+
+        .instruction-list {
+            margin-left: var(--space-4);
+            margin-bottom: var(--space-5);
+            list-style-type: decimal;
+        }
+
+        .instruction-list li {
+            margin-bottom: var(--space-3);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
+
+            .experimental-main {
+                padding-top: 0 !important;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+</head>
+
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="biorobotics-landing.html"
+                            style="color: inherit; text-decoration: none;">Bio-Robotics</a></h1>
+                    <p class="brand-subtitle">Field Kit</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Sections</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#speculative-tools" class="experimental-nav-link">Speculative Design</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#bio-materials" class="experimental-nav-link">DIY Bio-Materials</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#artist-labs" class="experimental-nav-link">Artist Studios</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#exhibitions" class="experimental-nav-link">Exhibitions</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#communities" class="experimental-nav-link">Communities</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#body-templates" class="experimental-nav-link">Body Design</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">No Engineering Required</div>
+                    <div class="info-box-content">All resources designed for artists, designers, and creative
+                        thinkers—not engineers.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Kitchen Science</div>
+                    <div class="info-box-content">Safe, accessible bio-material recipes you can try at home with
+                        everyday ingredients.</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Bio-Robotics Field Kit</h1>
+                <p class="fundamentals-subtitle">Creative Tools for Exploring Living Systems & Body Architecture</p>
+                <div style="display: flex; gap: var(--space-4); margin-top: var(--space-6);">
+                    <a href="biorobotics-landing.html" class="experimental-btn">← Back to Bio-Robotics</a>
+                    <a href="#bio-materials" class="experimental-btn experimental-btn--primary">Start Making</a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="fundamentals-content">
+
+                <!-- Speculative Design Tools Section -->
+                <section class="content-section" id="speculative-tools">
+                    <h2>🔮 Speculative Design Tools</h2>
+                    <p style="line-height: 1.8;">Templates and frameworks for imagining future bodies, senses, and ways
+                        of being alive.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Brainstorming</div>
+                            <h3>Body Extension Cards</h3>
+                            <div class="resource-description">
+                                <p>Physical or digital cards to spark ideas for augmenting the human body.</p>
+
+                                <h4>Card Categories:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Sense Cards:</strong> What if you could sense...? (magnetic fields,
+                                        infrared, emotions, air quality, time passing)</li>
+                                    <li><strong>Body Part Cards:</strong> What if your... could do more? (fingers, skin,
+                                        eyes, ears, spine)</li>
+                                    <li><strong>Environment Cards:</strong> Design for... (underwater, space,
+                                        underground, extreme heat/cold)</li>
+                                    <li><strong>Purpose Cards:</strong> Enhance your... (memory, creativity, empathy,
+                                        physical strength, communication)</li>
+                                </ul>
+
+                                <h4>How to Use:</h4>
+                                <ol class="instruction-list">
+                                    <li>Draw one card from each category</li>
+                                    <li>Combine them into a speculative body modification</li>
+                                    <li>Sketch the concept</li>
+                                    <li>Write a "user story" - how would someone use this?</li>
+                                    <li>Discuss ethical implications with friends</li>
+                                </ol>
+
+                                <p><strong>Example Combination:</strong> "Sense: Emotions" + "Body Part: Skin" +
+                                    "Environment: Urban" + "Purpose: Empathy" = Skin that changes color based on others'
+                                    emotional states, helping you navigate social situations in busy cities.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-badge">Worksheets</div>
+                            <h3>Future Body Scenarios</h3>
+                            <div class="resource-description">
+                                <p>Structured prompts for designing speculative body modifications and prosthetics.</p>
+
+                                <h4>Worksheet Prompts:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>The Problem:</strong> What limitation or challenge does this address?
+                                    </li>
+                                    <li><strong>The Modification:</strong> What changes to the body?</li>
+                                    <li><strong>The Experience:</strong> What does it feel like to use?</li>
+                                    <li><strong>The Trade-offs:</strong> What do you lose or risk?</li>
+                                    <li><strong>The Ethics:</strong> Who gets access? What could go wrong?</li>
+                                    <li><strong>The Future:</strong> How might society change if this became common?
+                                    </li>
+                                </ul>
+
+                                <p><strong>Download Templates:</strong> Design your own worksheets based on these
+                                    prompts or use them for classroom discussions and design workshops.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Design Fiction Resources</h3>
+                            <div class="resource-description">
+                                <p>Tools for creating believable scenarios about bio-robotic futures.</p>
+
+                                <h4>Recommended Toolkits:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Thing From The Future:</strong> Card game for imagining future artifacts
+                                        (free download from situationlab.org)</li>
+                                    <li><strong>Near Future Laboratory:</strong> Design fiction templates and methods
+                                    </li>
+                                    <li><strong>Extrapolation Factory:</strong> Workshops and tools for speculative
+                                        design</li>
+                                    <li><strong>IDEO Futures Toolkit:</strong> Scenario planning methods adapted for
+                                        bio-design</li>
+                                </ul>
+
+                                <h4>Techniques to Practice:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Future Artifact:</strong> Design a product from 2050 and work backward
+                                    </li>
+                                    <li><strong>News from the Future:</strong> Write a newspaper article about your
+                                        bio-robotics concept</li>
+                                    <li><strong>User Manual:</strong> Create instructions for a speculative prosthetic
+                                    </li>
+                                    <li><strong>Timeline:</strong> Map how we get from now to your imagined future</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DIY Bio-Materials Section -->
+                <section class="content-section" id="bio-materials">
+                    <h2>🧬 DIY Bio-Material Recipes</h2>
+                    <p style="line-height: 1.8;">Kitchen-safe recipes for growing and making bio-materials at home. No
+                        lab equipment required.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Easiest</div>
+                            <h3>Kombucha Leather (SCOBY)</h3>
+                            <div class="resource-description">
+                                <p>Grow bacterial cellulose that looks and feels like leather. Perfect for wearables,
+                                    patches, and small accessories.</p>
+
+                                <h4>What You Need:</h4>
+                                <ul class="resource-list">
+                                    <li>Kombucha starter culture (SCOBY) or bottled kombucha</li>
+                                    <li>Black or green tea (4-6 tea bags)</li>
+                                    <li>White sugar (1 cup)</li>
+                                    <li>Water (1 gallon)</li>
+                                    <li>Large glass or ceramic container</li>
+                                    <li>Breathable cloth (cheesecloth or paper towel)</li>
+                                </ul>
+
+                                <h4>Step-by-Step:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Brew Tea:</strong> Boil water, steep tea bags for 10 minutes, add sugar,
+                                        let cool completely</li>
+                                    <li><strong>Add Starter:</strong> Pour cooled tea into container, add SCOBY or 1 cup
+                                        bottled kombucha</li>
+                                    <li><strong>Cover:</strong> Cover with breathable cloth, secure with rubber band
+                                    </li>
+                                    <li><strong>Wait:</strong> Leave undisturbed for 2-4 weeks in warm, dark place</li>
+                                    <li><strong>Harvest:</strong> Remove thick cellulose layer that forms on top</li>
+                                    <li><strong>Dry:</strong> Rinse with water, lay flat on parchment paper, air dry for
+                                        3-5 days</li>
+                                    <li><strong>Treat (Optional):</strong> Rub with glycerin or coconut oil for softer
+                                        texture</li>
+                                </ol>
+
+                                <h4>What You Can Make:</h4>
+                                <ul class="resource-list">
+                                    <li>Bracelets and jewelry</li>
+                                    <li>Phone cases</li>
+                                    <li>Small bags or wallets</li>
+                                    <li>Decorative patches</li>
+                                    <li>Book covers</li>
+                                </ul>
+
+                                <p><strong>Pro Tip:</strong> Dry your SCOBY flat if you want sheet material, or dry it
+                                    on a form (like a bowl) for curved shapes.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-badge">Quick Result</div>
+                            <h3>Algae Bioplastic</h3>
+                            <div class="resource-description">
+                                <p>Make compostable plastic from agar-agar (seaweed extract). Ready to use in hours, not
+                                    weeks.</p>
+
+                                <h4>Basic Recipe:</h4>
+                                <ul class="resource-list">
+                                    <li>4 tablespoons agar powder (from Asian grocery or online)</li>
+                                    <li>1 cup water</li>
+                                    <li>2 tablespoons glycerin (from pharmacy)</li>
+                                    <li>Natural food coloring (optional)</li>
+                                </ul>
+
+                                <h4>Instructions:</h4>
+                                <ol class="instruction-list">
+                                    <li>Mix agar powder and water in pot</li>
+                                    <li>Heat while stirring until boiling</li>
+                                    <li>Lower heat, add glycerin, stir for 2 minutes</li>
+                                    <li>Add food coloring if desired</li>
+                                    <li>Pour into molds or onto flat surface</li>
+                                    <li>Let cool and set (30-60 minutes)</li>
+                                    <li>Air dry for 1-3 days depending on thickness</li>
+                                </ol>
+
+                                <h4>Variations:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>More Glycerin:</strong> More flexible, leather-like</li>
+                                    <li><strong>Less Glycerin:</strong> More rigid, brittle</li>
+                                    <li><strong>Add Starch:</strong> More opaque, matte finish</li>
+                                    <li><strong>Add Vinegar:</strong> More translucent, glossy</li>
+                                </ul>
+
+                                <p><strong>Use For:</strong> Jewelry, decorative objects, material swatches,
+                                    experimental design, teaching demos.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Mycelium Bricks (Growing Structures)</h3>
+                            <div class="resource-description">
+                                <p>Grow structural material from mushroom roots. Takes 1-3 weeks, results in strong,
+                                    biodegradable material.</p>
+
+                                <h4>What You Need:</h4>
+                                <ul class="resource-list">
+                                    <li>Mushroom growing kit (oyster mushrooms work best) or mycelium spawn</li>
+                                    <li>Substrate: sawdust, coffee grounds, or cardboard</li>
+                                    <li>Container or mold (cardboard box, plastic container)</li>
+                                    <li>Spray bottle for misting</li>
+                                </ul>
+
+                                <h4>Growing Process:</h4>
+                                <ol class="instruction-list">
+                                    <li><strong>Prepare Substrate:</strong> Pasteurize sawdust/coffee grounds by boiling
+                                        or steaming</li>
+                                    <li><strong>Mix:</strong> Combine cooled substrate with mycelium spawn in container
+                                    </li>
+                                    <li><strong>Shape:</strong> Pack mixture into your desired mold shape</li>
+                                    <li><strong>Incubate:</strong> Keep in dark, warm place (70-75°F), mist daily</li>
+                                    <li><strong>Watch Grow:</strong> White mycelium will spread through substrate over
+                                        7-21 days</li>
+                                    <li><strong>Dry:</strong> When fully colonized (all white), dry in oven at 200°F to
+                                        kill mycelium and harden</li>
+                                </ol>
+
+                                <h4>What You're Learning:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Co-Creation:</strong> You provide conditions, mycelium does the building
+                                    </li>
+                                    <li><strong>Living Systems:</strong> Material that grows itself</li>
+                                    <li><strong>Neri Oxman's Principles:</strong> This is Material Ecology in action
+                                    </li>
+                                </ul>
+
+                                <p><strong>Safety Note:</strong> Wear mask when handling dry mycelium powder. Wash hands
+                                    after handling.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Cornstarch Bioplastic</h3>
+                            <div class="resource-description">
+                                <p>Simplest bioplastic recipe using pantry ingredients. Great for experiments and
+                                    teaching.</p>
+
+                                <h4>Recipe:</h4>
+                                <ul class="resource-list">
+                                    <li>1 tablespoon cornstarch</li>
+                                    <li>4 tablespoons water</li>
+                                    <li>1 teaspoon glycerin</li>
+                                    <li>1 drop vinegar</li>
+                                    <li>Food coloring (optional)</li>
+                                </ul>
+
+                                <h4>Method:</h4>
+                                <ol class="instruction-list">
+                                    <li>Mix all ingredients in small pot</li>
+                                    <li>Heat on low while stirring constantly</li>
+                                    <li>Mixture will become thick and gel-like (2-3 minutes)</li>
+                                    <li>Pour onto parchment paper or into mold</li>
+                                    <li>Let dry for 1-2 days</li>
+                                </ol>
+
+                                <p><strong>Perfect For:</strong> Testing different formulations, understanding polymer
+                                    properties, quick prototypes, classroom demos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Artist Studios & Labs Section -->
+                <section class="content-section" id="artist-labs">
+                    <h2>🎨 Artist Studios & Labs to Follow</h2>
+                    <p style="line-height: 1.8;">Pioneering artists, designers, and research groups shaping bio-robotics
+                        and bio-design.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Material Ecology</div>
+                            <h3>Blast Studio (Neri Oxman)</h3>
+                            <div class="resource-description">
+                                <p>Neri Oxman's current studio focusing on material ecology, bio-design, and
+                                    nature-technology fusion.</p>
+
+                                <h4>Notable Projects:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Silk Pavilion II:</strong> Co-created with 17,000 silkworms</li>
+                                    <li><strong>Aguahoja:</strong> Structures made from water-based biopolymers</li>
+                                    <li><strong>Totems:</strong> Computational design meets ancient making</li>
+                                </ul>
+
+                                <h4>Key Concepts:</h4>
+                                <p>Material Ecology - design at intersection of computation, fabrication, materials
+                                    science, and synthetic biology.</p>
+
+                                <p><strong>Website:</strong> blast.studio | <strong>Previous Work:</strong> MIT Media
+                                    Lab Mediated Matter Group</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-badge">Bio-Art Lab</div>
+                            <h3>SymbioticA</h3>
+                            <div class="resource-description">
+                                <p>Research laboratory at University of Western Australia dedicated to bio-art. Offers
+                                    artist residencies.</p>
+
+                                <h4>What They Do:</h4>
+                                <ul class="resource-list">
+                                    <li>Artists work with scientists in wetlab</li>
+                                    <li>Tissue culture art projects</li>
+                                    <li>Hands-on bio-art workshops</li>
+                                    <li>International residency programs</li>
+                                </ul>
+
+                                <h4>Founders:</h4>
+                                <p>Oron Catts & Ionat Zurr - pioneers of tissue culture art, creators of "Semi-Living"
+                                    artworks.</p>
+
+                                <p><strong>Notable Project:</strong> Victimless Leather - jacket grown from living
+                                    tissue cells.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Notable Solo Artists</h3>
+                            <div class="resource-description">
+                                <h4>Madeline Schwartzman</h4>
+                                <p>Body architecture, wearables, human sensorium. Books: "See Yourself Sensing,"
+                                    "Alive."</p>
+
+                                <h4>Alexandra Daisy Ginsberg</h4>
+                                <p>Synthetic biology, design, speculation. Book: "Better" - exploring bio-design and
+                                    nature.</p>
+
+                                <h4>Amy Karle</h4>
+                                <p>Bio-digital art, tissue engineering, future of body. Project: "Regenerative
+                                    Reliquary" - growing bones.</p>
+
+                                <h4>Agi Haines</h4>
+                                <p>Speculative body modifications. Project: "Transfigurations" - designed babies and
+                                    organ modifications.</p>
+
+                                <h4>Stelarc</h4>
+                                <p>Performance artist. Projects: Third Hand, Exoskeleton, Ear on Arm. Explores body
+                                    obsolescence.</p>
+
+                                <h4>Eduardo Kac</h4>
+                                <p>Transgenic art pioneer. Project: GFP Bunny (Alba) - glowing rabbit. Bio-art and
+                                    telepresence.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Design Collectives & Studios</h3>
+                            <div class="resource-description">
+                                <h4>Faber Futures (Natsai Audrey Chieza)</h4>
+                                <p>Bio-design studio using bacteria for color and material. Sustainable fashion
+                                    innovations.</p>
+
+                                <h4>BioCouture (Suzanne Lee)</h4>
+                                <p>Growing fashion from microbes. Pioneering bacterial cellulose clothing.</p>
+
+                                <h4>Officina Corpuscoli (Maurizio Montalti)</h4>
+                                <p>Mycelium-based design and research. Growing materials and products from fungi.</p>
+
+                                <h4>Living Architecture (Rachel Armstrong)</h4>
+                                <p>Buildings that behave like living systems. Synthetic biology meets architecture.</p>
+
+                                <h4>Design Investigations (Carole Collet)</h4>
+                                <p>Bio-textiles and living materials. Plants that grow clothing, speculative
+                                    bio-futures.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Exhibitions Section -->
+                <section class="content-section" id="exhibitions">
+                    <h2>🖼️ Must-Visit Exhibitions & Events</h2>
+                    <p style="line-height: 1.8;">Where to see bio-robotics and bio-art in person or online.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Past Must-See</div>
+                            <h3>Notable Past Exhibitions</h3>
+                            <div class="resource-description">
+                                <h4>Material Ecology (MoMA, 2020)</h4>
+                                <p>Neri Oxman's retrospective. Silkworm collaborations, bio-polymers, computational
+                                    design. <em>Exhibition catalog available.</em></p>
+
+                                <h4>Broken Nature (Milan Triennale, 2019)</h4>
+                                <p>Curated by Paola Antonelli. Exploring restorative design and bio-materials.</p>
+
+                                <h4>Bio Design (Various Museums)</h4>
+                                <p>Traveling exhibition on intersection of design and biology. Check local science
+                                    museums.</p>
+
+                                <h4>Designs for Different Futures (Multiple Venues)</h4>
+                                <p>Speculative design including body modifications and bio-futures.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-badge">Annual Events</div>
+                            <h3>Recurring Festivals</h3>
+                            <div class="resource-description">
+                                <h4>Ars Electronica Festival (September, Linz, Austria)</h4>
+                                <p>World's largest media arts festival. Always features bio-art, hybrid living systems,
+                                    and speculative bodies.</p>
+
+                                <h4>Dutch Design Week (October, Eindhoven)</h4>
+                                <p>Bio-design pavilion showcases latest in living materials, mycelium products, and
+                                    sustainable design.</p>
+
+                                <h4>ISEA (International Symposium on Electronic Art)</h4>
+                                <p>Annual conference rotating locations. Bio-art, wearables, and body-tech
+                                    presentations.</p>
+
+                                <h4>Transmediale (February, Berlin)</h4>
+                                <p>Art and digital culture. Often includes bio-politics, posthuman themes, and critical
+                                    design.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Online Galleries & Resources</h3>
+                            <div class="resource-description">
+                                <h4>We Make Money Not Art (WMMNA)</h4>
+                                <p>Blog covering bio-art, design, and technology. Best resource for staying current.</p>
+
+                                <h4>BioArt.org</h4>
+                                <p>Database of bio-art projects, artists, and exhibitions.</p>
+
+                                <h4>Synthetic Aesthetics</h4>
+                                <p>Project exploring synthetic biology through art and design.</p>
+
+                                <h4>Designers & Books</h4>
+                                <p>Curated bio-design books and materials section.</p>
+
+                                <h4>Science Gallery Network</h4>
+                                <p>International galleries merging science and art. Bio-design frequent theme.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Communities Section -->
+                <section class="content-section" id="communities">
+                    <h2>🤝 Communities & Workshops</h2>
+                    <p style="line-height: 1.8;">Places to learn, make, and connect with others interested in
+                        bio-robotics and bio-design.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-badge">Non-Technical Welcome</div>
+                            <h3>BioHacker Spaces</h3>
+                            <div class="resource-description">
+                                <p>Community labs where you can learn bio-design hands-on. Many offer artist residencies
+                                    and beginner workshops.</p>
+
+                                <h4>Notable Spaces:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Genspace (Brooklyn, NY):</strong> First community bio-lab in US.
+                                        Classes, workshops, memberships.</li>
+                                    <li><strong>BioCurious (Bay Area, CA):</strong> Open bio-lab with equipment access
+                                        and community projects.</li>
+                                    <li><strong>London BioHackspace (UK):</strong> Community lab in London, workshops
+                                        and maker space.</li>
+                                    <li><strong>La Paillasse (Paris, France):</strong> Bio-hacker space with artist
+                                        residencies.</li>
+                                </ul>
+
+                                <p><strong>What to Expect:</strong> Friendly community, beginner-friendly workshops,
+                                    access to lab equipment, artist-in-residence programs.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Design Research Programs</h3>
+                            <div class="resource-description">
+                                <h4>IAAC Global Summer School (Barcelona)</h4>
+                                <p>Offers bio-design track. Intensive workshops on living materials, computational
+                                    design, fabrication.</p>
+
+                                <h4>Strelka Institute (Moscow/Online)</h4>
+                                <p>Futures studies and design programs. Often covers bio-futures and speculative body
+                                    design.</p>
+
+                                <h4>Royal College of Art (London)</h4>
+                                <p>MA programs in bio-design and wearable futures. Alumni include many bio-design
+                                    pioneers.</p>
+
+                                <h4>Parsons School of Design (NYC)</h4>
+                                <p>Design & Technology MFA. Courses on wearables, bio-materials, and speculative design.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Wearable Tech Communities</h3>
+                            <div class="resource-description">
+                                <h4>Kobakant DIY Wearable Technology</h4>
+                                <p>Online resource with tutorials, recipes, and maker community for wearable tech.</p>
+
+                                <h4>E-textiles Spring Break</h4>
+                                <p>Annual gathering for e-textile makers and educators. Workshops and maker sessions.
+                                </p>
+
+                                <h4>Fashioning Tech Community</h4>
+                                <p>Online community for fashion tech, wearables, and body-worn technology.</p>
+
+                                <h4>Local Meetups</h4>
+                                <p>Search Meetup.com for "wearable tech" or "bio-design" in your city.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Localized Labs & Communities Section -->
+                <section class="content-section" id="india-labs">
+                    <h2>🇮🇳 India Sourcing & Labs</h2>
+                    <p style="line-height: 1.8;">Local resources for bio-design materials and mentorship.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h3
+                                style="font-size: var(--text-2xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">
+                                Indian Bio-Art Pioneers</h3>
+                            <div class="resource-description">
+                                <p><strong>Srishti Manipal Institute (iGEM)</strong>: Students combining synthetic
+                                    biology with art/design (e.g., "Fragrance of Earth").</p>
+                                <p><strong>Akriti Sondhi</strong>: Bio-artist working with living systems and
+                                    speculative futures.</p>
+                            </div>
+                        </div>
+                        <div class="resource-card">
+                            <h3
+                                style="font-size: var(--text-2xl); font-weight: var(--font-bold); margin-bottom: var(--space-4);">
+                                Sourcing in India</h3>
+                            <div class="resource-description">
+                                <p><strong>Don't buy expensive "Bio-Kits."</strong> Use local grocery sources:</p>
+                                <ul class="resource-list">
+                                    <li>Agar-Agar (available as "China Grass" in Kirana stores)</li>
+                                    <li>Glycerin (Medical stores)</li>
+                                    <li>Kombucha SCOBY (Local fermenting communities)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Body Design Templates Section -->
+                <section class="content-section" id="body-templates">
+                    <h2>🎭 Body Design Templates</h2>
+                    <p style="line-height: 1.8;">Worksheets and tools for imagining body modifications, prosthetics, and
+                        augmentations.</p>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h3>Body Mapping Worksheet</h3>
+                            <div class="resource-description">
+                                <p>Visual template for documenting your sensory experiences and identifying
+                                    opportunities for augmentation.</p>
+
+                                <h4>What to Map:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Sensory Hotspots:</strong> Where do you sense most intensely?</li>
+                                    <li><strong>Dead Zones:</strong> Where could you sense more?</li>
+                                    <li><strong>Movement Patterns:</strong> How does your body move through space?</li>
+                                    <li><strong>Touch Points:</strong> What objects do you interact with daily?</li>
+                                    <li><strong>Comfort/Discomfort:</strong> Where do you feel tension or ease?</li>
+                                </ul>
+
+                                <h4>Use This For:</h4>
+                                <p>Designing wearables, identifying augmentation opportunities, understanding your
+                                    relationship to your body.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Sensory Extension Sketching</h3>
+                            <div class="resource-description">
+                                <p>Templates for drawing speculative senses and body modifications.</p>
+
+                                <h4>Exercise Prompts:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>New Sense:</strong> Sketch a device that lets you sense something new
+                                        (magnetism, time, emotions)</li>
+                                    <li><strong>Enhanced Sense:</strong> Draw how you'd amplify an existing sense (super
+                                        hearing, 360° vision)</li>
+                                    <li><strong>Sense Substitution:</strong> Design for replacing one sense with another
+                                        (seeing through sound)</li>
+                                    <li><strong>Body Placement:</strong> Where on body would each sense work best?</li>
+                                </ul>
+
+                                <p><strong>Inspiration:</strong> Look at Neil Harbisson's antenna (hearing colors),
+                                    echolocation devices, thermal vision goggles.</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Prosthetic Imagination Exercises</h3>
+                            <div class="resource-description">
+                                <p>Structured prompts for designing prosthetics for emotional and cognitive needs, not
+                                    just physical ones.</p>
+
+                                <h4>Design Challenges:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Memory Prosthetic:</strong> How would you externalize and enhance
+                                        memory?</li>
+                                    <li><strong>Empathy Prosthetic:</strong> Device that helps you feel others' emotions
+                                    </li>
+                                    <li><strong>Time Prosthetic:</strong> Changing how you perceive time passing</li>
+                                    <li><strong>Creativity Prosthetic:</strong> Augmenting creative thinking</li>
+                                    <li><strong>Communication Prosthetic:</strong> New ways to express thoughts/feelings
+                                    </li>
+                                </ul>
+
+                                <h4>For Each Design, Answer:</h4>
+                                <p>What problem does it solve? How does it work? What does it look/feel like? Who would
+                                    use it? What are the unintended consequences?</p>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <h3>Ethical Dilemma Discussion Cards</h3>
+                            <div class="resource-description">
+                                <p>Scenario cards for discussing ethics of bio-robotics modifications.</p>
+
+                                <h4>Example Scenarios:</h4>
+                                <ul class="resource-list">
+                                    <li><strong>Enhanced Athletes:</strong> Should bio-robotic enhancements be allowed
+                                        in sports?</li>
+                                    <li><strong>Military Augmentation:</strong> Ethics of enhanced soldiers</li>
+                                    <li><strong>Cosmetic Modifications:</strong> Where's the line between augmentation
+                                        and vanity?</li>
+                                    <li><strong>Children & Enhancement:</strong> Can parents modify their children?</li>
+                                    <li><strong>Access & Inequality:</strong> What if enhancements are only for the
+                                        rich?</li>
+                                </ul>
+
+                                <p><strong>Use For:</strong> Classroom discussions, design workshops, team ethical
+                                    review sessions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div
+                    style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 2px solid var(--color-black);">
+                    <a href="biorobotics-landing.html" class="experimental-btn">← Back to Bio-Robotics Hub</a>
+                    <a href="biorobotics-activities.html" class="experimental-btn experimental-btn--primary">Try
+                        Hands-On Activities →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank"
+                        rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics Hub</a>
+                    <a href="biorobotics-field-kit.html" class="main-menu-link">Field Kit</a>
+                    <a href="biorobotics-activities.html" class="main-menu-link">Activities</a>
+                    <a href="biorobotics-readings.html" class="main-menu-link">Readings</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Close menu on escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                document.getElementById('mainMenuOverlay').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

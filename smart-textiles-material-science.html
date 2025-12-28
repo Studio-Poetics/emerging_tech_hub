@@ -1,78 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Textiles: Material Science & Physics - Emerging Tech Hub</title>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .experimental-title { font-size: var(--text-4xl) !important; }
-    .experimental-subtitle { font-size: var(--text-lg) !important; }
-    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
-    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
-    .card-description, .card-meta { display: none !important; }
-    .card-title { font-size: var(--text-lg) !important; }
-    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
-    .vertical-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 48px !important;
-        width: 100vw !important;
-        background: var(--color-black) !important;
-        z-index: 20 !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .vertical-menu-text {
-        writing-mode: horizontal-tb !important;
-        text-orientation: initial !important;
-        letter-spacing: 0.1em !important;
-    }
-    .experimental-main { padding-top: 48px !important; }
-    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-    /* Content page specific */
-    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .fundamentals-title { font-size: var(--text-4xl) !important; }
-    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
-    .content-section { margin-bottom: var(--space-8) !important; }
-    .content-section h2 { font-size: var(--text-2xl) !important; }
-    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
-    .item-description { display: none !important; }
-    .available-badge { display: none !important; }
+            .experimental-main {
+                padding-top: 0 !important;
+            }
 
-    /* Landing page specific */
-    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
-    .section-nav-list { gap: var(--space-3) !important; }
-    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
-    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
-    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
-    .section-description { font-size: var(--text-base) !important; }
-    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
-}
-</style>
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .experimental-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+                padding: var(--space-4) !important;
+            }
+
+            .experimental-card.featured {
+                grid-row: auto !important;
+                min-height: auto !important;
+            }
+
+            .card-description,
+            .card-meta {
+                display: none !important;
+            }
+
+            .card-title {
+                font-size: var(--text-lg) !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+
+            /* Content page specific */
+            .fundamentals-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .fundamentals-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .fundamentals-subtitle {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .fundamentals-content {
+                padding: var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .content-section {
+                margin-bottom: var(--space-8) !important;
+            }
+
+            .content-section h2 {
+                font-size: var(--text-2xl) !important;
+            }
+
+            .properties-grid,
+            .feature-grid,
+            .applications-grid,
+            .approach-cards,
+            .getting-started {
+                grid-template-columns: 1fr !important;
+            }
+
+            .item-description {
+                display: none !important;
+            }
+
+            .available-badge {
+                display: none !important;
+            }
+
+            /* Landing page specific */
+            .ai-section-nav {
+                position: static !important;
+                margin: 0 !important;
+                padding: var(--space-3) var(--space-4) !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .ai-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="ai-fundamentals.css">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -81,7 +189,8 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
                     <p class="brand-subtitle">Material Science</p>
                 </div>
 
@@ -92,7 +201,8 @@
                             <a href="smart-textiles-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="smart-textiles-material-science.html" class="experimental-nav-link active">Material Science</a>
+                            <a href="smart-textiles-material-science.html" class="experimental-nav-link active">Material
+                                Science</a>
                         </li>
                         <li class="experimental-nav-item">
                             <a href="smart-textiles-workshop.html" class="experimental-nav-link">Workshop</a>
@@ -117,7 +227,8 @@
             <!-- Hero Section -->
             <div class="fundamentals-hero">
                 <h1 class="fundamentals-title">Smart Textiles: Material Science & Physics</h1>
-                <p class="fundamentals-subtitle">Deep dive into the fundamental physics and chemistry that make smart textiles possible</p>
+                <p class="fundamentals-subtitle">Deep dive into the fundamental physics and chemistry that make smart
+                    textiles possible</p>
             </div>
 
             <!-- Content -->
@@ -126,21 +237,25 @@
                 <!-- Electrical Conductivity Physics -->
                 <section class="content-section">
                     <h2>Electrical Conductivity in Textiles</h2>
-                    <p>At the most fundamental level, electrical conductivity in smart textiles follows the same physical principles as conventional electronics, but with unique challenges posed by the textile environment.</p>
+                    <p>At the most fundamental level, electrical conductivity in smart textiles follows the same
+                        physical principles as conventional electronics, but with unique challenges posed by the textile
+                        environment.</p>
 
                     <h3>Current Density Equation</h3>
                     <p>The relationship between current flow and material properties is described by:</p>
 
                     <div class="highlight-box">
-                        <h4>J = σE = (nqμ)E</h4>
+                        <h4>The Water Pipe Analogy</h4>
+                        <p>Think of electricity in textiles like water flowing through a pipe:</p>
                         <ul>
-                            <li><strong>J:</strong> Current density (A/m²) - amount of current flowing per unit area</li>
-                            <li><strong>σ:</strong> Electrical conductivity (S/m) - material's ability to conduct electric current</li>
-                            <li><strong>E:</strong> Electric field strength (V/m) - voltage gradient driving current flow</li>
-                            <li><strong>n:</strong> Charge carrier density (1/m³) - number of mobile electrons per unit volume</li>
-                            <li><strong>q:</strong> Elementary charge (1.602 × 10⁻¹⁹ C) - charge of a single electron</li>
-                            <li><strong>μ:</strong> Mobility (m²/V·s) - how quickly charge carriers move under electric field</li>
+                            <li><strong>Current (Amps):</strong> The volume of water flowing (how many electrons).</li>
+                            <li><strong>Voltage (Volts):</strong> The pressure pushing the water (the battery power).
+                            </li>
+                            <li><strong>Resistance (Ohms):</strong> How narrow or clogged the pipe is (how hard it is
+                                for electrons to get through).</li>
                         </ul>
+                        <p>In smart textiles, our "pipes" (conductive threads) are often fuzzy, stretchy, or uneven,
+                            which makes predicting the flow more challenging than in rigid wires.</p>
                     </div>
 
                     <h3>Temperature Dependence</h3>
@@ -149,15 +264,18 @@
                     <div class="properties-grid">
                         <div class="property-card">
                             <h4>Metallic Conductors</h4>
-                            <p>σ(T) = σ₀[1 + α(T - T₀)], where α > 0 for metals. Resistance increases with temperature due to increased phonon scattering.</p>
+                            <p>Metals like silver and copper conduct <em>worse</em> when they get hot. This means your
+                                heated glove might draw slightly less power as it warms up.</p>
                         </div>
                         <div class="property-card">
                             <h4>Semiconductors</h4>
-                            <p>For carbon-filled polymers, α < 0. Resistance decreases with temperature as more charge carriers are activated.</p>
+                            <p>For carbon-filled polymers, α < 0. Resistance decreases with temperature as more charge
+                                    carriers are activated.</p>
                         </div>
                         <div class="property-card">
                             <h4>Practical Impact</h4>
-                            <p>Body heat (37°C) can change circuit resistance by 2-5%, affecting sensor accuracy and LED brightness.</p>
+                            <p>Body heat (37°C) allows us to use temperature as a sensor input, but it also means we
+                                need to calibrate our sensors to ignore normal body warmth.</p>
                         </div>
                     </div>
 
@@ -165,12 +283,17 @@
                     <p>The piezoresistive effect describes how mechanical strain affects electrical resistance:</p>
 
                     <div class="highlight-box">
-                        <h4>R = R₀(1 + GF × ε)</h4>
-                        <p>Where GF is the gauge factor (material sensitivity) and ε is strain (fractional length change).</p>
+                        <h4>Stretching = Changing Resistance</h4>
+                        <p>When you stretch a conductive fabric, you physically pull the conductive fibers apart.</p>
                         <ul>
-                            <li><strong>Conductive thread:</strong> GF = 2-5</li>
-                            <li><strong>Carbon-filled elastomer:</strong> GF = 10-50</li>
-                            <li><strong>Nanoparticle networks:</strong> GF = 100-1000</li>
+                            <li><strong>Knitted Sensors:</strong> Often become <em>less</em> conductive when stretched
+                                (resistance goes up) because loops pull apart.</li>
+                            <li><strong>Coated Spandex:</strong> Might become <em>more</em> conductive (resistance goes
+                                down) if the coating particles get squished closer together, or less conductive if
+                                cracks form.</li>
+                            <li><strong>The Gauge Factor:</strong> A simple number that tells us how sensitive a
+                                material is. A higher number means a bigger change in resistance for a small stretch.
+                            </li>
                         </ul>
                     </div>
                 </section>
@@ -179,39 +302,50 @@
                 <section class="content-section">
                     <h2>Chemistry of Smart Materials</h2>
 
-                    <p>Understanding the chemical processes that affect smart textile performance is crucial for designing durable systems.</p>
+                    <p>Understanding the chemical processes that affect smart textile performance is crucial for
+                        designing durable systems.</p>
 
                     <h3>Silver Oxidation</h3>
                     <p>Silver-plated conductive threads are susceptible to tarnishing:</p>
                     <div class="highlight-box">
-                        <h4>4Ag + O₂ + 2H₂S → 2Ag₂S + 2H₂O</h4>
-                        <p>This reaction produces a black tarnish layer that increases resistance. Prevention strategies include protective coatings and controlled storage conditions.</p>
+                        <h4>The Black Tarnish Problem</h4>
+                        <p><strong>Silver + Sulfur = Tarnish.</strong> Just like silverware, conductive thread turns
+                            black over time because of sulfur in the air (or rubber bands!). This black layer doesn't
+                            conduct electricity well, making your sensors drift or fail. Store your materials in sealed
+                            bags to keep them fresh.</p>
                     </div>
 
                     <h3>Polymer Degradation</h3>
                     <p>UV radiation breaks polymer chains through free radical formation:</p>
                     <div class="highlight-box">
-                        <h4>[-CH₂-CHR-]ₙ + UV → R• + •CH₂-CHR-</h4>
-                        <p>Chain scission leads to mechanical property loss. UV stabilizers and antioxidants can slow this process.</p>
+                        <h4>Sunlight vs. Spandex</h4>
+                        <p>UV rays from the sun act like tiny scissors, cutting the microscopic chains that make plastic
+                            and rubber stretchy. Over time, this makes conductive fabrics brittle and prone to cracking.
+                        </p>
                     </div>
 
                     <h3>Hydrolysis</h3>
                     <p>Water molecules attack polymer backbones, particularly in polyesters:</p>
                     <div class="highlight-box">
-                        <h4>-COO-R-OOC- + H₂O → -COOH + HO-R-OH</h4>
-                        <p>This is especially problematic in humid environments or during washing cycles.</p>
+                        <h4>Water Damage</h4>
+                        <p>Water doesn't just cause short circuits; it can actually break down some synthetic fibers
+                            over time, especially in hot, soapy washes. Always check if your conductive material is
+                            rated for washing.</p>
                     </div>
 
                     <h3>Galvanic Corrosion</h3>
                     <p>When different metals are present with moisture, electrochemical reactions occur:</p>
                     <div class="feature-list">
                         <div class="feature-item">
-                            <h4>Zinc (anode)</h4>
-                            <p>Zn → Zn²⁺ + 2e⁻ (preferentially dissolves)</p>
+                            <h4>The Battery Effect</h4>
+                            <p>If you connect a Copper snap to a Silver thread and add sweat (salt water), you've
+                                accidentally made a tiny battery! This eats away at the metal (corrosion) much faster
+                                than normal.</p>
                         </div>
                         <div class="feature-item">
-                            <h4>Copper (cathode)</h4>
-                            <p>Cu²⁺ + 2e⁻ → Cu (protected from corrosion)</p>
+                            <h4>The Rule</h4>
+                            <p>Try to use the same metal throughout your circuit (Silver to Silver, Copper to Copper) or
+                                protect connections with waterproof glue or nail polish.</p>
                         </div>
                     </div>
                     <p>Avoid mixing dissimilar metals in humid conditions to prevent preferential dissolution.</p>
@@ -254,11 +388,13 @@
                     <div class="properties-grid">
                         <div class="property-card">
                             <h4>Electrical Effects</h4>
-                            <p>Hygroscopic materials absorb water, changing dielectric properties and creating unwanted conductive paths.</p>
+                            <p>Hygroscopic materials absorb water, changing dielectric properties and creating unwanted
+                                conductive paths.</p>
                         </div>
                         <div class="property-card">
                             <h4>Mechanical Effects</h4>
-                            <p>Fiber swelling can change fabric dimensions by 2-5%, affecting circuit geometry and component alignment.</p>
+                            <p>Fiber swelling can change fabric dimensions by 2-5%, affecting circuit geometry and
+                                component alignment.</p>
                         </div>
                         <div class="property-card">
                             <h4>Testing Protocol</h4>
@@ -287,38 +423,39 @@
                     <h3>Percolation Theory</h3>
                     <p>Explains conductivity in carbon-filled polymers:</p>
                     <div class="highlight-box">
-                        <h4>σ ∝ (p - pс)ᵗ</h4>
-                        <ul>
-                            <li><strong>p:</strong> Filler concentration</li>
-                            <li><strong>pс:</strong> Percolation threshold</li>
-                            <li><strong>t:</strong> Critical exponent (~2)</li>
-                        </ul>
-                        <p>Small changes in filler concentration near the threshold cause dramatic conductivity changes. This explains the sensitivity of pressure sensors.</p>
+                        <h4>The Magic Threshold</h4>
+                        <p>In materials like Velostat (the black plastic bags sensitive to pressure), carbon particles
+                            are floating in plastic. At a certain point—the "Percolation Threshold"—there are just
+                            enough carbon particles touching each other to let electricity zip through. This is why they
+                            are so sensitive to pressure: squeezing them forces just a few more particles to touch,
+                            drastically changing the resistance.</p>
                     </div>
 
                     <h3>Quantum Tunneling</h3>
                     <p>Current flows between nanoparticles through quantum tunneling:</p>
                     <div class="highlight-box">
-                        <h4>J ∝ exp(-2κd)</h4>
-                        <ul>
-                            <li><strong>κ:</strong> Decay constant (depends on barrier height)</li>
-                            <li><strong>d:</strong> Barrier width (distance between particles)</li>
-                        </ul>
-                        <p>Distance changes exponentially affect current - the basis for highly sensitive pressure sensors.</p>
+                        <h4>Quantum Tunneling</h4>
+                        <p>In some advanced sensors, particles don't even need to touch! If they get close enough,
+                            electrons can "jump" or "tunnel" through the gap. This effect is incredibly sensitive to
+                            tiny movements, making it perfect for detecting small gestures or breathing.</p>
                     </div>
 
                     <h3>Viscoelastic Response</h3>
                     <p>Polymer behavior depends on loading history:</p>
                     <div class="highlight-box">
-                        <h4>σ(t) = ∫G(t-τ)∂ε/∂τ dτ</h4>
-                        <p>Where G(t) is the relaxation modulus. This integral describes how current stress depends on the entire deformation history, explaining hysteresis in stretch sensors.</p>
+                        <h4>Material Memory (Hysteresis)</h4>
+                        <p>Stretch sensors often have "memory." When you stretch them and let go, they take a moment to
+                            settle back to their original resistance. This lag is called hysteresis. It's like a memory
+                            foam mattress—it doesn't snap back instantly.</p>
                     </div>
 
                     <h3>Electrochemical Kinetics</h3>
                     <p>The Butler-Volmer equation describes electrode reactions:</p>
                     <div class="highlight-box">
-                        <h4>i = i₀[exp(αnFη/RT) - exp(-(1-α)nFη/RT)]</h4>
-                        <p>Where η is the overpotential. Important for understanding corrosion rates and battery integration in wearable devices.</p>
+                        <h4>Battery Chemistry</h4>
+                        <p>Batteries are chemical reactors. Factors like temperature and how fast you draw power affect
+                            how long they last. In wearables, flexible batteries face extra challenges because bending
+                            them can disrupt their internal chemical layers.</p>
                     </div>
                 </section>
 
@@ -331,19 +468,23 @@
                     <div class="feature-list">
                         <div class="feature-item">
                             <h4>Silver-plated thread</h4>
-                            <p>Resistivity: 0.001-0.01 Ω·cm | Gauge Factor: 2-3 | Max Strain: 5-10% | Fatigue Life: 10³-10⁴ cycles</p>
+                            <p>Resistivity: 0.001-0.01 Ω·cm | Gauge Factor: 2-3 | Max Strain: 5-10% | Fatigue Life:
+                                10³-10⁴ cycles</p>
                         </div>
                         <div class="feature-item">
                             <h4>Stainless steel thread</h4>
-                            <p>Resistivity: 0.01-0.1 Ω·cm | Gauge Factor: 2-4 | Max Strain: 2-5% | Fatigue Life: 10⁵-10⁶ cycles</p>
+                            <p>Resistivity: 0.01-0.1 Ω·cm | Gauge Factor: 2-4 | Max Strain: 2-5% | Fatigue Life: 10⁵-10⁶
+                                cycles</p>
                         </div>
                         <div class="feature-item">
                             <h4>Carbon-filled elastomer</h4>
-                            <p>Resistivity: 1-100 Ω·cm | Gauge Factor: 10-50 | Max Strain: 50-200% | Fatigue Life: 10⁴-10⁵ cycles</p>
+                            <p>Resistivity: 1-100 Ω·cm | Gauge Factor: 10-50 | Max Strain: 50-200% | Fatigue Life:
+                                10⁴-10⁵ cycles</p>
                         </div>
                         <div class="feature-item">
                             <h4>Graphene yarn</h4>
-                            <p>Resistivity: 0.0001-0.001 Ω·cm | Gauge Factor: 1-2 | Max Strain: 10-30% | Fatigue Life: 10⁶+ cycles</p>
+                            <p>Resistivity: 0.0001-0.001 Ω·cm | Gauge Factor: 1-2 | Max Strain: 10-30% | Fatigue Life:
+                                10⁶+ cycles</p>
                         </div>
                     </div>
                 </section>
@@ -370,15 +511,18 @@
                     <div class="properties-grid">
                         <div class="property-card">
                             <h4>Force Analysis</h4>
-                            <p>Map all forces: tension, compression, shear, torsion. Consider how each affects electrical properties.</p>
+                            <p>Map all forces: tension, compression, shear, torsion. Consider how each affects
+                                electrical properties.</p>
                         </div>
                         <div class="property-card">
                             <h4>Thermal Analysis</h4>
-                            <p>Account for body heat, ambient temperature, component heating, and thermal expansion effects.</p>
+                            <p>Account for body heat, ambient temperature, component heating, and thermal expansion
+                                effects.</p>
                         </div>
                         <div class="property-card">
                             <h4>Chemical Compatibility</h4>
-                            <p>Consider exposure to sweat (pH 4-6.8), detergents (pH 9-12), and environmental pollutants.</p>
+                            <p>Consider exposure to sweat (pH 4-6.8), detergents (pH 9-12), and environmental
+                                pollutants.</p>
                         </div>
                     </div>
 
@@ -441,7 +585,7 @@
         }
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('mainMenuOverlay');
                 overlay.classList.remove('active');
@@ -449,9 +593,10 @@
         });
 
         // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             console.log('Smart Textiles Material Science page loaded');
         });
     </script>
 </body>
+
 </html>

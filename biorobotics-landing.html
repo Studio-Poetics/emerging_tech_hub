@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bio-Robotics Learning Hub - Living Systems, Body Architecture & Post-Human Design</title>
-    <meta name="description" content="Explore bio-robotics through art, design, and speculation. Learn from Madeline Schwartzman, Neri Oxman, Stelarc, and other pioneers of living systems, body extensions, and bio-design for non-technical creative minds.">
-    <meta name="keywords" content="bio-robotics art, bio-design, body architecture, Madeline Schwartzman, Neri Oxman, transgenic art, soft robotics, wearable augmentation, speculative design, post-human">
+    <meta name="description"
+        content="Explore bio-robotics through art, design, and speculation. Learn from Madeline Schwartzman, Neri Oxman, Stelarc, and other pioneers of living systems, body extensions, and bio-design for non-technical creative minds.">
+    <meta name="keywords"
+        content="bio-robotics art, bio-design, body architecture, Madeline Schwartzman, Neri Oxman, transgenic art, soft robotics, wearable augmentation, speculative design, post-human">
     <meta name="author" content="Studio Poetics - Emerging Technology Hub">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eth.poetics.studio/biorobotics-landing.html">
@@ -14,14 +17,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eth.poetics.studio/biorobotics-landing.html">
     <meta property="og:title" content="Bio-Robotics Learning Hub - Living Systems & Body Architecture">
-    <meta property="og:description" content="Explore bio-robotics through art and design. Learn from pioneers of living systems, body extensions, and bio-design for creative minds.">
+    <meta property="og:description"
+        content="Explore bio-robotics through art and design. Learn from pioneers of living systems, body extensions, and bio-design for creative minds.">
     <meta property="og:site_name" content="Emerging Technology Hub">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://eth.poetics.studio/biorobotics-landing.html">
     <meta property="twitter:title" content="Bio-Robotics Learning Hub - Living Systems & Body Architecture">
-    <meta property="twitter:description" content="Explore bio-robotics through art and design. Learn from pioneers of living systems, body extensions, and bio-design for creative minds.">
+    <meta property="twitter:description"
+        content="Explore bio-robotics through art and design. Learn from pioneers of living systems, body extensions, and bio-design for creative minds.">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -50,72 +55,179 @@
     </script>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .experimental-title { font-size: var(--text-4xl) !important; }
-    .experimental-subtitle { font-size: var(--text-lg) !important; }
-    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
-    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
-    .card-description, .card-meta { display: none !important; }
-    .card-title { font-size: var(--text-lg) !important; }
-    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
-    .vertical-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 48px !important;
-        width: 100vw !important;
-        background: var(--color-black) !important;
-        z-index: 20 !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .vertical-menu-text {
-        writing-mode: horizontal-tb !important;
-        text-orientation: initial !important;
-        letter-spacing: 0.1em !important;
-    }
-    .experimental-main { padding-top: 48px !important; }
-    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-    /* Content page specific */
-    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .fundamentals-title { font-size: var(--text-4xl) !important; }
-    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
-    .content-section { margin-bottom: var(--space-8) !important; }
-    .content-section h2 { font-size: var(--text-2xl) !important; }
-    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
-    .item-description { display: none !important; }
-    .available-badge { display: none !important; }
+            .experimental-main {
+                padding-top: 0 !important;
+            }
 
-    /* Landing page specific */
-    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
-    .section-nav-list { gap: var(--space-3) !important; }
-    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
-    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
-    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
-    .section-description { font-size: var(--text-base) !important; }
-    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
-}
-</style>
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
 
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .experimental-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+                padding: var(--space-4) !important;
+            }
+
+            .experimental-card.featured {
+                grid-row: auto !important;
+                min-height: auto !important;
+            }
+
+            .card-description,
+            .card-meta {
+                display: none !important;
+            }
+
+            .card-title {
+                font-size: var(--text-lg) !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+
+            /* Content page specific */
+            .fundamentals-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .fundamentals-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .fundamentals-subtitle {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .fundamentals-content {
+                padding: var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .content-section {
+                margin-bottom: var(--space-8) !important;
+            }
+
+            .content-section h2 {
+                font-size: var(--text-2xl) !important;
+            }
+
+            .properties-grid,
+            .feature-grid,
+            .applications-grid,
+            .approach-cards,
+            .getting-started {
+                grid-template-columns: 1fr !important;
+            }
+
+            .item-description {
+                display: none !important;
+            }
+
+            .available-badge {
+                display: none !important;
+            }
+
+            /* Landing page specific */
+            .ai-section-nav {
+                position: static !important;
+                margin: 0 !important;
+                padding: var(--space-3) var(--space-4) !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .ai-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -124,7 +236,8 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
                     <p class="brand-subtitle">Bio-Robotics</p>
                 </div>
 
@@ -132,32 +245,39 @@
                     <div class="experimental-nav-title">Explore</div>
                     <ul class="experimental-nav">
                         <li class="experimental-nav-item">
-                            <a href="#fundamentals" class="experimental-nav-link">Fundamentals</a>
+                            <a href="biorobotics-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#readings" class="experimental-nav-link">Readings</a>
+                            <a href="biorobotics-readings.html" class="experimental-nav-link">Readings</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#flashcards" class="experimental-nav-link">Flashcards</a>
+                            <a href="biorobotics-flashcards.html" class="experimental-nav-link">Flashcards</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#fieldkit" class="experimental-nav-link">Field Kit</a>
+                            <a href="biorobotics-field-kit.html" class="experimental-nav-link">Field Kit</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#activities" class="experimental-nav-link">Activities</a>
+                            <a href="biorobotics-activities.html" class="experimental-nav-link">Activities</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="biorobotics-trl.html" class="experimental-nav-link"
+                                style="color: var(--color-electric-blue);">TRL Radar →</a>
                         </li>
                     </ul>
                 </nav>
 
                 <div class="experimental-info-box">
                     <div class="info-box-title">About Bio-Robotics</div>
-                    <div class="info-box-content">Not about building bio-machines. About observing where life and technology merge. What happens when biology becomes designable. Studied through art, not engineering.</div>
+                    <div class="info-box-content">Not about building bio-machines. About observing where life and
+                        technology merge. What happens when biology becomes designable. Studied through art, not
+                        engineering.</div>
                 </div>
 
                 <div class="experimental-info-box">
                     <div class="info-box-title">Approach</div>
                     <div class="info-box-content">
-                        Artists as researchers. Body as site of speculation. Living materials as collaborators. Understanding augmentation, sensing, and post-human futures through observation and making.
+                        Artists as researchers. Body as site of speculation. Living materials as collaborators.
+                        Understanding augmentation, sensing, and post-human futures through observation and making.
                     </div>
                 </div>
 
@@ -180,7 +300,10 @@
                     </div>
 
                     <p class="hero-description">
-                        What if you could sense magnetic fields like a bird? Grow your own wearables from living materials? Co-create with silkworms and mycelium? Explore the intersection of living systems and technology through the eyes of artists, designers, and visionaries reimagining what it means to be alive.
+                        What if you could sense magnetic fields like a bird? Grow your own wearables from living
+                        materials? Co-create with silkworms and mycelium? Explore the intersection of living systems and
+                        technology through the eyes of artists, designers, and visionaries reimagining what it means to
+                        be alive.
                     </p>
 
                     <div class="hero-actions">
@@ -198,32 +321,57 @@
                 <div id="fundamentals" class="ai-content-section">
                     <div class="section-number">01</div>
                     <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">What does it mean to be alive when biology and technology merge? Explore through art, not engineering.</p>
+                    <p class="section-description" style="line-height: 1.8;">What does it mean to be alive when biology
+                        and technology merge? Explore through art, not engineering.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='biorobotics-fundamentals.html#body-architecture'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-fundamentals.html#body-architecture'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Body as Architecture</h3>
-                            <p class="item-description" style="line-height: 1.8;">Your body is not a fixed form—it's a designed space. Explore Madeline Schwartzman's approach to wearables, prosthetics, and sensory extensions that redefine embodiment.</p>
+                            <p class="item-description" style="line-height: 1.8;">Your body is not a fixed form—it's a
+                                designed space. Explore Madeline Schwartzman's approach to wearables, prosthetics, and
+                                sensory extensions that redefine embodiment.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-fundamentals.html#living-materials'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-fundamentals.html#living-materials'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Living Materials</h3>
-                            <p class="item-description" style="line-height: 1.8;">Materials that grow, heal, and respond. Learn Neri Oxman's Material Ecology—co-fabricating with silkworms, mycelium, and bacterial cellulose.</p>
+                            <p class="item-description" style="line-height: 1.8;">Materials that grow, heal, and
+                                respond. Learn Neri Oxman's Material Ecology—co-fabricating with silkworms, mycelium,
+                                and bacterial cellulose.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-fundamentals.html#augmented-sensing'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-fundamentals.html#augmented-sensing'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Augmented Sensing</h3>
-                            <p class="item-description" style="line-height: 1.8;">Beyond five senses. Explore echolocation, magnetoreception, infrared vision—wearables that give you new ways to perceive the world.</p>
+                            <p class="item-description" style="line-height: 1.8;">Beyond five senses. Explore
+                                echolocation, magnetoreception, infrared vision—wearables that give you new ways to
+                                perceive the world.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-fundamentals.html#transgenic-art'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-fundamentals.html#transgenic-art'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Transgenic Art & Bio-Art</h3>
-                            <p class="item-description" style="line-height: 1.8;">Living sculptures and bio-designed organisms. Eduardo Kac's glowing rabbit, tissue-engineered art, and the ethics of creating life.</p>
+                            <p class="item-description" style="line-height: 1.8;">Living sculptures and bio-designed
+                                organisms. Eduardo Kac's glowing rabbit, tissue-engineered art, and the ethics of
+                                creating life.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-fundamentals.html#soft-robotics'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-fundamentals.html#soft-robotics'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Soft Robotics & Bio-Inspired Design</h3>
-                            <p class="item-description" style="line-height: 1.8;">Robots that move like octopuses and grow like plants. Why "soft" matters—safety, adaptability, organic movement inspired by nature.</p>
+                            <p class="item-description" style="line-height: 1.8;">Robots that move like octopuses and
+                                grow like plants. Why "soft" matters—safety, adaptability, organic movement inspired by
+                                nature.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-fundamentals.html#posthuman'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-fundamentals.html#posthuman'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Post-Human Futures</h3>
-                            <p class="item-description" style="line-height: 1.8;">Stelarc's Third Hand and body modifications. What happens when humans evolve through technology? Exploring obsolescence and enhancement.</p>
+                            <p class="item-description" style="line-height: 1.8;">Stelarc's Third Hand and body
+                                modifications. What happens when humans evolve through technology? Exploring
+                                obsolescence and enhancement.</p>
                         </div>
                     </div>
                 </div>
@@ -232,32 +380,50 @@
                 <div id="readings" class="ai-content-section">
                     <div class="section-number">02</div>
                     <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">Curated writings from artists, philosophers, and designers exploring bio-robotics through humanistic lens—not textbooks.</p>
+                    <p class="section-description" style="line-height: 1.8;">Curated writings from artists,
+                        philosophers, and designers exploring bio-robotics through humanistic lens—not textbooks.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#manifestos'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#manifestos'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Foundational Manifestos</h3>
-                            <p class="item-description" style="line-height: 1.8;">Donna Haraway's "Cyborg Manifesto," Stelarc's "Obsolete Body," writings that shaped how we think about technology and embodiment.</p>
+                            <p class="item-description" style="line-height: 1.8;">Donna Haraway's "Cyborg Manifesto,"
+                                Stelarc's "Obsolete Body," writings that shaped how we think about technology and
+                                embodiment.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#bioart-books'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-readings.html#bioart-books'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Bio-Art & Design Books</h3>
-                            <p class="item-description" style="line-height: 1.8;">Madeline Schwartzman's "See Yourself Sensing" and "Alive," William Myers' "Bio Design," MoMA's "Broken Nature" exhibition catalog.</p>
+                            <p class="item-description" style="line-height: 1.8;">Madeline Schwartzman's "See Yourself
+                                Sensing" and "Alive," William Myers' "Bio Design," MoMA's "Broken Nature" exhibition
+                                catalog.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#material-futures'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-readings.html#material-futures'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Material Futures</h3>
-                            <p class="item-description" style="line-height: 1.8;">Neri Oxman's Material Ecology papers, Alexandra Daisy Ginsberg's "Better," research on bio-textiles and living architecture.</p>
+                            <p class="item-description" style="line-height: 1.8;">Neri Oxman's Material Ecology papers,
+                                Alexandra Daisy Ginsberg's "Better," research on bio-textiles and living architecture.
+                            </p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#ethics'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#ethics'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Ethics & Philosophy</h3>
-                            <p class="item-description" style="line-height: 1.8;">Michael Sandel on enhancement, Margaret Atwood's bio-futures, Eugene Thacker's "Biomedia," body hacking philosophy.</p>
+                            <p class="item-description" style="line-height: 1.8;">Michael Sandel on enhancement,
+                                Margaret Atwood's bio-futures, Eugene Thacker's "Biomedia," body hacking philosophy.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#sensation'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#sensation'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Sensation & Perception</h3>
-                            <p class="item-description" style="line-height: 1.8;">Oliver Sacks' neurological tales, David Eagleman on brain plasticity, James Gibson's perceptual systems.</p>
+                            <p class="item-description" style="line-height: 1.8;">Oliver Sacks' neurological tales,
+                                David Eagleman on brain plasticity, James Gibson's perceptual systems.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#speculative'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-readings.html#speculative'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Speculative Design</h3>
-                            <p class="item-description" style="line-height: 1.8;">Dunne & Raby's "Speculative Everything," design fiction, futures thinking, and technological speculation.</p>
+                            <p class="item-description" style="line-height: 1.8;">Dunne & Raby's "Speculative
+                                Everything," design fiction, futures thinking, and technological speculation.</p>
                         </div>
                     </div>
                 </div>
@@ -266,24 +432,35 @@
                 <div id="flashcards" class="ai-content-section">
                     <div class="section-number">03</div>
                     <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">52 thought-provoking concepts with examples and questions—not technical definitions, but ideas to spark wonder.</p>
+                    <p class="section-description" style="line-height: 1.8;">52 thought-provoking concepts with examples
+                        and questions—not technical definitions, but ideas to spark wonder.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='biorobotics-flashcards.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Body Concepts (15 cards)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Proprioception, phantom limbs, embodied cognition, body schema, prosthetic memory, cyborgs, posthuman, body architecture.</p>
+                            <p class="item-description" style="line-height: 1.8;">Proprioception, phantom limbs,
+                                embodied cognition, body schema, prosthetic memory, cyborgs, posthuman, body
+                                architecture.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-flashcards.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Living Systems (15 cards)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Transgenic art, bio-fabrication, mycelium networks, spider silk, synthetic biology, living architecture, tissue engineering.</p>
+                            <p class="item-description" style="line-height: 1.8;">Transgenic art, bio-fabrication,
+                                mycelium networks, spider silk, synthetic biology, living architecture, tissue
+                                engineering.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-flashcards.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Soft Robotics (10 cards)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Soft actuators (muscles made of air), biomimetic robots, compliant mechanisms, wearable exosuits.</p>
+                            <p class="item-description" style="line-height: 1.8;">Soft actuators (muscles made of air),
+                                biomimetic robots, compliant mechanisms, wearable exosuits.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-flashcards.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Sensing & Perception (12 cards)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Umwelt, synesthesia, echolocation, sensory augmentation, haptic technology, telepresence, embodiment.</p>
+                            <p class="item-description" style="line-height: 1.8;">Umwelt, synesthesia, echolocation,
+                                sensory augmentation, haptic technology, telepresence, embodiment.</p>
                         </div>
                     </div>
                 </div>
@@ -292,32 +469,51 @@
                 <div id="fieldkit" class="ai-content-section">
                     <div class="section-number">04</div>
                     <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">Creative resources for exploration, speculation, and making—no engineering degree required.</p>
+                    <p class="section-description" style="line-height: 1.8;">Creative resources for exploration,
+                        speculation, and making—no engineering degree required.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='biorobotics-field-kit.html#speculative-tools'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-field-kit.html#speculative-tools'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Speculative Design Tools</h3>
-                            <p class="item-description" style="line-height: 1.8;">Design fiction templates, future scenario worksheets, body extension brainstorming cards, "what if" generators.</p>
+                            <p class="item-description" style="line-height: 1.8;">Design fiction templates, future
+                                scenario worksheets, body extension brainstorming cards, "what if" generators.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-field-kit.html#bio-materials'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-field-kit.html#bio-materials'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">DIY Bio-Material Recipes</h3>
-                            <p class="item-description" style="line-height: 1.8;">Kitchen-safe recipes: grow kombucha leather, make algae bioplastic, cultivate bacterial cellulose, build mycelium bricks.</p>
+                            <p class="item-description" style="line-height: 1.8;">Kitchen-safe recipes: grow kombucha
+                                leather, make algae bioplastic, cultivate bacterial cellulose, build mycelium bricks.
+                            </p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-field-kit.html#artist-labs'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-field-kit.html#artist-labs'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Artist Studios & Labs</h3>
-                            <p class="item-description" style="line-height: 1.8;">Follow SymbioticA, Blast Studio (Neri Oxman), Faber Futures, bio-art labs, and pioneering artists to watch.</p>
+                            <p class="item-description" style="line-height: 1.8;">Follow SymbioticA, Blast Studio (Neri
+                                Oxman), Faber Futures, bio-art labs, and pioneering artists to watch.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-field-kit.html#exhibitions'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-field-kit.html#exhibitions'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Exhibitions & Communities</h3>
-                            <p class="item-description" style="line-height: 1.8;">Must-visit shows, bio-hacker spaces (non-technical welcome), Ars Electronica, design residencies, online galleries.</p>
+                            <p class="item-description" style="line-height: 1.8;">Must-visit shows, bio-hacker spaces
+                                (non-technical welcome), Ars Electronica, design residencies, online galleries.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-field-kit.html#body-templates'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-field-kit.html#body-templates'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Body Design Templates</h3>
-                            <p class="item-description" style="line-height: 1.8;">Body mapping worksheets, sensory extension sketches, prosthetic imagination exercises, body architecture drawings.</p>
+                            <p class="item-description" style="line-height: 1.8;">Body mapping worksheets, sensory
+                                extension sketches, prosthetic imagination exercises, body architecture drawings.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-field-kit.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='biorobotics-field-kit.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">All Field Kit Resources</h3>
-                            <p class="item-description" style="line-height: 1.8;">Complete collection of tools, recipes, artist resources, and design templates for bio-robotics exploration.</p>
+                            <p class="item-description" style="line-height: 1.8;">Complete collection of tools, recipes,
+                                artist resources, and design templates for bio-robotics exploration.</p>
                         </div>
                     </div>
                 </div>
@@ -326,24 +522,38 @@
                 <div id="activities" class="ai-content-section">
                     <div class="section-number">05</div>
                     <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">Create, speculate, question—hands-on projects and thought experiments for artists, designers, and curious minds.</p>
+                    <p class="section-description" style="line-height: 1.8;">Create, speculate, question—hands-on
+                        projects and thought experiments for artists, designers, and curious minds.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='biorobotics-activities.html#no-code-projects'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-activities.html#no-code-projects'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">No-Code Making (4 projects)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Grow your own wearable, design a sixth sense device, body mapping & sensory architecture, living system co-creation with mycelium.</p>
+                            <p class="item-description" style="line-height: 1.8;">Grow your own wearable, design a sixth
+                                sense device, body mapping & sensory architecture, living system co-creation with
+                                mycelium.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-activities.html#design-exercises'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-activities.html#design-exercises'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Design Exercises (2 exercises)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Bio-ethics futures workshop, material storytelling—practice thinking like a bio-robotics designer.</p>
+                            <p class="item-description" style="line-height: 1.8;">Bio-ethics futures workshop, material
+                                storytelling—practice thinking like a bio-robotics designer.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-activities.html#team-scenarios'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-activities.html#team-scenarios'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Collaborative Scenarios (2 scenarios)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Bio-design ethics committee simulation, post-human fashion week—group activities for workshops and classrooms.</p>
+                            <p class="item-description" style="line-height: 1.8;">Bio-design ethics committee
+                                simulation, post-human fashion week—group activities for workshops and classrooms.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='biorobotics-activities.html#case-studies'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='biorobotics-activities.html#case-studies'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Case Studies (5 pioneers)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Stelarc's Third Hand, Kac's GFP Bunny, Oxman's Silk Pavilion, Neil Harbisson's antenna, Amy Karle's growing bones.</p>
+                            <p class="item-description" style="line-height: 1.8;">Stelarc's Third Hand, Kac's GFP Bunny,
+                                Oxman's Silk Pavilion, Neil Harbisson's antenna, Amy Karle's growing bones.</p>
                         </div>
                     </div>
                 </div>
@@ -381,7 +591,8 @@
         <footer class="site-footer">
             <div class="footer-content">
                 <div class="footer-branding">
-                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank"
+                        rel="noopener noreferrer">Studio Poetics</a>
                 </div>
                 <div class="footer-links">
                     <a href="disclaimer.html">Disclaimer</a>
@@ -414,7 +625,7 @@
         });
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('mainMenuOverlay');
                 overlay.classList.remove('active');
@@ -422,4 +633,5 @@
         });
     </script>
 </body>
+
 </html>

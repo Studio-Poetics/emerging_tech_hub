@@ -1,0 +1,420 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "category": "Body Concepts",
+      "question": "Proprioception",
+      "hint": "Your body's GPS",
+      "answer": "The sense of knowing where your body parts are in space without looking. Often called the 'sixth sense,' it's how you know your hand is behind your back even with eyes closed.",
+      "example": "Touch your nose with eyes closed. That's proprioception at work. Wearable tech like Stelarc's Third Hand challenges this by adding new limbs to track."
+    },
+    {
+      "id": 2,
+      "category": "Body Concepts",
+      "question": "Phantom Limb",
+      "hint": "Feeling what's not there",
+      "answer": "The sensation that an amputated limb is still attached and can be felt. The brain's body map remains even when the physical body changes.",
+      "example": "Helps explain how we adapt to prosthetics and body extensions. If your brain can 'feel' a missing arm, could it learn to feel a third one?"
+    },
+    {
+      "id": 3,
+      "category": "Body Concepts",
+      "question": "Body Schema",
+      "hint": "Your brain's body map",
+      "answer": "The unconscious mental model your brain keeps of your body's size, shape, and capabilities. It updates as you use tools—a hammer becomes part of your hand.",
+      "example": "Musicians' instruments become extensions of their body schema. Bio-robotics asks: what if we deliberately designed new parts to add to this map?"
+    },
+    {
+      "id": 4,
+      "category": "Body Concepts",
+      "question": "Cyborg",
+      "hint": "Cybernetic organism",
+      "answer": "A being that combines biological and technological parts. Not just science fiction—anyone with a pacemaker, cochlear implant, or even glasses is technically a cyborg.",
+      "example": "Neil Harbisson's antenna implant lets him hear colors. Donna Haraway argues we're ALL cyborgs—technology is part of being human."
+    },
+    {
+      "id": 5,
+      "category": "Body Concepts",
+      "question": "Posthuman",
+      "hint": "Beyond human limits",
+      "answer": "The idea that humans can and should transcend biological limitations through technology, evolution, or design. Humans are not a finished product.",
+      "example": "Stelarc's philosophy: 'The body is obsolete.' Why accept what evolution gave us when we can redesign ourselves?"
+    },
+    {
+      "id": 6,
+      "category": "Body Concepts",
+      "question": "Body Architecture",
+      "hint": "Designing the body as space",
+      "answer": "Madeline Schwartzman's concept: treating the body not as a fixed form but as designed space that can be extended, modified, and reimagined through wearables.",
+      "example": "Instead of asking 'what IS the body?' ask 'what COULD the body be?' Design for it like you'd design a building."
+    },
+    {
+      "id": 7,
+      "category": "Body Concepts",
+      "question": "Embodied Cognition",
+      "hint": "Thinking with your whole body",
+      "answer": "The theory that your mind isn't separate from your body—your thoughts are shaped by your physical form and sensory experiences.",
+      "example": "If your body changes (new senses, different limbs), your thinking changes too. What would you think like with wings? With echolocation?"
+    },
+    {
+      "id": 8,
+      "category": "Body Concepts",
+      "question": "Prosthetic Memory",
+      "hint": "Technology as extension of mind",
+      "answer": "Using external tools as extensions of memory and cognition. Your smartphone, notebooks, even language are prosthetic memories.",
+      "example": "We already outsource memory to phones. What if memory prosthetics were woven into your body or clothing? Bio-integrated notetaking."
+    },
+    {
+      "id": 9,
+      "category": "Body Concepts",
+      "question": "Sensory Substitution",
+      "hint": "One sense replacing another",
+      "answer": "Converting information from one sense into another—like vision into touch, or sound into sight. The brain is remarkably adaptable.",
+      "example": "Blind people using vibrating belts that translate camera images to touch patterns. Neil Harbisson 'hears' colors as musical notes."
+    },
+    {
+      "id": 10,
+      "category": "Body Concepts",
+      "question": "Umwelt",
+      "hint": "Your sensory world-bubble",
+      "answer": "The unique sensory world each species experiences. A bat's umwelt includes echolocation, a bee's includes UV patterns on flowers invisible to us.",
+      "example": "We can only experience our human umwelt. But bio-robotics wearables could let us peek into others—what's the umwelt of a moth? A dolphin?"
+    },
+    {
+      "id": 11,
+      "category": "Body Concepts",
+      "question": "Somatosensory Cortex",
+      "hint": "Touch map in your brain",
+      "answer": "The brain region that processes touch sensations. Mapped out as a distorted 'homunculus' with huge hands and lips (most sensitive areas).",
+      "example": "This map is plastic—it rewires when you lose a limb or gain new tools. Could reshape itself to include a bio-robotic sense organ."
+    },
+    {
+      "id": 12,
+      "category": "Body Concepts",
+      "question": "Extended Phenotype",
+      "hint": "Your body includes your tools",
+      "answer": "Richard Dawkins' concept: an organism's phenotype (physical expression) extends beyond its body to include tools, nests, and technologies it creates.",
+      "example": "A beaver's dam is part of its phenotype. Are smartphones part of human phenotype? What about bio-grown wearables?"
+    },
+    {
+      "id": 13,
+      "category": "Body Concepts",
+      "question": "Haptic Technology",
+      "hint": "Touch through tech",
+      "answer": "Technology that creates sense of touch through forces, vibrations, or motions. Makes digital interactions physically felt.",
+      "example": "Phone vibrations, VR gloves that simulate texture, sensory vests that let deaf people 'feel' music as vibrations across their skin."
+    },
+    {
+      "id": 14,
+      "category": "Body Concepts",
+      "question": "Morphological Computation",
+      "hint": "Body shape does the thinking",
+      "answer": "When a creature's body shape and material properties solve problems without brain computation. The body itself is 'smart.'",
+      "example": "A soft octopus arm automatically molds around objects without brain control. Bio-inspired soft robots use material properties instead of programming."
+    },
+    {
+      "id": 15,
+      "category": "Body Concepts",
+      "question": "Chimera",
+      "hint": "Hybrid organisms",
+      "answer": "An organism containing cells from two different species. In bio-art, refers to mixing human and animal biology to create new life forms.",
+      "example": "Eduardo Kac proposed 'human bird wing'—growing wings with human bone cells. Raises ethics: where do we draw lines on modification?"
+    },
+    {
+      "id": 16,
+      "category": "Living Systems",
+      "question": "Transgenic Art",
+      "hint": "Art using gene modification",
+      "answer": "Art created by transferring genes between species to create new living organisms. Pioneered by Eduardo Kac—art you can't hang on a wall because it's alive.",
+      "example": "Kac's GFP Bunny 'Alba'—a rabbit with jellyfish genes that glows green under blue light. Living sculpture that breathes and needs care."
+    },
+    {
+      "id": 17,
+      "category": "Living Systems",
+      "question": "Bio-Fabrication",
+      "hint": "Growing materials, not making them",
+      "answer": "Manufacturing materials and objects using living organisms—bacteria, fungi, plants, animal cells—instead of traditional industrial processes.",
+      "example": "Suzanne Lee's BioCouture: growing leather jackets from kombucha SCOBY. The fabric literally grows in a jar over weeks."
+    },
+    {
+      "id": 18,
+      "category": "Living Systems",
+      "question": "Mycelium",
+      "hint": "Fungal root networks",
+      "answer": "The underground network of fungal threads that can be grown into shapes and dried into strong, lightweight materials. Nature's 3D printer.",
+      "example": "Grown into bricks, packaging, even furniture. Ecovative grows mushroom packaging that biodegrades. Could you grow your own chair?"
+    },
+    {
+      "id": 19,
+      "category": "Living Systems",
+      "question": "SCOBY",
+      "hint": "Kombucha leather mother",
+      "answer": "Symbiotic Culture of Bacteria and Yeast. The living mat that forms on kombucha tea, can be harvested and dried into flexible leather-like material.",
+      "example": "Grows in your kitchen in 2-4 weeks. Artists like Suzanne Lee sew it into wearables. It's alive while growing, then becomes material."
+    },
+    {
+      "id": 20,
+      "category": "Living Systems",
+      "question": "Bacterial Cellulose",
+      "hint": "Living fabric grown by bacteria",
+      "answer": "Pure cellulose produced by bacteria, forms thin, strong sheets. Can be grown in molds to create custom shapes—living 3D printing.",
+      "example": "Same material as SCOBY but pure. Can be grown in layers, embedded with other materials, or shaped as it grows. No weaving needed."
+    },
+    {
+      "id": 21,
+      "category": "Living Systems",
+      "question": "Synthetic Biology",
+      "hint": "Engineering life like software",
+      "answer": "Designing and building new biological parts and systems, or re-designing existing ones. Treating DNA like code you can edit and debug.",
+      "example": "Creating bacteria that produce insulin, plants that glow like streetlights, or algae that make biofuel. Living machines."
+    },
+    {
+      "id": 22,
+      "category": "Living Systems",
+      "question": "Living Architecture",
+      "hint": "Buildings that grow and breathe",
+      "answer": "Architecture that incorporates living organisms as structural or functional components. Buildings as ecosystems, not static objects.",
+      "example": "Neri Oxman's Silk Pavilion: 17,000 silkworms wove additional structure onto a dome. The building co-created itself with living collaborators."
+    },
+    {
+      "id": 23,
+      "category": "Living Systems",
+      "question": "Tissue Engineering",
+      "hint": "Growing body parts in labs",
+      "answer": "Growing living tissue (skin, organs, bones) in controlled conditions outside the body. Can be for medical use or artistic exploration.",
+      "example": "Amy Karle's 'Regenerative Reliquary'—growing human hand bones from stem cells on 3D-printed scaffolds. Art or medicine? Both."
+    },
+    {
+      "id": 24,
+      "category": "Living Systems",
+      "question": "Bioreactor",
+      "hint": "Controlled environment for growth",
+      "answer": "A vessel where biological processes happen under controlled conditions—temperature, nutrients, oxygen. Like a terrarium for cells or bacteria.",
+      "example": "Can grow leather, food, art. Modern Meadow grows lab meat. Artists grow tissue sculptures. Kitchen kombucha jar is a simple bioreactor."
+    },
+    {
+      "id": 25,
+      "category": "Living Systems",
+      "question": "Co-Fabrication",
+      "hint": "Designing WITH organisms",
+      "answer": "Neri Oxman's concept: not designing FOR or FROM nature, but WITH living organisms as creative collaborators. Shared authorship with biology.",
+      "example": "Silk Pavilion—human designers built dome scaffold, silkworms decided where to add silk. Final design unknown until organisms finish creating."
+    },
+    {
+      "id": 26,
+      "category": "Living Systems",
+      "question": "Material Ecology",
+      "hint": "Computation meets biology",
+      "answer": "Neri Oxman's design philosophy: integrating computational design, digital fabrication, materials science, and synthetic biology into one design approach.",
+      "example": "Designing at all scales at once—from molecular to architectural. Creating materials that grow, change, and respond like living ecosystems."
+    },
+    {
+      "id": 27,
+      "category": "Living Systems",
+      "question": "Biomimicry",
+      "hint": "Learning from nature's designs",
+      "answer": "Designing technology by imitating strategies found in nature—learning from 3.8 billion years of evolution's R&D.",
+      "example": "Velcro from burrs, bullet trains from kingfisher beaks, robots from insects. But bio-robotics goes further: what if we GROW the designs?"
+    },
+    {
+      "id": 28,
+      "category": "Living Systems",
+      "question": "Algae Bioplastic",
+      "hint": "Plastic from pond scum",
+      "answer": "Biodegradable plastic material made from algae—fast-growing, renewable, and breaks down naturally. Kitchen-safe to make.",
+      "example": "Grows in days, molds like plastic, biodegrades in months. Artists create algae-based wearables and packaging as sustainable design experiments."
+    },
+    {
+      "id": 29,
+      "category": "Living Systems",
+      "question": "Spider Silk Protein",
+      "hint": "Stronger than steel, made by biology",
+      "answer": "Protein fiber produced by spiders, five times stronger than steel by weight. Scientists and artists grow it in labs using genetically modified organisms.",
+      "example": "Spiber company grows it in bacteria. Neri Oxman's Silk Pavilion explored silkworm silk. Could we grow clothing stronger than kevlar?"
+    },
+    {
+      "id": 30,
+      "category": "Living Systems",
+      "question": "Living Art",
+      "hint": "Art that needs care, not conservation",
+      "answer": "Artworks that are alive—require feeding, light, temperature control. Challenges what art IS when it can die if neglected.",
+      "example": "SymbioticA lab creates tissue-culture art. Kac's GFP Bunny needs vet care. Mycelium sculptures slowly decay. How do museums handle this?"
+    },
+    {
+      "id": 31,
+      "category": "Soft Robotics",
+      "question": "Soft Actuator",
+      "hint": "Muscles made of air and rubber",
+      "answer": "A flexible device that creates motion using air pressure, fluids, or shape-memory materials instead of rigid motors. Moves like biology, not machinery.",
+      "example": "Inflatable tubes that bend like fingers when filled with air. Safer than metal robots, can grip delicate objects without crushing them."
+    },
+    {
+      "id": 32,
+      "category": "Soft Robotics",
+      "question": "Pneumatic Muscle",
+      "hint": "Air-powered artificial muscle",
+      "answer": "A soft actuator that contracts when filled with air, mimicking biological muscle. Made from flexible materials like silicone or fabric.",
+      "example": "Used in wearable exosuits that help people walk. Gentler than motors, more natural movement, safer to wear against skin."
+    },
+    {
+      "id": 33,
+      "category": "Soft Robotics",
+      "question": "Compliant Mechanism",
+      "hint": "Flex instead of hinge",
+      "answer": "A device that achieves motion through bending of flexible materials rather than traditional joints. One piece does what hinges used to do.",
+      "example": "A robotic gripper that's one molded piece of flexible plastic—bends to grip instead of using finger joints. Simpler, more durable."
+    },
+    {
+      "id": 34,
+      "category": "Soft Robotics",
+      "question": "Shape Memory Alloy",
+      "hint": "Metal with muscle memory",
+      "answer": "Metals that 'remember' original shape and return to it when heated. Can be bent cold, then spring back when warmed—like programmable muscles.",
+      "example": "Nitinol wire contracts like muscle when heated. Used in minimally invasive medical devices and soft wearable actuators."
+    },
+    {
+      "id": 35,
+      "category": "Soft Robotics",
+      "question": "Continuum Robot",
+      "hint": "Moves like trunk or tentacle",
+      "answer": "A robot with no discrete joints—bends smoothly along its length like an elephant trunk, octopus arm, or snake.",
+      "example": "Medical robots that navigate through curved body passages. Inspired by boneless creatures that can reach around obstacles."
+    },
+    {
+      "id": 36,
+      "category": "Soft Robotics",
+      "question": "Electroactive Polymer",
+      "hint": "Plastic that moves with electricity",
+      "answer": "Materials that change shape when electricity is applied—can bend, expand, contract. Sometimes called 'artificial muscle.'",
+      "example": "Thin plastic films that ripple like fish fins when powered. Could create clothing that moves, or prosthetics that feel more natural."
+    },
+    {
+      "id": 37,
+      "category": "Soft Robotics",
+      "question": "Wearable Exosuit",
+      "hint": "Soft robotic clothing",
+      "answer": "Fabric-based wearable robot that assists movement using soft actuators. Like powered clothing that helps you walk, lift, or move.",
+      "example": "Harvard's soft exosuit helps people with mobility issues walk. Made of textiles with cable actuators—closer to clothes than to metal exoskeleton."
+    },
+    {
+      "id": 38,
+      "category": "Soft Robotics",
+      "question": "Jamming Transition",
+      "hint": "Soft to rigid on command",
+      "answer": "Materials that switch between soft/flexible and rigid/solid states. Usually achieved by vacuum-packing particles—like coffee grounds in a bag.",
+      "example": "Jamming gripper: balloon filled with coffee grounds conforms to object shape, then vacuum locks it rigid to grip. Soft meets strong."
+    },
+    {
+      "id": 39,
+      "category": "Soft Robotics",
+      "question": "Fluidic Elastomer Actuator",
+      "hint": "Silicone muscles",
+      "answer": "Soft actuators made by molding silicone with internal channels. When fluid or air flows through channels, the silicone bends in designed ways.",
+      "example": "Can create grippers, walkers, or wearables. Cast like making a cake, moves like a living creature. Safe to touch and wear."
+    },
+    {
+      "id": 40,
+      "category": "Soft Robotics",
+      "question": "Bio-Inspired Locomotion",
+      "hint": "Moving like animals do",
+      "answer": "Robot movement strategies copied from nature—crawling like caterpillars, undulating like jellyfish, climbing like geckos.",
+      "example": "Soft robots that squeeze through narrow spaces like octopuses, or jump using stored energy like grasshoppers. Biology's solutions proven over millions of years."
+    },
+    {
+      "id": 41,
+      "category": "Sensing & Perception",
+      "question": "Magnetoreception",
+      "hint": "Sensing Earth's magnetic field",
+      "answer": "The ability to detect magnetic fields, used by birds for navigation. Humans don't naturally have this sense—but wearables could add it.",
+      "example": "feelSpace belt vibrates to point north, giving wearers magnetic sense. After weeks, users report intuitive sense of direction—new qualia."
+    },
+    {
+      "id": 42,
+      "category": "Sensing & Perception",
+      "question": "Echolocation",
+      "hint": "Seeing with sound",
+      "answer": "Using reflected sound waves to sense environment—how bats and dolphins navigate. Some blind humans learn this skill through practice.",
+      "example": "Wearables that click and convert echoes to vibration patterns could give sighted people bat-like spatial awareness in darkness."
+    },
+    {
+      "id": 43,
+      "category": "Sensing & Perception",
+      "question": "Synesthesia",
+      "hint": "Crossed senses",
+      "answer": "A neurological condition where stimulation of one sense triggers experience in another—seeing sounds as colors, tasting shapes.",
+      "example": "Neil Harbisson's antenna creates artificial synesthesia: colors become sounds. Technology can induce what usually only happens naturally."
+    },
+    {
+      "id": 44,
+      "category": "Sensing & Perception",
+      "question": "Infrared Vision",
+      "hint": "Seeing heat",
+      "answer": "Ability to see infrared radiation (heat). Snakes have this. Cameras can show it, but wearables could integrate it as a sixth sense.",
+      "example": "Thermal camera wearables converted to vibration patterns or audio tones. Imagine sensing heat signatures of people through walls."
+    },
+    {
+      "id": 45,
+      "category": "Sensing & Perception",
+      "question": "Sensory Augmentation",
+      "hint": "Adding senses beyond five",
+      "answer": "Using technology to give humans senses they don't naturally have—like echolocation, magnetic sensing, or infrared vision.",
+      "example": "David Eagleman's VEST: converts sound to vibration patterns, letting deaf people 'hear' through skin. New sense, same brain."
+    },
+    {
+      "id": 46,
+      "category": "Sensing & Perception",
+      "question": "Qualia",
+      "hint": "What it's like to experience",
+      "answer": "The subjective, qualitative feel of experiences—what red LOOKS like, what pain FEELS like. Philosophers debate if we can share qualia.",
+      "example": "What's the qualia of echolocation? Or sensing magnetic fields? Bio-robotics wearables let us experience new qualia humans never had."
+    },
+    {
+      "id": 47,
+      "category": "Sensing & Perception",
+      "question": "Telepresence",
+      "hint": "Being there without being there",
+      "answer": "The sense of being present in a location other than your physical body. Can be achieved through immersive VR or robotic avatars.",
+      "example": "Operating a robot on another continent, feeling what it touches through haptic gloves. Your sense of 'here' shifts to where the robot is."
+    },
+    {
+      "id": 48,
+      "category": "Sensing & Perception",
+      "question": "Embodiment",
+      "hint": "The feeling of 'this is my body'",
+      "answer": "The psychological state of feeling that a body (or body part) belongs to you. Surprisingly easy to trick—see 'Rubber Hand Illusion.'",
+      "example": "Watch someone stroke a rubber hand while your real hand is stroked—you'll feel the rubber hand is yours. Could work for third arms too."
+    },
+    {
+      "id": 49,
+      "category": "Sensing & Perception",
+      "question": "Affordance",
+      "hint": "What objects invite you to do",
+      "answer": "The action possibilities an object offers to an organism. A chair affords sitting, a handle affords pulling—based on your body's capabilities.",
+      "example": "If you had wings, different things would afford flying from. If you could see UV like bees, different flowers would afford nectar."
+    },
+    {
+      "id": 50,
+      "category": "Sensing & Perception",
+      "question": "Multisensory Integration",
+      "hint": "Combining senses into one perception",
+      "answer": "How the brain merges information from multiple senses into unified experience—sight + sound + touch = 'car passing by.'",
+      "example": "This is how sensory substitution works. Brain doesn't care if 'sight' comes from eyes or vibrating belt—it integrates into spatial awareness."
+    },
+    {
+      "id": 51,
+      "category": "Sensing & Perception",
+      "question": "Perceptual Plasticity",
+      "hint": "Your senses can learn and change",
+      "answer": "The brain's ability to reorganize how it processes sensory information based on experience and new inputs. Senses are not fixed.",
+      "example": "Blind people who use tongue-stimulation vision devices eventually 'see' without conscious translation—brain rewires. New senses possible."
+    },
+    {
+      "id": 52,
+      "category": "Sensing & Perception",
+      "question": "Proprioceptive Drift",
+      "hint": "Your sense of body location shifts",
+      "answer": "When your perceived body position shifts to match a prosthetic or virtual limb. Happens during rubber hand illusion and VR use.",
+      "example": "After wearing a third hand for days, you might instinctively move it—your proprioception expanded to include the prosthetic."
+    }
+  ]
+}

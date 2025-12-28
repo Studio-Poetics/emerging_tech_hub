@@ -1,82 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Basics - What is Artificial Intelligence? | Emerging Technology Hub</title>
-    <meta name="description" content="Learn AI basics and fundamentals. Understand what artificial intelligence is, its history, types of AI, core concepts, and real-world applications for beginners.">
-    <meta name="keywords" content="AI basics, what is artificial intelligence, AI fundamentals, artificial intelligence basics, AI for beginners, machine learning introduction">
+    <meta name="description"
+        content="Learn AI basics and fundamentals. Understand what artificial intelligence is, its history, types of AI, core concepts, and real-world applications for beginners.">
+    <meta name="keywords"
+        content="AI basics, what is artificial intelligence, AI fundamentals, artificial intelligence basics, AI for beginners, machine learning introduction">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eth.poetics.studio/ai-basics.html">
     <link rel="stylesheet" href="experimental-design.css">
     <link rel="stylesheet" href="ai-fundamentals.css">
     <style>
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .experimental-title { font-size: var(--text-4xl) !important; }
-    .experimental-subtitle { font-size: var(--text-lg) !important; }
-    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
-    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
-    .card-description, .card-meta { display: none !important; }
-    .card-title { font-size: var(--text-lg) !important; }
-    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
-    .vertical-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 48px !important;
-        width: 100vw !important;
-        background: var(--color-black) !important;
-        z-index: 20 !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .vertical-menu-text {
-        writing-mode: horizontal-tb !important;
-        text-orientation: initial !important;
-        letter-spacing: 0.1em !important;
-    }
-    .experimental-main { padding-top: 48px !important; }
-    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-    /* Content page specific */
-    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .fundamentals-title { font-size: var(--text-4xl) !important; }
-    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
-    .content-section { margin-bottom: var(--space-8) !important; }
-    .content-section h2 { font-size: var(--text-2xl) !important; }
-    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
-    .item-description { display: none !important; }
-    .available-badge { display: none !important; }
+            .experimental-main {
+                padding-top: 0 !important;
+            }
 
-    /* Landing page specific */
-    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
-    .section-nav-list { gap: var(--space-3) !important; }
-    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
-    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
-    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
-    .section-description { font-size: var(--text-base) !important; }
-    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
-}
-</style>
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
 
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .experimental-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+                padding: var(--space-4) !important;
+            }
+
+            .experimental-card.featured {
+                grid-row: auto !important;
+                min-height: auto !important;
+            }
+
+            .card-description,
+            .card-meta {
+                display: none !important;
+            }
+
+            .card-title {
+                font-size: var(--text-lg) !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+
+            /* Content page specific */
+            .fundamentals-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .fundamentals-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .fundamentals-subtitle {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .fundamentals-content {
+                padding: var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .content-section {
+                margin-bottom: var(--space-8) !important;
+            }
+
+            .content-section h2 {
+                font-size: var(--text-2xl) !important;
+            }
+
+            .properties-grid,
+            .feature-grid,
+            .applications-grid,
+            .approach-cards,
+            .getting-started {
+                grid-template-columns: 1fr !important;
+            }
+
+            .item-description {
+                display: none !important;
+            }
+
+            .available-badge {
+                display: none !important;
+            }
+
+            /* Landing page specific */
+            .ai-section-nav {
+                position: static !important;
+                margin: 0 !important;
+                padding: var(--space-3) var(--space-4) !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .ai-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -85,7 +195,8 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
                     <p class="brand-subtitle">Fundamentals</p>
                 </div>
 
@@ -130,7 +241,8 @@
             <!-- Hero Section -->
             <div class="fundamentals-hero">
                 <h1 class="fundamentals-title">AI Basics</h1>
-                <p class="fundamentals-subtitle">Understanding the fundamental concepts, history, and applications of artificial intelligence</p>
+                <p class="fundamentals-subtitle">Understanding the fundamental concepts, history, and applications of
+                    artificial intelligence</p>
             </div>
 
             <!-- Content -->
@@ -139,13 +251,19 @@
                 <!-- Introduction -->
                 <section class="content-section">
                     <h2>What is Artificial Intelligence?</h2>
-                    <p>Artificial Intelligence (AI) is the field of computer science dedicated to creating machines that can perform tasks typically requiring human intelligence. These tasks include learning, reasoning, problem-solving, perception, language understanding, and decision-making.</p>
+                    <p>Artificial Intelligence (AI) is the field of computer science dedicated to creating machines that
+                        can perform tasks typically requiring human intelligence. These tasks include learning,
+                        reasoning, problem-solving, perception, language understanding, and decision-making.</p>
 
-                    <p>At its core, AI seeks to answer a fundamental question: Can machines think? While this philosophical question remains debated, practical AI focuses on building systems that can exhibit intelligent behavior, whether or not they truly "understand" in the human sense.</p>
+                    <p>At its core, AI seeks to answer a fundamental question: Can machines think? While this
+                        philosophical question remains debated, practical AI focuses on building systems that can
+                        exhibit intelligent behavior, whether or not they truly "understand" in the human sense.</p>
 
                     <div class="highlight-box">
                         <h3>Key Insight</h3>
-                        <p>AI isn't about replicating human intelligence exactly—it's about creating systems that can solve problems and make decisions intelligently, often in ways that complement human capabilities.</p>
+                        <p>AI isn't about replicating human intelligence exactly—it's about creating systems that can
+                            solve problems and make decisions intelligently, often in ways that complement human
+                            capabilities.</p>
                     </div>
                 </section>
 
@@ -158,7 +276,8 @@
                             <div class="timeline-year">1943</div>
                             <div class="timeline-content">
                                 <h4>Neural Networks Born</h4>
-                                <p>McCulloch and Pitts publish the first mathematical model of artificial neurons, laying the groundwork for neural networks.</p>
+                                <p>McCulloch and Pitts publish the first mathematical model of artificial neurons,
+                                    laying the groundwork for neural networks.</p>
                             </div>
                         </div>
 
@@ -166,7 +285,8 @@
                             <div class="timeline-year">1950</div>
                             <div class="timeline-content">
                                 <h4>The Turing Test</h4>
-                                <p>Alan Turing proposes a test for machine intelligence: if a machine can engage in conversations indistinguishable from a human, it demonstrates intelligence.</p>
+                                <p>Alan Turing proposes a test for machine intelligence: if a machine can engage in
+                                    conversations indistinguishable from a human, it demonstrates intelligence.</p>
                             </div>
                         </div>
 
@@ -174,7 +294,8 @@
                             <div class="timeline-year">1956</div>
                             <div class="timeline-content">
                                 <h4>AI is Named</h4>
-                                <p>The Dartmouth Conference coins the term "Artificial Intelligence" and establishes AI as a distinct field of study.</p>
+                                <p>The Dartmouth Conference coins the term "Artificial Intelligence" and establishes AI
+                                    as a distinct field of study.</p>
                             </div>
                         </div>
 
@@ -182,7 +303,8 @@
                             <div class="timeline-year">1980s-90s</div>
                             <div class="timeline-content">
                                 <h4>Expert Systems Era</h4>
-                                <p>AI systems that capture human expertise in specific domains gain commercial success, though limitations become apparent.</p>
+                                <p>AI systems that capture human expertise in specific domains gain commercial success,
+                                    though limitations become apparent.</p>
                             </div>
                         </div>
 
@@ -190,7 +312,8 @@
                             <div class="timeline-year">2006</div>
                             <div class="timeline-content">
                                 <h4>Deep Learning Renaissance</h4>
-                                <p>Geoffrey Hinton's work on deep neural networks sparks renewed interest and dramatic breakthroughs in AI capabilities.</p>
+                                <p>Geoffrey Hinton's work on deep neural networks sparks renewed interest and dramatic
+                                    breakthroughs in AI capabilities.</p>
                             </div>
                         </div>
 
@@ -198,7 +321,8 @@
                             <div class="timeline-year">2012-Present</div>
                             <div class="timeline-content">
                                 <h4>The AI Revolution</h4>
-                                <p>Breakthrough achievements in image recognition, natural language processing, and game-playing lead to widespread AI adoption.</p>
+                                <p>Breakthrough achievements in image recognition, natural language processing, and
+                                    game-playing lead to widespread AI adoption.</p>
                             </div>
                         </div>
                     </div>
@@ -212,16 +336,20 @@
                         <div class="ai-type-card">
                             <h3>Narrow AI (ANI)</h3>
                             <p class="ai-type-subtitle">Artificial Narrow Intelligence</p>
-                            <p>AI systems designed to perform specific tasks exceptionally well. This includes most current AI applications like chess programs, recommendation systems, and speech recognition.</p>
+                            <p>AI systems designed to perform specific tasks exceptionally well. This includes most
+                                current AI applications like chess programs, recommendation systems, and speech
+                                recognition.</p>
                             <div class="examples">
-                                <strong>Examples:</strong> Siri, Netflix recommendations, Google Translate, autonomous vehicles
+                                <strong>Examples:</strong> Siri, Netflix recommendations, Google Translate, autonomous
+                                vehicles
                             </div>
                         </div>
 
                         <div class="ai-type-card">
                             <h3>General AI (AGI)</h3>
                             <p class="ai-type-subtitle">Artificial General Intelligence</p>
-                            <p>Hypothetical AI that can understand, learn, and apply intelligence across a wide range of tasks at a level comparable to human intelligence. This remains a research goal.</p>
+                            <p>Hypothetical AI that can understand, learn, and apply intelligence across a wide range of
+                                tasks at a level comparable to human intelligence. This remains a research goal.</p>
                             <div class="examples">
                                 <strong>Status:</strong> Theoretical - not yet achieved
                             </div>
@@ -230,7 +358,8 @@
                         <div class="ai-type-card">
                             <h3>Super AI (ASI)</h3>
                             <p class="ai-type-subtitle">Artificial Superintelligence</p>
-                            <p>Theoretical AI that would surpass human intelligence in all areas, including creativity, problem-solving, and emotional intelligence. This is purely speculative.</p>
+                            <p>Theoretical AI that would surpass human intelligence in all areas, including creativity,
+                                problem-solving, and emotional intelligence. This is purely speculative.</p>
                             <div class="examples">
                                 <strong>Status:</strong> Speculative future possibility
                             </div>
@@ -245,7 +374,8 @@
                     <div class="approach-cards">
                         <div class="approach-card">
                             <h3>Machine Learning</h3>
-                            <p>Systems that can learn and improve their performance on a task through experience, without being explicitly programmed for every scenario.</p>
+                            <p>Systems that can learn and improve their performance on a task through experience,
+                                without being explicitly programmed for every scenario.</p>
                             <ul>
                                 <li>Supervised Learning (learning from labeled examples)</li>
                                 <li>Unsupervised Learning (finding patterns in data)</li>
@@ -255,7 +385,8 @@
 
                         <div class="approach-card">
                             <h3>Deep Learning</h3>
-                            <p>A subset of machine learning using artificial neural networks with multiple layers to process data and create patterns for decision-making.</p>
+                            <p>A subset of machine learning using artificial neural networks with multiple layers to
+                                process data and create patterns for decision-making.</p>
                             <ul>
                                 <li>Inspired by the structure of the human brain</li>
                                 <li>Excels at pattern recognition in large datasets</li>
@@ -265,7 +396,8 @@
 
                         <div class="approach-card">
                             <h3>Natural Language Processing</h3>
-                            <p>The branch of AI that helps computers understand, interpret, and generate human language in a valuable way.</p>
+                            <p>The branch of AI that helps computers understand, interpret, and generate human language
+                                in a valuable way.</p>
                             <ul>
                                 <li>Text analysis and understanding</li>
                                 <li>Language translation</li>
@@ -275,7 +407,8 @@
 
                         <div class="approach-card">
                             <h3>Computer Vision</h3>
-                            <p>AI systems that can identify and analyze visual content in images and videos, enabling machines to "see" and understand visual information.</p>
+                            <p>AI systems that can identify and analyze visual content in images and videos, enabling
+                                machines to "see" and understand visual information.</p>
                             <ul>
                                 <li>Object detection and recognition</li>
                                 <li>Facial recognition</li>
@@ -292,17 +425,20 @@
                     <div class="applications-grid">
                         <div class="application-item">
                             <h4>Healthcare</h4>
-                            <p>Medical diagnosis, drug discovery, personalized treatment plans, and surgical assistance.</p>
+                            <p>Medical diagnosis, drug discovery, personalized treatment plans, and surgical assistance.
+                            </p>
                         </div>
 
                         <div class="application-item">
                             <h4>Transportation</h4>
-                            <p>Autonomous vehicles, traffic optimization, route planning, and predictive maintenance.</p>
+                            <p>Autonomous vehicles, traffic optimization, route planning, and predictive maintenance.
+                            </p>
                         </div>
 
                         <div class="application-item">
                             <h4>Finance</h4>
-                            <p>Fraud detection, algorithmic trading, credit scoring, and customer service automation.</p>
+                            <p>Fraud detection, algorithmic trading, credit scoring, and customer service automation.
+                            </p>
                         </div>
 
                         <div class="application-item">
@@ -312,12 +448,49 @@
 
                         <div class="application-item">
                             <h4>Education</h4>
-                            <p>Personalized learning, automated grading, intelligent tutoring systems, and accessibility tools.</p>
+                            <p>Personalized learning, automated grading, intelligent tutoring systems, and accessibility
+                                tools.</p>
                         </div>
 
                         <div class="application-item">
                             <h4>Communication</h4>
-                            <p>Language translation, speech recognition, text generation, and conversational assistants.</p>
+                            <p>Language translation, speech recognition, text generation, and conversational assistants.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- India's AI Ecosystem -->
+                <section class="content-section">
+                    <h2>India's AI Ecosystem</h2>
+                    <p>India is building unique AI infrastructure focused on language diversity and public good. Here
+                        are key initiatives you should know:</p>
+
+                    <div class="applications-grid">
+                        <div class="application-item">
+                            <h4>Bhashini</h4>
+                            <p><strong>National Language Translation Mission:</strong> A massive government initiative
+                                to break language barriers. Building datasets and models to translate between all Indian
+                                languages in real-time.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Sarvam AI</h4>
+                            <p><strong>Indic LLMs:</strong> Creators of OpenHathi and Sarvam-1, the first Large Language
+                                Models built effectively for Hindi and Indian contexts, optimizing for token efficiency.
+                            </p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>AI4Bharat</h4>
+                            <p><strong>Research Lab:</strong> Based at IIT Madras, this lab drives open-source
+                                innovation for Indian languages, creating the datasets that power Bhashini.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Digital Public Infrastructure (DPI)</h4>
+                            <p><strong>AI + UPI/Aadhaar:</strong> Integrating AI into India's stack to enable
+                                voice-based payments and services for non-English speakers.</p>
                         </div>
                     </div>
                 </section>
@@ -329,32 +502,38 @@
                     <div class="concepts-list">
                         <div class="concept-item">
                             <h4>Algorithm</h4>
-                            <p>A set of rules or instructions for solving a problem or completing a task. In AI, algorithms define how machines process data and make decisions.</p>
+                            <p>A set of rules or instructions for solving a problem or completing a task. In AI,
+                                algorithms define how machines process data and make decisions.</p>
                         </div>
 
                         <div class="concept-item">
                             <h4>Training Data</h4>
-                            <p>The dataset used to teach an AI system. The quality and quantity of training data largely determines an AI system's performance.</p>
+                            <p>The dataset used to teach an AI system. The quality and quantity of training data largely
+                                determines an AI system's performance.</p>
                         </div>
 
                         <div class="concept-item">
                             <h4>Model</h4>
-                            <p>The mathematical representation of a process that an AI system uses to make predictions or decisions based on input data.</p>
+                            <p>The mathematical representation of a process that an AI system uses to make predictions
+                                or decisions based on input data.</p>
                         </div>
 
                         <div class="concept-item">
                             <h4>Pattern Recognition</h4>
-                            <p>The ability to identify regularities in data. This is fundamental to how AI systems learn and make predictions.</p>
+                            <p>The ability to identify regularities in data. This is fundamental to how AI systems learn
+                                and make predictions.</p>
                         </div>
 
                         <div class="concept-item">
                             <h4>Automation</h4>
-                            <p>The use of technology to perform tasks without human intervention. AI enables intelligent automation that can adapt to changing conditions.</p>
+                            <p>The use of technology to perform tasks without human intervention. AI enables intelligent
+                                automation that can adapt to changing conditions.</p>
                         </div>
 
                         <div class="concept-item">
                             <h4>Prediction</h4>
-                            <p>Using historical data and patterns to forecast future outcomes. This is one of the most common applications of AI systems.</p>
+                            <p>Using historical data and patterns to forecast future outcomes. This is one of the most
+                                common applications of AI systems.</p>
                         </div>
                     </div>
                 </section>
@@ -366,22 +545,26 @@
                     <div class="misconceptions">
                         <div class="misconception-item">
                             <h4>MYTH: "AI will replace all human jobs"</h4>
-                            <p>REALITY: AI typically augments human capabilities rather than replacing them entirely. New types of jobs often emerge as technology advances.</p>
+                            <p>REALITY: AI typically augments human capabilities rather than replacing them entirely.
+                                New types of jobs often emerge as technology advances.</p>
                         </div>
 
                         <div class="misconception-item">
                             <h4>MYTH: "AI is conscious or self-aware"</h4>
-                            <p>REALITY: Current AI systems are sophisticated pattern matching machines without consciousness, self-awareness, or genuine understanding.</p>
+                            <p>REALITY: Current AI systems are sophisticated pattern matching machines without
+                                consciousness, self-awareness, or genuine understanding.</p>
                         </div>
 
                         <div class="misconception-item">
                             <h4>MYTH: "AI is infallible and always correct"</h4>
-                            <p>REALITY: AI systems can make mistakes, exhibit biases, and fail in unexpected ways. They require careful testing and human oversight.</p>
+                            <p>REALITY: AI systems can make mistakes, exhibit biases, and fail in unexpected ways. They
+                                require careful testing and human oversight.</p>
                         </div>
 
                         <div class="misconception-item">
                             <h4>MYTH: "AI is too complex for non-experts to understand"</h4>
-                            <p>REALITY: While AI implementation details are technical, the core concepts and applications can be understood by anyone willing to learn.</p>
+                            <p>REALITY: While AI implementation details are technical, the core concepts and
+                                applications can be understood by anyone willing to learn.</p>
                         </div>
                     </div>
                 </section>
@@ -393,22 +576,26 @@
                     <div class="getting-started">
                         <div class="step-card">
                             <h4>1. Build Foundation Knowledge</h4>
-                            <p>Start with basic programming concepts, statistics, and mathematics. Python is the most popular language for AI development.</p>
+                            <p>Start with basic programming concepts, statistics, and mathematics. Python is the most
+                                popular language for AI development.</p>
                         </div>
 
                         <div class="step-card">
                             <h4>2. Learn Core Concepts</h4>
-                            <p>Study machine learning fundamentals, data analysis, and statistical thinking. Practice with simple projects and datasets.</p>
+                            <p>Study machine learning fundamentals, data analysis, and statistical thinking. Practice
+                                with simple projects and datasets.</p>
                         </div>
 
                         <div class="step-card">
                             <h4>3. Hands-On Practice</h4>
-                            <p>Work with real datasets, experiment with existing AI tools, and build simple projects to solidify your understanding.</p>
+                            <p>Work with real datasets, experiment with existing AI tools, and build simple projects to
+                                solidify your understanding.</p>
                         </div>
 
                         <div class="step-card">
                             <h4>4. Specialize</h4>
-                            <p>Choose a specific area of interest (computer vision, NLP, robotics) and dive deeper into specialized techniques and applications.</p>
+                            <p>Choose a specific area of interest (computer vision, NLP, robotics) and dive deeper into
+                                specialized techniques and applications.</p>
                         </div>
                     </div>
                 </section>
@@ -426,7 +613,8 @@
         <footer class="site-footer">
             <div class="footer-content">
                 <div class="footer-branding">
-                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank"
+                        rel="noopener noreferrer">Studio Poetics</a>
                 </div>
                 <div class="footer-links">
                     <a href="disclaimer.html">Disclaimer</a>
@@ -470,7 +658,7 @@
         }
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('mainMenuOverlay');
                 overlay.classList.remove('active');
@@ -478,4 +666,5 @@
         });
     </script>
 </body>
+
 </html>

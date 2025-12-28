@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Computing Technology Radar - TRL Visualization</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        /* Clean Radar Visualization Styles */
+        body {
+            background: var(--color-white);
+            color: var(--color-black);
+            overflow-x: hidden;
+            font-family: var(--font-primary);
+        }
+
+        .radar-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-white);
+        }
+
+        .radar-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .radar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin: 0;
+        }
+
+        .radar-subtitle {
+            font-size: 12px;
+            color: var(--color-gray-600);
+            margin: 5px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trl-info-btn {
+            background: var(--color-electric-blue) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-electric-blue) !important;
+        }
+
+        .trl-info-btn:hover {
+            background: var(--color-electric-blue-dark) !important;
+            border-color: var(--color-electric-blue-dark) !important;
+            color: var(--color-white) !important;
+        }
+
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-group {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 5px 10px;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            color: var(--color-gray-700);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: var(--color-electric-blue-bg);
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--color-electric-blue);
+            border-color: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .radar-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zoom-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 18px;
+            color: var(--color-electric-blue);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .info-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-research {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .meta-industry {
+            background: var(--color-gray-800);
+            color: var(--color-white);
+        }
+
+        .meta-emerging {
+            background: var(--color-gray-600);
+            color: var(--color-white);
+        }
+
+        .meta-experimental {
+            background: var(--color-electric-blue-dark);
+            color: var(--color-white);
+        }
+
+        .info-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .references-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .references-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+
+        .reference-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--color-gray-600);
+        }
+
+        .reference-link {
+            color: var(--color-electric-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .progress-item {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.8s ease;
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--color-gray-500);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .trl-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 200;
+        }
+
+        .trl-info-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .trl-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin-bottom: 15px;
+        }
+
+        .trl-info-content {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .trl-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trl-level-item {
+            padding: 8px;
+            background: var(--color-gray-50);
+            border-radius: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .trl-level-number {
+            font-weight: 600;
+            color: var(--color-electric-blue);
+        }
+
+        .close-info-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-info-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend-title {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 10px;
+            color: var(--color-gray-700);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00f5ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
+            }
+
+            .radar-title {
+                font-size: 18px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 60vh;
+            }
+
+            .controls-panel {
+                position: static;
+                top: auto;
+                right: auto;
+                margin: 10px 16px 0 16px;
+            }
+
+            .legend {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+</head>
+
+<body>
+    <div class="radar-container">
+        <div class="radar-header">
+            <h1 class="radar-title">EDGE COMPUTING TECHNOLOGY RADAR</h1>
+            <p class="radar-subtitle">Technology Readiness Level Visualization</p>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <div class="control-label">Filter by Origin</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="research">RESEARCH</button>
+                    <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                    <button class="filter-btn" data-filter="emerging">EMERGING</button>
+                    <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Time Period</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-time="2025">2025</button>
+                    <button class="filter-btn" data-time="2020">2020</button>
+                    <button class="filter-btn" data-time="2015">2015</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Learn More</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn trl-info-btn" onclick="toggleTRLInfo()">WHAT IS TRL?</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Navigate</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
+                    <button class="filter-btn" onclick="window.location.href='edge-landing.html'">LANDING</button>
+                </div>
+                <div class="filter-buttons" style="margin-top: 5px;">
+                    <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
+                        <option value="">EXPLORE OTHER TRL RADARS ▼</option>
+                        <option value="ai-trl.html">AI & Machine Learning</option>
+                        <option value="blockchain-trl.html">Blockchain</option>
+                        <option value="biorobotics-trl.html">Bio-Robotics</option>
+                        <option value="edge-trl.html" disabled selected>Edge Computing</option>
+                        <option value="interfaces-trl.html">Future Interfaces</option>
+                        <option value="iot-trl.html">Internet of Things</option>
+                        <option value="metaverse-trl.html">Metaverse</option>
+                        <option value="quantum-trl.html">Quantum Computing</option>
+                        <option value="robotics-trl.html">Robotics</option>
+                        <option value="textiles-trl.html">Smart Textiles</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+            <button class="zoom-btn" id="zoomOut" title="Zoom Out">−</button>
+            <button class="zoom-btn" id="resetZoom" title="Reset Zoom">⌂</button>
+        </div>
+
+        <svg class="radar-canvas" id="radarSvg"></svg>
+
+        <div class="trl-info-panel" id="trlInfoPanel">
+            <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
+            <div class="trl-info-title">Technology Readiness Levels (TRL)</div>
+            <div class="trl-info-content">
+                Technology Readiness Levels for Edge Computing assess the maturity of distributed computing
+                infrastructure, edge processing frameworks, orchestration systems, and deployment architectures. TRL
+                evaluation considers latency performance, bandwidth efficiency, processing capability, security
+                implementation, orchestration maturity, and real-world deployment scale across industrial, telco, and
+                consumer edge environments.
+            </div>
+            <div class="trl-levels-grid">
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 1-2</div>
+                    <div>Basic Research</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 3</div>
+                    <div>Proof of Concept</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 4</div>
+                    <div>Lab Validation</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 5</div>
+                    <div>Field Testing</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 6</div>
+                    <div>Pilot Deployment</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 7</div>
+                    <div>Platform Integration</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 8</div>
+                    <div>Ecosystem Complete</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 9</div>
+                    <div>Proven Operational</div>
+                </div>
+                <div class="trl-level-item" style="grid-column: span 1; background: var(--color-electric-blue-bg);">
+                    <div class="trl-level-number">Click & Explore</div>
+                    <div>Interactive Technologies</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">TRL Levels</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a3a3a3;"></div>
+                <span>TRL 1-3: Research</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #525252;"></div>
+                <span>TRL 4-6: Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4040ff;"></div>
+                <span>TRL 7-9: Deployment</span>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfoPanel()">×</button>
+            <div id="infoPanelContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">Initializing Radar...</div>
+    </div>
+
+    <script>
+        const technologyData = {
+            2015: [
+                { id: 'cdn', name: 'Content Delivery Networks', category: 'industry', trl: 9, angle: 0, progress: { research: 98, funding: 100, timeline: 98, consensus: 99 } },
+                { id: 'caching', name: 'Edge Caching Systems', category: 'industry', trl: 8, angle: 30, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'fog-computing', name: 'Fog Computing Concept', category: 'research', trl: 3, angle: 60, progress: { research: 35, funding: 30, timeline: 25, consensus: 32 } },
+                { id: 'mobile-edge', name: 'Mobile Edge Computing', category: 'research', trl: 4, angle: 90, progress: { research: 40, funding: 45, timeline: 35, consensus: 42 } },
+                { id: 'cloudlets', name: 'Cloudlet Infrastructure', category: 'research', trl: 3, angle: 120, progress: { research: 30, funding: 25, timeline: 20, consensus: 28 } },
+                { id: 'data-centers', name: 'Regional Data Centers', category: 'industry', trl: 8, angle: 150, progress: { research: 85, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'streaming', name: 'Live Video Streaming', category: 'industry', trl: 7, angle: 180, progress: { research: 75, funding: 85, timeline: 75, consensus: 80 } },
+                { id: 'load-balancing', name: 'Global Load Balancing', category: 'industry', trl: 8, angle: 210, progress: { research: 85, funding: 90, timeline: 82, consensus: 87 } },
+                { id: 'gateway', name: 'Edge Gateways', category: 'emerging', trl: 5, angle: 240, progress: { research: 50, funding: 55, timeline: 45, consensus: 52 } },
+                { id: 'local-processing', name: 'Local Data Processing', category: 'research', trl: 4, angle: 270, progress: { research: 45, funding: 40, timeline: 35, consensus: 42 } },
+                { id: 'distributed-storage', name: 'Distributed Storage', category: 'emerging', trl: 6, angle: 300, progress: { research: 60, funding: 65, timeline: 55, consensus: 62 } },
+                { id: 'p2p', name: 'Peer-to-Peer Networks', category: 'industry', trl: 7, angle: 330, progress: { research: 70, funding: 75, timeline: 68, consensus: 73 } }
+            ],
+            2020: [
+                { id: 'cdn', name: 'Content Delivery Networks', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+                { id: 'edge-computing', name: 'Edge Computing Platforms', category: 'industry', trl: 7, angle: 15, progress: { research: 80, funding: 90, timeline: 75, consensus: 83 } },
+                { id: 'mec', name: 'Multi-Access Edge Computing', category: 'industry', trl: 7, angle: 30, progress: { research: 75, funding: 85, timeline: 72, consensus: 80 } },
+                { id: 'kubernetes-edge', name: 'Kubernetes at Edge', category: 'emerging', trl: 6, angle: 45, progress: { research: 70, funding: 75, timeline: 65, consensus: 72 } },
+                { id: 'edge-ai', name: 'Edge AI Inference', category: 'emerging', trl: 6, angle: 60, progress: { research: 65, funding: 75, timeline: 60, consensus: 68 } },
+                { id: '5g-edge', name: '5G Edge Infrastructure', category: 'emerging', trl: 6, angle: 75, progress: { research: 70, funding: 85, timeline: 65, consensus: 75 } },
+                { id: 'serverless-edge', name: 'Serverless at Edge', category: 'research', trl: 5, angle: 90, progress: { research: 55, funding: 60, timeline: 50, consensus: 58 } },
+                { id: 'ar-vr-edge', name: 'AR/VR Edge Processing', category: 'emerging', trl: 6, angle: 105, progress: { research: 60, funding: 70, timeline: 55, consensus: 63 } },
+                { id: 'edge-analytics', name: 'Edge Analytics Platforms', category: 'industry', trl: 7, angle: 120, progress: { research: 75, funding: 82, timeline: 72, consensus: 78 } },
+                { id: 'edge-orchestration', name: 'Edge Orchestration', category: 'research', trl: 5, angle: 135, progress: { research: 50, funding: 55, timeline: 45, consensus: 52 } },
+                { id: 'telco-edge', name: 'Telco Edge Cloud', category: 'industry', trl: 7, angle: 150, progress: { research: 72, funding: 80, timeline: 68, consensus: 75 } },
+                { id: 'video-analytics', name: 'Video Analytics at Edge', category: 'industry', trl: 7, angle: 165, progress: { research: 75, funding: 82, timeline: 72, consensus: 78 } },
+                { id: 'iot-edge', name: 'IoT Edge Processing', category: 'industry', trl: 7, angle: 180, progress: { research: 78, funding: 85, timeline: 75, consensus: 80 } },
+                { id: 'edge-security', name: 'Edge Security Solutions', category: 'emerging', trl: 6, angle: 195, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'fog-platforms', name: 'Fog Computing Platforms', category: 'industry', trl: 7, angle: 210, progress: { research: 70, funding: 75, timeline: 68, consensus: 73 } },
+                { id: 'micro-dc', name: 'Micro Data Centers', category: 'industry', trl: 7, angle: 225, progress: { research: 72, funding: 80, timeline: 70, consensus: 75 } },
+                { id: 'edge-caching', name: 'Intelligent Edge Caching', category: 'industry', trl: 8, angle: 240, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'gaming-edge', name: 'Cloud Gaming at Edge', category: 'emerging', trl: 6, angle: 255, progress: { research: 65, funding: 75, timeline: 60, consensus: 68 } },
+                { id: 'industrial-edge', name: 'Industrial Edge Computing', category: 'industry', trl: 7, angle: 270, progress: { research: 75, funding: 85, timeline: 72, consensus: 78 } },
+                { id: 'edge-db', name: 'Edge Databases', category: 'emerging', trl: 6, angle: 285, progress: { research: 60, funding: 65, timeline: 55, consensus: 62 } },
+                { id: 'network-edge', name: 'Network Function at Edge', category: 'industry', trl: 7, angle: 300, progress: { research: 70, funding: 78, timeline: 68, consensus: 73 } },
+                { id: 'wasm-edge', name: 'WebAssembly at Edge', category: 'research', trl: 4, angle: 315, progress: { research: 40, funding: 45, timeline: 35, consensus: 42 } },
+                { id: 'edge-ml', name: 'Edge Machine Learning', category: 'emerging', trl: 6, angle: 330, progress: { research: 62, funding: 70, timeline: 58, consensus: 65 } },
+                { id: 'real-time-edge', name: 'Real-time Edge Processing', category: 'industry', trl: 7, angle: 345, progress: { research: 73, funding: 80, timeline: 70, consensus: 75 } }
+            ],
+            2025: [
+                { id: 'cdn-modern', name: 'Modern CDN (Cloudflare, Fastly)', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+                { id: 'edge-compute', name: 'Edge Compute Platforms', category: 'industry', trl: 8, angle: 12, progress: { research: 90, funding: 98, timeline: 88, consensus: 93 } },
+                { id: 'mec-5g', name: 'Multi-Access Edge (MEC)', category: 'industry', trl: 8, angle: 24, progress: { research: 88, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'kubernetes-edge', name: 'K8s Edge Orchestration', category: 'industry', trl: 8, angle: 36, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'edge-ai-inference', name: 'Edge AI Inference', category: 'industry', trl: 8, angle: 48, progress: { research: 88, funding: 93, timeline: 85, consensus: 90 } },
+                { id: '5g-mec', name: '5G Edge Infrastructure', category: 'industry', trl: 8, angle: 60, progress: { research: 85, funding: 95, timeline: 82, consensus: 88 } },
+                { id: 'serverless-edge', name: 'Serverless Edge Functions', category: 'industry', trl: 8, angle: 72, progress: { research: 82, funding: 90, timeline: 78, consensus: 85 } },
+                { id: 'ar-vr-streaming', name: 'AR/VR Edge Streaming', category: 'industry', trl: 7, angle: 84, progress: { research: 80, funding: 88, timeline: 75, consensus: 82 } },
+                { id: 'edge-analytics', name: 'Real-time Edge Analytics', category: 'industry', trl: 8, angle: 96, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'container-edge', name: 'Container-based Edge', category: 'industry', trl: 8, angle: 108, progress: { research: 88, funding: 93, timeline: 85, consensus: 90 } },
+                { id: 'telco-edge-cloud', name: 'Telco Edge Cloud', category: 'industry', trl: 8, angle: 120, progress: { research: 82, funding: 90, timeline: 78, consensus: 85 } },
+                { id: 'video-ai-edge', name: 'Video AI at Edge', category: 'industry', trl: 8, angle: 132, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'iot-edge-gateway', name: 'IoT Edge Gateways', category: 'industry', trl: 9, angle: 144, progress: { research: 92, funding: 98, timeline: 90, consensus: 95 } },
+                { id: 'zero-trust-edge', name: 'Zero Trust Edge Security', category: 'industry', trl: 8, angle: 156, progress: { research: 80, funding: 88, timeline: 78, consensus: 83 } },
+                { id: 'edge-mesh', name: 'Service Mesh at Edge', category: 'industry', trl: 7, angle: 168, progress: { research: 75, funding: 82, timeline: 72, consensus: 78 } },
+                { id: 'micro-datacenters', name: 'Micro Data Centers', category: 'industry', trl: 8, angle: 180, progress: { research: 82, funding: 90, timeline: 78, consensus: 85 } },
+                { id: 'intelligent-caching', name: 'AI-Powered Edge Caching', category: 'industry', trl: 8, angle: 192, progress: { research: 85, funding: 90, timeline: 82, consensus: 87 } },
+                { id: 'cloud-gaming', name: 'Cloud Gaming Infrastructure', category: 'industry', trl: 8, angle: 204, progress: { research: 80, funding: 92, timeline: 75, consensus: 83 } },
+                { id: 'industrial-edge-platform', name: 'Industrial Edge Platforms', category: 'industry', trl: 8, angle: 216, progress: { research: 88, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'edge-database', name: 'Distributed Edge Databases', category: 'industry', trl: 7, angle: 228, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
+                { id: 'network-slicing-edge', name: 'Network Slicing at Edge', category: 'industry', trl: 7, angle: 240, progress: { research: 75, funding: 85, timeline: 70, consensus: 78 } },
+                { id: 'wasm-runtime', name: 'WebAssembly Edge Runtime', category: 'emerging', trl: 7, angle: 252, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+                { id: 'federated-learning-edge', name: 'Federated Learning at Edge', category: 'emerging', trl: 6, angle: 264, progress: { research: 70, funding: 75, timeline: 62, consensus: 72 } },
+                { id: 'edge-native-apps', name: 'Edge-Native Applications', category: 'industry', trl: 7, angle: 276, progress: { research: 75, funding: 85, timeline: 70, consensus: 78 } },
+                { id: 'quantum-edge', name: 'Quantum-Safe Edge Security', category: 'research', trl: 4, angle: 288, progress: { research: 48, funding: 55, timeline: 40, consensus: 50 } },
+                { id: 'autonomous-edge', name: 'Autonomous Edge Systems', category: 'emerging', trl: 6, angle: 300, progress: { research: 65, funding: 72, timeline: 58, consensus: 68 } },
+                { id: 'private-5g-edge', name: 'Private 5G Edge Networks', category: 'industry', trl: 7, angle: 312, progress: { research: 78, funding: 88, timeline: 72, consensus: 80 } },
+                { id: 'spatial-computing-edge', name: 'Spatial Computing at Edge', category: 'emerging', trl: 6, angle: 324, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'green-edge', name: 'Energy-Efficient Edge', category: 'emerging', trl: 6, angle: 336, progress: { research: 70, funding: 75, timeline: 62, consensus: 72 } },
+                { id: 'confidential-edge', name: 'Confidential Computing at Edge', category: 'emerging', trl: 6, angle: 348, progress: { research: 65, funding: 70, timeline: 58, consensus: 68 } }
+            ]
+        };
+
+        const techDescriptions = {
+            'cdn-modern': {
+                description: 'Modern CDNs like Cloudflare, Fastly, and Akamai have evolved into comprehensive edge computing platforms serving billions of requests daily with sub-50ms global latency. By December 2025, CDNs handle over 70% of global internet traffic distributing content from edge servers in 200+ countries. Capabilities extend beyond caching to include edge compute (Cloudflare Workers, Fastly Compute), DDoS protection (multi-terabit mitigation), bot management, image optimization, and serverless functions. Cloudflare processes 50+ million HTTP requests/second across 310+ cities, Akamai delivers 30% of web traffic globally, and Fastly enables real-time content delivery and edge computing for major platforms. Benefits include 80% reduction in page load times, 90% bandwidth savings, improved availability (99.99%+ uptime), and global reach.',
+                references: [
+                    'Cloudflare. (2025). The State of the Internet Report Q4 2025.',
+                    'Akamai. (2024). Edge Computing Platform Performance Analysis.',
+                    'Gartner. (2024). Magic Quadrant for CDN and Edge Computing Providers.'
+                ]
+            },
+            'edge-compute': {
+                description: 'Edge compute platforms enable running applications and workloads closer to end users and data sources, reducing latency from 100-200ms (cloud) to 5-20ms (edge). AWS Wavelength, Azure Edge Zones, Google Distributed Cloud Edge, and IBM Edge Computing provide infrastructure in telecom networks and edge locations. Use cases include real-time gaming (sub-20ms latency), AR/VR applications, autonomous vehicles requiring instant processing, industrial automation with millisecond control loops, and smart city applications. Major deployments span manufacturing (predictive maintenance reducing downtime 30-40%), retail (personalized experiences, computer vision), healthcare (real-time diagnostics), and media (live video processing). Benefits include latency reduction, bandwidth savings (70-90% less data transmitted to cloud), data sovereignty, and offline operation. Challenges include management complexity and edge resource constraints.',
+                references: [
+                    'AWS. (2025). AWS Wavelength: 5G Edge Computing Performance Metrics.',
+                    'Microsoft Azure. (2024). Azure Edge Zones: Deployment Guide and Use Cases.',
+                    'IDC. (2025). Worldwide Edge Computing Market Forecast 2025-2029.'
+                ]
+            },
+            'mec-5g': {
+                description: 'Multi-Access Edge Computing (MEC) brings cloud computing capabilities to the edge of 5G networks, enabling ultra-low latency (<10ms) applications. Standardized by ETSI, MEC is deployed by telcos globally including Verizon, AT&T, Deutsche Telekom, and in India by Jio, Airtel. Applications include cloud gaming (Xbox Cloud Gaming, NVIDIA GeForce Now achieving <20ms latency), autonomous vehicles with V2X communication, AR/VR experiences, smart manufacturing with real-time control, and emergency services. MEC platforms provide compute, storage, and network services at cell tower sites or regional data centers. Benefits include guaranteed QoS, network slicing for dedicated resources, local data processing (privacy compliance), and operator-grade reliability. Industrial use cases span ports (automated cranes), factories (robotics coordination), and stadiums (enhanced fan experiences).',
+                references: [
+                    'ETSI. (2024). Multi-Access Edge Computing Standards and Specifications.',
+                    '5G Americas. (2025). MEC Deployment Status and Use Cases Report.',
+                    'Ericsson. (2024). 5G Edge Computing: Performance and Applications.'
+                ]
+            },
+            'edge-ai-inference': {
+                description: 'Edge AI inference runs machine learning models locally on edge devices and servers, enabling real-time decision making without cloud latency. Applications span autonomous vehicles (Tesla FSD processes 300+ TOPS locally), smart cameras (person/vehicle detection in <50ms), industrial quality inspection (99%+ accuracy), robotics (real-time object manipulation), and voice assistants (on-device wake word detection). Hardware accelerators include NVIDIA Jetson (8-275 TOPS), Google Coral TPU, Intel Movidius, Qualcomm AI Engine, and Apple Neural Engine. Benefits include <10ms inference latency, 90% reduction in cloud costs, improved privacy (data stays local), and offline capability. Model optimization techniques (quantization, pruning, knowledge distillation) reduce model size 10-100x while maintaining accuracy.',
+                references: [
+                    'NVIDIA. (2025). Jetson Platform: Edge AI Performance Benchmarks.',
+                    'MLCommons. (2024). MLPerf Inference Edge Results.',
+                    'Gartner. (2025). Edge AI Market Guide and Deployment Strategies.'
+                ]
+            },
+            'serverless-edge': {
+                description: 'Serverless edge functions enable developers to run code at global edge locations without managing servers. Cloudflare Workers (deployed in 310+ cities), Fastly Compute@Edge, AWS Lambda@Edge, and Vercel Edge Functions process requests in <5ms with automatic scaling. Use cases include API endpoints with global low latency, A/B testing, personalization, authentication, and dynamic content generation. Developers write JavaScript, TypeScript, Rust, or WebAssembly code deployed globally in seconds. Benefits include zero cold starts (Workers), 50+ million requests per second capacity, pay-per-request pricing (pennies per million requests), and automatic DDoS protection. Limitations include 50ms CPU time limits, 128MB memory caps, and stateless execution requiring external storage.',
+                references: [
+                    'Cloudflare. (2025). Cloudflare Workers: Platform Architecture and Performance.',
+                    'Fastly. (2024). Compute@Edge: Developer Guide and Best Practices.',
+                    'Vercel. (2025). Edge Functions: Global Deployment and Performance Analysis.'
+                ]
+            },
+            'industrial-edge-platform': {
+                description: 'Industrial edge platforms bring computing to factory floors, oil rigs, and remote facilities enabling real-time analytics, predictive maintenance, and autonomous operations. Platforms including Siemens Industrial Edge, GE Predix Edge, Schneider EcoStruxure, AWS Outposts, and Azure Stack Edge process data locally with cloud connectivity. Use cases include CNC machine monitoring (vibration analysis preventing failures), computer vision quality inspection (identifying defects in real-time), energy optimization (reducing consumption 15-25%), robotic coordination, and predictive maintenance (preventing 30-50% of unplanned downtime). Edge devices run containerized applications, connect to PLCs and sensors, and synchronize with cloud for long-term analytics. Benefits include deterministic low latency (<10ms), operation during network outages, data sovereignty compliance, and reduced cloud costs.',
+                references: [
+                    'Siemens. (2025). Industrial Edge: Platform Architecture and Use Cases.',
+                    'LNS Research. (2024). Industrial Edge Computing Market Analysis.',
+                    'McKinsey. (2024). Industry 4.0 and Edge Computing: ROI Analysis.'
+                ]
+            },
+            'kubernetes-edge': {
+                description: 'Kubernetes at the Edge brings cloud-native orchestration to resource-constrained environments. Lightweight distributions like K3s, MicroK8s, and KubeEdge allow managing thousands of remote nodes (retail stores, cell towers, factories) with the same tools used for cloud clusters. By 2025, GitOps workflows manage millions of edge clusters automatically.',
+                references: [
+                    'CNCF. (2025). State of the Edge Report.',
+                    'Rancher. (2024). Managing 10,000 Clusters: Scaling K3s.'
+                ]
+            },
+            '5g-mec': {
+                description: '5G Edge Infrastructure refers to the physical deployment of compute resources within the cellular radio access network (RAN) and core network. This includes C-RAN hubs, tower-base data centers, and switching centers retrofitted for compute. It enables operators to offer low-latency slices for critical applications like drone control and remote surgery.',
+                references: [
+                    'GSMA. (2025). The 5G Era: Age of Boundless Connectivity.',
+                    'TowerCo. (2024). The evolution of the cell tower power grid.'
+                ]
+            },
+            'ar-vr-streaming': {
+                description: 'AR/VR Edge Streaming (Split Rendering) offloads heavy graphical rendering from the headset to a nearby edge server. Using technologies like NVIDIA CloudXR, the edge server renders frames in high fidelity and streams them to the headset via 5G/Wi-Fi 6, requiring <20ms motion-to-photon latency to prevent nausea. This enables lightweight glasses to display AAA-quality content.',
+                references: [
+                    'NVIDIA. (2025). CloudXR 5.0 Performance Report.',
+                    'Qualcomm. (2024). Boundless XR: 5G Split Rendering Architecture.'
+                ]
+            },
+            'edge-analytics': {
+                description: 'Real-time Edge Analytics processes streaming data (logs, sensor readings, video) instantly at the source rather than storing it first. Engines like Apache Flink, Hazelcast Jet, and proprietary IoT platforms analyze "data in motion" to detect anomalies, trigger alarms, or optimize processes within milliseconds.',
+                references: [
+                    'Gartner. (2025). Market Guide for Edge Analytics.',
+                    'Confluent. (2024). Streaming Data at the Edge.'
+                ]
+            },
+            'container-edge': {
+                description: 'Container-based Edge computing uses Docker, Podman, and OCI-compliant runtimes to package applications for deployment on diverse edge hardware (ARM, x86). This ensures consistency between development and production and enables "write once, deploy anywhere" for edge applications, from Raspberry Pis to server racks.',
+                references: [
+                    'Docker. (2025). Container adoption in IoT.',
+                    'Red Hat. (2024). Edge Computing with RHEL for Edge.'
+                ]
+            },
+            'telco-edge-cloud': {
+                description: 'Telco Edge Cloud platforms, driven by the GSMA Open Gateway initiative, expose operator network capabilities via standard APIs. Developers can request "Quality on Demand," device location, or edge compute resources directly from carrier networks (Verizon, Vodafone, Telefonica) to optimize app performance dynamically.',
+                references: [
+                    'GSMA. (2025). Open Gateway API adoption statistics.',
+                    'Camara Project. (2025). Standard APIs for Telco Edge.'
+                ]
+            },
+            'video-ai-edge': {
+                description: 'Video AI at the Edge processes high-definition video feeds locally for privacy and bandwidth efficiency. Used in smart cities for traffic management, retail for cashier-less checkout (Amazon Go style), and security for threat detection. Processing locally avoids sending sensitive footage to the cloud.',
+                references: [
+                    'Axis Communications. (2025). Trends in Video Surveillance.',
+                    'Vision AI. (2024). Edge-based Computer Vision efficacy.'
+                ]
+            },
+            'iot-edge-gateway': {
+                description: 'IoT Edge Gateways act as the bridge between local sensors (Zigbee, Bluetooth, Modbus) and the internet/cloud. Modern gateways run logic (Node-RED, Azure IoT Edge) to filter data, translate protocols, and buffer data during outages, ensuring robust industrial connectivity.',
+                references: [
+                    'Dell Technologies. (2024). Future of the Edge Gateway.',
+                    'Advantech. (2025). IIoT Gateway Market Report.'
+                ]
+            },
+            'zero-trust-edge': {
+                description: 'Zero Trust Edge (or SASE - Secure Access Service Edge) integrates security controls (Firewall, SWG, CASB) directly into the edge network connection. This ensures that users and devices are verified continuously at the closest point of entry, rather than backhauling traffic to a central corporate firewall.',
+                references: [
+                    'Palo Alto Networks. (2025). SASE State of the Union.',
+                    'Zscaler. (2024). Zero Trust Architecture for Edge.'
+                ]
+            },
+            'edge-mesh': {
+                description: 'Service Mesh at the Edge (like Kuma, Linkerd) manages communication between microservices distributed across multiple edge locations and clouds. It handles discovery, encryption (mTLS), and traffic shifting, abstracting the complex network topology from the application logic.',
+                references: [
+                    'Buoyant. (2025). Service Mesh for Distributed Edge.',
+                    'Kong. (2024). Connectivity at the Edge.'
+                ]
+            },
+            'micro-datacenters': {
+                description: 'Micro Data Centers (MDCs) are self-contained, secure cabinet systems containing cooling, power (UPS), and compute infrastructure. Deployed in retail back-rooms, cell towers, or office closets, they provide instant "data center in a box" capability for edge deployments.',
+                references: [
+                    'Schneider Electric. (2025). Micro Data Center Solution Guide.',
+                    'Vertiv. (2024). Edge infrastructure trends.'
+                ]
+            },
+            'intelligent-caching': {
+                description: 'AI-Powered Edge Caching predicts which content a user will request next based on local patterns and pre-loads it to the nearest edge node. This predictive caching reduces latency to near-zero for streaming media and software updates.',
+                references: [
+                    'Netflix Engineering. (2024). Predictive caching for global content delivery.',
+                    'Akamai. (2025). AI in CDN performance.'
+                ]
+            },
+            'cloud-gaming': {
+                description: 'Cloud Gaming Infrastructure renders video games on powerful edge GPUs and streams video to users. 2025 services achieve console-quality latency (<30ms) by deploying servers within ISPs networks, making expensive console hardware optional for casual gamers.',
+                references: [
+                    'Microsoft Xbox. (2025). Cloud Gaming Reach and Latency Stats.',
+                    'NVIDIA. (2025). GeForce Now Network Architecture.'
+                ]
+            },
+            'edge-database': {
+                description: 'Distributed Edge Databases (like Couchbase Mobile, Ditto, SQLite with replication) store data locally on the device (Local-First software) and synchronize with the cloud when connection is available. This guarantees app responsiveness and offline functionality.',
+                references: [
+                    'Couchbase. (2025). State of Offline-First Development.',
+                    'Ink & Switch. (2024). Local-first software principles.'
+                ]
+            },
+            'network-slicing-edge': {
+                description: 'Network Slicing allows operators to partition a physical 5G network into multiple virtual networks. An "Edge Slice" guarantees dedicated bandwidth and latency for critical apps (like hospital remote monitoring) while isolating it from general web traffic.',
+                references: [
+                    'Ericsson. (2025). Network Slicing monetization cases.',
+                    'Nokia. (2024). Slicing for Enterprise Edge.'
+                ]
+            },
+            'wasm-runtime': {
+                description: 'WebAssembly (Wasm) Edge Runtimes offers a secure, ultra-lightweight, and fast sandbox for edge code. With startup times of microseconds (vs seconds for containers) and tiny memory footprint, Wasm is becoming the standard for serverless edge functions and plugin systems.',
+                references: [
+                    'WasmEdge. (2025). Performance benchmarks vs Containers.',
+                    'Cosmonic. (2024). The Wasm component model.'
+                ]
+            },
+            'federated-learning-edge': {
+                description: 'Federated Learning allows training AI models across millions of edge devices without raw data leaving the device. Phones calculate model updates locally and send only the weights to the cloud. This preserves privacy (e.g., keyboard prediction, health data).',
+                references: [
+                    'Google AI. (2024). Advances in Federated Learning.',
+                    'OpenMined. (2025). Privacy-Preserving AI techniques.'
+                ]
+            },
+            'edge-native-apps': {
+                description: 'Edge-Native Applications are architected from the ground up to run across a distributed topology. They are location-aware, resilient to network partitions, and intelligently distribute logic between device, edge, and cloud.',
+                references: [
+                    'LF Edge. (2025). Principles of Edge-Native Architecture.',
+                    'State of the Edge. (2025). Developer survey.'
+                ]
+            },
+            'quantum-edge': {
+                description: 'Quantum-Safe Edge Security involves deploying Quantum Key Distribution (QKD) or post-quantum algorithms to secure edge links. As critical infrastructure moves to the edge, protecting it against future quantum decryption is a priority for defense and banking.',
+                references: [
+                    'Toshiba. (2025). Quantum Key Distribution networks.',
+                    'ID Quantique. (2024). QKD for 5G security.'
+                ]
+            },
+            'autonomous-edge': {
+                description: 'Autonomous Edge Systems use AI to manage themselves—healing failures, optimizing power, and defending attacks without human intervention. This "Zero-Touch" operations model is essential when managing millions of distributed nodes.',
+                references: [
+                    'VMware. (2025). Zero-Touch Provisioning and Operations.',
+                    'Intel. (2024). Autonomous Edge management.'
+                ]
+            },
+            'private-5g-edge': {
+                description: 'Private 5G Edge Networks are dedicated cellular networks deployed by enterprises (factories, mines, campuses) for total control over reliability and security. Combined with on-premise compute, they replace Wi-Fi for mission-critical industrial connectivity.',
+                references: [
+                    'Deloitte. (2025). Private 5G adoption in manufacturing.',
+                    'Celona. (2024). Enterprise 5G architecture.'
+                ]
+            },
+            'spatial-computing-edge': {
+                description: 'Spatial Computing at the Edge powers the "AR Cloud." It manages shared "world anchors" and 3D maps allowing multiple users to see the same virtual objects in the same physical place, synchronized via low-latency edge servers.',
+                references: [
+                    'Niantic. (2025). Lightship VPS and Edge.',
+                    'OpenAR Cloud. (2024). State of the AR Cloud.'
+                ]
+            },
+            'green-edge': {
+                description: 'Green Edge Computing optimizes workloads for energy efficiency, such as shifting processing to nodes with renewable power availability or putting idle nodes to deep sleep. This reduces the carbon footprint of massive distributed infrastructure.',
+                references: [
+                    'Sustainability in Tech. (2025). Carbon-aware computing strategies.',
+                    'Leafcloud. (2024). Distributed green cloud computing.'
+                ]
+            },
+            'confidential-edge': {
+                description: 'Confidential Computing at the Edge uses hardware Trusted Execution Environments (TEEs) like Intel SGX or AMD SEV to encrypt data *while it is being processed*. This allows untrusted edge locations to process sensitive data (healthcare, finance) securely.',
+                references: [
+                    'Confidential Computing Consortium. (2025). State of the Market.',
+                    'Microsoft Azure. (2024). Azure IoT Edge Confidential Computing.'
+                ]
+            }
+        };
+
+        const techConnections = [
+            ['cdn-modern', 'edge-compute'],
+            ['edge-compute', 'serverless-edge'],
+            ['mec-5g', '5g-mec'],
+            ['edge-ai-inference', 'video-ai-edge'],
+            ['kubernetes-edge', 'container-edge'],
+            ['industrial-edge-platform', 'iot-edge-gateway'],
+            ['serverless-edge', 'wasm-runtime'],
+            ['zero-trust-edge', 'confidential-edge']
+        ];
+
+        // ========== GENERIC VISUALIZATION CODE - NO CHANGES NEEDED ==========
+
+        let currentYear = 2025;
+        let currentFilter = 'all';
+        let selectedTech = null;
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const maxRadius = Math.min(width, height) * 0.4;
+
+        const svg = d3.select('#radarSvg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const categoryColors = {
+            research: 'var(--color-electric-blue)',
+            industry: 'var(--color-gray-800)',
+            emerging: 'var(--color-gray-600)',
+            experimental: 'var(--color-electric-blue-dark)'
+        };
+
+        const trlColors = d3.scaleLinear()
+            .domain([1, 5, 9])
+            .range(['#a3a3a3', '#525252', '#4040ff']);
+
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        let zoomTransform = d3.zoomIdentity;
+
+        function initVisualization() {
+            setupZoom();
+            setTimeout(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderRadar();
+            }, 1500);
+        }
+
+        function setupZoom() {
+            const zoom = d3.zoom()
+                .scaleExtent([minZoom, maxZoom])
+                .on('zoom', handleZoom);
+
+            svg.call(zoom);
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+            });
+        }
+
+        function handleZoom(event) {
+            zoomTransform = event.transform;
+            svg.select('.radar-content').attr('transform', zoomTransform);
+        }
+
+        function renderRadar() {
+            svg.selectAll('*').remove();
+
+            const radarContent = svg.append('g').attr('class', 'radar-content');
+            const defs = svg.append('defs');
+
+            const shadow = defs.append('filter')
+                .attr('id', 'shadow')
+                .attr('x', '-50%')
+                .attr('y', '-50%')
+                .attr('width', '200%')
+                .attr('height', '200%');
+
+            shadow.append('feDropShadow')
+                .attr('dx', 2)
+                .attr('dy', 2)
+                .attr('stdDeviation', 3)
+                .attr('flood-color', '#000')
+                .attr('flood-opacity', 0.2);
+
+            radarContent.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', maxRadius)
+                .attr('fill', '#f8fafc')
+                .attr('stroke', '#e2e8f0')
+                .attr('stroke-width', 2);
+
+            for (let i = 1; i <= 9; i++) {
+                const radius = (maxRadius / 9) * i;
+
+                radarContent.append('circle')
+                    .attr('cx', centerX)
+                    .attr('cy', centerY)
+                    .attr('r', radius)
+                    .attr('fill', 'none')
+                    .attr('stroke', '#cbd5e1')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.6);
+
+                if (i % 3 === 0) {
+                    radarContent.append('text')
+                        .attr('x', centerX + radius + 10)
+                        .attr('y', centerY + 5)
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '12px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(`TRL ${i}`);
+                }
+            }
+
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const x2 = centerX + Math.cos(angle) * maxRadius;
+                const y2 = centerY + Math.sin(angle) * maxRadius;
+
+                radarContent.append('line')
+                    .attr('x1', centerX)
+                    .attr('y1', centerY)
+                    .attr('x2', x2)
+                    .attr('y2', y2)
+                    .attr('stroke', '#e2e8f0')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.5);
+            }
+
+            const data = technologyData[currentYear] || technologyData[2025];
+            const filteredData = currentFilter === 'all' ? data : data.filter(d => d.category === currentFilter);
+
+            const techGroups = radarContent.selectAll('.tech-node')
+                .data(filteredData)
+                .enter()
+                .append('g')
+                .attr('class', 'tech-node')
+                .style('cursor', 'pointer')
+                .on('click', (event, d) => showTechInfo(d))
+                .on('mouseover', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 12)
+                        .attr('filter', 'url(#shadow)');
+                })
+                .on('mouseout', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 8)
+                        .attr('filter', 'none');
+                });
+
+            techGroups.each(function (d) {
+                const group = d3.select(this);
+                const radius = (maxRadius / 9) * d.trl;
+                const angleRad = (d.angle - 90) * Math.PI / 180;
+                const x = centerX + Math.cos(angleRad) * radius;
+                const y = centerY + Math.sin(angleRad) * radius;
+
+                const nodeColor = getContrastColor(d.category, d.trl);
+                group.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 8)
+                    .attr('fill', nodeColor.fill)
+                    .attr('stroke', nodeColor.stroke)
+                    .attr('stroke-width', 2);
+
+                if (d.trl >= 6 || d.category === 'emerging') {
+                    const labelRadius = radius + 25;
+                    const labelX = centerX + Math.cos(angleRad) * labelRadius;
+                    const labelY = centerY + Math.sin(angleRad) * labelRadius;
+
+                    group.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '10px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(d.name.length > 15 ? d.name.substring(0, 15) + '...' : d.name);
+                }
+            });
+
+            drawConnections(filteredData);
+
+            svg.selectAll('.tech-node')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 50)
+                .style('opacity', 1);
+        }
+
+        function getContrastColor(category, trl) {
+            const colors = {
+                research: { fill: '#4040ff', stroke: '#1e1e8f' },
+                industry: { fill: '#1e293b', stroke: '#0f172a' },
+                emerging: { fill: '#64748b', stroke: '#475569' },
+                experimental: { fill: '#3030dd', stroke: '#1e1e8f' }
+            };
+            return colors[category] || colors.research;
+        }
+
+        function drawConnections(data) {
+            const connectionGroup = svg.select('.radar-content').append('g').attr('class', 'connections');
+
+            techConnections.forEach(([source, target]) => {
+                const sourceNode = data.find(d => d.id === source);
+                const targetNode = data.find(d => d.id === target);
+
+                if (sourceNode && targetNode) {
+                    const sourceRadius = (maxRadius / 9) * sourceNode.trl;
+                    const targetRadius = (maxRadius / 9) * targetNode.trl;
+                    const sourceAngle = (sourceNode.angle - 90) * Math.PI / 180;
+                    const targetAngle = (targetNode.angle - 90) * Math.PI / 180;
+
+                    const sourceX = centerX + Math.cos(sourceAngle) * sourceRadius;
+                    const sourceY = centerY + Math.sin(sourceAngle) * sourceRadius;
+                    const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+                    const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+                    const midX = (sourceX + targetX) / 2;
+                    const midY = (sourceY + targetY) / 2;
+                    const controlX = midX + (centerX - midX) * 0.3;
+                    const controlY = midY + (centerY - midY) * 0.3;
+
+                    const path = `M ${sourceX},${sourceY} Q ${controlX},${controlY} ${targetX},${targetY}`;
+
+                    connectionGroup.append('path')
+                        .attr('d', path)
+                        .attr('stroke', '#3b82f6')
+                        .attr('stroke-width', 1.5)
+                        .attr('fill', 'none')
+                        .attr('opacity', 0.6)
+                        .attr('stroke-dasharray', '5,5');
+                }
+            });
+        }
+
+        function showTechInfo(tech) {
+            selectedTech = tech;
+            const infoPanel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
+
+            const techInfo = techDescriptions[tech.id] || {};
+            const description = techInfo.description || `${tech.name} is an edge computing technology with TRL level ${tech.trl}.`;
+            const references = techInfo.references || [];
+
+            content.innerHTML = `
+                <h2 class="info-title">${tech.name}</h2>
+                <div class="info-meta">
+                    <span class="meta-badge meta-${tech.category}">${tech.category.toUpperCase()}</span>
+                    <span class="meta-badge" style="background: ${trlColors(tech.trl)}; color: white;">TRL ${tech.trl}</span>
+                    <span class="meta-badge" style="background: var(--color-gray-700); color: white;">Year: ${currentYear}</span>
+                </div>
+                <div class="info-description">
+                    ${description}
+                </div>
+                <div class="progress-grid">
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <div class="progress-label">${key}</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%;"></div>
+                            </div>
+                            <div class="progress-value">${value}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${references.length > 0 ? `
+                    <div class="references-section">
+                        <div class="references-title">Key References</div>
+                        ${references.map(ref => `
+                            <div class="reference-item">• ${ref}</div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            `;
+
+            infoPanel.classList.add('active');
+        }
+
+        function closeInfoPanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+            selectedTech = null;
+        }
+
+        function toggleTRLInfo() {
+            const trlInfoPanel = document.getElementById('trlInfoPanel');
+            trlInfoPanel.classList.toggle('active');
+        }
+
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderRadar();
+            });
+        });
+
+        document.querySelectorAll('[data-time]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-time]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentYear = parseInt(this.dataset.time);
+                renderRadar();
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            location.reload();
+        });
+
+        initVisualization();
+    </script>
+</body>
+
+</html>

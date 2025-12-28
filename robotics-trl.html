@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Technology Radar - TRL Visualization</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        /* Clean Radar Visualization Styles */
+        body {
+            background: var(--color-white);
+            color: var(--color-black);
+            overflow-x: hidden;
+            font-family: var(--font-primary);
+        }
+
+        .radar-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-white);
+        }
+
+        .radar-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .radar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin: 0;
+        }
+
+        .radar-subtitle {
+            font-size: 12px;
+            color: var(--color-gray-600);
+            margin: 5px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trl-info-btn {
+            background: var(--color-electric-blue) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-electric-blue) !important;
+        }
+
+        .trl-info-btn:hover {
+            background: var(--color-electric-blue-dark) !important;
+            border-color: var(--color-electric-blue-dark) !important;
+            color: var(--color-white) !important;
+        }
+
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-group {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 5px 10px;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            color: var(--color-gray-700);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: var(--color-electric-blue-bg);
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--color-electric-blue);
+            border-color: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .radar-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zoom-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 18px;
+            color: var(--color-electric-blue);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .info-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-research {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .meta-industry {
+            background: var(--color-gray-800);
+            color: var(--color-white);
+        }
+
+        .meta-emerging {
+            background: var(--color-gray-600);
+            color: var(--color-white);
+        }
+
+        .meta-experimental {
+            background: var(--color-electric-blue-dark);
+            color: var(--color-white);
+        }
+
+        .info-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .references-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .references-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+
+        .reference-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--color-gray-600);
+        }
+
+        .reference-link {
+            color: var(--color-electric-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .progress-item {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.8s ease;
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--color-gray-500);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .trl-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 200;
+        }
+
+        .trl-info-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .trl-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin-bottom: 15px;
+        }
+
+        .trl-info-content {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .trl-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trl-level-item {
+            padding: 8px;
+            background: var(--color-gray-50);
+            border-radius: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .trl-level-number {
+            font-weight: 600;
+            color: var(--color-electric-blue);
+        }
+
+        .close-info-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-info-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend-title {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 10px;
+            color: var(--color-gray-700);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00f5ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
+            }
+
+            .radar-title {
+                font-size: 18px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 60vh;
+            }
+
+            .controls-panel {
+                position: static;
+                top: auto;
+                right: auto;
+                margin: 10px 16px 0 16px;
+            }
+
+            .legend {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+</head>
+
+<body>
+    <div class="radar-container">
+        <div class="radar-header">
+            <h1 class="radar-title">ROBOTICS TECHNOLOGY RADAR</h1>
+            <p class="radar-subtitle">Technology Readiness Level Visualization</p>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <div class="control-label">Filter by Origin</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="research">RESEARCH</button>
+                    <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                    <button class="filter-btn" data-filter="emerging">EMERGING</button>
+                    <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Time Period</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-time="2025">2025</button>
+                    <button class="filter-btn" data-time="2020">2020</button>
+                    <button class="filter-btn" data-time="2015">2015</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Learn More</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn trl-info-btn" onclick="toggleTRLInfo()">WHAT IS TRL?</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Navigate</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
+                    <button class="filter-btn" onclick="window.location.href='robotics-landing.html'">LANDING</button>
+                </div>
+                <div class="filter-buttons" style="margin-top: 5px;">
+                    <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
+                        <option value="">EXPLORE OTHER TRL RADARS ▼</option>
+                        <option value="ai-trl.html">AI & Machine Learning</option>
+                        <option value="blockchain-trl.html">Blockchain</option>
+                        <option value="biorobotics-trl.html">Bio-Robotics</option>
+                        <option value="edge-trl.html">Edge Computing</option>
+                        <option value="interfaces-trl.html">Future Interfaces</option>
+                        <option value="iot-trl.html">Internet of Things</option>
+                        <option value="metaverse-trl.html">Metaverse</option>
+                        <option value="quantum-trl.html">Quantum Computing</option>
+                        <option value="robotics-trl.html" disabled selected>Robotics</option>
+                        <option value="textiles-trl.html">Smart Textiles</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+            <button class="zoom-btn" id="zoomOut" title="Zoom Out">−</button>
+            <button class="zoom-btn" id="resetZoom" title="Reset Zoom">⌂</button>
+        </div>
+
+        <svg class="radar-canvas" id="radarSvg"></svg>
+
+        <div class="trl-info-panel" id="trlInfoPanel">
+            <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
+            <div class="trl-info-title">Technology Readiness Levels (TRL)</div>
+            <div class="trl-info-content">
+                Technology Readiness Levels for Robotics assess maturity from basic research to operational deployment.
+                TRL evaluation considers hardware reliability, software autonomy, safety certifications, environmental
+                adaptability, human-robot interaction quality, and real-world performance in industrial, commercial, and
+                consumer applications.
+            </div>
+            <div class="trl-levels-grid">
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 1-2</div>
+                    <div>Basic Research</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 3</div>
+                    <div>Proof of Concept</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 4</div>
+                    <div>Lab Prototype</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 5</div>
+                    <div>Field Testing</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 6</div>
+                    <div>Pilot Deployment</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 7</div>
+                    <div>Limited Production</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 8</div>
+                    <div>Commercial Product</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 9</div>
+                    <div>Mass Deployment</div>
+                </div>
+                <div class="trl-level-item" style="grid-column: span 1; background: var(--color-electric-blue-bg);">
+                    <div class="trl-level-number">Click & Explore</div>
+                    <div>Interactive Technologies</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">TRL Levels</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a3a3a3;"></div>
+                <span>TRL 1-3: Research</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #525252;"></div>
+                <span>TRL 4-6: Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4040ff;"></div>
+                <span>TRL 7-9: Deployment</span>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfoPanel()">×</button>
+            <div id="infoPanelContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">Initializing Radar...</div>
+    </div>
+
+    <script>
+        const technologyData = {
+            2015: [
+                { id: 'industrial-arms', name: 'Industrial Robot Arms', category: 'industry', trl: 9, angle: 0, progress: { research: 95, funding: 98, timeline: 95, consensus: 98 } },
+                { id: 'agv-basic', name: 'Automated Guided Vehicles', category: 'industry', trl: 8, angle: 15, progress: { research: 85, funding: 90, timeline: 82, consensus: 88 } },
+                { id: 'welding-robots', name: 'Welding Robots', category: 'industry', trl: 9, angle: 30, progress: { research: 95, funding: 100, timeline: 95, consensus: 98 } },
+                { id: 'pick-place', name: 'Pick-and-Place Systems', category: 'industry', trl: 8, angle: 45, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'vacuum-robots', name: 'Robotic Vacuum Cleaners', category: 'industry', trl: 7, angle: 60, progress: { research: 75, funding: 80, timeline: 72, consensus: 78 } },
+                { id: 'drone-basic', name: 'Consumer Drones', category: 'emerging', trl: 6, angle: 75, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'surgical-assist', name: 'Surgical Assist Robots', category: 'emerging', trl: 6, angle: 90, progress: { research: 70, funding: 75, timeline: 65, consensus: 72 } },
+                { id: 'warehouse-early', name: 'Warehouse Automation', category: 'emerging', trl: 5, angle: 105, progress: { research: 55, funding: 65, timeline: 50, consensus: 58 } },
+                { id: 'humanoid-research', name: 'Humanoid Research Robots', category: 'research', trl: 4, angle: 120, progress: { research: 45, funding: 50, timeline: 40, consensus: 48 } },
+                { id: 'ros-framework', name: 'ROS Framework', category: 'emerging', trl: 6, angle: 135, progress: { research: 60, funding: 65, timeline: 55, consensus: 62 } },
+                { id: 'autonomous-nav', name: 'Autonomous Navigation', category: 'research', trl: 5, angle: 150, progress: { research: 50, funding: 55, timeline: 45, consensus: 52 } },
+                { id: 'grippers', name: 'Robotic Grippers', category: 'industry', trl: 7, angle: 165, progress: { research: 75, funding: 80, timeline: 70, consensus: 77 } },
+                { id: 'vision-systems', name: 'Machine Vision Systems', category: 'industry', trl: 7, angle: 180, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+                { id: 'collaborative-early', name: 'Early Collaborative Robots', category: 'emerging', trl: 5, angle: 195, progress: { research: 55, funding: 60, timeline: 50, consensus: 58 } },
+                { id: 'agricultural-basic', name: 'Agricultural Automation', category: 'research', trl: 4, angle: 210, progress: { research: 40, funding: 45, timeline: 35, consensus: 42 } },
+                { id: 'underwater-rov', name: 'Underwater ROVs', category: 'industry', trl: 7, angle: 225, progress: { research: 70, funding: 75, timeline: 65, consensus: 72 } },
+                { id: 'exoskeleton-research', name: 'Exoskeleton Research', category: 'research', trl: 3, angle: 240, progress: { research: 35, funding: 40, timeline: 30, consensus: 37 } },
+                { id: 'soft-robotics-early', name: 'Soft Robotics Concepts', category: 'research', trl: 2, angle: 255, progress: { research: 25, funding: 30, timeline: 20, consensus: 27 } },
+                { id: 'swarm-basic', name: 'Swarm Robotics Research', category: 'research', trl: 2, angle: 270, progress: { research: 20, funding: 25, timeline: 15, consensus: 22 } },
+                { id: 'bipedal-research', name: 'Bipedal Robot Research', category: 'research', trl: 3, angle: 285, progress: { research: 30, funding: 35, timeline: 25, consensus: 32 } },
+                { id: 'microrobots-early', name: 'Microrobot Concepts', category: 'research', trl: 2, angle: 300, progress: { research: 20, funding: 25, timeline: 15, consensus: 22 } },
+                { id: 'aerial-manipulation', name: 'Aerial Manipulation Research', category: 'research', trl: 2, angle: 315, progress: { research: 25, funding: 30, timeline: 20, consensus: 27 } },
+                { id: 'social-robots-early', name: 'Social Robotics Concepts', category: 'research', trl: 3, angle: 330, progress: { research: 30, funding: 35, timeline: 25, consensus: 32 } },
+                { id: 'bio-inspired-early', name: 'Bio-Inspired Robotics', category: 'research', trl: 3, angle: 345, progress: { research: 35, funding: 40, timeline: 30, consensus: 37 } }
+            ],
+            2020: [
+                { id: 'industrial-arms', name: 'Industrial Robot Arms', category: 'industry', trl: 9, angle: 0, progress: { research: 98, funding: 100, timeline: 98, consensus: 99 } },
+                { id: 'warehouse-amr', name: 'Warehouse AMRs (Amazon, Locus)', category: 'industry', trl: 8, angle: 15, progress: { research: 88, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'collaborative-robots', name: 'Collaborative Robots (Cobots)', category: 'industry', trl: 7, angle: 30, progress: { research: 80, funding: 85, timeline: 75, consensus: 82 } },
+                { id: 'vacuum-robots', name: 'Robotic Vacuum Cleaners', category: 'industry', trl: 9, angle: 45, progress: { research: 95, funding: 98, timeline: 95, consensus: 97 } },
+                { id: 'drone-commercial', name: 'Commercial Drones (DJI)', category: 'industry', trl: 8, angle: 60, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'agricultural-tractors', name: 'Autonomous Tractors', category: 'emerging', trl: 6, angle: 75, progress: { research: 65, funding: 75, timeline: 60, consensus: 68 } },
+                { id: 'delivery-robots', name: 'Delivery Robots (Starship)', category: 'emerging', trl: 6, angle: 90, progress: { research: 62, funding: 70, timeline: 58, consensus: 65 } },
+                { id: 'surgical-davinci', name: 'Surgical Robots (da Vinci)', category: 'industry', trl: 8, angle: 105, progress: { research: 88, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'quadrupeds', name: 'Quadruped Robots (Spot)', category: 'emerging', trl: 6, angle: 120, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'ros2', name: 'ROS 2 Framework', category: 'industry', trl: 7, angle: 135, progress: { research: 75, funding: 80, timeline: 70, consensus: 77 } },
+                { id: 'humanoid-atlas', name: 'Humanoid Robots (Atlas)', category: 'research', trl: 5, angle: 150, progress: { research: 55, funding: 70, timeline: 50, consensus: 58 } },
+                { id: 'exoskeleton-medical', name: 'Medical Exoskeletons', category: 'emerging', trl: 6, angle: 165, progress: { research: 60, funding: 65, timeline: 55, consensus: 62 } },
+                { id: 'underwater-rov', name: 'Underwater ROVs', category: 'industry', trl: 8, angle: 180, progress: { research: 82, funding: 88, timeline: 78, consensus: 83 } },
+                { id: 'inspection-drones', name: 'Infrastructure Inspection Drones', category: 'emerging', trl: 6, angle: 195, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'soft-robotics', name: 'Soft Robotics', category: 'research', trl: 4, angle: 210, progress: { research: 45, funding: 50, timeline: 40, consensus: 48 } },
+                { id: 'social-robots', name: 'Social Robots (Pepper)', category: 'emerging', trl: 5, angle: 225, progress: { research: 50, funding: 55, timeline: 45, consensus: 52 } },
+                { id: 'lawn-mowers', name: 'Robotic Lawn Mowers', category: 'industry', trl: 8, angle: 240, progress: { research: 82, funding: 85, timeline: 78, consensus: 83 } },
+                { id: 'construction-basic', name: 'Construction Robotics', category: 'research', trl: 4, angle: 255, progress: { research: 42, funding: 48, timeline: 38, consensus: 45 } },
+                { id: 'swarm-robots', name: 'Swarm Robotics', category: 'research', trl: 3, angle: 270, progress: { research: 35, funding: 40, timeline: 30, consensus: 37 } },
+                { id: 'bipedal-walking', name: 'Bipedal Walking Robots', category: 'research', trl: 5, angle: 285, progress: { research: 50, funding: 60, timeline: 45, consensus: 52 } },
+                { id: 'microrobots', name: 'Medical Microrobots', category: 'research', trl: 3, angle: 300, progress: { research: 35, funding: 40, timeline: 30, consensus: 37 } },
+                { id: 'aerial-manipulation', name: 'Aerial Manipulation', category: 'research', trl: 3, angle: 315, progress: { research: 38, funding: 42, timeline: 33, consensus: 40 } },
+                { id: 'modular-robots', name: 'Modular Robots', category: 'research', trl: 3, angle: 330, progress: { research: 32, funding: 38, timeline: 28, consensus: 35 } },
+                { id: 'origami-robots', name: 'Origami Robotics', category: 'research', trl: 2, angle: 345, progress: { research: 28, funding: 32, timeline: 23, consensus: 30 } }
+            ],
+            2025: [
+                { id: 'industrial-arms', name: 'Industrial Robot Arms (ABB, KUKA, Fanuc)', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+                { id: 'warehouse-amr', name: 'Warehouse AMRs (1M+ Amazon Robots)', category: 'industry', trl: 9, angle: 15, progress: { research: 95, funding: 100, timeline: 95, consensus: 98 } },
+                { id: 'collaborative-robots', name: 'Collaborative Robots (Universal Robots)', category: 'industry', trl: 8, angle: 30, progress: { research: 88, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'vacuum-robots', name: 'Robot Vacuum Cleaners (Roomba, Roborock)', category: 'industry', trl: 9, angle: 45, progress: { research: 98, funding: 100, timeline: 98, consensus: 99 } },
+                { id: 'drone-delivery', name: 'Drone Delivery (Zipline, Wing)', category: 'industry', trl: 7, angle: 60, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
+                { id: 'agricultural-robots', name: 'Agricultural Robots (John Deere, Blue River)', category: 'industry', trl: 8, angle: 75, progress: { research: 82, funding: 88, timeline: 78, consensus: 83 } },
+                { id: 'delivery-robots', name: 'Sidewalk Delivery Robots (Starship, Kiwibot)', category: 'industry', trl: 7, angle: 90, progress: { research: 75, funding: 82, timeline: 70, consensus: 77 } },
+                { id: 'surgical-robots', name: 'Surgical Robots (da Vinci X/Xi)', category: 'industry', trl: 9, angle: 105, progress: { research: 92, funding: 98, timeline: 92, consensus: 95 } },
+                { id: 'quadrupeds', name: 'Quadruped Robots (Spot 1,500+ deployed)', category: 'industry', trl: 7, angle: 120, progress: { research: 80, funding: 88, timeline: 75, consensus: 82 } },
+                { id: 'humanoid-optimus', name: 'Humanoid Robots (Optimus, Figure 01, Atlas)', category: 'emerging', trl: 6, angle: 135, progress: { research: 72, funding: 90, timeline: 65, consensus: 75 } },
+                { id: 'autonomous-trucking', name: 'Autonomous Trucking (Waymo Via, Aurora)', category: 'emerging', trl: 6, angle: 150, progress: { research: 68, funding: 85, timeline: 62, consensus: 72 } },
+                { id: 'social-robots', name: 'Social Robots (ElliQ for Elderly)', category: 'emerging', trl: 6, angle: 165, progress: { research: 62, funding: 68, timeline: 58, consensus: 65 } },
+                { id: 'construction-robots', name: 'Construction Robots (Built Robotics)', category: 'emerging', trl: 6, angle: 180, progress: { research: 65, funding: 72, timeline: 60, consensus: 68 } },
+                { id: 'inspection-drones', name: 'Infrastructure Inspection Drones', category: 'industry', trl: 7, angle: 195, progress: { research: 78, funding: 82, timeline: 72, consensus: 78 } },
+                { id: 'underwater-rov', name: 'Underwater ROVs (BlueROV2)', category: 'industry', trl: 7, angle: 210, progress: { research: 80, funding: 85, timeline: 75, consensus: 82 } },
+                { id: 'ros2', name: 'ROS 2 Framework', category: 'industry', trl: 8, angle: 225, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'soft-robotics', name: 'Soft Robotics (Harvard RoboBee)', category: 'research', trl: 5, angle: 240, progress: { research: 58, funding: 62, timeline: 52, consensus: 60 } },
+                { id: 'swarm-robots', name: 'Swarm Robotics', category: 'research', trl: 4, angle: 255, progress: { research: 48, funding: 52, timeline: 42, consensus: 50 } },
+                { id: 'reconfigurable', name: 'Self-Reconfiguring Robots', category: 'research', trl: 3, angle: 270, progress: { research: 38, funding: 42, timeline: 32, consensus: 40 } },
+                { id: 'microrobots', name: 'Medical Microrobots', category: 'research', trl: 4, angle: 285, progress: { research: 45, funding: 50, timeline: 40, consensus: 48 } },
+                { id: 'flying-manipulation', name: 'Flying Manipulation Robots', category: 'research', trl: 4, angle: 300, progress: { research: 42, funding: 48, timeline: 38, consensus: 45 } },
+                { id: 'origami-robots', name: 'Origami Robotics', category: 'research', trl: 3, angle: 315, progress: { research: 35, funding: 40, timeline: 30, consensus: 37 } },
+                { id: 'biohybrid', name: 'Bio-Hybrid Robots (Muscle-Powered)', category: 'research', trl: 3, angle: 330, progress: { research: 40, funding: 45, timeline: 35, consensus: 42 } },
+                { id: 'morphing-drones', name: 'Morphing Wing Drones', category: 'research', trl: 4, angle: 345, progress: { research: 45, funding: 50, timeline: 40, consensus: 48 } }
+            ]
+        };
+
+        const techDescriptions = {
+            'industrial-arms': {
+                description: 'Industrial robot arms from ABB, KUKA, and Fanuc represent the most mature robotics technology, with decades of proven deployment in manufacturing. As of 2024, the industrial robotics market reached $17-48 billion depending on methodology, with FANUC commanding 10% global market share, ABB holding 8.3%, and KUKA maintaining 3.4%. Together with Yaskawa and Mitsubishi Electric, these companies control approximately 75% of global shipments. Industrial robots perform welding, assembly, painting, packaging, and material handling with sub-millimeter precision across automotive, electronics, metals, plastics, and food industries. Modern systems feature collaborative capabilities, vision systems, force sensing, and AI-powered quality control. The market projects continued growth at 7-13% CAGR through 2030 driven by Industry 4.0 initiatives, labor shortages, and demand for flexible automation.',
+                references: [
+                    'Statista. (2024). Chart: The Giants of Industrial Robotics. Global Market Share Analysis.',
+                    'Markets and Markets. (2024). Industrial Robotics Market Share & Opportunities Report.',
+                    'IFR (International Federation of Robotics). (2024). World Robotics Report 2024.'
+                ]
+            },
+            'warehouse-amr': {
+                description: 'Amazon deployed its 1 millionth robot in 2024, with the milestone robot delivered to a Japanese fulfillment center joining a global network spanning 300+ facilities worldwide. Amazon Proteus, the company first fully autonomous mobile robot, safely navigates employee workspaces while moving heavy carts. Cardinal and Proteus systems deployed in Nashville saw 70% of items shipped through robotics within two years of testing. Amazon DeepFleet AI foundation model improved robot fleet travel time by 10%. The warehouse robotics market includes competitors like Locus Robotics, 6 River Systems (Shopify), Fetch Robotics, and GreyOrange providing AMRs for picking, sorting, and transport. Benefits include 2-3× productivity gains, reduced worker strain, 24/7 operation, and scalability. Challenges include high capital costs ($50k-$200k per robot), facility retrofitting, and workforce transition management.',
+                references: [
+                    'Amazon. (2024). Amazon deploys over 1 million robots and launches new AI. About Amazon News.',
+                    'Robotics & Automation News. (2025). Amazon hits 1 million robots as AI transforms warehouse operations.',
+                    'About Amazon. (2024). How Amazon deploys collaborative robots in its operations to benefit employees.'
+                ]
+            },
+            'quadrupeds': {
+                description: 'Boston Dynamics Spot quadruped robot achieved over 1,500 deployments by 2024, teaching hundreds of companies how to work alongside autonomous mobile robots. Applications span hazardous environment inspection (oil & gas, utilities, construction), public safety operations, facility monitoring, and data collection. The Otto Group deployed Spot and Stretch together in Europe first combined deployment. Spot features autonomous navigation, obstacle avoidance, 360° cameras, thermal imaging, acoustic monitoring, and payload customization. Competing platforms include ANYbotics ANYmal, Ghost Robotics Vision 60, and Unitree robots. Use cases include methane leak detection, equipment inspection in dangerous areas, search and rescue, and patrol/surveillance. Benefits include accessing spaces unsafe or impractical for humans, consistent data collection, and reducing worker exposure to hazards. Challenges include $75k+ cost, limited manipulation capability, and battery life (90 minutes typical runtime).',
+                references: [
+                    'Boston Dynamics. (2024). A Retrospective on Uses of Boston Dynamics Spot Robot.',
+                    'The Robot Report. (2024). Spot Robot Deployment Statistics and Applications.',
+                    'Boston Dynamics. (2024). Orbit Software Platform for Fleet Management.'
+                ]
+            },
+            'humanoid-optimus': {
+                description: 'Humanoid robotics advanced significantly in 2024 with Tesla Optimus, Boston Dynamics electric Atlas, and Figure 01 leading development. Tesla demonstrated Optimus performing factory jobs in May 2024 (though with teleoperation assistance), bartending and synchronized dancing at the October We, Robot event, and traversing uneven terrain autonomously in December 2024. Musk projected limited production in 2025 with 1,000+ units for Tesla facilities, external company sales in 2026, and mass production by late 2026 at $20-30k target price. Boston Dynamics retired hydraulic Atlas in April 2024, introducing fully electric version partnering with Hyundai for automotive manufacturing testing. Figure 01 secured partnerships with BMW and demonstrated warehouse tasks. Benefits of humanoid form include navigating human-designed environments, using existing tools, and versatile task adaptation. Challenges include complexity, cost, battery life (2-8 hours), and achieving reliable autonomous operation matching human dexterity and decision-making.',
+                references: [
+                    'Built In. (2024). Tesla Robot, Optimus: Everything We Know.',
+                    'Boston Dynamics. (2024). An Electric New Era for Atlas.',
+                    'Humanoid Robotics Technology. (2024). Tesla Unveils Ambitious Optimus Humanoid Roadmap.'
+                ]
+            },
+            'collaborative-robots': {
+                description: 'Collaborative Robots (Cobots) (TRL 8) from Universal Robots and Techman safely work alongside humans without safety cages. By 2025, they use AI vision to "watch" human coworkers and slow down if someone gets too close, enabling flexible SME manufacturing lines.',
+                progress: { research: 88, funding: 95, timeline: 85, consensus: 90 },
+                references: ['Universal Robots. (2025). Cobot safety standards ISO/TS 15066.', 'Interact Analysis. (2024). Cobot market growth report.']
+            },
+            'vacuum-robots': {
+                description: 'Robotic Vacuum Cleaners (TRL 9) are a household staple. 2025 models (Roborock S8 MaxV, iRobot Roomba Combo) feature self-emptying, self-cleaning, and self-refilling docks, plus AI obstacle avoidance that identifies pet waste and cables with 99% accuracy.',
+                progress: { research: 98, funding: 100, timeline: 98, consensus: 99 },
+                references: ['iRobot. (2025). Smart Home Robotics report.', 'Consumer Reports. (2024). Best Robot Vacuums 2025.']
+            },
+            'drone-delivery': {
+                description: 'Drone Delivery (TRL 7) is scaling in suburbs. Zipline\'s Platform 2 droid lowers packages on a tether silently. Wing (Alphabet) delivers meds and food in minutes. Regulatory approvals (FAA Part 135) are expanding beyond pilot zones in Texas and North Carolina.',
+                progress: { research: 78, funding: 85, timeline: 72, consensus: 80 },
+                references: ['Zipline. (2025). 1 million commercial deliveries milestone.', 'FAA. (2024). BVLOS (Beyond Visual Line of Sight) rule updates.']
+            },
+            'agricultural-robots': {
+                description: 'Agricultural Robots (TRL 8) like John Deere\'s See & Spray use computer vision to target individual weeds, reducing herbicide use by 66%. Harvester robots picking strawberries and apples are entering commercial use to combat farm labor shortages.',
+                progress: { research: 82, funding: 88, timeline: 78, consensus: 83 },
+                references: ['John Deere. (2025). Autonomous farming impact report.', 'The Robot Report. (2024). AgTech robotics investment trends.']
+            },
+            'delivery-robots': {
+                description: 'Sidewalk Delivery Robots (TRL 7) operate on college campuses and city centers. Starship Technologies passed 6 million deliveries. They use sidewalk-view navigation and are essentially "coolers on wheels" for last-mile food delivery.',
+                progress: { research: 75, funding: 82, timeline: 70, consensus: 77 },
+                references: ['Starship Technologies. (2025). 6 million autonomous deliveries.', 'Kiwibot. (2024). Urban sidewalk navigation safety data.']
+            },
+            'surgical-robots': {
+                description: 'Surgical Robots (TRL 9) like Intuitive\'s da Vinci 5 enable minimally invasive surgery with force feedback. 2025 systems act as "co-pilots," identifying critical anatomy (nerves, vessels) in real-time to prevent accidental damage.',
+                progress: { research: 92, funding: 98, timeline: 92, consensus: 95 },
+                references: ['Intuitive Surgical. (2025). da Vinci 5 clinical outcomes.', 'JAMA Surgery. (2024). AI-guided robotic surgery study.']
+            },
+            'autonomous-trucking': {
+                description: 'Autonomous Trucking (TRL 6) pilots by Aurora and Waymo Via are hauling freight on highways (e.g., Dallas to Houston) without drivers in the cab. Safety drivers are still often used, but "driver-out" validation is proving safer than human benchmarks for long-haul routes.',
+                progress: { research: 68, funding: 85, timeline: 62, consensus: 72 },
+                references: ['Aurora Innovation. (2025). Commercial Launch roadmap.', 'Waymo. (2024). Autonomous trucking safety methodology.']
+            },
+            'social-robots': {
+                description: 'Social Robots (TRL 6) like ElliQ are designed for the elderly. Unlike general assistants, they proactively initiate conversation ("Good morning, did you sleep well?") to combat loneliness and remind users to take medication.',
+                progress: { research: 62, funding: 68, timeline: 58, consensus: 65 },
+                references: ['Intuition Robotics. (2025). Impact on senior isolation.', 'Aging 2.0. (2024). Social robotics efficacy study.']
+            },
+            'construction-robots': {
+                description: 'Construction Robots (TRL 6) automate dangerous tasks. Built Robotics upgrades excavators to dig autonomous trenches. Tybot ties rebar on bridges. 2025 tech focuses on single-task automation rather than full jobsite autonomy.',
+                progress: { research: 65, funding: 72, timeline: 60, consensus: 68 },
+                references: ['Built Robotics. (2025). Exosystem deployment stats.', 'ENR. (2024). Top construction robotics startups.']
+            },
+            'inspection-drones': {
+                description: 'Infrastructure Inspection Drones (TRL 7) from Skydio fly autonomously around bridges and towers to detect rust or cracks using AI 3D scanning, removing the need for humans to climb dangerous structures.',
+                progress: { research: 78, funding: 82, timeline: 72, consensus: 78 },
+                references: ['Skydio. (2025). 3D Scan for customized inspection.', 'Ameren. (2024). Drone-based power line inspection ROI.']
+            },
+            'underwater-rov': {
+                description: 'Underwater ROVs (TRL 7) are the drones of the sea. Blue Robotics makes affordable ($5k) mini-subs for hull inspection and aquaculture. Industrial ROVs maintain offshore wind farms at depths divers cannot reach.',
+                progress: { research: 80, funding: 85, timeline: 75, consensus: 82 },
+                references: ['Blue Robotics. (2025). Marine research applications.', 'Oceaneering. (2024). Subsea resident vehicle operations.']
+            },
+            'ros2': {
+                description: 'ROS 2 (Robot Operating System 2) (TRL 8) is the industry standard software middleware. 2025 "Jazzy Jalisco" release brings real-time safety certification compliance, essential for medical and automotive robots.',
+                progress: { research: 88, funding: 92, timeline: 85, consensus: 90 },
+                references: ['Open Robotics. (2025). ROS 2 Jazzy release notes.', 'Apex.AI. (2024). ROS 2 for safety-critical systems.']
+            },
+            'soft-robotics': {
+                description: 'Soft Robotics (TRL 5) uses flexible materials (silicone grippers) to handle delicate items like fruit or pastries that metal claws would crush. Harvard\'s RoboBee demonstrates insect-scale soft flight.',
+                progress: { research: 58, funding: 62, timeline: 52, consensus: 60 },
+                references: ['Soft Robotics Inc. (2025). Food handling automation.', 'Science Robotics. (2024). Soft actuator breakthroughs.']
+            },
+            'swarm-robots': {
+                description: 'Swarm Robotics (TRL 4) coords hundreds of simple robots to act as a system (like ants). Currently used in logistics (grid sorting systems), research focuses on decentralized search-and-rescue swarms that survive losing individual members.',
+                progress: { research: 48, funding: 52, timeline: 42, consensus: 50 },
+                references: ['Nature. (2025). Decentralized swarm control algorithms.', 'DARPA. (2024). OFFensive Swarm-Enabled Tactics (OFFSET) results.']
+            },
+            'reconfigurable': {
+                description: 'Self-Reconfiguring Robots (TRL 3) change shape to fit the task (rolling like a wheel vs. walking like a spider). Modular "blocks" can assemble into furniture or tools, pioneered by MIT\'s M-Blocks.',
+                progress: { research: 38, funding: 42, timeline: 32, consensus: 40 },
+                references: ['MIT CSAIL. (2025). Self-assembling cube robots.', 'IEEE Robotics. (2024). Modular robot scalability.']
+            },
+            'microrobots': {
+                description: 'Medical Microrobots (TRL 4) are dust-sized bots steered by magnets to deliver drugs to specific tumors or clear blood clots. 2025 trials in animals show promise for "surgery without cutting."',
+                progress: { research: 45, funding: 50, timeline: 40, consensus: 48 },
+                references: ['Max Planck Institute. (2025). Micro-swimmers for drug delivery.', 'ETH Zurich. (2024). Magnetic navigation of microrobots.']
+            },
+            'flying-manipulation': {
+                description: 'Flying Manipulation Robots (TRL 4) differ from inspection drones by strictly interacting with the world (opening doors, turning valves) while hovering. Requires extreme stability control.',
+                progress: { research: 42, funding: 48, timeline: 38, consensus: 45 },
+                references: ['University of Seville. (2025). Aerial manipulation arms.', 'IROS. (2024). Drone grasping mechanics.']
+            },
+            'origami-robots': {
+                description: 'Origami Robotics (TRL 3) fold 2D sheets into 3D robots. They are cheap to print and can be "ingested" (unfolding in the stomach to patch wounds or remove button batteries).',
+                progress: { research: 35, funding: 40, timeline: 30, consensus: 37 },
+                references: ['Stanford. (2025). milliRobot origami design.', 'Nature Communications. (2024). Ingestible origami robot trials.']
+            },
+            'biohybrid': {
+                description: 'Bio-Hybrid Robots (TRL 3) combine living tissues (rat muscle cells) with synthetic skeletons. They heal themselves and run on glucose, aiming for "biological machines" that don\'t need batteries.',
+                progress: { research: 40, funding: 45, timeline: 35, consensus: 42 },
+                references: ['University of Tokyo. (2025). Biohybrid muscle actuators.', 'Science. (2024). Living robotic tissues.']
+            },
+            'morphing-drones': {
+                description: 'Morphing Wing Drones (TRL 4) change wing shape like birds to switch between efficient gliding and agile diving. This extends battery life for long-range environmental monitoring.',
+                progress: { research: 45, funding: 50, timeline: 40, consensus: 48 },
+                references: ['EPFL. (2025). Bird-inspired morphing drone.', 'AIAA. (2024). Variable-sweep wing drone aerodynamics.']
+            }
+        };
+
+        const techConnections = [
+            ['industrial-arms', 'collaborative-robots'],
+            ['warehouse-amr', 'delivery-robots'],
+            ['quadrupeds', 'humanoid-optimus'],
+            ['drone-delivery', 'inspection-drones'],
+            ['surgical-robots', 'soft-robotics'],
+            ['ros2', 'autonomous-trucking'],
+            ['agricultural-robots', 'construction-robots']
+        ];
+
+        // ========== GENERIC VISUALIZATION CODE - NO CHANGES NEEDED ==========
+
+        let currentYear = 2025;
+        let currentFilter = 'all';
+        let selectedTech = null;
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const maxRadius = Math.min(width, height) * 0.4;
+
+        const svg = d3.select('#radarSvg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const categoryColors = {
+            research: 'var(--color-electric-blue)',
+            industry: 'var(--color-gray-800)',
+            emerging: 'var(--color-gray-600)',
+            experimental: 'var(--color-electric-blue-dark)'
+        };
+
+        const trlColors = d3.scaleLinear()
+            .domain([1, 5, 9])
+            .range(['#a3a3a3', '#525252', '#4040ff']);
+
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        let zoomTransform = d3.zoomIdentity;
+
+        function initVisualization() {
+            setupZoom();
+            setTimeout(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderRadar();
+            }, 1500);
+        }
+
+        function setupZoom() {
+            const zoom = d3.zoom()
+                .scaleExtent([minZoom, maxZoom])
+                .on('zoom', handleZoom);
+
+            svg.call(zoom);
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+            });
+        }
+
+        function handleZoom(event) {
+            zoomTransform = event.transform;
+            svg.select('.radar-content').attr('transform', zoomTransform);
+        }
+
+        function renderRadar() {
+            svg.selectAll('*').remove();
+
+            const radarContent = svg.append('g').attr('class', 'radar-content');
+            const defs = svg.append('defs');
+
+            const shadow = defs.append('filter')
+                .attr('id', 'shadow')
+                .attr('x', '-50%')
+                .attr('y', '-50%')
+                .attr('width', '200%')
+                .attr('height', '200%');
+
+            shadow.append('feDropShadow')
+                .attr('dx', 2)
+                .attr('dy', 2)
+                .attr('stdDeviation', 3)
+                .attr('flood-color', '#000')
+                .attr('flood-opacity', 0.2);
+
+            radarContent.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', maxRadius)
+                .attr('fill', '#f8fafc')
+                .attr('stroke', '#e2e8f0')
+                .attr('stroke-width', 2);
+
+            for (let i = 1; i <= 9; i++) {
+                const radius = (maxRadius / 9) * i;
+
+                radarContent.append('circle')
+                    .attr('cx', centerX)
+                    .attr('cy', centerY)
+                    .attr('r', radius)
+                    .attr('fill', 'none')
+                    .attr('stroke', '#cbd5e1')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.6);
+
+                if (i % 3 === 0) {
+                    radarContent.append('text')
+                        .attr('x', centerX + radius + 10)
+                        .attr('y', centerY + 5)
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '12px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(`TRL ${i}`);
+                }
+            }
+
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const x2 = centerX + Math.cos(angle) * maxRadius;
+                const y2 = centerY + Math.sin(angle) * maxRadius;
+
+                radarContent.append('line')
+                    .attr('x1', centerX)
+                    .attr('y1', centerY)
+                    .attr('x2', x2)
+                    .attr('y2', y2)
+                    .attr('stroke', '#e2e8f0')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.5);
+            }
+
+            const data = technologyData[currentYear] || technologyData[2025];
+            const filteredData = currentFilter === 'all' ? data : data.filter(d => d.category === currentFilter);
+
+            const techGroups = radarContent.selectAll('.tech-node')
+                .data(filteredData)
+                .enter()
+                .append('g')
+                .attr('class', 'tech-node')
+                .style('cursor', 'pointer')
+                .on('click', (event, d) => showTechInfo(d))
+                .on('mouseover', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 12)
+                        .attr('filter', 'url(#shadow)');
+                })
+                .on('mouseout', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 8)
+                        .attr('filter', 'none');
+                });
+
+            techGroups.each(function (d) {
+                const group = d3.select(this);
+                const radius = (maxRadius / 9) * d.trl;
+                const angleRad = (d.angle - 90) * Math.PI / 180;
+                const x = centerX + Math.cos(angleRad) * radius;
+                const y = centerY + Math.sin(angleRad) * radius;
+
+                const nodeColor = getContrastColor(d.category, d.trl);
+                group.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 8)
+                    .attr('fill', nodeColor.fill)
+                    .attr('stroke', nodeColor.stroke)
+                    .attr('stroke-width', 2);
+
+                if (d.trl >= 6 || d.category === 'emerging') {
+                    const labelRadius = radius + 25;
+                    const labelX = centerX + Math.cos(angleRad) * labelRadius;
+                    const labelY = centerY + Math.sin(angleRad) * labelRadius;
+
+                    group.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '10px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(d.name.length > 20 ? d.name.substring(0, 20) + '...' : d.name);
+                }
+            });
+
+            drawConnections(filteredData);
+
+            svg.selectAll('.tech-node')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 50)
+                .style('opacity', 1);
+        }
+
+        function getContrastColor(category, trl) {
+            const colors = {
+                research: { fill: '#4040ff', stroke: '#1e1e8f' },
+                industry: { fill: '#1e293b', stroke: '#0f172a' },
+                emerging: { fill: '#64748b', stroke: '#475569' },
+                experimental: { fill: '#3030dd', stroke: '#1e1e8f' }
+            };
+            return colors[category] || colors.research;
+        }
+
+        function drawConnections(data) {
+            const connectionGroup = svg.select('.radar-content').append('g').attr('class', 'connections');
+
+            techConnections.forEach(([source, target]) => {
+                const sourceNode = data.find(d => d.id === source);
+                const targetNode = data.find(d => d.id === target);
+
+                if (sourceNode && targetNode) {
+                    const sourceRadius = (maxRadius / 9) * sourceNode.trl;
+                    const targetRadius = (maxRadius / 9) * targetNode.trl;
+                    const sourceAngle = (sourceNode.angle - 90) * Math.PI / 180;
+                    const targetAngle = (targetNode.angle - 90) * Math.PI / 180;
+
+                    const sourceX = centerX + Math.cos(sourceAngle) * sourceRadius;
+                    const sourceY = centerY + Math.sin(sourceAngle) * sourceRadius;
+                    const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+                    const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+                    const midX = (sourceX + targetX) / 2;
+                    const midY = (sourceY + targetY) / 2;
+                    const controlX = midX + (centerX - midX) * 0.3;
+                    const controlY = midY + (centerY - midY) * 0.3;
+
+                    const path = `M ${sourceX},${sourceY} Q ${controlX},${controlY} ${targetX},${targetY}`;
+
+                    connectionGroup.append('path')
+                        .attr('d', path)
+                        .attr('stroke', '#3b82f6')
+                        .attr('stroke-width', 1.5)
+                        .attr('fill', 'none')
+                        .attr('opacity', 0.6)
+                        .attr('stroke-dasharray', '5,5');
+                }
+            });
+        }
+
+        function showTechInfo(tech) {
+            selectedTech = tech;
+            const infoPanel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
+
+            const techInfo = techDescriptions[tech.id] || {};
+            const description = techInfo.description || `${tech.name} is a robotics technology with TRL level ${tech.trl}.`;
+            const references = techInfo.references || [];
+
+            content.innerHTML = `
+                <h2 class="info-title">${tech.name}</h2>
+                <div class="info-meta">
+                    <span class="meta-badge meta-${tech.category}">${tech.category.toUpperCase()}</span>
+                    <span class="meta-badge" style="background: ${trlColors(tech.trl)}; color: white;">TRL ${tech.trl}</span>
+                    <span class="meta-badge" style="background: var(--color-gray-700); color: white;">Year: ${currentYear}</span>
+                </div>
+                <div class="info-description">
+                    ${description}
+                </div>
+                <div class="progress-grid">
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <div class="progress-label">${key}</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%;"></div>
+                            </div>
+                            <div class="progress-value">${value}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${references.length > 0 ? `
+                    <div class="references-section">
+                        <div class="references-title">Key References</div>
+                        ${references.map(ref => `
+                            <div class="reference-item">• ${ref}</div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            `;
+
+            infoPanel.classList.add('active');
+        }
+
+        function closeInfoPanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+            selectedTech = null;
+        }
+
+        function toggleTRLInfo() {
+            const trlInfoPanel = document.getElementById('trlInfoPanel');
+            trlInfoPanel.classList.toggle('active');
+        }
+
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderRadar();
+            });
+        });
+
+        document.querySelectorAll('[data-time]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-time]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentYear = parseInt(this.dataset.time);
+                renderRadar();
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            location.reload();
+        });
+
+        initVisualization();
+    </script>
+</body>
+
+</html>

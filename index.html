@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emerging Technology Hub - Community Innovation Lab | Studio Poetics</title>
-    <meta name="description" content="Learn emerging technologies through hands-on fundamentals. A community innovation lab by Studio Poetics offering accessible AI, blockchain, smart textiles, and robotics education for non-technical learners.">
-    <meta name="keywords" content="emerging technology, AI learning, blockchain education, smart textiles, robotics, innovation lab, Studio Poetics, technology fundamentals, non-technical learning">
+    <meta name="description"
+        content="Learn emerging technologies through hands-on fundamentals. A community innovation lab by Studio Poetics offering accessible AI, blockchain, smart textiles, and robotics education for non-technical learners.">
+    <meta name="keywords"
+        content="emerging technology, AI learning, blockchain education, smart textiles, robotics, innovation lab, Studio Poetics, technology fundamentals, non-technical learning">
     <meta name="author" content="Studio Poetics">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eth.poetics.studio/">
@@ -14,14 +17,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eth.poetics.studio/">
     <meta property="og:title" content="Emerging Technology Hub - Community Innovation Lab">
-    <meta property="og:description" content="Learn emerging technologies through hands-on fundamentals. A community innovation lab by Studio Poetics offering accessible education for non-technical learners.">
+    <meta property="og:description"
+        content="Learn emerging technologies through hands-on fundamentals. A community innovation lab by Studio Poetics offering accessible education for non-technical learners.">
     <meta property="og:site_name" content="Emerging Technology Hub">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://eth.poetics.studio/">
     <meta property="twitter:title" content="Emerging Technology Hub - Community Innovation Lab">
-    <meta property="twitter:description" content="Learn emerging technologies through hands-on fundamentals. A community innovation lab by Studio Poetics offering accessible education for non-technical learners.">
+    <meta property="twitter:description"
+        content="Learn emerging technologies through hands-on fundamentals. A community innovation lab by Studio Poetics offering accessible education for non-technical learners.">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -53,72 +58,177 @@
     </script>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .experimental-title { font-size: var(--text-4xl) !important; }
-    .experimental-subtitle { font-size: var(--text-lg) !important; }
-    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
-    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
-    .card-description, .card-meta { display: none !important; }
-    .card-title { font-size: var(--text-lg) !important; }
-    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
-    .vertical-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 48px !important;
-        width: 100vw !important;
-        background: var(--color-black) !important;
-        z-index: 20 !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .vertical-menu-text {
-        writing-mode: horizontal-tb !important;
-        text-orientation: initial !important;
-        letter-spacing: 0.1em !important;
-    }
-    .experimental-main { padding-top: 48px !important; }
-    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-    /* Content page specific */
-    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .fundamentals-title { font-size: var(--text-4xl) !important; }
-    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
-    .content-section { margin-bottom: var(--space-8) !important; }
-    .content-section h2 { font-size: var(--text-2xl) !important; }
-    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
-    .item-description { display: none !important; }
-    .available-badge { display: none !important; }
+            .experimental-main {
+                padding-top: 0 !important;
+            }
 
-    /* Landing page specific */
-    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
-    .section-nav-list { gap: var(--space-3) !important; }
-    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
-    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
-    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
-    .section-description { font-size: var(--text-base) !important; }
-    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
-}
-</style>
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
 
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .experimental-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+
+            .experimental-card.featured {
+                grid-row: auto !important;
+                min-height: auto !important;
+            }
+
+            .card-description,
+            .card-meta {
+                display: none !important;
+            }
+
+            .card-title {
+                font-size: var(--text-lg) !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+
+            /* Content page specific */
+            .fundamentals-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .fundamentals-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .fundamentals-subtitle {
+                font-size: var(--text-base) !important;
+            }
+
+            .fundamentals-content {
+                padding: var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .content-section {
+                margin-bottom: var(--space-8) !important;
+            }
+
+            .content-section h2 {
+                font-size: var(--text-2xl) !important;
+            }
+
+            .properties-grid,
+            .feature-grid,
+            .applications-grid,
+            .approach-cards,
+            .getting-started {
+                grid-template-columns: 1fr !important;
+            }
+
+            .item-description {
+                display: none !important;
+            }
+
+            .available-badge {
+                display: none !important;
+            }
+
+            /* Landing page specific */
+            .ai-section-nav {
+                position: static !important;
+                margin: 0 !important;
+                padding: var(--space-3) var(--space-4) !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .ai-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -127,45 +237,52 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
-                    <p class="brand-subtitle">Learn Tomorrow's Technologies Today</p>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
+                    <p class="brand-subtitle">Community Innovation Lab</p>
                 </div>
 
                 <nav>
                     <div class="experimental-nav-title">Quick Access</div>
                     <ul class="experimental-nav">
                         <li class="experimental-nav-item">
-                            <a href="flashcards-experimental.html" class="experimental-nav-link">Flash Cards</a>
-                        </li>
-                        <li class="experimental-nav-item">
-                            <a href="ai-landing.html" class="experimental-nav-link">AI Hub</a>
+                            <a href="ai-landing.html" class="experimental-nav-link">Artificial Intelligence</a>
                         </li>
                         <li class="experimental-nav-item">
                             <a href="blockchain-landing.html" class="experimental-nav-link">Blockchain</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-landing.html" class="experimental-nav-link">Robotics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="biorobotics-landing.html" class="experimental-nav-link">Bio-Robotics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="quantum-landing.html" class="experimental-nav-link">Quantum Computing</a>
                         </li>
                     </ul>
                 </nav>
 
                 <div class="experimental-info-box">
-                    <div class="info-box-title">Getting Started</div>
-                    <div class="info-box-content">New to AI? Start with our Foundation series. Looking for specific topics? Use the grid to find exactly what you need.</div>
-                </div>
-
-                <div class="experimental-info-box">
-                    <div class="info-box-title">Progress Tracking</div>
+                    <div class="info-box-title">About the Hub</div>
                     <div class="info-box-content">
-                        Cards Studied: 24/52<br>
-                        Current Streak: 7 days<br>
-                        Completion: 46%
+                        A concept exploration by <strong>Studio Poetics</strong>.<br><br>
+                        Designed for <strong>non-technical learners</strong> to demystify emerging technologies through
+                        immersive, design-first experiences.<br><br>
+                        <strong>Note:</strong> This is a static learning resource for exploration. User accounts and
+                        progress tracking are not currently enabled.
                     </div>
                 </div>
 
                 <div class="experimental-info-box">
-                    <div class="info-box-title">Study Sessions</div>
+                    <div class="info-box-title">Studio Poetics</div>
                     <div class="info-box-content">
-                        Interactive sessions on weekends<br>
-                        Live coding workshops<br>
-                        Community discussions
+                        An interaction design practice in India. We built this platform to facilitate and improve the
+                        interaction design landscape in India.
+                        <br><br>
+                        <a href="interaction-design-india.html"
+                            style="color: var(--color-gray-500); font-size: 0.8rem; text-decoration: underline;">Read
+                            our perspective on Design in India →</a>
                     </div>
                 </div>
 
@@ -182,19 +299,21 @@
                     <h2 class="experimental-subtitle">part of Community Innovation Labs</h2>
 
                     <div style="display: flex; align-items: center; margin-bottom: 2rem;">
-                        <span class="experimental-date">2024</span>
+                        <span class="experimental-date">2025</span>
                         <span class="experimental-arrow">→</span>
-                        <span class="experimental-date">∞</span>
+                        <span class="experimental-date">FUTURE</span>
                     </div>
 
                     <p class="hero-description">
-                        Bold fusion of emerging technologies through interactive learning experiences. A celebration of AI, Blockchain, Robotics, and Future Interfaces in visual communication designed for tomorrow's innovators.
+                        Bold fusion of emerging technologies through interactive learning experiences. A celebration of
+                        AI, Blockchain, Robotics, and Future Interfaces in visual communication designed for tomorrow's
+                        innovators.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="#technologies" class="experimental-btn experimental-btn--primary">Explore Technologies</a>
-                        <a href="flashcards-experimental.html" class="experimental-btn">Start Learning</a>
-                        <button class="experimental-btn" onclick="toggleBlueOverlay()">Contact the Lab</button>
+                        <a href="#technologies" class="experimental-btn experimental-btn--primary">Explore
+                            Technologies</a>
+                        <button class="experimental-btn" onclick="toggleBlueOverlay()">About the Project</button>
                     </div>
                 </div>
             </div>
@@ -209,7 +328,8 @@
                         <p class="card-subtitle">AI Design & Implementation</p>
                     </div>
                     <div class="card-description">
-                        Machine learning, neural networks, and cognitive computing systems. Interactive Typography Projection exploring the boundaries of human-AI collaboration through practical applications.
+                        Machine learning, neural networks, and cognitive computing systems. Interactive Typography
+                        Projection exploring the boundaries of human-AI collaboration through practical applications.
                     </div>
                     <div class="card-meta">
                         Visible: All the time<br>
@@ -243,7 +363,7 @@
                         Intelligent fabrics, e-textiles, and responsive materials.
                     </div>
                     <div class="card-meta">
-                        Visible: Coming Soon<br>
+                        Visible: All the time<br>
                         Material Science Lab
                     </div>
                 </div>
@@ -258,7 +378,7 @@
                         Mechanical intelligence, control systems, and human-robot interaction.
                     </div>
                     <div class="card-meta">
-                        Visible: Now Available<br>
+                        Visible: All the time<br>
                         6 Fundamentals Topics | Design-First Approach
                     </div>
                 </div>
@@ -273,7 +393,7 @@
                         Gesture recognition, voice interfaces, and spatial computing.
                     </div>
                     <div class="card-meta">
-                        Visible: Special event on Saturday evenings<br>
+                        Visible: All the time<br>
                         Augmented Reality Wall
                     </div>
                 </div>
@@ -303,7 +423,7 @@
                         Quantum algorithms, qubits, and quantum machine learning.
                     </div>
                     <div class="card-meta">
-                        Visible: Live sessions on weekends<br>
+                        Visible: All the time<br>
                         Interactive Coding Art
                     </div>
                 </div>
@@ -345,7 +465,8 @@
                         <p class="card-subtitle">Connected Systems</p>
                     </div>
                     <div class="card-description">
-                        Smart devices, sensor networks, and connected ecosystems from smart homes to industrial automation.
+                        Smart devices, sensor networks, and connected ecosystems from smart homes to industrial
+                        automation.
                     </div>
                     <div class="card-meta">
                         Visible: All the time<br>
@@ -360,7 +481,8 @@
         <footer class="site-footer">
             <div class="footer-content">
                 <div class="footer-branding">
-                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank"
+                        rel="noopener noreferrer">Studio Poetics</a>
                 </div>
                 <div class="footer-links">
                     <a href="disclaimer.html">Disclaimer</a>
@@ -400,14 +522,22 @@
             <button class="overlay-close" onclick="toggleBlueOverlay()">×</button>
             <h2 class="overlay-title">Contact the Studio</h2>
             <div class="overlay-content">
-                <p>Emerging Tech Hub is a minimalist learning platform crafted to transform traditional education into immersive digital experiences. More than just a showcase, this website is a concept exploration designed by educational innovators, merging bold aesthetics with intuitive functionality.</p>
+                <p>Emerging Tech Hub is a minimalist learning platform crafted to transform traditional education into
+                    immersive digital experiences. More than just a showcase, this website is a concept exploration
+                    designed by interaction designers, merging bold aesthetics with intuitive functionality.</p>
 
-                <p>Our studio specializes in bespoke learning design concepts for institutions that want to stand out. This experimental hub is one of our concepts, thoughtfully designed to pair striking visuals with a seamless user experience.</p>
+                <p>Studio Poetics is an interaction design practice in India. We built this platform to facilitate and
+                    improve the interaction design landscape in India, exploring how immersive experiences can make
+                    complex information accessible.</p>
+
+                <p>Learn more about us at <a href="https://www.poetics.studio" target="_blank"
+                        style="color: white; text-decoration: underline;">www.poetics.studio</a></p>
 
                 <h3 style="margin: 2rem 0 1rem 0; font-size: 1.2rem;">Get in Touch</h3>
                 <p>Ready to transform your educational platform?</p>
                 <br>
-                <a href="mailto: hello@poetics.studio" class="experimental-btn" style="color: white; border-color: white;">lab@emergingtech.hub</a>
+                <a href="mailto: hello@poetics.studio" class="experimental-btn"
+                    style="color: white; border-color: white;">lab@emergingtech.hub</a>
             </div>
         </div>
 
@@ -464,7 +594,7 @@
         });
 
         // Text reveal animation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const textRevealElements = document.querySelectorAll('.text-reveal');
             textRevealElements.forEach((element, index) => {
                 element.style.animationDelay = (index * 0.2) + 's';
@@ -472,7 +602,7 @@
         });
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('blueOverlay');
                 overlay.classList.remove('active');
@@ -481,14 +611,15 @@
 
         // Experimental interactions
         document.querySelectorAll('.experimental-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
+            card.addEventListener('mouseenter', function () {
                 this.style.transform = 'scale(1.02) rotate(0.5deg)';
             });
 
-            card.addEventListener('mouseleave', function() {
+            card.addEventListener('mouseleave', function () {
                 this.style.transform = 'scale(1) rotate(0deg)';
             });
         });
     </script>
 </body>
+
 </html>

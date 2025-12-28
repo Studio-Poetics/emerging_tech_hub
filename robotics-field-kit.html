@@ -1,160 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robotics Field Kit - Tools, Kits & Resources | Emerging Tech Hub</title>
-    <meta name="description" content="Essential tools and resources for robot makers. Arduino guides, Raspberry Pi projects, design templates, and simulation tools for building robots.">
-    <meta name="keywords" content="Arduino robotics, Raspberry Pi robots, robot kits, visual programming, robotics tools, robot simulation, ROS, maker resources">
+    <meta name="description"
+        content="Essential tools and resources for robot makers. Arduino guides, Raspberry Pi projects, design templates, and simulation tools for building robots.">
+    <meta name="keywords"
+        content="Arduino robotics, Raspberry Pi robots, robot kits, visual programming, robotics tools, robot simulation, ROS, maker resources">
     <link rel="stylesheet" href="experimental-design.css">
     <link rel="stylesheet" href="ai-fundamentals.css">
     <style>
-/* Resource Card Styling */
-.resources-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: var(--space-8);
-    margin-top: var(--space-8);
-}
+        /* Resource Card Styling */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-8);
+        }
 
-.resource-card {
-    background: var(--color-white);
-    border: var(--border-width-4) solid var(--color-black);
-    padding: var(--space-8);
-    transition: all var(--transition-base);
-}
+        .resource-card {
+            background: var(--color-white);
+            border: var(--border-width-4) solid var(--color-black);
+            padding: var(--space-8);
+            transition: all var(--transition-base);
+        }
 
-.resource-card:hover {
-    border-color: var(--color-electric-blue);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+        .resource-card:hover {
+            border-color: var(--color-electric-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
 
-.resource-card h3 {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-bold);
-    margin-bottom: var(--space-4);
-}
+        .resource-card h3 {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+        }
 
-.resource-badge {
-    display: inline-block;
-    padding: var(--space-1) var(--space-3);
-    background: var(--color-electric-blue);
-    color: var(--color-white);
-    font-size: var(--text-xs);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-4);
-}
+        .resource-badge {
+            display: inline-block;
+            padding: var(--space-1) var(--space-3);
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-4);
+        }
 
-.resource-description {
-    line-height: 1.8;
-    margin-bottom: var(--space-5);
-}
+        .resource-description {
+            line-height: 1.8;
+            margin-bottom: var(--space-5);
+        }
 
-.resource-description p {
-    margin-bottom: var(--space-4);
-    line-height: 1.8;
-}
+        .resource-description p {
+            margin-bottom: var(--space-4);
+            line-height: 1.8;
+        }
 
-.resource-list {
-    margin-left: var(--space-4);
-    margin-bottom: var(--space-5);
-}
+        .resource-list {
+            margin-left: var(--space-4);
+            margin-bottom: var(--space-5);
+        }
 
-.resource-list li {
-    margin-bottom: var(--space-3);
-    line-height: 1.8;
-}
+        .resource-list li {
+            margin-bottom: var(--space-3);
+            line-height: 1.8;
+        }
 
-.resource-link {
-    display: inline-block;
-    padding: var(--space-2) var(--space-4);
-    background: var(--color-electric-blue);
-    color: var(--color-white);
-    text-decoration: none;
-    font-weight: var(--font-bold);
-    font-size: var(--text-sm);
-    border-radius: 4px;
-    transition: all var(--transition-base);
-    margin-top: var(--space-3);
-}
+        .resource-link {
+            display: inline-block;
+            padding: var(--space-2) var(--space-4);
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: var(--font-bold);
+            font-size: var(--text-sm);
+            border-radius: 4px;
+            transition: all var(--transition-base);
+            margin-top: var(--space-3);
+        }
 
-.resource-link:hover {
-    background: var(--color-black);
-    transform: translateX(4px);
-}
+        .resource-link:hover {
+            background: var(--color-black);
+            transform: translateX(4px);
+        }
 
-.info-box {
-    background: var(--color-gray-50);
-    border-left: 4px solid var(--color-electric-blue);
-    padding: var(--space-6);
-    margin: var(--space-6) 0;
-}
+        .info-box {
+            background: var(--color-gray-50);
+            border-left: 4px solid var(--color-electric-blue);
+            padding: var(--space-6);
+            margin: var(--space-6) 0;
+        }
 
-.info-box h4 {
-    font-size: var(--text-base);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-top: 0;
-    margin-bottom: var(--space-3);
-    color: var(--color-electric-blue);
-}
+        .info-box h4 {
+            font-size: var(--text-base);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0;
+            margin-bottom: var(--space-3);
+            color: var(--color-electric-blue);
+        }
 
-.info-box p {
-    line-height: 1.8;
-    margin-bottom: var(--space-3);
-}
+        .info-box p {
+            line-height: 1.8;
+            margin-bottom: var(--space-3);
+        }
 
-.info-box p:last-child {
-    margin-bottom: 0;
-}
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
 
-.comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: var(--space-6) 0;
-}
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-6) 0;
+        }
 
-.comparison-table th,
-.comparison-table td {
-    padding: var(--space-3);
-    text-align: left;
-    border: 1px solid var(--color-gray-300);
-}
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--space-3);
+            text-align: left;
+            border: 1px solid var(--color-gray-300);
+        }
 
-.comparison-table th {
-    background: var(--color-black);
-    color: var(--color-white);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-    font-size: var(--text-sm);
-    letter-spacing: 0.05em;
-}
+        .comparison-table th {
+            background: var(--color-black);
+            color: var(--color-white);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            font-size: var(--text-sm);
+            letter-spacing: 0.05em;
+        }
 
-.comparison-table tr:nth-child(even) {
-    background: var(--color-gray-50);
-}
+        .comparison-table tr:nth-child(even) {
+            background: var(--color-gray-50);
+        }
 
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .resources-grid { grid-template-columns: 1fr !important; }
-    .comparison-table { font-size: var(--text-sm); }
-}
-</style>
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+            .experimental-main {
+                padding-top: 0 !important;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .comparison-table {
+                font-size: var(--text-sm);
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -163,7 +178,8 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
                     <p class="brand-subtitle">Robotics Field Kit</p>
                 </div>
 
@@ -195,7 +211,8 @@
                 <div class="experimental-info-box">
                     <div class="info-box-title">Getting Started</div>
                     <div class="info-box-content">
-                        New to robotics? Start with Arduino kits for hands-on learning, then explore visual programming tools.
+                        New to robotics? Start with Arduino kits for hands-on learning, then explore visual programming
+                        tools.
                     </div>
                 </div>
 
@@ -208,21 +225,84 @@
             <!-- Hero Section -->
             <div class="fundamentals-hero">
                 <h1 class="fundamentals-title">Robotics Field Kit</h1>
-                <p class="fundamentals-subtitle">Essential tools, kits, and resources for building and designing robots. From beginner maker kits to advanced simulation tools.</p>
+                <p class="fundamentals-subtitle">Essential tools, kits, and resources for building and designing robots.
+                    From beginner maker kits to advanced simulation tools.</p>
             </div>
 
             <!-- Content -->
             <div class="fundamentals-content">
 
-                <!-- Maker Kits Section -->
+                <!-- Localized Sourcing Section -->
+                <div id="getting-started" class="robotics-content-section">
+                    <div class="section-number">06</div>
+                    <h2 class="section-title">India Sourcing & Communities<span class="available-badge">Essential</span>
+                    </h2>
+                    <p class="section-description">Where to buy components locally and communities to join for
+                        mentorship.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3 class="item-title">Trusted Component Sources</h3>
+                            <p class="item-description">
+                                <strong style="color: var(--color-electric-blue);">Robu.in</strong>: Best for motors,
+                                sensors, and official Raspberry Pi/Arduino boards.<br>
+                                <strong style="color: var(--color-electric-blue);">Robocraze</strong>: Excellent for
+                                student kits and affordable clones.<br>
+                                <strong style="color: var(--color-electric-blue);">Electronic Spices</strong>: source
+                                for raw components (wires, LEDs, capacitors) at wholesale rates.
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="item-title">e-Yantra (Outreach)</h3>
+                            <p class="item-description">
+                                <strong>Context:</strong> Acknowledging that IITs can be insular, e-Yantra is
+                                specifically a government-funded <em>outreach mission</em> for <strong>Tier-2 & Tier-3
+                                    colleges</strong>. It actively funds and sets up labs in hundreds of non-elite
+                                institutions to break the "closed lab" barriers.
+                                <br><br>
+                                <a href="https://www.e-yantra.org/" target="_blank"
+                                    style="text-decoration: underline;">Check eYRC Competition →</a>
+                            </p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="item-title">Open Hardware Ecosystems</h3>
+                            <p class="item-description">
+                                <strong>T-Works (Hyderabad)</strong>: India's largest prototyping center
+                                (Government-backed Open Access).<br>
+                                <strong>IKP Eden (Bangalore)</strong>: Hardware incubator associated with makerspaces.
+                            </p>
+                            <div
+                                style="margin-top: 0.8rem; padding: 0.8rem; background: #fff1f2; border-left: 3px solid #e11d48; font-size: 0.9em; border-radius: 4px;">
+                                <strong>⚠️ Critical Perspective:</strong> Real innovation happens in open zones.
+                                Prioritize <strong>Public Makerspaces</strong> (like T-Works) where you
+                                can <em>walk in and build</em> over closed institutional labs that gatekeep resources.
+                            </div>
+                        </div>
+                        <div class="feature-card" style="border-left: 4px solid #ef4444;">
+                            <h3 class="item-title">Warning: The "Hobbyist Trap"</h3>
+                            <p class="item-description">
+                                <strong>Don't get stuck assembling kits.</strong><br>
+                                True engineering value comes from designing custom actuators and writing original
+                                control logic, not just plugging in pre-made servos. Move from "Consumer" to "Designer"
+                                as fast as possible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activities Section -->
                 <section class="content-section" id="maker-kits">
                     <h2>🛠️ Maker Kits & Platforms</h2>
-                    <p>Hardware platforms and starter kits for hands-on robot building. Choose based on your skill level and project goals.</p>
+                    <p>Hardware platforms and starter kits for hands-on robot building. Choose based on your skill level
+                        and project goals.</p>
 
                     <div class="info-box">
                         <h4>Arduino vs Raspberry Pi: Which to Choose?</h4>
-                        <p><strong>Arduino:</strong> Best for real-time control, simple sensors, and motor control. Easier to start, lower power consumption. Great for learning electronics fundamentals.</p>
-                        <p><strong>Raspberry Pi:</strong> Best for computer vision, AI/ML, complex processing, and internet connectivity. More powerful but requires more power and cooling. Great for advanced robotics projects.</p>
+                        <p><strong>Arduino:</strong> Best for real-time control, simple sensors, and motor control.
+                            Easier to start, lower power consumption. Great for learning electronics fundamentals.</p>
+                        <p><strong>Raspberry Pi:</strong> Best for computer vision, AI/ML, complex processing, and
+                            internet connectivity. More powerful but requires more power and cooling. Great for advanced
+                            robotics projects.</p>
                     </div>
 
                     <div class="resources-grid">
@@ -230,9 +310,12 @@
                             <span class="resource-badge">Beginner Friendly</span>
                             <h3>Arduino Starter Kit</h3>
                             <div class="resource-description">
-                                <p>Official Arduino starter kit with everything you need to begin building robots and interactive electronics projects.</p>
+                                <p>Official Arduino starter kit with everything you need to begin building robots and
+                                    interactive electronics projects.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What's Included:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    What's Included:</h4>
                                 <ul class="resource-list">
                                     <li>Arduino Uno R3 board</li>
                                     <li>USB cable and breadboard</li>
@@ -241,23 +324,34 @@
                                     <li>Full color project book (170 pages)</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Perfect For:</h4>
-                                <p>Complete beginners, educators, anyone new to electronics. No prior experience required.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Perfect For:</h4>
+                                <p>Complete beginners, educators, anyone new to electronics. No prior experience
+                                    required.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">First Project:</h4>
-                                <p>Build a light-following robot using photoresistors and DC motors. Learn sensor input and motor control basics.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    First Project:</h4>
+                                <p>Build a light-following robot using photoresistors and DC motors. Learn sensor input
+                                    and motor control basics.</p>
                             </div>
-                            <a href="https://store.arduino.cc/products/arduino-starter-kit" target="_blank" rel="noopener noreferrer" class="resource-link">Get Arduino Kit →</a>
-                            <a href="https://www.arduino.cc/en/Tutorial/BuiltInExamples" target="_blank" rel="noopener noreferrer" class="resource-link">Free Tutorials →</a>
+                            <a href="https://store.arduino.cc/products/arduino-starter-kit" target="_blank"
+                                rel="noopener noreferrer" class="resource-link">Get Arduino Kit →</a>
+                            <a href="https://www.arduino.cc/en/Tutorial/BuiltInExamples" target="_blank"
+                                rel="noopener noreferrer" class="resource-link">Free Tutorials →</a>
                         </div>
 
                         <div class="resource-card">
                             <span class="resource-badge">Advanced</span>
                             <h3>Raspberry Pi Robot Kits</h3>
                             <div class="resource-description">
-                                <p>Raspberry Pi-based robotics platforms for AI, computer vision, and advanced autonomous systems.</p>
+                                <p>Raspberry Pi-based robotics platforms for AI, computer vision, and advanced
+                                    autonomous systems.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Recommended Kits:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Recommended Kits:</h4>
                                 <ul class="resource-list">
                                     <li><strong>Pi Rover:</strong> Autonomous navigation with camera and sensors</li>
                                     <li><strong>GoPiGo3:</strong> Educational robot with Python programming</li>
@@ -265,7 +359,9 @@
                                     <li><strong>DonkeyCar:</strong> Self-driving car platform for machine learning</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Capabilities:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Capabilities:</h4>
                                 <ul class="resource-list">
                                     <li>Computer vision and object detection</li>
                                     <li>Machine learning and neural networks</li>
@@ -273,29 +369,42 @@
                                     <li>Internet connectivity and IoT integration</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Programming:</h4>
-                                <p>Python-based, with libraries for OpenCV (vision), TensorFlow (AI), and GPIO (hardware control).</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Programming:</h4>
+                                <p>Python-based, with libraries for OpenCV (vision), TensorFlow (AI), and GPIO (hardware
+                                    control).</p>
                             </div>
-                            <a href="https://projects.raspberrypi.org/en/projects?hardware%5B%5D=raspberry-pi&topics%5B%5D=robotics" target="_blank" rel="noopener noreferrer" class="resource-link">Pi Projects →</a>
-                            <a href="https://www.raspberrypi.com/products/" target="_blank" rel="noopener noreferrer" class="resource-link">Buy Raspberry Pi →</a>
+                            <a href="https://projects.raspberrypi.org/en/projects?hardware%5B%5D=raspberry-pi&topics%5B%5D=robotics"
+                                target="_blank" rel="noopener noreferrer" class="resource-link">Pi Projects →</a>
+                            <a href="https://www.raspberrypi.com/products/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Buy Raspberry Pi →</a>
                         </div>
 
                         <div class="resource-card">
                             <span class="resource-badge">Education</span>
                             <h3>Pre-Built Learning Platforms</h3>
                             <div class="resource-description">
-                                <p>Ready-to-use robots for learning without building from scratch. Great for classrooms and quick prototyping.</p>
+                                <p>Ready-to-use robots for learning without building from scratch. Great for classrooms
+                                    and quick prototyping.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Recommended Platforms:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Recommended Platforms:</h4>
                                 <ul class="resource-list">
-                                    <li><strong>mBot:</strong> $100 educational robot with drag-and-drop programming (Scratch/Blockly)</li>
-                                    <li><strong>Sphero:</strong> App-controlled robots for learning programming and STEM</li>
+                                    <li><strong>mBot:</strong> $100 educational robot with drag-and-drop programming
+                                        (Scratch/Blockly)</li>
+                                    <li><strong>Sphero:</strong> App-controlled robots for learning programming and STEM
+                                    </li>
                                     <li><strong>Dash & Dot:</strong> Kid-friendly robots with visual programming</li>
-                                    <li><strong>Cozmo:</strong> AI-powered robot for exploring personality and emotion in robotics</li>
+                                    <li><strong>Cozmo:</strong> AI-powered robot for exploring personality and emotion
+                                        in robotics</li>
                                     <li><strong>TurtleBot:</strong> ROS-based research platform for advanced users</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Use Cases:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Use Cases:</h4>
                                 <ul class="resource-list">
                                     <li>Classroom education and STEM learning</li>
                                     <li>Rapid prototyping of robot behaviors</li>
@@ -303,31 +412,46 @@
                                     <li>Learning ROS without hardware hassle (TurtleBot)</li>
                                 </ul>
                             </div>
-                            <a href="https://www.makeblock.com/mbot" target="_blank" rel="noopener noreferrer" class="resource-link">mBot Info →</a>
-                            <a href="https://sphero.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Sphero Robots →</a>
+                            <a href="https://www.makeblock.com/mbot" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">mBot Info →</a>
+                            <a href="https://sphero.com/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Sphero Robots →</a>
                         </div>
 
                         <div class="resource-card">
                             <span class="resource-badge">DIY</span>
                             <h3>Open-Source Robot Projects</h3>
                             <div class="resource-description">
-                                <p>Community-designed robots with free plans, code, and building instructions. Learn from others' designs and contribute your own.</p>
+                                <p>Community-designed robots with free plans, code, and building instructions. Learn
+                                    from others' designs and contribute your own.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Top Open-Source Projects:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Top Open-Source Projects:</h4>
                                 <ul class="resource-list">
                                     <li><strong>InMoov:</strong> Full-sized humanoid robot you can 3D print at home</li>
-                                    <li><strong>Otto DIY:</strong> Cute walking robot for beginners, fully 3D printable</li>
-                                    <li><strong>Poppy Project:</strong> Modular robotic creatures for education and research</li>
-                                    <li><strong>OpenDog:</strong> Open-source quadruped robot inspired by Boston Dynamics Spot</li>
+                                    <li><strong>Otto DIY:</strong> Cute walking robot for beginners, fully 3D printable
+                                    </li>
+                                    <li><strong>Poppy Project:</strong> Modular robotic creatures for education and
+                                        research</li>
+                                    <li><strong>OpenDog:</strong> Open-source quadruped robot inspired by Boston
+                                        Dynamics Spot</li>
                                     <li><strong>ROSbot:</strong> Affordable autonomous mobile robot platform</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Why Open Source:</h4>
-                                <p>Learn from detailed documentation, customize designs for your needs, contribute improvements back to community, and build advanced robots without starting from scratch.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Why Open Source:</h4>
+                                <p>Learn from detailed documentation, customize designs for your needs, contribute
+                                    improvements back to community, and build advanced robots without starting from
+                                    scratch.</p>
                             </div>
-                            <a href="http://inmoov.fr/" target="_blank" rel="noopener noreferrer" class="resource-link">InMoov →</a>
-                            <a href="https://www.ottodiy.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Otto DIY →</a>
-                            <a href="https://www.poppy-project.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Poppy Project →</a>
+                            <a href="http://inmoov.fr/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">InMoov →</a>
+                            <a href="https://www.ottodiy.com/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Otto DIY →</a>
+                            <a href="https://www.poppy-project.org/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Poppy Project →</a>
                         </div>
                     </div>
 
@@ -378,29 +502,39 @@
                 <!-- Design Tools Section -->
                 <section class="content-section" id="design-tools">
                     <h2>📐 Design Tools & Templates</h2>
-                    <p>Resources for documenting robot designs, collaborating with engineers, and planning robot behaviors.</p>
+                    <p>Resources for documenting robot designs, collaborating with engineers, and planning robot
+                        behaviors.</p>
 
                     <div class="resources-grid">
                         <div class="resource-card">
                             <span class="resource-badge">Template</span>
                             <h3>Robot Specification Document</h3>
                             <div class="resource-description">
-                                <p>Template for communicating robot design to engineers and stakeholders. Ensures nothing is forgotten in the transition from concept to implementation.</p>
+                                <p>Template for communicating robot design to engineers and stakeholders. Ensures
+                                    nothing is forgotten in the transition from concept to implementation.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What to Include:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    What to Include:</h4>
                                 <ul class="resource-list">
-                                    <li><strong>Purpose & Context:</strong> What problem does this robot solve? Where will it operate?</li>
+                                    <li><strong>Purpose & Context:</strong> What problem does this robot solve? Where
+                                        will it operate?</li>
                                     <li><strong>Form & Appearance:</strong> Size, shape, materials, aesthetic goals</li>
-                                    <li><strong>Behaviors:</strong> What actions and reactions should the robot have?</li>
+                                    <li><strong>Behaviors:</strong> What actions and reactions should the robot have?
+                                    </li>
                                     <li><strong>Sensors Needed:</strong> What must the robot perceive?</li>
                                     <li><strong>Actuators Required:</strong> What movements are necessary?</li>
                                     <li><strong>Interaction Modes:</strong> How do humans interact with it?</li>
-                                    <li><strong>Performance Requirements:</strong> Speed, accuracy, battery life, etc.</li>
+                                    <li><strong>Performance Requirements:</strong> Speed, accuracy, battery life, etc.
+                                    </li>
                                     <li><strong>Constraints:</strong> Budget, size limits, regulatory requirements</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Why This Matters:</h4>
-                                <p>Engineers need clear requirements. Designers need to think through details. This template bridges the gap and ensures alignment.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Why This Matters:</h4>
+                                <p>Engineers need clear requirements. Designers need to think through details. This
+                                    template bridges the gap and ensures alignment.</p>
                             </div>
                         </div>
 
@@ -408,21 +542,32 @@
                             <span class="resource-badge">Framework</span>
                             <h3>Behavior Design State Machines</h3>
                             <div class="resource-description">
-                                <p>Visual method for designing robot behaviors using state diagrams. Shows how robots respond to different situations.</p>
+                                <p>Visual method for designing robot behaviors using state diagrams. Shows how robots
+                                    respond to different situations.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Key Concepts:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Key Concepts:</h4>
                                 <ul class="resource-list">
-                                    <li><strong>States:</strong> Different modes robot can be in (idle, moving, interacting, charging, etc.)</li>
+                                    <li><strong>States:</strong> Different modes robot can be in (idle, moving,
+                                        interacting, charging, etc.)</li>
                                     <li><strong>Transitions:</strong> What causes robot to switch between states</li>
                                     <li><strong>Actions:</strong> What robot does in each state</li>
-                                    <li><strong>Inputs:</strong> Sensor readings and user commands that trigger transitions</li>
+                                    <li><strong>Inputs:</strong> Sensor readings and user commands that trigger
+                                        transitions</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Example Use:</h4>
-                                <p>Delivery robot states: Waiting → Traveling → Arrived → Delivering → Returning. Each state has specific behaviors and valid transitions.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Example Use:</h4>
+                                <p>Delivery robot states: Waiting → Traveling → Arrived → Delivering → Returning. Each
+                                    state has specific behaviors and valid transitions.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Tools:</h4>
-                                <p>Draw.io (free), Lucidchart, or pen and paper. Keep it simple and visual for team communication.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Tools:</h4>
+                                <p>Draw.io (free), Lucidchart, or pen and paper. Keep it simple and visual for team
+                                    communication.</p>
                             </div>
                         </div>
 
@@ -430,18 +575,28 @@
                             <span class="resource-badge">Communication</span>
                             <h3>Designer-Engineer Collaboration Guide</h3>
                             <div class="resource-description">
-                                <p>Best practices for productive collaboration between designers and robotics engineers.</p>
+                                <p>Best practices for productive collaboration between designers and robotics engineers.
+                                </p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Communication Tips:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Communication Tips:</h4>
                                 <ul class="resource-list">
-                                    <li><strong>Speak Constraints Early:</strong> Engineers should share technical limits upfront, not after design is "done"</li>
-                                    <li><strong>Explain the Why:</strong> Designers should communicate user needs and goals, not just desired features</li>
-                                    <li><strong>Iterate Together:</strong> Joint design sessions are more productive than sequential handoffs</li>
-                                    <li><strong>Prototype Early:</strong> Test feasibility quickly rather than perfecting concepts</li>
-                                    <li><strong>Learn Each Other's Constraints:</strong> Designers should understand physics/sensors, engineers should understand UX principles</li>
+                                    <li><strong>Speak Constraints Early:</strong> Engineers should share technical
+                                        limits upfront, not after design is "done"</li>
+                                    <li><strong>Explain the Why:</strong> Designers should communicate user needs and
+                                        goals, not just desired features</li>
+                                    <li><strong>Iterate Together:</strong> Joint design sessions are more productive
+                                        than sequential handoffs</li>
+                                    <li><strong>Prototype Early:</strong> Test feasibility quickly rather than
+                                        perfecting concepts</li>
+                                    <li><strong>Learn Each Other's Constraints:</strong> Designers should understand
+                                        physics/sensors, engineers should understand UX principles</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Common Pitfalls to Avoid:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Common Pitfalls to Avoid:</h4>
                                 <ul class="resource-list">
                                     <li>Designing movements that violate physics or exceed actuator capabilities</li>
                                     <li>Assuming sensors work perfectly in all conditions</li>
@@ -456,16 +611,20 @@
                 <!-- Visual Programming Section -->
                 <section class="content-section" id="visual-programming">
                     <h2>🧩 Visual & Low-Code Programming</h2>
-                    <p>Program robots without traditional coding. Visual programming tools make robotics accessible to non-programmers.</p>
+                    <p>Program robots without traditional coding. Visual programming tools make robotics accessible to
+                        non-programmers.</p>
 
                     <div class="resources-grid">
                         <div class="resource-card">
                             <span class="resource-badge">No Code</span>
                             <h3>Blockly for Robotics</h3>
                             <div class="resource-description">
-                                <p>Drag-and-drop programming interface based on Google's Blockly. Used by many educational robots.</p>
+                                <p>Drag-and-drop programming interface based on Google's Blockly. Used by many
+                                    educational robots.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Supported Platforms:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Supported Platforms:</h4>
                                 <ul class="resource-list">
                                     <li>mBot and Makeblock robots</li>
                                     <li>Arduino with Ardublock extension</li>
@@ -473,22 +632,32 @@
                                     <li>LEGO Mindstorms EV3</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What You Can Do:</h4>
-                                <p>Sensor reading, motor control, logic (if/then/else), loops, timing, basic math. Builds to text-based code (C++ or Python) that you can view and learn from.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    What You Can Do:</h4>
+                                <p>Sensor reading, motor control, logic (if/then/else), loops, timing, basic math.
+                                    Builds to text-based code (C++ or Python) that you can view and learn from.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Best For:</h4>
-                                <p>Beginners, classrooms, rapid prototyping of robot behaviors, learning programming concepts visually.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Best For:</h4>
+                                <p>Beginners, classrooms, rapid prototyping of robot behaviors, learning programming
+                                    concepts visually.</p>
                             </div>
-                            <a href="https://developers.google.com/blockly" target="_blank" rel="noopener noreferrer" class="resource-link">Learn Blockly →</a>
+                            <a href="https://developers.google.com/blockly" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Learn Blockly →</a>
                         </div>
 
                         <div class="resource-card">
                             <span class="resource-badge">Visual</span>
                             <h3>Scratch for Robots</h3>
                             <div class="resource-description">
-                                <p>MIT's Scratch visual programming language extended to control physical robots and hardware.</p>
+                                <p>MIT's Scratch visual programming language extended to control physical robots and
+                                    hardware.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Scratch-Compatible Robots:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Scratch-Compatible Robots:</h4>
                                 <ul class="resource-list">
                                     <li>LEGO WeDo and LEGO Boost</li>
                                     <li>micro:bit robots</li>
@@ -496,36 +665,59 @@
                                     <li>Raspberry Pi with Scratch GPIO</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Advantages:</h4>
-                                <p>Huge community, millions of existing projects to learn from, game-like programming environment, excellent for teaching kids and beginners.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Advantages:</h4>
+                                <p>Huge community, millions of existing projects to learn from, game-like programming
+                                    environment, excellent for teaching kids and beginners.</p>
                             </div>
-                            <a href="https://scratch.mit.edu/" target="_blank" rel="noopener noreferrer" class="resource-link">Try Scratch →</a>
+                            <a href="https://scratch.mit.edu/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Try Scratch →</a>
                         </div>
 
                         <div class="resource-card">
                             <span class="resource-badge">Advanced</span>
                             <h3>ROS Basics for Designers</h3>
                             <div class="resource-description">
-                                <p>Conceptual introduction to Robot Operating System (ROS) - the industry standard for serious robotics. Understanding ROS helps designers collaborate with professional robotics teams.</p>
+                                <p>Conceptual introduction to Robot Operating System (ROS) - the industry standard for
+                                    serious robotics. Understanding ROS helps designers collaborate with professional
+                                    robotics teams.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What is ROS?</h4>
-                                <p>Not actually an operating system - it's middleware that provides structure for robot software. Think of it as a common language that robot components use to talk to each other.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    What is ROS?</h4>
+                                <p>Not actually an operating system - it's middleware that provides structure for robot
+                                    software. Think of it as a common language that robot components use to talk to each
+                                    other.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Key Concepts:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Key Concepts:</h4>
                                 <ul class="resource-list">
-                                    <li><strong>Nodes:</strong> Individual programs that do one thing (read sensor, control motor, etc.)</li>
-                                    <li><strong>Topics:</strong> Channels that nodes use to send messages to each other</li>
+                                    <li><strong>Nodes:</strong> Individual programs that do one thing (read sensor,
+                                        control motor, etc.)</li>
+                                    <li><strong>Topics:</strong> Channels that nodes use to send messages to each other
+                                    </li>
                                     <li><strong>Services:</strong> Request-response communication between nodes</li>
-                                    <li><strong>Packages:</strong> Pre-built software for common robotics tasks (navigation, vision, etc.)</li>
+                                    <li><strong>Packages:</strong> Pre-built software for common robotics tasks
+                                        (navigation, vision, etc.)</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Why Designers Should Know ROS:</h4>
-                                <p>Most professional mobile robots use ROS. Understanding its structure helps you communicate with engineers and understand system constraints and capabilities.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Why Designers Should Know ROS:</h4>
+                                <p>Most professional mobile robots use ROS. Understanding its structure helps you
+                                    communicate with engineers and understand system constraints and capabilities.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Learning Path:</h4>
-                                <p>Don't need to code ROS as a designer, but understanding its concepts helps collaboration. Watch tutorials, play with ROS simulations, ask engineers to explain their ROS architecture.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Learning Path:</h4>
+                                <p>Don't need to code ROS as a designer, but understanding its concepts helps
+                                    collaboration. Watch tutorials, play with ROS simulations, ask engineers to explain
+                                    their ROS architecture.</p>
                             </div>
-                            <a href="https://www.ros.org/blog/getting-started/" target="_blank" rel="noopener noreferrer" class="resource-link">ROS Introduction →</a>
+                            <a href="https://www.ros.org/blog/getting-started/" target="_blank"
+                                rel="noopener noreferrer" class="resource-link">ROS Introduction →</a>
                         </div>
                     </div>
                 </section>
@@ -533,16 +725,20 @@
                 <!-- Simulation Tools Section -->
                 <section class="content-section" id="simulation">
                     <h2>🎮 Robot Simulation Tools</h2>
-                    <p>Test robot designs and behaviors in virtual environments before building physical hardware. Save time and money through simulation.</p>
+                    <p>Test robot designs and behaviors in virtual environments before building physical hardware. Save
+                        time and money through simulation.</p>
 
                     <div class="resources-grid">
                         <div class="resource-card">
                             <span class="resource-badge">Professional</span>
                             <h3>Webots Robot Simulator</h3>
                             <div class="resource-description">
-                                <p>Professional-grade open-source robot simulator. Used in education, research, and industry for prototyping and testing.</p>
+                                <p>Professional-grade open-source robot simulator. Used in education, research, and
+                                    industry for prototyping and testing.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Features:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Features:</h4>
                                 <ul class="resource-list">
                                     <li>Realistic physics simulation</li>
                                     <li>Library of pre-built robots (humanoids, wheeled, drones)</li>
@@ -551,23 +747,34 @@
                                     <li>ROS integration</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Use Cases:</h4>
-                                <p>Test navigation algorithms, prototype robot behaviors, learn robotics without hardware, develop AI for robots, educational demonstrations.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Use Cases:</h4>
+                                <p>Test navigation algorithms, prototype robot behaviors, learn robotics without
+                                    hardware, develop AI for robots, educational demonstrations.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Learning Curve:</h4>
-                                <p>Moderate. Great tutorials available. Easier than building physical robots for testing concepts.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Learning Curve:</h4>
+                                <p>Moderate. Great tutorials available. Easier than building physical robots for testing
+                                    concepts.</p>
                             </div>
-                            <a href="https://cyberbotics.com/" target="_blank" rel="noopener noreferrer" class="resource-link">Download Webots →</a>
-                            <a href="https://cyberbotics.com/doc/guide/tutorials" target="_blank" rel="noopener noreferrer" class="resource-link">Tutorials →</a>
+                            <a href="https://cyberbotics.com/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Download Webots →</a>
+                            <a href="https://cyberbotics.com/doc/guide/tutorials" target="_blank"
+                                rel="noopener noreferrer" class="resource-link">Tutorials →</a>
                         </div>
 
                         <div class="resource-card">
                             <span class="resource-badge">ROS Standard</span>
                             <h3>Gazebo Simulator</h3>
                             <div class="resource-description">
-                                <p>The standard simulator for ROS robotics. Widely used in research and industry for mobile robots and manipulation.</p>
+                                <p>The standard simulator for ROS robotics. Widely used in research and industry for
+                                    mobile robots and manipulation.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Strengths:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Strengths:</h4>
                                 <ul class="resource-list">
                                     <li>Tight integration with ROS</li>
                                     <li>Highly accurate physics (ODE, Bullet, Simbody engines)</li>
@@ -575,46 +782,70 @@
                                     <li>Large community and extensive documentation</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Best For:</h4>
-                                <p>ROS-based projects, mobile robot navigation, manipulation research, autonomous vehicle simulation, multi-robot coordination.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Best For:</h4>
+                                <p>ROS-based projects, mobile robot navigation, manipulation research, autonomous
+                                    vehicle simulation, multi-robot coordination.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Note:</h4>
-                                <p>Requires ROS knowledge. More complex than Webots but industry standard for serious robotics development.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Note:</h4>
+                                <p>Requires ROS knowledge. More complex than Webots but industry standard for serious
+                                    robotics development.</p>
                             </div>
-                            <a href="http://gazebosim.org/" target="_blank" rel="noopener noreferrer" class="resource-link">Gazebo Website →</a>
+                            <a href="http://gazebosim.org/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Gazebo Website →</a>
                         </div>
 
                         <div class="resource-card">
                             <span class="resource-badge">Online</span>
                             <h3>Browser-Based Simulators</h3>
                             <div class="resource-description">
-                                <p>No-install robot simulators that run in your web browser. Perfect for quick experiments and learning.</p>
+                                <p>No-install robot simulators that run in your web browser. Perfect for quick
+                                    experiments and learning.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Recommended Tools:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Recommended Tools:</h4>
                                 <ul class="resource-list">
-                                    <li><strong>Robot Virtual Worlds:</strong> VEX robotics simulation with Blockly/C programming</li>
-                                    <li><strong>Tinkercad Circuits:</strong> Arduino simulation with code and wiring</li>
-                                    <li><strong>Microsoft MakeCode:</strong> Micro:bit and robot programming in browser</li>
+                                    <li><strong>Robot Virtual Worlds:</strong> VEX robotics simulation with Blockly/C
+                                        programming</li>
+                                    <li><strong>Tinkercad Circuits:</strong> Arduino simulation with code and wiring
+                                    </li>
+                                    <li><strong>Microsoft MakeCode:</strong> Micro:bit and robot programming in browser
+                                    </li>
                                     <li><strong>Open Roberta Lab:</strong> Visual programming for various robots</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Advantages:</h4>
-                                <p>No installation required, works on Chromebooks and tablets, great for classrooms, instant gratification for beginners.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Advantages:</h4>
+                                <p>No installation required, works on Chromebooks and tablets, great for classrooms,
+                                    instant gratification for beginners.</p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Limitations:</h4>
-                                <p>Less realistic physics than desktop simulators, fewer advanced features, internet connection required.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Limitations:</h4>
+                                <p>Less realistic physics than desktop simulators, fewer advanced features, internet
+                                    connection required.</p>
                             </div>
-                            <a href="https://www.tinkercad.com/circuits" target="_blank" rel="noopener noreferrer" class="resource-link">Try Tinkercad →</a>
-                            <a href="https://makecode.microbit.org/" target="_blank" rel="noopener noreferrer" class="resource-link">MakeCode →</a>
+                            <a href="https://www.tinkercad.com/circuits" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">Try Tinkercad →</a>
+                            <a href="https://makecode.microbit.org/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">MakeCode →</a>
                         </div>
 
                         <div class="resource-card">
                             <span class="resource-badge">Specialized</span>
                             <h3>Motion Planning Visualizers</h3>
                             <div class="resource-description">
-                                <p>Tools for understanding and visualizing robot path planning and motion algorithms.</p>
+                                <p>Tools for understanding and visualizing robot path planning and motion algorithms.
+                                </p>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">What They Show:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    What They Show:</h4>
                                 <ul class="resource-list">
                                     <li>How robots find paths around obstacles</li>
                                     <li>Different planning algorithms (A*, RRT, PRM, etc.)</li>
@@ -622,18 +853,25 @@
                                     <li>Kinematic constraints of different robot types</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Tools:</h4>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Tools:</h4>
                                 <ul class="resource-list">
                                     <li><strong>MoveIt:</strong> ROS motion planning framework with visualization</li>
                                     <li><strong>OMPL.app:</strong> Standalone motion planning demos</li>
                                     <li><strong>PathFinding.js:</strong> Browser-based pathfinding visualization</li>
                                 </ul>
 
-                                <h4 style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">Why This Matters:</h4>
-                                <p>Understanding how robots plan movement helps designers create realistic interaction scenarios and appreciate technical constraints.</p>
+                                <h4
+                                    style="margin-top: var(--space-5); margin-bottom: var(--space-3); color: var(--color-electric-blue);">
+                                    Why This Matters:</h4>
+                                <p>Understanding how robots plan movement helps designers create realistic interaction
+                                    scenarios and appreciate technical constraints.</p>
                             </div>
-                            <a href="https://moveit.ros.org/" target="_blank" rel="noopener noreferrer" class="resource-link">MoveIt Info →</a>
-                            <a href="http://qiao.github.io/PathFinding.js/visual/" target="_blank" rel="noopener noreferrer" class="resource-link">Try PathFinding →</a>
+                            <a href="https://moveit.ros.org/" target="_blank" rel="noopener noreferrer"
+                                class="resource-link">MoveIt Info →</a>
+                            <a href="http://qiao.github.io/PathFinding.js/visual/" target="_blank"
+                                rel="noopener noreferrer" class="resource-link">Try PathFinding →</a>
                         </div>
                     </div>
                 </section>
@@ -677,7 +915,8 @@
             <footer class="site-footer">
                 <div class="footer-content">
                     <div class="footer-branding">
-                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank"
+                            rel="noopener noreferrer">Studio Poetics</a>
                     </div>
                     <div class="footer-links">
                         <a href="disclaimer.html">Disclaimer</a>
@@ -737,7 +976,7 @@
         });
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('mainMenuOverlay');
                 overlay.classList.remove('active');
@@ -745,4 +984,5 @@
         });
     </script>
 </body>
+
 </html>

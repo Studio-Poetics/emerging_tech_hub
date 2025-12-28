@@ -1,0 +1,40 @@
+{
+    "cards": [
+        {
+            "id": 1,
+            "theme": "Core Concepts",
+            "title": "Qubit",
+            "text": "Quantum Bit. The basic unit of quantum information. Unlike a classical bit (0 or 1), a qubit can exist in a superposition of both states simultaneously."
+        },
+        {
+            "id": 2,
+            "theme": "Core Concepts",
+            "title": "Superposition",
+            "text": "The \"AND\" State. A quantum state where a particle exists in all possible configurations at once. Collapses to a single state only when measured."
+        },
+        {
+            "id": 3,
+            "theme": "Core Concepts",
+            "title": "Entanglement",
+            "text": "Spooky Action at a Distance. A phenomenon where two particles become linked. Changing the state of one instantly affects the other, regardless of distance."
+        },
+        {
+            "id": 4,
+            "theme": "Challenges",
+            "title": "Decoherence",
+            "text": "The Noise Problem. When a quantum system interacts with its environment (heat, light) and loses its quantum state, reverting to classical physics. The biggest challenge in building quantum computers."
+        },
+        {
+            "id": 5,
+            "theme": "Milestones",
+            "title": "Quantum Supremacy",
+            "text": "The Tipping Point. The moment a quantum computer solves a problem that is practically impossible for even the most powerful classical supercomputer to solve."
+        },
+        {
+            "id": 6,
+            "theme": "Mechanics",
+            "title": "Interference",
+            "text": "Wave Mechanics. Quantum states can interfere like waves. Algorithms use constructive interference to amplify correct answers and destructive interference to cancel out wrong ones."
+        }
+    ]
+}

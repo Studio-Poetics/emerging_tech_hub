@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-Robotics Readings - Books, Papers & Manifestos | Emerging Tech Hub</title>
+    <meta name="description" content="Essential bio-robotics readings for artists and designers. Manifestos by Haraway and Stelarc, books by Madeline Schwartzman and Neri Oxman, speculative design literature.">
+    <meta name="keywords" content="Cyborg Manifesto, Donna Haraway, See Yourself Sensing, Madeline Schwartzman, Material Ecology, Neri Oxman, Speculative Everything, bio-art books">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+.reading-card {
+    background: var(--color-white);
+    border: var(--border-width-4) solid var(--color-black);
+    padding: var(--space-8);
+    margin-bottom: var(--space-6);
+    transition: all var(--transition-base);
+}
+
+.reading-card:hover {
+    border-color: var(--color-electric-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.reading-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-electric-blue);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+}
+
+.reading-card h3 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+}
+
+.reading-meta {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-4);
+}
+
+.reading-description {
+    line-height: 1.8;
+    margin-bottom: var(--space-5);
+}
+
+.reading-description p {
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.key-ideas {
+    background: var(--color-gray-50);
+    padding: var(--space-4);
+    margin: var(--space-4) 0;
+    border-left: 4px solid var(--color-electric-blue);
+}
+
+.key-ideas h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+    color: var(--color-electric-blue);
+}
+
+.key-ideas ul {
+    margin-left: var(--space-4);
+}
+
+.key-ideas li {
+    margin-bottom: var(--space-2);
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="biorobotics-landing.html" style="color: inherit; text-decoration: none;">Bio-Robotics</a></h1>
+                    <p class="brand-subtitle">Readings</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Categories</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="#manifestos" class="experimental-nav-link">Manifestos</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#bio-art-books" class="experimental-nav-link">Bio-Art Books</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#material-futures" class="experimental-nav-link">Material Futures</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#ethics" class="experimental-nav-link">Ethics & Philosophy</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#sensation" class="experimental-nav-link">Sensation</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="#speculative" class="experimental-nav-link">Speculative Design</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">For Thinkers</div>
+                    <div class="info-box-content">Artists, philosophers, and designers exploring what it means to be alive.</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Bio-Robotics Readings</h1>
+                <p class="fundamentals-subtitle">Essential Books, Papers & Manifestos for Understanding Living Systems & Future Bodies</p>
+                <div style="display: flex; gap: var(--space-4); margin-top: var(--space-6);">
+                    <a href="biorobotics-landing.html" class="experimental-btn">← Back to Bio-Robotics</a>
+                    <a href="biorobotics-activities.html" class="experimental-btn">Try Activities</a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="fundamentals-content">
+
+                <!-- Foundational Manifestos Section -->
+                <section class="content-section" id="manifestos">
+                    <h2>📜 Foundational Manifestos</h2>
+                    <p style="line-height: 1.8;">Seminal texts that shaped how we think about bodies, technology, and what it means to be human.</p>
+
+                    <div class="reading-card">
+                        <div class="reading-badge">Essential Reading</div>
+                        <h3>"A Cyborg Manifesto"</h3>
+                        <p class="reading-meta">Donna Haraway | 1985 | Essay</p>
+                        <div class="reading-description">
+                            <p>One of the most influential texts in feminist theory and technology studies. Haraway argues we are all already cyborgs—hybrids of machine and organism. She rejects the boundaries between human/animal, organism/machine, and physical/non-physical.</p>
+
+                            <div class="key-ideas">
+                                <h4>Key Ideas:</h4>
+                                <ul>
+                                    <li><strong>"We are all chimeras"</strong> - theorized and fabricated hybrids of machine and organism</li>
+                                    <li><strong>Cyborg as political identity</strong> - escaping fixed categories of gender, race, class</li>
+                                    <li><strong>Irony over innocence</strong> - embracing contradictions and complexity</li>
+                                    <li><strong>Technology as liberating</strong> - not inherently oppressive, depends on use</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Foundational for understanding bio-robotics as political, not just technical. Changes how you see your relationship to technology.</p>
+
+                            <p><strong>Best Quote:</strong> "I would rather be a cyborg than a goddess."</p>
+
+                            <p><strong>Where to Find:</strong> Freely available online, included in many anthologies. Search "Haraway Cyborg Manifesto PDF"</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"The Obsolete Body" (Writings)</h3>
+                        <p class="reading-meta">Stelarc | 1980s-present | Essays & Artist Statements</p>
+                        <div class="reading-description">
+                            <p>Australian performance artist Stelarc's writings on why the human body in its current form is outdated. Argues for radical body modification through technology.</p>
+
+                            <div class="key-ideas">
+                                <h4>Core Arguments:</h4>
+                                <ul>
+                                    <li><strong>"The body is obsolete"</strong> - biologically inadequate for technological environment</li>
+                                    <li><strong>Redesign not repair</strong> - don't just fix disabilities, enhance all bodies</li>
+                                    <li><strong>Alternate anatomies</strong> - Third Hand, Exoskeleton, Ear on Arm projects</li>
+                                    <li><strong>Post-evolutionary</strong> - humans must take control of own evolution</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Provocative challenge to assumptions about "normal" bodies. Makes you question what bodies could/should be.</p>
+
+                            <p><strong>Where to Find:</strong> Stelarc.org has many essays. Also in "Obsolete Body/Suspensions/Stelarc" book (1984)</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"Natural-Born Cyborgs"</h3>
+                        <p class="reading-meta">Andy Clark | 2003 | Book</p>
+                        <div class="reading-description">
+                            <p>Philosopher argues humans have always been cyborgs—we've always used tools to extend our minds and bodies. Technology is not alien to human nature, it IS human nature.</p>
+
+                            <div class="key-ideas">
+                                <h4>Key Concepts:</h4>
+                                <ul>
+                                    <li><strong>Extended Mind Thesis</strong> - mind extends beyond brain into tools (notebook = external memory)</li>
+                                    <li><strong>Transparent Technology</strong> - best tools become invisible extensions of self</li>
+                                    <li><strong>Always Already Cyborgs</strong> - pencils, glasses, phones all make us hybrid</li>
+                                    <li><strong>Brain Plasticity</strong> - neural circuitry incorporates tools as body parts</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Makes technology feel natural rather than threatening. Philosophical foundation for body augmentation.</p>
+
+                            <p><strong>Accessibility:</strong> Written for general audience, very readable.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bio-Art & Design Books Section -->
+                <section class="content-section" id="bio-art-books">
+                    <h2>🎨 Bio-Art & Design Books</h2>
+                    <p style="line-height: 1.8;">Books by and about artists working with living systems, body modifications, and bio-design.</p>
+
+                    <div class="reading-card">
+                        <div class="reading-badge">Highly Recommended</div>
+                        <h3>"See Yourself Sensing: Redefining Human Perception"</h3>
+                        <p class="reading-meta">Madeline Schwartzman | 2011 | Black Dog Publishing</p>
+                        <div class="reading-description">
+                            <p>Collection of work by artists, designers, and scientists who speculate on the future of human sensorium through wearables, devices, and installations. Explores how we might enhance, substitute, or create entirely new senses.</p>
+
+                            <div class="key-ideas">
+                                <h4>Projects Featured:</h4>
+                                <ul>
+                                    <li><strong>Sensory substitution devices</strong> - seeing through sound, hearing through touch</li>
+                                    <li><strong>Wearable enhancements</strong> - augmenting existing senses</li>
+                                    <li><strong>New senses</strong> - magnetoreception, echolocation for humans</li>
+                                    <li><strong>Body architecture</strong> - wearables as designed space</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Beautifully illustrated, accessible. Perfect introduction to body architecture and sensory design. Every page sparks ideas.</p>
+
+                            <p><strong>Format:</strong> Large format book, heavy on visuals. Great for browsing and inspiration.</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <div class="reading-badge">New Release</div>
+                        <h3>"Alive: Synthetic Cells, Feral Robots, Rebellious AI, and the Design of Radical Life"</h3>
+                        <p class="reading-meta">Madeline Schwartzman | 2025 | Thames & Hudson</p>
+                        <div class="reading-description">
+                            <p>Schwartzman's latest explores what it means to be alive today. Features work from synthetic biology, AI, robotics, engineering, biology, and art that challenges our perception of life itself.</p>
+
+                            <div class="key-ideas">
+                                <h4>Themes:</h4>
+                                <ul>
+                                    <li><strong>Living materials</strong> - materials that grow, heal, respond</li>
+                                    <li><strong>Artificial life</strong> - when does designed life become "real" life?</li>
+                                    <li><strong>Bio-robotics</strong> - organisms as machines, machines as organisms</li>
+                                    <li><strong>Future of embodiment</strong> - what bodies might look like in 50 years</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Most current survey of bio-design and living systems. Shows where the field is heading.</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"Bio Design: Nature, Science, Creativity"</h3>
+                        <p class="reading-meta">William Myers | 2012 | MoMA/Thames & Hudson</p>
+                        <div class="reading-description">
+                            <p>Survey of 60+ projects using living organisms as design material. From furniture grown from mushrooms to clothing made by bacteria to meat cultured in labs.</p>
+
+                            <div class="key-ideas">
+                                <h4>Categories Covered:</h4>
+                                <ul>
+                                    <li><strong>Growing products</strong> - mycelium furniture, bacterial cellulose</li>
+                                    <li><strong>Bio-fabrication</strong> - tissue engineering, synthetic biology</li>
+                                    <li><strong>Living architecture</strong> - buildings that behave like organisms</li>
+                                    <li><strong>Wearable life</strong> - living clothing and accessories</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Best overview of bio-design field. Beautiful photography. Shows what's actually possible, not just speculation.</p>
+
+                            <p><strong>Audience:</strong> Accessible to anyone, no science background needed.</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"Broken Nature" (Exhibition Catalog)</h3>
+                        <p class="reading-meta">Paola Antonelli & Anna Burckhardt (eds) | 2019 | Milan Triennale/Electa</p>
+                        <div class="reading-description">
+                            <p>Catalog from major exhibition exploring restorative design—design that repairs human relationship with nature through bio-materials, circular economy, and nature-technology fusion.</p>
+
+                            <div class="key-ideas">
+                                <h4>Featured Work:</h4>
+                                <ul>
+                                    <li><strong>Restorative materials</strong> - healing rather than extracting from nature</li>
+                                    <li><strong>Bio-fabrication</strong> - growing instead of manufacturing</li>
+                                    <li><strong>Circular design</strong> - waste as resource</li>
+                                    <li><strong>Indigenous knowledge</strong> - learning from traditional bio-materials</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Shows ethical dimension of bio-design. Not just "can we?" but "should we?" and "how do we do it responsibly?"</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Material Futures Section -->
+                <section class="content-section" id="material-futures">
+                    <h2>🌱 Material Futures</h2>
+                    <p style="line-height: 1.8;">Writings on living materials, material ecology, and the future of fabrication with nature.</p>
+
+                    <div class="reading-card">
+                        <div class="reading-badge">Academic</div>
+                        <h3>Neri Oxman: Material Ecology Papers</h3>
+                        <p class="reading-meta">Neri Oxman | 2006-present | Various journals</p>
+                        <div class="reading-description">
+                            <p>Oxman's academic publications on Material Ecology—design at intersection of computation, fabrication, materials science, and synthetic biology. Foundational theory for bio-design.</p>
+
+                            <div class="key-ideas">
+                                <h4>Core Concepts:</h4>
+                                <ul>
+                                    <li><strong>Material Ecology</strong> - treating materials as ecological systems</li>
+                                    <li><strong>Computational Growth</strong> - algorithms that simulate biological growth</li>
+                                    <li><strong>Multi-Scale Design</strong> - from molecular to architectural scale</li>
+                                    <li><strong>Co-fabrication</strong> - designing WITH living organisms, not just FROM them</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Key Papers:</strong> "Material Ecology" (2010), "Age of Entanglement" (2016), various papers on Silk Pavilion and Aguahoja projects.</p>
+
+                            <p><strong>Where to Find:</strong> MIT Media Lab website, Google Scholar search "Neri Oxman Material Ecology"</p>
+
+                            <p><strong>Note:</strong> Academic but accessible. Start with "Material Ecology" overview paper.</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"Better"</h3>
+                        <p class="reading-meta">Alexandra Daisy Ginsberg | 2019 | Self-published</p>
+                        <div class="reading-description">
+                            <p>Artist's book exploring synthetic biology, design, and the question: can we design nature "better"? Should we? Ginsberg works with synthetic biologists, questioning their assumptions through speculative design.</p>
+
+                            <div class="key-ideas">
+                                <h4>Central Questions:</h4>
+                                <ul>
+                                    <li><strong>Who decides "better"?</strong> - when redesigning organisms, whose values matter?</li>
+                                    <li><strong>Unintended consequences</strong> - nature is complex, interventions unpredictable</li>
+                                    <li><strong>Design hubris</strong> - designers think they can improve on 4 billion years of evolution</li>
+                                    <li><strong>Beautiful failures</strong> - projects that didn't work as intended but taught important lessons</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Critical perspective on bio-design. Questions assumptions, shows complexity and ethical dilemmas.</p>
+
+                            <p><strong>Format:</strong> Mix of art projects, essays, interviews with scientists.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Ethics & Philosophy Section -->
+                <section class="content-section" id="ethics">
+                    <h2>⚖️ Ethics & Philosophy</h2>
+                    <p style="line-height: 1.8;">Books that wrestle with moral questions about enhancement, modification, and the future of human bodies.</p>
+
+                    <div class="reading-card">
+                        <h3>"The Case Against Perfection"</h3>
+                        <p class="reading-meta">Michael Sandel | 2007 | Harvard University Press</p>
+                        <div class="reading-description">
+                            <p>Philosopher argues against genetic enhancement and designer babies. Not because it's "unnatural" but because it threatens important human goods: humility, responsibility, solidarity.</p>
+
+                            <div class="key-ideas">
+                                <h4>Arguments:</h4>
+                                <ul>
+                                    <li><strong>The Gift of Life</strong> - children should be "gifts" not products of design</li>
+                                    <li><strong>Hyper-Parenting</strong> - enhancement leads to excessive control, pressure on children</li>
+                                    <li><strong>Solidarity Problem</strong> - if rich enhance, threatens equality and shared humanity</li>
+                                    <li><strong>Loss of Humility</strong> - forgetting that not everything should be under our control</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Best articulation of conservative position on enhancement. Even if you disagree, important to understand these arguments.</p>
+
+                            <p><strong>Readability:</strong> Short (100 pages), clear prose, accessible to everyone.</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"Oryx and Crake"</h3>
+                        <p class="reading-meta">Margaret Atwood | 2003 | Fiction/Novel</p>
+                        <div class="reading-description">
+                            <p>Dystopian novel imagining future where genetic engineering is commonplace—designer babies, human-animal hybrids, lab-grown humans. Explores what goes wrong when bio-tech has no ethical constraints.</p>
+
+                            <div class="key-ideas">
+                                <h4>Themes:</h4>
+                                <ul>
+                                    <li><strong>Corporate bio-tech</strong> - when profit drives genetic modification</li>
+                                    <li><strong>Playing God</strong> - creating new species, consequences</li>
+                                    <li><strong>Class divide</strong> - enhancements only for elite, creates subspecies</li>
+                                    <li><strong>Loss of humanity</strong> - what happens when we engineer away human "flaws"</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Atwood extrapolates current bio-tech trends. Makes you think about where we're heading. Compelling story, not dry philosophy.</p>
+
+                            <p><strong>Note:</strong> Part of trilogy (Oryx and Crake, The Year of the Flood, MaddAddam).</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"Biomedia"</h3>
+                        <p class="reading-meta">Eugene Thacker | 2004 | University of Minnesota Press</p>
+                        <div class="reading-description">
+                            <p>Examines how biology has become a medium—something we read, write, and design with. DNA as code, bodies as interfaces, organisms as programmable material.</p>
+
+                            <div class="key-ideas">
+                                <h4>Concepts:</h4>
+                                <ul>
+                                    <li><strong>Biology as Information</strong> - DNA as code we can edit</li>
+                                    <li><strong>Bio-Informatics</strong> - merging biology with computer science</li>
+                                    <li><strong>Wetware</strong> - living tissue as computational substrate</li>
+                                    <li><strong>Post-Biological</strong> - when biological and digital fully merge</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Theoretical framework for understanding bio-robotics. How did biology become designable?</p>
+
+                            <p><strong>Note:</strong> Academic but important. Read slowly, ideas are dense.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sensation & Perception Section -->
+                <section class="content-section" id="sensation">
+                    <h2>👁️ Sensation & Perception</h2>
+                    <p style="line-height: 1.8;">Books exploring how we sense, perceive, and experience the world—foundational for designing new senses.</p>
+
+                    <div class="reading-card">
+                        <h3>"The Man Who Mistook His Wife for a Hat"</h3>
+                        <p class="reading-meta">Oliver Sacks | 1985 | Touchstone</p>
+                        <div class="reading-description">
+                            <p>Neurologist's case studies of patients with unusual perceptual disorders. Shows how fragile and constructed our sense of reality is. Perception is not passive—it's actively created by brain.</p>
+
+                            <div class="key-ideas">
+                                <h4>Cases Include:</h4>
+                                <ul>
+                                    <li><strong>Phantom limbs</strong> - feeling body parts that aren't there</li>
+                                    <li><strong>Prosopagnosia</strong> - inability to recognize faces (including own)</li>
+                                    <li><strong>Chromesthesia</strong> - hearing colors, seeing sounds</li>
+                                    <li><strong>Body image disorders</strong> - not recognizing own body parts</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Understand how plastic and malleable perception is. If brain can create phantom limbs, it can learn to use robotic third hands or new senses.</p>
+
+                            <p><strong>Style:</strong> Narrative case studies, reads like stories. Accessible, moving, scientifically rigorous.</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"Livewired: The Inside Story of the Ever-Changing Brain"</h3>
+                        <p class="reading-meta">David Eagleman | 2020 | Pantheon</p>
+                        <div class="reading-description">
+                            <p>Neuroscientist explains brain plasticity—how brain constantly rewires itself based on experience. Implications for augmentation: brains can learn to use new body parts and new senses.</p>
+
+                            <div class="key-ideas">
+                                <h4>Key Points:</h4>
+                                <ul>
+                                    <li><strong>Neural Plasticity</strong> - brain adapts to whatever sensors you give it</li>
+                                    <li><strong>Sensory Substitution</strong> - seeing through skin, hearing through touch works</li>
+                                    <li><strong>Tool Incorporation</strong> - tools become extension of body schema</li>
+                                    <li><strong>Lifelong Learning</strong> - can add new senses at any age</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Scientific backing for sensory augmentation. Shows it's not sci-fi—brain is ready for new inputs.</p>
+
+                            <p><strong>Applications:</strong> Eagleman created vest that lets deaf people "hear" through vibrations on skin. Proves sensory substitution works.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Speculative Design Section -->
+                <section class="content-section" id="speculative">
+                    <h2>🔮 Speculative Design</h2>
+                    <p style="line-height: 1.8;">Books on using design to imagine futures, provoke debate, and explore "what if?" scenarios.</p>
+
+                    <div class="reading-card">
+                        <div class="reading-badge">Essential</div>
+                        <h3>"Speculative Everything: Design, Fiction, and Social Dreaming"</h3>
+                        <p class="reading-meta">Anthony Dunne & Fiona Raby | 2013 | MIT Press</p>
+                        <div class="reading-description">
+                            <p>Manifesto for speculative design. Argues design should ask questions, not just solve problems. Use design to explore possible futures—especially uncomfortable ones we need to think about.</p>
+
+                            <div class="key-ideas">
+                                <h4>Core Principles:</h4>
+                                <ul>
+                                    <li><strong>Design as Speculation</strong> - imagine what could be, not just what is</li>
+                                    <li><strong>Critical Design</strong> - challenge assumptions, provoke debate</li>
+                                    <li><strong>Preferable Futures</strong> - not just probable or possible, but desirable</li>
+                                    <li><strong>Design Fiction</strong> - create artifacts from imagined futures</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Why Read This:</strong> Methodological foundation for all bio-robotics speculation. How to design "what if" scenarios that feel real.</p>
+
+                            <p><strong>Format:</strong> Mix of theory, case studies, and provocations. Very visual.</p>
+                        </div>
+                    </div>
+
+                    <div class="reading-card">
+                        <h3>"Shaping Things"</h3>
+                        <p class="reading-meta">Bruce Sterling | 2005 | MIT Press</p>
+                        <div class="reading-description">
+                            <p>Science fiction author and futurist's vision of design's future. Objects become "spimes"—things that are tracked through space and time, aware of their own history and ecology.</p>
+
+                            <div class="key-ideas">
+                                <h4>Concepts:</h4>
+                                <ul>
+                                    <li><strong>Spimes</strong> - objects that know where they are, where they've been, what they're made of</li>
+                                    <li><strong>Wranglers</strong> - people who work with spimes (like cowboys with cattle)</li>
+                                    <li><strong>Synchronicity</strong> - objects communicate with each other</li>
+                                    <li><strong>Cradle to Cradle</strong> - objects designed for full lifecycle</li>
+                                </ul>
+                            </div>
+
+                            <p><strong>Connection to Bio-Robotics:</strong> Living materials are natural spimes—they grow, heal, respond to environment, know their own history.</p>
+
+                            <p><strong>Style:</strong> Poetic, speculative. Sterling writes with flair.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Back Navigation -->
+                <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 2px solid var(--color-black);">
+                    <a href="biorobotics-landing.html" class="experimental-btn">← Back to Bio-Robotics Hub</a>
+                    <a href="biorobotics-field-kit.html" class="experimental-btn">Field Kit Resources</a>
+                    <a href="biorobotics-activities.html" class="experimental-btn experimental-btn--primary">Try Hands-On Activities →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics Hub</a>
+                    <a href="biorobotics-readings.html" class="main-menu-link">Readings</a>
+                    <a href="biorobotics-field-kit.html" class="main-menu-link">Field Kit</a>
+                    <a href="biorobotics-activities.html" class="main-menu-link">Activities</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Close menu on escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('mainMenuOverlay').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

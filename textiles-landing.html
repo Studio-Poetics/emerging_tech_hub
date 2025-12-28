@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Textiles Learning Hub - E-Textiles & Wearable Technology Education</title>
-    <meta name="description" content="Master smart textiles and e-textiles with hands-on projects. Learn conductive fabrics, sensor integration, and wearable electronics through practical workshops and material science fundamentals.">
-    <meta name="keywords" content="smart textiles, e-textiles, wearable technology, conductive fabrics, textile sensors, electronic textiles, fashion technology, smart clothing, textile electronics">
+    <meta name="description"
+        content="Master smart textiles and e-textiles with hands-on projects. Learn conductive fabrics, sensor integration, and wearable electronics through practical workshops and material science fundamentals.">
+    <meta name="keywords"
+        content="smart textiles, e-textiles, wearable technology, conductive fabrics, textile sensors, electronic textiles, fashion technology, smart clothing, textile electronics">
     <meta name="author" content="Studio Poetics - Emerging Technology Hub">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eth.poetics.studio/textiles-landing.html">
@@ -14,14 +17,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eth.poetics.studio/textiles-landing.html">
     <meta property="og:title" content="Smart Textiles Learning Hub - E-Textiles & Wearable Technology">
-    <meta property="og:description" content="Master smart textiles and e-textiles with hands-on projects. Learn conductive fabrics and wearable electronics through practical workshops.">
+    <meta property="og:description"
+        content="Master smart textiles and e-textiles with hands-on projects. Learn conductive fabrics and wearable electronics through practical workshops.">
     <meta property="og:site_name" content="Emerging Technology Hub">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://eth.poetics.studio/textiles-landing.html">
     <meta property="twitter:title" content="Smart Textiles Learning Hub - E-Textiles & Wearable Technology">
-    <meta property="twitter:description" content="Master smart textiles and e-textiles with hands-on projects. Learn conductive fabrics and wearable electronics through practical workshops.">
+    <meta property="twitter:description"
+        content="Master smart textiles and e-textiles with hands-on projects. Learn conductive fabrics and wearable electronics through practical workshops.">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -49,72 +54,179 @@
     </script>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .experimental-title { font-size: var(--text-4xl) !important; }
-    .experimental-subtitle { font-size: var(--text-lg) !important; }
-    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
-    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
-    .card-description, .card-meta { display: none !important; }
-    .card-title { font-size: var(--text-lg) !important; }
-    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
-    .vertical-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 48px !important;
-        width: 100vw !important;
-        background: var(--color-black) !important;
-        z-index: 20 !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .vertical-menu-text {
-        writing-mode: horizontal-tb !important;
-        text-orientation: initial !important;
-        letter-spacing: 0.1em !important;
-    }
-    .experimental-main { padding-top: 48px !important; }
-    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-    /* Content page specific */
-    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .fundamentals-title { font-size: var(--text-4xl) !important; }
-    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
-    .content-section { margin-bottom: var(--space-8) !important; }
-    .content-section h2 { font-size: var(--text-2xl) !important; }
-    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
-    .item-description { display: none !important; }
-    .available-badge { display: none !important; }
+            .experimental-main {
+                padding-top: 0 !important;
+            }
 
-    /* Landing page specific */
-    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
-    .section-nav-list { gap: var(--space-3) !important; }
-    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
-    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
-    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
-    .section-description { font-size: var(--text-base) !important; }
-    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
-}
-</style>
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
 
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .experimental-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+                padding: var(--space-4) !important;
+            }
+
+            .experimental-card.featured {
+                grid-row: auto !important;
+                min-height: auto !important;
+            }
+
+            .card-description,
+            .card-meta {
+                display: none !important;
+            }
+
+            .card-title {
+                font-size: var(--text-lg) !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+
+            /* Content page specific */
+            .fundamentals-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .fundamentals-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .fundamentals-subtitle {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .fundamentals-content {
+                padding: var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .content-section {
+                margin-bottom: var(--space-8) !important;
+            }
+
+            .content-section h2 {
+                font-size: var(--text-2xl) !important;
+            }
+
+            .properties-grid,
+            .feature-grid,
+            .applications-grid,
+            .approach-cards,
+            .getting-started {
+                grid-template-columns: 1fr !important;
+            }
+
+            .item-description {
+                display: none !important;
+            }
+
+            .available-badge {
+                display: none !important;
+            }
+
+            /* Landing page specific */
+            .ai-section-nav {
+                position: static !important;
+                margin: 0 !important;
+                padding: var(--space-3) var(--space-4) !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .ai-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -123,7 +235,8 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
                     <p class="brand-subtitle">Wearable Technology</p>
                 </div>
 
@@ -150,7 +263,8 @@
 
                 <div class="experimental-info-box">
                     <div class="info-box-title">For Designers & Makers</div>
-                    <div class="info-box-content">Learn to design wearable technology and use smart textiles as creative material—no engineering degree required.</div>
+                    <div class="info-box-content">Learn to design wearable technology and use smart textiles as creative
+                        material—no engineering degree required.</div>
                 </div>
 
                 <div class="experimental-info-box">
@@ -176,18 +290,22 @@
                     <h2 class="experimental-subtitle">Wearable Technology & Intelligent Fabrics</h2>
 
                     <div style="display: flex; align-items: center; margin-bottom: 2rem;">
-                        <span class="experimental-date">2024</span>
+                        <span class="experimental-date">2025</span>
                         <span class="experimental-arrow">→</span>
-                        <span class="experimental-date">Coming Soon</span>
+                        <span class="experimental-date">Now Available</span>
                     </div>
 
                     <p class="hero-description">
-                        Exploring the intersection of fashion, technology, and functionality through intelligent fabrics, e-textiles, and responsive materials that adapt to environmental conditions and user needs.
+                        Exploring the intersection of fashion, technology, and functionality through intelligent
+                        fabrics, e-textiles, and responsive materials that adapt to environmental conditions and user
+                        needs.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="smart-textiles-fundamentals.html" class="experimental-btn experimental-btn--primary">Start Learning</a>
+                        <a href="smart-textiles-fundamentals.html"
+                            class="experimental-btn experimental-btn--primary">Start Learning</a>
                         <a href="index.html" class="experimental-btn">← Back to Hub</a>
+                        <a href="textiles-trl.html" class="experimental-btn">TRL Radar</a>
                     </div>
                 </div>
             </div>
@@ -199,24 +317,36 @@
                 <div id="fundamentals" class="ai-content-section">
                     <div class="section-number">01</div>
                     <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">Core concepts for designing wearable technology and understanding smart textiles as creative materials.</p>
+                    <p class="section-description" style="line-height: 1.8;">Core concepts for designing wearable
+                        technology and understanding smart textiles as creative materials.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='smart-textiles-fundamentals.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='smart-textiles-fundamentals.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">What Makes Fabric Smart</h3>
-                            <p class="item-description" style="line-height: 1.8;">Explore conductive threads, fabric sensors, and LED integration. Learn what smart textiles can do without needing engineering expertise.</p>
+                            <p class="item-description" style="line-height: 1.8;">Explore conductive threads, fabric
+                                sensors, and LED integration. Learn what smart textiles can do without needing
+                                engineering expertise.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='smart-textiles-fundamentals.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='smart-textiles-fundamentals.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Designing Wearable Interactions</h3>
-                            <p class="item-description" style="line-height: 1.8;">Think about the body, movement, and context. Design interactions that feel natural when worn and used in daily life.</p>
+                            <p class="item-description" style="line-height: 1.8;">Think about the body, movement, and
+                                context. Design interactions that feel natural when worn and used in daily life.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='smart-textiles-fundamentals.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='smart-textiles-fundamentals.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Material Swatching</h3>
-                            <p class="item-description" style="line-height: 1.8;">Hands-on exploration of conductive fabrics, threads, and sensors. Test materials and understand their creative possibilities.</p>
+                            <p class="item-description" style="line-height: 1.8;">Hands-on exploration of conductive
+                                fabrics, threads, and sensors. Test materials and understand their creative
+                                possibilities.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='smart-textiles-fundamentals.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='smart-textiles-fundamentals.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Soft Circuits Basics</h3>
-                            <p class="item-description" style="line-height: 1.8;">Learn to integrate electronics into fabric using maker-friendly approaches and visual thinking instead of complex formulas.</p>
+                            <p class="item-description" style="line-height: 1.8;">Learn to integrate electronics into
+                                fabric using maker-friendly approaches and visual thinking instead of complex formulas.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -225,24 +355,34 @@
                 <div id="readings" class="ai-content-section">
                     <div class="section-number">02</div>
                     <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">Curated resources on wearable design, fashion technology, and creative applications of smart textiles.</p>
+                    <p class="section-description" style="line-height: 1.8;">Curated resources on wearable design,
+                        fashion technology, and creative applications of smart textiles.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='textiles-readings.html#wearable-design'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='textiles-readings.html#wearable-design'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Wearable Design & Fashion Tech</h3>
-                            <p class="item-description" style="line-height: 1.8;">Research on designing for the body, fashion technology innovations, and wearable interaction patterns.</p>
+                            <p class="item-description" style="line-height: 1.8;">Research on designing for the body,
+                                fashion technology innovations, and wearable interaction patterns.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-readings.html#materials'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-readings.html#materials'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Material Exploration</h3>
-                            <p class="item-description" style="line-height: 1.8;">Guides to conductive materials, fabric sensors, and smart textile components for designers.</p>
+                            <p class="item-description" style="line-height: 1.8;">Guides to conductive materials, fabric
+                                sensors, and smart textile components for designers.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-readings.html#maker-projects'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-readings.html#maker-projects'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Maker Projects & Tutorials</h3>
-                            <p class="item-description" style="line-height: 1.8;">Beginner-friendly e-textile projects, construction techniques, and maker community resources.</p>
+                            <p class="item-description" style="line-height: 1.8;">Beginner-friendly e-textile projects,
+                                construction techniques, and maker community resources.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-readings.html#applications'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-readings.html#applications'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Applications & Case Studies</h3>
-                            <p class="item-description" style="line-height: 1.8;">Real-world examples from fashion, healthcare, sports, and interactive art using smart textiles.</p>
+                            <p class="item-description" style="line-height: 1.8;">Real-world examples from fashion,
+                                healthcare, sports, and interactive art using smart textiles.</p>
                         </div>
                     </div>
                 </div>
@@ -251,24 +391,33 @@
                 <div id="flashcards" class="ai-content-section">
                     <div class="section-number">03</div>
                     <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">Interactive learning system with 60 flashcards covering wearable design concepts, materials, and making techniques.</p>
+                    <p class="section-description" style="line-height: 1.8;">Interactive learning system with 60
+                        flashcards covering wearable design concepts, materials, and making techniques.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='textiles-flashcards.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Wearable Design (12 cards)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Body-centered design, interaction patterns, comfort, and designing for movement and context.</p>
+                            <p class="item-description" style="line-height: 1.8;">Body-centered design, interaction
+                                patterns, comfort, and designing for movement and context.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-flashcards.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Materials & Components (15 cards)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Conductive threads, fabric sensors, LEDs, controllers, and what each component enables.</p>
+                            <p class="item-description" style="line-height: 1.8;">Conductive threads, fabric sensors,
+                                LEDs, controllers, and what each component enables.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-flashcards.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Making Techniques (13 cards)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Soft circuits, sewing with conductive thread, fabric sensors, and construction methods.</p>
+                            <p class="item-description" style="line-height: 1.8;">Soft circuits, sewing with conductive
+                                thread, fabric sensors, and construction methods.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-flashcards.html'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Applications & Tools (20 cards)</h3>
-                            <p class="item-description" style="line-height: 1.8;">Use cases across fashion, health, sports, art, and the maker tools that enable creation.</p>
+                            <p class="item-description" style="line-height: 1.8;">Use cases across fashion, health,
+                                sports, art, and the maker tools that enable creation.</p>
                         </div>
                     </div>
                 </div>
@@ -277,24 +426,34 @@
                 <div id="fieldkit" class="ai-content-section">
                     <div class="section-number">04</div>
                     <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">Tools, kits, and resources for making smart textiles—from beginner starter kits to design templates.</p>
+                    <p class="section-description" style="line-height: 1.8;">Tools, kits, and resources for making smart
+                        textiles—from beginner starter kits to design templates.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='textiles-field-kit.html#starter-kits'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-field-kit.html#starter-kits'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Starter Kits</h3>
-                            <p class="item-description" style="line-height: 1.8;">LilyPad Arduino, Adafruit Flora, and beginner e-textile kits with everything you need to start making.</p>
+                            <p class="item-description" style="line-height: 1.8;">LilyPad Arduino, Adafruit Flora, and
+                                beginner e-textile kits with everything you need to start making.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-field-kit.html#materials'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-field-kit.html#materials'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Material Library</h3>
-                            <p class="item-description" style="line-height: 1.8;">Where to source conductive thread, fabrics, sensors, and components. Includes supplier recommendations.</p>
+                            <p class="item-description" style="line-height: 1.8;">Where to source conductive thread,
+                                fabrics, sensors, and components. Includes supplier recommendations.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-field-kit.html#design-tools'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-field-kit.html#design-tools'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Design Tools</h3>
-                            <p class="item-description" style="line-height: 1.8;">Circuit templates, interaction design frameworks, and planning tools for wearable projects.</p>
+                            <p class="item-description" style="line-height: 1.8;">Circuit templates, interaction design
+                                frameworks, and planning tools for wearable projects.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-field-kit.html#visual-programming'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='textiles-field-kit.html#visual-programming'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Visual Programming</h3>
-                            <p class="item-description" style="line-height: 1.8;">Beginner-friendly coding tools like Scratch and Arduino blocks for programming wearables without text coding.</p>
+                            <p class="item-description" style="line-height: 1.8;">Beginner-friendly coding tools like
+                                Scratch and Arduino blocks for programming wearables without text coding.</p>
                         </div>
                     </div>
                 </div>
@@ -303,24 +462,36 @@
                 <div id="activities" class="ai-content-section">
                     <div class="section-number">05</div>
                     <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
-                    <p class="section-description" style="line-height: 1.8;">Hands-on projects, design exercises, and case study analyses to practice smart textile design.</p>
+                    <p class="section-description" style="line-height: 1.8;">Hands-on projects, design exercises, and
+                        case study analyses to practice smart textile design.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='textiles-activities.html#maker-projects'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='textiles-activities.html#maker-projects'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Maker Projects</h3>
-                            <p class="item-description" style="line-height: 1.8;">Build fabric swatches, create LED circuits, and make wearable prototypes with guided tutorials.</p>
+                            <p class="item-description" style="line-height: 1.8;">Build fabric swatches, create LED
+                                circuits, and make wearable prototypes with guided tutorials.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-activities.html#design-exercises'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='textiles-activities.html#design-exercises'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Design Exercises</h3>
-                            <p class="item-description" style="line-height: 1.8;">Practice designing wearable interactions, planning garment integration, and specifying requirements.</p>
+                            <p class="item-description" style="line-height: 1.8;">Practice designing wearable
+                                interactions, planning garment integration, and specifying requirements.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-activities.html#collaborative'" style="cursor: pointer;">
+                        <div class="feature-card"
+                            onclick="window.location.href='textiles-activities.html#collaborative'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Collaborative Scenarios</h3>
-                            <p class="item-description" style="line-height: 1.8;">Team exercises for designers working with engineers, and fashion tech product development simulations.</p>
+                            <p class="item-description" style="line-height: 1.8;">Team exercises for designers working
+                                with engineers, and fashion tech product development simulations.</p>
                         </div>
-                        <div class="feature-card" onclick="window.location.href='textiles-activities.html#case-studies'" style="cursor: pointer;">
+                        <div class="feature-card" onclick="window.location.href='textiles-activities.html#case-studies'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Case Studies</h3>
-                            <p class="item-description" style="line-height: 1.8;">Analyze Google Jacquard, Levi's Commuter Jacket, fashion tech projects, and what made them succeed or fail.</p>
+                            <p class="item-description" style="line-height: 1.8;">Analyze Google Jacquard, Levi's
+                                Commuter Jacket, fashion tech projects, and what made them succeed or fail.</p>
                         </div>
                     </div>
                 </div>
@@ -378,7 +549,7 @@
         });
 
         // Text reveal animation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const textRevealElements = document.querySelectorAll('.text-reveal');
             textRevealElements.forEach((element, index) => {
                 element.style.animationDelay = (index * 0.2) + 's';
@@ -386,7 +557,7 @@
         });
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('mainMenuOverlay');
                 overlay.classList.remove('active');
@@ -394,4 +565,5 @@
         });
     </script>
 </body>
+
 </html>

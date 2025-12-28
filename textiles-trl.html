@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Textiles & E-Textiles - TRL Radar</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="index.html" class="nav-brand">EMERGING TECH HUB</a>
+            </div>
+            <div class="nav-right">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="textiles-landing.html" class="nav-link">TEXTILES LANDING</a>
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <h1 class="page-title">SMART TEXTILES & E-TEXTILES</h1>
+            <h2 class="page-subtitle">Technology Readiness Level Radar</h2>
+            <p class="page-description">
+                Tracking the evolution of smart textile technologies from moisture-wicking fabrics to living
+                bio-integrated materials.
+                Data verified as of December 2025.
+            </p>
+        </div>
+
+        <div class="content-wrapper">
+            <aside class="sidebar">
+                <div class="control-panel">
+                    <div class="control-group">
+                        <div class="control-label">Navigate</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
+                            <button class="filter-btn"
+                                onclick="window.location.href='textiles-landing.html'">LANDING</button>
+                        </div>
+                        <div class="filter-buttons" style="margin-top: 5px;">
+                            <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
+                                style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
+                                <option value="">EXPLORE OTHER TRL RADARS ▼</option>
+                                <option value="ai-trl.html">AI & Machine Learning</option>
+                                <option value="blockchain-trl.html">Blockchain</option>
+                                <option value="biorobotics-trl.html">Bio-Robotics</option>
+                                <option value="edge-trl.html">Edge Computing</option>
+                                <option value="interfaces-trl.html">Future Interfaces</option>
+                                <option value="iot-trl.html">Internet of Things</option>
+                                <option value="metaverse-trl.html">Metaverse</option>
+                                <option value="quantum-trl.html">Quantum Computing</option>
+                                <option value="robotics-trl.html">Robotics</option>
+                                <option value="textiles-trl.html" disabled selected>Smart Textiles</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Filter by Origin</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">ALL</button>
+                            <button class="filter-btn" data-filter="research">RESEARCH</button>
+                            <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                            <button class="filter-btn" data-filter="emerging">EMERGING</button>
+                            <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Time Period</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-period="2025">2025</button>
+                            <button class="filter-btn" data-period="2020">2020</button>
+                            <button class="filter-btn" data-period="2015">2015</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">Zoom Controls</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn" id="zoom-in">ZOOM IN</button>
+                            <button class="filter-btn" id="zoom-out">ZOOM OUT</button>
+                            <button class="filter-btn" id="reset-view">RESET</button>
+                        </div>
+                    </div>
+
+                    <div class="legend-section">
+                        <div class="control-label">TRL LEVELS</div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--color-trl-1-3);"></div>
+                            <span>1-3: Basic Research</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--color-trl-4-6);"></div>
+                            <span>4-6: Development</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--color-trl-7-9);"></div>
+                            <span>7-9: Deployment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-panel" id="info-panel">
+                    <div class="info-title">SELECT A TECHNOLOGY</div>
+                    <div class="info-content">
+                        <p>Click on any point to view detailed information about the technology.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div id="radar-container">
+                    <svg id="radar-svg"></svg>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Data for 2015
+        const data2015 = [
+            { id: 'moisture-wicking', name: 'Moisture-Wicking Fabrics', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+            { id: 'antibacterial', name: 'Antibacterial Textiles (Silver)', category: 'industry', trl: 8, angle: 15, progress: { research: 88, funding: 92, timeline: 90, consensus: 92 } },
+            { id: 'uv-protective', name: 'UV-Protective Fabrics', category: 'industry', trl: 9, angle: 30, progress: { research: 95, funding: 100, timeline: 98, consensus: 98 } },
+            { id: 'conductive-thread', name: 'Conductive Thread/Yarn', category: 'emerging', trl: 6, angle: 45, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+            { id: 'hr-fabrics', name: 'Heart Rate Sensor Fabrics', category: 'emerging', trl: 5, angle: 60, progress: { research: 62, funding: 70, timeline: 58, consensus: 65 } },
+            { id: 'heated-clothing', name: 'Heated Clothing (Battery)', category: 'emerging', trl: 6, angle: 75, progress: { research: 70, funding: 75, timeline: 68, consensus: 72 } },
+            { id: 'led-textiles', name: 'LED-Integrated Textiles', category: 'emerging', trl: 5, angle: 90, progress: { research: 60, funding: 68, timeline: 55, consensus: 62 } },
+            { id: 'smart-athletic', name: 'Smart Athletic Wear', category: 'emerging', trl: 5, angle: 105, progress: { research: 65, funding: 72, timeline: 60, consensus: 68 } },
+            { id: 'pcm', name: 'Phase-Change Materials', category: 'emerging', trl: 4, angle: 120, progress: { research: 58, funding: 65, timeline: 52, consensus: 60 } },
+            { id: 'haptic-textiles', name: 'Haptic Feedback Textiles', category: 'research', trl: 3, angle: 135, progress: { research: 45, funding: 52, timeline: 38, consensus: 45 } },
+            { id: 'solar-fabrics', name: 'Solar Cell Fabrics', category: 'research', trl: 3, angle: 150, progress: { research: 48, funding: 55, timeline: 40, consensus: 48 } },
+            { id: 'graphene-textiles', name: 'Graphene Textiles', category: 'research', trl: 3, angle: 165, progress: { research: 50, funding: 58, timeline: 42, consensus: 50 } },
+            { id: 'shape-memory', name: 'Shape-Memory Fabrics', category: 'research', trl: 4, angle: 180, progress: { research: 55, funding: 62, timeline: 48, consensus: 55 } },
+            { id: 'printed-electronics', name: 'Printed Electronics on Textiles', category: 'research', trl: 4, angle: 195, progress: { research: 52, funding: 60, timeline: 45, consensus: 52 } },
+            { id: 'medical-compression', name: 'Smart Medical Compression', category: 'emerging', trl: 5, angle: 210, progress: { research: 62, funding: 68, timeline: 58, consensus: 65 } },
+            { id: 'thermochromic', name: 'Thermochromic Textiles', category: 'research', trl: 3, angle: 225, progress: { research: 48, funding: 52, timeline: 40, consensus: 48 } },
+            { id: 'self-cleaning', name: 'Self-Cleaning Textiles (TiO2)', category: 'research', trl: 3, angle: 240, progress: { research: 50, funding: 55, timeline: 42, consensus: 50 } },
+            { id: 'self-healing', name: 'Self-Healing Fabrics', category: 'research', trl: 2, angle: 255, progress: { research: 35, funding: 42, timeline: 28, consensus: 35 } },
+            { id: 'bio-fibers', name: 'Bio-Based Smart Fibers', category: 'research', trl: 3, angle: 270, progress: { research: 42, funding: 48, timeline: 35, consensus: 42 } },
+            { id: 'piezoelectric', name: 'Piezoelectric Energy Harvesting', category: 'research', trl: 3, angle: 285, progress: { research: 45, funding: 52, timeline: 38, consensus: 45 } },
+            { id: 'textile-batteries', name: 'Textile-Based Batteries', category: 'research', trl: 2, angle: 300, progress: { research: 38, funding: 45, timeline: 30, consensus: 38 } },
+            { id: 'living-textiles', name: 'Living Textiles (Bacteria)', category: 'research', trl: 2, angle: 315, progress: { research: 30, funding: 35, timeline: 22, consensus: 28 } },
+            { id: 'washable-etextiles', name: 'Washable E-Textiles', category: 'research', trl: 3, angle: 330, progress: { research: 48, funding: 55, timeline: 40, consensus: 48 } },
+            { id: 'color-changing', name: 'Color-Changing Smart Fabrics', category: 'research', trl: 3, angle: 345, progress: { research: 42, funding: 48, timeline: 35, consensus: 42 } }
+        ];
+
+        // Data for 2020
+        const data2020 = [
+            { id: 'moisture-wicking', name: 'Moisture-Wicking Fabrics', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+            { id: 'antibacterial', name: 'Antibacterial Textiles', category: 'industry', trl: 9, angle: 15, progress: { research: 95, funding: 98, timeline: 96, consensus: 98 } },
+            { id: 'uv-protective', name: 'UV-Protective Fabrics', category: 'industry', trl: 9, angle: 30, progress: { research: 98, funding: 100, timeline: 100, consensus: 100 } },
+            { id: 'conductive-thread', name: 'Conductive Thread/Yarn', category: 'industry', trl: 7, angle: 45, progress: { research: 82, funding: 88, timeline: 78, consensus: 85 } },
+            { id: 'hr-fabrics', name: 'Heart Rate Sensor Fabrics', category: 'emerging', trl: 6, angle: 60, progress: { research: 75, funding: 82, timeline: 70, consensus: 78 } },
+            { id: 'heated-clothing', name: 'Heated Clothing (Battery)', category: 'industry', trl: 7, angle: 75, progress: { research: 82, funding: 88, timeline: 80, consensus: 85 } },
+            { id: 'led-textiles', name: 'LED-Integrated Textiles', category: 'emerging', trl: 6, angle: 90, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+            { id: 'smart-athletic', name: 'Smart Athletic Wear (Hexoskin)', category: 'emerging', trl: 6, angle: 105, progress: { research: 75, funding: 82, timeline: 72, consensus: 78 } },
+            { id: 'pcm', name: 'Phase-Change Materials (Outlast)', category: 'emerging', trl: 5, angle: 120, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+            { id: 'haptic-textiles', name: 'Haptic Feedback Textiles', category: 'research', trl: 4, angle: 135, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
+            { id: 'solar-fabrics', name: 'Solar Cell Fabrics (Prototypes)', category: 'research', trl: 4, angle: 150, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
+            { id: 'graphene-textiles', name: 'Graphene Textiles (Lab stage)', category: 'research', trl: 4, angle: 165, progress: { research: 62, funding: 70, timeline: 55, consensus: 65 } },
+            { id: 'shape-memory', name: 'Shape-Memory Fabrics', category: 'emerging', trl: 5, angle: 180, progress: { research: 65, funding: 72, timeline: 60, consensus: 68 } },
+            { id: 'printed-electronics', name: 'Printed Electronics on Textiles', category: 'emerging', trl: 5, angle: 195, progress: { research: 65, funding: 72, timeline: 58, consensus: 65 } },
+            { id: 'medical-compression', name: 'Smart Medical Compression', category: 'emerging', trl: 6, angle: 210, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+            { id: 'thermochromic', name: 'Thermochromic Textiles', category: 'research', trl: 4, angle: 225, progress: { research: 58, funding: 62, timeline: 50, consensus: 58 } },
+            { id: 'self-cleaning', name: 'Self-Cleaning Textiles (TiO2)', category: 'research', trl: 4, angle: 240, progress: { research: 62, funding: 68, timeline: 55, consensus: 62 } },
+            { id: 'self-healing', name: 'Self-Healing Fabrics', category: 'research', trl: 3, angle: 255, progress: { research: 48, funding: 55, timeline: 38, consensus: 48 } },
+            { id: 'bio-fibers', name: 'Bio-Based Smart Fibers', category: 'research', trl: 4, angle: 270, progress: { research: 55, funding: 62, timeline: 48, consensus: 55 } },
+            { id: 'piezoelectric', name: 'Piezoelectric Energy Harvesting', category: 'research', trl: 4, angle: 285, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
+            { id: 'textile-batteries', name: 'Textile-Based Batteries', category: 'research', trl: 3, angle: 300, progress: { research: 50, funding: 58, timeline: 42, consensus: 50 } },
+            { id: 'living-textiles', name: 'Living Textiles (Bacteria)', category: 'research', trl: 2, angle: 315, progress: { research: 38, funding: 42, timeline: 28, consensus: 36 } },
+            { id: 'washable-etextiles', name: 'Washable E-Textiles', category: 'research', trl: 4, angle: 330, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
+            { id: 'color-changing', name: 'Color-Changing Smart Fabrics', category: 'research', trl: 4, angle: 345, progress: { research: 55, funding: 62, timeline: 48, consensus: 55 } }
+        ];
+
+        // Data for 2025
+        const data2025 = [
+            { id: 'moisture-wicking', name: 'Moisture-Wicking Fabrics', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+            { id: 'antibacterial', name: 'Antibacterial Textiles (AgNPs)', category: 'industry', trl: 9, angle: 15, progress: { research: 98, funding: 100, timeline: 98, consensus: 100 } },
+            { id: 'uv-protective', name: 'UV-Protective Fabrics', category: 'industry', trl: 9, angle: 30, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+            { id: 'conductive-thread', name: 'Conductive Thread ($3.3B market 2025)', category: 'industry', trl: 8, angle: 45, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+            { id: 'hr-fabrics', name: 'Heart Rate Sensor Fabrics (60M units)', category: 'industry', trl: 8, angle: 60, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+            { id: 'heated-clothing', name: 'Heated Clothing (Consumer)', category: 'industry', trl: 8, angle: 75, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+            { id: 'led-textiles', name: 'LED-Integrated Textiles (Fashion)', category: 'industry', trl: 7, angle: 90, progress: { research: 82, funding: 88, timeline: 78, consensus: 85 } },
+            { id: 'smart-athletic', name: 'Smart Athletic Wear ($22B market)', category: 'industry', trl: 7, angle: 105, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+            { id: 'pcm', name: 'Phase-Change Materials (33% sweat reduction)', category: 'emerging', trl: 6, angle: 120, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
+            { id: 'haptic-textiles', name: 'Haptic Feedback Textiles', category: 'emerging', trl: 6, angle: 135, progress: { research: 72, funding: 78, timeline: 65, consensus: 72 } },
+            { id: 'solar-fabrics', name: 'Solar Cell Fabrics (Commercial)', category: 'emerging', trl: 6, angle: 150, progress: { research: 75, funding: 82, timeline: 68, consensus: 75 } },
+            { id: 'graphene-textiles', name: 'Graphene Textiles (Dovetail, DUER)', category: 'emerging', trl: 6, angle: 165, progress: { research: 75, funding: 85, timeline: 70, consensus: 78 } },
+            { id: 'shape-memory', name: 'Shape-Memory Fabrics', category: 'emerging', trl: 6, angle: 180, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+            { id: 'printed-electronics', name: 'Printed Electronics (24% defense use)', category: 'emerging', trl: 6, angle: 195, progress: { research: 75, funding: 82, timeline: 70, consensus: 78 } },
+            { id: 'medical-compression', name: 'Smart Medical Compression (FDA)', category: 'emerging', trl: 6, angle: 210, progress: { research: 80, funding: 85, timeline: 75, consensus: 82 } },
+            { id: 'thermochromic', name: 'Thermochromic Textiles', category: 'research', trl: 4, angle: 225, progress: { research: 65, funding: 70, timeline: 58, consensus: 65 } },
+            { id: 'self-cleaning', name: 'Self-Cleaning (TiO2, 99% degradation)', category: 'research', trl: 4, angle: 240, progress: { research: 72, funding: 78, timeline: 65, consensus: 72 } },
+            { id: 'self-healing', name: 'Self-Healing Fabrics (Superhydrophobic)', category: 'research', trl: 3, angle: 255, progress: { research: 60, funding: 68, timeline: 50, consensus: 60 } },
+            { id: 'bio-fibers', name: 'Bio-Based Smart Fibers (Sustainable)', category: 'research', trl: 4, angle: 270, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+            { id: 'piezoelectric', name: 'Piezoelectric Energy Harvesting', category: 'research', trl: 4, angle: 285, progress: { research: 68, funding: 75, timeline: 60, consensus: 68 } },
+            { id: 'textile-batteries', name: 'Textile-Based Batteries (Flexible)', category: 'research', trl: 4, angle: 300, progress: { research: 62, funding: 70, timeline: 55, consensus: 65 } },
+            { id: 'living-textiles', name: 'Living Textiles (Bio-integrated)', category: 'research', trl: 3, angle: 315, progress: { research: 50, funding: 58, timeline: 40, consensus: 48 } },
+            { id: 'washable-etextiles', name: 'Washable E-Textiles (Durable)', category: 'emerging', trl: 5, angle: 330, progress: { research: 72, funding: 80, timeline: 65, consensus: 72 } },
+            { id: 'color-changing', name: 'Color-Changing Smart Fabrics', category: 'research', trl: 4, angle: 345, progress: { research: 65, funding: 72, timeline: 58, consensus: 65 } }
+        ];
+
+        // Technology connections showing relationships
+        const techConnections = [
+            { source: 'conductive-thread', target: 'hr-fabrics' },
+            { source: 'conductive-thread', target: 'heated-clothing' },
+            { source: 'conductive-thread', target: 'printed-electronics' },
+            { source: 'smart-athletic', target: 'hr-fabrics' },
+            { source: 'smart-athletic', target: 'washable-etextiles' },
+            { source: 'pcm', target: 'smart-athletic' },
+            { source: 'graphene-textiles', target: 'conductive-thread' },
+            { source: 'graphene-textiles', target: 'heated-clothing' },
+            { source: 'solar-fabrics', target: 'printed-electronics' },
+            { source: 'textile-batteries', target: 'solar-fabrics' },
+            { source: 'piezoelectric', target: 'textile-batteries' },
+            { source: 'self-healing', target: 'self-cleaning' }
+        ];
+
+        // Detailed descriptions for selected technologies
+        const techDescriptions = {
+            'smart-athletic': {
+                description: 'The global e-textiles and smart clothing market is valued at $22.08 billion in 2025 and projected to grow to $274.99 billion by 2034 at a 32.34% CAGR. Over 60 million smart garments are expected to ship by 2026, driven by demand from fitness, defense, and healthcare sectors seeking real-time biometrics beyond wrist-worn devices. Smart textiles and wearable technology market reached $11.04 billion in 2024 and is projected to hit $81.48 billion by 2034 at a 24.87% CAGR. North America contributed the largest market share in 2024, while Asia Pacific is expanding at the fastest CAGR through 2034. Over 42% of smart clothing prototypes developed since 2023 rely on conductive yarns, cloth, or mesh integrated with copper, silver, nickel, or graphene coatings.',
+                progress: {
+                    research: 85,
+                    funding: 92,
+                    timeline: 82,
+                    consensus: 88
+                },
+                references: [
+                    'Precedence Research. (2025). E-Textiles and Smart Clothing Market Size 2025 to 2034. https://www.precedenceresearch.com/e-textiles-and-smart-clothing-market',
+                    'Metric Wave Insights. (2025). Smart Textiles and Wearable Technology Market Size, Trends. https://www.metricwaveinsights.com/smart-textiles-and-wearable-technology-market',
+                    'Market Reports World. (2025). Conductive Fabric market Size, Growth | Report [2034]. https://www.marketreportsworld.com/market-reports/conductive-fabric-market-14722286'
+                ]
+            },
+            'graphene-textiles': {
+                description: 'The global conductive fabric market is anticipated to reach $3.32 billion in 2025, projected to grow to $4.85 billion by 2034 at a 4.3% CAGR. The year 2025 marks a transition from early adoption to broader commercialization. Commercial products include: Grafren AB (Sweden) with electrically heatable textiles (G-Heatex) ready for commercialization, ultra-lightweight camouflage garments, and pressure monitoring fabrics for digital healthcare; Dovetail launched a graphene-enhanced work pants collection infused with graphene for improved durability and comfort; DUER introduced Performance Flannel enhanced with graphene for temperature regulation without heaviness, static reduction, and extended freshness. Over 42% of smart clothing prototypes since 2023 use conductive materials with graphene coatings. Graphene fibers demonstrate exceptional functionality in wearable sensing (strain, pressure, humidity) and flexible energy storage (supercapacitors, batteries).',
+                progress: {
+                    research: 75,
+                    funding: 85,
+                    timeline: 70,
+                    consensus: 78
+                },
+                references: [
+                    'Market Reports World. (2025). Conductive Fabric market Size, Growth | Report [2034]. https://www.marketreportsworld.com/market-reports/conductive-fabric-market-14722286',
+                    'Graphene Flagship. (2024). Materials of the future: Graphene and textiles. https://graphene-flagship.eu/materials/news/materials-of-the-future-graphene-and-textiles/',
+                    'Springer. (2025). Functional Graphene Fiber Materials for Advanced Wearable Applications. https://link.springer.com/article/10.1007/s42765-025-00512-1'
+                ]
+            },
+            'pcm': {
+                description: 'Phase Change Materials (PCMs) in textiles maintain a comfortable microclimate between 28-35°C (82-95°F) by absorbing or releasing energy during phase transitions. When body temperature rises above the PCM melting point, microcapsules absorb excess heat energy, converting from solid to liquid state. Scientific studies demonstrate that PCM-enhanced apparel reduces sweat production by up to 33%, while footwear applications show a 44% decrease in moisture accumulation. Publications in this field peaked at 460 in 2022, with 445 publications in 2023, demonstrating sustained research interest. Applications span winter sports apparel, military uniforms, bedding materials, casual wear, and technical workwear. The 2025 focus emphasizes sustainability with organic PCMs derived from renewable resources like plant oils and fatty acids offering alternatives to inorganic PCMs.',
+                progress: {
+                    research: 78,
+                    funding: 85,
+                    timeline: 72,
+                    consensus: 80
+                },
+                references: [
+                    'ScienceDirect. (2024). An overview of phase change materials, their production, and applications in textiles. https://www.sciencedirect.com/science/article/pii/S2590123024018462',
+                    'SAGE Journals. (2024). Research and development on phase change material-integrated cloth: A review. https://journals.sagepub.com/doi/10.1177/15280837241262518',
+                    'Springer. (2025). Eco-innovation in organic phase change materials for thermoregulatory textiles. https://link.springer.com/article/10.1007/s13762-025-06374-9'
+                ]
+            },
+            'self-cleaning': {
+                description: 'TiO2 nanoparticles are considered cost-efficient, nontoxic, and the most researched photocatalytic nanocoatings for self-cleaning textiles. Recent advances include nitrogen-doped TiO2 coatings that extend absorption into the visible light range, especially effective in low ambient lighting conditions with illuminance of approximately 580 lx. TiO2/rGO nanocomposite under visible light irradiation achieved a degradation percentage of 99.20% for methylene blue stains. Silver nanoparticles and TiO2-AgNPs core-shell structures have been prepared for cotton fabrics to improve UV protection, self-cleaning, and antimicrobial activities for medical uses. F-TiO2-coated fabrics displayed excellent self-cleaning and self-healing properties, with modified fabrics able to restore superhydrophobic performance regardless of severe physical or chemical damage. Research shows stains of organic compounds were successfully decomposed by more than 50%, with light conditions significantly affecting self-cleaning ability.',
+                progress: {
+                    research: 72,
+                    funding: 78,
+                    timeline: 65,
+                    consensus: 72
+                },
+                references: [
+                    'PMC. (2025). Self-Cleaning Textiles for Publicly Shared Soft Surfaces. https://pmc.ncbi.nlm.nih.gov/articles/PMC11800003/',
+                    'Nature. (2024). Innovative textiles treated with TiO2-AgNPs with succinic acid as a cross-linking agent for medical uses. https://www.nature.com/articles/s41598-024-56653-7',
+                    'ScienceDirect. (2024). Sustainable self-cleaning fabrics enabled by sunlit metal oxide catalysts: A critical review. https://www.sciencedirect.com/science/article/abs/pii/S2214993724001891'
+                ]
+            },
+            'moisture-wicking': {
+                description: 'Moisture-Wicking Fabrics (TRL 9) are the baseline for athletic wear. Modern polyester blends (Nike Dri-FIT, Under Armour) move sweat to the fabric surface where it evaporates. 2025 innovations focus on biomimetic structures (pinecone effect) that mechanically open vents when wet.',
+                progress: { research: 100, funding: 100, timeline: 100, consensus: 100 },
+                references: ['Textile Research Journal. (2025). Biomimetic moisture management.', 'Nike. (2024). Sustainable wicking polymers.']
+            },
+            'antibacterial': {
+                description: 'Antibacterial Textiles (TRL 9) use silver nanoparticles (AgNPs) or chitosan to kill odor-causing bacteria. Widely used in gym clothes and hospital scrubs. Environmental concerns about silver leaching are driving shifts to "permanent" physical bonding methods.',
+                progress: { research: 98, funding: 100, timeline: 98, consensus: 100 },
+                references: ['Polymers. (2025). Leaching-resistant antibacterial coatings.', 'Patagonia. (2024). Odor control technology review.']
+            },
+            'uv-protective': {
+                description: 'UV-Protective Fabrics (UPF 50+) (TRL 9) are standard for outdoor gear. Ceramic particles (Titanium Dioxide) embedded in the fiber reflect UV rays. 2025 tech makes these fabrics lighter and more breathable without losing protection.',
+                progress: { research: 100, funding: 100, timeline: 100, consensus: 100 },
+                references: ['Skin Cancer Foundation. (2025). UPF 50+ certification standards.', 'Columbia Sportswear. (2024). Omni-Shade innovation.']
+            },
+            'conductive-thread': {
+                description: 'Conductive Thread (TRL 8) turns fabric into a circuit board. Brands like Google Jacquard weave copper cores into denim, allowing touch gestures (swipe to skip song) on a jacket sleeve. It resists washing and bending fatigue.',
+                progress: { research: 90, funding: 95, timeline: 88, consensus: 92 },
+                references: ['Google ATAP. (2025). Jacquard scalability.', 'DuPont. (2024). Intexar conductive inks.']
+            },
+            'hr-fabrics': {
+                description: 'Heart Rate Sensor Fabrics (TRL 8) replace chest straps. Electrodes printed directly inside shirts (Hexoskin, Myant) detect ECG signals. Used by pro athletes and astronauts for continuous monitoring without rigid wearables.',
+                progress: { research: 88, funding: 92, timeline: 85, consensus: 90 },
+                references: ['Hexoskin. (2025). Astroskin space mission data.', 'Myant. (2024). Skiin textile interface.']
+            },
+            'heated-clothing': {
+                description: 'Heated Clothing (TRL 8) uses carbon fiber elements powered by power banks. Milwaukee and Bosch offer heated work jackets. 2025 improvements include "smart thermostats" that adjust heat based on body temp to save battery.',
+                progress: { research: 90, funding: 95, timeline: 88, consensus: 92 },
+                references: ['Milwaukee Tool. (2025). M12 Heated Gear reliability.', 'ORORO. (2024). Battery efficiency in extreme cold.']
+            },
+            'led-textiles': {
+                description: 'LED-Integrated Textiles (TRL 7) weave fiber optics or micro-LEDs for aesthetic (fashion) or safety (high-vis) impact. The "Met Gala" effect is trickling down to cyclists\' jackets that light up when braking.',
+                progress: { research: 82, funding: 88, timeline: 78, consensus: 85 },
+                references: ['Lumen Couture. (2025). Projection mapping on fabric.', 'Osram. (2024). Textile illumination components.']
+            },
+            'haptic-textiles': {
+                description: 'Haptic Feedback Textiles (TRL 6) vibrate to guide movement (yoga pants buzzing to correct posture) or for VR immersion (Teslasuit). Challenges remain in power delivery and washability.',
+                progress: { research: 72, funding: 78, timeline: 65, consensus: 72 },
+                references: ['Teslasuit. (2025). Enterprise training adoption.', 'Wearable Technologies. (2024). Haptic navigation for the blind.']
+            },
+            'solar-fabrics': {
+                description: 'Solar Cell Fabrics (TRL 6) integrate flexible photovoltaics to charge phones in pockets. Efficiency is lower than rigid panels, but "power generating backpacks" are commercially viable for hikers.',
+                progress: { research: 75, funding: 82, timeline: 68, consensus: 75 },
+                references: ['Penn State. (2025). Wearable solar efficiency records.', 'SolarCloth. (2024). Marine sail photovoltaics.']
+            },
+            'shape-memory': {
+                description: 'Shape-Memory Fabrics (TRL 6) change shape with heat. "4D printed" textiles open pores when the wearer gets hot (cooling) and close them when cold (insulation), offering passive climate control.',
+                progress: { research: 72, funding: 78, timeline: 68, consensus: 75 },
+                references: ['MIT Media Lab. (2025). activeaux material response.', 'Nature Materials. (2024). Shape memory polymer weaving.']
+            },
+            'printed-electronics': {
+                description: 'Printed Electronics (TRL 6) deposit circuits using conductive inkjets. Defense uses include "keyboards on sleeves" for soldiers. It allows rapid prototyping of smart sensors on standard textiles.',
+                progress: { research: 75, funding: 82, timeline: 70, consensus: 78 },
+                references: ['NextFlex. (2025). Flexible hybrid electronics roadmap.', 'Butler Technologies. (2024). Printed heater benchmarks.']
+            },
+            'medical-compression': {
+                description: 'Smart Medical Compression (TRL 6) uses active polymers to squeeze legs to prevent DVT (blood clots), replacing static socks. Sensors ensure correct pressure is applied, crucial for diabetic patients.',
+                progress: { research: 80, funding: 85, timeline: 75, consensus: 82 },
+                references: ['AIROS Medical. (2025). Active compression clinical trials.', 'Journal of Vascular Surgery. (2024). Smart compression efficacy.']
+            },
+            'thermochromic': {
+                description: 'Thermochromic Textiles (TRL 4) change color with heat. Used in baby monitors (onesie turns pink if feverish) and military camouflage that adapts to thermal signatures. Durability of the effect is the main hurdle.',
+                progress: { research: 65, funding: 70, timeline: 58, consensus: 65 },
+                references: ['LCR Hallcrest. (2025). Thermochromic pigment stability.', 'Textile World. (2024). Adaptive camouflage research.']
+            },
+            'self-healing': {
+                description: 'Self-Healing Fabrics (TRL 3) repair punctures. Inspired by squid ring teeth proteins, these coatings melt and reform under warm water, sealing holes in rain gear or tents instantly.',
+                progress: { research: 60, funding: 68, timeline: 50, consensus: 60 },
+                references: ['Penn State. (2025). Squid protein textile coatings.', 'Advanced Materials. (2024). Self-healing Gore-Tex alternatives.']
+            },
+            'bio-fibers': {
+                description: 'Bio-Based Smart Fibers (TRL 4) are spun from algae, spider silk, or milk casein. They are biodegradable alternatives to synthetic smart fabrics. Spiber (Japan) produces "Brewed Protein" fibers at scale.',
+                progress: { research: 68, funding: 75, timeline: 62, consensus: 70 },
+                references: ['Spiber. (2025). Mass production facility report.', 'Bolt Threads. (2024). Mylo mushroom leather discontinuation lessons.']
+            },
+            'piezoelectric': {
+                description: 'Piezoelectric Energy Harvesting (TRL 4) generates electricity from motion (walking, bending elbow). While output is low (microwatts), it can power ultra-low-energy sensors indefinitely without batteries.',
+                progress: { research: 68, funding: 75, timeline: 60, consensus: 68 },
+                references: ['Georgia Tech. (2025). Triboelectric nanogenerator fabrics.', 'Nano Energy. (2024). Walking energy harvest efficiency.']
+            },
+            'textile-batteries': {
+                description: 'Textile-Based Batteries (TRL 4) are flexible "yarn" batteries sewn into seams. Unlike rigid lithium cells, they stretch. Safety (preventing short circuits during washing) is the critical research focus.',
+                progress: { research: 62, funding: 70, timeline: 55, consensus: 65 },
+                references: ['Samsung SDI. (2025). Flexible battery roadmap.', 'Stanford. (2024). Stretchable Li-ion yarn safety.']
+            },
+            'living-textiles': {
+                description: 'Living Textiles (TRL 3) embed dormant bacteria (Bacillus subtilis) that "wake up" to eat sweat or release perfume when humid. MIT\'s BioLogic suit literally grows vents that curl open when the wearer sweats.',
+                progress: { research: 50, funding: 58, timeline: 40, consensus: 48 },
+                references: ['MIT Media Lab. (2025). Second Skin bio-interfaces.', 'Science Advances. (2024). Bacteria-responsive fabrics.']
+            },
+            'washable-etextiles': {
+                description: 'Washable E-Textiles (TRL 5) withstand 50+ machine cycles. Innovation lies in encapsulation (TPU lamination) and "stretchable circuits" that don\'t crack when spun dry. Essential for consumer adoption.',
+                progress: { research: 72, funding: 80, timeline: 65, consensus: 72 },
+                references: ['AATCC. (2025). E-textile washability standard TM210.', 'IPC. (2024). 8921 Specification for Woven conductive textiles.']
+            },
+            'color-changing': {
+                description: 'Color-Changing Smart Fabrics (E-Ink) (TRL 4) allow changing a dress color via app. BMW iX flow technology adapted to fabric allows instant pattern switching, but power and flexibility remain issues.',
+                progress: { research: 65, funding: 72, timeline: 58, consensus: 65 },
+                references: ['E Ink. (2025). Prism 3 textile applications.', 'Adobe MAX. (2024). Project Primrose interactive dress.']
+            }
+        };
+
+        // Category colors
+        const categoryColors = {
+            research: '#FF6B6B',
+            industry: '#4ECDC4',
+            emerging: '#FFE66D',
+            experimental: '#A8DADC'
+        };
+
+        // TRL level colors
+        function getTRLColor(trl) {
+            if (trl >= 1 && trl <= 3) return '#FF6B6B';
+            if (trl >= 4 && trl <= 6) return '#FFE66D';
+            if (trl >= 7 && trl <= 9) return '#4ECDC4';
+            return '#999';
+        }
+
+        // Current state
+        let currentPeriod = '2025';
+        let currentFilter = 'all';
+        let currentData = data2025;
+        let currentZoom = 1;
+        let currentPan = { x: 0, y: 0 };
+
+        // SVG dimensions
+        const container = document.getElementById('radar-container');
+        const svg = d3.select('#radar-svg');
+        let width = container.clientWidth;
+        let height = container.clientHeight;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const maxRadius = Math.min(width, height) * 0.4;
+
+        // Create main group for zoom/pan
+        const mainGroup = svg.append('g')
+            .attr('class', 'main-group');
+
+        // Create radar visualization
+        function createRadar() {
+            mainGroup.selectAll('*').remove();
+
+            // Draw TRL circles
+            for (let i = 9; i >= 1; i--) {
+                const radius = (i / 9) * maxRadius;
+                mainGroup.append('circle')
+                    .attr('cx', centerX)
+                    .attr('cy', centerY)
+                    .attr('r', radius)
+                    .attr('fill', 'none')
+                    .attr('stroke', getTRLColor(i))
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.3);
+
+                // Add TRL labels
+                mainGroup.append('text')
+                    .attr('x', centerX + 5)
+                    .attr('y', centerY - radius + 15)
+                    .attr('font-size', '10px')
+                    .attr('fill', '#666')
+                    .text(`TRL ${i}`);
+            }
+
+            // Draw angle guides
+            for (let angle = 0; angle < 360; angle += 30) {
+                const rad = (angle - 90) * Math.PI / 180;
+                mainGroup.append('line')
+                    .attr('x1', centerX)
+                    .attr('y1', centerY)
+                    .attr('x2', centerX + Math.cos(rad) * maxRadius)
+                    .attr('y2', centerY + Math.sin(rad) * maxRadius)
+                    .attr('stroke', '#ddd')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.3);
+            }
+
+            // Draw connections
+            techConnections.forEach(conn => {
+                const source = currentData.find(d => d.id === conn.source);
+                const target = currentData.find(d => d.id === conn.target);
+
+                if (source && target) {
+                    const sourceRad = (source.angle - 90) * Math.PI / 180;
+                    const targetRad = (target.angle - 90) * Math.PI / 180;
+                    const sourceRadius = (source.trl / 9) * maxRadius;
+                    const targetRadius = (target.trl / 9) * maxRadius;
+
+                    mainGroup.append('line')
+                        .attr('x1', centerX + Math.cos(sourceRad) * sourceRadius)
+                        .attr('y1', centerY + Math.sin(sourceRad) * sourceRadius)
+                        .attr('x2', centerX + Math.cos(targetRad) * targetRadius)
+                        .attr('y2', centerY + Math.sin(targetRad) * targetRadius)
+                        .attr('stroke', '#ccc')
+                        .attr('stroke-width', 1)
+                        .attr('stroke-dasharray', '3,3')
+                        .attr('opacity', 0.3);
+                }
+            });
+
+            // Draw data points
+            currentData.forEach(tech => {
+                const rad = (tech.angle - 90) * Math.PI / 180;
+                const radius = (tech.trl / 9) * maxRadius;
+                const x = centerX + Math.cos(rad) * radius;
+                const y = centerY + Math.sin(rad) * radius;
+
+                const point = mainGroup.append('g')
+                    .attr('class', 'tech-point')
+                    .attr('data-category', tech.category)
+                    .style('cursor', 'pointer')
+                    .on('click', () => showTechInfo(tech));
+
+                point.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 6)
+                    .attr('fill', categoryColors[tech.category])
+                    .attr('stroke', '#333')
+                    .attr('stroke-width', 2);
+
+                point.append('text')
+                    .attr('x', x + 10)
+                    .attr('y', y + 4)
+                    .attr('font-size', '11px')
+                    .attr('fill', '#333')
+                    .text(tech.name);
+            });
+        }
+
+        // Show technology information
+        function showTechInfo(tech) {
+            const infoPanel = document.getElementById('info-panel');
+            const techInfo = techDescriptions[tech.id];
+
+            let html = `
+                <div class="info-title">${tech.name}</div>
+                <div class="info-content">
+                    <div class="info-item">
+                        <strong>TRL Level:</strong> ${tech.trl}/9
+                    </div>
+                    <div class="info-item">
+                        <strong>Category:</strong> ${tech.category}
+                    </div>
+            `;
+
+            if (techInfo) {
+                html += `
+                    <div class="info-item">
+                        <strong>Description:</strong>
+                        <p>${techInfo.description}</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>Progress Metrics:</strong>
+                        <div class="progress-bar">
+                            <div class="progress-label">Research: ${techInfo.progress.research}%</div>
+                            <div class="progress-fill" style="width: ${techInfo.progress.research}%"></div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-label">Funding: ${techInfo.progress.funding}%</div>
+                            <div class="progress-fill" style="width: ${techInfo.progress.funding}%"></div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-label">Timeline: ${techInfo.progress.timeline}%</div>
+                            <div class="progress-fill" style="width: ${techInfo.progress.timeline}%"></div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-label">Consensus: ${techInfo.progress.consensus}%</div>
+                            <div class="progress-fill" style="width: ${techInfo.progress.consensus}%"></div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <strong>References:</strong>
+                        <ol style="margin: 5px 0; padding-left: 20px; font-size: 10px;">
+                            ${techInfo.references.map(ref => `<li>${ref}</li>`).join('')}
+                        </ol>
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
+            infoPanel.innerHTML = html;
+        }
+
+        // Filter controls
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                applyFilters();
+            });
+        });
+
+        // Period controls
+        document.querySelectorAll('[data-period]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-period]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentPeriod = this.dataset.period;
+
+                if (currentPeriod === '2025') currentData = data2025;
+                else if (currentPeriod === '2020') currentData = data2020;
+                else currentData = data2015;
+
+                createRadar();
+                applyFilters();
+            });
+        });
+
+        // Apply filters
+        function applyFilters() {
+            document.querySelectorAll('.tech-point').forEach(point => {
+                const category = point.getAttribute('data-category');
+                if (currentFilter === 'all' || category === currentFilter) {
+                    point.style.display = 'block';
+                } else {
+                    point.style.display = 'none';
+                }
+            });
+        }
+
+        // Zoom controls
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            currentZoom *= 1.2;
+            applyZoomPan();
+        });
+
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            currentZoom /= 1.2;
+            applyZoomPan();
+        });
+
+        document.getElementById('reset-view').addEventListener('click', () => {
+            currentZoom = 1;
+            currentPan = { x: 0, y: 0 };
+            applyZoomPan();
+        });
+
+        function applyZoomPan() {
+            mainGroup.attr('transform', `translate(${currentPan.x}, ${currentPan.y}) scale(${currentZoom})`);
+        }
+
+        // Drag to pan
+        let isDragging = false;
+        let dragStart = { x: 0, y: 0 };
+
+        svg.on('mousedown', function (event) {
+            isDragging = true;
+            dragStart = { x: event.clientX - currentPan.x, y: event.clientY - currentPan.y };
+        });
+
+        svg.on('mousemove', function (event) {
+            if (isDragging) {
+                currentPan = {
+                    x: event.clientX - dragStart.x,
+                    y: event.clientY - dragStart.y
+                };
+                applyZoomPan();
+            }
+        });
+
+        svg.on('mouseup', () => isDragging = false);
+        svg.on('mouseleave', () => isDragging = false);
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            width = container.clientWidth;
+            height = container.clientHeight;
+            svg.attr('width', width).attr('height', height);
+            createRadar();
+        });
+
+        // Initialize
+        svg.attr('width', width).attr('height', height);
+        createRadar();
+    </script>
+</body>
+
+</html>

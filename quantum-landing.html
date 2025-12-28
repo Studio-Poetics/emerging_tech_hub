@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Computing Learning Hub - Quantum Physics & Computing Education</title>
-    <meta name="description" content="Learn quantum computing fundamentals and quantum physics principles. Explore qubits, quantum algorithms, and quantum supremacy through accessible education for non-technical learners.">
-    <meta name="keywords" content="quantum computing, quantum physics, qubits, quantum algorithms, quantum supremacy, quantum mechanics, quantum education, quantum computing basics">
+    <meta name="description"
+        content="Learn quantum computing fundamentals and quantum physics principles. Explore qubits, quantum algorithms, and quantum supremacy through accessible education for non-technical learners.">
+    <meta name="keywords"
+        content="quantum computing, quantum physics, qubits, quantum algorithms, quantum supremacy, quantum mechanics, quantum education, quantum computing basics">
     <meta name="author" content="Studio Poetics - Emerging Technology Hub">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eth.poetics.studio/quantum-landing.html">
@@ -14,14 +17,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eth.poetics.studio/quantum-landing.html">
     <meta property="og:title" content="Quantum Computing Learning Hub - Quantum Physics & Computing">
-    <meta property="og:description" content="Learn quantum computing fundamentals and quantum physics principles through accessible education for non-technical learners.">
+    <meta property="og:description"
+        content="Learn quantum computing fundamentals and quantum physics principles through accessible education for non-technical learners.">
     <meta property="og:site_name" content="Emerging Technology Hub">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://eth.poetics.studio/quantum-landing.html">
     <meta property="twitter:title" content="Quantum Computing Learning Hub - Quantum Physics & Computing">
-    <meta property="twitter:description" content="Learn quantum computing fundamentals and quantum physics principles through accessible education for non-technical learners.">
+    <meta property="twitter:description"
+        content="Learn quantum computing fundamentals and quantum physics principles through accessible education for non-technical learners.">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -49,72 +54,179 @@
     </script>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .experimental-title { font-size: var(--text-4xl) !important; }
-    .experimental-subtitle { font-size: var(--text-lg) !important; }
-    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
-    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
-    .card-description, .card-meta { display: none !important; }
-    .card-title { font-size: var(--text-lg) !important; }
-    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
-    .vertical-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 48px !important;
-        width: 100vw !important;
-        background: var(--color-black) !important;
-        z-index: 20 !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .vertical-menu-text {
-        writing-mode: horizontal-tb !important;
-        text-orientation: initial !important;
-        letter-spacing: 0.1em !important;
-    }
-    .experimental-main { padding-top: 48px !important; }
-    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-    /* Content page specific */
-    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .fundamentals-title { font-size: var(--text-4xl) !important; }
-    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
-    .content-section { margin-bottom: var(--space-8) !important; }
-    .content-section h2 { font-size: var(--text-2xl) !important; }
-    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
-    .item-description { display: none !important; }
-    .available-badge { display: none !important; }
+            .experimental-main {
+                padding-top: 0 !important;
+            }
 
-    /* Landing page specific */
-    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
-    .section-nav-list { gap: var(--space-3) !important; }
-    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
-    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
-    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
-    .section-description { font-size: var(--text-base) !important; }
-    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
-}
-</style>
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
 
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .experimental-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+                padding: var(--space-4) !important;
+            }
+
+            .experimental-card.featured {
+                grid-row: auto !important;
+                min-height: auto !important;
+            }
+
+            .card-description,
+            .card-meta {
+                display: none !important;
+            }
+
+            .card-title {
+                font-size: var(--text-lg) !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+
+            /* Content page specific */
+            .fundamentals-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .fundamentals-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .fundamentals-subtitle {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .fundamentals-content {
+                padding: var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .content-section {
+                margin-bottom: var(--space-8) !important;
+            }
+
+            .content-section h2 {
+                font-size: var(--text-2xl) !important;
+            }
+
+            .properties-grid,
+            .feature-grid,
+            .applications-grid,
+            .approach-cards,
+            .getting-started {
+                grid-template-columns: 1fr !important;
+            }
+
+            .item-description {
+                display: none !important;
+            }
+
+            .available-badge {
+                display: none !important;
+            }
+
+            /* Landing page specific */
+            .ai-section-nav {
+                position: static !important;
+                margin: 0 !important;
+                padding: var(--space-3) var(--space-4) !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .ai-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -123,7 +235,8 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
                     <p class="brand-subtitle">Quantum Information</p>
                 </div>
 
@@ -131,26 +244,27 @@
                     <div class="experimental-nav-title">Quantum Computing</div>
                     <ul class="experimental-nav">
                         <li class="experimental-nav-item">
-                            <a href="#fundamentals" class="experimental-nav-link">Fundamentals</a>
+                            <a href="quantum-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#readings" class="experimental-nav-link">Readings</a>
+                            <a href="quantum-readings.html" class="experimental-nav-link">Readings</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#flashcards" class="experimental-nav-link">Flashcards</a>
+                            <a href="quantum-flashcards.html" class="experimental-nav-link">Flashcards</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#fieldkit" class="experimental-nav-link">Field Kit</a>
+                            <a href="quantum-field-kit.html" class="experimental-nav-link">Field Kit</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#activities" class="experimental-nav-link">Activities</a>
+                            <a href="quantum-activities.html" class="experimental-nav-link">Activities</a>
                         </li>
                     </ul>
                 </nav>
 
                 <div class="experimental-info-box">
                     <div class="info-box-title">Interactive Coding Art</div>
-                    <div class="info-box-content">Experience quantum computing through visual programming and interactive quantum circuit simulations.</div>
+                    <div class="info-box-content">Experience quantum computing through visual programming and
+                        interactive quantum circuit simulations.</div>
                 </div>
 
                 <div class="experimental-info-box">
@@ -181,12 +295,14 @@
                     </div>
 
                     <p class="hero-description">
-                        Exploring quantum algorithms, qubits, and quantum machine learning through interactive coding art that visualizes the fundamental principles of quantum information processing.
+                        Exploring quantum algorithms, qubits, and quantum machine learning through interactive coding
+                        art that visualizes the fundamental principles of quantum information processing.
                     </p>
 
                     <div class="hero-actions">
                         <button class="experimental-btn experimental-btn--primary" disabled>Lab in Development</button>
                         <a href="index.html" class="experimental-btn">← Back to Hub</a>
+                        <a href="quantum-trl.html" class="experimental-btn">TRL Radar</a>
                     </div>
                 </div>
             </div>
@@ -197,51 +313,81 @@
                 <!-- Fundamentals Section -->
                 <div id="fundamentals" class="ai-content-section">
                     <div class="section-number">01</div>
-                    <h2 class="section-title">Fundamentals<span class="coming-soon-badge">Coming Soon</span></h2>
-                    <p class="section-description">Core quantum computing concepts including qubits, quantum gates, and quantum algorithms.</p>
+                    <a href="quantum-fundamentals.html" style="text-decoration: none; color: inherit;">
+                        <h2 class="section-title">Fundamentals <span
+                                style="font-size: 0.5em; vertical-align: middle;">↗</span></h2>
+                    </a>
+                    <p class="section-description">Core quantum computing concepts including qubits, quantum gates, and
+                        quantum algorithms.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-fundamentals.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Mechanics Principles</h3>
-                            <p class="item-description">Understanding superposition, entanglement, and quantum interference as computing foundations.</p>
+                            <p class="item-description">Understanding superposition, entanglement, and quantum
+                                interference as computing foundations.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-fundamentals.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Qubit States & Superposition</h3>
-                            <p class="item-description">Exploring quantum bits that can exist in multiple states simultaneously unlike classical bits.</p>
+                            <p class="item-description">Exploring quantum bits that can exist in multiple states
+                                simultaneously unlike classical bits.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-fundamentals.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Gates & Circuits</h3>
-                            <p class="item-description">Building blocks of quantum computation and how to construct quantum algorithms.</p>
+                            <p class="item-description">Building blocks of quantum computation and how to construct
+                                quantum algorithms.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-fundamentals.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Algorithms</h3>
-                            <p class="item-description">Shor's algorithm for factoring, Grover's search, and other quantum algorithm breakthroughs.</p>
+                            <p class="item-description">Shor's algorithm for factoring, Grover's search, and other
+                                quantum algorithm breakthroughs.</p>
                         </div>
+                    </div>
+
+                    <!-- Local Context Moved to Fundamentals Page -->
+                    <div style="margin-top: 1rem;">
+                        <a href="quantum-fundamentals.html#india-context" class="experimental-btn">View National Quantum
+                            Mission Context →</a>
                     </div>
                 </div>
 
                 <!-- Readings Section -->
                 <div id="readings" class="ai-content-section">
                     <div class="section-number">02</div>
-                    <h2 class="section-title">Readings<span class="coming-soon-badge">Coming Soon</span></h2>
-                    <p class="section-description">Research papers and theoretical foundations of quantum computing and quantum information.</p>
+                    <a href="quantum-readings.html" style="text-decoration: none; color: inherit;">
+                        <h2 class="section-title">Readings <span
+                                style="font-size: 0.5em; vertical-align: middle;">↗</span></h2>
+                    </a>
+                    <p class="section-description">Research papers and theoretical foundations of quantum computing and
+                        quantum information.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-readings.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Computing Theory</h3>
-                            <p class="item-description">Fundamental theoretical papers that established the field of quantum information science.</p>
+                            <p class="item-description">Fundamental theoretical papers that established the field of
+                                quantum information science.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-readings.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Algorithm Research</h3>
-                            <p class="item-description">Latest research on quantum algorithms and their applications to real-world problems.</p>
+                            <p class="item-description">Latest research on quantum algorithms and their applications to
+                                real-world problems.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-readings.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Hardware Developments</h3>
-                            <p class="item-description">Research on quantum processors, error rates, and hardware implementation challenges.</p>
+                            <p class="item-description">Research on quantum processors, error rates, and hardware
+                                implementation challenges.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-readings.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Machine Learning</h3>
-                            <p class="item-description">Studies on quantum-enhanced machine learning and artificial intelligence applications.</p>
+                            <p class="item-description">Studies on quantum-enhanced machine learning and artificial
+                                intelligence applications.</p>
                         </div>
                     </div>
                 </div>
@@ -249,25 +395,37 @@
                 <!-- Flashcards Section -->
                 <div id="flashcards" class="ai-content-section">
                     <div class="section-number">03</div>
-                    <h2 class="section-title">Flashcards<span class="coming-soon-badge">Coming Soon</span></h2>
-                    <p class="section-description">Interactive learning system for quantum computing terminology and concepts.</p>
+                    <a href="quantum-flashcards.html" style="text-decoration: none; color: inherit;">
+                        <h2 class="section-title">Flashcards <span
+                                style="font-size: 0.5em; vertical-align: middle;">↗</span></h2>
+                    </a>
+                    <p class="section-description">Interactive learning system for quantum computing terminology and
+                        concepts.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Terminology</h3>
-                            <p class="item-description">Essential vocabulary and definitions used in quantum computing and quantum information.</p>
+                            <p class="item-description">Essential vocabulary and definitions used in quantum computing
+                                and quantum information.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Mathematical Foundations</h3>
-                            <p class="item-description">Linear algebra, complex numbers, and mathematical concepts underlying quantum computation.</p>
+                            <p class="item-description">Linear algebra, complex numbers, and mathematical concepts
+                                underlying quantum computation.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Gate Operations</h3>
-                            <p class="item-description">Understanding different quantum gates and their effects on qubit states and circuits.</p>
+                            <p class="item-description">Understanding different quantum gates and their effects on qubit
+                                states and circuits.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-flashcards.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Algorithm Implementations</h3>
-                            <p class="item-description">Step-by-step breakdowns of major quantum algorithms and their implementation details.</p>
+                            <p class="item-description">Step-by-step breakdowns of major quantum algorithms and their
+                                implementation details.</p>
                         </div>
                     </div>
                 </div>
@@ -275,25 +433,37 @@
                 <!-- Field Kit Section -->
                 <div id="fieldkit" class="ai-content-section">
                     <div class="section-number">04</div>
-                    <h2 class="section-title">Field Kit<span class="coming-soon-badge">Coming Soon</span></h2>
-                    <p class="section-description">Quantum computing simulators and tools for exploring quantum algorithms.</p>
+                    <a href="quantum-field-kit.html" style="text-decoration: none; color: inherit;">
+                        <h2 class="section-title">Field Kit <span
+                                style="font-size: 0.5em; vertical-align: middle;">↗</span></h2>
+                    </a>
+                    <p class="section-description">Quantum computing simulators and tools for exploring quantum
+                        algorithms.</p>
 
                     <div class="feature-grid">
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-field-kit.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Circuit Simulators</h3>
-                            <p class="item-description">Software tools for simulating quantum circuits and testing algorithms before hardware deployment.</p>
+                            <p class="item-description">Software tools for simulating quantum circuits and testing
+                                algorithms before hardware deployment.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-field-kit.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Programming Frameworks</h3>
-                            <p class="item-description">Qiskit, Cirq, PennyLane, and other frameworks for quantum algorithm development.</p>
+                            <p class="item-description">Qiskit, Cirq, PennyLane, and other frameworks for quantum
+                                algorithm development.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-field-kit.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Algorithm Libraries</h3>
-                            <p class="item-description">Pre-built implementations of common quantum algorithms and optimization routines.</p>
+                            <p class="item-description">Pre-built implementations of common quantum algorithms and
+                                optimization routines.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-field-kit.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Visualization Tools</h3>
-                            <p class="item-description">Interactive tools for visualizing quantum states, circuits, and algorithm execution.</p>
+                            <p class="item-description">Interactive tools for visualizing quantum states, circuits, and
+                                algorithm execution.</p>
                         </div>
                     </div>
                 </div>
@@ -301,25 +471,37 @@
                 <!-- Activities Section -->
                 <div id="activities" class="ai-content-section">
                     <div class="section-number">05</div>
-                    <h2 class="section-title">Activities<span class="coming-soon-badge">Coming Soon</span></h2>
-                    <p class="section-description">Hands-on quantum programming and algorithm implementation projects.</p>
+                    <a href="quantum-activities.html" style="text-decoration: none; color: inherit;">
+                        <h2 class="section-title">Activities <span
+                                style="font-size: 0.5em; vertical-align: middle;">↗</span></h2>
+                    </a>
+                    <p class="section-description">Hands-on quantum programming and algorithm implementation projects.
+                    </p>
 
                     <div class="feature-grid">
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-activities.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Circuit Design</h3>
-                            <p class="item-description">Design and build quantum circuits for various computational tasks and algorithms.</p>
+                            <p class="item-description">Design and build quantum circuits for various computational
+                                tasks and algorithms.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-activities.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Algorithm Implementation</h3>
-                            <p class="item-description">Implement classic quantum algorithms like Shor's, Grover's, and variational quantum eigensolvers.</p>
+                            <p class="item-description">Implement classic quantum algorithms like Shor's, Grover's, and
+                                variational quantum eigensolvers.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-activities.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Quantum Machine Learning</h3>
-                            <p class="item-description">Explore quantum-enhanced machine learning algorithms and hybrid classical-quantum models.</p>
+                            <p class="item-description">Explore quantum-enhanced machine learning algorithms and hybrid
+                                classical-quantum models.</p>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card" onclick="window.location.href='quantum-activities.html'"
+                            style="cursor: pointer;">
                             <h3 class="item-title">Cryptography Experiments</h3>
-                            <p class="item-description">Implement quantum key distribution and explore post-quantum cryptographic methods.</p>
+                            <p class="item-description">Implement quantum key distribution and explore post-quantum
+                                cryptographic methods.</p>
                         </div>
                     </div>
                 </div>
@@ -377,7 +559,7 @@
         });
 
         // Text reveal animation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const textRevealElements = document.querySelectorAll('.text-reveal');
             textRevealElements.forEach((element, index) => {
                 element.style.animationDelay = (index * 0.2) + 's';
@@ -385,7 +567,7 @@
         });
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('mainMenuOverlay');
                 overlay.classList.remove('active');
@@ -393,4 +575,5 @@
         });
     </script>
 </body>
+
 </html>

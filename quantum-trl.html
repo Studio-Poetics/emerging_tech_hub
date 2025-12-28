@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Computing Technology Radar - TRL Visualization</title>
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        /* Clean Radar Visualization Styles */
+        body {
+            background: var(--color-white);
+            color: var(--color-black);
+            overflow-x: hidden;
+            font-family: var(--font-primary);
+        }
+
+        .radar-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--color-white);
+        }
+
+        .radar-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+
+        .radar-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin: 0;
+        }
+
+        .radar-subtitle {
+            font-size: 12px;
+            color: var(--color-gray-600);
+            margin: 5px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .trl-info-btn {
+            background: var(--color-electric-blue) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-electric-blue) !important;
+        }
+
+        .trl-info-btn:hover {
+            background: var(--color-electric-blue-dark) !important;
+            border-color: var(--color-electric-blue-dark) !important;
+            color: var(--color-white) !important;
+        }
+
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-group {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 5px 10px;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            color: var(--color-gray-700);
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            background: var(--color-electric-blue-bg);
+            border-color: var(--color-electric-blue);
+            color: var(--color-electric-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--color-electric-blue);
+            border-color: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .radar-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zoom-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 18px;
+            color: var(--color-electric-blue);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .info-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-research {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+        }
+
+        .meta-industry {
+            background: var(--color-gray-800);
+            color: var(--color-white);
+        }
+
+        .meta-emerging {
+            background: var(--color-gray-600);
+            color: var(--color-white);
+        }
+
+        .meta-experimental {
+            background: var(--color-electric-blue-dark);
+            color: var(--color-white);
+        }
+
+        .info-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .references-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .references-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+
+        .reference-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--color-gray-600);
+        }
+
+        .reference-link {
+            color: var(--color-electric-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .progress-item {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.8s ease;
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--color-gray-500);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .trl-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 200;
+        }
+
+        .trl-info-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .trl-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin-bottom: 15px;
+        }
+
+        .trl-info-content {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .trl-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trl-level-item {
+            padding: 8px;
+            background: var(--color-gray-50);
+            border-radius: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .trl-level-number {
+            font-weight: 600;
+            color: var(--color-electric-blue);
+        }
+
+        .close-info-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-info-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend-title {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            font-size: 10px;
+            color: var(--color-gray-700);
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00f5ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
+            }
+
+            .radar-title {
+                font-size: 18px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 60vh;
+            }
+
+            .controls-panel {
+                position: static;
+                top: auto;
+                right: auto;
+                margin: 10px 16px 0 16px;
+            }
+
+            .legend {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <div class="radar-container">
+        <div class="radar-header">
+            <h1 class="radar-title">QUANTUM COMPUTING TECHNOLOGY RADAR</h1>
+            <p class="radar-subtitle">Technology Readiness Level Visualization</p>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <div class="control-label">Filter by Origin</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="research">RESEARCH</button>
+                    <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                    <button class="filter-btn" data-filter="emerging">EMERGING</button>
+                    <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Time Period</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-time="2025">2025</button>
+                    <button class="filter-btn" data-time="2020">2020</button>
+                    <button class="filter-btn" data-time="2015">2015</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Learn More</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn trl-info-btn" onclick="toggleTRLInfo()">WHAT IS TRL?</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Navigate</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
+                    <button class="filter-btn" onclick="window.location.href='quantum-landing.html'">LANDING</button>
+                </div>
+                <div class="filter-buttons" style="margin-top: 5px;">
+                    <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
+                        style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
+                        <option value="">EXPLORE OTHER TRL RADARS ▼</option>
+                        <option value="ai-trl.html">AI & Machine Learning</option>
+                        <option value="blockchain-trl.html">Blockchain</option>
+                        <option value="biorobotics-trl.html">Bio-Robotics</option>
+                        <option value="edge-trl.html">Edge Computing</option>
+                        <option value="interfaces-trl.html">Future Interfaces</option>
+                        <option value="iot-trl.html">Internet of Things</option>
+                        <option value="metaverse-trl.html">Metaverse</option>
+                        <option value="quantum-trl.html" disabled selected>Quantum Computing</option>
+                        <option value="robotics-trl.html">Robotics</option>
+                        <option value="textiles-trl.html">Smart Textiles</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+            <button class="zoom-btn" id="zoomOut" title="Zoom Out">−</button>
+            <button class="zoom-btn" id="resetZoom" title="Reset Zoom">⌂</button>
+        </div>
+
+        <svg class="radar-canvas" id="radarSvg"></svg>
+
+        <div class="trl-info-panel" id="trlInfoPanel">
+            <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
+            <div class="trl-info-title">Technology Readiness Levels (TRL)</div>
+            <div class="trl-info-content">
+                Technology Readiness Levels are a systematic metric used to assess the maturity of quantum computing
+                technologies. For quantum computing, TRL assessment considers factors like qubit count, error rates,
+                coherence times, gate fidelities, quantum volume, algorithmic quantum advantage, and commercial
+                availability across diverse applications.
+            </div>
+            <div class="trl-levels-grid">
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 1-2</div>
+                    <div>Basic Research</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 3</div>
+                    <div>Proof of Concept</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 4</div>
+                    <div>Lab Validation</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 5</div>
+                    <div>Testbed Demo</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 6</div>
+                    <div>Prototype System</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 7</div>
+                    <div>System Integration</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 8</div>
+                    <div>System Complete</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 9</div>
+                    <div>Proven Operational</div>
+                </div>
+                <div class="trl-level-item" style="grid-column: span 1; background: var(--color-electric-blue-bg);">
+                    <div class="trl-level-number">Click & Explore</div>
+                    <div>Interactive Technologies</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">TRL Levels</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a3a3a3;"></div>
+                <span>TRL 1-3: Research</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #525252;"></div>
+                <span>TRL 4-6: Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4040ff;"></div>
+                <span>TRL 7-9: Deployment</span>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfoPanel()">×</button>
+            <div id="infoPanelContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">Initializing Radar...</div>
+    </div>
+
+    <script>
+        const technologyData = {
+            2015: [
+                { id: 'quantum-annealing', name: 'Quantum Annealing (D-Wave)', category: 'emerging', trl: 6, angle: 0, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+                { id: 'superconducting', name: 'Superconducting Qubits (IBM, Google)', category: 'emerging', trl: 5, angle: 15, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'trapped-ion', name: 'Trapped Ion Qubits (IonQ early)', category: 'research', trl: 4, angle: 30, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
+                { id: 'quantum-cloud', name: 'Quantum Cloud Access', category: 'research', trl: 3, angle: 45, progress: { research: 48, funding: 55, timeline: 40, consensus: 48 } },
+                { id: 'qkd', name: 'Quantum Key Distribution', category: 'emerging', trl: 5, angle: 60, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'qrng', name: 'Quantum Random Number Generators', category: 'emerging', trl: 6, angle: 75, progress: { research: 72, funding: 75, timeline: 68, consensus: 72 } },
+                { id: 'neutral-atom', name: 'Neutral Atom Qubits', category: 'research', trl: 3, angle: 90, progress: { research: 50, funding: 58, timeline: 42, consensus: 50 } },
+                { id: 'photonic', name: 'Photonic Quantum Computing', category: 'research', trl: 3, angle: 105, progress: { research: 52, funding: 60, timeline: 45, consensus: 52 } },
+                { id: 'topological', name: 'Topological Qubits', category: 'research', trl: 2, angle: 120, progress: { research: 38, funding: 45, timeline: 28, consensus: 36 } },
+                { id: 'error-correction', name: 'Quantum Error Correction', category: 'research', trl: 3, angle: 135, progress: { research: 48, funding: 55, timeline: 38, consensus: 48 } },
+                { id: 'quantum-simulators', name: 'Quantum Simulators', category: 'research', trl: 4, angle: 150, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
+                { id: 'quantum-networking', name: 'Quantum Networking', category: 'research', trl: 3, angle: 165, progress: { research: 45, funding: 52, timeline: 35, consensus: 45 } },
+                { id: 'quantum-sensors', name: 'Quantum Sensors', category: 'emerging', trl: 4, angle: 180, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
+                { id: 'post-quantum-crypto', name: 'Post-Quantum Cryptography', category: 'emerging', trl: 4, angle: 195, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
+                { id: 'quantum-ml', name: 'Quantum Machine Learning', category: 'research', trl: 3, angle: 210, progress: { research: 48, funding: 55, timeline: 38, consensus: 48 } },
+                { id: 'quantum-chemistry', name: 'Quantum Chemistry Simulation', category: 'research', trl: 3, angle: 225, progress: { research: 52, funding: 60, timeline: 42, consensus: 52 } },
+                { id: 'quantum-optimization', name: 'Quantum Optimization', category: 'research', trl: 4, angle: 240, progress: { research: 55, funding: 62, timeline: 48, consensus: 55 } },
+                { id: 'quantum-finance', name: 'Quantum Finance Applications', category: 'research', trl: 2, angle: 255, progress: { research: 35, funding: 42, timeline: 28, consensus: 35 } },
+                { id: 'room-temp-qc', name: 'Room Temp Quantum Computing', category: 'research', trl: 2, angle: 270, progress: { research: 30, funding: 38, timeline: 22, consensus: 30 } },
+                { id: 'diamond-nv', name: 'Diamond NV Centers', category: 'research', trl: 3, angle: 285, progress: { research: 48, funding: 55, timeline: 38, consensus: 48 } },
+                { id: 'silicon-spin', name: 'Silicon Spin Qubits', category: 'research', trl: 3, angle: 300, progress: { research: 50, funding: 58, timeline: 42, consensus: 50 } },
+                { id: 'quantum-teleport', name: 'Quantum Teleportation', category: 'research', trl: 3, angle: 315, progress: { research: 45, funding: 52, timeline: 35, consensus: 45 } },
+                { id: 'quantum-internet', name: 'Quantum Internet', category: 'research', trl: 2, angle: 330, progress: { research: 32, funding: 38, timeline: 25, consensus: 32 } },
+                { id: 'distributed-qc', name: 'Distributed Quantum Computing', category: 'research', trl: 2, angle: 345, progress: { research: 35, funding: 42, timeline: 28, consensus: 35 } }
+            ],
+            2020: [
+                { id: 'quantum-annealing', name: 'Quantum Annealing (D-Wave Advantage)', category: 'industry', trl: 7, angle: 0, progress: { research: 82, funding: 88, timeline: 78, consensus: 85 } },
+                { id: 'superconducting', name: 'Superconducting Qubits (Sycamore)', category: 'emerging', trl: 6, angle: 15, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
+                { id: 'trapped-ion', name: 'Trapped Ion Qubits (IonQ commercial)', category: 'emerging', trl: 6, angle: 30, progress: { research: 75, funding: 82, timeline: 68, consensus: 78 } },
+                { id: 'quantum-cloud', name: 'Quantum Cloud (IBM Q, AWS Braket)', category: 'emerging', trl: 6, angle: 45, progress: { research: 72, funding: 80, timeline: 68, consensus: 75 } },
+                { id: 'qkd', name: 'Quantum Key Distribution', category: 'emerging', trl: 6, angle: 60, progress: { research: 75, funding: 80, timeline: 70, consensus: 78 } },
+                { id: 'qrng', name: 'Quantum Random Number Generators', category: 'industry', trl: 7, angle: 75, progress: { research: 82, funding: 88, timeline: 80, consensus: 85 } },
+                { id: 'neutral-atom', name: 'Neutral Atom Qubits (Pasqal)', category: 'emerging', trl: 4, angle: 90, progress: { research: 62, funding: 70, timeline: 55, consensus: 65 } },
+                { id: 'photonic', name: 'Photonic Quantum (Xanadu)', category: 'emerging', trl: 4, angle: 105, progress: { research: 65, funding: 72, timeline: 58, consensus: 68 } },
+                { id: 'topological', name: 'Topological Qubits (Microsoft)', category: 'research', trl: 3, angle: 120, progress: { research: 50, funding: 65, timeline: 40, consensus: 50 } },
+                { id: 'error-correction', name: 'Quantum Error Correction (Lab)', category: 'research', trl: 4, angle: 135, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
+                { id: 'quantum-simulators', name: 'Quantum Simulators (Analog)', category: 'emerging', trl: 5, angle: 150, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'quantum-networking', name: 'Quantum Networking (Research)', category: 'research', trl: 4, angle: 165, progress: { research: 58, funding: 65, timeline: 48, consensus: 58 } },
+                { id: 'quantum-sensors', name: 'Quantum Sensors (Gravimeters)', category: 'emerging', trl: 5, angle: 180, progress: { research: 70, funding: 78, timeline: 65, consensus: 72 } },
+                { id: 'post-quantum-crypto', name: 'Post-Quantum Crypto (NIST)', category: 'emerging', trl: 5, angle: 195, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'quantum-ml', name: 'Quantum Machine Learning (QML)', category: 'research', trl: 4, angle: 210, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
+                { id: 'quantum-chemistry', name: 'Quantum Chemistry (VQE)', category: 'research', trl: 4, angle: 225, progress: { research: 65, funding: 72, timeline: 58, consensus: 68 } },
+                { id: 'quantum-optimization', name: 'Quantum Optimization (QAOA)', category: 'research', trl: 4, angle: 240, progress: { research: 62, funding: 70, timeline: 55, consensus: 65 } },
+                { id: 'quantum-finance', name: 'Quantum Finance (Pilots)', category: 'research', trl: 3, angle: 255, progress: { research: 48, funding: 58, timeline: 38, consensus: 48 } },
+                { id: 'room-temp-qc', name: 'Room Temp QC (Diamond)', category: 'research', trl: 2, angle: 270, progress: { research: 38, funding: 45, timeline: 28, consensus: 36 } },
+                { id: 'diamond-nv', name: 'Diamond NV Centers', category: 'research', trl: 4, angle: 285, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
+                { id: 'silicon-spin', name: 'Silicon Spin Qubits (Intel)', category: 'research', trl: 4, angle: 300, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
+                { id: 'quantum-teleport', name: 'Quantum Teleportation (100km)', category: 'research', trl: 4, angle: 315, progress: { research: 58, funding: 65, timeline: 48, consensus: 58 } },
+                { id: 'quantum-internet', name: 'Quantum Internet (Prototype)', category: 'research', trl: 3, angle: 330, progress: { research: 45, funding: 52, timeline: 35, consensus: 45 } },
+                { id: 'distributed-qc', name: 'Distributed Quantum Computing', category: 'research', trl: 3, angle: 345, progress: { research: 48, funding: 55, timeline: 38, consensus: 48 } }
+            ],
+            2025: [
+                { id: 'quantum-annealing', name: 'Quantum Annealing (D-Wave 5000+ qubits)', category: 'industry', trl: 8, angle: 0, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'superconducting', name: 'Superconducting (IBM Heron 156q, 330K CLOPS)', category: 'industry', trl: 8, angle: 15, progress: { research: 88, funding: 95, timeline: 85, consensus: 90 } },
+                { id: 'trapped-ion', name: 'Trapped Ion (IonQ Forte #AQ 36)', category: 'industry', trl: 8, angle: 30, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'quantum-cloud', name: 'Quantum Cloud (Multi-provider)', category: 'industry', trl: 8, angle: 45, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'qkd', name: 'Quantum Key Distribution (Commercial)', category: 'industry', trl: 7, angle: 60, progress: { research: 82, funding: 88, timeline: 78, consensus: 85 } },
+                { id: 'qrng', name: 'Quantum RNGs (Widespread)', category: 'industry', trl: 8, angle: 75, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'neutral-atom', name: 'Neutral Atom (QuEra, Pasqal)', category: 'emerging', trl: 6, angle: 90, progress: { research: 75, funding: 82, timeline: 70, consensus: 78 } },
+                { id: 'photonic', name: 'Photonic Quantum (Xanadu Aurora)', category: 'emerging', trl: 6, angle: 105, progress: { research: 72, funding: 80, timeline: 68, consensus: 75 } },
+                { id: 'topological', name: 'Topological Qubits (Quantinuum)', category: 'emerging', trl: 5, angle: 120, progress: { research: 65, funding: 78, timeline: 58, consensus: 68 } },
+                { id: 'error-correction', name: 'Error Correction (Google Willow 2x suppression)', category: 'emerging', trl: 6, angle: 135, progress: { research: 78, funding: 90, timeline: 72, consensus: 82 } },
+                { id: 'quantum-simulators', name: 'Quantum Simulators (100+ qubits)', category: 'emerging', trl: 6, angle: 150, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
+                { id: 'quantum-networking', name: 'Quantum Networking (City-scale)', category: 'emerging', trl: 6, angle: 165, progress: { research: 72, funding: 78, timeline: 65, consensus: 72 } },
+                { id: 'quantum-sensors', name: 'Quantum Sensors ($1.4B market)', category: 'emerging', trl: 6, angle: 180, progress: { research: 80, funding: 88, timeline: 75, consensus: 82 } },
+                { id: 'post-quantum-crypto', name: 'Post-Quantum Crypto (NIST standards)', category: 'industry', trl: 7, angle: 195, progress: { research: 82, funding: 88, timeline: 78, consensus: 85 } },
+                { id: 'quantum-ml', name: 'Quantum ML ($2.7B market 2025)', category: 'emerging', trl: 5, angle: 210, progress: { research: 72, funding: 85, timeline: 65, consensus: 75 } },
+                { id: 'quantum-chemistry', name: 'Quantum Chemistry (Drug discovery)', category: 'emerging', trl: 5, angle: 225, progress: { research: 75, funding: 82, timeline: 68, consensus: 78 } },
+                { id: 'quantum-optimization', name: 'Quantum Optimization (Enterprise)', category: 'emerging', trl: 5, angle: 240, progress: { research: 72, funding: 80, timeline: 68, consensus: 75 } },
+                { id: 'quantum-finance', name: 'Quantum Finance (JPMorgan pilots)', category: 'research', trl: 4, angle: 255, progress: { research: 62, funding: 75, timeline: 55, consensus: 65 } },
+                { id: 'room-temp-qc', name: 'Room Temp QC (Early proofs)', category: 'research', trl: 3, angle: 270, progress: { research: 50, funding: 62, timeline: 40, consensus: 50 } },
+                { id: 'diamond-nv', name: 'Diamond NV Centers (Sensing)', category: 'research', trl: 4, angle: 285, progress: { research: 68, funding: 75, timeline: 60, consensus: 68 } },
+                { id: 'silicon-spin', name: 'Silicon Spin Qubits (Intel)', category: 'research', trl: 4, angle: 300, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'quantum-teleport', name: 'Quantum Teleportation (Satellites)', category: 'research', trl: 4, angle: 315, progress: { research: 68, funding: 75, timeline: 60, consensus: 68 } },
+                { id: 'quantum-internet', name: 'Quantum Internet (Multi-node)', category: 'research', trl: 3, angle: 330, progress: { research: 58, funding: 68, timeline: 48, consensus: 58 } },
+                { id: 'distributed-qc', name: 'Distributed Quantum Computing', category: 'research', trl: 4, angle: 345, progress: { research: 62, funding: 70, timeline: 55, consensus: 65 } }
+            ]
+        };
+
+        const techDescriptions = {
+            'superconducting': {
+                description: 'IBM introduced the Heron quantum processor in December 2023 featuring 133 fixed-frequency qubits with tunable couplers, yielding a 3-5× improvement over the previous 127-qubit Eagle processors while virtually eliminating crosstalk. Heron offers a 5× improvement in error rates over Eagle. At QDC 2024, IBM showed the latest R2 version with 156 qubits in a heavy-hex layout. IBM delivered on their promise of running quantum circuits with up to 5,000 two-qubit gate operations in 2024. In its third revision (R3), Heron achieved a record 330,000 CLOPS in 2025, up from 200,000 at end of 2024. In March 2025, IBM and the Basque Government announced plans to install Europe\'s first IBM Quantum System Two in San Sebastián, Spain, powered by a 156-qubit Heron processor.',
+                references: [
+                    'IBM Quantum Blog. (2025). IBM roadmap to quantum-centric supercomputers (Updated 2024). https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025',
+                    'IBM Quantum Blog. (2025). Scaling for quantum advantage and beyond. https://www.ibm.com/quantum/blog/qdc-2025',
+                    'Network World. (2023). IBM unveils Heron quantum processor and new modular quantum computer. https://www.networkworld.com/article/1251100/ibm-unveils-heron-quantum-processor-and-new-modular-quantum-computer.html'
+                ]
+            },
+            'trapped-ion': {
+                description: 'IonQ Aria quantum computer launched in 2022 with an Algorithmic Qubit (#AQ) value upgraded to 25, featuring 21 physical qubits with low error rates of 0.06% for single-qubit gates and 0.6% for two-qubit gates, and coherence time of approximately 1000 milliseconds. IonQ Forte is the world\'s first software-configurable quantum computer, operating at 32 qubits with #AQ of 29. Forte Enterprise achieves #AQ 36, making it IonQ\'s highest performing commercially available quantum computer and the first generation data center deployable system. In June 2024, IonQ announced a technical roadmap targeting 99.999% logical two-qubit gate fidelity and 100 physical qubits in new systems by end of 2025. A pioneering trapped ion system was delivered to the Air Force Research Lab with first ion chain trapped in August 2024.',
+                references: [
+                    'IonQ. (2025). IonQ Aria. https://ionq.com/quantum-systems/aria',
+                    'IonQ. (2025). Forte Enterprise. https://www.ionq.com/quantum-systems/forte-enterprise',
+                    'Quantum Journal. (2024). Benchmarking a trapped-ion quantum computer with 30 qubits. https://quantum-journal.org/papers/q-2024-11-07-1516/'
+                ]
+            },
+            'error-correction': {
+                description: 'Google introduced its Willow quantum chip (approximately 100-105 qubits) on December 9, 2024, achieving two major breakthroughs: breaking the Quantum Error Correction Threshold and posting new benchmark performance. Results were published in Nature in "Quantum error correction below the surface code threshold". In experiments using 72-qubit and 105-qubit Willow processors, Google tested increasingly larger logical qubit arrays scaling from 3×3 to 5×5 to 7×7 grids. Each increase in encoded qubit size suppressed the error rate by a factor of 2, representing the exponential error suppression promised by quantum error correction—a nearly 30-year-old goal. Willow performed a computation in under 5 minutes that would take the fastest supercomputers 10²⁵ (10 septillion) years. The chip maintains tunability while improving average qubit lifetimes (T1) from 20µs to 68µs ± 13µs.',
+                references: [
+                    'Google. (2024). Meet Willow, our state-of-the-art quantum chip. https://blog.google/technology/research/google-willow-quantum-chip/',
+                    'Nature. (2024). Quantum error correction below the surface code threshold. https://www.nature.com/articles/s41586-024-08449-y',
+                    'HPCwire. (2024). Google Debuts New Quantum Chip, Error Correction Breakthrough, and Roadmap Details. https://www.hpcwire.com/2024/12/09/google-debuts-new-quantum-chip-error-correction-breakthrough-and-roadmap-details/'
+                ]
+            },
+            'quantum-ml': {
+                description: 'The global quantum computing market was valued at $1.10-2.70 billion in 2024, with projections of $1.44-3.52 billion for 2025, expected to reach $20.20 billion by 2030 at a 41.8% CAGR. Over $2 billion in venture capital funding flowed into quantum startups in 2024, a 50% increase from the previous year. The first three quarters of 2025 saw $1.25 billion in quantum computing investments, pushing total equity funding to $3.77 billion by September 2025. Public funding for quantum technology startups reached $680 million in 2024, representing 34% of total startup funding. Quantum machine learning represents a significant application area within this growing market, combining quantum computing capabilities with AI/ML algorithms for potential advantages in optimization, pattern recognition, and data analysis tasks.',
+                references: [
+                    'MarketsandMarkets. (2025). Quantum Computing Market Size, Share, Statistics, Growth, Industry Report 2030. https://www.marketsandmarkets.com/Market-Reports/quantum-computing-market-144888301.html',
+                    'Precedence Research. (2025). Quantum Computing Market Size and Forecast 2025 to 2034. https://www.precedenceresearch.com/quantum-computing-market',
+                    'QED-C. (2025). 2025 Market Forecast: Quantum Computing. https://quantumconsortium.org/publication/2025-market-forecast-quantum-computing/'
+                ]
+            },
+            'quantum-annealing': {
+                description: 'Quantum Annealing (TRL 8) has reached commercial maturity with D-Wave\'s Advantage system (5000+ qubits) solving logistics and scheduling problems faster than classical heuristics. It is less universal than gate-based models but delivers real ROI today for port optimization and traffic routing.',
+                references: ['D-Wave. (2025). Commercial use cases report.', 'Los Alamos National Lab. (2024). Annealing vs Gate-based benchmarks.']
+            },
+            'quantum-cloud': {
+                description: 'Quantum Cloud Access (TRL 8) allows anyone to run circuits on real hardware via AWS Braket, Azure Quantum, or IBM Quantum. 2025 platforms offer "serverless" quantum execution, abstracting hardware calibration details from developers.',
+                references: ['AWS. (2025). Braket usage statistics.', 'Gartner. (2024). Magic Quadrant for Quantum Services.']
+            },
+            'qkd': {
+                description: 'Quantum Key Distribution (QKD) (TRL 7) secures fiber-optic networks using physics (entanglement). Toshiba and ID Quantique deploy commercial QKD links for banks and governments, ensuring communications cannot be tapped without detection.',
+                references: ['Toshiba. (2025). QKD network deployments.', 'ETSI. (2024). QKD standardization report.']
+            },
+            'qrng': {
+                description: 'Quantum Random Number Generators (TRL 8) are now integrated into Samsung phones and server HSMs. They use quantum noise (photon arrival times) to generate true randomness, eliminating "pseudo-random" vulnerabilities in encryption keys.',
+                references: ['ID Quantique. (2025). Mobile QRNG chipsets.', 'Samsung. (2024). Galaxy Quantum series specs.']
+            },
+            'neutral-atom': {
+                description: 'Neutral Atom Qubits (TRL 6) use lasers to trap atoms (rubidium/strontium) in 3D arrays. Companies like QuEra and Pasqal leverage this for "analog mode" simulation of materials, scaling to 1000+ atoms more easily than wiring superconducting circuits.',
+                references: ['QuEra. (2025). Aquila 2.0 benchmarks.', 'Nature Physics. (2024). Neutral atom scaling laws.']
+            },
+            'photonic': {
+                description: 'Photonic Quantum Computing (TRL 6) uses light packets (photons). Xanadu\'s Borealis demonstrated quantum advantage in 2022. It operates at room temperature (mostly) and integrates with existing fiber telecom infrastructure, promising a path to distributed quantum networks.',
+                references: ['Xanadu. (2025). Photonic fault-tolerance roadmap.', 'Science. (2024). Integrated quantum photonics.']
+            },
+            'topological': {
+                description: 'Topological Qubits (TRL 5) are the "holy grail" pursued by Microsoft (Majorana zero modes). They are inherently protected from noise by knot theory physics. In 2024, Quantinuum and Microsoft demonstrated reliable logical qubits using this principle, though full topological hardware is still emerging.',
+                references: ['Microsoft Azure Quantum. (2025). Topological phase detection.', 'Physical Review B. (2024). Majorana qubit stability.']
+            },
+            'quantum-simulators': {
+                description: 'Quantum Simulators (TRL 6) use controllable quantum systems to mimic complex molecules. Unlike general computers, they answer specific physics questions. 2025 simulators mimic high-temperature superconductors to help materials science.',
+                references: ['Nature. (2025). Quantum simulation of HTS.', 'Harvard. (2024). Programmable quantum simulator results.']
+            },
+            'quantum-networking': {
+                description: 'Quantum Networking (TRL 6) connects quantum processors to share information via entanglement (teleportation). City-scale testbeds (Delft, Boston, Chicago) now demonstrate multi-node links, laying the foundation for the "Quantum Internet".',
+                references: ['Q-NEXT. (2025). National Quantum Internet blueprint.', 'TU Delft. (2024). 3-node entanglement swapping.']
+            },
+            'quantum-sensors': {
+                description: 'Quantum Sensors (TRL 6) use quantum states to measure gravity, magnetic fields, or time with extreme precision. Used in GPS-denied navigation (submarines) and spotting underground pipes or aquifers.',
+                references: ['Sandia National Labs. (2025). Quantum gravity gradiometers.', 'Metrologia. (2024). Optical lattice clock precision.']
+            },
+            'post-quantum-crypto': {
+                description: 'Post-Quantum Cryptography (PQC) (TRL 7) involves classical algorithms (Lattice-based) resistant to quantum attacks. NIST finalized standards (Kyber, Dilithium) in 2024. Browsers (Chrome, Signal) now use hybrid key exchange to protect against "harvest now, decrypt later" threats.',
+                references: ['NIST. (2025). FIPS 203/204/205 standards.', 'Cloudflare. (2024). PQC deployment at scale.']
+            },
+            'quantum-chemistry': {
+                description: 'Quantum Chemistry Simulation (TRL 5) calculates molecular energy states for drug discovery. Pharma giants (Roche, Pfizer) partner with startups to simulate protein folding. 2025 algorithms can accurately model small molecules that choke classical supercomputers.',
+                references: ['Journal of Chemical Theory. (2025). VQE for drug candidates.', 'Boehringer Ingelheim. (2024). Quantum lab reports.']
+            },
+            'quantum-optimization': {
+                description: 'Quantum Optimization (TRL 5) tackles combinatorial problems (Portfolio optimization, Gate assignment). Algorithms like QAOA run on NISQ devices to find "good enough" solutions faster than classical brute force.',
+                references: ['Goldman Sachs. (2025). Derivative pricing on QPU.', 'IEEE Transactions. (2024). QAOA performance analysis.']
+            },
+            'quantum-finance': {
+                description: 'Quantum Finance (TRL 4) accelerates Monte Carlo simulations for risk analysis. JPMorgan and HSBC pilot these to assess market crash scenarios in seconds rather than overnight.',
+                references: ['JPMorgan Chase. (2025). Quantum Advantage in Finance.', 'Risk Magazine. (2024). Quantum algorithms for option pricing.']
+            },
+            'room-temp-qc': {
+                description: 'Room Temperature QC (TRL 3) aims to remove massive dilution fridges. Approaches using NV centers in diamond or specific photonic setups work at ambient temps but struggle to scale beyond a few qubits.',
+                references: ['Nature Materials. (2025). Room-temp spin qubits.', 'Quantum Brilliance. (2024). Desktop quantum accelerator.']
+            },
+            'diamond-nv': {
+                description: 'Diamond NV Centers (TRL 4) effectively use nitrogen defects in diamond lattices as qubits. While scaling is hard for computation, they are excellent, robust magnetic field sensors for biomedical imaging.',
+                references: ['Element Six. (2025). CVD diamond for quantum.', 'BioSensing. (2024). NV center MRI capabilities.']
+            },
+            'silicon-spin': {
+                description: 'Silicon Spin Qubits (TRL 4) leverage modern semiconductor manufacturing (Intel/TSMC) to trap electron spins. They promise massive scalability (millions of qubits on a wafer) but currently face coherence and reading challenges.',
+                references: ['Intel. (2025). Tunnel Falls chip specs.', 'Nature Electronics. (2024). Silicon qubit fidelity.']
+            },
+            'quantum-teleport': {
+                description: 'Quantum Teleportation (TRL 4) transfers the state of a qubit to another distant qubit instantly (not matter transfer). It is the communication protocol of the future quantum internet, successfully achieved continuously between satellites and ground stations.',
+                references: ['Micius Satellite. (2025). Earth-to-orbit teleportation records.', 'Caltech. (2024). High-fidelity teleportation protocols.']
+            },
+            'quantum-internet': {
+                description: 'Quantum Internet (TRL 3) is the theoretical global network connecting quantum computers. It requires "Quantum Repeaters" to boost signals without destroying entanglement. Early prototypes exist in university campuses.',
+                references: ['QuTech. (2025). Quantum Network Explorer.', 'Argonne National Lab. (2024). Quantum loop testbed.']
+            },
+            'distributed-qc': {
+                description: 'Distributed Quantum Computing (TRL 4) links multiple small QPU chips to act as one large logical processor. This modular approach (like IBM\'s Kookaburra concept) is key to overcoming the interconnect bottleneck in scaling.',
+                references: ['IBM Research. (2025). Modular quantum architecture.', 'Phys. Rev. X. (2024). Distributed quantum algorithms.']
+            }
+        };
+
+        const techConnections = [
+            ['superconducting', 'error-correction'],
+            ['trapped-ion', 'quantum-cloud'],
+            ['error-correction', 'distributed-qc'],
+            ['quantum-annealing', 'quantum-optimization'],
+            ['quantum-ml', 'quantum-chemistry'],
+            ['quantum-networking', 'quantum-internet'],
+            ['qkd', 'quantum-networking'],
+            ['post-quantum-crypto', 'qkd'],
+            ['photonic', 'quantum-networking'],
+            ['quantum-simulators', 'quantum-chemistry'],
+            ['neutral-atom', 'quantum-simulators'],
+            ['diamond-nv', 'quantum-sensors']
+        ];
+
+        // ========== GENERIC VISUALIZATION CODE - NO CHANGES NEEDED ==========
+
+        let currentYear = 2025;
+        let currentFilter = 'all';
+        let selectedTech = null;
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const maxRadius = Math.min(width, height) * 0.4;
+
+        const svg = d3.select('#radarSvg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const categoryColors = {
+            research: 'var(--color-electric-blue)',
+            industry: 'var(--color-gray-800)',
+            emerging: 'var(--color-gray-600)',
+            experimental: 'var(--color-electric-blue-dark)'
+        };
+
+        const trlColors = d3.scaleLinear()
+            .domain([1, 5, 9])
+            .range(['#a3a3a3', '#525252', '#4040ff']);
+
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        let zoomTransform = d3.zoomIdentity;
+
+        function initVisualization() {
+            setupZoom();
+            setTimeout(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderRadar();
+            }, 1500);
+        }
+
+        function setupZoom() {
+            const zoom = d3.zoom()
+                .scaleExtent([minZoom, maxZoom])
+                .on('zoom', handleZoom);
+
+            svg.call(zoom);
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+            });
+        }
+
+        function handleZoom(event) {
+            zoomTransform = event.transform;
+            svg.select('.radar-content').attr('transform', zoomTransform);
+        }
+
+        function renderRadar() {
+            svg.selectAll('*').remove();
+
+            const radarContent = svg.append('g').attr('class', 'radar-content');
+            const defs = svg.append('defs');
+
+            const shadow = defs.append('filter')
+                .attr('id', 'shadow')
+                .attr('x', '-50%')
+                .attr('y', '-50%')
+                .attr('width', '200%')
+                .attr('height', '200%');
+
+            shadow.append('feDropShadow')
+                .attr('dx', 2)
+                .attr('dy', 2)
+                .attr('stdDeviation', 3)
+                .attr('flood-color', '#000')
+                .attr('flood-opacity', 0.2);
+
+            radarContent.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', maxRadius)
+                .attr('fill', '#f8fafc')
+                .attr('stroke', '#e2e8f0')
+                .attr('stroke-width', 2);
+
+            for (let i = 1; i <= 9; i++) {
+                const radius = (maxRadius / 9) * i;
+
+                radarContent.append('circle')
+                    .attr('cx', centerX)
+                    .attr('cy', centerY)
+                    .attr('r', radius)
+                    .attr('fill', 'none')
+                    .attr('stroke', '#cbd5e1')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.6);
+
+                if (i % 3 === 0) {
+                    radarContent.append('text')
+                        .attr('x', centerX + radius + 10)
+                        .attr('y', centerY + 5)
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '12px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(`TRL ${i}`);
+                }
+            }
+
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const x2 = centerX + Math.cos(angle) * maxRadius;
+                const y2 = centerY + Math.sin(angle) * maxRadius;
+
+                radarContent.append('line')
+                    .attr('x1', centerX)
+                    .attr('y1', centerY)
+                    .attr('x2', x2)
+                    .attr('y2', y2)
+                    .attr('stroke', '#e2e8f0')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0.5);
+            }
+
+            const data = technologyData[currentYear] || technologyData[2025];
+            const filteredData = currentFilter === 'all' ? data : data.filter(d => d.category === currentFilter);
+
+            const techGroups = radarContent.selectAll('.tech-node')
+                .data(filteredData)
+                .enter()
+                .append('g')
+                .attr('class', 'tech-node')
+                .style('cursor', 'pointer')
+                .on('click', (event, d) => showTechInfo(d))
+                .on('mouseover', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 12)
+                        .attr('filter', 'url(#shadow)');
+                })
+                .on('mouseout', function (event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 8)
+                        .attr('filter', 'none');
+                });
+
+            techGroups.each(function (d) {
+                const group = d3.select(this);
+                const radius = (maxRadius / 9) * d.trl;
+                const angleRad = (d.angle - 90) * Math.PI / 180;
+                const x = centerX + Math.cos(angleRad) * radius;
+                const y = centerY + Math.sin(angleRad) * radius;
+
+                const nodeColor = getContrastColor(d.category, d.trl);
+                group.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 8)
+                    .attr('fill', nodeColor.fill)
+                    .attr('stroke', nodeColor.stroke)
+                    .attr('stroke-width', 2);
+
+                if (d.trl >= 6 || d.category === 'emerging') {
+                    const labelRadius = radius + 25;
+                    const labelX = centerX + Math.cos(angleRad) * labelRadius;
+                    const labelY = centerY + Math.sin(angleRad) * labelRadius;
+
+                    group.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '10px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(d.name.length > 25 ? d.name.substring(0, 25) + '...' : d.name);
+                }
+            });
+
+            drawConnections(filteredData);
+
+            svg.selectAll('.tech-node')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 50)
+                .style('opacity', 1);
+        }
+
+        function getContrastColor(category, trl) {
+            const colors = {
+                research: { fill: '#4040ff', stroke: '#1e1e8f' },
+                industry: { fill: '#1e293b', stroke: '#0f172a' },
+                emerging: { fill: '#64748b', stroke: '#475569' },
+                experimental: { fill: '#3030dd', stroke: '#1e1e8f' }
+            };
+            return colors[category] || colors.research;
+        }
+
+        function drawConnections(data) {
+            const connectionGroup = svg.select('.radar-content').append('g').attr('class', 'connections');
+
+            techConnections.forEach(([source, target]) => {
+                const sourceNode = data.find(d => d.id === source);
+                const targetNode = data.find(d => d.id === target);
+
+                if (sourceNode && targetNode) {
+                    const sourceRadius = (maxRadius / 9) * sourceNode.trl;
+                    const targetRadius = (maxRadius / 9) * targetNode.trl;
+                    const sourceAngle = (sourceNode.angle - 90) * Math.PI / 180;
+                    const targetAngle = (targetNode.angle - 90) * Math.PI / 180;
+
+                    const sourceX = centerX + Math.cos(sourceAngle) * sourceRadius;
+                    const sourceY = centerY + Math.sin(sourceAngle) * sourceRadius;
+                    const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+                    const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+                    const midX = (sourceX + targetX) / 2;
+                    const midY = (sourceY + targetY) / 2;
+                    const controlX = midX + (centerX - midX) * 0.3;
+                    const controlY = midY + (centerY - midY) * 0.3;
+
+                    const path = `M ${sourceX},${sourceY} Q ${controlX},${controlY} ${targetX},${targetY}`;
+
+                    connectionGroup.append('path')
+                        .attr('d', path)
+                        .attr('stroke', '#3b82f6')
+                        .attr('stroke-width', 1.5)
+                        .attr('fill', 'none')
+                        .attr('opacity', 0.6)
+                        .attr('stroke-dasharray', '5,5');
+                }
+            });
+        }
+
+        function showTechInfo(tech) {
+            selectedTech = tech;
+            const infoPanel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
+
+            const techInfo = techDescriptions[tech.id] || {};
+            const description = techInfo.description || `${tech.name} is a quantum computing technology with TRL level ${tech.trl}.`;
+            const references = techInfo.references || [];
+
+            content.innerHTML = `
+                <h2 class="info-title">${tech.name}</h2>
+                <div class="info-meta">
+                    <span class="meta-badge meta-${tech.category}">${tech.category.toUpperCase()}</span>
+                    <span class="meta-badge" style="background: ${trlColors(tech.trl)}; color: white;">TRL ${tech.trl}</span>
+                    <span class="meta-badge" style="background: var(--color-gray-700); color: white;">Year: ${currentYear}</span>
+                </div>
+                <div class="info-description">
+                    ${description}
+                </div>
+                <div class="progress-grid">
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <div class="progress-label">${key}</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%;"></div>
+                            </div>
+                            <div class="progress-value">${value}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${references.length > 0 ? `
+                    <div class="references-section">
+                        <div class="references-title">Key References</div>
+                        ${references.map(ref => `
+                            <div class="reference-item">• ${ref}</div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            `;
+
+            infoPanel.classList.add('active');
+        }
+
+        function closeInfoPanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+            selectedTech = null;
+        }
+
+        function toggleTRLInfo() {
+            const trlInfoPanel = document.getElementById('trlInfoPanel');
+            trlInfoPanel.classList.toggle('active');
+        }
+
+        document.querySelectorAll('[data-filter]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                renderRadar();
+            });
+        });
+
+        document.querySelectorAll('[data-time]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('[data-time]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentYear = parseInt(this.dataset.time);
+                renderRadar();
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            location.reload();
+        });
+
+        initVisualization();
+    </script>
+</body>
+
+</html>

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blockchain Learning Hub - Cryptocurrency & Decentralized Technology Education</title>
-    <meta name="description" content="Learn blockchain technology from the ground up. Understand cryptocurrency, smart contracts, DeFi, and consensus mechanisms through practical projects and interactive learning for beginners.">
-    <meta name="keywords" content="blockchain learning, cryptocurrency education, smart contracts, DeFi basics, blockchain for beginners, distributed ledger, consensus mechanisms, blockchain fundamentals">
+    <meta name="description"
+        content="Learn blockchain technology from the ground up. Understand cryptocurrency, smart contracts, DeFi, and consensus mechanisms through practical projects and interactive learning for beginners.">
+    <meta name="keywords"
+        content="blockchain learning, cryptocurrency education, smart contracts, DeFi basics, blockchain for beginners, distributed ledger, consensus mechanisms, blockchain fundamentals">
     <meta name="author" content="Studio Poetics - Emerging Technology Hub">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eth.poetics.studio/blockchain-landing.html">
@@ -14,14 +17,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eth.poetics.studio/blockchain-landing.html">
     <meta property="og:title" content="Blockchain Learning Hub - Cryptocurrency & Decentralized Technology">
-    <meta property="og:description" content="Learn blockchain technology from the ground up. Understand cryptocurrency, smart contracts, and DeFi through practical projects for beginners.">
+    <meta property="og:description"
+        content="Learn blockchain technology from the ground up. Understand cryptocurrency, smart contracts, and DeFi through practical projects for beginners.">
     <meta property="og:site_name" content="Emerging Technology Hub">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://eth.poetics.studio/blockchain-landing.html">
     <meta property="twitter:title" content="Blockchain Learning Hub - Cryptocurrency & Decentralized Technology">
-    <meta property="twitter:description" content="Learn blockchain technology from the ground up. Understand cryptocurrency, smart contracts, and DeFi through practical projects for beginners.">
+    <meta property="twitter:description"
+        content="Learn blockchain technology from the ground up. Understand cryptocurrency, smart contracts, and DeFi through practical projects for beginners.">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -49,60 +54,166 @@
     </script>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .experimental-title { font-size: var(--text-4xl) !important; }
-    .experimental-subtitle { font-size: var(--text-lg) !important; }
-    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
-    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
-    .card-description, .card-meta { display: none !important; }
-    .card-title { font-size: var(--text-lg) !important; }
-    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
-    .vertical-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 48px !important;
-        width: 100vw !important;
-        background: var(--color-black) !important;
-        z-index: 20 !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .vertical-menu-text {
-        writing-mode: horizontal-tb !important;
-        text-orientation: initial !important;
-        letter-spacing: 0.1em !important;
-    }
-    .experimental-main { padding-top: 48px !important; }
-    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-    /* Content page specific */
-    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .fundamentals-title { font-size: var(--text-4xl) !important; }
-    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
-    .content-section { margin-bottom: var(--space-8) !important; }
-    .content-section h2 { font-size: var(--text-2xl) !important; }
-    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
-    .item-description { display: none !important; }
-    .available-badge { display: none !important; }
+            .experimental-main {
+                padding-top: 0 !important;
+            }
 
-    /* Landing page specific */
-    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
-    .section-nav-list { gap: var(--space-3) !important; }
-    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
-    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
-    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
-    .section-description { font-size: var(--text-base) !important; }
-    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
-}
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .experimental-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+                padding: var(--space-4) !important;
+            }
+
+            .experimental-card.featured {
+                grid-row: auto !important;
+                min-height: auto !important;
+            }
+
+            .card-description,
+            .card-meta {
+                display: none !important;
+            }
+
+            .card-title {
+                font-size: var(--text-lg) !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+
+            /* Content page specific */
+            .fundamentals-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .fundamentals-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .fundamentals-subtitle {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .fundamentals-content {
+                padding: var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .content-section {
+                margin-bottom: var(--space-8) !important;
+            }
+
+            .content-section h2 {
+                font-size: var(--text-2xl) !important;
+            }
+
+            .properties-grid,
+            .feature-grid,
+            .applications-grid,
+            .approach-cards,
+            .getting-started {
+                grid-template-columns: 1fr !important;
+            }
+
+            .item-description {
+                display: none !important;
+            }
+
+            .available-badge {
+                display: none !important;
+            }
+
+            /* Landing page specific */
+            .ai-section-nav {
+                position: static !important;
+                margin: 0 !important;
+                padding: var(--space-3) var(--space-4) !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .ai-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+        }
 
         /* Blockchain Landing Page Specific Styles */
         /* Blockchain Landing Page Specific Styles */
@@ -265,16 +376,17 @@
         }
     </style>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -283,7 +395,8 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
                     <p class="brand-subtitle">Blockchain Technology Lab</p>
                 </div>
 
@@ -291,16 +404,16 @@
                     <div class="experimental-nav-title">Blockchain Sections</div>
                     <ul class="experimental-nav">
                         <li class="experimental-nav-item">
-                            <a href="#fundamentals" class="experimental-nav-link">Fundamentals</a>
+                            <a href="blockchain-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
                         </li>
                         <li class="experimental-nav-item">
                             <a href="blockchain-readings.html" class="experimental-nav-link">Readings</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#flashcards" class="experimental-nav-link">Flashcards</a>
+                            <a href="blockchain-flashcards.html" class="experimental-nav-link">Flashcards</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="#fieldkit" class="experimental-nav-link">Field Kit</a>
+                            <a href="blockchain-field-kit.html" class="experimental-nav-link">Field Kit</a>
                         </li>
                         <li class="experimental-nav-item">
                             <a href="blockchain-activities.html" class="experimental-nav-link">Activities</a>
@@ -310,7 +423,8 @@
 
                 <div class="experimental-info-box">
                     <div class="info-box-title">Available Now</div>
-                    <div class="info-box-content">All sections complete: Fundamentals, Readings, Flashcards, Field Kit, and Activities.</div>
+                    <div class="info-box-content">All sections complete: Fundamentals, Readings, Flashcards, Field Kit,
+                        and Activities.</div>
                 </div>
 
                 <div class="experimental-info-box">
@@ -336,6 +450,9 @@
                     <a href="#flashcards" class="section-nav-link">Flashcards</a>
                     <a href="#fieldkit" class="section-nav-link">Field Kit</a>
                     <a href="#activities" class="section-nav-link">Activities</a>
+                    <a href="blockchain-trl.html" class="section-nav-link"
+                        style="color: var(--color-electric-blue); border-color: var(--color-electric-blue);">TRL Radar
+                        →</a>
                 </nav>
             </div>
 
@@ -352,7 +469,8 @@
                     </div>
 
                     <p class="hero-description">
-                        Explore the revolutionary world of blockchain technology, cryptocurrencies, and decentralized systems. From Bitcoin fundamentals to smart contracts and DeFi protocols.
+                        Explore the revolutionary world of blockchain technology, cryptocurrencies, and decentralized
+                        systems. From Bitcoin fundamentals to smart contracts and DeFi protocols.
                     </p>
 
                     <div class="hero-actions">
@@ -367,32 +485,39 @@
             <div id="fundamentals" class="blockchain-content-section">
                 <div class="section-number">01</div>
                 <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
-                <p class="section-description">Master the core concepts of blockchain technology, distributed ledgers, and decentralized systems.</p>
+                <p class="section-description">Master the core concepts of blockchain technology, distributed ledgers,
+                    and decentralized systems.</p>
 
                 <div class="section-grid">
                     <div class="section-item" onclick="window.location.href='blockchain-fundamentals.html'">
                         <h3 class="item-title">Blockchain Basics</h3>
-                        <p class="item-description">What is blockchain? Understanding distributed ledgers, consensus mechanisms, and cryptographic foundations.</p>
+                        <p class="item-description">What is blockchain? Understanding distributed ledgers, consensus
+                            mechanisms, and cryptographic foundations.</p>
                     </div>
                     <div class="section-item" onclick="exploreSection('fundamentals', 'bitcoin')">
                         <h3 class="item-title">Bitcoin & Cryptocurrency</h3>
-                        <p class="item-description">The first blockchain application, mining, wallets, and cryptocurrency economics.</p>
+                        <p class="item-description">The first blockchain application, mining, wallets, and
+                            cryptocurrency economics.</p>
                     </div>
                     <div class="section-item" onclick="exploreSection('fundamentals', 'consensus')">
                         <h3 class="item-title">Consensus Algorithms</h3>
-                        <p class="item-description">Proof of Work, Proof of Stake, and other mechanisms for achieving distributed agreement.</p>
+                        <p class="item-description">Proof of Work, Proof of Stake, and other mechanisms for achieving
+                            distributed agreement.</p>
                     </div>
                     <div class="section-item" onclick="exploreSection('fundamentals', 'smart-contracts')">
                         <h3 class="item-title">Smart Contracts</h3>
-                        <p class="item-description">Self-executing contracts, Ethereum, Solidity, and programmable blockchain applications.</p>
+                        <p class="item-description">Self-executing contracts, Ethereum, Solidity, and programmable
+                            blockchain applications.</p>
                     </div>
                     <div class="section-item" onclick="exploreSection('fundamentals', 'defi')">
                         <h3 class="item-title">DeFi Protocols</h3>
-                        <p class="item-description">Decentralized finance, yield farming, liquidity mining, and automated market makers.</p>
+                        <p class="item-description">Decentralized finance, yield farming, liquidity mining, and
+                            automated market makers.</p>
                     </div>
                     <div class="section-item" onclick="exploreSection('fundamentals', 'governance')">
                         <h3 class="item-title">Governance & DAOs</h3>
-                        <p class="item-description">Decentralized governance, voting mechanisms, and autonomous organization structures.</p>
+                        <p class="item-description">Decentralized governance, voting mechanisms, and autonomous
+                            organization structures.</p>
                     </div>
                 </div>
             </div>
@@ -401,24 +526,29 @@
             <div id="readings" class="blockchain-content-section">
                 <div class="section-number">02</div>
                 <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
-                <p class="section-description">Essential papers, whitepapers, and research publications that shaped blockchain technology.</p>
+                <p class="section-description">Essential papers, whitepapers, and research publications that shaped
+                    blockchain technology.</p>
 
                 <div class="feature-grid">
                     <div class="feature-card" onclick="window.location.href='blockchain-readings.html#foundational'">
                         <h3 class="item-title">Foundational Papers</h3>
-                        <p class="item-description">Bitcoin whitepaper, Ethereum yellow paper, and other seminal blockchain documents.</p>
+                        <p class="item-description">Bitcoin whitepaper, Ethereum yellow paper, and other seminal
+                            blockchain documents.</p>
                     </div>
                     <div class="feature-card" onclick="window.location.href='blockchain-readings.html#technical'">
                         <h3 class="item-title">Technical Specifications</h3>
-                        <p class="item-description">Lightning Network, Byzantine Fault Tolerance, and consensus mechanism research.</p>
+                        <p class="item-description">Lightning Network, Byzantine Fault Tolerance, and consensus
+                            mechanism research.</p>
                     </div>
                     <div class="feature-card" onclick="window.location.href='blockchain-readings.html#defi'">
                         <h3 class="item-title">DeFi Protocols</h3>
-                        <p class="item-description">Uniswap, Compound, MakerDAO whitepapers and decentralized finance research.</p>
+                        <p class="item-description">Uniswap, Compound, MakerDAO whitepapers and decentralized finance
+                            research.</p>
                     </div>
                     <div class="feature-card" onclick="window.location.href='blockchain-readings.html#economics'">
                         <h3 class="item-title">Economics & Policy</h3>
-                        <p class="item-description">Central bank digital currencies, regulatory frameworks, and economic analysis.</p>
+                        <p class="item-description">Central bank digital currencies, regulatory frameworks, and economic
+                            analysis.</p>
                     </div>
                 </div>
             </div>
@@ -427,24 +557,29 @@
             <div id="flashcards" class="blockchain-content-section">
                 <div class="section-number">03</div>
                 <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
-                <p class="section-description">Interactive learning cards covering 60 essential blockchain concepts, protocols, and applications.</p>
+                <p class="section-description">Interactive learning cards covering 60 essential blockchain concepts,
+                    protocols, and applications.</p>
 
                 <div class="section-grid">
                     <div class="section-item" onclick="window.location.href='blockchain-flashcards.html'">
                         <h3 class="item-title">Start Flashcards</h3>
-                        <p class="item-description">Begin your interactive blockchain learning journey with our comprehensive flashcard deck.</p>
+                        <p class="item-description">Begin your interactive blockchain learning journey with our
+                            comprehensive flashcard deck.</p>
                     </div>
                     <div class="section-item" onclick="exploreSection('flashcards', 'foundation')">
                         <h3 class="item-title">Core Concepts</h3>
-                        <p class="item-description">Fundamental blockchain principles, cryptography, and distributed systems basics.</p>
+                        <p class="item-description">Fundamental blockchain principles, cryptography, and distributed
+                            systems basics.</p>
                     </div>
                     <div class="section-item" onclick="exploreSection('flashcards', 'protocols')">
                         <h3 class="item-title">Protocols & Networks</h3>
-                        <p class="item-description">Bitcoin, Ethereum, Layer 2 solutions, and emerging blockchain protocols.</p>
+                        <p class="item-description">Bitcoin, Ethereum, Layer 2 solutions, and emerging blockchain
+                            protocols.</p>
                     </div>
                     <div class="section-item" onclick="exploreSection('flashcards', 'applications')">
                         <h3 class="item-title">Applications & Use Cases</h3>
-                        <p class="item-description">DeFi, NFTs, supply chain, identity management, and real-world implementations.</p>
+                        <p class="item-description">DeFi, NFTs, supply chain, identity management, and real-world
+                            implementations.</p>
                     </div>
                 </div>
             </div>
@@ -453,24 +588,33 @@
             <div id="fieldkit" class="blockchain-content-section">
                 <div class="section-number">04</div>
                 <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
-                <p class="section-description">Practical tools, smart contract templates, and resources for blockchain development.</p>
+                <p class="section-description">Practical tools, smart contract templates, and resources for blockchain
+                    development.</p>
 
                 <div class="feature-grid">
-                    <div class="feature-card" onclick="window.location.href='blockchain-field-kit.html#smart-contracts'" style="cursor: pointer;">
+                    <div class="feature-card" onclick="window.location.href='blockchain-field-kit.html#smart-contracts'"
+                        style="cursor: pointer;">
                         <h3 class="item-title">Smart Contract Templates</h3>
-                        <p class="item-description">Ready-to-deploy contracts for common use cases: tokens, NFTs, governance, and more.</p>
+                        <p class="item-description">Ready-to-deploy contracts for common use cases: tokens, NFTs,
+                            governance, and more.</p>
                     </div>
-                    <div class="feature-card" onclick="window.location.href='blockchain-field-kit.html#dev-tools'" style="cursor: pointer;">
+                    <div class="feature-card" onclick="window.location.href='blockchain-field-kit.html#dev-tools'"
+                        style="cursor: pointer;">
                         <h3 class="item-title">Development Tools</h3>
-                        <p class="item-description">Hardhat, Truffle, Remix configurations and deployment scripts for various networks.</p>
+                        <p class="item-description">Hardhat, Truffle, Remix configurations and deployment scripts for
+                            various networks.</p>
                     </div>
-                    <div class="feature-card" onclick="window.location.href='blockchain-field-kit.html#security'" style="cursor: pointer;">
+                    <div class="feature-card" onclick="window.location.href='blockchain-field-kit.html#security'"
+                        style="cursor: pointer;">
                         <h3 class="item-title">Security Audits</h3>
-                        <p class="item-description">Checklists, automated tools, and best practices for secure smart contract development.</p>
+                        <p class="item-description">Checklists, automated tools, and best practices for secure smart
+                            contract development.</p>
                     </div>
-                    <div class="feature-card" onclick="window.location.href='blockchain-field-kit.html'" style="cursor: pointer;">
+                    <div class="feature-card" onclick="window.location.href='blockchain-field-kit.html'"
+                        style="cursor: pointer;">
                         <h3 class="item-title">All Field Kit Resources</h3>
-                        <p class="item-description">Complete guide to blockchain development tools, wallets, networks, and deployment platforms.</p>
+                        <p class="item-description">Complete guide to blockchain development tools, wallets, networks,
+                            and deployment platforms.</p>
                     </div>
                 </div>
             </div>
@@ -479,24 +623,30 @@
             <div id="activities" class="blockchain-content-section">
                 <div class="section-number">05</div>
                 <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
-                <p class="section-description">Strategic exercises and thought experiments designed to build blockchain thought leadership and deep conceptual understanding.</p>
+                <p class="section-description">Strategic exercises and thought experiments designed to build blockchain
+                    thought leadership and deep conceptual understanding.</p>
 
                 <div class="section-grid">
                     <div class="section-item" onclick="window.location.href='blockchain-activities.html#simulations'">
                         <h3 class="item-title">Concept Simulations</h3>
-                        <p class="item-description">Interactive explorations of consensus mechanisms, crypto-economics, and governance models.</p>
+                        <p class="item-description">Interactive explorations of consensus mechanisms, crypto-economics,
+                            and governance models.</p>
                     </div>
                     <div class="section-item" onclick="window.location.href='blockchain-activities.html#case-studies'">
                         <h3 class="item-title">Strategic Case Studies</h3>
-                        <p class="item-description">Real-world scenarios for CBDC strategy, enterprise adoption, and regulatory frameworks.</p>
+                        <p class="item-description">Real-world scenarios for CBDC strategy, enterprise adoption, and
+                            regulatory frameworks.</p>
                     </div>
-                    <div class="section-item" onclick="window.location.href='blockchain-activities.html#thought-experiments'">
+                    <div class="section-item"
+                        onclick="window.location.href='blockchain-activities.html#thought-experiments'">
                         <h3 class="item-title">Thought Experiments</h3>
-                        <p class="item-description">Deep explorations of digital identity, economic inequality, and the future of decentralization.</p>
+                        <p class="item-description">Deep explorations of digital identity, economic inequality, and the
+                            future of decentralization.</p>
                     </div>
                     <div class="section-item" onclick="window.location.href='blockchain-activities.html#frameworks'">
                         <h3 class="item-title">Decision Frameworks</h3>
-                        <p class="item-description">Analytical tools for blockchain evaluation, token economics, and strategic implementation.</p>
+                        <p class="item-description">Analytical tools for blockchain evaluation, token economics, and
+                            strategic implementation.</p>
                     </div>
                 </div>
             </div>
@@ -570,7 +720,7 @@
         });
 
         // Update active navigation on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const sections = document.querySelectorAll('.blockchain-content-section');
             const navLinks = document.querySelectorAll('.section-nav-link');
 
@@ -592,7 +742,7 @@
         });
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('mainMenuOverlay');
                 overlay.classList.remove('active');
@@ -600,4 +750,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metaverse Learning Hub - Virtual Worlds & Spatial Design Education</title>
-    <meta name="description" content="Master metaverse design and spatial computing for creators. Learn virtual world building, avatar design, and immersive experiences through no-code tools and design-first education.">
-    <meta name="keywords" content="metaverse design, virtual worlds, spatial design, VR design, virtual reality, avatar design, immersive experiences, metaverse for designers, spatial computing">
+    <meta name="description"
+        content="Master metaverse design and spatial computing for creators. Learn virtual world building, avatar design, and immersive experiences through no-code tools and design-first education.">
+    <meta name="keywords"
+        content="metaverse design, virtual worlds, spatial design, VR design, virtual reality, avatar design, immersive experiences, metaverse for designers, spatial computing">
     <meta name="author" content="Studio Poetics - Emerging Technology Hub">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://eth.poetics.studio/metaverse-landing.html">
@@ -14,14 +17,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eth.poetics.studio/metaverse-landing.html">
     <meta property="og:title" content="Metaverse Learning Hub - Virtual Worlds & Spatial Design">
-    <meta property="og:description" content="Master metaverse design and spatial computing for creators. Learn virtual world building through no-code tools and design-first education.">
+    <meta property="og:description"
+        content="Master metaverse design and spatial computing for creators. Learn virtual world building through no-code tools and design-first education.">
     <meta property="og:site_name" content="Emerging Technology Hub">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://eth.poetics.studio/metaverse-landing.html">
     <meta property="twitter:title" content="Metaverse Learning Hub - Virtual Worlds & Spatial Design">
-    <meta property="twitter:description" content="Master metaverse design and spatial computing for creators. Learn virtual world building through no-code tools and design-first education.">
+    <meta property="twitter:description"
+        content="Master metaverse design and spatial computing for creators. Learn virtual world building through no-code tools and design-first education.">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -49,60 +54,166 @@
     </script>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-@media (max-width: 768px) {
-    .experimental-sidebar { display: none !important; }
-    .experimental-main { padding-top: 0 !important; }
-    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .experimental-title { font-size: var(--text-4xl) !important; }
-    .experimental-subtitle { font-size: var(--text-lg) !important; }
-    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
-    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
-    .card-description, .card-meta { display: none !important; }
-    .card-title { font-size: var(--text-lg) !important; }
-    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
-    .vertical-menu {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 48px !important;
-        width: 100vw !important;
-        background: var(--color-black) !important;
-        z-index: 20 !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .vertical-menu-text {
-        writing-mode: horizontal-tb !important;
-        text-orientation: initial !important;
-        letter-spacing: 0.1em !important;
-    }
-    .experimental-main { padding-top: 48px !important; }
-    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
 
-    /* Content page specific */
-    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
-    .fundamentals-title { font-size: var(--text-4xl) !important; }
-    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
-    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
-    .content-section { margin-bottom: var(--space-8) !important; }
-    .content-section h2 { font-size: var(--text-2xl) !important; }
-    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
-    .item-description { display: none !important; }
-    .available-badge { display: none !important; }
+            .experimental-main {
+                padding-top: 0 !important;
+            }
 
-    /* Landing page specific */
-    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
-    .section-nav-list { gap: var(--space-3) !important; }
-    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
-    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
-    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
-    .section-description { font-size: var(--text-base) !important; }
-    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
-}
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .experimental-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+                padding: var(--space-4) !important;
+            }
+
+            .experimental-card.featured {
+                grid-row: auto !important;
+                min-height: auto !important;
+            }
+
+            .card-description,
+            .card-meta {
+                display: none !important;
+            }
+
+            .card-title {
+                font-size: var(--text-lg) !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+
+            /* Content page specific */
+            .fundamentals-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .fundamentals-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .fundamentals-subtitle {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .fundamentals-content {
+                padding: var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .content-section {
+                margin-bottom: var(--space-8) !important;
+            }
+
+            .content-section h2 {
+                font-size: var(--text-2xl) !important;
+            }
+
+            .properties-grid,
+            .feature-grid,
+            .applications-grid,
+            .approach-cards,
+            .getting-started {
+                grid-template-columns: 1fr !important;
+            }
+
+            .item-description {
+                display: none !important;
+            }
+
+            .available-badge {
+                display: none !important;
+            }
+
+            /* Landing page specific */
+            .ai-section-nav {
+                position: static !important;
+                margin: 0 !important;
+                padding: var(--space-3) var(--space-4) !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .ai-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+        }
 
         /* Metaverse Landing Page Specific Styles */
         .metaverse-section-nav {
@@ -266,16 +377,17 @@
         }
     </style>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-R4MBJ1TPQ5');
-  </script>
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
 </head>
+
 <body>
     <div class="experimental-container">
 
@@ -284,7 +396,8 @@
             <div class="sidebar-content">
 
                 <div class="experimental-brand">
-                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging
+                            Tech Hub</a></h1>
                     <p class="brand-subtitle">Virtual Worlds</p>
                 </div>
 
@@ -311,7 +424,8 @@
 
                 <div class="experimental-info-box">
                     <div class="info-box-title">Available Now</div>
-                    <div class="info-box-content">Fundamentals, Readings, Flashcards, Field Kit, and Activities are ready for spatial design and virtual world creation.</div>
+                    <div class="info-box-content">Fundamentals, Readings, Flashcards, Field Kit, and Activities are
+                        ready for spatial design and virtual world creation.</div>
                 </div>
 
                 <div class="experimental-info-box">
@@ -353,226 +467,290 @@
                     </div>
 
                     <p class="hero-description">
-                        Master spatial design and virtual world creation for the metaverse. Learn to design immersive experiences, build avatar systems, and create compelling virtual environments using no-code platforms and design-first thinking.
+                        Master spatial design and virtual world creation for the metaverse. Learn to design immersive
+                        experiences, build avatar systems, and create compelling virtual environments using no-code
+                        platforms and design-first thinking.
                     </p>
 
                     <div class="hero-actions">
                         <a href="#fundamentals" class="experimental-btn experimental-btn--primary">Start Learning</a>
                         <a href="metaverse-flashcards.html" class="experimental-btn">Flash Cards</a>
                         <a href="metaverse-activities.html" class="experimental-btn">Activities</a>
+                        <a href="metaverse-trl.html" class="experimental-btn">TRL Radar</a>
                     </div>
                 </div>
             </div>
 
-                <!-- Fundamentals Section -->
-                <div id="fundamentals" class="metaverse-content-section">
-                    <div class="section-number">01</div>
-                    <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
-                    <p class="section-description">Master spatial design principles and virtual world building for creators, designers, and product managers.</p>
+            <!-- Fundamentals Section -->
+            <div id="fundamentals" class="metaverse-content-section">
+                <div class="section-number">01</div>
+                <h2 class="section-title">Fundamentals<span class="available-badge">Available</span></h2>
+                <p class="section-description">Master spatial design principles and virtual world building for creators,
+                    designers, and product managers.</p>
 
-                    <div class="section-grid">
-                        <div class="section-item" onclick="window.location.href='metaverse-basics.html'">
-                            <h3 class="item-title">Metaverse Basics</h3>
-                            <p class="item-description">What is the metaverse? Understanding virtual worlds, persistent spaces, social XR, and the future of digital presence.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='spatial-design-principles.html'">
-                            <h3 class="item-title">Spatial Design Principles</h3>
-                            <p class="item-description">3D composition, scale psychology, environmental storytelling, and designing for presence and comfort in virtual spaces.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='avatar-identity-design.html'">
-                            <h3 class="item-title">Avatar & Identity Design</h3>
-                            <p class="item-description">Digital self-expression, embodiment design, accessibility, social presence, and identity systems in virtual worlds.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='virtual-architecture.html'">
-                            <h3 class="item-title">Virtual Architecture</h3>
-                            <p class="item-description">Designing spaces for interaction, flow, discovery, and social dynamics in 3D environments.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-economy.html'">
-                            <h3 class="item-title">Virtual Economies</h3>
-                            <p class="item-description">Creator economies, virtual goods, ownership models, NFTs, and building sustainable metaverse businesses.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='social-spaces-design.html'">
-                            <h3 class="item-title">Social Spaces Design</h3>
-                            <p class="item-description">Community design, presence mechanics, communication patterns, and fostering meaningful interactions in virtual worlds.</p>
-                        </div>
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='metaverse-basics.html'">
+                        <h3 class="item-title">Metaverse Basics</h3>
+                        <p class="item-description">What is the metaverse? Understanding virtual worlds, persistent
+                            spaces, social XR, and the future of digital presence.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='spatial-design-principles.html'">
+                        <h3 class="item-title">Spatial Design Principles</h3>
+                        <p class="item-description">3D composition, scale psychology, environmental storytelling, and
+                            designing for presence and comfort in virtual spaces.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='avatar-identity-design.html'">
+                        <h3 class="item-title">Avatar & Identity Design</h3>
+                        <p class="item-description">Digital self-expression, embodiment design, accessibility, social
+                            presence, and identity systems in virtual worlds.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='virtual-architecture.html'">
+                        <h3 class="item-title">Virtual Architecture</h3>
+                        <p class="item-description">Designing spaces for interaction, flow, discovery, and social
+                            dynamics in 3D environments.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='metaverse-economy.html'">
+                        <h3 class="item-title">Virtual Economies</h3>
+                        <p class="item-description">Creator economies, virtual goods, ownership models, NFTs, and
+                            building sustainable metaverse businesses.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='social-spaces-design.html'">
+                        <h3 class="item-title">Social Spaces Design</h3>
+                        <p class="item-description">Community design, presence mechanics, communication patterns, and
+                            fostering meaningful interactions in virtual worlds.</p>
                     </div>
                 </div>
-
-                <!-- Readings Section -->
-                <div id="readings" class="metaverse-content-section">
-                    <div class="section-number">02</div>
-                    <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
-                    <p class="section-description">Curated papers, articles, and resources on spatial design, virtual worlds, and the metaverse for creators and strategists.</p>
-
-                    <div class="feature-grid">
-                        <div class="feature-card" onclick="window.location.href='metaverse-readings.html#foundational'">
-                            <h3 class="item-title">Foundational Vision</h3>
-                            <p class="item-description">Snow Crash concepts, Ready Player One, early virtual world papers, and metaverse manifestos.</p>
-                        </div>
-                        <div class="feature-card" onclick="window.location.href='metaverse-readings.html#spatial-design'">
-                            <h3 class="item-title">Spatial Design Research</h3>
-                            <p class="item-description">Environmental psychology, 3D UI/UX patterns, presence research, and immersive design principles.</p>
-                        </div>
-                        <div class="feature-card" onclick="window.location.href='metaverse-readings.html#social'">
-                            <h3 class="item-title">Social Dynamics</h3>
-                            <p class="item-description">Virtual community studies, digital identity research, avatar psychology, and social presence theory.</p>
-                        </div>
-                        <div class="feature-card" onclick="window.location.href='metaverse-readings.html#business'">
-                            <h3 class="item-title">Business & Economics</h3>
-                            <p class="item-description">Platform economics, creator economies, virtual real estate analysis, and metaverse market reports.</p>
-                        </div>
-                        <div class="feature-card" onclick="window.location.href='metaverse-readings.html#case-studies'">
-                            <h3 class="item-title">Platform Case Studies</h3>
-                            <p class="item-description">Fortnite events, Decentraland, Mozilla Hubs, VRChat communities, and successful virtual experiences.</p>
-                        </div>
-                        <div class="feature-card" onclick="window.location.href='metaverse-readings.html#all'">
-                            <h3 class="item-title">Complete Library</h3>
-                            <p class="item-description">Browse all curated resources with summaries, design insights, and practical takeaways for creators.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Flashcards Section -->
-                <div id="flashcards" class="metaverse-content-section">
-                    <div class="section-number">03</div>
-                    <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
-                    <p class="section-description">Interactive learning cards covering 60 essential metaverse concepts, spatial design principles, and platform capabilities.</p>
-
-                    <div class="section-grid">
-                        <div class="section-item" onclick="window.location.href='metaverse-flashcards.html'">
-                            <h3 class="item-title">Start Flashcards</h3>
-                            <p class="item-description">Begin your interactive metaverse learning journey with comprehensive flashcard system.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-flashcards.html'">
-                            <h3 class="item-title">Spatial Design Terms</h3>
-                            <p class="item-description">Master the vocabulary of 3D design, environmental psychology, and virtual architecture.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-flashcards.html'">
-                            <h3 class="item-title">Platform Capabilities</h3>
-                            <p class="item-description">Understand what's possible on Hubs, Spatial, VRChat, Decentraland, and other metaverse platforms.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-flashcards.html'">
-                            <h3 class="item-title">Design Patterns</h3>
-                            <p class="item-description">User experience patterns, social mechanics, and interaction design for virtual worlds.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Field Kit Section -->
-                <div id="fieldkit" class="metaverse-content-section">
-                    <div class="section-number">04</div>
-                    <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
-                    <p class="section-description">No-code platforms, design templates, and practical tools for building virtual experiences without engineering expertise.</p>
-
-                    <div class="section-grid">
-                        <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#platforms'">
-                            <h3 class="item-title">No-Code Platforms</h3>
-                            <p class="item-description">Mozilla Hubs setup, Spatial.io room builder, VRChat world basics - build without coding.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#advanced-tools'">
-                            <h3 class="item-title">Advanced Tools (2024-2025)</h3>
-                            <p class="item-description">ShapesXR VR prototyping, Mixamo animation, A-Frame/MindAR web AR, Lens Studio, Ready Player Me avatars.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#templates'">
-                            <h3 class="item-title">Design Templates</h3>
-                            <p class="item-description">Space planning templates, user journey maps, social interaction frameworks for virtual experiences.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#comparison'">
-                            <h3 class="item-title">Platform Comparison</h3>
-                            <p class="item-description">Feature matrix, decision guides - compare social VR platforms + prototyping tools side-by-side.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#assets'">
-                            <h3 class="item-title">Asset Resources</h3>
-                            <p class="item-description">3D model libraries, texture resources, sound design tools - find ready-made assets for your world.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#technical'">
-                            <h3 class="item-title">Collaboration Tools</h3>
-                            <p class="item-description">Working with 3D artists, briefing engineers, project specs - communicate your vision effectively.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-platform-selector.html'">
-                            <h3 class="item-title">Platform Selector Tool</h3>
-                            <p class="item-description">Interactive tool: Input your project requirements, get personalized platform recommendations.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Activities Section -->
-                <div id="activities" class="metaverse-content-section">
-                    <div class="section-number">05</div>
-                    <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
-                    <p class="section-description">Hands-on design exercises, collaborative scenarios, and case study analysis to build spatial design mastery.</p>
-
-                    <div class="section-grid">
-                        <div class="section-item" onclick="window.location.href='metaverse-space-designer.html'">
-                            <h3 class="item-title">Space Design Canvas</h3>
-                            <p class="item-description">Interactive tool: Sketch virtual space layouts, add interaction points, plan user flows visually.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-experience-mapper.html'">
-                            <h3 class="item-title">Experience Flow Mapper</h3>
-                            <p class="item-description">Interactive tool: Plot user journeys through virtual environments, design discovery patterns.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-activities.html#individual'">
-                            <h3 class="item-title">Individual Exercises</h3>
-                            <p class="item-description">Critique metaverse experiences, design virtual gallery spaces, explore avatar identity projects.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-activities.html#collaborative'">
-                            <h3 class="item-title">Collaborative Scenarios</h3>
-                            <p class="item-description">Role-play design teams, plan virtual events, tackle community design challenges together.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-activities.html#case-studies'">
-                            <h3 class="item-title">Case Studies</h3>
-                            <p class="item-description">Travis Scott Fortnite concert, DAOs in virtual worlds, virtual fashion - analyze what worked and why.</p>
-                        </div>
-                        <div class="section-item" onclick="window.location.href='metaverse-activities.html#challenges'">
-                            <h3 class="item-title">Design Challenges</h3>
-                            <p class="item-description">Weekly metaverse design prompts, community showcases, peer critique sessions.</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Footer -->
-            <footer class="site-footer">
-                <div class="footer-content">
-                    <div class="footer-branding">
-                        Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+            <!-- Readings Section -->
+            <div id="readings" class="metaverse-content-section">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
+                <p class="section-description">Curated papers, articles, and resources on spatial design, virtual
+                    worlds, and the metaverse for creators and strategists.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card" onclick="window.location.href='metaverse-readings.html#foundational'">
+                        <h3 class="item-title">Foundational Vision</h3>
+                        <p class="item-description">Snow Crash concepts, Ready Player One, early virtual world papers,
+                            and metaverse manifestos.</p>
                     </div>
-                    <div class="footer-links">
-                        <a href="disclaimer.html">Disclaimer</a>
-                        <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                    <div class="feature-card" onclick="window.location.href='metaverse-readings.html#spatial-design'">
+                        <h3 class="item-title">Spatial Design Research</h3>
+                        <p class="item-description">Environmental psychology, 3D UI/UX patterns, presence research, and
+                            immersive design principles.</p>
+                    </div>
+                    <div class="feature-card" onclick="window.location.href='metaverse-readings.html#social'">
+                        <h3 class="item-title">Social Dynamics</h3>
+                        <p class="item-description">Virtual community studies, digital identity research, avatar
+                            psychology, and social presence theory.</p>
+                    </div>
+                    <div class="feature-card" onclick="window.location.href='metaverse-readings.html#business'">
+                        <h3 class="item-title">Business & Economics</h3>
+                        <p class="item-description">Platform economics, creator economies, virtual real estate analysis,
+                            and metaverse market reports.</p>
+                    </div>
+                    <div class="feature-card" onclick="window.location.href='metaverse-readings.html#case-studies'">
+                        <h3 class="item-title">Platform Case Studies</h3>
+                        <p class="item-description">Fortnite events, Decentraland, Mozilla Hubs, VRChat communities, and
+                            successful virtual experiences.</p>
+                    </div>
+                    <div class="feature-card" onclick="window.location.href='metaverse-readings.html#all'">
+                        <h3 class="item-title">Complete Library</h3>
+                        <p class="item-description">Browse all curated resources with summaries, design insights, and
+                            practical takeaways for creators.</p>
                     </div>
                 </div>
-            </footer>
+                <div class="feature-card" onclick="window.location.href='metaverse-readings.html#all'">
+                    <h3 class="item-title">Complete Library</h3>
+                    <p class="item-description">Browse all curated resources with design insights.</p>
+                </div>
+            </div>
 
+            <!-- Local Context & Critique -->
+            <div class="feature-grid" style="margin-top: 2rem;">
+                <div class="feature-card"
+                    style="background: #eff6ff; border-left: 4px solid var(--color-electric-blue);">
+                    <h3 class="item-title">India Case Studies</h3>
+                    <p class="item-description">
+                        <strong>Flipkart Flipverse</strong>: Gamified e-commerce on Polygon. A mass-market experiment in
+                        "Phygital" retail.<br><br>
+                        <strong>Tanishq Rivaahverse</strong>: Virtual jewelry try-ons for Indian weddings. A great
+                        example of cultural identity design.
+                    </p>
+                </div>
+                <div class="feature-card" style="background: #fef2f2; border-left: 4px solid #ef4444;">
+                    <h3 class="item-title" style="color: #ef4444;">Critical Hype Check</h3>
+                    <p class="item-description">
+                        <strong>Warning:</strong> Many Indian "metaverses" were just short-lived marketing stunts
+                        (FOMO). True utility requires persistence and interoperability, not just a one-time 3D mall.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <!-- Vertical Menu -->
-        <div class="vertical-menu" id="verticalMenu">
-            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
-        </div>
+        <!-- Flashcards Section -->
+        <div id="flashcards" class="metaverse-content-section">
+            <div class="section-number">03</div>
+            <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
+            <p class="section-description">Interactive learning cards covering 60 essential metaverse concepts, spatial
+                design principles, and platform capabilities.</p>
 
-        <!-- Main Menu Overlay -->
-        <div class="main-menu-overlay" id="mainMenuOverlay">
-            <div class="main-menu-content">
-                <button class="menu-close" onclick="toggleMainMenu()">×</button>
-                <h2 class="menu-title">Navigation</h2>
-                <nav class="main-menu-nav">
-                    <a href="index.html" class="main-menu-link">Home</a>
-                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
-                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
-                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
-                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
-                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
-                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
-                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
-                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
-                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
-                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
-                </nav>
+            <div class="section-grid">
+                <div class="section-item" onclick="window.location.href='metaverse-flashcards.html'">
+                    <h3 class="item-title">Start Flashcards</h3>
+                    <p class="item-description">Begin your interactive metaverse learning journey with comprehensive
+                        flashcard system.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-flashcards.html'">
+                    <h3 class="item-title">Spatial Design Terms</h3>
+                    <p class="item-description">Master the vocabulary of 3D design, environmental psychology, and
+                        virtual architecture.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-flashcards.html'">
+                    <h3 class="item-title">Platform Capabilities</h3>
+                    <p class="item-description">Understand what's possible on Hubs, Spatial, VRChat, Decentraland, and
+                        other metaverse platforms.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-flashcards.html'">
+                    <h3 class="item-title">Design Patterns</h3>
+                    <p class="item-description">User experience patterns, social mechanics, and interaction design for
+                        virtual worlds.</p>
+                </div>
             </div>
         </div>
+
+        <!-- Field Kit Section -->
+        <div id="fieldkit" class="metaverse-content-section">
+            <div class="section-number">04</div>
+            <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
+            <p class="section-description">No-code platforms, design templates, and practical tools for building virtual
+                experiences without engineering expertise.</p>
+
+            <div class="section-grid">
+                <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#platforms'">
+                    <h3 class="item-title">No-Code Platforms</h3>
+                    <p class="item-description">Mozilla Hubs setup, Spatial.io room builder, VRChat world basics - build
+                        without coding.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#advanced-tools'">
+                    <h3 class="item-title">Advanced Tools (2024-2025)</h3>
+                    <p class="item-description">ShapesXR VR prototyping, Mixamo animation, A-Frame/MindAR web AR, Lens
+                        Studio, Ready Player Me avatars.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#templates'">
+                    <h3 class="item-title">Design Templates</h3>
+                    <p class="item-description">Space planning templates, user journey maps, social interaction
+                        frameworks for virtual experiences.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#comparison'">
+                    <h3 class="item-title">Platform Comparison</h3>
+                    <p class="item-description">Feature matrix, decision guides - compare social VR platforms +
+                        prototyping tools side-by-side.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#assets'">
+                    <h3 class="item-title">Asset Resources</h3>
+                    <p class="item-description">3D model libraries, texture resources, sound design tools - find
+                        ready-made assets for your world.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-field-kit.html#technical'">
+                    <h3 class="item-title">Collaboration Tools</h3>
+                    <p class="item-description">Working with 3D artists, briefing engineers, project specs - communicate
+                        your vision effectively.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-platform-selector.html'">
+                    <h3 class="item-title">Platform Selector Tool</h3>
+                    <p class="item-description">Interactive tool: Input your project requirements, get personalized
+                        platform recommendations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activities Section -->
+        <div id="activities" class="metaverse-content-section">
+            <div class="section-number">05</div>
+            <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
+            <p class="section-description">Hands-on design exercises, collaborative scenarios, and case study analysis
+                to build spatial design mastery.</p>
+
+            <div class="section-grid">
+                <div class="section-item" onclick="window.location.href='metaverse-space-designer.html'">
+                    <h3 class="item-title">Space Design Canvas</h3>
+                    <p class="item-description">Interactive tool: Sketch virtual space layouts, add interaction points,
+                        plan user flows visually.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-experience-mapper.html'">
+                    <h3 class="item-title">Experience Flow Mapper</h3>
+                    <p class="item-description">Interactive tool: Plot user journeys through virtual environments,
+                        design discovery patterns.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-activities.html#individual'">
+                    <h3 class="item-title">Individual Exercises</h3>
+                    <p class="item-description">Critique metaverse experiences, design virtual gallery spaces, explore
+                        avatar identity projects.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-activities.html#collaborative'">
+                    <h3 class="item-title">Collaborative Scenarios</h3>
+                    <p class="item-description">Role-play design teams, plan virtual events, tackle community design
+                        challenges together.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-activities.html#case-studies'">
+                    <h3 class="item-title">Case Studies</h3>
+                    <p class="item-description">Travis Scott Fortnite concert, DAOs in virtual worlds, virtual fashion -
+                        analyze what worked and why.</p>
+                </div>
+                <div class="section-item" onclick="window.location.href='metaverse-activities.html#challenges'">
+                    <h3 class="item-title">Design Challenges</h3>
+                    <p class="item-description">Weekly metaverse design prompts, community showcases, peer critique
+                        sessions.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-branding">
+                Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank"
+                    rel="noopener noreferrer">Studio Poetics</a>
+            </div>
+            <div class="footer-links">
+                <a href="disclaimer.html">Disclaimer</a>
+                <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+    </div>
+
+    <!-- Vertical Menu -->
+    <div class="vertical-menu" id="verticalMenu">
+        <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+    </div>
+
+    <!-- Main Menu Overlay -->
+    <div class="main-menu-overlay" id="mainMenuOverlay">
+        <div class="main-menu-content">
+            <button class="menu-close" onclick="toggleMainMenu()">×</button>
+            <h2 class="menu-title">Navigation</h2>
+            <nav class="main-menu-nav">
+                <a href="index.html" class="main-menu-link">Home</a>
+                <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+            </nav>
+        </div>
+    </div>
 
     </div>
 
@@ -598,7 +776,7 @@
         });
 
         // Update active navigation on scroll
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const sections = document.querySelectorAll('.metaverse-content-section');
             const navLinks = document.querySelectorAll('.section-nav-link');
 
@@ -620,7 +798,7 @@
         });
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const overlay = document.getElementById('mainMenuOverlay');
                 overlay.classList.remove('active');
@@ -628,4 +806,5 @@
         });
     </script>
 </body>
+
 </html>
