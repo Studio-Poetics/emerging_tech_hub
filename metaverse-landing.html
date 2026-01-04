@@ -330,6 +330,10 @@
             opacity: 0.8;
         }
 
+        .section-item:hover .item-description {
+            opacity: 0.95;
+        }
+
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -352,6 +356,10 @@
 
         .feature-card:hover * {
             color: var(--color-white) !important;
+        }
+
+        .feature-card:hover .item-description {
+            opacity: 0.95;
         }
 
         .coming-soon-badge {
@@ -450,6 +458,7 @@
                 <nav class="section-nav-list">
                     <a href="#fundamentals" class="section-nav-link active">Fundamentals</a>
                     <a href="#readings" class="section-nav-link">Readings</a>
+                    <a href="#india-context" class="section-nav-link">Indian Context</a>
                     <a href="#flashcards" class="section-nav-link">Flashcards</a>
                     <a href="#fieldkit" class="section-nav-link">Field Kit</a>
                     <a href="#activities" class="section-nav-link">Activities</a>
@@ -563,37 +572,37 @@
                             practical takeaways for creators.</p>
                     </div>
                 </div>
-                <div class="feature-card" onclick="window.location.href='metaverse-readings.html#all'">
-                    <h3 class="item-title">Complete Library</h3>
-                    <p class="item-description">Browse all curated resources with design insights.</p>
+            </div>
+
+            <!-- Indian Context Section -->
+            <div id="india-context" class="metaverse-content-section">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Indian Context<span class="available-badge">Available</span></h2>
+                <p class="section-description">Research-based case studies of Indian brands' metaverse experiments (2022-2024): what worked, what failed, and lessons for the future.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='metaverse-india-case-studies.html#flipkart'">
+                        <h3 class="item-title">Flipkart Flipverse</h3>
+                        <p class="item-description">E-commerce giant's gamified virtual shopping on Polygon blockchain. Big Billion Days treasure hunt drove 15% app download increase.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='metaverse-india-case-studies.html#tanishq'">
+                        <h3 class="item-title">Tanishq Rivaahverse</h3>
+                        <p class="item-description">India's first metaverse jewelry launch. Virtual press conference with 3D viewing and AR try-on for wedding collections.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='metaverse-india-case-studies.html#other-brands'">
+                        <h3 class="item-title">IPL & Entertainment</h3>
+                        <p class="item-description">Gujarat Titans, Chennai Super Kings virtual stadiums, ALTBalaji tokens, and Fabelle's metaverse wedding sponsorship.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='metaverse-india-case-studies.html#analysis'">
+                        <h3 class="item-title">Critical Analysis</h3>
+                        <p class="item-description">What worked vs. FOMO marketing stunts. Research-backed analysis of sustainable patterns and failed experiments.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Local Context & Critique -->
-            <div class="feature-grid" style="margin-top: 2rem;">
-                <div class="feature-card"
-                    style="background: #eff6ff; border-left: 4px solid var(--color-electric-blue);">
-                    <h3 class="item-title">India Case Studies</h3>
-                    <p class="item-description">
-                        <strong>Flipkart Flipverse</strong>: Gamified e-commerce on Polygon. A mass-market experiment in
-                        "Phygital" retail.<br><br>
-                        <strong>Tanishq Rivaahverse</strong>: Virtual jewelry try-ons for Indian weddings. A great
-                        example of cultural identity design.
-                    </p>
-                </div>
-                <div class="feature-card" style="background: #fef2f2; border-left: 4px solid #ef4444;">
-                    <h3 class="item-title" style="color: #ef4444;">Critical Hype Check</h3>
-                    <p class="item-description">
-                        <strong>Warning:</strong> Many Indian "metaverses" were just short-lived marketing stunts
-                        (FOMO). True utility requires persistence and interoperability, not just a one-time 3D mall.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Flashcards Section -->
-        <div id="flashcards" class="metaverse-content-section">
-            <div class="section-number">03</div>
+            <!-- Flashcards Section -->
+            <div id="flashcards" class="metaverse-content-section">
+                <div class="section-number">04</div>
             <h2 class="section-title">Flashcards<span class="available-badge">Available</span></h2>
             <p class="section-description">Interactive learning cards covering 60 essential metaverse concepts, spatial
                 design principles, and platform capabilities.</p>
@@ -624,7 +633,7 @@
 
         <!-- Field Kit Section -->
         <div id="fieldkit" class="metaverse-content-section">
-            <div class="section-number">04</div>
+            <div class="section-number">05</div>
             <h2 class="section-title">Field Kit<span class="available-badge">Available</span></h2>
             <p class="section-description">No-code platforms, design templates, and practical tools for building virtual
                 experiences without engineering expertise.</p>
@@ -670,7 +679,7 @@
 
         <!-- Activities Section -->
         <div id="activities" class="metaverse-content-section">
-            <div class="section-number">05</div>
+            <div class="section-number">06</div>
             <h2 class="section-title">Activities<span class="available-badge">Available</span></h2>
             <p class="section-description">Hands-on design exercises, collaborative scenarios, and case study analysis
                 to build spatial design mastery.</p>
@@ -709,24 +718,23 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-branding">
-                Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank"
-                    rel="noopener noreferrer">Studio Poetics</a>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    Emerging Tech Hub is an initiative by <a href="https://poetics.studio" target="_blank"
+                        rel="noopener noreferrer">Studio Poetics</a>
+                </div>
+                <div class="footer-links">
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="disclaimer.html">Disclaimer</a>
-                <a href="https://poetics.studio" target="_blank" rel="noopener noreferrer">Studio Poetics</a>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
-    </div>
-    </div>
+    </div><!-- Close experimental-main -->
+
+    </div><!-- Close experimental-container -->
 
     <!-- Vertical Menu -->
     <div class="vertical-menu" id="verticalMenu">
@@ -752,8 +760,6 @@
                 <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
             </nav>
         </div>
-    </div>
-
     </div>
 
     <script>

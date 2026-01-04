@@ -1,0 +1,997 @@
+/* ========================================
+   CONSENSUS SIMULATOR - FRESH MODERN DESIGN
+   A complete redesign with vibrant colors and modern interactions
+   ======================================== */
+
+/* ========================================
+   DESIGN TOKENS - ENHANCED PALETTE
+   ======================================== */
+
+:root {
+    /* Enhanced Color Palette */
+    --consensus-primary: #6366f1;
+    --consensus-primary-dark: #4f46e5;
+    --consensus-primary-light: #818cf8;
+
+    --consensus-success: #10b981;
+    --consensus-success-dark: #059669;
+    --consensus-success-light: #34d399;
+
+    --consensus-danger: #ef4444;
+    --consensus-danger-dark: #dc2626;
+    --consensus-danger-light: #f87171;
+
+    --consensus-warning: #f59e0b;
+    --consensus-accent: #8b5cf6;
+
+    /* Neutral Tones */
+    --consensus-bg: #fafafa;
+    --consensus-surface: #ffffff;
+    --consensus-border: #e5e7eb;
+    --consensus-text: #111827;
+    --consensus-text-muted: #6b7280;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.18);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+/* ========================================
+   ENHANCED CARD SYSTEM - SaaS Style
+   ======================================== */
+
+.saas-box {
+    background: var(--consensus-surface);
+    border: 1px solid var(--consensus-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.saas-box:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.saas-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--consensus-border);
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saas-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--consensus-text);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.saas-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--consensus-primary);
+}
+
+.saas-body {
+    padding: 2rem;
+}
+
+/* ========================================
+   PROGRESSIVE DISCLOSURE - LOCKED SECTIONS
+   ======================================== */
+
+.content-section.locked-section {
+    position: relative;
+    filter: blur(2px) grayscale(0.5);
+    opacity: 0.4;
+    pointer-events: none;
+    user-select: none;
+}
+
+.content-section.locked-section::before {
+    content: "🔒 Complete previous section to unlock";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--consensus-surface);
+    padding: 1.25rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-xl);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--consensus-text);
+    z-index: 10;
+    filter: blur(0);
+    border: 2px solid var(--consensus-border);
+}
+
+/* ========================================
+   MODERN BUTTON SYSTEM
+   ======================================== */
+
+.sim-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.sim-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.sim-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.sim-btn-primary {
+    background: linear-gradient(135deg, var(--consensus-primary) 0%, var(--consensus-primary-dark) 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.sim-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.sim-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.sim-btn-secondary {
+    background: white;
+    border: 2px solid var(--consensus-border);
+    color: var(--consensus-text);
+}
+
+.sim-btn-secondary:hover {
+    background: var(--consensus-bg);
+    border-color: var(--consensus-primary);
+}
+
+.sim-btn-danger {
+    background: linear-gradient(135deg, var(--consensus-danger) 0%, var(--consensus-danger-dark) 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.sim-btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* ========================================
+   ENHANCED QUIZ SYSTEM
+   ======================================== */
+
+.choice-button {
+    display: block;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--consensus-surface);
+    border: 2px solid var(--consensus-border);
+    border-radius: 12px;
+    text-align: left;
+    color: var(--consensus-text);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.choice-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--consensus-primary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.choice-button:hover {
+    border-color: var(--consensus-primary);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.1) 100%);
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+}
+
+.choice-button:hover::before {
+    transform: scaleY(1);
+}
+
+.choice-button.correct {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.15) 100%);
+    border-color: var(--consensus-success);
+    color: #065f46;
+}
+
+.choice-button.correct::after {
+    content: " ✓";
+    color: var(--consensus-success);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.choice-button.incorrect {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.15) 100%);
+    border-color: var(--consensus-danger);
+    color: #991b1b;
+}
+
+.choice-button.incorrect::after {
+    content: " ✗";
+    color: var(--consensus-danger);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+/* ========================================
+   PROOF OF WORK - HASH PUZZLE REDESIGN
+   ======================================== */
+
+.pow-split-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .pow-split-card {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--consensus-primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+.input-field {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--consensus-border);
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background: var(--consensus-surface);
+}
+
+.input-field:focus {
+    border-color: var(--consensus-primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Terminal Display - Enhanced */
+.terminal-display {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 220px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-display::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+    border-bottom: 1px solid #475569;
+}
+
+.terminal-display::after {
+    content: "⬤ ⬤ ⬤";
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 0.5rem;
+    color: #64748b;
+    letter-spacing: 0.5rem;
+}
+
+.terminal-display.success {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    animation: terminal-success 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-display.failure {
+    animation: terminal-shake 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes terminal-success {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+@keyframes terminal-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* ========================================
+   MINING RACE - ENHANCED VISUALIZATION
+   ======================================== */
+
+.miner-row {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    background: var(--consensus-surface);
+    border: 2px solid var(--consensus-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.miner-row.mining-active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.1) 100%);
+    border-color: var(--consensus-primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1), var(--shadow-md);
+}
+
+.miner-row.winner {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.15) 100%);
+    border-color: var(--consensus-success);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2), var(--shadow-lg);
+    animation: winner-pulse 1s ease;
+}
+
+@keyframes winner-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.miner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.progress-track {
+    height: 14px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.2s linear;
+    position: relative;
+    background: linear-gradient(90deg, var(--consensus-primary) 0%, var(--consensus-primary-light) 100%);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+/* Animated gradient shimmer */
+.progress-fill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+    );
+    animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.miner-row.malicious .progress-fill {
+    background: linear-gradient(90deg, var(--consensus-danger) 0%, var(--consensus-danger-light) 100%);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+/* ========================================
+   BLOCKCHAIN VISUALIZATION - ENHANCED
+   ======================================== */
+
+.blockchain-scroll {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1.5rem 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--consensus-primary) var(--consensus-bg);
+}
+
+.blockchain-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.blockchain-scroll::-webkit-scrollbar-track {
+    background: var(--consensus-bg);
+    border-radius: 10px;
+}
+
+.blockchain-scroll::-webkit-scrollbar-thumb {
+    background: var(--consensus-primary);
+    border-radius: 10px;
+}
+
+.block-card {
+    flex-shrink: 0;
+    min-width: 220px;
+    background: var(--consensus-surface);
+    border: 2px solid var(--consensus-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    animation: block-appear 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.block-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--consensus-primary) 0%, var(--consensus-accent) 100%);
+}
+
+@keyframes block-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+    }
+}
+
+.block-card.genesis {
+    border-style: dashed;
+    background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
+}
+
+.block-card.valid::before {
+    background: linear-gradient(90deg, var(--consensus-success) 0%, var(--consensus-success-light) 100%);
+}
+
+.block-card.malicious::before {
+    background: linear-gradient(90deg, var(--consensus-danger) 0%, var(--consensus-danger-light) 100%);
+}
+
+/* ========================================
+   PROOF OF STAKE - VALIDATOR GRID
+   ======================================== */
+
+.pos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .pos-grid {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+.validator-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+@media (max-width: 640px) {
+    .validator-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.validator-card {
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+    border: 2px solid var(--consensus-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+.validator-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--consensus-primary), var(--consensus-accent));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.validator-card:hover::before {
+    opacity: 1;
+}
+
+.validator-card.selected {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-color: var(--consensus-primary);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow);
+    z-index: 10;
+}
+
+.validator-card.slashed {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+    border-color: var(--consensus-danger);
+    opacity: 0.6;
+}
+
+/* Control Panel - Glassmorphism */
+.control-panel {
+    background: linear-gradient(135deg, var(--consensus-primary) 0%, var(--consensus-primary-dark) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.control-panel::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, -20px); }
+}
+
+.action-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn.slash-btn {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+.action-btn.slash-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.6);
+}
+
+/* ========================================
+   BYZANTINE FAULT TOLERANCE - NETWORK
+   ======================================== */
+
+.bft-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .bft-grid {
+        grid-template-columns: 1.3fr 1fr;
+    }
+}
+
+.network-graph-container {
+    background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
+    border: 2px solid var(--consensus-border);
+    border-radius: 16px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.graph-node {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.875rem;
+    color: white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.graph-node:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.graph-node.sending {
+    animation: node-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes node-pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: var(--shadow-lg);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        box-shadow: 0 0 30px currentColor, var(--shadow-xl);
+    }
+}
+
+/* Message Log - Enhanced */
+.message-log-box {
+    background: var(--consensus-surface);
+    border: 2px solid var(--consensus-border);
+    border-radius: 16px;
+    height: 320px;
+    overflow-y: auto;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.log-entry {
+    padding: 1rem;
+    background: var(--consensus-bg);
+    border-left: 4px solid var(--consensus-border);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    animation: log-appear 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
+}
+
+.log-entry:hover {
+    background: #f3f4f6;
+    transform: translateX(4px);
+}
+
+@keyframes log-appear {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.log-entry.honest-message {
+    border-left-color: var(--consensus-success);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.1) 100%);
+}
+
+.log-entry.malicious-message {
+    border-left-color: var(--consensus-danger);
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.1) 100%);
+}
+
+/* ========================================
+   SCENARIO CARDS - ENHANCED
+   ======================================== */
+
+.scenario-card {
+    background: var(--consensus-surface);
+    border: 2px solid var(--consensus-border);
+    border-radius: 16px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.scenario-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--consensus-primary), var(--consensus-accent));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.scenario-card:hover {
+    border-color: var(--consensus-primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.scenario-card:hover::before {
+    transform: scaleX(1);
+}
+
+.scenario-card.selected {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border-color: var(--consensus-primary);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ========================================
+   ATTACK TYPE CARDS
+   ======================================== */
+
+.attack-type-card {
+    background: var(--consensus-surface);
+    border: 2px solid var(--consensus-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.attack-type-card:hover {
+    border-color: var(--consensus-danger);
+    box-shadow: 0 8px 16px rgba(239, 68, 68, 0.2);
+    transform: translateY(-4px);
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Text utilities */
+.text-muted { color: var(--consensus-text-muted); }
+.text-success { color: var(--consensus-success); }
+.text-danger { color: var(--consensus-danger); }
+.text-primary { color: var(--consensus-primary); }
+.text-main { color: var(--consensus-text); }
+
+/* Font utilities */
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-bold { font-weight: 700; }
+.small-text { font-size: 0.875rem; }
+
+/* Display utilities */
+.hidden { display: none !important; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.flex-col { flex-direction: column; }
+
+/* Spacing utilities */
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mt-0 { margin-top: 0; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.m-0 { margin: 0; }
+.p-4 { padding: 1rem; }
+
+/* Width utilities */
+.w-full { width: 100%; }
+.w-2 { width: 0.5rem; }
+.w-4 { width: 1rem; }
+.w-5 { width: 1.25rem; }
+.h-2 { height: 0.5rem; }
+.h-full { height: 100%; }
+.h-4 { height: 1rem; }
+.h-5 { height: 1.25rem; }
+
+/* Border utilities */
+.rounded-full { border-radius: 9999px; }
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.border { border-width: 1px; }
+.border-l-4 { border-left-width: 4px; }
+
+/* Background utilities */
+.bg-indigo-50 { background-color: #eef2ff; }
+.bg-green-50 { background-color: #f0fdf4; }
+.bg-green-500 { background-color: var(--consensus-success); }
+.bg-red-50 { background-color: #fef2f2; }
+.bg-red-500 { background-color: var(--consensus-danger); }
+.bg-slate-50 { background-color: #f8fafc; }
+.bg-slate-100 { background-color: #f1f5f9; }
+.bg-white { background-color: white; }
+
+/* Text color utilities */
+.text-indigo-700 { color: #4338ca; }
+.text-indigo-900 { color: #312e81; }
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+
+/* Other utilities */
+.uppercase { text-transform: uppercase; }
+.italic { font-style: italic; }
+.break-all { word-break: break-all; }
+.absolute { position: absolute; }
+.relative { position: relative; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+
+/* Grid utilities */
+.grid { display: grid; }
+.md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+
+/* Button group */
+.button-group-center {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .pow-split-card,
+    .pos-grid,
+    .bft-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .validator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .graph-node {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 0.75rem;
+    }
+
+    .saas-body {
+        padding: 1.5rem;
+    }
+
+    .choice-button:hover {
+        transform: translateX(0);
+    }
+
+    .scenario-card {
+        padding: 1.5rem;
+    }
+}
+
+/* ========================================
+   LEARNING PANEL STYLES
+   ======================================== */
+
+.learning-panel {
+    background: var(--consensus-surface);
+    border: 2px solid var(--consensus-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.learning-panel.full-width {
+    grid-column: 1 / -1;
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.interaction-panel {
+    margin-top: 2rem;
+}
+
+.answer-feedback {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    animation: log-appear 0.4s ease;
+}
