@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
+    <meta name="author" content="Pranshu Kumar Chaudhary">
+    <title>Embodied & Poetic Interactions - Designing for Interpretation | Emerging Tech Hub</title>
+    <meta name="description" content="Explore embodied and poetic interactions. Learn the 4E cognition framework, design for interpretive openness, and create technology that makes room for human meaning-making.">
+    <meta name="keywords" content="embodied interaction, poetic design, 4E cognition, interaction design, design philosophy, user experience, interpretive design">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/embodied-landing.html">
+
+    <link rel="stylesheet" href="experimental-design.css">
+    <style>
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none !important;
+            }
+
+            .experimental-main {
+                padding-top: 0 !important;
+            }
+
+            .experimental-hero {
+                padding: var(--space-6) var(--space-4) !important;
+                margin-right: 0 !important;
+            }
+
+            .experimental-title {
+                font-size: var(--text-4xl) !important;
+            }
+
+            .experimental-subtitle {
+                font-size: var(--text-lg) !important;
+            }
+
+            .hero-description {
+                font-size: var(--text-base) !important;
+                line-height: 1.6 !important;
+            }
+
+            .section-nav-list {
+                gap: var(--space-3) !important;
+            }
+
+            .section-nav-link {
+                font-size: var(--text-xs) !important;
+                padding: var(--space-1) var(--space-2) !important;
+            }
+
+            .embodied-content-section {
+                padding: var(--space-8) var(--space-4) !important;
+                margin-right: 0 !important;
+                min-height: auto !important;
+            }
+
+            .section-title {
+                font-size: var(--text-3xl) !important;
+                line-height: 1.15 !important;
+            }
+
+            .section-description {
+                font-size: var(--text-base) !important;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--space-3) !important;
+            }
+
+            .item-sections {
+                display: none !important;
+            }
+
+            .experimental-btn {
+                padding: var(--space-2) var(--space-4) !important;
+            }
+
+            .vertical-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 48px !important;
+                width: 100vw !important;
+                background: var(--color-black) !important;
+                z-index: 20 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            .vertical-menu-text {
+                writing-mode: horizontal-tb !important;
+                text-orientation: initial !important;
+                letter-spacing: 0.1em !important;
+            }
+
+            .experimental-main {
+                padding-top: 48px !important;
+            }
+
+            .site-footer {
+                padding: var(--space-6) var(--space-4) !important;
+            }
+        }
+
+        /* Embodied Landing Page Specific Styles */
+        .embodied-section-nav {
+            position: sticky;
+            top: 0;
+            background: var(--color-white);
+            border-bottom: var(--border-width) solid var(--color-black);
+            padding: var(--space-4) var(--space-8);
+            margin-right: 60px;
+            z-index: 50;
+        }
+
+        .section-nav-list {
+            display: flex;
+            gap: var(--space-6);
+            flex-wrap: wrap;
+        }
+
+        .section-nav-link {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-black);
+            text-decoration: none;
+            padding: var(--space-2) var(--space-4);
+            border: var(--border-width) solid transparent;
+            transition: all var(--transition-fast);
+        }
+
+        .section-nav-link:hover,
+        .section-nav-link.active {
+            border-color: var(--color-black);
+        }
+
+        .embodied-content-section {
+            min-height: 100vh;
+            padding: var(--space-16) var(--space-8);
+            margin-right: 60px;
+            border-bottom: var(--border-width) solid var(--color-gray-200);
+        }
+
+        .section-number {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            letter-spacing: 0.15em;
+            color: var(--color-gray-500);
+            margin-bottom: var(--space-3);
+        }
+
+        .section-title {
+            font-size: var(--text-5xl);
+            font-weight: var(--font-bold);
+            line-height: 1;
+            margin-bottom: var(--space-6);
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: var(--text-xl);
+            line-height: 1.6;
+            max-width: 70ch;
+            margin-bottom: var(--space-8);
+            color: var(--color-gray-700);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--border-width);
+            background: var(--color-black);
+        }
+
+        .section-item {
+            background: var(--color-gray-50);
+            padding: var(--space-6);
+            border: var(--border-width) solid var(--color-gray-200);
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .section-item:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .section-item:hover * {
+            color: var(--color-white) !important;
+        }
+
+        .item-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-3);
+        }
+
+        .item-description {
+            font-size: var(--text-base);
+            line-height: 1.5;
+            opacity: 0.8;
+            margin-bottom: var(--space-4);
+        }
+
+        .item-sections {
+            margin-top: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .item-sections-label {
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: var(--font-bold);
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-2);
+        }
+
+        .item-sections ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .item-sections li {
+            font-size: var(--text-sm);
+            line-height: 1.6;
+            padding-left: 1rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .item-sections li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-gray-400);
+        }
+
+        .section-item:hover .item-sections li:before {
+            color: var(--color-white);
+        }
+
+        .section-item:hover .item-sections {
+            border-top-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .section-item:hover .item-sections-label {
+            color: var(--color-white);
+        }
+
+        /* Single item spanning both columns */
+        .section-grid .section-item:only-of-type {
+            grid-column: 1 / -1;
+        }
+
+        .available-badge {
+            display: inline-block;
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            padding: var(--space-1) var(--space-3);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: var(--space-3);
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: var(--color-gray-200);
+            color: var(--color-gray-600);
+            padding: var(--space-1) var(--space-3);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-left: var(--space-3);
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+</head>
+
+<body>
+    <div class="experimental-container">
+
+        <!-- Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Studio Poetics</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Embodied & Poetic Interactions</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="embodied-landing.html" class="experimental-nav-link active">Overview</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="embodied-manifesto.html" class="experimental-nav-link">Manifesto</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="embodied-frameworks.html" class="experimental-nav-link">Frameworks</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="embodied-games-essay.html" class="experimental-nav-link">Games Essay</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="embodied-readings.html" class="experimental-nav-link">Readings</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Available Now</div>
+                    <div class="info-box-content">Manifesto, Frameworks, 2 Essays, and comprehensive Readings now available. More essays coming soon.</div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">What's Different</div>
+                    <div class="info-box-content">
+                        Critical frameworks for evaluation. Magazine-quality essays. Focus on analysis over examples.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Section Navigation -->
+            <div class="embodied-section-nav">
+                <nav class="section-nav-list">
+                    <a href="#manifesto" class="section-nav-link active">Manifesto</a>
+                    <a href="#frameworks" class="section-nav-link">Frameworks</a>
+                    <a href="#essays" class="section-nav-link">Essays</a>
+                    <a href="#readings" class="section-nav-link">Readings</a>
+                </nav>
+            </div>
+
+            <!-- Hero Section -->
+            <div class="experimental-hero experimental-fade-in">
+                <div class="hero-content">
+                    <h1 class="experimental-title">Embodied & Poetic Interactions</h1>
+                    <h2 class="experimental-subtitle">Designing the Space Between Intent and Experience</h2>
+
+                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                        <span class="experimental-date">◉</span>
+                        <span class="experimental-arrow">→</span>
+                        <span class="experimental-date">◎</span>
+                        <span class="experimental-arrow">→</span>
+                        <span class="experimental-date">○</span>
+                    </div>
+
+                    <p class="hero-description">
+                        Explore interactions that engage the whole body and invite interpretation. Learn frameworks grounded in cognitive science (4E cognition) and poetic principles. Move beyond prescriptive design toward creating space for human meaning-making.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="embodied-manifesto.html" class="experimental-btn experimental-btn--primary">Read Manifesto</a>
+                        <a href="embodied-frameworks.html" class="experimental-btn">Frameworks</a>
+                        <a href="embodied-readings.html" class="experimental-btn">Readings</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manifesto Section -->
+            <div id="manifesto" class="embodied-content-section">
+                <div class="section-number">01</div>
+                <h2 class="section-title">Manifesto<span class="available-badge">Available</span></h2>
+                <p class="section-description">Our foundational essay on intent, identity, and the interpretive space in interaction design.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='embodied-manifesto.html'">
+                        <h3 class="item-title">The Space Between Intent and Experience</h3>
+                        <p class="item-description">On designing for interpretation, not prescription. How identity shapes experience, learning, and growth through technology. ~15 min read.</p>
+                        <div class="item-sections">
+                            <div class="item-sections-label">Key Sections</div>
+                            <ul>
+                                <li>The Gap (Intent vs. Experience)</li>
+                                <li>Identity as the Lens</li>
+                                <li>Learning Through Identity</li>
+                                <li>Growing Into Ourselves</li>
+                                <li>What We Deliver</li>
+                                <li>7 Principles for Poetic Interaction</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frameworks Section -->
+            <div id="frameworks" class="embodied-content-section">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Frameworks<span class="available-badge">Available</span></h2>
+                <p class="section-description">Rigorous analytical frameworks for evaluating embodied and poetic qualities in interaction design.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='embodied-frameworks.html'">
+                        <h3 class="item-title">Analytical Frameworks for Interaction Design</h3>
+                        <p class="item-description">Complete guide to the 4E Cognition framework and Poetic Qualities framework. Tools for evaluating and designing embodied interactions.</p>
+                        <div class="item-sections">
+                            <div class="item-sections-label">What's Included</div>
+                            <ul>
+                                <li>4E Framework: Embodied, Embedded, Enactive, Extended</li>
+                                <li>Poetic Qualities: Openness, Metaphor, White Space, Rhythm</li>
+                                <li>Evaluation Questions for Each Dimension</li>
+                                <li>How to Use for Analysis & Design</li>
+                                <li>Combining Frameworks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essays Section -->
+            <div id="essays" class="embodied-content-section">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Essays<span class="available-badge">2 Available</span></h2>
+                <p class="section-description">Magazine-quality essays exploring embodiment, poetry, and the aesthetics of interaction.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='embodied-games-essay.html'">
+                        <h3 class="item-title">From Remote Control to Embodied Play</h3>
+                        <p class="item-description">The 4E framework for games and alternative controllers. Moving from buttons to bodies-as-systems. ~15 min read.</p>
+                        <div class="item-sections">
+                            <div class="item-sections-label">Key Sections</div>
+                            <ul>
+                                <li>4E for Games: Body, Context, Struggle, Extension</li>
+                                <li>5 Thumb Rules for Design</li>
+                                <li>The Three-Test Checklist</li>
+                                <li>Design Prompts & Examples</li>
+                                <li>Frameworks as Scaffolding</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='embodied-deleuze-essay.html'">
+                        <h3 class="item-title">Against the Organized Senses</h3>
+                        <p class="item-description">Deleuze and the design of intensities. Moving from hierarchical perception to cross-modal sensation. ~18 min read.</p>
+                        <div class="item-sections">
+                            <div class="item-sections-label">Key Sections</div>
+                            <ul>
+                                <li>The Tyranny of the Visual</li>
+                                <li>Sensation vs. Perception</li>
+                                <li>The Body without Organs</li>
+                                <li>Designing for Intensities</li>
+                                <li>Rhizomatic Interfaces</li>
+                                <li>Against Transparency</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-item">
+                        <h3 class="item-title">The Tyranny of the Tap</h3>
+                        <p class="item-description">Why all our interactions became thumb swipes. What we lost when we moved to glass rectangles. What happened to expressiveness?</p>
+                    </div>
+                    <div class="section-item">
+                        <h3 class="item-title">Bodies Remember What Minds Forget</h3>
+                        <p class="item-description">The neuroscience of embodied cognition. Why physical interactions create stronger memories. Examples from dance, craft, ritual.</p>
+                    </div>
+                    <div class="section-item">
+                        <h3 class="item-title">The Poetry of Resistance</h3>
+                        <p class="item-description">How friction and difficulty can be beautiful. Against frictionless design. Slow technology as meditation.</p>
+                    </div>
+                    <div class="section-item">
+                        <h3 class="item-title">The Gesture Vocabulary We're Losing</h3>
+                        <p class="item-description">Comparing rich gestural languages (mudras, sign language) to tech gestures. Indian classical dance meets computing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Readings Section -->
+            <div id="readings" class="embodied-content-section">
+                <div class="section-number">04</div>
+                <h2 class="section-title">Readings<span class="available-badge">Available</span></h2>
+                <p class="section-description">Curated references from interaction design, cognitive science, philosophy, and poetics.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='embodied-readings.html#thinkers'">
+                        <h3 class="item-title">Key Thinkers & Philosophers</h3>
+                        <p class="item-description">In-depth profiles of influential thinkers whose work grounds embodied and poetic interaction design. Their core philosophies, major works, and why they matter.</p>
+                        <div class="item-sections">
+                            <div class="item-sections-label">Featured Thinkers</div>
+                            <ul>
+                                <li>Gilles Deleuze: Intensities & Body without Organs</li>
+                                <li>Francisco Varela & Humberto Maturana: Enactivism</li>
+                                <li>Paul Dourish: Embodied Interaction</li>
+                                <li>Maurice Merleau-Ponty: Phenomenology of Perception</li>
+                                <li>Alva Noë, Andy Clark, James Gibson & More</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='embodied-readings.html#texts'">
+                        <h3 class="item-title">Curated Reading Lists</h3>
+                        <p class="item-description">Foundational texts, research papers, documentaries, and online resources organized by topic. From philosophy to practice.</p>
+                        <div class="item-sections">
+                            <div class="item-sections-label">Categories</div>
+                            <ul>
+                                <li>4E Cognition: Embodied, Embedded, Enactive, Extended</li>
+                                <li>Embodied Interaction Design & HCI Research</li>
+                                <li>Phenomenology & Continental Philosophy</li>
+                                <li>Poetics & Aesthetics of Interaction</li>
+                                <li>Alternative Controllers & Game Design</li>
+                                <li>Indian Context: Mudras, Dance, Embodied Knowledge</li>
+                                <li>Films, Documentaries & Media</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Vertical Menu (Mobile) -->
+        <div class="vertical-menu">
+            <span class="vertical-menu-text">EMERGING TECH HUB</span>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #000000; color: #ffffff; padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Emerging Tech Hub</h3>
+                    <p style="font-size: 0.9rem; color: #999999;">A design-first educational platform for understanding emerging technologies. Created by Pranshu Kumar Chaudhary.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Legal</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="terms-of-service.html" style="color: #999999; text-decoration: none;">Terms of Service</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" style="color: #999999; text-decoration: none;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Studio Poetics</h3>
+                    <p style="font-size: 0.9rem; color: #999999;"><a href="interaction-design-india.html" style="color: #999999; text-decoration: none;">Read our perspective →</a></p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #333333; padding-top: 2rem;">
+                <p style="font-size: 0.9rem; color: #999999;">© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
