@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 1: The Canvas - Understanding digital space">
+  <title>Lesson 1: The Canvas | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 1 of 5</div>
+      <div class="nav-links">
+        <a href="../index.html" id="prev-lesson" class="nav-button secondary">← Home</a>
+        <a href="02-shapes.html" id="next-lesson" class="nav-button">Shapes →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 1</span>
+      <h1>The Canvas</h1>
+      <p class="intro-text">
+        Before you can draw, you need a surface. In the physical world, artists choose paper,
+        canvas, or walls. In the digital world, we create this space with code.
+      </p>
+    </div>
+
+    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <div class="lesson-container">
+
+      <!-- Left Column: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>Understanding Digital Space</h2>
+        <p>
+          When you create a canvas in P5.js, you are defining a rectangular space measured in pixels.
+          This space has a coordinate system where (0, 0) is the top-left corner.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> Unlike traditional drawing, where the origin might be at
+            the bottom-left, digital canvases start at the top-left. As x increases, you move right.
+            As y increases, you move down.
+          </p>
+        </div>
+
+        <h3>The Two Core Functions</h3>
+
+        <p>
+          Every P5.js sketch has two fundamental functions:
+        </p>
+
+        <ul>
+          <li>
+            <code>setup()</code> - Runs once when your program starts. This is where you create
+            the canvas and set initial conditions.
+          </li>
+          <li>
+            <code>draw()</code> - Runs repeatedly in a loop (about 60 times per second by default).
+            This is where you draw to the canvas.
+          </li>
+        </ul>
+
+        <h3>Creating a Canvas</h3>
+
+        <p>
+          The <code>createCanvas()</code> function takes two parameters: width and height (both in pixels).
+        </p>
+
+        <code style="display: block; margin: 16px 0;">createCanvas(400, 400);</code>
+
+        <p>
+          This creates a square canvas 400 pixels wide and 400 pixels tall.
+        </p>
+
+        <h3>Setting Background Color</h3>
+
+        <p>
+          The <code>background()</code> function fills your canvas with a color. When you give it
+          one number (0-255), it creates a grayscale value:
+        </p>
+
+        <ul>
+          <li><code>background(0);</code> - Black</li>
+          <li><code>background(128);</code> - Medium gray</li>
+          <li><code>background(255);</code> - White</li>
+        </ul>
+
+        <h3>Experiment</h3>
+
+        <p>
+          Try modifying the code on the right:
+        </p>
+
+        <ul>
+          <li>Change the canvas size to <code>createCanvas(600, 300)</code></li>
+          <li>Change the background value - try <code>background(0)</code> for black</li>
+          <li>What happens with <code>background(100)</code>?</li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Remember:</strong> You are not just learning syntax. You are learning to think
+            about space, measurement, and color in a computational way. This is a new way of seeing.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Editor -->
+      <div class="lesson-interactive">
+
+        <!-- Code Editor -->
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+
+        <!-- Preview Canvas -->
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 1: The Canvas</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    // Initialize the live editor when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('canvas');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+
+      // Make editor globally accessible for debugging (optional)
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+</html>

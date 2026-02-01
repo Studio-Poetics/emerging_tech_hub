@@ -1,0 +1,310 @@
+/* ============================================
+   Code Editor & Preview Styling
+   ============================================ */
+
+/* Editor Container */
+.editor-wrapper {
+  border: 1px solid var(--color-black);
+  background-color: var(--color-white);
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-gray-medium);
+  background-color: var(--color-gray-light);
+}
+
+.editor-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.editor-controls {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.editor-button {
+  padding: 4px 12px;
+  font-size: var(--font-size-xs);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.editor-button:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.editor-button:active {
+  transform: translateY(1px);
+}
+
+/* CodeMirror Customization */
+.CodeMirror {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  height: auto;
+  min-height: 350px;
+  max-height: 600px;
+  border: none;
+  background-color: var(--color-white);
+}
+
+.CodeMirror-scroll {
+  padding: var(--space-md);
+}
+
+.CodeMirror-gutters {
+  background-color: var(--color-gray-light);
+  border-right: 1px solid var(--color-gray-medium);
+  padding-right: 4px;
+}
+
+.CodeMirror-linenumber {
+  color: var(--color-gray-dark);
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+/* CodeMirror Cursor */
+.CodeMirror-cursor {
+  border-left: 2px solid var(--color-black);
+}
+
+/* CodeMirror Selection */
+.CodeMirror-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* CodeMirror Active Line */
+.CodeMirror-activeline-background {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Preview Container */
+.preview-wrapper {
+  margin-top: var(--space-lg);
+  border: 1px solid var(--color-black);
+}
+
+.preview-header {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-gray-light);
+  border-bottom: 1px solid var(--color-gray-medium);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.preview-container {
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  min-height: 350px;
+}
+
+/* Center the P5 canvas */
+.preview-container canvas {
+  display: block;
+}
+
+/* Error Display */
+.error-display {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-md);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  display: none;
+  margin-top: var(--space-sm);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.error-display.visible {
+  display: block;
+}
+
+.error-title {
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+.error-message {
+  opacity: 0.9;
+}
+
+/* Loading State */
+.preview-loading {
+  color: var(--color-gray-dark);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+/* Editor Status Indicator */
+.editor-status {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-dark);
+  padding: var(--space-xs) var(--space-md);
+  background-color: var(--color-gray-light);
+  border-top: 1px solid var(--color-gray-medium);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-gray-dark);
+  margin-right: 6px;
+}
+
+.status-indicator.active {
+  background-color: #000;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .CodeMirror {
+    font-size: 13px;
+    min-height: 250px;
+  }
+
+  .preview-container {
+    min-height: 250px;
+    padding: var(--space-md);
+  }
+
+  .editor-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  .editor-controls {
+    width: 100%;
+  }
+
+  .editor-button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .CodeMirror {
+    font-size: 12px;
+    min-height: 200px;
+  }
+
+  .preview-container {
+    padding: var(--space-sm);
+  }
+}
+
+/* CodeMirror Theme Override - Monochrome */
+.cm-s-default .cm-keyword {
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+.cm-s-default .cm-atom {
+  color: var(--color-gray-dark);
+}
+
+.cm-s-default .cm-number {
+  color: var(--color-black);
+}
+
+.cm-s-default .cm-def {
+  color: var(--color-black);
+}
+
+.cm-s-default .cm-variable {
+  color: var(--color-black);
+}
+
+.cm-s-default .cm-variable-2 {
+  color: var(--color-gray-dark);
+}
+
+.cm-s-default .cm-variable-3 {
+  color: var(--color-gray-dark);
+}
+
+.cm-s-default .cm-property {
+  color: var(--color-black);
+}
+
+.cm-s-default .cm-operator {
+  color: var(--color-gray-dark);
+}
+
+.cm-s-default .cm-comment {
+  color: var(--color-gray-dark);
+  font-style: italic;
+}
+
+.cm-s-default .cm-string {
+  color: var(--color-gray-dark);
+}
+
+.cm-s-default .cm-string-2 {
+  color: var(--color-gray-dark);
+}
+
+.cm-s-default .cm-meta {
+  color: var(--color-gray-dark);
+}
+
+.cm-s-default .cm-builtin {
+  color: var(--color-black);
+  font-weight: 500;
+}
+
+.cm-s-default .cm-bracket {
+  color: var(--color-gray-dark);
+}
+
+.cm-s-default .cm-tag {
+  color: var(--color-black);
+}
+
+.cm-s-default .cm-attribute {
+  color: var(--color-gray-dark);
+}
+
+/* Print Styles */
+@media print {
+  .editor-controls,
+  .editor-button,
+  .preview-wrapper {
+    display: none;
+  }
+
+  .CodeMirror {
+    border: 1px solid var(--color-gray-medium);
+  }
+}

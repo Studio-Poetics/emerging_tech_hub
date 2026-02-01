@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn programming through P5.js - Computational art for designers and artists">
+  <title>Learning to Code with P5.js</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h1>Learning to Code with P5.js</h1>
+      <p>
+        The computer is a medium for creative expression. Just as painters use brushes and canvas,
+        sculptors use clay and tools, you can use code to create, explore, and express ideas.
+      </p>
+      <p>
+        This is an introduction to programming through P5.js, designed specifically for designers
+        and artists who are encountering code for the first time. You will learn the fundamentals
+        of computational thinking by making visual, interactive work.
+      </p>
+      <p>
+        "The computer is a drawing tool. We draw with it, and sometimes it draws with us."
+      </p>
+    </section>
+
+    <section>
+      <h2>Course Structure</h2>
+      <p>
+        This course contains 9 comprehensive lessons that progress from basic concepts to creative systems.
+        Each lesson includes interactive code examples that you can modify in real-time to see
+        immediate results.
+      </p>
+
+      <div class="lesson-grid">
+
+        <a href="lessons/01-canvas.html" class="lesson-card" id="lesson-canvas">
+          <div class="lesson-number">Lesson 1</div>
+          <h3>The Canvas</h3>
+          <p>
+            Understanding digital space. The canvas is your drawing surface, and every point has
+            a precise location in the coordinate system.
+          </p>
+        </a>
+
+        <a href="lessons/02-shapes.html" class="lesson-card" id="lesson-shapes">
+          <div class="lesson-number">Lesson 2</div>
+          <h3>Shapes</h3>
+          <p>
+            Building blocks of visual composition. Circles, rectangles, lines, and triangles are
+            your visual vocabulary.
+          </p>
+        </a>
+
+        <a href="lessons/03-numbers.html" class="lesson-card" id="lesson-numbers">
+          <div class="lesson-number">Lesson 3</div>
+          <h3>Drawing with Numbers</h3>
+          <p>
+            Variables and mathematical thinking. Learn to create relationships between values
+            and think computationally about space and form.
+          </p>
+        </a>
+
+        <a href="lessons/04-conditionals.html" class="lesson-card" id="lesson-conditionals">
+          <div class="lesson-number">Lesson 4</div>
+          <h3>Conditional Statements</h3>
+          <p>
+            Making decisions in code. Create work that adapts and responds based on conditions
+            and logic.
+          </p>
+        </a>
+
+        <a href="lessons/05-loops.html" class="lesson-card" id="lesson-loops">
+          <div class="lesson-number">Lesson 5</div>
+          <h3>Loops</h3>
+          <p>
+            Repetition and pattern. Use loops to create grids, sequences, and systematic
+            compositions from simple rules.
+          </p>
+        </a>
+
+        <a href="lessons/06-motion.html" class="lesson-card" id="lesson-motion">
+          <div class="lesson-number">Lesson 6</div>
+          <h3>Motion</h3>
+          <p>
+            Time and change. Computation brings movement to your work through the animation loop,
+            creating living, breathing compositions.
+          </p>
+        </a>
+
+        <a href="lessons/07-interaction.html" class="lesson-card" id="lesson-interaction">
+          <div class="lesson-number">Lesson 7</div>
+          <h3>Interaction</h3>
+          <p>
+            Responsive systems. Your work can listen and respond to mouse movement, clicks, and
+            keyboard input, creating dialogue between user and machine.
+          </p>
+        </a>
+
+        <a href="lessons/08-typography.html" class="lesson-card" id="lesson-typography">
+          <div class="lesson-number">Lesson 8</div>
+          <h3>Typography</h3>
+          <p>
+            Text as visual element. Explore dynamic, responsive typography and treat letters
+            as programmable graphic forms.
+          </p>
+        </a>
+
+        <a href="lessons/09-variation.html" class="lesson-card" id="lesson-variation">
+          <div class="lesson-number">Lesson 9</div>
+          <h3>Variation</h3>
+          <p>
+            Controlled randomness and generative thinking. Create systems that produce infinite
+            variations within defined constraints.
+          </p>
+        </a>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>About This Course</h2>
+      <p>
+        This curriculum follows the philosophy of computational art pioneers like John Maeda and
+        Casey Reas, who view programming not as engineering but as a creative medium with its own
+        unique properties and possibilities.
+      </p>
+      <p>
+        P5.js is a JavaScript library that makes coding accessible and visual. Created by Lauren
+        McCarthy, it builds on the work of Processing (created by Casey Reas and Ben Fry) and
+        brings creative coding to the web browser.
+      </p>
+    </section>
+
+    <section>
+      <h2>How to Use This Course</h2>
+      <ul>
+        <li>Work through lessons in order - each builds on previous concepts</li>
+        <li>Experiment freely with the code examples - you cannot break anything</li>
+        <li>Type slowly and observe what happens as you change values</li>
+        <li>Use the Reset button to restore original code if needed</li>
+        <li>There are no wrong answers - exploration is the goal</li>
+      </ul>
+    </section>
+
+    <section style="margin-top: 48px;">
+      <a href="lessons/01-canvas.html" class="nav-button" style="text-decoration: none; font-size: 16px; padding: 12px 24px;">
+        Begin with Lesson 1: The Canvas →
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Learning to Code with P5.js &mdash; A hands-on introduction to programming
+        for designers and artists
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+  <script>
+    // Update progress indicators on home page
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof updateHomeProgress === 'function') {
+        updateHomeProgress();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 3: Drawing with Numbers - Variables and mathematical thinking">
+  <title>Lesson 3: Drawing with Numbers | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 3 of 9</div>
+      <div class="nav-links">
+        <a href="02-shapes.html" id="prev-lesson" class="nav-button secondary">← Shapes</a>
+        <a href="04-conditionals.html" id="next-lesson" class="nav-button">Conditional Statements →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 3</span>
+      <h1>Drawing with Numbers</h1>
+      <p class="intro-text">
+        Numbers are not just values - they are relationships. When you store values in variables
+        and use math to create relationships between them, you begin thinking computationally.
+      </p>
+    </div>
+
+    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <div class="lesson-container">
+
+      <!-- Left Column: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>Variables: Storing Values</h2>
+        <p>
+          Instead of using numbers directly, you can store them in variables. This makes your
+          code more flexible and easier to understand.
+        </p>
+
+        <code style="display: block; margin: 16px 0;">let circleSize = 80;
+circle(200, 200, circleSize);</code>
+
+        <p>
+          Now you can use <code>circleSize</code> anywhere in your code, and changing it in one
+          place updates it everywhere.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> Use <code>let</code> to create a variable. Give it a
+            meaningful name that describes what it stores. Names cannot have spaces - use
+            <code>camelCase</code> like <code>circleSize</code> instead of <code>circle size</code>.
+          </p>
+        </div>
+
+        <h3>Built-in Variables</h3>
+        <p>
+          P5.js provides useful variables that update automatically:
+        </p>
+        <ul>
+          <li><code>width</code> - The width of your canvas</li>
+          <li><code>height</code> - The height of your canvas</li>
+        </ul>
+
+        <p>
+          These are perfect for creating responsive layouts:
+        </p>
+        <code style="display: block; margin: 16px 0;">let centerX = width / 2;   // Horizontal center
+let centerY = height / 2;  // Vertical center</code>
+
+        <h2>Math Operations</h2>
+        <p>
+          You can use math to calculate values:
+        </p>
+        <ul>
+          <li><code>+</code> addition: <code>100 + 50</code> = 150</li>
+          <li><code>-</code> subtraction: <code>200 - 75</code> = 125</li>
+          <li><code>*</code> multiplication: <code>20 * 3</code> = 60</li>
+          <li><code>/</code> division: <code>400 / 2</code> = 200</li>
+        </ul>
+
+        <h3>Creating Relationships</h3>
+        <p>
+          The power of variables and math is creating relationships. Instead of hardcoding every
+          value, you can define them in terms of each other:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">let baseSize = 50;
+let smallSize = baseSize * 0.5;    // Half the base
+let largeSize = baseSize * 2;      // Twice the base</code>
+
+        <p>
+          Now if you change <code>baseSize</code>, all the related sizes update proportionally.
+          This is computational thinking - defining systems of relationships, not just individual values.
+        </p>
+
+        <h3>Experiment</h3>
+        <ul>
+          <li>Change <code>circleSize</code> and see everything update</li>
+          <li>Try using <code>width</code> and <code>height</code> to center shapes</li>
+          <li>Create a variable for spacing and use it to position multiple shapes</li>
+          <li>Can you make three circles where each is 1.5x larger than the previous?</li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Insight:</strong> You are not just typing numbers. You are designing
+            relationships and systems. This is the beginning of algorithmic thinking.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Editor -->
+      <div class="lesson-interactive">
+
+        <!-- Code Editor -->
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+
+        <!-- Preview Canvas -->
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 3: Drawing with Numbers</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('numbers');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+</html>

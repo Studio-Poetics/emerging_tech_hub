@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 7: Interaction - Responsive systems and user input">
+  <title>Lesson 7: Interaction | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 7 of 9</div>
+      <div class="nav-links">
+        <a href="06-motion.html" id="prev-lesson" class="nav-button secondary">← Motion</a>
+        <a href="08-typography.html" id="next-lesson" class="nav-button">Typography →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 7</span>
+      <h1>Interaction</h1>
+      <p class="intro-text">
+        Your work can listen and respond. Interaction creates dialogue between the person and
+        the system - the computer becomes not just a display, but a conversational partner.
+      </p>
+    </div>
+
+    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <div class="lesson-container">
+
+      <!-- Left Column: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>Mouse Position Variables</h2>
+        <p>
+          P5.js continuously tracks the mouse position and makes it available through two
+          special variables:
+        </p>
+        <ul>
+          <li><code>mouseX</code> - The current x-coordinate of the mouse</li>
+          <li><code>mouseY</code> - The current y-coordinate of the mouse</li>
+        </ul>
+
+        <p>
+          You can use these just like any other number:
+        </p>
+        <code style="display: block; margin: 16px 0;">circle(mouseX, mouseY, 50);</code>
+        <p>
+          This draws a circle that follows your mouse cursor.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> These variables update automatically every frame.
+            You don't need to do anything special - just use them in your code.
+          </p>
+        </div>
+
+        <h2>Detecting Mouse Clicks</h2>
+
+        <h3>mouseIsPressed</h3>
+        <p>
+          This variable is <code>true</code> when the mouse button is pressed, <code>false</code>
+          when it's not. You can use it with an <code>if</code> statement:
+        </p>
+        <code style="display: block; margin: 16px 0;">if (mouseIsPressed) {
+  // Code here runs only when mouse is pressed
+  circle(mouseX, mouseY, 20);
+}</code>
+
+        <h3>mousePressed() Function</h3>
+        <p>
+          This special function runs once each time the mouse is clicked:
+        </p>
+        <code style="display: block; margin: 16px 0;">function mousePressed() {
+  // Code here runs once per click
+  background(0);
+}</code>
+
+        <h2>Mapping Values</h2>
+        <p>
+          The <code>map()</code> function is incredibly useful for interaction. It converts a
+          value from one range to another:
+        </p>
+        <code style="display: block; margin: 16px 0;">let size = map(mouseX, 0, 400, 20, 200);</code>
+        <p>
+          This takes mouseX (which ranges from 0-400) and converts it to a size (which will
+          range from 20-200). As the mouse moves right, the size increases.
+        </p>
+
+        <h3>Other Useful Variables</h3>
+        <ul>
+          <li><code>pmouseX</code>, <code>pmouseY</code> - Previous mouse position (from last frame)</li>
+          <li><code>key</code> - The last key pressed on the keyboard</li>
+          <li><code>keyIsPressed</code> - True when any key is pressed</li>
+        </ul>
+
+        <h3>Experiment</h3>
+        <p>
+          Move your mouse over the canvas on the right and see what happens. Then try:
+        </p>
+        <ul>
+          <li>Change the circle size from 50 to something else</li>
+          <li>Make the circle change size based on mouseX using <code>map()</code></li>
+          <li>Draw at the mouse position only when the mouse is pressed</li>
+          <li>Use both <code>mouseX</code> and <code>mouseY</code> to control different properties</li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Challenge:</strong> Can you create a simple drawing tool where clicking
+            creates circles at the mouse position? Or make the background color change based
+            on mouse position?
+          </p>
+        </div>
+
+        <h2>Building Responsive Systems</h2>
+        <p>
+          Interaction is not just about following the mouse. It's about creating systems that
+          respond meaningfully to input - systems that feel alive and conversational. The best
+          interactive work creates unexpected relationships between input and output.
+        </p>
+
+      </div>
+
+      <!-- Right Column: Interactive Editor -->
+      <div class="lesson-interactive">
+
+        <!-- Code Editor -->
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+
+        <!-- Preview Canvas -->
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview (move your mouse over it!)</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 7: Interaction</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('interaction');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+</html>

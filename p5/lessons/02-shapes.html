@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 2: Shapes - Building blocks of visual composition">
+  <title>Lesson 2: Shapes | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 2 of 5</div>
+      <div class="nav-links">
+        <a href="01-canvas.html" id="prev-lesson" class="nav-button secondary">← The Canvas</a>
+        <a href="03-motion.html" id="next-lesson" class="nav-button">Motion →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 2</span>
+      <h1>Shapes</h1>
+      <p class="intro-text">
+        Every complex visual composition begins with simple forms. Circles, rectangles, lines,
+        and triangles are your fundamental vocabulary for creating meaning and beauty.
+      </p>
+    </div>
+
+    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <div class="lesson-container">
+
+      <!-- Left Column: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>Basic Shape Functions</h2>
+        <p>
+          P5.js provides simple functions for drawing basic geometric shapes. Each function
+          requires specific parameters that define the shape's position and size.
+        </p>
+
+        <h3>Circle</h3>
+        <code style="display: block; margin: 16px 0;">circle(x, y, diameter);</code>
+        <p>
+          Draws a circle at position (x, y) with the specified diameter.
+        </p>
+        <p>
+          Example: <code>circle(200, 150, 80);</code> draws a circle at x=200, y=150 with diameter 80.
+        </p>
+
+        <h3>Rectangle</h3>
+        <code style="display: block; margin: 16px 0;">rect(x, y, width, height);</code>
+        <p>
+          Draws a rectangle starting at position (x, y) with the specified width and height.
+        </p>
+
+        <h3>Line</h3>
+        <code style="display: block; margin: 16px 0;">line(x1, y1, x2, y2);</code>
+        <p>
+          Draws a line from point (x1, y1) to point (x2, y2).
+        </p>
+
+        <h3>Triangle</h3>
+        <code style="display: block; margin: 16px 0;">triangle(x1, y1, x2, y2, x3, y3);</code>
+        <p>
+          Draws a triangle connecting three points.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> Think of these shapes not as isolated objects, but as
+            elements you can compose together. The Bauhaus and De Stijl movements explored how
+            simple geometric forms could create complex visual meaning.
+          </p>
+        </div>
+
+        <h2>Controlling Appearance</h2>
+
+        <h3>Fill Color</h3>
+        <p>
+          <code>fill()</code> sets the interior color of shapes. Like <code>background()</code>,
+          you can use a single number for grayscale:
+        </p>
+        <code style="display: block; margin: 16px 0;">fill(0);     // Black fill
+fill(128);   // Gray fill
+fill(255);   // White fill</code>
+
+        <h3>Stroke (Outline)</h3>
+        <p>
+          <code>stroke()</code> sets the color of the outline. <code>strokeWeight()</code> sets
+          the thickness in pixels.
+        </p>
+        <code style="display: block; margin: 16px 0;">stroke(0);         // Black outline
+strokeWeight(3);   // 3 pixels thick</code>
+
+        <h3>Removing Fill or Stroke</h3>
+        <p>
+          <code>noFill();</code> - Draw only outlines (no interior color)<br>
+          <code>noStroke();</code> - Draw filled shapes without outlines
+        </p>
+
+        <h3>Experiment</h3>
+        <p>
+          Try modifying the code:
+        </p>
+        <ul>
+          <li>Move the shapes by changing their x and y coordinates</li>
+          <li>Change their sizes (diameter, width, height)</li>
+          <li>Add <code>noStroke();</code> before drawing shapes</li>
+          <li>Change fill colors using different numbers (0-255)</li>
+          <li>Draw additional shapes - try <code>line()</code> or <code>triangle()</code></li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Challenge:</strong> Can you create a simple face using only circles and lines?
+            Or a geometric composition inspired by Piet Mondrian?
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Editor -->
+      <div class="lesson-interactive">
+
+        <!-- Code Editor -->
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+
+        <!-- Preview Canvas -->
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 2: Shapes</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('shapes');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+</html>

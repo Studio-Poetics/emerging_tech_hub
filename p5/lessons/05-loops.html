@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 5: Loops - Repetition and pattern creation">
+  <title>Lesson 5: Loops | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 5 of 9</div>
+      <div class="nav-links">
+        <a href="04-conditionals.html" id="prev-lesson" class="nav-button secondary">← Conditional Statements</a>
+        <a href="06-motion.html" id="next-lesson" class="nav-button">Motion →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 5</span>
+      <h1>Loops</h1>
+      <p class="intro-text">
+        Repetition is fundamental to pattern. Instead of drawing each element manually, loops
+        let you define a rule and repeat it - creating complex compositions from simple
+        instructions.
+      </p>
+    </div>
+
+    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <div class="lesson-container">
+
+      <!-- Left Column: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>The for Loop</h2>
+        <p>
+          A <code>for</code> loop repeats code a specific number of times. It's perfect for
+          creating patterns and grids.
+        </p>
+
+        <code style="display: block; margin: 16px 0;">for (let x = 50; x <= 350; x += 50) {
+  circle(x, 200, 40);
+}</code>
+
+        <p>
+          This draws circles at x = 50, 100, 150, 200, 250, 300, 350.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> A for loop has three parts:<br>
+            1. <code>let x = 50</code> - start value<br>
+            2. <code>x <= 350</code> - continue while this is true<br>
+            3. <code>x += 50</code> - increase x by 50 each time
+          </p>
+        </div>
+
+        <h3>Understanding the Loop Variable</h3>
+        <p>
+          The variable (often called <code>i</code>, <code>x</code>, or <code>y</code>) changes
+          each time through the loop. You can use it to control position, size, or any property:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">// Position changes
+for (let x = 0; x < 400; x += 40) {
+  circle(x, 200, 30);
+}
+
+// Size changes
+for (let i = 0; i < 5; i++) {
+  let size = (i + 1) * 20;
+  circle(200, 200, size);
+}</code>
+
+        <h2>Nested Loops: Creating Grids</h2>
+        <p>
+          Put one loop inside another to create two-dimensional patterns:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">for (let x = 50; x < 400; x += 50) {
+  for (let y = 50; y < 400; y += 50) {
+    circle(x, y, 30);
+  }
+}</code>
+
+        <p>
+          The outer loop controls columns (x position). The inner loop controls rows (y position).
+          Together they create a grid.
+        </p>
+
+        <h3>Common Loop Patterns</h3>
+
+        <p><strong>Count from 0 to N:</strong></p>
+        <code style="display: block; margin: 16px 0;">for (let i = 0; i < 10; i++) {
+  // Runs 10 times: i = 0, 1, 2, ... 9
+}</code>
+
+        <p><strong>Step by specific amount:</strong></p>
+        <code style="display: block; margin: 16px 0;">for (let x = 0; x < 400; x += 20) {
+  // x = 0, 20, 40, 60, ...
+}</code>
+
+        <p><strong>Count backwards:</strong></p>
+        <code style="display: block; margin: 16px 0;">for (let i = 10; i > 0; i--) {
+  // i = 10, 9, 8, ... 1
+}</code>
+
+        <h3>Experiment</h3>
+        <ul>
+          <li>Change the spacing: try <code>x += 30</code> or <code>x += 80</code></li>
+          <li>Change the start and end values</li>
+          <li>Make the circles grow in size as x increases</li>
+          <li>Create a nested loop to make a grid</li>
+          <li>Try making a diagonal line by linking x and y positions</li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Challenge:</strong> Can you create a grid where circle size is based on
+            distance from the center? Or a pattern where each row has one more circle than
+            the previous row?
+          </p>
+        </div>
+
+        <h2>Repetition as Composition</h2>
+        <p>
+          Artists like Sol LeWitt used simple rules of repetition to create complex visual work.
+          Loops are your tool for this kind of systematic, rule-based art. You define the logic,
+          the computer executes the pattern.
+        </p>
+
+      </div>
+
+      <!-- Right Column: Interactive Editor -->
+      <div class="lesson-interactive">
+
+        <!-- Code Editor -->
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+
+        <!-- Preview Canvas -->
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 5: Loops</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('loops');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+</html>

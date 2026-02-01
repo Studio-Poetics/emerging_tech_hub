@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 8: Typography - Text as visual element and form">
+  <title>Lesson 8: Typography | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 8 of 9</div>
+      <div class="nav-links">
+        <a href="07-interaction.html" id="prev-lesson" class="nav-button secondary">← Interaction</a>
+        <a href="09-variation.html" id="next-lesson" class="nav-button">Variation →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 8</span>
+      <h1>Typography</h1>
+      <p class="intro-text">
+        Text is not just communication - it's form. Letters have shape, weight, rhythm, and
+        texture. In computational design, typography becomes dynamic, responsive, programmable.
+      </p>
+    </div>
+
+    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <div class="lesson-container">
+
+      <!-- Left Column: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>Drawing Text</h2>
+        <p>
+          The <code>text()</code> function draws text on the canvas:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">text('HELLO', 200, 200);</code>
+
+        <p>
+          The first parameter is the text to display (in quotes). The next two are x and y
+          position.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> Text in code is called a "string" and must be wrapped
+            in quotes: <code>'like this'</code> or <code>"like this"</code>
+          </p>
+        </div>
+
+        <h2>Text Properties</h2>
+
+        <h3>Size</h3>
+        <code style="display: block; margin: 16px 0;">textSize(32);  // Set size in pixels
+text('BIG', 200, 200);</code>
+
+        <h3>Alignment</h3>
+        <p>
+          Control how text is positioned relative to its x,y coordinates:
+        </p>
+        <code style="display: block; margin: 16px 0;">textAlign(CENTER, CENTER);  // Horizontal, Vertical
+text('CENTERED', 200, 200);</code>
+
+        <p>
+          Options: <code>LEFT</code>, <code>RIGHT</code>, <code>CENTER</code> for horizontal.
+          <code>TOP</code>, <code>BOTTOM</code>, <code>CENTER</code>, <code>BASELINE</code> for vertical.
+        </p>
+
+        <h3>Fill and Stroke</h3>
+        <p>
+          Like shapes, text has fill and stroke:
+        </p>
+        <code style="display: block; margin: 16px 0;">fill(0);           // Black fill
+stroke(100);       // Gray outline
+strokeWeight(2);
+text('OUTLINED', 200, 200);</code>
+
+        <h2>Dynamic Text</h2>
+        <p>
+          You can use variables in text, combining strings with values using the <code>+</code>
+          operator:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">let count = 42;
+text('Count: ' + count, 200, 200);</code>
+
+        <p>
+          This lets you display changing information like frame count, mouse position, or any
+          calculated value.
+        </p>
+
+        <h2>Text as Visual Element</h2>
+        <p>
+          Think of text not just as words, but as graphic form:
+        </p>
+        <ul>
+          <li>Repeat letters in patterns using loops</li>
+          <li>Make text size respond to interaction</li>
+          <li>Position letters individually as compositional elements</li>
+          <li>Use single characters as abstract shapes</li>
+        </ul>
+
+        <h3>Experiment</h3>
+        <ul>
+          <li>Change the text and size</li>
+          <li>Try different alignments: <code>textAlign(LEFT)</code>, <code>textAlign(RIGHT)</code></li>
+          <li>Make text follow the mouse</li>
+          <li>Create a grid of repeating letters using a loop</li>
+          <li>Make the size change based on <code>mouseX</code> using <code>map()</code></li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Challenge:</strong> Can you create a composition using just the letter 'O'
+            at different sizes? Or make text that grows as the mouse approaches it?
+          </p>
+        </div>
+
+        <h2>Typographic Thinking</h2>
+        <p>
+          Designers like Muriel Cooper and John Maeda explored dynamic typography - type that
+          moves, responds, and transforms. You now have the tools to continue this exploration.
+          Typography is not static - it can be fluid, reactive, generative.
+        </p>
+
+      </div>
+
+      <!-- Right Column: Interactive Editor -->
+      <div class="lesson-interactive">
+
+        <!-- Code Editor -->
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+
+        <!-- Preview Canvas -->
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 8: Typography</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('typography');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+</html>

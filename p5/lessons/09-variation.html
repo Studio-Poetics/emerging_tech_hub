@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 9: Variation - Controlled randomness and generative systems">
+  <title>Lesson 9: Variation | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 9 of 9</div>
+      <div class="nav-links">
+        <a href="08-typography.html" id="prev-lesson" class="nav-button secondary">← Typography</a>
+        <a href="../index.html" id="next-lesson" class="nav-button">Complete! →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 9</span>
+      <h1>Variation</h1>
+      <p class="intro-text">
+        The power of computation is not just precision, but the ability to create systems that
+        generate infinite variations. You define the rules, and the computer explores the
+        possibilities.
+      </p>
+    </div>
+
+    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <div class="lesson-container">
+
+      <!-- Left Column: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>Random Values</h2>
+        <p>
+          The <code>random()</code> function generates unpredictable numbers. You can use it in
+          different ways:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">random(100);        // Number from 0 to 100
+random(50, 150);    // Number from 50 to 150</code>
+
+        <p>
+          Every time you call <code>random()</code>, you get a different value. This creates
+          variation:
+        </p>
+        <code style="display: block; margin: 16px 0;">let size = random(10, 40);
+circle(100, 100, size);</code>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> Click the canvas on the right to regenerate the pattern.
+            Each time, you'll see a different arrangement - infinite possibilities within defined
+            constraints.
+          </p>
+        </div>
+
+        <h2>Loops for Repetition</h2>
+        <p>
+          To create many things with variation, we use loops. A <code>for</code> loop repeats
+          code multiple times:
+        </p>
+        <code style="display: block; margin: 16px 0;">for (let x = 50; x < 400; x += 50) {
+  circle(x, 200, 30);
+}</code>
+        <p>
+          This draws circles at x = 50, 100, 150, 200, 250, 300, 350.
+        </p>
+
+        <h3>Nested Loops for Grids</h3>
+        <p>
+          To create a grid pattern, use one loop inside another:
+        </p>
+        <code style="display: block; margin: 16px 0;">for (let x = 50; x < 400; x += 50) {
+  for (let y = 50; y < 400; y += 50) {
+    circle(x, y, 30);
+  }
+}</code>
+
+        <h2>Noise for Organic Variation</h2>
+        <p>
+          While <code>random()</code> is completely unpredictable, <code>noise()</code> creates
+          smooth, organic variation. It's better for natural-looking patterns:
+        </p>
+        <code style="display: block; margin: 16px 0;">let n = noise(x * 0.01, y * 0.01);
+let size = n * 20;</code>
+        <p>
+          Noise values flow smoothly from one to the next, creating more natural variation than
+          pure randomness.
+        </p>
+
+        <h2>Generative Thinking</h2>
+        <p>
+          Generative art means creating systems, not specific artworks. You're designing the
+          rules and constraints, and letting the computer explore the space of possibilities.
+        </p>
+
+        <h3>Experiment</h3>
+        <p>
+          The code on the right creates a grid of random circles. Try:
+        </p>
+        <ul>
+          <li>Change the spacing: modify the <code>50</code> in the loop</li>
+          <li>Change the size range: try <code>random(5, 50)</code></li>
+          <li>Add variation to position: <code>x + random(-5, 5)</code></li>
+          <li>Mix circles and squares randomly</li>
+          <li>Click to regenerate and see infinite variations</li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Challenge:</strong> Can you create a system where shapes get progressively
+            larger from left to right? Or where their size is determined by their distance from
+            the center?
+          </p>
+        </div>
+
+        <h2>Beyond These Lessons</h2>
+        <p>
+          You now understand the core concepts: space (canvas), form (shapes), time (motion),
+          response (interaction), and variation (generative systems). These fundamentals combine
+          in infinite ways.
+        </p>
+        <p>
+          The next step is practice. Make things. Experiment. Break things. The computer is your
+          medium - what will you express with it?
+        </p>
+
+      </div>
+
+      <!-- Right Column: Interactive Editor -->
+      <div class="lesson-interactive">
+
+        <!-- Code Editor -->
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+
+        <!-- Preview Canvas -->
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview (click to regenerate!)</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Completion Message -->
+    <section style="margin-top: 64px; padding: 32px; background-color: #F5F5F5; border-left: 3px solid #000;">
+      <h2>Congratulations!</h2>
+      <p>
+        You've completed all nine lessons. You now have the foundational knowledge to create
+        with code. The journey from here is about exploration, practice, and developing your
+        own creative voice through this medium.
+      </p>
+      <p>
+        Keep experimenting, keep learning, and remember: the computer is not a tool to execute
+        your exact vision - it's a collaborator that can surprise you with unexpected beauty.
+      </p>
+      <p style="margin-top: 24px;">
+        <a href="../index.html" class="nav-button" style="text-decoration: none;">Return to Home</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 9: Variation - Course Complete!</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('variation');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+</html>

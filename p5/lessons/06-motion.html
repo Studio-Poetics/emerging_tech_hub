@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 6: Motion - Time and change in computational art">
+  <title>Lesson 6: Motion | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 6 of 9</div>
+      <div class="nav-links">
+        <a href="05-loops.html" id="prev-lesson" class="nav-button secondary">← Loops</a>
+        <a href="07-interaction.html" id="next-lesson" class="nav-button">Interaction →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 6</span>
+      <h1>Motion</h1>
+      <p class="intro-text">
+        Computation brings the dimension of time to your work. Unlike static paintings or
+        sculptures, code can create living compositions that change, grow, and evolve.
+      </p>
+    </div>
+
+    <!-- Three-Column Layout: Content + Code Editor + Preview -->
+    <div class="lesson-container">
+
+      <!-- Column 1: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>The Animation Loop</h2>
+        <p>
+          Remember the <code>draw()</code> function? It runs continuously, about 60 times per
+          second. This creates an animation loop - each frame can show something slightly different,
+          creating the illusion of movement.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> <code>setup()</code> runs once at the beginning.
+            <code>draw()</code> runs repeatedly forever. This is the fundamental rhythm of
+            computational animation.
+          </p>
+        </div>
+
+        <h2>Trigonometric Functions: Natural Motion</h2>
+        <p>
+          The most organic, smooth motion in nature follows mathematical curves. Trigonometric
+          functions - <code>sin()</code>, <code>cos()</code>, and <code>tan()</code> - let you
+          create this kind of natural movement.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Watch the visualization!</strong> It shows how sin(), cos(), and tan() work geometrically:
+          </p>
+          <ul style="margin-top: 8px; margin-bottom: 0;">
+            <li><span style="color: #0000ff; font-weight: bold;">BLUE</span> = cos() - horizontal distance (x position)</li>
+            <li><span style="color: #ff0000; font-weight: bold;">RED</span> = sin() - vertical distance (y position)</li>
+            <li><span style="color: #009600; font-weight: bold;">GREEN</span> = tan() - the slope/tangent line</li>
+          </ul>
+        </div>
+
+        <h3>sin() - The Wave Function</h3>
+        <p>
+          <code>sin()</code> creates smooth oscillation. It always returns a value between -1 and 1,
+          creating a wave pattern:
+        </p>
+        <code style="display: block; margin: 16px 0;">let x = 200 + sin(frameCount * 0.05) * 150;</code>
+
+        <p>
+          Breaking this down:
+        </p>
+        <ul>
+          <li><code>sin(frameCount * 0.05)</code> - Creates values between -1 and 1</li>
+          <li><code>* 150</code> - Scales the range to -150 to +150 (amplitude)</li>
+          <li><code>200 +</code> - Centers the motion at x=200</li>
+          <li><code>0.05</code> - Controls speed (smaller = slower)</li>
+        </ul>
+
+        <p>
+          <strong>Use sin() for:</strong> Back-and-forth motion, waves, pulsing, breathing effects
+        </p>
+
+        <h3>cos() - Phase-Shifted Wave</h3>
+        <p>
+          <code>cos()</code> is identical to <code>sin()</code> but starts at a different point
+          in the wave. It also returns -1 to 1.
+        </p>
+
+        <p>
+          <strong>Use cos() for:</strong> The same purposes as sin(), or combine them for circular motion
+        </p>
+
+        <h3>Circular Motion: sin() + cos() Together</h3>
+        <p>
+          The magic happens when you use <strong>both</strong> together:
+        </p>
+        <code style="display: block; margin: 16px 0;">let angle = frameCount * 0.05;
+let x = 200 + cos(angle) * 120;
+let y = 200 + sin(angle) * 120;</code>
+
+        <p>
+          This creates perfect circular motion! <code>cos()</code> controls x (horizontal),
+          <code>sin()</code> controls y (vertical). They work together because they're the same
+          wave, offset by 90 degrees.
+        </p>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Insight:</strong> Think of <code>angle</code> as a position on a circle.
+            As the angle increases, the point moves around the circle. <code>cos()</code> and
+            <code>sin()</code> convert that angle into x,y coordinates. The visualization on the
+            right shows this happening in real-time!
+          </p>
+        </div>
+
+        <h3>Understanding Angles</h3>
+        <p>
+          By default, P5.js uses <strong>radians</strong> for angles:
+        </p>
+        <ul>
+          <li><code>PI</code> = 180 degrees = half circle</li>
+          <li><code>TWO_PI</code> = 360 degrees = full circle</li>
+          <li><code>HALF_PI</code> = 90 degrees = quarter circle</li>
+        </ul>
+
+        <h3>tan() - The Tangent</h3>
+        <p>
+          <code>tan()</code> represents the slope of the angle. Mathematically, <code>tan(angle) = sin(angle) / cos(angle)</code>.
+          In the visualization, it's shown as a green vertical line at the edge of the circle.
+        </p>
+
+        <p>
+          Unlike sin() and cos() which stay between -1 and 1, tan() can grow infinitely large as
+          the angle approaches 90° or 270° (when cos approaches zero). This creates sharp, dramatic changes.
+        </p>
+
+        <p>
+          <strong>Use tan() for:</strong> Steep curves, dramatic movements, perspective effects, mathematical visualizations
+        </p>
+
+        <h2>Motion Patterns to Try</h2>
+
+        <h3>Wave Motion</h3>
+        <p>Single axis oscillation - use <code>sin()</code> on x OR y</p>
+
+        <h3>Circular Motion</h3>
+        <p>Perfect circles - use <code>sin()</code> and <code>cos()</code> on both x AND y with same angle</p>
+
+        <h3>Elliptical Motion</h3>
+        <p>Stretched circles - use different radii for x and y</p>
+
+        <h3>Spiral Motion</h3>
+        <p>Growing circles - increase the radius over time while rotating</p>
+
+        <h3>Lissajous Curves</h3>
+        <p>Complex paths - use sin/cos with different frequencies for x and y</p>
+
+        <h3>Experiment</h3>
+        <ul>
+          <li>Change <code>0.05</code> to control speed - try <code>0.1</code> (faster) or <code>0.02</code> (slower)</li>
+          <li>Change <code>150</code> to control how far it travels (amplitude)</li>
+          <li>Try using <code>sin()</code> on y instead of x for vertical motion</li>
+          <li>Use both sin() and cos() to create circular motion</li>
+          <li>Make the size pulse with sin() while position moves</li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Insight:</strong> Trigonometric functions are everywhere in nature - pendulums,
+            waves, orbits, sound. By using them in code, you're capturing the mathematics of
+            natural motion.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Column 2: Code Editor -->
+      <div class="lesson-editor">
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+      </div>
+
+      <!-- Column 3: Live Preview -->
+      <div class="lesson-preview">
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 6: Motion</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('motion');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+</html>
