@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
   <!-- P5.js -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
 </head>
+
 <body>
 
   <header class="site-header">
@@ -36,7 +38,7 @@
     <nav class="lesson-nav">
       <div class="lesson-progress" id="lesson-progress">Lesson 6 of 9</div>
       <div class="nav-links">
-        <a href="05-loops.html" id="prev-lesson" class="nav-button secondary">← Loops</a>
+        <a href="05-conditionals.html" id="prev-lesson" class="nav-button secondary">← Conditional Statements</a>
         <a href="07-interaction.html" id="next-lesson" class="nav-button">Interaction →</a>
       </div>
     </nav>
@@ -83,11 +85,97 @@
           <p>
             <strong>Watch the visualization!</strong> It shows how sin(), cos(), and tan() work geometrically:
           </p>
-          <ul style="margin-top: 8px; margin-bottom: 0;">
-            <li><span style="color: #0000ff; font-weight: bold;">BLUE</span> = cos() - horizontal distance (x position)</li>
-            <li><span style="color: #ff0000; font-weight: bold;">RED</span> = sin() - vertical distance (y position)</li>
+          <ul style="margin-top: 8px; margin-bottom: 16px;">
+            <li><span style="color: #0000ff; font-weight: bold;">BLUE</span> = cos() - horizontal distance (x position)
+            </li>
+            <li><span style="color: #ff0000; font-weight: bold;">RED</span> = sin() - vertical distance (y position)
+            </li>
             <li><span style="color: #009600; font-weight: bold;">GREEN</span> = tan() - the slope/tangent line</li>
           </ul>
+
+          <!-- Embedded Visualization Container -->
+          <div id="trig-viz" style="border: 1px solid #ccc; border-radius: 4px; overflow: hidden; background: white;">
+          </div>
+
+          <script>
+            // P5.js Instance Mode for embedded visualization
+            new p5((p) => {
+              p.setup = () => {
+                // Create canvas that fits the container width (approx)
+                let canvas = p.createCanvas(360, 360);
+                canvas.parent('trig-viz');
+              };
+
+              p.draw = () => {
+                p.background(255);
+
+                let centerX = p.width / 2;
+                let centerY = p.height / 2;
+                let radius = 100;
+
+                // Angle increases over time
+                let angle = p.frameCount * 0.02;
+
+                // Calculate point on circle
+                let pointX = centerX + p.cos(angle) * radius;
+                let pointY = centerY + p.sin(angle) * radius;
+
+                // Draw circle
+                p.noFill();
+                p.stroke(200);
+                p.strokeWeight(1);
+                p.circle(centerX, centerY, radius * 2);
+
+                // Draw axes
+                p.stroke(240);
+                p.line(0, centerY, p.width, centerY);
+                p.line(centerX, 0, centerX, p.height);
+
+                // Draw radius line to point
+                p.stroke(0);
+                p.strokeWeight(1);
+                p.line(centerX, centerY, pointX, pointY);
+
+                // COS - horizontal distance (x component)
+                p.stroke(0, 0, 255);
+                p.strokeWeight(3);
+                p.line(centerX, centerY, pointX, centerY);
+
+                // SIN - vertical distance (y component)
+                p.stroke(255, 0, 0);
+                p.strokeWeight(3);
+                p.line(pointX, centerY, pointX, pointY);
+
+                // TAN - slope/tangent line
+                if (p.abs(p.cos(angle)) > 0.01) {
+                  let tanValue = p.tan(angle);
+                  // Limit graphical tan line length
+                  let tanY = centerY - tanValue * radius;
+                  // Clamp for visual sanity
+                  let maxLen = 1000;
+                  if (tanY < -maxLen) tanY = -maxLen;
+                  if (tanY > maxLen + p.height) tanY = maxLen + p.height;
+
+                  p.stroke(0, 150, 0);
+                  p.strokeWeight(2);
+                  p.line(centerX + radius, centerY, centerX + radius, tanY);
+                  p.line(centerX + radius, tanY, centerX, centerY); // Visual connection
+                }
+
+                // Point on circle
+                p.fill(0);
+                p.noStroke();
+                p.circle(pointX, pointY, 8);
+
+                // Labels
+                p.textSize(12);
+                p.fill(0, 0, 255);
+                p.text('cos', pointX - 15, centerY + 15);
+                p.fill(255, 0, 0);
+                p.text('sin', pointX + 5, pointY);
+              };
+            });
+          </script>
         </div>
 
         <h3>sin() - The Wave Function</h3>
@@ -156,7 +244,8 @@ let y = 200 + sin(angle) * 120;</code>
 
         <h3>tan() - The Tangent</h3>
         <p>
-          <code>tan()</code> represents the slope of the angle. Mathematically, <code>tan(angle) = sin(angle) / cos(angle)</code>.
+          <code>tan()</code> represents the slope of the angle. Mathematically,
+          <code>tan(angle) = sin(angle) / cos(angle)</code>.
           In the visualization, it's shown as a green vertical line at the edge of the circle.
         </p>
 
@@ -166,7 +255,8 @@ let y = 200 + sin(angle) * 120;</code>
         </p>
 
         <p>
-          <strong>Use tan() for:</strong> Steep curves, dramatic movements, perspective effects, mathematical visualizations
+          <strong>Use tan() for:</strong> Steep curves, dramatic movements, perspective effects, mathematical
+          visualizations
         </p>
 
         <h2>Motion Patterns to Try</h2>
@@ -188,7 +278,8 @@ let y = 200 + sin(angle) * 120;</code>
 
         <h3>Experiment</h3>
         <ul>
-          <li>Change <code>0.05</code> to control speed - try <code>0.1</code> (faster) or <code>0.02</code> (slower)</li>
+          <li>Change <code>0.05</code> to control speed - try <code>0.1</code> (faster) or <code>0.02</code> (slower)
+          </li>
           <li>Change <code>150</code> to control how far it travels (amplitude)</li>
           <li>Try using <code>sin()</code> on y instead of x for vertical motion</li>
           <li>Use both sin() and cos() to create circular motion</li>
@@ -259,4 +350,5 @@ let y = 200 + sin(angle) * 120;</code>
   </script>
 
 </body>
+
 </html>

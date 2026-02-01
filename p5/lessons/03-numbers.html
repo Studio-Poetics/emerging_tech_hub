@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
   <!-- P5.js -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
 </head>
+
 <body>
 
   <header class="site-header">
@@ -37,7 +39,7 @@
       <div class="lesson-progress" id="lesson-progress">Lesson 3 of 9</div>
       <div class="nav-links">
         <a href="02-shapes.html" id="prev-lesson" class="nav-button secondary">← Shapes</a>
-        <a href="04-conditionals.html" id="next-lesson" class="nav-button">Conditional Statements →</a>
+        <a href="04-loops.html" id="next-lesson" class="nav-button">Loops →</a>
       </div>
     </nav>
 
@@ -51,10 +53,10 @@
       </p>
     </div>
 
-    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <!-- Three-Column Layout: Content + Code Editor + Preview -->
     <div class="lesson-container">
 
-      <!-- Left Column: Lesson Content -->
+      <!-- Column 1: Lesson Content -->
       <div class="lesson-content">
 
         <h2>Variables: Storing Values</h2>
@@ -137,10 +139,8 @@ let largeSize = baseSize * 2;      // Twice the base</code>
 
       </div>
 
-      <!-- Right Column: Interactive Editor -->
-      <div class="lesson-interactive">
-
-        <!-- Code Editor -->
+      <!-- Column 2: Code Editor -->
+      <div class="lesson-editor">
         <div class="editor-wrapper">
           <div class="editor-header">
             <span class="editor-label">Code Editor</span>
@@ -159,13 +159,14 @@ let largeSize = baseSize * 2;      // Twice the base</code>
 
         <!-- Error Display -->
         <div id="error-display" class="error-display"></div>
+      </div>
 
-        <!-- Preview Canvas -->
+      <!-- Column 3: Live Preview -->
+      <div class="lesson-preview">
         <div class="preview-wrapper">
           <div class="preview-header">Live Preview</div>
           <div id="preview-container" class="preview-container"></div>
         </div>
-
       </div>
 
     </div>
@@ -192,4 +193,5 @@ let largeSize = baseSize * 2;      // Twice the base</code>
   </script>
 
 </body>
+
 </html>

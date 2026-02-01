@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lesson 4: Conditional Statements - Making decisions in code">
+  <title>Lesson 4: Conditional Statements | P5.js Tutorial</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/editor.css">
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+
+  <!-- P5.js -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">
+        <a href="../index.html">Code as Medium</a>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Lesson Navigation -->
+    <nav class="lesson-nav">
+      <div class="lesson-progress" id="lesson-progress">Lesson 5 of 9</div>
+      <div class="nav-links">
+        <a href="04-loops.html" id="prev-lesson" class="nav-button secondary">← Loops</a>
+        <a href="06-motion.html" id="next-lesson" class="nav-button">Motion →</a>
+      </div>
+    </nav>
+
+    <!-- Lesson Introduction -->
+    <div class="lesson-intro">
+      <span class="lesson-number">Lesson 5</span>
+      <h1>Conditional Statements</h1>
+      <p class="intro-text">
+        Code can make decisions. Based on conditions, your program can choose different paths,
+        creating adaptive, responsive behavior.
+      </p>
+    </div>
+
+    <!-- Three-Column Layout: Content + Code Editor + Preview -->
+    <div class="lesson-container">
+
+      <!-- Column 1: Lesson Content -->
+      <div class="lesson-content">
+
+        <h2>The if Statement</h2>
+        <p>
+          The <code>if</code> statement lets you run code only when a condition is true:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">if (mouseX < 200) {
+  // This code runs only when mouseX is less than 200
+  circle(100, 200, 50);
+}</code>
+
+        <div class="concept-box">
+          <p>
+            <strong>Key Concept:</strong> The condition goes in parentheses <code>( )</code>.
+            The code to run goes in curly braces <code>{ }</code>. If the condition is true,
+            the code runs. If false, it's skipped.
+          </p>
+        </div>
+
+        <h3>Comparison Operators</h3>
+        <p>
+          Use these to compare values:
+        </p>
+        <ul>
+          <li><code>&lt;</code> less than</li>
+          <li><code>&gt;</code> greater than</li>
+          <li><code>&lt;=</code> less than or equal to</li>
+          <li><code>&gt;=</code> greater than or equal to</li>
+          <li><code>===</code> equal to (three equals signs!)</li>
+          <li><code>!==</code> not equal to</li>
+        </ul>
+
+        <h2>if-else: Choosing Between Two Options</h2>
+        <p>
+          Use <code>else</code> to specify what happens when the condition is false:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">if (mouseX < 200) {
+  // Left side behavior
+  rect(150, 150, 100, 100);
+} else {
+  // Right side behavior
+  circle(200, 200, 100);
+}</code>
+
+        <h2>Logical Operators</h2>
+        <p>
+          Combine multiple conditions:
+        </p>
+        <ul>
+          <li><code>&&</code> AND - both conditions must be true</li>
+          <li><code>||</code> OR - at least one condition must be true</li>
+          <li><code>!</code> NOT - inverts true/false</li>
+        </ul>
+
+        <code style="display: block; margin: 16px 0;">// Only true if BOTH are true
+if (mouseX > 100 && mouseX < 300) {
+  // Mouse is in the middle range
+}</code>
+
+        <h3>else if: Multiple Choices</h3>
+        <p>
+          Check multiple conditions in sequence:
+        </p>
+
+        <code style="display: block; margin: 16px 0;">if (mouseX < 133) {
+  // Left third
+} else if (mouseX < 266) {
+  // Middle third
+} else {
+  // Right third
+}</code>
+
+        <h3>Experiment</h3>
+        <p>
+          Move your mouse across the canvas and watch the shape change. Try:
+        </p>
+        <ul>
+          <li>Change the boundary from 200 to a different value</li>
+          <li>Add more conditions with <code>else if</code></li>
+          <li>Use <code>mouseY</code> instead of <code>mouseX</code></li>
+          <li>Combine conditions with <code>&&</code> to divide the canvas into quadrants</li>
+        </ul>
+
+        <div class="concept-box">
+          <p>
+            <strong>Challenge:</strong> Can you create a composition that changes completely
+            based on where the mouse is? Different shapes, different positions - create four
+            distinct visual states for four quadrants of the canvas.
+          </p>
+        </div>
+
+        <h2>Conditional Thinking</h2>
+        <p>
+          Conditionals are about creating rules and logic. You're not just drawing - you're
+          defining when and how things happen. This is the foundation of interactive systems
+          and artificial intelligence.
+        </p>
+
+      </div>
+
+      <!-- Column 2: Code Editor -->
+      <div class="lesson-editor">
+        <div class="editor-wrapper">
+          <div class="editor-header">
+            <span class="editor-label">Code Editor</span>
+            <div class="editor-controls">
+              <button id="reset-btn" class="editor-button">Reset</button>
+            </div>
+          </div>
+          <div id="code-editor"></div>
+          <div id="editor-status" class="editor-status">
+            <span>
+              <span class="status-indicator"></span>
+              <span class="status-text">Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error-display" class="error-display"></div>
+      </div>
+
+      <!-- Column 3: Live Preview -->
+      <div class="lesson-preview">
+        <div class="preview-wrapper">
+          <div class="preview-header">Live Preview (move your mouse!)</div>
+          <div id="preview-container" class="preview-container"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Lesson 4: Conditional Statements</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/lesson-data.js"></script>
+  <script src="../js/live-editor.js"></script>
+  <script src="../js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const starterCode = getStarterCode('conditionals');
+      const editor = new LiveEditor('code-editor', 'preview-container', starterCode);
+      window.liveEditor = editor;
+    });
+  </script>
+
+</body>
+
+</html>

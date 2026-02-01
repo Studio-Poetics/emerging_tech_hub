@@ -52,15 +52,17 @@
   font-family: 'IBM Plex Mono', 'Courier New', monospace;
   font-size: 13px;
   line-height: 1.5;
-  height: auto;
-  min-height: 350px;
-  max-height: 600px;
+  height: 500px;
   border: none;
   background-color: var(--color-white);
+  overflow: auto;
 }
 
 .CodeMirror-scroll {
   padding: var(--space-md);
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .CodeMirror-gutters {
@@ -190,7 +192,7 @@
 @media (max-width: 768px) {
   .CodeMirror {
     font-size: 13px;
-    min-height: 250px;
+    height: 350px;
   }
 
   .preview-container {
@@ -210,6 +212,12 @@
 
   .editor-button {
     flex: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .CodeMirror {
+    height: 550px;
   }
 }
 

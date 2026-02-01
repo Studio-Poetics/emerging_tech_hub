@@ -50,8 +50,19 @@ class LiveEditor {
       }
     });
 
-    // Set editor height
-    this.editor.setSize(null, 'auto');
+    // Set editor size based on screen width
+    const setEditorHeight = () => {
+      if (window.innerWidth >= 1200) {
+        this.editor.setSize(null, 550);
+      } else if (window.innerWidth <= 768) {
+        this.editor.setSize(null, 350);
+      } else {
+        this.editor.setSize(null, 500);
+      }
+    };
+
+    setEditorHeight();
+    window.addEventListener('resize', setEditorHeight);
   }
 
   /**

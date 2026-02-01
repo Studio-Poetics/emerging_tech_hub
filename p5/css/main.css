@@ -178,25 +178,38 @@ code {
 /* Three-Column Layout */
 .lesson-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--space-lg);
   margin-bottom: var(--space-3xl);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
 }
 
 .lesson-content {
-  padding-right: var(--space-sm);
+  grid-column: 1 / -1;
 }
 
-.lesson-editor {
-  position: sticky;
-  top: var(--space-md);
-  height: fit-content;
-}
+/* Three columns side-by-side on large screens (1200px+) */
+@media (min-width: 1200px) {
+  .lesson-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-lg);
+  }
 
-.lesson-preview {
-  position: sticky;
-  top: var(--space-md);
-  height: fit-content;
+  .lesson-content {
+    grid-column: auto;
+    padding-right: var(--space-sm);
+  }
+
+  .lesson-editor {
+    position: sticky;
+    top: var(--space-md);
+    height: fit-content;
+  }
+
+  .lesson-preview {
+    position: sticky;
+    top: var(--space-md);
+    height: fit-content;
+  }
 }
 
 /* Legacy support for old two-column layout */
@@ -304,6 +317,32 @@ li {
 }
 
 /* Responsive Design - Mobile First */
+
+/* Tablet: Two columns (content, then editor+preview stacked) */
+@media (max-width: 1200px) {
+  .lesson-container {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .lesson-editor {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .lesson-preview {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .lesson-content {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding-right: 0;
+  }
+}
+
+/* Mobile: Single column (everything stacked) */
 @media (max-width: 768px) {
   :root {
     --font-size-3xl: 31px;
@@ -315,6 +354,13 @@ li {
   .lesson-container {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
+  }
+
+  .lesson-editor,
+  .lesson-preview,
+  .lesson-content {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .lesson-interactive {

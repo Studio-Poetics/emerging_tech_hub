@@ -51,10 +51,10 @@
       </p>
     </div>
 
-    <!-- Two-Column Layout: Content + Interactive Editor -->
+    <!-- Three-Column Layout: Content + Code Editor + Preview -->
     <div class="lesson-container">
 
-      <!-- Left Column: Lesson Content -->
+      <!-- Column 1: Lesson Content -->
       <div class="lesson-content">
 
         <h2>Basic Shape Functions</h2>
@@ -144,10 +144,8 @@ strokeWeight(3);   // 3 pixels thick</code>
 
       </div>
 
-      <!-- Right Column: Interactive Editor -->
-      <div class="lesson-interactive">
-
-        <!-- Code Editor -->
+      <!-- Column 2: Code Editor -->
+      <div class="lesson-editor">
         <div class="editor-wrapper">
           <div class="editor-header">
             <span class="editor-label">Code Editor</span>
@@ -166,13 +164,14 @@ strokeWeight(3);   // 3 pixels thick</code>
 
         <!-- Error Display -->
         <div id="error-display" class="error-display"></div>
+      </div>
 
-        <!-- Preview Canvas -->
+      <!-- Column 3: Live Preview -->
+      <div class="lesson-preview">
         <div class="preview-wrapper">
           <div class="preview-header">Live Preview</div>
           <div id="preview-container" class="preview-container"></div>
         </div>
-
       </div>
 
     </div>

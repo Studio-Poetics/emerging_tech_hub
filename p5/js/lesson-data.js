@@ -179,90 +179,11 @@ function draw() {
     ]
   },
 
-  // Lesson 4: Conditional Statements
-  conditionals: {
-    title: 'Conditional Statements',
-    number: 4,
-    path: '04-conditionals.html',
-    starterCode: `function setup() {
-  createCanvas(400, 400);
-}
-
-function draw() {
-  background(255);
-
-  // Check if mouse is on left or right side
-  if (mouseX < 200) {
-    // Left side - draw square
-    fill(0);
-    rect(150, 150, 100, 100);
-  } else {
-    // Right side - draw circle
-    fill(0);
-    circle(200, 200, 100);
-  }
-}`,
-    variations: [
-      {
-        title: 'Multiple Conditions',
-        code: `function setup() {
-  createCanvas(400, 400);
-}
-
-function draw() {
-  background(255);
-
-  // Divide canvas into quadrants
-  if (mouseX < 200 && mouseY < 200) {
-    fill(0);
-    text('Top Left', 20, 30);
-  } else if (mouseX >= 200 && mouseY < 200) {
-    fill(0);
-    text('Top Right', 220, 30);
-  } else if (mouseX < 200 && mouseY >= 200) {
-    fill(0);
-    text('Bottom Left', 20, 380);
-  } else {
-    fill(0);
-    text('Bottom Right', 220, 380);
-  }
-
-  // Draw crosshairs
-  stroke(200);
-  line(200, 0, 200, 400);
-  line(0, 200, 400, 200);
-}`
-      },
-      {
-        title: 'Responsive Size',
-        code: `function setup() {
-  createCanvas(400, 400);
-}
-
-function draw() {
-  background(255);
-
-  let size = 50;
-
-  // Make circle bigger if mouse is near
-  let distance = dist(mouseX, mouseY, 200, 200);
-
-  if (distance < 100) {
-    size = 100;
-  }
-
-  fill(0);
-  circle(200, 200, size);
-}`
-      }
-    ]
-  },
-
-  // Lesson 5: Loops
+  // Lesson 4: Loops
   loops: {
     title: 'Loops',
-    number: 5,
-    path: '05-loops.html',
+    number: 4,
+    path: '04-loops.html',
     starterCode: `function setup() {
   createCanvas(400, 400);
   noLoop();
@@ -341,12 +262,108 @@ function draw() {
     ]
   },
 
+  // Lesson 5: Conditional Statements
+  conditionals: {
+    title: 'Conditional Statements',
+    number: 5,
+    path: '05-conditionals.html',
+    starterCode: `function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(255);
+
+  // Check if mouse is on left or right side
+  if (mouseX < 200) {
+    // Left side - draw square
+    fill(0);
+    rect(150, 150, 100, 100);
+  } else {
+    // Right side - draw circle
+    fill(0);
+    circle(200, 200, 100);
+  }
+}`,
+    variations: [
+      {
+        title: 'Multiple Conditions',
+        code: `function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(255);
+
+  // Divide canvas into quadrants
+  if (mouseX < 200 && mouseY < 200) {
+    fill(0);
+    text('Top Left', 20, 30);
+  } else if (mouseX >= 200 && mouseY < 200) {
+    fill(0);
+    text('Top Right', 220, 30);
+  } else if (mouseX < 200 && mouseY >= 200) {
+    fill(0);
+    text('Bottom Left', 20, 380);
+  } else {
+    fill(0);
+    text('Bottom Right', 220, 380);
+  }
+
+  // Draw crosshairs
+  stroke(200);
+  line(200, 0, 200, 400);
+  line(0, 200, 400, 200);
+}`
+      },
+      {
+        title: 'Responsive Size',
+        code: `function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(255);
+
+  let size = 50;
+
+  // Make circle bigger if mouse is near
+  let distance = dist(mouseX, mouseY, 200, 200);
+
+  if (distance < 100) {
+    size = 100;
+  }
+
+  fill(0);
+  circle(200, 200, size);
+}`
+      }
+    ]
+  },
+
   // Lesson 6: Motion
   motion: {
     title: 'Motion',
     number: 6,
     path: '06-motion.html',
     starterCode: `function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(255);
+
+  // sin() creates smooth wave motion
+  // It oscillates between -1 and 1
+  let x = 200 + sin(frameCount * 0.05) * 150;
+
+  fill(0);
+  circle(x, 200, 40);
+}`,
+    variations: [
+      {
+        title: 'Advanced: Understanding Sin & Cos Visually',
+        code: `function setup() {
   createCanvas(600, 400);
 }
 
@@ -432,23 +449,6 @@ function draw() {
   text('BLUE = cos (horizontal)', 380, 25);
   text('RED = sin (vertical)', 380, 45);
   text('GREEN = tan (slope)', 380, 65);
-}`,
-    variations: [
-      {
-        title: 'Simple Wave Motion',
-        code: `function setup() {
-  createCanvas(400, 400);
-}
-
-function draw() {
-  background(255);
-
-  // sin() creates smooth wave motion
-  // It oscillates between -1 and 1
-  let x = 200 + sin(frameCount * 0.05) * 150;
-
-  fill(0);
-  circle(x, 200, 40);
 }`
       },
       {
