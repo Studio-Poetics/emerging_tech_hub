@@ -1,125 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
     <meta name="author" content="Pranshu Kumar Chaudhary">
-    <title>Metaverse & Virtual Worlds - TRL Radar</title>
+    <title>Metaverse & Virtual Worlds Technology Radar - TRL Visualization</title>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-        :root {
-            --color-trl-1-3: #FF6B6B;
-            --color-trl-4-6: #FFE66D;
-            --color-trl-7-9: #4ECDC4;
-        }
-
-        * { box-sizing: border-box; }
-
+        /* Clean Radar Visualization Styles */
         body {
             background: var(--color-white);
             color: var(--color-black);
+            overflow-x: hidden;
             font-family: var(--font-primary);
-            margin: 0;
         }
 
-        .container {
+        .radar-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            background: var(--color-white);
         }
 
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--color-gray-200);
-            position: sticky;
-            top: 0;
-            background: var(--color-white);
+        .radar-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             z-index: 100;
         }
 
-        .nav-left, .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-brand {
+        .radar-title {
+            font-size: 24px;
             font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 1px;
-            color: var(--color-black);
-            text-decoration: none;
+            color: var(--color-electric-blue);
+            margin: 0;
         }
 
-        .nav-link {
+        .radar-subtitle {
             font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
             color: var(--color-gray-600);
-            text-decoration: none;
-        }
-
-        .nav-link:hover {
-            color: var(--color-electric-blue);
-        }
-
-        .hero-section {
-            padding: 32px 24px 24px;
-            text-align: center;
-            border-bottom: 1px solid var(--color-gray-200);
-        }
-
-        .page-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0 0 8px;
-            letter-spacing: 1px;
-        }
-
-        .page-subtitle {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--color-electric-blue);
-            margin: 0 0 12px;
+            margin: 5px 0 10px 0;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .page-description {
-            font-size: 14px;
-            color: var(--color-gray-600);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
+        .trl-info-btn {
+            background: var(--color-electric-blue) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-electric-blue) !important;
         }
 
-        .content-wrapper {
-            display: flex;
-            flex: 1;
-            min-height: 0;
+        .trl-info-btn:hover {
+            background: var(--color-electric-blue-dark) !important;
+            border-color: var(--color-electric-blue-dark) !important;
+            color: var(--color-white) !important;
         }
 
-        .sidebar {
-            width: 280px;
-            flex-shrink: 0;
-            padding: 20px;
-            border-right: 1px solid var(--color-gray-200);
-            overflow-y: auto;
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-
-        .control-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
+            gap: 10px;
         }
 
         .control-group {
@@ -127,13 +74,14 @@
             border: 1px solid var(--color-gray-200);
             border-radius: 5px;
             padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .control-label {
             font-size: 10px;
             color: var(--color-gray-600);
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             letter-spacing: 1px;
             font-weight: 600;
         }
@@ -155,7 +103,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
-            border-radius: 3px;
         }
 
         .filter-btn:hover {
@@ -170,21 +117,290 @@
             color: var(--color-white);
         }
 
-        .trl-dropdown {
+        .radar-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
         }
 
-        .legend-section {
-            border-top: 1px solid var(--color-gray-200);
+        .zoom-controls {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zoom-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 18px;
+            color: var(--color-electric-blue);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .info-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-research { background: var(--color-electric-blue); color: var(--color-white); }
+        .meta-industry { background: var(--color-gray-800); color: var(--color-white); }
+        .meta-emerging { background: var(--color-gray-600); color: var(--color-white); }
+        .meta-experimental { background: var(--color-electric-blue-dark); color: var(--color-white); }
+
+        .info-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .references-section {
+            margin-top: 20px;
             padding-top: 15px;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .references-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+
+        .reference-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--color-gray-600);
+        }
+
+        .reference-link {
+            color: var(--color-electric-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .progress-item {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.8s ease;
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--color-gray-500);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .trl-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 200;
+        }
+
+        .trl-info-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .trl-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin-bottom: 15px;
+        }
+
+        .trl-info-content {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .trl-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trl-level-item {
+            padding: 8px;
+            background: var(--color-gray-50);
+            border-radius: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .trl-level-number {
+            font-weight: 600;
+            color: var(--color-electric-blue);
+        }
+
+        .close-info-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-info-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend-title {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 6px;
-            font-size: 11px;
+            margin-bottom: 5px;
+            font-size: 10px;
             color: var(--color-gray-700);
         }
 
@@ -192,334 +408,374 @@
             width: 12px;
             height: 12px;
             border-radius: 2px;
-            flex-shrink: 0;
         }
 
-        .info-panel {
-            border: 1px solid var(--color-gray-200);
-            border-radius: 5px;
-            padding: 14px;
-            font-size: 12px;
-        }
-
-        .info-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--color-electric-blue);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .info-content {
-            color: var(--color-gray-700);
-            line-height: 1.5;
-        }
-
-        .info-item {
-            margin-bottom: 10px;
-            font-size: 12px;
-        }
-
-        .info-item strong {
-            display: block;
-            margin-bottom: 3px;
-            color: var(--color-black);
-        }
-
-        .progress-bar {
-            position: relative;
-            width: 100%;
-            height: 16px;
-            background: var(--color-gray-100);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 6px;
-        }
-
-        .progress-label {
+        .loading {
             position: absolute;
-            left: 6px;
-            top: 1px;
-            font-size: 9px;
-            font-weight: 600;
-            color: var(--color-gray-700);
-            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00f5ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: var(--color-electric-blue-bg);
-            border-radius: 4px;
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
         }
 
-        .main-content {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-        }
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
 
-        #radar-container {
-            flex: 1;
-            position: relative;
-            min-height: 500px;
-        }
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
 
-        #radar-svg {
-            width: 100%;
-            height: 100%;
-            display: block;
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
         }
 
         @media (max-width: 768px) {
-            .content-wrapper {
-                flex-direction: column;
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
             }
 
-            .sidebar {
+            .radar-title {
+                font-size: 18px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
+                position: relative;
                 width: 100%;
-                border-right: none;
-                border-bottom: 1px solid var(--color-gray-200);
+                height: 60vh;
             }
 
-            #radar-container {
-                min-height: 400px;
+            .controls-panel {
+                position: static;
+                top: auto;
+                right: auto;
+                margin: 10px 16px 0 16px;
+            }
+
+            .legend {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
             }
         }
+
+        .tech-tooltip {
+            position: fixed;
+            pointer-events: none;
+            background: rgba(15, 23, 42, 0.95);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translate(-50%, -130%);
+            transition: opacity 0.15s ease;
+            z-index: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+
+        .tech-tooltip.active {
+            opacity: 1;
+        }
+
+        .tech-tooltip .tooltip-category {
+            display: block;
+            font-size: 9px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
     </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-R4MBJ1TPQ5');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R4MBJ1TPQ5');
     </script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
-
 <body>
-    <div class="container">
-        <nav class="navbar">
-            <div class="nav-left">
-                <a href="index.html" class="nav-brand">EMERGING TECH HUB</a>
-            </div>
-            <div class="nav-right">
-                <a href="index.html" class="nav-link">HOME</a>
-                <a href="metaverse-landing.html" class="nav-link">METAVERSE LANDING</a>
-            </div>
-        </nav>
-
-        <div class="hero-section">
-            <h1 class="page-title">METAVERSE & VIRTUAL WORLDS</h1>
-            <h2 class="page-subtitle">Technology Readiness Level Radar</h2>
-            <p class="page-description">
-                Tracking the evolution of metaverse technologies from social VR platforms to persistent virtual
-                economies.
-                Data verified as of December 2025.
-            </p>
+    <div class="radar-container">
+        <div class="radar-header">
+            <h1 class="radar-title">METAVERSE & VIRTUAL WORLDS TECHNOLOGY RADAR</h1>
+            <p class="radar-subtitle">Technology Readiness Level Visualization</p>
         </div>
 
-        <div class="content-wrapper">
-            <aside class="sidebar">
-                <div class="control-panel">
-                    <div class="control-group">
-                        <div class="control-label">Navigate</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
-                            <button class="filter-btn"
-                                onclick="window.location.href='metaverse-landing.html'">LANDING</button>
-                        </div>
-                        <div class="filter-buttons" style="margin-top: 5px;">
-                            <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
-                                style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
-                                <option value="">EXPLORE OTHER TRL RADARS ▼</option>
-                                <option value="ai-trl.html">AI & Machine Learning</option>
-                                <option value="blockchain-trl.html">Blockchain</option>
-                                <option value="biorobotics-trl.html">Bio-Robotics</option>
-                                <option value="edge-trl.html">Edge Computing</option>
-                                <option value="interfaces-trl.html">Future Interfaces</option>
-                                <option value="iot-trl.html">Internet of Things</option>
-                                <option value="metaverse-trl.html" disabled selected>Metaverse</option>
-                                <option value="quantum-trl.html">Quantum Computing</option>
-                                <option value="robotics-trl.html">Robotics</option>
-                                <option value="textiles-trl.html">Smart Textiles</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-label">Filter by Origin</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn active" data-filter="all">ALL</button>
-                            <button class="filter-btn" data-filter="research">RESEARCH</button>
-                            <button class="filter-btn" data-filter="industry">INDUSTRY</button>
-                            <button class="filter-btn" data-filter="emerging">EMERGING</button>
-                            <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-label">Time Period</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn active" data-period="2025">2025</button>
-                            <button class="filter-btn" data-period="2020">2020</button>
-                            <button class="filter-btn" data-period="2015">2015</button>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-label">Zoom Controls</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn" id="zoom-in">ZOOM IN</button>
-                            <button class="filter-btn" id="zoom-out">ZOOM OUT</button>
-                            <button class="filter-btn" id="reset-view">RESET</button>
-                        </div>
-                    </div>
-
-                    <div class="legend-section">
-                        <div class="control-label">TRL LEVELS</div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--color-trl-1-3);"></div>
-                            <span>1-3: Basic Research</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--color-trl-4-6);"></div>
-                            <span>4-6: Development</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--color-trl-7-9);"></div>
-                            <span>7-9: Deployment</span>
-                        </div>
-                    </div>
+        <div class="controls-panel">
+            <div class="control-group">
+                <div class="control-label">Filter by Origin</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="research">RESEARCH</button>
+                    <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                    <button class="filter-btn" data-filter="emerging">EMERGING</button>
+                    <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
                 </div>
+            </div>
 
-                <div class="info-panel" id="info-panel">
-                    <div class="info-title">SELECT A TECHNOLOGY</div>
-                    <div class="info-content">
-                        <p>Click on any point to view detailed information about the technology.</p>
-                    </div>
+            <div class="control-group">
+                <div class="control-label">Time Period</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-time="2025">2025</button>
+                    <button class="filter-btn" data-time="2020">2020</button>
+                    <button class="filter-btn" data-time="2015">2015</button>
                 </div>
-            </aside>
+            </div>
 
-            <main class="main-content">
-                <div id="radar-container">
-                    <svg id="radar-svg"></svg>
+            <div class="control-group">
+                <div class="control-label">Learn More</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn trl-info-btn" onclick="toggleTRLInfo()">WHAT IS TRL?</button>
                 </div>
-            </main>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Navigate</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
+                    <button class="filter-btn" onclick="window.location.href='metaverse-landing.html'">LANDING</button>
+                </div>
+                <div class="filter-buttons" style="margin-top: 5px;">
+                    <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;" style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
+                        <option value="">EXPLORE OTHER TRL RADARS ▼</option>
+                        <option value="ai-trl.html" title="Systems that learn from data to reason, generate, and predict.">AI & Machine Learning</option>
+                        <option value="blockchain-trl.html" title="Decentralized, tamper-resistant ledgers for trustless transactions.">Blockchain</option>
+                        <option value="biorobotics-trl.html" title="Robots that mimic or merge with biological systems and soft materials.">Bio-Robotics</option>
+                        <option value="edge-trl.html" title="Processing data near its source instead of centralized cloud servers.">Edge Computing</option>
+                        <option value="interfaces-trl.html" title="Next-gen human-computer interaction: AR/VR, BCIs, haptics, and gesture beyond touchscreens.">Future Interfaces</option>
+                        <option value="iot-trl.html" title="Everyday physical objects embedded with sensors and connectivity.">Internet of Things</option>
+                        <option value="metaverse-trl.html" disabled selected title="Persistent, shared virtual worlds blending social, gaming, and work.">Metaverse</option>
+                        <option value="quantum-trl.html" title="Computing with qubits to solve select problems far faster than classical computers.">Quantum Computing</option>
+                        <option value="robotics-trl.html" title="Machines that sense, plan, and act in the physical world.">Robotics</option>
+                        <option value="textiles-trl.html" title="Fabrics embedded with electronics, sensors, or reactive materials.">Smart Textiles</option>
+                    <option value="embodied-trl.html" title="Interaction design rooted in bodily movement, presence, and poetic/artistic expression.">Embodied &amp; Poetic Interactions</option>
+                    </select>
+                </div>
+            </div>
         </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+            <button class="zoom-btn" id="zoomOut" title="Zoom Out">−</button>
+            <button class="zoom-btn" id="resetZoom" title="Reset Zoom">⌂</button>
+        </div>
+
+        <svg class="radar-canvas" id="radarSvg"></svg>
+        <div class="tech-tooltip" id="techTooltip"></div>
+
+        <div class="trl-info-panel" id="trlInfoPanel">
+            <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
+            <div class="trl-info-title">Technology Readiness Levels (TRL)</div>
+            <div class="trl-info-content">
+                Technology Readiness Levels for Metaverse & Virtual Worlds assess maturity from basic research to widespread deployment. TRL evaluation considers platform stability, hardware performance, user adoption, interoperability, regulatory compliance, and real-world performance across diverse applications including social, gaming, enterprise, and commerce contexts.
+            </div>
+            <div class="trl-levels-grid">
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 1-2</div>
+                    <div>Basic Research</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 3</div>
+                    <div>Proof of Concept</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 4</div>
+                    <div>Lab Validation</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 5</div>
+                    <div>Benchmark Testing</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 6</div>
+                    <div>Pilot Deployment</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 7</div>
+                    <div>Beta Release</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 8</div>
+                    <div>Production System</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 9</div>
+                    <div>Proven Operational</div>
+                </div>
+                <div class="trl-level-item" style="grid-column: span 1; background: var(--color-electric-blue-bg);">
+                    <div class="trl-level-number">Click & Explore</div>
+                    <div>Interactive Technologies</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">TRL Levels</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a3a3a3;"></div>
+                <span>TRL 1-3: Research</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #525252;"></div>
+                <span>TRL 4-6: Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4040ff;"></div>
+                <span>TRL 7-9: Production</span>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfoPanel()">×</button>
+            <div id="infoPanelContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">Initializing Radar...</div>
     </div>
 
     <script>
-        // Data for 2015
-        const data2015 = [
-            { id: 'social-vr', name: 'Social VR (Second Life era)', category: 'emerging', trl: 5, angle: 0, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
-            { id: 'vr-gaming', name: 'VR Gaming (Early Oculus)', category: 'emerging', trl: 5, angle: 15, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
-            { id: 'virtual-events', name: 'Virtual Events (Webinars)', category: 'industry', trl: 6, angle: 30, progress: { research: 72, funding: 78, timeline: 70, consensus: 75 } },
-            { id: 'avatars', name: '3D Avatars (Basic)', category: 'emerging', trl: 6, angle: 45, progress: { research: 70, funding: 72, timeline: 68, consensus: 72 } },
-            { id: 'vr-workspaces', name: 'VR Workspaces (Conceptual)', category: 'research', trl: 3, angle: 60, progress: { research: 45, funding: 50, timeline: 35, consensus: 42 } },
-            { id: 'asset-marketplaces', name: '3D Asset Marketplaces', category: 'emerging', trl: 5, angle: 75, progress: { research: 60, funding: 68, timeline: 58, consensus: 65 } },
-            { id: 'virtual-land', name: 'Virtual Land Platforms', category: 'research', trl: 2, angle: 90, progress: { research: 30, funding: 35, timeline: 22, consensus: 28 } },
-            { id: 'interoperability', name: 'Metaverse Interoperability', category: 'research', trl: 2, angle: 105, progress: { research: 28, funding: 32, timeline: 18, consensus: 25 } },
-            { id: 'digital-twins', name: 'Digital Twin Cities', category: 'research', trl: 3, angle: 120, progress: { research: 42, funding: 48, timeline: 35, consensus: 40 } },
-            { id: 'virtual-commerce', name: 'Virtual Commerce', category: 'research', trl: 3, angle: 135, progress: { research: 38, funding: 42, timeline: 30, consensus: 36 } },
-            { id: 'nft-experiences', name: 'NFT Experiences', category: 'research', trl: 1, angle: 150, progress: { research: 15, funding: 20, timeline: 10, consensus: 15 } },
-            { id: 'photogrammetry', name: 'Photogrammetry 3D Scanning', category: 'emerging', trl: 5, angle: 165, progress: { research: 62, funding: 68, timeline: 58, consensus: 65 } },
-            { id: 'volumetric-video', name: 'Volumetric Video Capture', category: 'research', trl: 3, angle: 180, progress: { research: 45, funding: 52, timeline: 38, consensus: 45 } },
-            { id: 'spatial-audio-mv', name: 'Spatial Audio for VR', category: 'emerging', trl: 4, angle: 195, progress: { research: 55, funding: 65, timeline: 50, consensus: 58 } },
-            { id: 'cross-platform-id', name: 'Cross-Platform Identity', category: 'research', trl: 2, angle: 210, progress: { research: 32, funding: 38, timeline: 25, consensus: 30 } },
-            { id: 'fullbody-tracking', name: 'Full-Body Tracking', category: 'research', trl: 3, angle: 225, progress: { research: 48, funding: 52, timeline: 40, consensus: 46 } },
-            { id: 'haptic-metaverse', name: 'Haptic Metaverse', category: 'research', trl: 2, angle: 240, progress: { research: 35, funding: 40, timeline: 28, consensus: 34 } },
-            { id: 'olfactory-vr', name: 'Olfactory VR', category: 'research', trl: 2, angle: 255, progress: { research: 28, funding: 32, timeline: 20, consensus: 26 } },
-            { id: 'neural-metaverse', name: 'Neural Metaverse Interfaces', category: 'research', trl: 1, angle: 270, progress: { research: 22, funding: 28, timeline: 15, consensus: 20 } },
-            { id: 'persistent-worlds', name: 'Persistent Shared Worlds', category: 'research', trl: 3, angle: 285, progress: { research: 42, funding: 48, timeline: 35, consensus: 42 } },
-            { id: 'ai-content', name: 'AI-Generated Metaverse Content', category: 'research', trl: 2, angle: 300, progress: { research: 38, funding: 42, timeline: 28, consensus: 36 } },
-            { id: 'decentral-gov', name: 'Decentralized Governance', category: 'research', trl: 2, angle: 315, progress: { research: 30, funding: 35, timeline: 22, consensus: 28 } },
-            { id: 'virtual-economy', name: 'Virtual Economy Compliance', category: 'research', trl: 2, angle: 330, progress: { research: 25, funding: 30, timeline: 18, consensus: 24 } },
-            { id: 'blockchain-metaverse', name: 'Blockchain Metaverse Integration', category: 'research', trl: 2, angle: 345, progress: { research: 32, funding: 38, timeline: 25, consensus: 32 } }
-        ];
+        const technologyData = {
+            2015: [
+                { id: 'social-vr', name: 'Social VR (Second Life era)', category: 'emerging', trl: 5, angle: 0, progress: { research: 65, funding: 70, timeline: 60, consensus: 68 } },
+                { id: 'vr-gaming', name: 'VR Gaming (Early Oculus)', category: 'emerging', trl: 5, angle: 15, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'virtual-events', name: 'Virtual Events (Webinars)', category: 'industry', trl: 6, angle: 30, progress: { research: 72, funding: 78, timeline: 70, consensus: 75 } },
+                { id: 'avatars', name: '3D Avatars (Basic)', category: 'emerging', trl: 6, angle: 45, progress: { research: 70, funding: 72, timeline: 68, consensus: 72 } },
+                { id: 'vr-workspaces', name: 'VR Workspaces (Conceptual)', category: 'research', trl: 3, angle: 60, progress: { research: 45, funding: 50, timeline: 35, consensus: 42 } },
+                { id: 'asset-marketplaces', name: '3D Asset Marketplaces', category: 'emerging', trl: 5, angle: 75, progress: { research: 60, funding: 68, timeline: 58, consensus: 65 } },
+                { id: 'virtual-land', name: 'Virtual Land Platforms', category: 'research', trl: 2, angle: 90, progress: { research: 30, funding: 35, timeline: 22, consensus: 28 } },
+                { id: 'interoperability', name: 'Metaverse Interoperability', category: 'research', trl: 2, angle: 105, progress: { research: 28, funding: 32, timeline: 18, consensus: 25 } },
+                { id: 'digital-twins', name: 'Digital Twin Cities', category: 'research', trl: 3, angle: 120, progress: { research: 42, funding: 48, timeline: 35, consensus: 40 } },
+                { id: 'virtual-commerce', name: 'Virtual Commerce', category: 'research', trl: 3, angle: 135, progress: { research: 38, funding: 42, timeline: 30, consensus: 36 } },
+                { id: 'nft-experiences', name: 'NFT Experiences', category: 'research', trl: 1, angle: 150, progress: { research: 15, funding: 20, timeline: 10, consensus: 15 } },
+                { id: 'photogrammetry', name: 'Photogrammetry 3D Scanning', category: 'emerging', trl: 5, angle: 165, progress: { research: 62, funding: 68, timeline: 58, consensus: 65 } },
+                { id: 'volumetric-video', name: 'Volumetric Video Capture', category: 'research', trl: 3, angle: 180, progress: { research: 45, funding: 52, timeline: 38, consensus: 45 } },
+                { id: 'spatial-audio-mv', name: 'Spatial Audio for VR', category: 'emerging', trl: 4, angle: 195, progress: { research: 55, funding: 65, timeline: 50, consensus: 58 } },
+                { id: 'cross-platform-id', name: 'Cross-Platform Identity', category: 'research', trl: 2, angle: 210, progress: { research: 32, funding: 38, timeline: 25, consensus: 30 } },
+                { id: 'fullbody-tracking', name: 'Full-Body Tracking', category: 'research', trl: 3, angle: 225, progress: { research: 48, funding: 52, timeline: 40, consensus: 46 } },
+                { id: 'haptic-metaverse', name: 'Haptic Metaverse', category: 'research', trl: 2, angle: 240, progress: { research: 35, funding: 40, timeline: 28, consensus: 34 } },
+                { id: 'olfactory-vr', name: 'Olfactory VR', category: 'research', trl: 2, angle: 255, progress: { research: 28, funding: 32, timeline: 20, consensus: 26 } },
+                { id: 'neural-metaverse', name: 'Neural Metaverse Interfaces', category: 'research', trl: 1, angle: 270, progress: { research: 22, funding: 28, timeline: 15, consensus: 20 } },
+                { id: 'persistent-worlds', name: 'Persistent Shared Worlds', category: 'research', trl: 3, angle: 285, progress: { research: 42, funding: 48, timeline: 35, consensus: 42 } },
+                { id: 'ai-content', name: 'AI-Generated Metaverse Content', category: 'research', trl: 2, angle: 300, progress: { research: 38, funding: 42, timeline: 28, consensus: 36 } },
+                { id: 'decentral-gov', name: 'Decentralized Governance', category: 'research', trl: 2, angle: 315, progress: { research: 30, funding: 35, timeline: 22, consensus: 28 } },
+                { id: 'virtual-economy', name: 'Virtual Economy Compliance', category: 'research', trl: 2, angle: 330, progress: { research: 25, funding: 30, timeline: 18, consensus: 24 } },
+                { id: 'blockchain-metaverse', name: 'Blockchain Metaverse Integration', category: 'research', trl: 2, angle: 345, progress: { research: 32, funding: 38, timeline: 25, consensus: 32 } }
+            ],
+            2020: [
+                { id: 'social-vr', name: 'Social VR (VRChat, Rec Room)', category: 'industry', trl: 7, angle: 0, progress: { research: 80, funding: 85, timeline: 75, consensus: 82 } },
+                { id: 'vr-gaming', name: 'VR Gaming (Half-Life: Alyx era)', category: 'industry', trl: 7, angle: 15, progress: { research: 82, funding: 90, timeline: 78, consensus: 85 } },
+                { id: 'virtual-events', name: 'Virtual Events (COVID-driven)', category: 'industry', trl: 7, angle: 30, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'avatars', name: '3D Avatars (ReadyPlayerMe)', category: 'industry', trl: 7, angle: 45, progress: { research: 82, funding: 85, timeline: 80, consensus: 84 } },
+                { id: 'vr-workspaces', name: 'VR Workspaces (Spatial, Horizon)', category: 'emerging', trl: 5, angle: 60, progress: { research: 65, funding: 72, timeline: 58, consensus: 65 } },
+                { id: 'asset-marketplaces', name: '3D Asset Marketplaces (Sketchfab)', category: 'industry', trl: 6, angle: 75, progress: { research: 75, funding: 82, timeline: 72, consensus: 78 } },
+                { id: 'virtual-land', name: 'Virtual Land (Decentraland, Sandbox)', category: 'emerging', trl: 5, angle: 90, progress: { research: 62, funding: 75, timeline: 55, consensus: 65 } },
+                { id: 'interoperability', name: 'Metaverse Interoperability', category: 'research', trl: 3, angle: 105, progress: { research: 42, funding: 48, timeline: 32, consensus: 40 } },
+                { id: 'digital-twins', name: 'Digital Twin Cities (Early Seoul)', category: 'emerging', trl: 4, angle: 120, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
+                { id: 'virtual-commerce', name: 'Virtual Commerce (Early NFTs)', category: 'emerging', trl: 4, angle: 135, progress: { research: 55, funding: 62, timeline: 48, consensus: 55 } },
+                { id: 'nft-experiences', name: 'NFT Experiences (CryptoKitties)', category: 'emerging', trl: 4, angle: 150, progress: { research: 52, funding: 68, timeline: 45, consensus: 55 } },
+                { id: 'photogrammetry', name: 'Photogrammetry 3D Scanning', category: 'emerging', trl: 6, angle: 165, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+                { id: 'volumetric-video', name: 'Volumetric Video Capture', category: 'emerging', trl: 4, angle: 180, progress: { research: 58, funding: 65, timeline: 52, consensus: 58 } },
+                { id: 'spatial-audio-mv', name: 'Spatial Audio for VR', category: 'emerging', trl: 6, angle: 195, progress: { research: 72, funding: 80, timeline: 68, consensus: 75 } },
+                { id: 'cross-platform-id', name: 'Cross-Platform Identity', category: 'research', trl: 3, angle: 210, progress: { research: 45, funding: 52, timeline: 38, consensus: 45 } },
+                { id: 'fullbody-tracking', name: 'Full-Body Tracking (Kinect)', category: 'research', trl: 4, angle: 225, progress: { research: 60, funding: 65, timeline: 52, consensus: 60 } },
+                { id: 'haptic-metaverse', name: 'Haptic Metaverse (bHaptics)', category: 'research', trl: 3, angle: 240, progress: { research: 48, funding: 55, timeline: 42, consensus: 48 } },
+                { id: 'olfactory-vr', name: 'Olfactory VR (OVR Tech)', category: 'research', trl: 3, angle: 255, progress: { research: 42, funding: 48, timeline: 32, consensus: 40 } },
+                { id: 'neural-metaverse', name: 'Neural Metaverse Interfaces', category: 'research', trl: 2, angle: 270, progress: { research: 32, funding: 38, timeline: 22, consensus: 30 } },
+                { id: 'persistent-worlds', name: 'Persistent Shared Worlds', category: 'research', trl: 4, angle: 285, progress: { research: 55, funding: 62, timeline: 48, consensus: 55 } },
+                { id: 'ai-content', name: 'AI-Generated Metaverse Content', category: 'research', trl: 3, angle: 300, progress: { research: 50, funding: 55, timeline: 42, consensus: 50 } },
+                { id: 'decentral-gov', name: 'Decentralized Governance (DAOs)', category: 'emerging', trl: 4, angle: 315, progress: { research: 52, funding: 60, timeline: 45, consensus: 52 } },
+                { id: 'virtual-economy', name: 'Virtual Economy Compliance', category: 'research', trl: 3, angle: 330, progress: { research: 42, funding: 48, timeline: 35, consensus: 42 } },
+                { id: 'blockchain-metaverse', name: 'Blockchain Metaverse (Axie)', category: 'emerging', trl: 5, angle: 345, progress: { research: 62, funding: 75, timeline: 55, consensus: 65 } }
+            ],
+            2025: [
+                { id: 'social-vr', name: 'Social VR (VRChat 6.5M MAU, 30% growth)', category: 'industry', trl: 8, angle: 0, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'vr-gaming', name: 'VR Gaming (600M+ metaverse gamers)', category: 'industry', trl: 8, angle: 15, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'virtual-events', name: 'Virtual Events (Hybrid standard)', category: 'industry', trl: 7, angle: 30, progress: { research: 85, funding: 90, timeline: 82, consensus: 88 } },
+                { id: 'avatars', name: '3D Avatars (AI-generated)', category: 'industry', trl: 8, angle: 45, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
+                { id: 'vr-workspaces', name: 'VR Workspaces (Horizon Workrooms)', category: 'industry', trl: 7, angle: 60, progress: { research: 80, funding: 85, timeline: 75, consensus: 82 } },
+                { id: 'asset-marketplaces', name: '3D Asset Marketplaces (FAB)', category: 'industry', trl: 7, angle: 75, progress: { research: 82, funding: 88, timeline: 80, consensus: 85 } },
+                { id: 'virtual-land', name: 'Virtual Land ($1.1B NFT market 2025)', category: 'industry', trl: 7, angle: 90, progress: { research: 75, funding: 82, timeline: 70, consensus: 78 } },
+                { id: 'interoperability', name: 'Metaverse Interoperability Standards', category: 'emerging', trl: 5, angle: 105, progress: { research: 62, funding: 68, timeline: 55, consensus: 62 } },
+                { id: 'digital-twins', name: 'Digital Twin Cities (500 cities 2025)', category: 'emerging', trl: 6, angle: 120, progress: { research: 75, funding: 85, timeline: 70, consensus: 78 } },
+                { id: 'virtual-commerce', name: 'Virtual Commerce ($100B+ market)', category: 'emerging', trl: 6, angle: 135, progress: { research: 72, funding: 82, timeline: 68, consensus: 75 } },
+                { id: 'nft-experiences', name: 'NFT Experiences (Market correction)', category: 'emerging', trl: 6, angle: 150, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'photogrammetry', name: 'Photogrammetry (AI-enhanced)', category: 'industry', trl: 7, angle: 165, progress: { research: 82, funding: 85, timeline: 80, consensus: 84 } },
+                { id: 'volumetric-video', name: 'Volumetric Video (Meta, Google)', category: 'emerging', trl: 5, angle: 180, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'spatial-audio-mv', name: 'Spatial Audio (Vision Pro standard)', category: 'industry', trl: 7, angle: 195, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'cross-platform-id', name: 'Cross-Platform Identity (OpenID)', category: 'emerging', trl: 5, angle: 210, progress: { research: 62, funding: 68, timeline: 55, consensus: 62 } },
+                { id: 'fullbody-tracking', name: 'Full-Body Tracking (SlimeVR)', category: 'research', trl: 4, angle: 225, progress: { research: 65, funding: 70, timeline: 58, consensus: 65 } },
+                { id: 'haptic-metaverse', name: 'Haptic Metaverse (Advanced suits)', category: 'research', trl: 4, angle: 240, progress: { research: 62, funding: 68, timeline: 55, consensus: 62 } },
+                { id: 'olfactory-vr', name: 'Olfactory VR (OVR Technology)', category: 'research', trl: 3, angle: 255, progress: { research: 52, funding: 58, timeline: 42, consensus: 50 } },
+                { id: 'neural-metaverse', name: 'Neural Metaverse (Early BCI)', category: 'research', trl: 3, angle: 270, progress: { research: 48, funding: 65, timeline: 38, consensus: 50 } },
+                { id: 'persistent-worlds', name: 'Persistent Shared Worlds (MMO tech)', category: 'research', trl: 4, angle: 285, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
+                { id: 'ai-content', name: 'AI-Generated Content (Generative AI)', category: 'emerging', trl: 5, angle: 300, progress: { research: 72, funding: 85, timeline: 65, consensus: 75 } },
+                { id: 'decentral-gov', name: 'Decentralized Governance (DAO tools)', category: 'research', trl: 4, angle: 315, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
+                { id: 'virtual-economy', name: 'Virtual Economy Regulation', category: 'research', trl: 4, angle: 330, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
+                { id: 'blockchain-metaverse', name: 'Blockchain Metaverse (Post-hype)', category: 'emerging', trl: 6, angle: 345, progress: { research: 70, funding: 78, timeline: 65, consensus: 72 } }
+            ]
+        };
 
-        // Data for 2020
-        const data2020 = [
-            { id: 'social-vr', name: 'Social VR (VRChat, Rec Room)', category: 'industry', trl: 7, angle: 0, progress: { research: 80, funding: 85, timeline: 75, consensus: 82 } },
-            { id: 'vr-gaming', name: 'VR Gaming (Half-Life: Alyx era)', category: 'industry', trl: 7, angle: 15, progress: { research: 82, funding: 90, timeline: 78, consensus: 85 } },
-            { id: 'virtual-events', name: 'Virtual Events (COVID-driven)', category: 'industry', trl: 7, angle: 30, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
-            { id: 'avatars', name: '3D Avatars (ReadyPlayerMe)', category: 'industry', trl: 7, angle: 45, progress: { research: 82, funding: 85, timeline: 80, consensus: 84 } },
-            { id: 'vr-workspaces', name: 'VR Workspaces (Spatial, Horizon)', category: 'emerging', trl: 5, angle: 60, progress: { research: 65, funding: 72, timeline: 58, consensus: 65 } },
-            { id: 'asset-marketplaces', name: '3D Asset Marketplaces (Sketchfab)', category: 'industry', trl: 6, angle: 75, progress: { research: 75, funding: 82, timeline: 72, consensus: 78 } },
-            { id: 'virtual-land', name: 'Virtual Land (Decentraland, Sandbox)', category: 'emerging', trl: 5, angle: 90, progress: { research: 62, funding: 75, timeline: 55, consensus: 65 } },
-            { id: 'interoperability', name: 'Metaverse Interoperability', category: 'research', trl: 3, angle: 105, progress: { research: 42, funding: 48, timeline: 32, consensus: 40 } },
-            { id: 'digital-twins', name: 'Digital Twin Cities (Early Seoul)', category: 'emerging', trl: 4, angle: 120, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
-            { id: 'virtual-commerce', name: 'Virtual Commerce (Early NFTs)', category: 'emerging', trl: 4, angle: 135, progress: { research: 55, funding: 62, timeline: 48, consensus: 55 } },
-            { id: 'nft-experiences', name: 'NFT Experiences (CryptoKitties)', category: 'emerging', trl: 4, angle: 150, progress: { research: 52, funding: 68, timeline: 45, consensus: 55 } },
-            { id: 'photogrammetry', name: 'Photogrammetry 3D Scanning', category: 'emerging', trl: 6, angle: 165, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
-            { id: 'volumetric-video', name: 'Volumetric Video Capture', category: 'emerging', trl: 4, angle: 180, progress: { research: 58, funding: 65, timeline: 52, consensus: 58 } },
-            { id: 'spatial-audio-mv', name: 'Spatial Audio for VR', category: 'emerging', trl: 6, angle: 195, progress: { research: 72, funding: 80, timeline: 68, consensus: 75 } },
-            { id: 'cross-platform-id', name: 'Cross-Platform Identity', category: 'research', trl: 3, angle: 210, progress: { research: 45, funding: 52, timeline: 38, consensus: 45 } },
-            { id: 'fullbody-tracking', name: 'Full-Body Tracking (Kinect)', category: 'research', trl: 4, angle: 225, progress: { research: 60, funding: 65, timeline: 52, consensus: 60 } },
-            { id: 'haptic-metaverse', name: 'Haptic Metaverse (bHaptics)', category: 'research', trl: 3, angle: 240, progress: { research: 48, funding: 55, timeline: 42, consensus: 48 } },
-            { id: 'olfactory-vr', name: 'Olfactory VR (OVR Tech)', category: 'research', trl: 3, angle: 255, progress: { research: 42, funding: 48, timeline: 32, consensus: 40 } },
-            { id: 'neural-metaverse', name: 'Neural Metaverse Interfaces', category: 'research', trl: 2, angle: 270, progress: { research: 32, funding: 38, timeline: 22, consensus: 30 } },
-            { id: 'persistent-worlds', name: 'Persistent Shared Worlds', category: 'research', trl: 4, angle: 285, progress: { research: 55, funding: 62, timeline: 48, consensus: 55 } },
-            { id: 'ai-content', name: 'AI-Generated Metaverse Content', category: 'research', trl: 3, angle: 300, progress: { research: 50, funding: 55, timeline: 42, consensus: 50 } },
-            { id: 'decentral-gov', name: 'Decentralized Governance (DAOs)', category: 'emerging', trl: 4, angle: 315, progress: { research: 52, funding: 60, timeline: 45, consensus: 52 } },
-            { id: 'virtual-economy', name: 'Virtual Economy Compliance', category: 'research', trl: 3, angle: 330, progress: { research: 42, funding: 48, timeline: 35, consensus: 42 } },
-            { id: 'blockchain-metaverse', name: 'Blockchain Metaverse (Axie)', category: 'emerging', trl: 5, angle: 345, progress: { research: 62, funding: 75, timeline: 55, consensus: 65 } }
-        ];
-
-        // Data for 2025
-        const data2025 = [
-            { id: 'social-vr', name: 'Social VR (VRChat 6.5M MAU, 30% growth)', category: 'industry', trl: 8, angle: 0, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
-            { id: 'vr-gaming', name: 'VR Gaming (600M+ metaverse gamers)', category: 'industry', trl: 8, angle: 15, progress: { research: 90, funding: 95, timeline: 88, consensus: 92 } },
-            { id: 'virtual-events', name: 'Virtual Events (Hybrid standard)', category: 'industry', trl: 7, angle: 30, progress: { research: 85, funding: 90, timeline: 82, consensus: 88 } },
-            { id: 'avatars', name: '3D Avatars (AI-generated)', category: 'industry', trl: 8, angle: 45, progress: { research: 88, funding: 92, timeline: 85, consensus: 90 } },
-            { id: 'vr-workspaces', name: 'VR Workspaces (Horizon Workrooms)', category: 'industry', trl: 7, angle: 60, progress: { research: 80, funding: 85, timeline: 75, consensus: 82 } },
-            { id: 'asset-marketplaces', name: '3D Asset Marketplaces (FAB)', category: 'industry', trl: 7, angle: 75, progress: { research: 82, funding: 88, timeline: 80, consensus: 85 } },
-            { id: 'virtual-land', name: 'Virtual Land ($1.1B NFT market 2025)', category: 'industry', trl: 7, angle: 90, progress: { research: 75, funding: 82, timeline: 70, consensus: 78 } },
-            { id: 'interoperability', name: 'Metaverse Interoperability Standards', category: 'emerging', trl: 5, angle: 105, progress: { research: 62, funding: 68, timeline: 55, consensus: 62 } },
-            { id: 'digital-twins', name: 'Digital Twin Cities (500 cities 2025)', category: 'emerging', trl: 6, angle: 120, progress: { research: 75, funding: 85, timeline: 70, consensus: 78 } },
-            { id: 'virtual-commerce', name: 'Virtual Commerce ($100B+ market)', category: 'emerging', trl: 6, angle: 135, progress: { research: 72, funding: 82, timeline: 68, consensus: 75 } },
-            { id: 'nft-experiences', name: 'NFT Experiences (Market correction)', category: 'emerging', trl: 6, angle: 150, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
-            { id: 'photogrammetry', name: 'Photogrammetry (AI-enhanced)', category: 'industry', trl: 7, angle: 165, progress: { research: 82, funding: 85, timeline: 80, consensus: 84 } },
-            { id: 'volumetric-video', name: 'Volumetric Video (Meta, Google)', category: 'emerging', trl: 5, angle: 180, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
-            { id: 'spatial-audio-mv', name: 'Spatial Audio (Vision Pro standard)', category: 'industry', trl: 7, angle: 195, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
-            { id: 'cross-platform-id', name: 'Cross-Platform Identity (OpenID)', category: 'emerging', trl: 5, angle: 210, progress: { research: 62, funding: 68, timeline: 55, consensus: 62 } },
-            { id: 'fullbody-tracking', name: 'Full-Body Tracking (SlimeVR)', category: 'research', trl: 4, angle: 225, progress: { research: 65, funding: 70, timeline: 58, consensus: 65 } },
-            { id: 'haptic-metaverse', name: 'Haptic Metaverse (Advanced suits)', category: 'research', trl: 4, angle: 240, progress: { research: 62, funding: 68, timeline: 55, consensus: 62 } },
-            { id: 'olfactory-vr', name: 'Olfactory VR (OVR Technology)', category: 'research', trl: 3, angle: 255, progress: { research: 52, funding: 58, timeline: 42, consensus: 50 } },
-            { id: 'neural-metaverse', name: 'Neural Metaverse (Early BCI)', category: 'research', trl: 3, angle: 270, progress: { research: 48, funding: 65, timeline: 38, consensus: 50 } },
-            { id: 'persistent-worlds', name: 'Persistent Shared Worlds (MMO tech)', category: 'research', trl: 4, angle: 285, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } },
-            { id: 'ai-content', name: 'AI-Generated Content (Generative AI)', category: 'emerging', trl: 5, angle: 300, progress: { research: 72, funding: 85, timeline: 65, consensus: 75 } },
-            { id: 'decentral-gov', name: 'Decentralized Governance (DAO tools)', category: 'research', trl: 4, angle: 315, progress: { research: 60, funding: 68, timeline: 52, consensus: 60 } },
-            { id: 'virtual-economy', name: 'Virtual Economy Regulation', category: 'research', trl: 4, angle: 330, progress: { research: 58, funding: 65, timeline: 50, consensus: 58 } },
-            { id: 'blockchain-metaverse', name: 'Blockchain Metaverse (Post-hype)', category: 'emerging', trl: 6, angle: 345, progress: { research: 70, funding: 78, timeline: 65, consensus: 72 } }
-        ];
-
-        // Technology connections showing relationships
-        const techConnections = [
-            { source: 'social-vr', target: 'avatars' },
-            { source: 'social-vr', target: 'spatial-audio-mv' },
-            { source: 'vr-gaming', target: 'fullbody-tracking' },
-            { source: 'virtual-land', target: 'nft-experiences' },
-            { source: 'virtual-land', target: 'blockchain-metaverse' },
-            { source: 'digital-twins', target: 'photogrammetry' },
-            { source: 'digital-twins', target: 'virtual-commerce' },
-            { source: 'interoperability', target: 'cross-platform-id' },
-            { source: 'volumetric-video', target: 'photogrammetry' },
-            { source: 'haptic-metaverse', target: 'fullbody-tracking' },
-            { source: 'neural-metaverse', target: 'haptic-metaverse' },
-            { source: 'ai-content', target: 'persistent-worlds' }
-        ];
-
-        // Detailed descriptions for selected technologies
         const techDescriptions = {
             'social-vr': {
                 description: 'VRChat maintains a niche but highly engaged community of approximately 6.5 million monthly active users (MAU) as of 2025, with user-generated content booming in markets like Japan contributing to over 30% growth between 2024 and 2025. Peak concurrent online users exceeded 130,000 during the 2025 New Year period. In contrast, Meta Horizon Worlds struggles with low user adoption at less than 200,000 MAU despite opening to mobile and web platforms in late 2024. The overall metaverse ecosystem reached 700 million MAU in 2025, up from 400 million daily active users in 2022, though this includes major gaming platforms like Roblox and Fortnite.',
-                progress: {
-                    research: 88,
-                    funding: 92,
-                    timeline: 85,
-                    consensus: 90
-                },
                 references: [
                     'DemandSage. (2025). 22 Metaverse Statistics 2025 [Daily & Monthly Users]. https://www.demandsage.com/metaverse-statistics/',
                     'Skillademia. (2025). Metaverse Statistics 2025: Usage, Users, Market Size, Projections & Key Data. https://www.skillademia.com/statistics/metaverse-statistics/',
@@ -528,12 +784,6 @@
             },
             'vr-gaming': {
                 description: 'Gaming remained the primary driver of the metaverse in 2024, capturing 25.3% of the global market with over 600 million active users globally. The metaverse market was valued between $103.8-737.73 billion in 2024 depending on methodology, with projections ranging from $156.07-1,273.58 billion for 2025. Market research firms project substantial growth at a CAGR of 44.8-46.4% from 2025 through 2030-2034. North America held a dominant position in 2024, capturing more than 42.8% of the total market share. The wide variation in market size estimates reflects different methodologies and definitions of what constitutes the metaverse among research firms.',
-                progress: {
-                    research: 90,
-                    funding: 95,
-                    timeline: 88,
-                    consensus: 92
-                },
                 references: [
                     'Market.us. (2025). Metaverse Market Size, Share, Trends | CAGR of 44.8%. https://market.us/report/metaverse-market/',
                     'Grand View Research. (2025). Metaverse Market Size And Share | Industry Report, 2030. https://www.grandviewresearch.com/industry-analysis/metaverse-market-report',
@@ -542,12 +792,6 @@
             },
             'digital-twins': {
                 description: 'By 2025, approximately 500 cities worldwide are using some form of urban digital twin technology. Major deployments include Seoul Metaverse platform (entry 2022, widening 2024, occupation 2025-2026) with over 700 companies working on deployment, and the METACITIES Excellence Hub for future cities in Southeast Europe involving Cyprus, Greece, and Bulgaria with pilots in smart mobility, smart buildings, and urban planning. Cities like Rome, Seoul, and Tampere are deploying metaverse infrastructure as extensions of existing urban digital twin platforms. The digital twin market is forecast to be worth $800 billion by 2024 and $30 trillion by 2030. Applications span monitoring, optimization, prediction, and decision support to enhance operational efficiency.',
-                progress: {
-                    research: 75,
-                    funding: 85,
-                    timeline: 70,
-                    consensus: 78
-                },
                 references: [
                     'Smart Cities World. (2025). Hundreds of cities to deploy metaverse infrastructure by 2030. https://www.smartcitiesworld.net/digital-twins/hundreds-of-cities-to-deploy-metaverse-technology-by-2030',
                     'Springer. (2024). Building Digital Twin Metaverse Cities: Revolutionizing Cities with Emerging Technologies. https://link.springer.com/book/10.1007/979-8-8688-0811-1',
@@ -556,12 +800,6 @@
             },
             'virtual-land': {
                 description: 'NFT virtual land experienced significant market correction in 2024-2025. The Sandbox saw the most dramatic decline, dropping from an average floor price of 2.86 ETH in 2021 to 0.13 ETH in 2024 (a 95% decline). Decentraland declined 89% from 1.73 ETH in 2022 to 0.18 ETH in 2024. In 2024, metaverse lands cost between 0.08-1.88 ETH (roughly $250-5,960), a 72% decrease from peak prices. Despite this correction, the virtual land NFT market is projected to grow from $1.1 billion in 2025 to $20.9 billion by 2035, reflecting a 34.5% CAGR. In Q1 2025, The Sandbox recorded 146,366 SAND in land sales. Current Decentraland LAND floor price is $118.67 with $11.7M market cap. The Sandbox maintains partnerships with Atari, CryptoKitties, The Walking Dead, and Snoop Dogg.',
-                progress: {
-                    research: 75,
-                    funding: 82,
-                    timeline: 70,
-                    consensus: 78
-                },
                 references: [
                     'CoinGecko. (2024). Metaverse Land Prices Plummet by Nearly 95% From Peak. https://www.coingecko.com/research/publications/metaverse-land-prices',
                     'Future Market Insights. (2025). Virtual Land NFT Market | Global Market Analysis Report - 2035. https://www.futuremarketinsights.com/reports/virtual-land-nft-market',
@@ -570,379 +808,446 @@
             },
             'virtual-events': {
                 description: 'Virtual events have evolved into a "hybrid standard" (TRL 7). Fortnite concerts (Eminem, Travis Scott) drew millions, but the corporate shift is to "always-on" persistent spaces for conferences. Platforms like Run The World and Hopin integrated with 3D worlds, allowing 50,000+ attendee town halls with spatial audio networking.',
-                progress: { research: 85, funding: 90, timeline: 82, consensus: 88 },
                 references: ['VentureBeat. (2025). The State of Virtual Events.', 'Forbes. (2024). Hybrid event ROI analysis.']
             },
             'avatars': {
                 description: '3D Avatars (TRL 8) now use Generative AI to create "digital doubles" from a single selfie (ReadyPlayerMe, Meta Avatars). Standards like VRM allow portability across 4,000+ apps. 2025 tech includes real-time facial tracking mapped to avatars with <10ms latency.',
-                progress: { research: 88, funding: 92, timeline: 85, consensus: 90 },
                 references: ['TechCrunch. (2025). ReadyPlayerMe cross-game stats.', 'Meta Connect. (2024). Codec Avatar mainstreaming.']
             },
             'vr-workspaces': {
                 description: 'VR Workspaces like Horizon Workrooms and Microsoft Mesh allow remote teams to collaborate with presence. TRL 7 adoption is driven by "mixed reality" modes (seeing your real keyboard in VR) and high-resolution text rendering on headsets like Quest 3 and Vision Pro.',
-                progress: { research: 80, funding: 85, timeline: 75, consensus: 82 },
                 references: ['Microsoft. (2025). Mesh for Teams adoption report.', 'Meta. (2024). Infinite Display optics.']
             },
             'asset-marketplaces': {
                 description: '3D Asset Marketplaces (TRL 7) like Sketchfab (Epic Games) and Unity Asset Store are the supply chain of the metaverse. 2025 trends include AI-generated 3D assets (text-to-mesh) being sold as "base layers" for manual refinement.',
-                progress: { research: 82, funding: 88, timeline: 80, consensus: 85 },
                 references: ['Unity. (2025). AI asset generation tools.', 'Epic Games. (2024). Fab marketplace unified launch.']
             },
             'interoperability': {
                 description: 'Metaverse Interoperability (TRL 5) groups like OMA3 (Open Metaverse Alliance) are establishing standards for moving assets (skins, swords) between worlds. The "interop" is currently limited to wallet connectivity and basic avatar file formats (GLB/VRM).',
-                progress: { research: 62, funding: 68, timeline: 55, consensus: 62 },
                 references: ['OMA3. (2025). Interoperability Working Group whitepaper.', 'Khronos Group. (2024). glTF 2.0 updates.']
             },
             'virtual-commerce': {
                 description: 'Virtual Commerce (v-commerce) exceeds $100B as brands selling digital-only goods (Gucci sneakers, Nike RTFKT) becomes normalized. "Try-on" AR features reduce physical returns by 40%.',
-                progress: { research: 72, funding: 82, timeline: 68, consensus: 75 },
                 references: ['McKinsey. (2025). Value Creation in the Metaverse.', 'Nike. (2024). RTFKT digital revenue report.']
             },
             'nft-experiences': {
                 description: 'NFT Experiences (TRL 6) have shifted from speculation to utility-driven access (token-gated communities). Starbucks Odyssey and Reddit Avatars proved mass-market adoption strategies by hiding "crypto" complexity behind "digital collectibles" branding.',
-                progress: { research: 68, funding: 75, timeline: 62, consensus: 70 },
                 references: ['Polygon. (2025). NFT utility case studies.', 'Starbucks. (2024). Odyssey beta results.']
             },
             'photogrammetry': {
                 description: 'AI-Enhanced Photogrammetry (TRL 7) allows creating photorealistic 3D models of real objects using just a smartphone (NeRF technology). Used by museums to digitize archives and retailers for product pages.',
-                progress: { research: 82, funding: 85, timeline: 80, consensus: 84 },
                 references: ['NVIDIA. (2024). Instant NeRF technology.', 'Epic Games. (2025). RealityScan app userbase.']
             },
             'volumetric-video': {
                 description: 'Volumetric Video (TRL 5) captures 3D holograms of people. Used in sports replies (Intel True View) and music videos. High cost of "capture stages" limits consumer creation, but AI estimation from 2D video is bridging the gap.',
-                progress: { research: 68, funding: 75, timeline: 62, consensus: 70 },
                 references: ['Intel. (2025). Immersive Sports Broadcasting.', '8i. (2024). Volumetric streaming compression.']
             },
             'spatial-audio-mv': {
                 description: 'Spatial Audio (TRL 7) is standard in headsets like Vision Pro. It computes how sound bounces in a virtual room, crucial for "cocktail party effect" in social VR (hearing the person you look at).',
-                progress: { research: 85, funding: 92, timeline: 82, consensus: 88 },
                 references: ['Apple. (2024). Spatial Audio API.', 'Qualcomm. (2025). Snapdragon Sound for XR.']
             },
             'cross-platform-id': {
                 description: 'Cross-Platform Identity (TRL 5) systems like "Sign in with Ethereum" or specialized SSI (Self-Sovereign Identity) wallets allow users to carry reputation and friends lists across competing metaverse platforms.',
-                progress: { research: 62, funding: 68, timeline: 55, consensus: 62 },
                 references: ['SpruceID. (2025). DID standards adoption.', 'W3C. (2024). Decentralized Identifiers (DIDs) v1.0.']
             },
             'fullbody-tracking': {
                 description: 'Full-Body Tracking (TRL 4) traditionally needed expensive suits. Now, "inside-out" headset cameras and AI (like Meta\'s body pose estimation) predict leg positions with 80% accuracy without external sensors. Enthusiasts still use "SlimeVR" trackers.',
-                progress: { research: 65, funding: 70, timeline: 58, consensus: 65 },
                 references: ['Meta AI. (2024). Ego-pose estimation.', 'SlimeVR. (2025). Open source tracking roadmap.']
             },
             'haptic-metaverse': {
                 description: 'Haptic Metaverse (TRL 4) tech adds touch. Gloves (HaptX) provide force feedback to stop fingers when grasping virtual objects. Vests (bHaptics) simulate impacts. Mass adoption awaits lower costs.',
-                progress: { research: 62, funding: 68, timeline: 55, consensus: 62 },
                 references: ['HaptX. (2025). Enterprise haptics usage.', 'bHaptics. (2024). Consumer haptic vest sales.']
             },
             'olfactory-vr': {
                 description: 'Olfactory VR (TRL 3) adds smell. Devices like GameScent uses AI to release scents (gunfire, storm, forest) triggered by audio cues in games. Primarily a novelty or for immersion therapy.',
-                progress: { research: 52, funding: 58, timeline: 42, consensus: 50 },
                 references: ['GameScent. (2025). AI scent release technology.', 'Psychology Today. (2024). Olfactory VR in PTSD therapy.']
             },
             'neural-metaverse': {
                 description: 'Neural Metaverse (TRL 3) integrates BCI. While not "Matrix" level, emerging headbands (OpenBCI) allow navigating menus or selecting objects with concentration, freeing hands for other interactions.',
-                progress: { research: 48, funding: 65, timeline: 38, consensus: 50 },
                 references: ['OpenBCI. (2025). Galea beta results.', 'Valve. (2024). BCI game interaction experiments.']
             },
             'persistent-worlds': {
                 description: 'Persistent Shared Worlds (TRL 4) are server-side simulations that continue even when no one is online (trees grow, economy fluctuates). "SpatialOS" failed, but new cloud-native engines (Improbable M2) support 10,000+ concurrent players in single shards.',
-                progress: { research: 68, funding: 75, timeline: 62, consensus: 70 },
                 references: ['Improbable. (2025). Morpheus tech demo.', 'EVE Online. (2024). Single-shard architecture lessons.']
             },
             'ai-content': {
                 description: 'AI-Generated Content (TRL 5) populates empty virtual worlds. Tools like "Blockade Labs" generate 360-degree skyboxes in seconds. NPC interactions are powered by LLMs (Inworld AI) for infinite dynamic dialogue.',
-                progress: { research: 72, funding: 85, timeline: 65, consensus: 75 },
                 references: ['Inworld AI. (2025). Character Engine case studies.', 'Roblox. (2024). Generative AI creator tools.']
             },
             'decentral-gov': {
                 description: 'Decentralized Governance (TRL 4) uses DAOs to let users vote on platform rules (e.g., Decentraland DAO). Challenges include voter apathy and "whale" dominance, but it represents the first digital democracies.',
-                progress: { research: 60, funding: 68, timeline: 52, consensus: 60 },
                 references: ['DeepDAO. (2025). Metaverse DAO treasury analysis.', 'Harvard Law Review. (2024). Legal frameworks for DAOs.']
             },
             'virtual-economy': {
                 description: 'Virtual Economy Regulation (TRL 4) is catching up. Governments are taxing NFT gains and regulating "loot boxes" as gambling. KYC (Know Your Customer) is becoming standard for cashing out virtual currency to fiat.',
-                progress: { research: 58, funding: 65, timeline: 50, consensus: 58 },
                 references: ['IRS. (2025). Digital Asset Tax Guidelines.', 'EU. (2024). MiCA regulation impact on GameFi.']
             },
             'blockchain-metaverse': {
                 description: 'Blockchain Metaverse (TRL 6) platforms like The Sandbox use blockchain for true ownership. Post-2022 hype, the focus is on "invisible elements" - users own items but don\'t need to know it\'s an NFT to play.',
-                progress: { research: 70, funding: 78, timeline: 65, consensus: 72 },
                 references: ['DappRadar. (2025). State of Web3 Gaming.', 'Animoca Brands. (2024). Ecosystem growth report.']
             }
         };
 
-        // Category colors
-        const categoryColors = {
-            research: '#FF6B6B',
-            industry: '#4ECDC4',
-            emerging: '#FFE66D',
-            experimental: '#A8DADC'
-        };
+        const techConnections = [
+            ['social-vr', 'avatars'],
+            ['social-vr', 'spatial-audio-mv'],
+            ['vr-gaming', 'fullbody-tracking'],
+            ['virtual-land', 'nft-experiences'],
+            ['virtual-land', 'blockchain-metaverse'],
+            ['digital-twins', 'photogrammetry'],
+            ['digital-twins', 'virtual-commerce'],
+            ['interoperability', 'cross-platform-id'],
+            ['volumetric-video', 'photogrammetry'],
+            ['haptic-metaverse', 'fullbody-tracking'],
+            ['neural-metaverse', 'haptic-metaverse'],
+            ['ai-content', 'persistent-worlds']
+        ];
 
-        // TRL level colors
-        function getTRLColor(trl) {
-            if (trl >= 1 && trl <= 3) return '#FF6B6B';
-            if (trl >= 4 && trl <= 6) return '#FFE66D';
-            if (trl >= 7 && trl <= 9) return '#4ECDC4';
-            return '#999';
-        }
+        // ========== GENERIC VISUALIZATION CODE - NO CHANGES NEEDED ==========
 
-        // Current state
-        let currentPeriod = '2025';
+        let currentYear = 2025;
         let currentFilter = 'all';
-        let currentData = data2025;
-        let currentZoom = 1;
-        let currentPan = { x: 0, y: 0 };
+        let selectedTech = null;
 
-        // SVG dimensions
-        const container = document.getElementById('radar-container');
-        const svg = d3.select('#radar-svg');
-        let width = container.clientWidth;
-        let height = container.clientHeight;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
         const centerX = width / 2;
         const centerY = height / 2;
         const maxRadius = Math.min(width, height) * 0.4;
 
-        // Create main group for zoom/pan
-        const mainGroup = svg.append('g')
-            .attr('class', 'main-group');
+        const svg = d3.select('#radarSvg')
+            .attr('width', width)
+            .attr('height', height);
 
-        // Create radar visualization
-        function createRadar() {
-            mainGroup.selectAll('*').remove();
+        const categoryColors = {
+            research: 'var(--color-electric-blue)',
+            industry: 'var(--color-gray-800)',
+            emerging: 'var(--color-gray-600)',
+            experimental: 'var(--color-electric-blue-dark)'
+        };
 
-            // Draw TRL circles
-            for (let i = 9; i >= 1; i--) {
-                const radius = (i / 9) * maxRadius;
-                mainGroup.append('circle')
+        const trlColors = d3.scaleLinear()
+            .domain([1, 5, 9])
+            .range(['#a3a3a3', '#525252', '#4040ff']);
+
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        let zoomTransform = d3.zoomIdentity;
+
+        function initVisualization() {
+            setupZoom();
+            setTimeout(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderRadar();
+            }, 1500);
+        }
+
+        function setupZoom() {
+            const zoom = d3.zoom()
+                .scaleExtent([minZoom, maxZoom])
+                .on('zoom', handleZoom);
+
+            svg.call(zoom);
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+            });
+        }
+
+        function handleZoom(event) {
+            zoomTransform = event.transform;
+            svg.select('.radar-content').attr('transform', zoomTransform);
+        }
+
+        function renderRadar() {
+            svg.selectAll('*').remove();
+
+            const radarContent = svg.append('g').attr('class', 'radar-content');
+            const defs = svg.append('defs');
+
+            const shadow = defs.append('filter')
+                .attr('id', 'shadow')
+                .attr('x', '-50%')
+                .attr('y', '-50%')
+                .attr('width', '200%')
+                .attr('height', '200%');
+
+            shadow.append('feDropShadow')
+                .attr('dx', 2)
+                .attr('dy', 2)
+                .attr('stdDeviation', 3)
+                .attr('flood-color', '#000')
+                .attr('flood-opacity', 0.2);
+
+            radarContent.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', maxRadius)
+                .attr('fill', '#f8fafc')
+                .attr('stroke', '#e2e8f0')
+                .attr('stroke-width', 2);
+
+            for (let i = 1; i <= 9; i++) {
+                const radius = (maxRadius / 9) * i;
+
+                radarContent.append('circle')
                     .attr('cx', centerX)
                     .attr('cy', centerY)
                     .attr('r', radius)
                     .attr('fill', 'none')
-                    .attr('stroke', getTRLColor(i))
+                    .attr('stroke', '#cbd5e1')
                     .attr('stroke-width', 1)
-                    .attr('opacity', 0.3);
+                    .attr('opacity', 0.6);
 
-                // Add TRL labels
-                mainGroup.append('text')
-                    .attr('x', centerX + 5)
-                    .attr('y', centerY - radius + 15)
-                    .attr('font-size', '10px')
-                    .attr('fill', '#666')
-                    .text(`TRL ${i}`);
+                if (i % 3 === 0) {
+                    radarContent.append('text')
+                        .attr('x', centerX + radius + 10)
+                        .attr('y', centerY + 5)
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '12px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(`TRL ${i}`);
+                }
             }
 
-            // Draw angle guides
-            for (let angle = 0; angle < 360; angle += 30) {
-                const rad = (angle - 90) * Math.PI / 180;
-                mainGroup.append('line')
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const x2 = centerX + Math.cos(angle) * maxRadius;
+                const y2 = centerY + Math.sin(angle) * maxRadius;
+
+                radarContent.append('line')
                     .attr('x1', centerX)
                     .attr('y1', centerY)
-                    .attr('x2', centerX + Math.cos(rad) * maxRadius)
-                    .attr('y2', centerY + Math.sin(rad) * maxRadius)
-                    .attr('stroke', '#ddd')
+                    .attr('x2', x2)
+                    .attr('y2', y2)
+                    .attr('stroke', '#e2e8f0')
                     .attr('stroke-width', 1)
-                    .attr('opacity', 0.3);
+                    .attr('opacity', 0.5);
             }
 
-            // Draw connections
-            techConnections.forEach(conn => {
-                const source = currentData.find(d => d.id === conn.source);
-                const target = currentData.find(d => d.id === conn.target);
+            const data = technologyData[currentYear] || technologyData[2025];
+            const filteredData = currentFilter === 'all' ? data : data.filter(d => d.category === currentFilter);
 
-                if (source && target) {
-                    const sourceRad = (source.angle - 90) * Math.PI / 180;
-                    const targetRad = (target.angle - 90) * Math.PI / 180;
-                    const sourceRadius = (source.trl / 9) * maxRadius;
-                    const targetRadius = (target.trl / 9) * maxRadius;
+            const techGroups = radarContent.selectAll('.tech-node')
+                .data(filteredData)
+                .enter()
+                .append('g')
+                .attr('class', 'tech-node')
+                .style('cursor', 'pointer')
+                .on('click', (event, d) => showTechInfo(d))
+                .on('mouseover', function(event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 12)
+                        .attr('filter', 'url(#shadow)');
+                    showTechTooltip(event, d);
+                })
+                .on('mousemove', function(event, d) {
+                    positionTechTooltip(event);
+                })
+                .on('mouseout', function(event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 8)
+                        .attr('filter', 'none');
+                    hideTechTooltip();
+                });
 
-                    mainGroup.append('line')
-                        .attr('x1', centerX + Math.cos(sourceRad) * sourceRadius)
-                        .attr('y1', centerY + Math.sin(sourceRad) * sourceRadius)
-                        .attr('x2', centerX + Math.cos(targetRad) * targetRadius)
-                        .attr('y2', centerY + Math.sin(targetRad) * targetRadius)
-                        .attr('stroke', '#ccc')
-                        .attr('stroke-width', 1)
-                        .attr('stroke-dasharray', '3,3')
-                        .attr('opacity', 0.3);
+            techGroups.each(function(d) {
+                const group = d3.select(this);
+                const radius = (maxRadius / 9) * d.trl;
+                const angleRad = (d.angle - 90) * Math.PI / 180;
+                const x = centerX + Math.cos(angleRad) * radius;
+                const y = centerY + Math.sin(angleRad) * radius;
+
+                const nodeColor = getContrastColor(d.category, d.trl);
+                group.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 8)
+                    .attr('fill', nodeColor.fill)
+                    .attr('stroke', nodeColor.stroke)
+                    .attr('stroke-width', 2);
+
+                if (d.trl >= 6 || d.category === 'emerging') {
+                    const labelRadius = radius + 25;
+                    const labelX = centerX + Math.cos(angleRad) * labelRadius;
+                    const labelY = centerY + Math.sin(angleRad) * labelRadius;
+
+                    group.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '10px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(d.name.length > 20 ? d.name.substring(0, 20) + '...' : d.name);
                 }
             });
 
-            // Draw data points
-            currentData.forEach(tech => {
-                const rad = (tech.angle - 90) * Math.PI / 180;
-                const radius = (tech.trl / 9) * maxRadius;
-                const x = centerX + Math.cos(rad) * radius;
-                const y = centerY + Math.sin(rad) * radius;
+            drawConnections(filteredData);
 
-                const point = mainGroup.append('g')
-                    .attr('class', 'tech-point')
-                    .attr('data-category', tech.category)
-                    .style('cursor', 'pointer')
-                    .on('click', () => showTechInfo(tech));
+            svg.selectAll('.tech-node')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 50)
+                .style('opacity', 1);
+        }
 
-                point.append('circle')
-                    .attr('cx', x)
-                    .attr('cy', y)
-                    .attr('r', 6)
-                    .attr('fill', categoryColors[tech.category])
-                    .attr('stroke', '#333')
-                    .attr('stroke-width', 2);
+        function getContrastColor(category, trl) {
+            const colors = {
+                research: { fill: '#4040ff', stroke: '#1e1e8f' },
+                industry: { fill: '#1e293b', stroke: '#0f172a' },
+                emerging: { fill: '#64748b', stroke: '#475569' },
+                experimental: { fill: '#3030dd', stroke: '#1e1e8f' }
+            };
+            return colors[category] || colors.research;
+        }
 
-                point.append('text')
-                    .attr('x', x + 10)
-                    .attr('y', y + 4)
-                    .attr('font-size', '11px')
-                    .attr('fill', '#333')
-                    .text(tech.name);
+        function drawConnections(data) {
+            const connectionGroup = svg.select('.radar-content').append('g').attr('class', 'connections');
+
+            techConnections.forEach(([source, target]) => {
+                const sourceNode = data.find(d => d.id === source);
+                const targetNode = data.find(d => d.id === target);
+
+                if (sourceNode && targetNode) {
+                    const sourceRadius = (maxRadius / 9) * sourceNode.trl;
+                    const targetRadius = (maxRadius / 9) * targetNode.trl;
+                    const sourceAngle = (sourceNode.angle - 90) * Math.PI / 180;
+                    const targetAngle = (targetNode.angle - 90) * Math.PI / 180;
+
+                    const sourceX = centerX + Math.cos(sourceAngle) * sourceRadius;
+                    const sourceY = centerY + Math.sin(sourceAngle) * sourceRadius;
+                    const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+                    const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+                    const midX = (sourceX + targetX) / 2;
+                    const midY = (sourceY + targetY) / 2;
+                    const controlX = midX + (centerX - midX) * 0.3;
+                    const controlY = midY + (centerY - midY) * 0.3;
+
+                    const path = `M ${sourceX},${sourceY} Q ${controlX},${controlY} ${targetX},${targetY}`;
+
+                    connectionGroup.append('path')
+                        .attr('d', path)
+                        .attr('stroke', '#3b82f6')
+                        .attr('stroke-width', 1.5)
+                        .attr('fill', 'none')
+                        .attr('opacity', 0.6)
+                        .attr('stroke-dasharray', '5,5');
+                }
             });
         }
 
-        // Show technology information
         function showTechInfo(tech) {
-            const infoPanel = document.getElementById('info-panel');
-            const techInfo = techDescriptions[tech.id];
+            selectedTech = tech;
+            const infoPanel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
 
-            let html = `
-                <div class="info-title">${tech.name}</div>
-                <div class="info-content">
-                    <div class="info-item">
-                        <strong>TRL Level:</strong> ${tech.trl}/9
+            const techInfo = techDescriptions[tech.id] || {};
+            const description = techInfo.description || `${tech.name} is a Metaverse & Virtual Worlds technology with TRL level ${tech.trl}.`;
+            const references = techInfo.references || [];
+
+            content.innerHTML = `
+                <h2 class="info-title">${tech.name}</h2>
+                <div class="info-meta">
+                    <span class="meta-badge meta-${tech.category}">${tech.category.toUpperCase()}</span>
+                    <span class="meta-badge" style="background: ${trlColors(tech.trl)}; color: white;">TRL ${tech.trl}</span>
+                    <span class="meta-badge" style="background: var(--color-gray-700); color: white;">Year: ${currentYear}</span>
+                </div>
+                <div class="info-description">
+                    ${description}
+                </div>
+                <div class="progress-grid">
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <div class="progress-label">${key}</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%;"></div>
+                            </div>
+                            <div class="progress-value">${value}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${references.length > 0 ? `
+                    <div class="references-section">
+                        <div class="references-title">Key References</div>
+                        ${references.map(ref => `
+                            <div class="reference-item">• ${ref}</div>
+                        `).join('')}
                     </div>
-                    <div class="info-item">
-                        <strong>Category:</strong> ${tech.category}
-                    </div>
+                ` : ''}
             `;
 
-            if (techInfo) {
-                html += `
-                    <div class="info-item">
-                        <strong>Description:</strong>
-                        <p>${techInfo.description}</p>
-                    </div>
-                    <div class="info-item">
-                        <strong>Progress Metrics:</strong>
-                        <div class="progress-bar">
-                            <div class="progress-label">Research: ${techInfo.progress.research}%</div>
-                            <div class="progress-fill" style="width: ${techInfo.progress.research}%"></div>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-label">Funding: ${techInfo.progress.funding}%</div>
-                            <div class="progress-fill" style="width: ${techInfo.progress.funding}%"></div>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-label">Timeline: ${techInfo.progress.timeline}%</div>
-                            <div class="progress-fill" style="width: ${techInfo.progress.timeline}%"></div>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-label">Consensus: ${techInfo.progress.consensus}%</div>
-                            <div class="progress-fill" style="width: ${techInfo.progress.consensus}%"></div>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <strong>References:</strong>
-                        <ol style="margin: 5px 0; padding-left: 20px; font-size: 10px;">
-                            ${techInfo.references.map(ref => `<li>${ref}</li>`).join('')}
-                        </ol>
-                    </div>
-                `;
-            }
-
-            html += `</div>`;
-            infoPanel.innerHTML = html;
+            infoPanel.classList.add('active');
         }
 
-        // Filter controls
+
+        function showTechTooltip(event, d) {
+            const tooltip = document.getElementById('techTooltip');
+            tooltip.innerHTML = d.name + '<span class="tooltip-category">' + d.category + ' &middot; TRL ' + d.trl + '</span>';
+            tooltip.classList.add('active');
+            positionTechTooltip(event);
+        }
+
+        function positionTechTooltip(event) {
+            const tooltip = document.getElementById('techTooltip');
+            tooltip.style.left = event.clientX + 'px';
+            tooltip.style.top = event.clientY + 'px';
+        }
+
+        function hideTechTooltip() {
+            document.getElementById('techTooltip').classList.remove('active');
+        }
+
+        function closeInfoPanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+            selectedTech = null;
+        }
+
+        function toggleTRLInfo() {
+            const trlInfoPanel = document.getElementById('trlInfoPanel');
+            trlInfoPanel.classList.toggle('active');
+        }
+
         document.querySelectorAll('[data-filter]').forEach(btn => {
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', function() {
                 document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 currentFilter = this.dataset.filter;
-                applyFilters();
+                renderRadar();
             });
         });
 
-        // Period controls
-        document.querySelectorAll('[data-period]').forEach(btn => {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('[data-period]').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-time]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-time]').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                currentPeriod = this.dataset.period;
-
-                if (currentPeriod === '2025') currentData = data2025;
-                else if (currentPeriod === '2020') currentData = data2020;
-                else currentData = data2015;
-
-                createRadar();
-                applyFilters();
+                currentYear = parseInt(this.dataset.time);
+                renderRadar();
             });
         });
 
-        // Apply filters
-        function applyFilters() {
-            document.querySelectorAll('.tech-point').forEach(point => {
-                const category = point.getAttribute('data-category');
-                if (currentFilter === 'all' || category === currentFilter) {
-                    point.style.display = 'block';
-                } else {
-                    point.style.display = 'none';
-                }
-            });
-        }
-
-        // Zoom controls
-        document.getElementById('zoom-in').addEventListener('click', () => {
-            currentZoom *= 1.2;
-            applyZoomPan();
-        });
-
-        document.getElementById('zoom-out').addEventListener('click', () => {
-            currentZoom /= 1.2;
-            applyZoomPan();
-        });
-
-        document.getElementById('reset-view').addEventListener('click', () => {
-            currentZoom = 1;
-            currentPan = { x: 0, y: 0 };
-            applyZoomPan();
-        });
-
-        function applyZoomPan() {
-            mainGroup.attr('transform', `translate(${currentPan.x}, ${currentPan.y}) scale(${currentZoom})`);
-        }
-
-        // Drag to pan
-        let isDragging = false;
-        let dragStart = { x: 0, y: 0 };
-
-        svg.on('mousedown', function (event) {
-            isDragging = true;
-            dragStart = { x: event.clientX - currentPan.x, y: event.clientY - currentPan.y };
-        });
-
-        svg.on('mousemove', function (event) {
-            if (isDragging) {
-                currentPan = {
-                    x: event.clientX - dragStart.x,
-                    y: event.clientY - dragStart.y
-                };
-                applyZoomPan();
-            }
-        });
-
-        svg.on('mouseup', () => isDragging = false);
-        svg.on('mouseleave', () => isDragging = false);
-
-        // Resize handler
         window.addEventListener('resize', () => {
-            width = container.clientWidth;
-            height = container.clientHeight;
-            svg.attr('width', width).attr('height', height);
-            createRadar();
+            location.reload();
         });
 
-        // Initialize
-        svg.attr('width', width).attr('height', height);
-        createRadar();
+        initVisualization();
     </script>
 <!-- Footer -->
 <footer style="background: var(--color-black); color: var(--color-white); padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
@@ -971,5 +1276,4 @@
 </footer>
 
 </body>
-
 </html>

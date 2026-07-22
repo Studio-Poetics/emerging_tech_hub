@@ -531,6 +531,38 @@
                 margin: 10px 0;
             }
         }
+
+        .tech-tooltip {
+            position: fixed;
+            pointer-events: none;
+            background: rgba(15, 23, 42, 0.95);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translate(-50%, -130%);
+            transition: opacity 0.15s ease;
+            z-index: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+
+        .tech-tooltip.active {
+            opacity: 1;
+        }
+
+        .tech-tooltip .tooltip-category {
+            display: block;
+            font-size: 9px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
     </style>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
@@ -587,16 +619,17 @@
                     <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
                         style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
                         <option value="">EXPLORE OTHER TRL RADARS ▼</option>
-                        <option value="ai-trl.html">AI & Machine Learning</option>
-                        <option value="blockchain-trl.html">Blockchain</option>
-                        <option value="biorobotics-trl.html">Bio-Robotics</option>
-                        <option value="edge-trl.html" disabled selected>Edge Computing</option>
-                        <option value="interfaces-trl.html">Future Interfaces</option>
-                        <option value="iot-trl.html">Internet of Things</option>
-                        <option value="metaverse-trl.html">Metaverse</option>
-                        <option value="quantum-trl.html">Quantum Computing</option>
-                        <option value="robotics-trl.html">Robotics</option>
-                        <option value="textiles-trl.html">Smart Textiles</option>
+                        <option value="ai-trl.html" title="Systems that learn from data to reason, generate, and predict.">AI & Machine Learning</option>
+                        <option value="blockchain-trl.html" title="Decentralized, tamper-resistant ledgers for trustless transactions.">Blockchain</option>
+                        <option value="biorobotics-trl.html" title="Robots that mimic or merge with biological systems and soft materials.">Bio-Robotics</option>
+                        <option value="edge-trl.html" disabled selected title="Processing data near its source instead of centralized cloud servers.">Edge Computing</option>
+                        <option value="interfaces-trl.html" title="Next-gen human-computer interaction: AR/VR, BCIs, haptics, and gesture beyond touchscreens.">Future Interfaces</option>
+                        <option value="iot-trl.html" title="Everyday physical objects embedded with sensors and connectivity.">Internet of Things</option>
+                        <option value="metaverse-trl.html" title="Persistent, shared virtual worlds blending social, gaming, and work.">Metaverse</option>
+                        <option value="quantum-trl.html" title="Computing with qubits to solve select problems far faster than classical computers.">Quantum Computing</option>
+                        <option value="robotics-trl.html" title="Machines that sense, plan, and act in the physical world.">Robotics</option>
+                        <option value="textiles-trl.html" title="Fabrics embedded with electronics, sensors, or reactive materials.">Smart Textiles</option>
+                    <option value="embodied-trl.html" title="Interaction design rooted in bodily movement, presence, and poetic/artistic expression.">Embodied &amp; Poetic Interactions</option>
                     </select>
                 </div>
             </div>
@@ -609,6 +642,7 @@
         </div>
 
         <svg class="radar-canvas" id="radarSvg"></svg>
+        <div class="tech-tooltip" id="techTooltip"></div>
 
         <div class="trl-info-panel" id="trlInfoPanel">
             <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
@@ -1140,6 +1174,10 @@
                         .duration(200)
                         .attr('r', 12)
                         .attr('filter', 'url(#shadow)');
+                    showTechTooltip(event, d);
+                })
+                .on('mousemove', function (event, d) {
+                    positionTechTooltip(event);
                 })
                 .on('mouseout', function (event, d) {
                     d3.select(this).select('circle')
@@ -1147,6 +1185,7 @@
                         .duration(200)
                         .attr('r', 8)
                         .attr('filter', 'none');
+                    hideTechTooltip();
                 });
 
             techGroups.each(function (d) {
@@ -1279,6 +1318,24 @@
             `;
 
             infoPanel.classList.add('active');
+        }
+
+
+        function showTechTooltip(event, d) {
+            const tooltip = document.getElementById('techTooltip');
+            tooltip.innerHTML = d.name + '<span class="tooltip-category">' + d.category + ' &middot; TRL ' + d.trl + '</span>';
+            tooltip.classList.add('active');
+            positionTechTooltip(event);
+        }
+
+        function positionTechTooltip(event) {
+            const tooltip = document.getElementById('techTooltip');
+            tooltip.style.left = event.clientX + 'px';
+            tooltip.style.top = event.clientY + 'px';
+        }
+
+        function hideTechTooltip() {
+            document.getElementById('techTooltip').classList.remove('active');
         }
 
         function closeInfoPanel() {

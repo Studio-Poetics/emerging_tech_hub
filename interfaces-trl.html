@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,117 +8,65 @@
     <title>Future Interfaces & Next-Gen HCI - TRL Radar</title>
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-        :root {
-            --color-trl-1-3: #FF6B6B;
-            --color-trl-4-6: #FFE66D;
-            --color-trl-7-9: #4ECDC4;
-        }
-
-        * { box-sizing: border-box; }
-
+        /* Clean Radar Visualization Styles */
         body {
             background: var(--color-white);
             color: var(--color-black);
+            overflow-x: hidden;
             font-family: var(--font-primary);
-            margin: 0;
         }
 
-        .container {
+        .radar-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            background: var(--color-white);
         }
 
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--color-gray-200);
-            position: sticky;
-            top: 0;
-            background: var(--color-white);
+        .radar-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             z-index: 100;
         }
 
-        .nav-left, .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-brand {
+        .radar-title {
+            font-size: 24px;
             font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 1px;
-            color: var(--color-black);
-            text-decoration: none;
+            color: var(--color-electric-blue);
+            margin: 0;
         }
 
-        .nav-link {
+        .radar-subtitle {
             font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
             color: var(--color-gray-600);
-            text-decoration: none;
-        }
-
-        .nav-link:hover {
-            color: var(--color-electric-blue);
-        }
-
-        .hero-section {
-            padding: 32px 24px 24px;
-            text-align: center;
-            border-bottom: 1px solid var(--color-gray-200);
-        }
-
-        .page-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0 0 8px;
-            letter-spacing: 1px;
-        }
-
-        .page-subtitle {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--color-electric-blue);
-            margin: 0 0 12px;
+            margin: 5px 0 10px 0;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .page-description {
-            font-size: 14px;
-            color: var(--color-gray-600);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
+        .trl-info-btn {
+            background: var(--color-electric-blue) !important;
+            color: var(--color-white) !important;
+            border-color: var(--color-electric-blue) !important;
         }
 
-        .content-wrapper {
-            display: flex;
-            flex: 1;
-            min-height: 0;
+        .trl-info-btn:hover {
+            background: var(--color-electric-blue-dark) !important;
+            border-color: var(--color-electric-blue-dark) !important;
+            color: var(--color-white) !important;
         }
 
-        .sidebar {
-            width: 280px;
-            flex-shrink: 0;
-            padding: 20px;
-            border-right: 1px solid var(--color-gray-200);
-            overflow-y: auto;
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-
-        .control-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
+            gap: 10px;
         }
 
         .control-group {
@@ -127,13 +74,14 @@
             border: 1px solid var(--color-gray-200);
             border-radius: 5px;
             padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .control-label {
             font-size: 10px;
             color: var(--color-gray-600);
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             letter-spacing: 1px;
             font-weight: 600;
         }
@@ -155,7 +103,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
-            border-radius: 3px;
         }
 
         .filter-btn:hover {
@@ -170,21 +117,290 @@
             color: var(--color-white);
         }
 
-        .trl-dropdown {
+        .radar-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
         }
 
-        .legend-section {
-            border-top: 1px solid var(--color-gray-200);
+        .zoom-controls {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .zoom-btn:hover {
+            background: var(--color-electric-blue);
+            color: var(--color-white);
+            border-color: var(--color-electric-blue);
+        }
+
+        .info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .info-panel.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 18px;
+            color: var(--color-electric-blue);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .info-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .meta-research { background: var(--color-electric-blue); color: var(--color-white); }
+        .meta-industry { background: var(--color-gray-800); color: var(--color-white); }
+        .meta-emerging { background: var(--color-gray-600); color: var(--color-white); }
+        .meta-experimental { background: var(--color-electric-blue-dark); color: var(--color-white); }
+
+        .info-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .references-section {
+            margin-top: 20px;
             padding-top: 15px;
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .references-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 10px;
+        }
+
+        .reference-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--color-gray-600);
+        }
+
+        .reference-link {
+            color: var(--color-electric-blue);
+            text-decoration: none;
+        }
+
+        .reference-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .progress-item {
+            background: var(--color-gray-50);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            color: var(--color-gray-600);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--color-gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-electric-blue);
+            transition: width 0.8s ease;
+        }
+
+        .progress-value {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--color-gray-500);
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .trl-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-white);
+            border: 2px solid var(--color-electric-blue);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 200;
+        }
+
+        .trl-info-panel.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .trl-info-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-electric-blue);
+            margin-bottom: 15px;
+        }
+
+        .trl-info-content {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .trl-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .trl-level-item {
+            padding: 8px;
+            background: var(--color-gray-50);
+            border-radius: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .trl-level-number {
+            font-weight: 600;
+            color: var(--color-electric-blue);
+        }
+
+        .close-info-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--color-gray-500);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-info-btn:hover {
+            color: var(--color-electric-blue);
+        }
+
+        .legend-title {
+            font-size: 12px;
+            color: var(--color-electric-blue);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 6px;
-            font-size: 11px;
+            margin-bottom: 5px;
+            font-size: 10px;
             color: var(--color-gray-700);
         }
 
@@ -192,334 +408,374 @@
             width: 12px;
             height: 12px;
             border-radius: 2px;
-            flex-shrink: 0;
         }
 
-        .info-panel {
-            border: 1px solid var(--color-gray-200);
-            border-radius: 5px;
-            padding: 14px;
-            font-size: 12px;
-        }
-
-        .info-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--color-electric-blue);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .info-content {
-            color: var(--color-gray-700);
-            line-height: 1.5;
-        }
-
-        .info-item {
-            margin-bottom: 10px;
-            font-size: 12px;
-        }
-
-        .info-item strong {
-            display: block;
-            margin-bottom: 3px;
-            color: var(--color-black);
-        }
-
-        .progress-bar {
-            position: relative;
-            width: 100%;
-            height: 16px;
-            background: var(--color-gray-100);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 6px;
-        }
-
-        .progress-label {
+        .loading {
             position: absolute;
-            left: 6px;
-            top: 1px;
-            font-size: 9px;
-            font-weight: 600;
-            color: var(--color-gray-700);
-            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00f5ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: var(--color-electric-blue-bg);
-            border-radius: 4px;
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
         }
 
-        .main-content {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-        }
+        @media (max-width: 1024px) {
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
 
-        #radar-container {
-            flex: 1;
-            position: relative;
-            min-height: 500px;
-        }
+            .radar-header {
+                position: static;
+                margin: 20px;
+            }
 
-        #radar-svg {
-            width: 100%;
-            height: 100%;
-            display: block;
+            .radar-canvas {
+                position: relative;
+                width: 100%;
+                height: 70vh;
+            }
+
+            .controls-panel {
+                position: static;
+                margin: 10px 20px 0 20px;
+            }
+
+            .legend {
+                position: static;
+                margin: 10px 20px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+            }
         }
 
         @media (max-width: 768px) {
-            .content-wrapper {
-                flex-direction: column;
+            .radar-container {
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 16px;
             }
 
-            .sidebar {
+            .radar-title {
+                font-size: 18px;
+            }
+
+            .radar-header {
+                position: static;
+                margin: 16px;
+            }
+
+            .radar-canvas {
+                position: relative;
                 width: 100%;
-                border-right: none;
-                border-bottom: 1px solid var(--color-gray-200);
+                height: 60vh;
             }
 
-            #radar-container {
-                min-height: 400px;
+            .controls-panel {
+                position: static;
+                top: auto;
+                right: auto;
+                margin: 10px 16px 0 16px;
+            }
+
+            .legend {
+                position: static;
+                bottom: auto;
+                right: auto;
+                margin: 10px 16px;
+            }
+
+            .zoom-controls {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
             }
         }
+
+        .tech-tooltip {
+            position: fixed;
+            pointer-events: none;
+            background: rgba(15, 23, 42, 0.95);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translate(-50%, -130%);
+            transition: opacity 0.15s ease;
+            z-index: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+
+        .tech-tooltip.active {
+            opacity: 1;
+        }
+
+        .tech-tooltip .tooltip-category {
+            display: block;
+            font-size: 9px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
     </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-R4MBJ1TPQ5');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R4MBJ1TPQ5');
     </script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
-
 <body>
-    <div class="container">
-        <nav class="navbar">
-            <div class="nav-left">
-                <a href="index.html" class="nav-brand">EMERGING TECH HUB</a>
-            </div>
-            <div class="nav-right">
-                <a href="index.html" class="nav-link">HOME</a>
-                <a href="interfaces-landing.html" class="nav-link">INTERFACES LANDING</a>
-            </div>
-        </nav>
-
-        <div class="hero-section">
-            <h1 class="page-title">FUTURE INTERFACES & NEXT-GEN HCI</h1>
-            <h2 class="page-subtitle">Technology Readiness Level Radar</h2>
-            <p class="page-description">
-                Tracking the evolution of human-computer interaction technologies from touchscreens to brain-computer
-                interfaces.
-                Data verified as of December 2025.
-            </p>
+    <div class="radar-container">
+        <div class="radar-header">
+            <h1 class="radar-title">FUTURE INTERFACES & NEXT-GEN HCI TECHNOLOGY RADAR</h1>
+            <p class="radar-subtitle">Technology Readiness Level Visualization</p>
         </div>
 
-        <div class="content-wrapper">
-            <aside class="sidebar">
-                <div class="control-panel">
-                    <div class="control-group">
-                        <div class="control-label">Navigate</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
-                            <button class="filter-btn"
-                                onclick="window.location.href='interfaces-landing.html'">LANDING</button>
-                        </div>
-                        <div class="filter-buttons" style="margin-top: 5px;">
-                            <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;"
-                                style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
-                                <option value="">EXPLORE OTHER TRL RADARS ▼</option>
-                                <option value="ai-trl.html">AI & Machine Learning</option>
-                                <option value="blockchain-trl.html">Blockchain</option>
-                                <option value="biorobotics-trl.html">Bio-Robotics</option>
-                                <option value="edge-trl.html">Edge Computing</option>
-                                <option value="interfaces-trl.html" disabled selected>Future Interfaces</option>
-                                <option value="iot-trl.html">Internet of Things</option>
-                                <option value="metaverse-trl.html">Metaverse</option>
-                                <option value="quantum-trl.html">Quantum Computing</option>
-                                <option value="robotics-trl.html">Robotics</option>
-                                <option value="textiles-trl.html">Smart Textiles</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-label">Filter by Origin</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn active" data-filter="all">ALL</button>
-                            <button class="filter-btn" data-filter="research">RESEARCH</button>
-                            <button class="filter-btn" data-filter="industry">INDUSTRY</button>
-                            <button class="filter-btn" data-filter="emerging">EMERGING</button>
-                            <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-label">Time Period</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn active" data-period="2025">2025</button>
-                            <button class="filter-btn" data-period="2020">2020</button>
-                            <button class="filter-btn" data-period="2015">2015</button>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="control-label">Zoom Controls</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn" id="zoom-in">ZOOM IN</button>
-                            <button class="filter-btn" id="zoom-out">ZOOM OUT</button>
-                            <button class="filter-btn" id="reset-view">RESET</button>
-                        </div>
-                    </div>
-
-                    <div class="legend-section">
-                        <div class="control-label">TRL LEVELS</div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--color-trl-1-3);"></div>
-                            <span>1-3: Basic Research</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--color-trl-4-6);"></div>
-                            <span>4-6: Development</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: var(--color-trl-7-9);"></div>
-                            <span>7-9: Deployment</span>
-                        </div>
-                    </div>
+        <div class="controls-panel">
+            <div class="control-group">
+                <div class="control-label">Filter by Origin</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="research">RESEARCH</button>
+                    <button class="filter-btn" data-filter="industry">INDUSTRY</button>
+                    <button class="filter-btn" data-filter="emerging">EMERGING</button>
+                    <button class="filter-btn" data-filter="experimental">EXPERIMENTAL</button>
                 </div>
+            </div>
 
-                <div class="info-panel" id="info-panel">
-                    <div class="info-title">SELECT A TECHNOLOGY</div>
-                    <div class="info-content">
-                        <p>Click on any point to view detailed information about the technology.</p>
-                    </div>
+            <div class="control-group">
+                <div class="control-label">Time Period</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-time="2025">2025</button>
+                    <button class="filter-btn" data-time="2020">2020</button>
+                    <button class="filter-btn" data-time="2015">2015</button>
                 </div>
-            </aside>
+            </div>
 
-            <main class="main-content">
-                <div id="radar-container">
-                    <svg id="radar-svg"></svg>
+            <div class="control-group">
+                <div class="control-label">Learn More</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn trl-info-btn" onclick="toggleTRLInfo()">WHAT IS TRL?</button>
                 </div>
-            </main>
+            </div>
+
+            <div class="control-group">
+                <div class="control-label">Navigate</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn" onclick="window.location.href='index.html'">HOME</button>
+                    <button class="filter-btn" onclick="window.location.href='interfaces-landing.html'">LANDING</button>
+                </div>
+                <div class="filter-buttons" style="margin-top: 5px;">
+                    <select class="trl-dropdown" onchange="if(this.value) window.location.href=this.value;" style="width: 100%; padding: 8px; border: 1px solid var(--color-gray-300); border-radius: 4px; background: var(--color-white); color: var(--color-gray-700); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; cursor: pointer;">
+                        <option value="">EXPLORE OTHER TRL RADARS ▼</option>
+                        <option value="ai-trl.html" title="Systems that learn from data to reason, generate, and predict.">AI & Machine Learning</option>
+                        <option value="blockchain-trl.html" title="Decentralized, tamper-resistant ledgers for trustless transactions.">Blockchain</option>
+                        <option value="biorobotics-trl.html" title="Robots that mimic or merge with biological systems and soft materials.">Bio-Robotics</option>
+                        <option value="edge-trl.html" title="Processing data near its source instead of centralized cloud servers.">Edge Computing</option>
+                        <option value="interfaces-trl.html" disabled selected title="Next-gen human-computer interaction: AR/VR, BCIs, haptics, and gesture beyond touchscreens.">Future Interfaces</option>
+                        <option value="iot-trl.html" title="Everyday physical objects embedded with sensors and connectivity.">Internet of Things</option>
+                        <option value="metaverse-trl.html" title="Persistent, shared virtual worlds blending social, gaming, and work.">Metaverse</option>
+                        <option value="quantum-trl.html" title="Computing with qubits to solve select problems far faster than classical computers.">Quantum Computing</option>
+                        <option value="robotics-trl.html" title="Machines that sense, plan, and act in the physical world.">Robotics</option>
+                        <option value="textiles-trl.html" title="Fabrics embedded with electronics, sensors, or reactive materials.">Smart Textiles</option>
+                    <option value="embodied-trl.html" title="Interaction design rooted in bodily movement, presence, and poetic/artistic expression.">Embodied &amp; Poetic Interactions</option>
+                    </select>
+                </div>
+            </div>
         </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" title="Zoom In">+</button>
+            <button class="zoom-btn" id="zoomOut" title="Zoom Out">−</button>
+            <button class="zoom-btn" id="resetZoom" title="Reset Zoom">⌂</button>
+        </div>
+
+        <svg class="radar-canvas" id="radarSvg"></svg>
+        <div class="tech-tooltip" id="techTooltip"></div>
+
+        <div class="trl-info-panel" id="trlInfoPanel">
+            <button class="close-info-btn" onclick="toggleTRLInfo()">×</button>
+            <div class="trl-info-title">Technology Readiness Levels (TRL)</div>
+            <div class="trl-info-content">
+                Technology Readiness Levels for Future Interfaces & Next-Gen HCI assess maturity from basic research to widespread deployment. TRL evaluation considers interaction accuracy, ergonomics, latency, hardware miniaturization, regulatory/safety clearance, and real-world adoption across consumer, enterprise, and clinical contexts — from touchscreens to brain-computer interfaces.
+            </div>
+            <div class="trl-levels-grid">
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 1-2</div>
+                    <div>Basic Research</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 3</div>
+                    <div>Proof of Concept</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 4</div>
+                    <div>Lab Validation</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 5</div>
+                    <div>Benchmark Testing</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 6</div>
+                    <div>Pilot Deployment</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 7</div>
+                    <div>Beta Release</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 8</div>
+                    <div>Production System</div>
+                </div>
+                <div class="trl-level-item">
+                    <div class="trl-level-number">TRL 9</div>
+                    <div>Proven Operational</div>
+                </div>
+                <div class="trl-level-item" style="grid-column: span 1; background: var(--color-electric-blue-bg);">
+                    <div class="trl-level-number">Click & Explore</div>
+                    <div>Interactive Technologies</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-title">TRL Levels</div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a3a3a3;"></div>
+                <span>TRL 1-3: Research</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #525252;"></div>
+                <span>TRL 4-6: Development</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4040ff;"></div>
+                <span>TRL 7-9: Production</span>
+            </div>
+        </div>
+
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfoPanel()">×</button>
+            <div id="infoPanelContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+
+        <div class="loading" id="loadingIndicator">Initializing Radar...</div>
     </div>
 
     <script>
-        // Data for 2015
-        const data2015 = [
-            { id: 'touchscreens', name: 'Touchscreens (Capacitive)', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
-            { id: 'voice-assistants', name: 'Voice Assistants (Siri, Alexa)', category: 'industry', trl: 6, angle: 15, progress: { research: 70, funding: 85, timeline: 65, consensus: 72 } },
-            { id: 'eye-tracking', name: 'Eye Tracking Systems', category: 'industry', trl: 7, angle: 30, progress: { research: 75, funding: 80, timeline: 70, consensus: 78 } },
-            { id: 'vr-quest3', name: 'VR Headsets (Oculus DK2)', category: 'emerging', trl: 5, angle: 45, progress: { research: 65, funding: 75, timeline: 60, consensus: 68 } },
-            { id: 'mobile-ar', name: 'Mobile AR (Pokemon GO era)', category: 'emerging', trl: 4, angle: 60, progress: { research: 55, funding: 70, timeline: 50, consensus: 60 } },
-            { id: 'haptic', name: 'Haptic Feedback (Vibration)', category: 'industry', trl: 7, angle: 75, progress: { research: 75, funding: 85, timeline: 80, consensus: 82 } },
-            { id: 'gesture', name: 'Gesture Recognition (Kinect)', category: 'emerging', trl: 5, angle: 90, progress: { research: 60, funding: 72, timeline: 55, consensus: 65 } },
-            { id: 'mr-visionpro', name: 'Mixed Reality Headsets', category: 'research', trl: 3, angle: 105, progress: { research: 45, funding: 60, timeline: 35, consensus: 50 } },
-            { id: 'passthrough-ar', name: 'Passthrough AR', category: 'research', trl: 3, angle: 120, progress: { research: 40, funding: 55, timeline: 30, consensus: 45 } },
-            { id: 'noninvasive-bci', name: 'Non-Invasive BCI (EEG)', category: 'research', trl: 3, angle: 135, progress: { research: 50, funding: 45, timeline: 30, consensus: 42 } },
-            { id: 'holographic', name: 'Holographic Displays', category: 'research', trl: 3, angle: 150, progress: { research: 48, funding: 52, timeline: 32, consensus: 46 } },
-            { id: 'spatial-audio', name: 'Spatial Audio', category: 'emerging', trl: 4, angle: 165, progress: { research: 52, funding: 68, timeline: 48, consensus: 58 } },
-            { id: 'olfactory', name: 'Olfactory Interfaces', category: 'research', trl: 2, angle: 180, progress: { research: 30, funding: 35, timeline: 20, consensus: 28 } },
-            { id: 'facial-expr', name: 'Facial Expression Recognition', category: 'emerging', trl: 4, angle: 195, progress: { research: 55, funding: 62, timeline: 50, consensus: 58 } },
-            { id: 'neural-headbands', name: 'Neural Headbands', category: 'research', trl: 2, angle: 210, progress: { research: 35, funding: 40, timeline: 25, consensus: 32 } },
-            { id: 'invasive-bci', name: 'Invasive BCI (Research only)', category: 'research', trl: 2, angle: 225, progress: { research: 38, funding: 42, timeline: 22, consensus: 35 } },
-            { id: 'retinal-proj', name: 'Retinal Projection', category: 'research', trl: 2, angle: 240, progress: { research: 32, funding: 38, timeline: 20, consensus: 30 } },
-            { id: 'taste-int', name: 'Taste Interfaces', category: 'research', trl: 1, angle: 255, progress: { research: 20, funding: 25, timeline: 12, consensus: 18 } },
-            { id: 'haptic-suits', name: 'Full-Body Haptic Suits', category: 'research', trl: 2, angle: 270, progress: { research: 35, funding: 40, timeline: 25, consensus: 32 } },
-            { id: 'volumetric', name: 'Volumetric Displays', category: 'research', trl: 2, angle: 285, progress: { research: 38, funding: 45, timeline: 28, consensus: 36 } },
-            { id: 'thought-text', name: 'Thought-to-Text', category: 'research', trl: 2, angle: 300, progress: { research: 30, funding: 35, timeline: 18, consensus: 28 } },
-            { id: 'dream-viz', name: 'Dream Visualization', category: 'research', trl: 1, angle: 315, progress: { research: 15, funding: 20, timeline: 10, consensus: 15 } },
-            { id: 'ultrasonic-haptics', name: 'Ultrasonic Haptics', category: 'research', trl: 2, angle: 330, progress: { research: 40, funding: 45, timeline: 30, consensus: 38 } },
-            { id: 'hand-tracking', name: 'Hand Tracking (Leap Motion)', category: 'emerging', trl: 4, angle: 345, progress: { research: 58, funding: 65, timeline: 52, consensus: 60 } }
-        ];
+        const technologyData = {
+            2015: [
+                { id: 'touchscreens', name: 'Touchscreens (Capacitive)', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+                { id: 'voice-assistants', name: 'Voice Assistants (Siri, Alexa)', category: 'industry', trl: 6, angle: 15, progress: { research: 70, funding: 85, timeline: 65, consensus: 72 } },
+                { id: 'eye-tracking', name: 'Eye Tracking Systems', category: 'industry', trl: 7, angle: 30, progress: { research: 75, funding: 80, timeline: 70, consensus: 78 } },
+                { id: 'vr-quest3', name: 'VR Headsets (Oculus DK2)', category: 'emerging', trl: 5, angle: 45, progress: { research: 65, funding: 75, timeline: 60, consensus: 68 } },
+                { id: 'mobile-ar', name: 'Mobile AR (Pokemon GO era)', category: 'emerging', trl: 4, angle: 60, progress: { research: 55, funding: 70, timeline: 50, consensus: 60 } },
+                { id: 'haptic', name: 'Haptic Feedback (Vibration)', category: 'industry', trl: 7, angle: 75, progress: { research: 75, funding: 85, timeline: 80, consensus: 82 } },
+                { id: 'gesture', name: 'Gesture Recognition (Kinect)', category: 'emerging', trl: 5, angle: 90, progress: { research: 60, funding: 72, timeline: 55, consensus: 65 } },
+                { id: 'mr-visionpro', name: 'Mixed Reality Headsets', category: 'research', trl: 3, angle: 105, progress: { research: 45, funding: 60, timeline: 35, consensus: 50 } },
+                { id: 'passthrough-ar', name: 'Passthrough AR', category: 'research', trl: 3, angle: 120, progress: { research: 40, funding: 55, timeline: 30, consensus: 45 } },
+                { id: 'noninvasive-bci', name: 'Non-Invasive BCI (EEG)', category: 'research', trl: 3, angle: 135, progress: { research: 50, funding: 45, timeline: 30, consensus: 42 } },
+                { id: 'holographic', name: 'Holographic Displays', category: 'research', trl: 3, angle: 150, progress: { research: 48, funding: 52, timeline: 32, consensus: 46 } },
+                { id: 'spatial-audio', name: 'Spatial Audio', category: 'emerging', trl: 4, angle: 165, progress: { research: 52, funding: 68, timeline: 48, consensus: 58 } },
+                { id: 'olfactory', name: 'Olfactory Interfaces', category: 'research', trl: 2, angle: 180, progress: { research: 30, funding: 35, timeline: 20, consensus: 28 } },
+                { id: 'facial-expr', name: 'Facial Expression Recognition', category: 'emerging', trl: 4, angle: 195, progress: { research: 55, funding: 62, timeline: 50, consensus: 58 } },
+                { id: 'neural-headbands', name: 'Neural Headbands', category: 'research', trl: 2, angle: 210, progress: { research: 35, funding: 40, timeline: 25, consensus: 32 } },
+                { id: 'invasive-bci', name: 'Invasive BCI (Research only)', category: 'research', trl: 2, angle: 225, progress: { research: 38, funding: 42, timeline: 22, consensus: 35 } },
+                { id: 'retinal-proj', name: 'Retinal Projection', category: 'research', trl: 2, angle: 240, progress: { research: 32, funding: 38, timeline: 20, consensus: 30 } },
+                { id: 'taste-int', name: 'Taste Interfaces', category: 'research', trl: 1, angle: 255, progress: { research: 20, funding: 25, timeline: 12, consensus: 18 } },
+                { id: 'haptic-suits', name: 'Full-Body Haptic Suits', category: 'research', trl: 2, angle: 270, progress: { research: 35, funding: 40, timeline: 25, consensus: 32 } },
+                { id: 'volumetric', name: 'Volumetric Displays', category: 'research', trl: 2, angle: 285, progress: { research: 38, funding: 45, timeline: 28, consensus: 36 } },
+                { id: 'thought-text', name: 'Thought-to-Text', category: 'research', trl: 2, angle: 300, progress: { research: 30, funding: 35, timeline: 18, consensus: 28 } },
+                { id: 'dream-viz', name: 'Dream Visualization', category: 'research', trl: 1, angle: 315, progress: { research: 15, funding: 20, timeline: 10, consensus: 15 } },
+                { id: 'ultrasonic-haptics', name: 'Ultrasonic Haptics', category: 'research', trl: 2, angle: 330, progress: { research: 40, funding: 45, timeline: 30, consensus: 38 } },
+                { id: 'hand-tracking', name: 'Hand Tracking (Leap Motion)', category: 'emerging', trl: 4, angle: 345, progress: { research: 58, funding: 65, timeline: 52, consensus: 60 } }
+            ],
+            2020: [
+                { id: 'touchscreens', name: 'Touchscreens (Capacitive)', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+                { id: 'voice-assistants', name: 'Voice Assistants (Siri, Alexa, Google)', category: 'industry', trl: 8, angle: 15, progress: { research: 88, funding: 95, timeline: 85, consensus: 92 } },
+                { id: 'eye-tracking', name: 'Eye Tracking Systems', category: 'industry', trl: 8, angle: 30, progress: { research: 85, funding: 88, timeline: 82, consensus: 86 } },
+                { id: 'vr-quest3', name: 'VR Headsets (Quest 2)', category: 'industry', trl: 7, angle: 45, progress: { research: 80, funding: 90, timeline: 75, consensus: 85 } },
+                { id: 'mobile-ar', name: 'Mobile AR (ARKit, ARCore)', category: 'industry', trl: 7, angle: 60, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
+                { id: 'haptic', name: 'Haptic Feedback (Advanced)', category: 'industry', trl: 8, angle: 75, progress: { research: 85, funding: 90, timeline: 88, consensus: 90 } },
+                { id: 'gesture', name: 'Gesture Recognition', category: 'emerging', trl: 6, angle: 90, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
+                { id: 'mr-visionpro', name: 'Mixed Reality Headsets (HoloLens 2)', category: 'emerging', trl: 5, angle: 105, progress: { research: 65, funding: 78, timeline: 58, consensus: 68 } },
+                { id: 'passthrough-ar', name: 'Passthrough AR', category: 'emerging', trl: 4, angle: 120, progress: { research: 55, funding: 68, timeline: 48, consensus: 58 } },
+                { id: 'noninvasive-bci', name: 'Non-Invasive BCI (EEG, fNIRS)', category: 'emerging', trl: 4, angle: 135, progress: { research: 60, funding: 58, timeline: 45, consensus: 55 } },
+                { id: 'holographic', name: 'Holographic Displays', category: 'emerging', trl: 4, angle: 150, progress: { research: 58, funding: 65, timeline: 48, consensus: 58 } },
+                { id: 'spatial-audio', name: 'Spatial Audio (Dolby Atmos)', category: 'industry', trl: 6, angle: 165, progress: { research: 72, funding: 82, timeline: 68, consensus: 75 } },
+                { id: 'olfactory', name: 'Olfactory Interfaces', category: 'research', trl: 3, angle: 180, progress: { research: 42, funding: 45, timeline: 32, consensus: 38 } },
+                { id: 'facial-expr', name: 'Facial Expression Recognition', category: 'emerging', trl: 5, angle: 195, progress: { research: 68, funding: 72, timeline: 62, consensus: 68 } },
+                { id: 'neural-headbands', name: 'Neural Headbands (Muse, Emotiv)', category: 'emerging', trl: 4, angle: 210, progress: { research: 52, funding: 55, timeline: 42, consensus: 50 } },
+                { id: 'invasive-bci', name: 'Invasive BCI (Animal trials)', category: 'research', trl: 3, angle: 225, progress: { research: 52, funding: 58, timeline: 38, consensus: 48 } },
+                { id: 'retinal-proj', name: 'Retinal Projection', category: 'research', trl: 3, angle: 240, progress: { research: 45, funding: 48, timeline: 32, consensus: 42 } },
+                { id: 'taste-int', name: 'Taste Interfaces', category: 'research', trl: 2, angle: 255, progress: { research: 28, funding: 32, timeline: 18, consensus: 25 } },
+                { id: 'haptic-suits', name: 'Full-Body Haptic Suits', category: 'research', trl: 3, angle: 270, progress: { research: 48, funding: 52, timeline: 38, consensus: 45 } },
+                { id: 'volumetric', name: 'Volumetric Displays', category: 'research', trl: 3, angle: 285, progress: { research: 50, funding: 55, timeline: 40, consensus: 48 } },
+                { id: 'thought-text', name: 'Thought-to-Text (Research)', category: 'research', trl: 3, angle: 300, progress: { research: 42, funding: 45, timeline: 28, consensus: 38 } },
+                { id: 'dream-viz', name: 'Dream Visualization', category: 'research', trl: 1, angle: 315, progress: { research: 20, funding: 25, timeline: 12, consensus: 18 } },
+                { id: 'ultrasonic-haptics', name: 'Ultrasonic Haptics', category: 'research', trl: 3, angle: 330, progress: { research: 52, funding: 58, timeline: 42, consensus: 50 } },
+                { id: 'hand-tracking', name: 'Hand Tracking (Quest)', category: 'emerging', trl: 5, angle: 345, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } }
+            ],
+            2025: [
+                { id: 'touchscreens', name: 'Touchscreens (Capacitive)', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
+                { id: 'voice-assistants', name: 'Voice Assistants (ChatGPT Voice, Alexa+)', category: 'industry', trl: 9, angle: 15, progress: { research: 95, funding: 100, timeline: 92, consensus: 96 } },
+                { id: 'eye-tracking', name: 'Eye Tracking (Vision Pro integrated)', category: 'industry', trl: 8, angle: 30, progress: { research: 92, funding: 95, timeline: 88, consensus: 92 } },
+                { id: 'vr-quest3', name: 'VR Headsets (Quest 3, 74.6% market share)', category: 'industry', trl: 8, angle: 45, progress: { research: 88, funding: 98, timeline: 85, consensus: 92 } },
+                { id: 'mobile-ar', name: 'Mobile AR (LiDAR-enhanced)', category: 'industry', trl: 8, angle: 60, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'haptic', name: 'Haptic Feedback (HD haptics)', category: 'industry', trl: 8, angle: 75, progress: { research: 90, funding: 95, timeline: 92, consensus: 94 } },
+                { id: 'gesture', name: 'Gesture Recognition (AI-powered)', category: 'industry', trl: 7, angle: 90, progress: { research: 82, funding: 88, timeline: 78, consensus: 84 } },
+                { id: 'mr-visionpro', name: 'Mixed Reality (Vision Pro 500K sold)', category: 'emerging', trl: 7, angle: 105, progress: { research: 80, funding: 95, timeline: 75, consensus: 85 } },
+                { id: 'passthrough-ar', name: 'Passthrough AR (Quest 3, Vision Pro)', category: 'emerging', trl: 6, angle: 120, progress: { research: 72, funding: 85, timeline: 68, consensus: 75 } },
+                { id: 'noninvasive-bci', name: 'Non-Invasive BCI ($2.09B market, 15% CAGR)', category: 'emerging', trl: 6, angle: 135, progress: { research: 75, funding: 82, timeline: 68, consensus: 75 } },
+                { id: 'holographic', name: 'Holographic Displays ($3.4B market, 25% CAGR)', category: 'emerging', trl: 6, angle: 150, progress: { research: 72, funding: 85, timeline: 65, consensus: 75 } },
+                { id: 'spatial-audio', name: 'Spatial Audio (Vision Pro, AirPods Pro)', category: 'industry', trl: 7, angle: 165, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
+                { id: 'olfactory', name: 'Olfactory Interfaces (OVR Technology)', category: 'emerging', trl: 5, angle: 180, progress: { research: 58, funding: 62, timeline: 48, consensus: 56 } },
+                { id: 'facial-expr', name: 'Facial Expression (Vision Pro Personas)', category: 'emerging', trl: 6, angle: 195, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
+                { id: 'neural-headbands', name: 'Neural Headbands (Emotiv, Neurable)', category: 'emerging', trl: 5, angle: 210, progress: { research: 68, funding: 72, timeline: 60, consensus: 68 } },
+                { id: 'invasive-bci', name: 'Invasive BCI (Neuralink 5 patients)', category: 'research', trl: 4, angle: 225, progress: { research: 70, funding: 95, timeline: 58, consensus: 72 } },
+                { id: 'retinal-proj', name: 'Retinal Projection (Mojo Lens)', category: 'research', trl: 3, angle: 240, progress: { research: 58, funding: 65, timeline: 45, consensus: 56 } },
+                { id: 'taste-int', name: 'Taste Interfaces (Digital lollipop)', category: 'research', trl: 3, angle: 255, progress: { research: 42, funding: 45, timeline: 28, consensus: 38 } },
+                { id: 'haptic-suits', name: 'Full-Body Haptic Suits (bHaptics)', category: 'research', trl: 4, angle: 270, progress: { research: 62, funding: 68, timeline: 52, consensus: 62 } },
+                { id: 'volumetric', name: 'Volumetric Displays (Looking Glass)', category: 'research', trl: 4, angle: 285, progress: { research: 65, funding: 70, timeline: 55, consensus: 65 } },
+                { id: 'thought-text', name: 'Thought-to-Text (Meta/UCSF 2024)', category: 'research', trl: 4, angle: 300, progress: { research: 58, funding: 68, timeline: 45, consensus: 58 } },
+                { id: 'dream-viz', name: 'Dream Visualization (Osaka Univ)', category: 'research', trl: 2, angle: 315, progress: { research: 35, funding: 42, timeline: 22, consensus: 32 } },
+                { id: 'ultrasonic-haptics', name: 'Ultrasonic Haptics (Ultraleap)', category: 'research', trl: 4, angle: 330, progress: { research: 68, funding: 72, timeline: 58, consensus: 68 } },
+                { id: 'hand-tracking', name: 'Hand Tracking (Vision Pro precise)', category: 'industry', trl: 7, angle: 345, progress: { research: 82, funding: 88, timeline: 78, consensus: 84 } }
+            ]
+        };
 
-        // Data for 2020
-        const data2020 = [
-            { id: 'touchscreens', name: 'Touchscreens (Capacitive)', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
-            { id: 'voice-assistants', name: 'Voice Assistants (Siri, Alexa, Google)', category: 'industry', trl: 8, angle: 15, progress: { research: 88, funding: 95, timeline: 85, consensus: 92 } },
-            { id: 'eye-tracking', name: 'Eye Tracking Systems', category: 'industry', trl: 8, angle: 30, progress: { research: 85, funding: 88, timeline: 82, consensus: 86 } },
-            { id: 'vr-quest3', name: 'VR Headsets (Quest 2)', category: 'industry', trl: 7, angle: 45, progress: { research: 80, funding: 90, timeline: 75, consensus: 85 } },
-            { id: 'mobile-ar', name: 'Mobile AR (ARKit, ARCore)', category: 'industry', trl: 7, angle: 60, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
-            { id: 'haptic', name: 'Haptic Feedback (Advanced)', category: 'industry', trl: 8, angle: 75, progress: { research: 85, funding: 90, timeline: 88, consensus: 90 } },
-            { id: 'gesture', name: 'Gesture Recognition', category: 'emerging', trl: 6, angle: 90, progress: { research: 72, funding: 78, timeline: 68, consensus: 75 } },
-            { id: 'mr-visionpro', name: 'Mixed Reality Headsets (HoloLens 2)', category: 'emerging', trl: 5, angle: 105, progress: { research: 65, funding: 78, timeline: 58, consensus: 68 } },
-            { id: 'passthrough-ar', name: 'Passthrough AR', category: 'emerging', trl: 4, angle: 120, progress: { research: 55, funding: 68, timeline: 48, consensus: 58 } },
-            { id: 'noninvasive-bci', name: 'Non-Invasive BCI (EEG, fNIRS)', category: 'emerging', trl: 4, angle: 135, progress: { research: 60, funding: 58, timeline: 45, consensus: 55 } },
-            { id: 'holographic', name: 'Holographic Displays', category: 'emerging', trl: 4, angle: 150, progress: { research: 58, funding: 65, timeline: 48, consensus: 58 } },
-            { id: 'spatial-audio', name: 'Spatial Audio (Dolby Atmos)', category: 'industry', trl: 6, angle: 165, progress: { research: 72, funding: 82, timeline: 68, consensus: 75 } },
-            { id: 'olfactory', name: 'Olfactory Interfaces', category: 'research', trl: 3, angle: 180, progress: { research: 42, funding: 45, timeline: 32, consensus: 38 } },
-            { id: 'facial-expr', name: 'Facial Expression Recognition', category: 'emerging', trl: 5, angle: 195, progress: { research: 68, funding: 72, timeline: 62, consensus: 68 } },
-            { id: 'neural-headbands', name: 'Neural Headbands (Muse, Emotiv)', category: 'emerging', trl: 4, angle: 210, progress: { research: 52, funding: 55, timeline: 42, consensus: 50 } },
-            { id: 'invasive-bci', name: 'Invasive BCI (Animal trials)', category: 'research', trl: 3, angle: 225, progress: { research: 52, funding: 58, timeline: 38, consensus: 48 } },
-            { id: 'retinal-proj', name: 'Retinal Projection', category: 'research', trl: 3, angle: 240, progress: { research: 45, funding: 48, timeline: 32, consensus: 42 } },
-            { id: 'taste-int', name: 'Taste Interfaces', category: 'research', trl: 2, angle: 255, progress: { research: 28, funding: 32, timeline: 18, consensus: 25 } },
-            { id: 'haptic-suits', name: 'Full-Body Haptic Suits', category: 'research', trl: 3, angle: 270, progress: { research: 48, funding: 52, timeline: 38, consensus: 45 } },
-            { id: 'volumetric', name: 'Volumetric Displays', category: 'research', trl: 3, angle: 285, progress: { research: 50, funding: 55, timeline: 40, consensus: 48 } },
-            { id: 'thought-text', name: 'Thought-to-Text (Research)', category: 'research', trl: 3, angle: 300, progress: { research: 42, funding: 45, timeline: 28, consensus: 38 } },
-            { id: 'dream-viz', name: 'Dream Visualization', category: 'research', trl: 1, angle: 315, progress: { research: 20, funding: 25, timeline: 12, consensus: 18 } },
-            { id: 'ultrasonic-haptics', name: 'Ultrasonic Haptics', category: 'research', trl: 3, angle: 330, progress: { research: 52, funding: 58, timeline: 42, consensus: 50 } },
-            { id: 'hand-tracking', name: 'Hand Tracking (Quest)', category: 'emerging', trl: 5, angle: 345, progress: { research: 68, funding: 75, timeline: 62, consensus: 70 } }
-        ];
-
-        // Data for 2025
-        const data2025 = [
-            { id: 'touchscreens', name: 'Touchscreens (Capacitive)', category: 'industry', trl: 9, angle: 0, progress: { research: 100, funding: 100, timeline: 100, consensus: 100 } },
-            { id: 'voice-assistants', name: 'Voice Assistants (ChatGPT Voice, Alexa+)', category: 'industry', trl: 9, angle: 15, progress: { research: 95, funding: 100, timeline: 92, consensus: 96 } },
-            { id: 'eye-tracking', name: 'Eye Tracking (Vision Pro integrated)', category: 'industry', trl: 8, angle: 30, progress: { research: 92, funding: 95, timeline: 88, consensus: 92 } },
-            { id: 'vr-quest3', name: 'VR Headsets (Quest 3, 74.6% market share)', category: 'industry', trl: 8, angle: 45, progress: { research: 88, funding: 98, timeline: 85, consensus: 92 } },
-            { id: 'mobile-ar', name: 'Mobile AR (LiDAR-enhanced)', category: 'industry', trl: 8, angle: 60, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
-            { id: 'haptic', name: 'Haptic Feedback (HD haptics)', category: 'industry', trl: 8, angle: 75, progress: { research: 90, funding: 95, timeline: 92, consensus: 94 } },
-            { id: 'gesture', name: 'Gesture Recognition (AI-powered)', category: 'industry', trl: 7, angle: 90, progress: { research: 82, funding: 88, timeline: 78, consensus: 84 } },
-            { id: 'mr-visionpro', name: 'Mixed Reality (Vision Pro 500K sold)', category: 'emerging', trl: 7, angle: 105, progress: { research: 80, funding: 95, timeline: 75, consensus: 85 } },
-            { id: 'passthrough-ar', name: 'Passthrough AR (Quest 3, Vision Pro)', category: 'emerging', trl: 6, angle: 120, progress: { research: 72, funding: 85, timeline: 68, consensus: 75 } },
-            { id: 'noninvasive-bci', name: 'Non-Invasive BCI ($2.09B market, 15% CAGR)', category: 'emerging', trl: 6, angle: 135, progress: { research: 75, funding: 82, timeline: 68, consensus: 75 } },
-            { id: 'holographic', name: 'Holographic Displays ($3.4B market, 25% CAGR)', category: 'emerging', trl: 6, angle: 150, progress: { research: 72, funding: 85, timeline: 65, consensus: 75 } },
-            { id: 'spatial-audio', name: 'Spatial Audio (Vision Pro, AirPods Pro)', category: 'industry', trl: 7, angle: 165, progress: { research: 85, funding: 92, timeline: 82, consensus: 88 } },
-            { id: 'olfactory', name: 'Olfactory Interfaces (OVR Technology)', category: 'emerging', trl: 5, angle: 180, progress: { research: 58, funding: 62, timeline: 48, consensus: 56 } },
-            { id: 'facial-expr', name: 'Facial Expression (Vision Pro Personas)', category: 'emerging', trl: 6, angle: 195, progress: { research: 78, funding: 85, timeline: 72, consensus: 80 } },
-            { id: 'neural-headbands', name: 'Neural Headbands (Emotiv, Neurable)', category: 'emerging', trl: 5, angle: 210, progress: { research: 68, funding: 72, timeline: 60, consensus: 68 } },
-            { id: 'invasive-bci', name: 'Invasive BCI (Neuralink 5 patients)', category: 'research', trl: 4, angle: 225, progress: { research: 70, funding: 95, timeline: 58, consensus: 72 } },
-            { id: 'retinal-proj', name: 'Retinal Projection (Mojo Lens)', category: 'research', trl: 3, angle: 240, progress: { research: 58, funding: 65, timeline: 45, consensus: 56 } },
-            { id: 'taste-int', name: 'Taste Interfaces (Digital lollipop)', category: 'research', trl: 3, angle: 255, progress: { research: 42, funding: 45, timeline: 28, consensus: 38 } },
-            { id: 'haptic-suits', name: 'Full-Body Haptic Suits (bHaptics)', category: 'research', trl: 4, angle: 270, progress: { research: 62, funding: 68, timeline: 52, consensus: 62 } },
-            { id: 'volumetric', name: 'Volumetric Displays (Looking Glass)', category: 'research', trl: 4, angle: 285, progress: { research: 65, funding: 70, timeline: 55, consensus: 65 } },
-            { id: 'thought-text', name: 'Thought-to-Text (Meta/UCSF 2024)', category: 'research', trl: 4, angle: 300, progress: { research: 58, funding: 68, timeline: 45, consensus: 58 } },
-            { id: 'dream-viz', name: 'Dream Visualization (Osaka Univ)', category: 'research', trl: 2, angle: 315, progress: { research: 35, funding: 42, timeline: 22, consensus: 32 } },
-            { id: 'ultrasonic-haptics', name: 'Ultrasonic Haptics (Ultraleap)', category: 'research', trl: 4, angle: 330, progress: { research: 68, funding: 72, timeline: 58, consensus: 68 } },
-            { id: 'hand-tracking', name: 'Hand Tracking (Vision Pro precise)', category: 'industry', trl: 7, angle: 345, progress: { research: 82, funding: 88, timeline: 78, consensus: 84 } }
-        ];
-
-        // Technology connections showing relationships
-        const techConnections = [
-            { source: 'vr-quest3', target: 'passthrough-ar' },
-            { source: 'mr-visionpro', target: 'eye-tracking' },
-            { source: 'mr-visionpro', target: 'hand-tracking' },
-            { source: 'noninvasive-bci', target: 'neural-headbands' },
-            { source: 'noninvasive-bci', target: 'invasive-bci' },
-            { source: 'invasive-bci', target: 'thought-text' },
-            { source: 'holographic', target: 'volumetric' },
-            { source: 'spatial-audio', target: 'mr-visionpro' },
-            { source: 'haptic', target: 'haptic-suits' },
-            { source: 'haptic', target: 'ultrasonic-haptics' },
-            { source: 'gesture', target: 'hand-tracking' },
-            { source: 'voice-assistants', target: 'facial-expr' }
-        ];
-
-        // Detailed descriptions for selected technologies
         const techDescriptions = {
             'vr-quest3': {
                 description: 'Meta Quest 3 dominated the VR market in 2024-2025 with 74.6-77% market share according to IDC and Counterpoint Research. The platform saw 11% year-over-year shipment growth even as the broader VR market faced challenges. Over $2 billion has been spent on Quest titles to date, with total payments up 12% in 2024. Users spent 30% more monthly time in VR compared to the previous year. Meta achieved 84% market share in Q4 2024 following the launch of Quest 3S. Global VR/MR headset shipments reached 9.6 million units in 2024, with Meta continuing as the dominant manufacturer.',
-                progress: {
-                    research: 88,
-                    funding: 98,
-                    timeline: 85,
-                    consensus: 92
-                },
                 references: [
                     'Next Reality. (2025). VR Headsets 2025: Meta Quest 3 Dominates 74.6% Market. https://virtual.reality.news/news/vr-headsets-2025-meta-quest-3-dominates-746-market/',
                     'Statista. (2025). Meta Quest - statistics & facts. https://www.statista.com/topics/2584/meta-quest/',
@@ -528,12 +784,6 @@
             },
             'mr-visionpro': {
                 description: 'Apple Vision Pro launched in February 2024 and sold approximately 500,000 units by year end, with estimates ranging from 350,000 to 500,000 units for the first year. Despite capturing only 6-17% unit share in 2024, the $3,499 device achieved an impressive 50% value share in Q1 2024 due to its premium pricing. Projections suggest sales will reach 750,000 units in 2025 and 1.7 million in 2026 according to Omdia. IDC forecasts that a cheaper Vision model could drive sales to 2.5 million units in 2025. Canalys predicts the Vision Pro lineup will reach 20 million users by the fifth year post-launch. The high price remains a barrier to mainstream adoption, limiting appeal to early adopters and enterprise users.',
-                progress: {
-                    research: 80,
-                    funding: 95,
-                    timeline: 75,
-                    consensus: 85
-                },
                 references: [
                     'Statista. (2025). Apple Vision Pro - statistics & facts. https://www.statista.com/topics/11078/apple-vision-pro/',
                     'AppleInsider. (2024). Apple Vision Pro\'s high price doesn\'t stop strong first-year sales. https://appleinsider.com/articles/24/12/08/analysis-apple-vision-pro-sells-well-but-needs-more-content-faster',
@@ -542,12 +792,6 @@
             },
             'invasive-bci': {
                 description: 'Neuralink received FDA approval in May 2023 to initiate human trials and performed the first human implantation in January 2024. By mid-2025, at least 5 people including those with paralysis from spinal cord injuries and ALS had received Neuralink implants. The PRIME Study (Precise Robotically Implanted Brain-Computer Interface) evaluates safety and effectiveness of the Link device in quadriplegia patients. Early results show patients can control digital devices using only their thoughts - a capability called "Telepathy". In November 2024, Neuralink initiated the CONVOY Study for controlling assistive robotic arms. The company received FDA Breakthrough Device Designations for Blindsight (September 2024) and speech restoration technology (May 2025). Neuralink is expanding trials to Canada, UK, Germany, and UAE, aiming for 20-30 new participants globally by end of 2025.',
-                progress: {
-                    research: 70,
-                    funding: 95,
-                    timeline: 58,
-                    consensus: 72
-                },
                 references: [
                     'Neuralink. (2025). PRIME Study Progress Update. https://neuralink.com/updates/prime-study-progress-update/',
                     'Frontiers in Human Dynamics. (2025). Neuralink\'s brain-computer interfaces: medical innovations and ethical challenges. https://www.frontiersin.org/journals/human-dynamics/articles/10.3389/fhumd.2025.1553905/full',
@@ -556,12 +800,6 @@
             },
             'noninvasive-bci': {
                 description: 'The global brain-computer interfaces market was valued at $2.09 billion in 2024 and is projected to grow from $2.83 billion in 2025 to $8.73 billion by 2033, representing a 15.13% CAGR. Development has focused on compact wearable devices with non-invasive designs like neural headbands and EEG headsets for everyday integration. Key 2024-2025 innovations include: University of Texas researchers developed a wearable BCI cap with machine learning (March 2024); Georgia Tech created painless wearable microneedle BCI sensors that fit between hair follicles and persist for 12 hours (April 2025); Johns Hopkins APL achieved breakthrough noninvasive high-resolution neural recording using tissue deformation signals (November 2024). Technologies include EEG, functional near-infrared spectroscopy (fNIRS), and wearable magnetoencephalography (MEG). Leading companies include Emotiv, Neurable, Kernel, and NeuroSky.',
-                progress: {
-                    research: 75,
-                    funding: 82,
-                    timeline: 68,
-                    consensus: 75
-                },
                 references: [
                     'Straits Research. (2025). Brain Computer Interfaces Market Size & Outlook, 2025-2033. https://straitsresearch.com/report/brain-computer-interfaces-market',
                     'Georgia Tech Research. (2025). New Wearable Brain-Computer Interface. https://research.gatech.edu/new-wearable-brain-computer-interface',
@@ -570,12 +808,6 @@
             },
             'holographic': {
                 description: 'The global holographic display market was valued at $3.4-10.25 billion in 2024 with projections showing 25.2-29.8% CAGR growth through 2034. The 4D holographic segment held 23.7% market share in 2024, combining motion and feedback for entertainment, advertising, and theme parks. Digital signage and kiosks captured 35.1% of the market, while medical scanners and microscopes advance at 25.1% CAGR. Notable 2025 developments: Hyundai Mobis debuted the first full-windshield holographic HUD at CES with three simultaneous display zones and 2027 production targets (January 2025); Looking Glass integrated Unity-based iOS support enabling iPhones/iPads to power multiview 3D experiences without PCs (December 2024). Major players include Looking Glass Factory, Provision Holding, and RealFiction. Retail applications show 24.3% CAGR growth through 2034.',
-                progress: {
-                    research: 72,
-                    funding: 85,
-                    timeline: 65,
-                    consensus: 75
-                },
                 references: [
                     'GM Insights. (2025). Holographic Display Market Size, Growth Outlook 2025-2034. https://www.gminsights.com/industry-analysis/holographic-display-market',
                     'Mordor Intelligence. (2025). Holographic Display Market Size, Share & Report Analysis, 2030. https://www.mordorintelligence.com/industry-reports/holographic-display-market',
@@ -584,374 +816,499 @@
             },
             'touchscreens': {
                 description: 'Capacitive touchscreens remain the dominant interface (TRL 9) but have evolved with ultra-high refresh rates (120-144Hz) and "haptic-touch" overlays that simulate texture. 2025 standards include foldable glass (Ultra Thin Glass) durability for >500,000 folds and under-display cameras becoming invisible.',
-                progress: { research: 100, funding: 100, timeline: 100, consensus: 100 },
-                references: ['Samsung Display. (2025). UTG Durability Report.', 'Corning. (2024). Gorilla Glass Victus 3 specs.']
+                references: [
+                    'Samsung Display. (2025). UTG Durability Report.',
+                    'Corning. (2024). Gorilla Glass Victus 3 specs.'
+                ]
             },
             'voice-assistants': {
                 description: 'Voice Assistants have transitioned from simple command-response (Siri legacy) to conversational agents powered by LLMs (ChatGPT Voice, Gemini). They maintain context across long sessions, understand nuance/sarcasm, and execute multi-step agentic workflows (e.g., "Plan my trip and book the flights"). TRL 9 for phone integration.',
-                progress: { research: 95, funding: 100, timeline: 92, consensus: 96 },
-                references: ['OpenAI. (2024). Voice Mode Capabilities.', 'Google. (2025). Assistant with Gemini Integration.']
+                references: [
+                    'OpenAI. (2024). Voice Mode Capabilities.',
+                    'Google. (2025). Assistant with Gemini Integration.'
+                ]
             },
             'eye-tracking': {
                 description: 'Eye Tracking (TRL 8) has moved from research labs to consumer headsets (Vision Pro, PSVR 2). It enables "foveated rendering" (rendering only where you look) saving 60% GPU power, and serves as a primary input method ("look and pinch"). Privacy standards now require on-device processing of retinal data.',
-                progress: { research: 92, funding: 95, timeline: 88, consensus: 92 },
-                references: ['Tobii. (2025). Eye Tracking in Consumer XR.', 'Apple. (2025). Optic ID Security Whitepaper.']
+                references: [
+                    'Tobii. (2025). Eye Tracking in Consumer XR.',
+                    'Apple. (2025). Optic ID Security Whitepaper.'
+                ]
             },
             'mobile-ar': {
                 description: 'Mobile AR (TRL 8) utilizes LiDAR scanners in pro phones to map rooms instantly. Google\'s Geospatial API allows AR content to be anchored to real-world locations (like a statue) with cm-level accuracy visible to all users ("persistent AR").',
-                progress: { research: 85, funding: 92, timeline: 82, consensus: 88 },
-                references: ['Niantic. (2025). Lightship VPS Global Map.', 'Google ARCore. (2024). Geospatial API usage stats.']
+                references: [
+                    'Niantic. (2025). Lightship VPS Global Map.',
+                    'Google ARCore. (2024). Geospatial API usage stats.'
+                ]
             },
             'haptic': {
                 description: 'High-Definition Haptics (TRL 8) go beyond simple buzzes. Systems like Linear Resonant Actuators (LRA) and voice-coil motors produce crisp clicks, textures, and "thuds" in controllers (DualSense, Touch Plus). Research focuses on shear forces to simulate weight.',
-                progress: { research: 90, funding: 95, timeline: 92, consensus: 94 },
-                references: ['Immersion Corp. (2025). The State of Haptics.', 'Sony. (2024). DualSense tactile feedback analysis.']
+                references: [
+                    'Immersion Corp. (2025). The State of Haptics.',
+                    'Sony. (2024). DualSense tactile feedback analysis.'
+                ]
             },
             'gesture': {
                 description: 'AI-Powered Gesture Recognition (TRL 7) tracks hands without controllers or gloves using computer vision (Oculus Insight, Vision Pro). 2025 models handle occlusion (hands crossing) and subtle micro-gestures (finger rubs) for discrete control in public.',
-                progress: { research: 82, funding: 88, timeline: 78, consensus: 84 },
-                references: ['Meta Reality Labs. (2024). Inside Out Tracking advancements.', 'Ultraleap. (2025). Gemini Tracking Platform.']
+                references: [
+                    'Meta Reality Labs. (2024). Inside Out Tracking advancements.',
+                    'Ultraleap. (2025). Gemini Tracking Platform.'
+                ]
             },
             'passthrough-ar': {
                 description: 'Passthrough AR (TRL 6) uses cameras on a VR headset to show the real world, digitally augmenting it. Unlike optical see-through (glasses), this allows full opacity control (hard shadows on virtual objects). Latency is the key metric, now <12ms (photon-to-photon) in Vision Pro, making it comfortable for brain integration.',
-                progress: { research: 72, funding: 85, timeline: 68, consensus: 75 },
-                references: ['Varjo. (2025). Mixed Reality Benchmark Report.', 'Qualcomm. (2024). Snapdragon XR2+ Gen 2 capabilities.']
+                references: [
+                    'Varjo. (2025). Mixed Reality Benchmark Report.',
+                    'Qualcomm. (2024). Snapdragon XR2+ Gen 2 capabilities.'
+                ]
             },
             'spatial-audio': {
                 description: 'Spatial Audio with dynamic head tracking (TRL 7) simulates how sound reflects off walls (ray tracing audio). In Vision Pro, sounds remain anchored in space as you turn your head. Personalized HRTF (Head-Related Transfer Function) scans ears for perfect 3D sound positioning.',
-                progress: { research: 85, funding: 92, timeline: 82, consensus: 88 },
-                references: ['Apple. (2024). Spatial Audio Architecture.', 'Dolby. (2025). Atmos for XR standards.']
+                references: [
+                    'Apple. (2024). Spatial Audio Architecture.',
+                    'Dolby. (2025). Atmos for XR standards.'
+                ]
             },
             'olfactory': {
                 description: 'Olfactory Interfaces (TRL 5) like OVR Technology\'s headset attachment emit precise scents (campfire, rose, gunpowder) synchronized with VR. 2025 devices use micro-fluidics to mix primary scents into thousands of combinations without lingering smells.',
-                progress: { research: 58, funding: 62, timeline: 48, consensus: 56 },
-                references: ['OVR Technology. (2024). Digital Scent Technology.', 'Nature Communications. (2023). Olfactory interfaces review.']
+                references: [
+                    'OVR Technology. (2024). Digital Scent Technology.',
+                    'Nature Communications. (2023). Olfactory interfaces review.'
+                ]
             },
             'facial-expr': {
                 description: 'Facial Expression Tracking (TRL 6) uses internal cameras to map user expressions onto avatars in real-time. Meta\'s Codec Avatars and Apple\'s Personas achieve near-photorealistic telepresence, crossing the Uncanny Valley for the first time in consumer hardware.',
-                progress: { research: 78, funding: 85, timeline: 72, consensus: 80 },
-                references: ['Meta Research. (2024). Codec Avatars 2.0.', 'Journal of Graphics. (2025). Real-time facial reenactment.']
+                references: [
+                    'Meta Research. (2024). Codec Avatars 2.0.',
+                    'Journal of Graphics. (2025). Real-time facial reenactment.'
+                ]
             },
             'neural-headbands': {
                 description: 'Consumer Neural Headbands (TRL 5) like Muse and Neurable allow "force-like" mental commands (focus to explode an item in a game) and track cognitive load. 2025 headphones integrate soft-fabric EEG sensors to track focus levels for productivity apps automatically.',
-                progress: { research: 68, funding: 72, timeline: 60, consensus: 68 },
-                references: ['Neurable. (2025). MW75 Neuro Headphones launch data.', 'Frontiers in Neuroergonomics. (2024). Passive BCI in the wild.']
+                references: [
+                    'Neurable. (2025). MW75 Neuro Headphones launch data.',
+                    'Frontiers in Neuroergonomics. (2024). Passive BCI in the wild.'
+                ]
             },
             'retinal-proj': {
                 description: 'Retinal Projection (TRL 3) beams light directly onto the back of the eye (retina) using micro-LEDs, eliminating the need for screens and focusing optics ("always in focus"). Mojo Lens demonstrated a contact lens prototype, but thermal and power challenges keep this in research.',
-                progress: { research: 58, funding: 65, timeline: 45, consensus: 56 },
-                references: ['IEEE Spectrum. (2023). The Mojo Lens Post-Mortem.', 'Optica. (2025). Direct retinal projection systems.']
+                references: [
+                    'IEEE Spectrum. (2023). The Mojo Lens Post-Mortem.',
+                    'Optica. (2025). Direct retinal projection systems.'
+                ]
             },
             'taste-int': {
                 description: 'Taste Interfaces (TRL 3) use electrical simulation (digital lollipop) or chemical sprays to simulate taste. The "Norimaki Synthesizer" renders 5 tastes (sweet, salty, sour, bitter, umami) electronically. Applications remain limited to dietary research and novelty VR dining.',
-                progress: { research: 42, funding: 45, timeline: 28, consensus: 38 },
-                references: ['Meiji University. (2024). Homei Miyashita Taste Display.', 'ACM UIST. (2023). Digital taste synthesis.']
+                references: [
+                    'Meiji University. (2024). Homei Miyashita Taste Display.',
+                    'ACM UIST. (2023). Digital taste synthesis.'
+                ]
             },
             'haptic-suits': {
                 description: 'Full-Body Haptic Suits (TRL 4) like bHaptics TactSuit and Teslasuit use uniform arrays of vibration motors or electro-stimulation (EMS). Used in training (feeling bullet hits) and rehab. 2025 versions are wireless and washable, but heat management remains a hurdle.',
-                progress: { research: 62, funding: 68, timeline: 52, consensus: 62 },
-                references: ['bHaptics. (2025). TactSuit X40 Gen 2 specs.', 'Teslasuit. (2024). Enterprise training efficacy.']
+                references: [
+                    'bHaptics. (2025). TactSuit X40 Gen 2 specs.',
+                    'Teslasuit. (2024). Enterprise training efficacy.'
+                ]
             },
             'volumetric': {
                 description: 'Volumetric Displays (TRL 4) create 3D light fields viewable from any angle without glasses (Like Star Wars holograms). Looking Glass uses lenticular arrays for this. True "free-space" volumetric displays (trapping particles in laser light) remain lab curiosities.',
-                progress: { research: 65, funding: 70, timeline: 55, consensus: 65 },
-                references: ['Looking Glass Factory. (2025). 8K 65-inch Light Field Display.', 'Nature Photonics. (2024). Free-space volumetric display limits.']
+                references: [
+                    'Looking Glass Factory. (2025). 8K 65-inch Light Field Display.',
+                    'Nature Photonics. (2024). Free-space volumetric display limits.'
+                ]
             },
             'thought-text': {
                 description: 'Thought-to-Text (TRL 4) decodes internal speech directly from brain waves. In 2024, UCSF and Meta demonstrated decoding speech at 80 words/minute with 25% error rate using invasive implants. Non-invasive approaches using fMRI/MEG + LLMs can vaguely reconstruct "gist" but not precise words yet.',
-                progress: { research: 58, funding: 68, timeline: 45, consensus: 58 },
-                references: ['Nature. (2024). High-performance neuroprosthesis for speech.', 'Meta AI. (2023). Decoding speech from non-invasive recordings.']
+                references: [
+                    'Nature. (2024). High-performance neuroprosthesis for speech.',
+                    'Meta AI. (2023). Decoding speech from non-invasive recordings.'
+                ]
             },
             'dream-viz': {
                 description: 'Dream Visualization (TRL 2) attempts to reconstruct visual imagery during sleep using fMRI trained on waking visual data. Kyoto University and Osaka University have generated blurry, surreal images matching dream reports (e.g., "a girl," "a car"). It fundamentally probes the nature of consciousness.',
-                progress: { research: 35, funding: 42, timeline: 22, consensus: 32 },
-                references: ['Science. (2023). Neural decoding of visual imagery during sleep.', 'Osaka University. (2024). Stable Diffusion for brain decoding.']
+                references: [
+                    'Science. (2023). Neural decoding of visual imagery during sleep.',
+                    'Osaka University. (2024). Stable Diffusion for brain decoding.'
+                ]
             },
             'ultrasonic-haptics': {
                 description: 'Ultrasonic Haptics (TRL 4) use arrays of ultrasound speakers to create air pressure points you can feel in mid-air ("touching nothing"). Ultraleap (formerly Ultrahaptics) powers control panels in cars (BMW iX concept) and museum kiosks, allowing touchless interaction.',
-                progress: { research: 68, funding: 72, timeline: 58, consensus: 68 },
-                references: ['Ultraleap. (2025). Mid-air haptics in automotive.', 'CHI Conference. (2024). User perception of ultrasonic textures.']
+                references: [
+                    'Ultraleap. (2025). Mid-air haptics in automotive.',
+                    'CHI Conference. (2024). User perception of ultrasonic textures.'
+                ]
             },
             'hand-tracking': {
                 description: 'Precision Hand Tracking (TRL 7) creates a skeletal model of 27 degrees of freedom in the hand. Vision Pro uses this as its mouse cursor. The challenge is "micro-interactions" (feeling a texture) which requires coupling tracking with haptics.',
-                progress: { research: 82, funding: 88, timeline: 78, consensus: 84 },
-                references: ['Apple. (2024). VisionOS Input System Design.', 'Leap Motion. (2025). Gemini v6 Hand Tracking.']
+                references: [
+                    'Apple. (2024). VisionOS Input System Design.',
+                    'Leap Motion. (2025). Gemini v6 Hand Tracking.'
+                ]
             }
         };
 
-        // Category colors
-        const categoryColors = {
-            research: '#FF6B6B',
-            industry: '#4ECDC4',
-            emerging: '#FFE66D',
-            experimental: '#A8DADC'
-        };
+        const techConnections = [
+            ['vr-quest3', 'passthrough-ar'],
+            ['mr-visionpro', 'eye-tracking'],
+            ['mr-visionpro', 'hand-tracking'],
+            ['noninvasive-bci', 'neural-headbands'],
+            ['noninvasive-bci', 'invasive-bci'],
+            ['invasive-bci', 'thought-text'],
+            ['holographic', 'volumetric'],
+            ['spatial-audio', 'mr-visionpro'],
+            ['haptic', 'haptic-suits'],
+            ['haptic', 'ultrasonic-haptics'],
+            ['gesture', 'hand-tracking'],
+            ['voice-assistants', 'facial-expr']
+        ];
 
-        // TRL level colors
-        function getTRLColor(trl) {
-            if (trl >= 1 && trl <= 3) return '#FF6B6B';
-            if (trl >= 4 && trl <= 6) return '#FFE66D';
-            if (trl >= 7 && trl <= 9) return '#4ECDC4';
-            return '#999';
-        }
+        // ========== GENERIC VISUALIZATION CODE - NO CHANGES NEEDED ==========
 
-        // Current state
-        let currentPeriod = '2025';
+        let currentYear = 2025;
         let currentFilter = 'all';
-        let currentData = data2025;
-        let currentZoom = 1;
-        let currentPan = { x: 0, y: 0 };
+        let selectedTech = null;
 
-        // SVG dimensions
-        const container = document.getElementById('radar-container');
-        const svg = d3.select('#radar-svg');
-        let width = container.clientWidth;
-        let height = container.clientHeight;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
         const centerX = width / 2;
         const centerY = height / 2;
         const maxRadius = Math.min(width, height) * 0.4;
 
-        // Create main group for zoom/pan
-        const mainGroup = svg.append('g')
-            .attr('class', 'main-group');
+        const svg = d3.select('#radarSvg')
+            .attr('width', width)
+            .attr('height', height);
 
-        // Create radar visualization
-        function createRadar() {
-            mainGroup.selectAll('*').remove();
+        const categoryColors = {
+            research: 'var(--color-electric-blue)',
+            industry: 'var(--color-gray-800)',
+            emerging: 'var(--color-gray-600)',
+            experimental: 'var(--color-electric-blue-dark)'
+        };
 
-            // Draw TRL circles
-            for (let i = 9; i >= 1; i--) {
-                const radius = (i / 9) * maxRadius;
-                mainGroup.append('circle')
+        const trlColors = d3.scaleLinear()
+            .domain([1, 5, 9])
+            .range(['#a3a3a3', '#525252', '#4040ff']);
+
+        let currentZoom = 1;
+        const minZoom = 0.5;
+        const maxZoom = 3;
+        let zoomTransform = d3.zoomIdentity;
+
+        function initVisualization() {
+            setupZoom();
+            setTimeout(() => {
+                document.getElementById('loadingIndicator').style.display = 'none';
+                renderRadar();
+            }, 1500);
+        }
+
+        function setupZoom() {
+            const zoom = d3.zoom()
+                .scaleExtent([minZoom, maxZoom])
+                .on('zoom', handleZoom);
+
+            svg.call(zoom);
+
+            document.getElementById('zoomIn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1.5);
+            });
+
+            document.getElementById('zoomOut').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoom.scaleBy, 1 / 1.5);
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', () => {
+                svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+            });
+        }
+
+        function handleZoom(event) {
+            zoomTransform = event.transform;
+            svg.select('.radar-content').attr('transform', zoomTransform);
+        }
+
+        function renderRadar() {
+            svg.selectAll('*').remove();
+
+            const radarContent = svg.append('g').attr('class', 'radar-content');
+            const defs = svg.append('defs');
+
+            const shadow = defs.append('filter')
+                .attr('id', 'shadow')
+                .attr('x', '-50%')
+                .attr('y', '-50%')
+                .attr('width', '200%')
+                .attr('height', '200%');
+
+            shadow.append('feDropShadow')
+                .attr('dx', 2)
+                .attr('dy', 2)
+                .attr('stdDeviation', 3)
+                .attr('flood-color', '#000')
+                .attr('flood-opacity', 0.2);
+
+            radarContent.append('circle')
+                .attr('cx', centerX)
+                .attr('cy', centerY)
+                .attr('r', maxRadius)
+                .attr('fill', '#f8fafc')
+                .attr('stroke', '#e2e8f0')
+                .attr('stroke-width', 2);
+
+            for (let i = 1; i <= 9; i++) {
+                const radius = (maxRadius / 9) * i;
+
+                radarContent.append('circle')
                     .attr('cx', centerX)
                     .attr('cy', centerY)
                     .attr('r', radius)
                     .attr('fill', 'none')
-                    .attr('stroke', getTRLColor(i))
+                    .attr('stroke', '#cbd5e1')
                     .attr('stroke-width', 1)
-                    .attr('opacity', 0.3);
+                    .attr('opacity', 0.6);
 
-                // Add TRL labels
-                mainGroup.append('text')
-                    .attr('x', centerX + 5)
-                    .attr('y', centerY - radius + 15)
-                    .attr('font-size', '10px')
-                    .attr('fill', '#666')
-                    .text(`TRL ${i}`);
+                if (i % 3 === 0) {
+                    radarContent.append('text')
+                        .attr('x', centerX + radius + 10)
+                        .attr('y', centerY + 5)
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '12px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(`TRL ${i}`);
+                }
             }
 
-            // Draw angle guides
-            for (let angle = 0; angle < 360; angle += 30) {
-                const rad = (angle - 90) * Math.PI / 180;
-                mainGroup.append('line')
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30) * Math.PI / 180;
+                const x2 = centerX + Math.cos(angle) * maxRadius;
+                const y2 = centerY + Math.sin(angle) * maxRadius;
+
+                radarContent.append('line')
                     .attr('x1', centerX)
                     .attr('y1', centerY)
-                    .attr('x2', centerX + Math.cos(rad) * maxRadius)
-                    .attr('y2', centerY + Math.sin(rad) * maxRadius)
-                    .attr('stroke', '#ddd')
+                    .attr('x2', x2)
+                    .attr('y2', y2)
+                    .attr('stroke', '#e2e8f0')
                     .attr('stroke-width', 1)
-                    .attr('opacity', 0.3);
+                    .attr('opacity', 0.5);
             }
 
-            // Draw connections
-            techConnections.forEach(conn => {
-                const source = currentData.find(d => d.id === conn.source);
-                const target = currentData.find(d => d.id === conn.target);
+            const data = technologyData[currentYear] || technologyData[2025];
+            const filteredData = currentFilter === 'all' ? data : data.filter(d => d.category === currentFilter);
 
-                if (source && target) {
-                    const sourceRad = (source.angle - 90) * Math.PI / 180;
-                    const targetRad = (target.angle - 90) * Math.PI / 180;
-                    const sourceRadius = (source.trl / 9) * maxRadius;
-                    const targetRadius = (target.trl / 9) * maxRadius;
+            const techGroups = radarContent.selectAll('.tech-node')
+                .data(filteredData)
+                .enter()
+                .append('g')
+                .attr('class', 'tech-node')
+                .style('cursor', 'pointer')
+                .on('click', (event, d) => showTechInfo(d))
+                .on('mouseover', function(event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 12)
+                        .attr('filter', 'url(#shadow)');
+                    showTechTooltip(event, d);
+                })
+                .on('mousemove', function(event, d) {
+                    positionTechTooltip(event);
+                })
+                .on('mouseout', function(event, d) {
+                    d3.select(this).select('circle')
+                        .transition()
+                        .duration(200)
+                        .attr('r', 8)
+                        .attr('filter', 'none');
+                    hideTechTooltip();
+                });
 
-                    mainGroup.append('line')
-                        .attr('x1', centerX + Math.cos(sourceRad) * sourceRadius)
-                        .attr('y1', centerY + Math.sin(sourceRad) * sourceRadius)
-                        .attr('x2', centerX + Math.cos(targetRad) * targetRadius)
-                        .attr('y2', centerY + Math.sin(targetRad) * targetRadius)
-                        .attr('stroke', '#ccc')
-                        .attr('stroke-width', 1)
-                        .attr('stroke-dasharray', '3,3')
-                        .attr('opacity', 0.3);
+            techGroups.each(function(d) {
+                const group = d3.select(this);
+                const radius = (maxRadius / 9) * d.trl;
+                const angleRad = (d.angle - 90) * Math.PI / 180;
+                const x = centerX + Math.cos(angleRad) * radius;
+                const y = centerY + Math.sin(angleRad) * radius;
+
+                const nodeColor = getContrastColor(d.category, d.trl);
+                group.append('circle')
+                    .attr('cx', x)
+                    .attr('cy', y)
+                    .attr('r', 8)
+                    .attr('fill', nodeColor.fill)
+                    .attr('stroke', nodeColor.stroke)
+                    .attr('stroke-width', 2);
+
+                if (d.trl >= 6 || d.category === 'emerging') {
+                    const labelRadius = radius + 25;
+                    const labelX = centerX + Math.cos(angleRad) * labelRadius;
+                    const labelY = centerY + Math.sin(angleRad) * labelRadius;
+
+                    group.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('fill', '#1e293b')
+                        .attr('font-size', '10px')
+                        .attr('font-family', 'var(--font-primary)')
+                        .attr('font-weight', '600')
+                        .text(d.name.length > 20 ? d.name.substring(0, 20) + '...' : d.name);
                 }
             });
 
-            // Draw data points
-            currentData.forEach(tech => {
-                const rad = (tech.angle - 90) * Math.PI / 180;
-                const radius = (tech.trl / 9) * maxRadius;
-                const x = centerX + Math.cos(rad) * radius;
-                const y = centerY + Math.sin(rad) * radius;
+            drawConnections(filteredData);
 
-                const point = mainGroup.append('g')
-                    .attr('class', 'tech-point')
-                    .attr('data-category', tech.category)
-                    .style('cursor', 'pointer')
-                    .on('click', () => showTechInfo(tech));
+            svg.selectAll('.tech-node')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 50)
+                .style('opacity', 1);
+        }
 
-                point.append('circle')
-                    .attr('cx', x)
-                    .attr('cy', y)
-                    .attr('r', 6)
-                    .attr('fill', categoryColors[tech.category])
-                    .attr('stroke', '#333')
-                    .attr('stroke-width', 2);
+        function getContrastColor(category, trl) {
+            const colors = {
+                research: { fill: '#4040ff', stroke: '#1e1e8f' },
+                industry: { fill: '#1e293b', stroke: '#0f172a' },
+                emerging: { fill: '#64748b', stroke: '#475569' },
+                experimental: { fill: '#3030dd', stroke: '#1e1e8f' }
+            };
+            return colors[category] || colors.research;
+        }
 
-                point.append('text')
-                    .attr('x', x + 10)
-                    .attr('y', y + 4)
-                    .attr('font-size', '11px')
-                    .attr('fill', '#333')
-                    .text(tech.name);
+        function drawConnections(data) {
+            const connectionGroup = svg.select('.radar-content').append('g').attr('class', 'connections');
+
+            techConnections.forEach(([source, target]) => {
+                const sourceNode = data.find(d => d.id === source);
+                const targetNode = data.find(d => d.id === target);
+
+                if (sourceNode && targetNode) {
+                    const sourceRadius = (maxRadius / 9) * sourceNode.trl;
+                    const targetRadius = (maxRadius / 9) * targetNode.trl;
+                    const sourceAngle = (sourceNode.angle - 90) * Math.PI / 180;
+                    const targetAngle = (targetNode.angle - 90) * Math.PI / 180;
+
+                    const sourceX = centerX + Math.cos(sourceAngle) * sourceRadius;
+                    const sourceY = centerY + Math.sin(sourceAngle) * sourceRadius;
+                    const targetX = centerX + Math.cos(targetAngle) * targetRadius;
+                    const targetY = centerY + Math.sin(targetAngle) * targetRadius;
+
+                    const midX = (sourceX + targetX) / 2;
+                    const midY = (sourceY + targetY) / 2;
+                    const controlX = midX + (centerX - midX) * 0.3;
+                    const controlY = midY + (centerY - midY) * 0.3;
+
+                    const path = `M ${sourceX},${sourceY} Q ${controlX},${controlY} ${targetX},${targetY}`;
+
+                    connectionGroup.append('path')
+                        .attr('d', path)
+                        .attr('stroke', '#3b82f6')
+                        .attr('stroke-width', 1.5)
+                        .attr('fill', 'none')
+                        .attr('opacity', 0.6)
+                        .attr('stroke-dasharray', '5,5');
+                }
             });
         }
 
-        // Show technology information
         function showTechInfo(tech) {
-            const infoPanel = document.getElementById('info-panel');
-            const techInfo = techDescriptions[tech.id];
+            selectedTech = tech;
+            const infoPanel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
 
-            let html = `
-                <div class="info-title">${tech.name}</div>
-                <div class="info-content">
-                    <div class="info-item">
-                        <strong>TRL Level:</strong> ${tech.trl}/9
+            const techInfo = techDescriptions[tech.id] || {};
+            const description = techInfo.description || `${tech.name} is a Future Interfaces / HCI technology with TRL level ${tech.trl}.`;
+            const references = techInfo.references || [];
+
+            content.innerHTML = `
+                <h2 class="info-title">${tech.name}</h2>
+                <div class="info-meta">
+                    <span class="meta-badge meta-${tech.category}">${tech.category.toUpperCase()}</span>
+                    <span class="meta-badge" style="background: ${trlColors(tech.trl)}; color: white;">TRL ${tech.trl}</span>
+                    <span class="meta-badge" style="background: var(--color-gray-700); color: white;">Year: ${currentYear}</span>
+                </div>
+                <div class="info-description">
+                    ${description}
+                </div>
+                <div class="progress-grid">
+                    ${Object.entries(tech.progress).map(([key, value]) => `
+                        <div class="progress-item">
+                            <div class="progress-label">${key}</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${value}%;"></div>
+                            </div>
+                            <div class="progress-value">${value}%</div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${references.length > 0 ? `
+                    <div class="references-section">
+                        <div class="references-title">Key References</div>
+                        ${references.map(ref => `
+                            <div class="reference-item">• ${ref}</div>
+                        `).join('')}
                     </div>
-                    <div class="info-item">
-                        <strong>Category:</strong> ${tech.category}
-                    </div>
+                ` : ''}
             `;
 
-            if (techInfo) {
-                html += `
-                    <div class="info-item">
-                        <strong>Description:</strong>
-                        <p>${techInfo.description}</p>
-                    </div>
-                    <div class="info-item">
-                        <strong>Progress Metrics:</strong>
-                        <div class="progress-bar">
-                            <div class="progress-label">Research: ${techInfo.progress.research}%</div>
-                            <div class="progress-fill" style="width: ${techInfo.progress.research}%"></div>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-label">Funding: ${techInfo.progress.funding}%</div>
-                            <div class="progress-fill" style="width: ${techInfo.progress.funding}%"></div>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-label">Timeline: ${techInfo.progress.timeline}%</div>
-                            <div class="progress-fill" style="width: ${techInfo.progress.timeline}%"></div>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-label">Consensus: ${techInfo.progress.consensus}%</div>
-                            <div class="progress-fill" style="width: ${techInfo.progress.consensus}%"></div>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <strong>References:</strong>
-                        <ol style="margin: 5px 0; padding-left: 20px; font-size: 10px;">
-                            ${techInfo.references.map(ref => `<li>${ref}</li>`).join('')}
-                        </ol>
-                    </div>
-                `;
-            }
-
-            html += `</div>`;
-            infoPanel.innerHTML = html;
+            infoPanel.classList.add('active');
         }
 
-        // Filter controls
+
+        function showTechTooltip(event, d) {
+            const tooltip = document.getElementById('techTooltip');
+            tooltip.innerHTML = d.name + '<span class="tooltip-category">' + d.category + ' &middot; TRL ' + d.trl + '</span>';
+            tooltip.classList.add('active');
+            positionTechTooltip(event);
+        }
+
+        function positionTechTooltip(event) {
+            const tooltip = document.getElementById('techTooltip');
+            tooltip.style.left = event.clientX + 'px';
+            tooltip.style.top = event.clientY + 'px';
+        }
+
+        function hideTechTooltip() {
+            document.getElementById('techTooltip').classList.remove('active');
+        }
+
+        function closeInfoPanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+            selectedTech = null;
+        }
+
+        function toggleTRLInfo() {
+            const trlInfoPanel = document.getElementById('trlInfoPanel');
+            trlInfoPanel.classList.toggle('active');
+        }
+
         document.querySelectorAll('[data-filter]').forEach(btn => {
-            btn.addEventListener('click', function () {
+            btn.addEventListener('click', function() {
                 document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 currentFilter = this.dataset.filter;
-                applyFilters();
+                renderRadar();
             });
         });
 
-        // Period controls
-        document.querySelectorAll('[data-period]').forEach(btn => {
-            btn.addEventListener('click', function () {
-                document.querySelectorAll('[data-period]').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-time]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-time]').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                currentPeriod = this.dataset.period;
-
-                if (currentPeriod === '2025') currentData = data2025;
-                else if (currentPeriod === '2020') currentData = data2020;
-                else currentData = data2015;
-
-                createRadar();
-                applyFilters();
+                currentYear = parseInt(this.dataset.time);
+                renderRadar();
             });
         });
 
-        // Apply filters
-        function applyFilters() {
-            document.querySelectorAll('.tech-point').forEach(point => {
-                const category = point.getAttribute('data-category');
-                if (currentFilter === 'all' || category === currentFilter) {
-                    point.style.display = 'block';
-                } else {
-                    point.style.display = 'none';
-                }
-            });
-        }
-
-        // Zoom controls
-        document.getElementById('zoom-in').addEventListener('click', () => {
-            currentZoom *= 1.2;
-            applyZoomPan();
-        });
-
-        document.getElementById('zoom-out').addEventListener('click', () => {
-            currentZoom /= 1.2;
-            applyZoomPan();
-        });
-
-        document.getElementById('reset-view').addEventListener('click', () => {
-            currentZoom = 1;
-            currentPan = { x: 0, y: 0 };
-            applyZoomPan();
-        });
-
-        function applyZoomPan() {
-            mainGroup.attr('transform', `translate(${currentPan.x}, ${currentPan.y}) scale(${currentZoom})`);
-        }
-
-        // Drag to pan
-        let isDragging = false;
-        let dragStart = { x: 0, y: 0 };
-
-        svg.on('mousedown', function (event) {
-            isDragging = true;
-            dragStart = { x: event.clientX - currentPan.x, y: event.clientY - currentPan.y };
-        });
-
-        svg.on('mousemove', function (event) {
-            if (isDragging) {
-                currentPan = {
-                    x: event.clientX - dragStart.x,
-                    y: event.clientY - dragStart.y
-                };
-                applyZoomPan();
-            }
-        });
-
-        svg.on('mouseup', () => isDragging = false);
-        svg.on('mouseleave', () => isDragging = false);
-
-        // Resize handler
         window.addEventListener('resize', () => {
-            width = container.clientWidth;
-            height = container.clientHeight;
-            svg.attr('width', width).attr('height', height);
-            createRadar();
+            location.reload();
         });
 
-        // Initialize
-        svg.attr('width', width).attr('height', height);
-        createRadar();
+        initVisualization();
     </script>
 <!-- Footer -->
 <footer style="background: var(--color-black); color: var(--color-white); padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
@@ -980,5 +1337,4 @@
 </footer>
 
 </body>
-
 </html>
