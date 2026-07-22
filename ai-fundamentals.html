@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2026 Pranshu Kumar Chaudhary. All Rights Reserved.">
+    <meta name="author" content="Pranshu Kumar Chaudhary">
+    <title>AI Fundamentals - How Machine Learning, Neural Networks & LLMs Actually Work | Emerging Technology Hub</title>
+    <meta name="description" content="A jargon-light guide to how AI actually works: pattern-finding not thinking, training vs inference, neural networks explained simply, LLMs and generative AI, and the pioneers who built it.">
+    <meta name="keywords" content="AI fundamentals, machine learning explained, neural networks, LLM, generative AI, training vs inference, AI pioneers, transformer, ChatGPT history">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/ai-fundamentals.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Artificial Intelligence</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">AI Fundamentals</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="ai-fundamentals.html" class="experimental-nav-link active">Fundamentals Overview</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="ai-basics.html" class="experimental-nav-link">AI Basics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="ai-ethics.html" class="experimental-nav-link">AI Ethics</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="ai-flashcards.html" class="experimental-nav-link">Flashcards</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="ai-readings.html" class="experimental-nav-link">Readings</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="ai-field-kit.html" class="experimental-nav-link">Field Kit</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="ai-landing.html">← Back to AI Hub</a><br>
+                        <a href="ai-basics.html">Next: AI Basics & History →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">AI Fundamentals</h1>
+                <p class="fundamentals-subtitle">What machine learning actually does, how models are built, and why "thinking machine" is the wrong metaphor</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>It's Pattern-Finding, Not Thinking</h2>
+                    <p>When people say "the AI understands you" or "the AI decided," it's easy to picture something like a mind at work. It helps to drop that picture. What's actually happening underneath a chatbot, a recommendation feed, or a photo-tagging app is statistics at enormous scale: a system that has looked at huge amounts of data and learned which patterns tend to go together.</p>
+
+                    <p>Show a machine learning system millions of photos labeled "cat" and millions labeled "not cat," and it will gradually adjust itself until it can guess correctly on photos it has never seen. It hasn't learned what a cat <em>is</em> the way a child does — through touch, sound, and years of embodied experience. It has learned which pixel patterns statistically correlate with the label "cat." That distinction — statistical correlation versus lived understanding — is the single most useful thing to hold onto when reading any AI headline.</p>
+
+                    <div class="highlight-box">
+                        <h3>Key Insight</h3>
+                        <p>A large language model predicting the next word in a sentence and a spam filter predicting whether an email is junk are doing the same fundamental thing: finding patterns in data and using them to make a probabilistic guess. Scale and data are what make one feel like conversation and the other feel like plumbing.</p>
+                    </div>
+                </section>
+
+                <!-- Training vs Inference -->
+                <section class="content-section">
+                    <h2>Training vs. Inference: Two Very Different Phases</h2>
+                    <p>Every AI system you interact with went through two distinct stages, and confusing them is a common source of misunderstanding.</p>
+
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Data Collection</h4>
+                                <p>Engineers gather examples — text scraped from the web, labeled images, transcribed speech, gameplay logs. Quality and diversity here set a hard ceiling on everything that follows. A model can't learn a pattern it never saw examples of.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Training: Adjusting the Parameters</h4>
+                                <p>The model starts with random internal settings, called parameters or weights — a modern large language model can have hundreds of billions of them. During training, it repeatedly guesses an output, compares it to the correct answer, and nudges its parameters to be slightly less wrong next time. Do this billions of times across powerful GPU clusters, and the parameters slowly converge on values that produce useful outputs. Training a frontier model can take months and cost tens of millions of dollars in compute.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Evaluation</h4>
+                                <p>Before release, the model is tested on data it never saw during training, to check whether it actually generalized useful patterns or just memorized its training set. This is also where teams test for bias, safety failures, and factual reliability.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Deployment</h4>
+                                <p>The trained model — now a fixed, frozen set of parameters — gets packaged behind an app or an API so people can actually use it. This is the point where a research artifact becomes a product.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Inference: Actually Using It</h4>
+                                <p>Every time you type a prompt or upload a photo, you're triggering inference — the model applying its already-frozen parameters to your new input to produce an output. Inference is fast and comparatively cheap; it's training that's expensive. This is also why a deployed model doesn't "learn" from your conversation the way a person would — its parameters don't change just because you talked to it.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 2rem;">
+                        <h3>Why This Matters</h3>
+                        <p>Nearly every debate about AI — "why does it repeat the same biases," "why doesn't it know about recent events," "why is it so expensive to build but so cheap to use" — traces back to this training/inference split. A model's knowledge is frozen at whatever its training data contained, and any bias baked into that data gets baked into its parameters too.</p>
+                    </div>
+                </section>
+
+                <!-- Neural Networks -->
+                <section class="content-section">
+                    <h2>Neural Networks, Without the Math</h2>
+                    <p>A neural network is loosely inspired by neurons in the brain, but the resemblance is more marketing than biology. Structurally, it's simpler: layers of small mathematical units, each one taking in numbers, weighing them, and passing a new number to the next layer.</p>
+
+                    <div class="crypto-concepts">
+                        <div class="crypto-item">
+                            <h4>Input Layer</h4>
+                            <p>Where raw data enters — pixel brightness values for an image, or numerical codes representing words for text. Nothing is "understood" yet, it's just numbers.</p>
+                            <div class="example-box">
+                                <strong>Analogy:</strong> Think of it as the network's eyes and ears — it converts the world into numbers it can work with.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Hidden Layers</h4>
+                            <p>Stacks of units in between, each combining and re-weighting signals from the previous layer. Early layers in an image model tend to detect simple things like edges and colors; deeper layers combine those into shapes, textures, and eventually whole objects.</p>
+                            <div class="example-box">
+                                <strong>Analogy:</strong> Like a factory assembly line — each station adds a bit more structure to the raw material passed down from the last one.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Output Layer</h4>
+                            <p>Produces the final answer — a probability that the image contains a cat, a predicted next word, a classification label. The "depth" in deep learning simply refers to having many hidden layers stacked between input and output.</p>
+                            <div class="example-box">
+                                <strong>Analogy:</strong> The finished product coming off the assembly line — a decision the rest of the system can act on.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Weights & Parameters</h4>
+                            <p>The numbers that determine how strongly each unit's input influences its output. Training is the process of adjusting these weights. There's nothing else "inside" the network to adjust — intelligence-seeming behavior emerges entirely from getting billions of these numbers right.</p>
+                            <div class="example-box">
+                                <strong>Scale check:</strong> GPT-2 (2019) had 1.5 billion parameters. Frontier 2026 models are estimated in the hundreds of billions to low trillions.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Narrow vs General AI -->
+                <section class="content-section">
+                    <h2>Narrow AI vs. General AI</h2>
+                    <p>Nearly everything called "AI" today, including chatbots, is <strong>narrow AI</strong> — extremely capable within a bounded domain, but without transferable general reasoning the way a human has it.</p>
+
+                    <div class="ai-types-grid">
+                        <div class="ai-type-card">
+                            <h3>Narrow AI</h3>
+                            <p class="ai-type-subtitle">What exists today, including every LLM</p>
+                            <p>Trained for a task or a broad-but-bounded set of tasks — writing, coding, image generation, translation. A model can be extraordinarily fluent across many domains and still be "narrow" in the technical sense: it doesn't have goals, embodiment, or understanding outside what it was trained on.</p>
+                            <div class="examples">
+                                <strong>Examples in 2026:</strong> GPT-5, Claude, Gemini 3, DALL-E, Sora — all narrow, however broad-feeling their outputs.
+                            </div>
+                        </div>
+
+                        <div class="ai-type-card">
+                            <h3>Agentic AI</h3>
+                            <p class="ai-type-subtitle">The 2025-2026 frontier, still narrow — but with autonomy</p>
+                            <p>Systems that can chain multiple steps together on their own — browsing the web, writing and running code, calling other tools — to complete a multi-step task with less human supervision. This is the industry's current growth edge, not a step toward general intelligence, but a step toward automating longer chains of narrow tasks.</p>
+                            <div class="examples">
+                                <strong>Examples:</strong> Coding agents, computer-use agents, autonomous research assistants.
+                            </div>
+                        </div>
+
+                        <div class="ai-type-card">
+                            <h3>General AI (AGI)</h3>
+                            <p class="ai-type-subtitle">Still hypothetical</p>
+                            <p>A system that could learn and reason across arbitrary domains at human level, the way a person can go from cooking to accounting to consoling a friend without retraining. No current system does this, whatever the marketing language suggests, and there's genuine scientific disagreement about whether today's approaches lead there at all.</p>
+                            <div class="examples">
+                                <strong>Status:</strong> Actively debated research goal, not an engineering roadmap with a fixed date.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- LLMs and Generative AI -->
+                <section class="content-section">
+                    <h2>LLMs and Generative AI</h2>
+                    <p>A <strong>Large Language Model (LLM)</strong> is a neural network trained on enormous amounts of text to predict the next chunk of text (called a "token") given everything before it. That's the entire mechanical task. What makes it feel like conversation is that, at large enough scale with enough training data, "predict a plausible next token" turns out to be enough to produce essay-writing, code, translation, and dialogue that reads as coherent and often useful.</p>
+
+                    <p><strong>Generative AI</strong> is the broader umbrella: any model that produces new content — text, images, audio, video, or code — rather than just classifying or predicting a single number.</p>
+
+                    <div class="approach-cards">
+                        <div class="approach-card">
+                            <h3>Text</h3>
+                            <p>LLMs like GPT-5, Claude, and Gemini generate text token by token, drawing on patterns learned from books, code, articles, and conversation.</p>
+                            <ul>
+                                <li>Built on the transformer architecture (see Pioneers below)</li>
+                                <li>Now commonly paired with "reasoning" modes that generate intermediate steps before answering</li>
+                                <li>Powers chat assistants, coding copilots, and summarization tools</li>
+                            </ul>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Images</h3>
+                            <p>Diffusion models learn to reverse a process of adding random noise to an image, so they can start from pure noise and "denoise" their way to a picture matching a text prompt.</p>
+                            <ul>
+                                <li>Tools: Midjourney, DALL-E, Stable Diffusion, Adobe Firefly</li>
+                                <li>Trained on billions of image-caption pairs scraped from the web</li>
+                                <li>Raises real questions about consent and compensation for source artists</li>
+                            </ul>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Video</h3>
+                            <p>The newest and most compute-hungry frontier: models that generate coherent, moving video from a text prompt, extending image diffusion techniques across time.</p>
+                            <ul>
+                                <li>Tools: Sora, Veo, Runway, Kling</li>
+                                <li>Struggles most with physical consistency — objects that should stay put, lighting that should stay fixed</li>
+                                <li>Improving fast enough that "is this real" is now a serious media-literacy question</li>
+                            </ul>
+                        </div>
+
+                        <div class="approach-card">
+                            <h3>Code</h3>
+                            <p>Code-generation models are trained on public repositories and treat programming languages the same way text models treat English — as sequences of tokens to predict.</p>
+                            <ul>
+                                <li>Tools: GitHub Copilot, Claude Code, Cursor</li>
+                                <li>Increasingly used as the "hands" of agentic AI systems</li>
+                                <li>Still requires a human to verify correctness — fluent code isn't always correct code</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 2rem;">
+                        <h3>A Word on Hallucination</h3>
+                        <p>Because LLMs generate text by predicting plausible next tokens rather than by looking facts up, they can produce confident, fluent, entirely false statements — fabricated citations, invented case law, wrong dates. This isn't a bug that gets fully patched; it's a direct consequence of how the technology works. Verifying important outputs stays the user's job.</p>
+                    </div>
+                </section>
+
+                <!-- Pioneers and Landmark Moments -->
+                <section class="content-section">
+                    <h2>Pioneers &amp; Landmark Moments</h2>
+                    <p>The story of AI isn't one straight line — it's decades of quiet research punctuated by a handful of moments that suddenly changed what seemed possible.</p>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1950</div>
+                            <div class="timeline-content">
+                                <h4>Alan Turing's "Computing Machinery and Intelligence"</h4>
+                                <p>Turing sidesteps the unanswerable question "can machines think?" and proposes a practical test instead: can a machine's conversation be mistaken for a human's? The Turing Test still frames public debate about AI capability today.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">1958</div>
+                            <div class="timeline-content">
+                                <h4>The Perceptron</h4>
+                                <p>Frank Rosenblatt builds the Perceptron, the first trainable artificial neuron, at Cornell Aeronautical Laboratory. It's a single layer and can only learn simple patterns, but it introduces the core idea every modern neural network still uses: adjust weights based on error.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2012</div>
+                            <div class="timeline-content">
+                                <h4>AlexNet Wins ImageNet</h4>
+                                <p>A deep neural network built by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton crushes the ImageNet image-recognition competition by a stunning margin, trained on consumer GPUs. This is widely seen as the moment deep learning went from academic curiosity to the industry's default approach.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2017</div>
+                            <div class="timeline-content">
+                                <h4>"Attention Is All You Need"</h4>
+                                <p>Google researchers publish the transformer architecture, replacing older sequence models with one built entirely around "attention" — letting the model weigh the relevance of every other word when processing each word. Every major LLM since, GPT, Claude, Gemini and beyond, is a descendant of this paper.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2022</div>
+                            <div class="timeline-content">
+                                <h4>The ChatGPT Moment</h4>
+                                <p>OpenAI releases ChatGPT in November 2022. The underlying technology wasn't new, but a free, conversational interface made LLM capability tangible to hundreds of millions of ordinary people almost overnight — the fastest-growing consumer app in history at the time.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024-2025</div>
+                            <div class="timeline-content">
+                                <h4>Reasoning Models Arrive</h4>
+                                <p>OpenAI's o1, and later open competitors like DeepSeek's R1, popularize models trained to generate an internal chain of reasoning steps before answering, substantially improving performance on math, logic, and coding tasks at the cost of slower, more expensive inference.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025-2026</div>
+                            <div class="timeline-content">
+                                <h4>The Agentic Shift</h4>
+                                <p>The frontier moves from single-turn chat to agentic AI: systems that plan, browse, write and execute code, and use software tools across many steps with minimal supervision. Coding agents and computer-use agents become mainstream enterprise tools, and "can it act, not just answer" becomes the industry's defining benchmark.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Common Misconceptions specific to generative AI -->
+                <section class="content-section">
+                    <h2>Misconceptions Worth Retiring</h2>
+
+                    <div class="misconceptions">
+                        <div class="misconception-item">
+                            <h4>MYTH: "It's just autocomplete, so it's not impressive"</h4>
+                            <p>REALITY: "Predict the next token" is the mechanism, not a measure of capability. The same mechanism, at sufficient scale, produces working code, coherent essays, and passable legal analysis. Simple mechanisms can produce complex, useful behavior.</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <h4>MYTH: "A bigger model is always a better model"</h4>
+                            <p>REALITY: Since around 2023, gains have increasingly come from better training data, reasoning techniques, and post-training refinement rather than raw parameter count alone. Several smaller 2025-2026 models outperform older, larger ones on real tasks.</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <h4>MYTH: "If it sounds confident, it's probably right"</h4>
+                            <p>REALITY: LLMs have no built-in mechanism to signal uncertainty by default — a hallucinated fact and a well-supported one can be delivered in an identical, confident tone. Confidence in phrasing is not evidence of accuracy.</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <h4>MYTH: "The model remembers our past conversations because it's learning from us"</h4>
+                            <p>REALITY: A deployed model's parameters are frozen. Apparent "memory" across a conversation, or across sessions in some products, comes from separately engineered systems feeding past text back in as context — not from the model quietly retraining itself.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Next Steps -->
+                <section class="content-section">
+                    <h2>Continue Your Journey</h2>
+                    <p>This page is the front door. The AI section on this platform goes much deeper — from history and taxonomy, to ethics, to hands-on practice.</p>
+
+                    <div class="next-steps">
+                        <a href="ai-basics.html" class="next-step-card">
+                            <h4>🧭 AI Basics & History</h4>
+                            <p>The fuller timeline, types of AI, core approaches (ML, deep learning, NLP, computer vision), and India's AI ecosystem</p>
+                        </a>
+
+                        <a href="machine-learning.html" class="next-step-card">
+                            <h4>📈 Machine Learning</h4>
+                            <p>A closer look at supervised, unsupervised, and reinforcement learning, and how each actually trains a model</p>
+                        </a>
+
+                        <a href="neural-networks.html" class="next-step-card">
+                            <h4>🧠 Neural Networks</h4>
+                            <p>Going deeper into layers, activation, and how deep learning architectures are actually structured</p>
+                        </a>
+
+                        <a href="data-and-training.html" class="next-step-card">
+                            <h4>🗂️ Data & Training</h4>
+                            <p>Where training data comes from, why it matters more than the algorithm, and how bias enters a model</p>
+                        </a>
+
+                        <a href="ai-ethics.html" class="next-step-card">
+                            <h4>⚖️ AI Ethics</h4>
+                            <p>Bias, alignment, interpretability, and the safety questions every AI practitioner should be able to answer</p>
+                        </a>
+
+                        <a href="future-of-ai.html" class="next-step-card">
+                            <h4>🔮 Future of AI</h4>
+                            <p>Where agentic systems, reasoning models, and regulation are headed next</p>
+                        </a>
+
+                        <a href="ai-flashcards.html" class="next-step-card">
+                            <h4>🗃️ Flashcards</h4>
+                            <p>Test yourself on core concepts, generative AI, ethics, applications, and history with spaced-repetition flashcards</p>
+                        </a>
+
+                        <a href="ai-activities.html" class="next-step-card">
+                            <h4>🛠️ Activities</h4>
+                            <p>Hands-on exercises for building intuition about prompting, bias, and model behavior</p>
+                        </a>
+
+                        <a href="ai-field-kit.html" class="next-step-card">
+                            <h4>🔧 Field Kit</h4>
+                            <p>Tools, platforms, and reference material for working with AI in practice</p>
+                        </a>
+
+                        <a href="ai-readings.html" class="next-step-card">
+                            <h4>📚 Readings</h4>
+                            <p>Curated papers, essays, and case studies for going deeper on any topic covered here</p>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link active">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="embodied-landing.html" class="main-menu-link">Embodied & Poetic Interactions</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+<!-- Footer -->
+<footer style="background: var(--color-black); color: var(--color-white); padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Emerging Tech Hub</h3>
+                <p style="font-size: 0.9rem; color: var(--color-gray-400);">A design-first educational platform for understanding emerging technologies. Created by Pranshu Kumar Chaudhary.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Legal</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.5rem;"><a href="terms-of-service.html" style="color: var(--color-gray-400); text-decoration: none;">Terms of Service</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" style="color: var(--color-gray-400); text-decoration: none;">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Studio Poetics</h3>
+                <p style="font-size: 0.9rem; color: var(--color-gray-400);"><a href="interaction-design-india.html" style="color: var(--color-gray-400); text-decoration: none;">Read our perspective →</a></p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid var(--color-gray-800); padding-top: 2rem;">
+            <p style="font-size: 0.9rem; color: var(--color-gray-400);">© 2026 Pranshu Kumar Chaudhary. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

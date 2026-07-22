@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
+    <meta name="author" content="Pranshu Kumar Chaudhary">
+    <title>Robotics Fundamentals - Sense, Think, Act | Emerging Technology Hub</title>
+    <meta name="description" content="Learn robotics fundamentals in plain language: the sense-think-act loop, robot anatomy, types of robots, degrees of freedom, automation vs. autonomy, and the pioneers who built the field.">
+    <meta name="keywords" content="robotics fundamentals, what is a robot, sense think act loop, robot anatomy, degrees of freedom, automation vs autonomy, humanoid robots, robotics pioneers">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/robotics-fundamentals.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <link rel="stylesheet" href="robotics-fundamentals.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Autonomous Systems</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Robotics</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="robotics-fundamentals.html" class="experimental-nav-link active">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-readings.html" class="experimental-nav-link">Readings</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-flashcards.html" class="experimental-nav-link">Flashcards</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-field-kit.html" class="experimental-nav-link">Field Kit</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-activities.html" class="experimental-nav-link">Activities</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="robotics-trl.html" class="experimental-nav-link">TRL Radar</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="robotics-landing.html">← Back to Robotics Hub</a><br>
+                        <a href="robotics-readings.html">Next: Readings →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Robotics Fundamentals</h1>
+                <p class="fundamentals-subtitle">What actually makes a pile of motors and sensors a "robot" — and how to tell automation from autonomy</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>What Makes Something a Robot?</h2>
+                    <p>A washing machine follows a program. A calculator crunches numbers. Neither is a robot, even though both are automated machines with electronics inside. So what's missing? A robot needs a physical body that does something in the real world — and it needs to close a loop between perceiving that world and acting on it.</p>
+
+                    <p>The simplest working definition: a robot is a physical machine that can <strong>sense</strong> its environment, <strong>process</strong> that information to decide what to do, and <strong>act</strong> on the physical world as a result. Take away the body and you have software. Take away the sensing and you have a puppet on rails. Take away the decision-making and you have a hydraulic press. All three together is what roboticists call the sense-think-act loop, and it's the single idea that unifies everything from a Roomba to a Boston Dynamics humanoid.</p>
+
+                    <div class="highlight-box">
+                        <h3>Key Insight</h3>
+                        <p>Robotics is not one technology — it's the intersection of mechanical engineering (the body), electrical engineering (the nervous system), and computer science (the mind). A brilliant robot design can still fail if any one of those three legs is weak. This is why robotics teams are almost always interdisciplinary.</p>
+                    </div>
+                </section>
+
+                <!-- Sense Think Act Loop -->
+                <section class="content-section">
+                    <h2>The Sense-Think-Act Loop</h2>
+                    <p>Every robot, no matter how simple or sophisticated, runs the same three-stage cycle over and over, often dozens or hundreds of times per second:</p>
+
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Sense (Perception)</h4>
+                                <p>Sensors gather raw data about the world and the robot's own state: a camera captures an image, a LIDAR unit measures distances by bouncing laser pulses off surfaces, a force sensor in a gripper feels how hard it's squeezing, an encoder tracks exactly how far a wheel has turned.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Think (Computation & Decision-Making)</h4>
+                                <p>An onboard computer or microcontroller processes that sensor data and decides what to do next. This can be as simple as a rule ("if bumper is pressed, reverse") or as complex as a neural network predicting the next best joint movement from a camera feed.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Act (Actuation)</h4>
+                                <p>Actuators — motors, servos, hydraulic or pneumatic pistons — physically move the robot or manipulate something in the world. This is the only stage where a robot actually changes reality, rather than just computing about it.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Back to Sense</h4>
+                                <p>The robot's action changes the world (even slightly), so it senses again to check the result — did the wheel actually move where it was told to? Did the gripper actually pick up the cup? This continuous loop is what separates a robot from a machine that just executes a fixed sequence once.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Anatomy of a Robot -->
+                <section class="content-section">
+                    <h2>The Anatomy of a Robot</h2>
+                    <p>Strip away the marketing and every robot is built from the same handful of component families. Here's what's inside, mapped to the sense-think-act loop above:</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">SENSE</div>
+                            <div class="feature-title">Sensors</div>
+                            <div class="feature-description">
+                                <p><strong>Cameras:</strong> capture visual information for object recognition and navigation</p>
+                                <p><strong>LIDAR:</strong> bounces laser pulses off surroundings to build precise 3D maps, used heavily in self-driving cars and warehouse robots</p>
+                                <p><strong>Force/torque sensors:</strong> let a gripper feel resistance so it doesn't crush an egg or drop a wrench</p>
+                                <p><strong>IMUs (inertial measurement units):</strong> track orientation and balance — essential for anything that walks</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">THINK</div>
+                            <div class="feature-title">Controllers & Processors</div>
+                            <div class="feature-description">
+                                <p>The "brain" that runs the decision-making logic — anywhere from a cheap microcontroller running simple if-then rules, to a full onboard computer running machine learning models trained on millions of hours of simulation, as in modern humanoid robots.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">ACT</div>
+                            <div class="feature-title">Actuators</div>
+                            <div class="feature-description">
+                                <p><strong>Motors and servos:</strong> the most common actuator — precise, electrically driven rotation used in everything from robot arms to drone propellers</p>
+                                <p><strong>Hydraulics:</strong> use pressurized fluid for very high force in a compact space — used in heavy industrial arms and some advanced humanoids like early Atlas models</p>
+                                <p><strong>Pneumatics:</strong> use compressed air, common in soft robotics for gentle, compliant movement</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-number">ACT</div>
+                            <div class="feature-title">End Effectors</div>
+                            <div class="feature-description">
+                                <p>The "hands" at the end of a robot arm — the part that actually touches the world. Grippers (parallel-jaw or multi-fingered), suction cups for flat objects, welding torches, and specialized tools swapped depending on the task.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h4>A Human Body Analogy</h4>
+                        <p>Sensors are like your eyes, ears, and skin. The controller is your brain and spinal cord. Actuators are your muscles. End effectors are your hands. A robot without sensors is like a person walking blindfolded — it might still move, but it can't react to anything unexpected.</p>
+                    </div>
+                </section>
+
+                <!-- Types of Robots -->
+                <section class="content-section">
+                    <h2>Types of Robots</h2>
+                    <p>"Robot" covers an enormous range of physical forms, each shaped by the environment it's built to work in:</p>
+
+                    <div class="blockchain-types">
+                        <div class="type-card">
+                            <h4>Industrial Arms</h4>
+                            <div class="type-details">
+                                <p><strong>Form:</strong> Fixed base, multi-jointed arm, no mobility</p>
+                                <p><strong>Best at:</strong> Repetitive, high-precision tasks — welding, painting, assembly</p>
+                                <p><strong>Examples:</strong> KUKA, ABB, FANUC, Universal Robots (cobots)</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Mobile Robots</h4>
+                            <div class="type-details">
+                                <p><strong>Form:</strong> Wheeled or tracked base that moves through an environment</p>
+                                <p><strong>Best at:</strong> Navigation, delivery, warehouse logistics, floor cleaning</p>
+                                <p><strong>Examples:</strong> Amazon warehouse robots, Roomba, autonomous mobile robots (AMRs) in factories</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Humanoid Robots</h4>
+                            <div class="type-details">
+                                <p><strong>Form:</strong> Two legs, two arms, roughly human proportions</p>
+                                <p><strong>Best at:</strong> Working in spaces built for humans — stairs, doorways, tools designed for human hands</p>
+                                <p><strong>Examples:</strong> Boston Dynamics Atlas, Tesla Optimus, Figure AI's Figure robots, several Chinese humanoid makers (Unitree, UBTech) entering commercial pilots in 2025-2026</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Soft Robots</h4>
+                            <div class="type-details">
+                                <p><strong>Form:</strong> Flexible, often silicone or fabric-based bodies instead of rigid metal links</p>
+                                <p><strong>Best at:</strong> Handling delicate or irregularly shaped objects safely — fruit picking, working near humans</p>
+                                <p><strong>Examples:</strong> Soft robotic grippers used in food packaging and agriculture</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Drones / Aerial Robots</h4>
+                            <div class="type-details">
+                                <p><strong>Form:</strong> Rotors or fixed wings for flight</p>
+                                <p><strong>Best at:</strong> Aerial inspection, mapping, delivery, agriculture</p>
+                                <p><strong>Examples:</strong> DJI agricultural drones, Zipline medical delivery drones</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Underwater Robots</h4>
+                            <div class="type-details">
+                                <p><strong>Form:</strong> Sealed, often torpedo-shaped or ROV (remotely operated vehicle) bodies</p>
+                                <p><strong>Best at:</strong> Ocean exploration, pipeline inspection, search and rescue in water</p>
+                                <p><strong>Examples:</strong> AUVs (autonomous underwater vehicles) used in deep-sea research and offshore oil inspection</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Degrees of Freedom -->
+                <section class="content-section">
+                    <h2>Degrees of Freedom, Explained Simply</h2>
+                    <p>You'll hear roboticists talk about a robot arm having "6 degrees of freedom" or a humanoid hand having "20 degrees of freedom." A degree of freedom (DOF) is simply one independent way a joint can move — one axis it can rotate or slide along.</p>
+
+                    <div class="highlight-box">
+                        <h3>Think of Your Own Arm</h3>
+                        <p>Your shoulder can move in multiple directions (several degrees of freedom on its own), your elbow bends in one plane (one degree of freedom), and your wrist rotates and bends (more degrees of freedom). Add them up and a human arm has around 7 degrees of freedom — which is exactly why most industrial robot arms are also built with 6-7 degrees of freedom: it's the minimum needed to place a hand at any position and angle in 3D space.</p>
+                    </div>
+
+                    <p>More degrees of freedom generally means more dexterity, but also more complexity, more things that can break, and more computation needed to control it. A simple gripper might have 1 degree of freedom (open/close). A state-of-the-art robotic hand can have 20+ to mimic individual finger joints. Designers choose the minimum DOF that gets the job done — extra freedom of movement is expensive in every sense.</p>
+                </section>
+
+                <!-- Automation vs Autonomy -->
+                <section class="content-section">
+                    <h2>Automation vs. Autonomy</h2>
+                    <p>These two words get used interchangeably in casual conversation, but they describe fundamentally different capabilities — and the difference matters enormously for what a robot can actually be trusted to do.</p>
+
+                    <div class="crypto-concepts">
+                        <div class="crypto-item">
+                            <h4>Automation</h4>
+                            <p>A robot follows a fixed, pre-programmed script. It doesn't perceive or adapt to changes in its environment — it just repeats the same motion in the same order, every time. If something is out of place, an automated robot either fails or, worse, doesn't notice at all.</p>
+                            <div class="example-box">
+                                <strong>Example:</strong> A classic industrial welding arm that always welds at exactly the same coordinates, regardless of whether the car body on the line is positioned slightly differently.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Autonomy</h4>
+                            <p>A robot senses its environment in real time and adapts its behavior to handle situations it wasn't explicitly programmed for. Autonomous systems make decisions, not just repeat instructions — closing the full sense-think-act loop continuously rather than executing a fixed script.</p>
+                            <div class="example-box">
+                                <strong>Example:</strong> A warehouse robot that re-routes itself around a person who unexpectedly walks into its path, rather than colliding with them or freezing.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 2rem;">
+                        <h3>Why This Distinction Matters</h3>
+                        <p>Most robots today sit somewhere on a spectrum between the two, not at either extreme. A factory cobot might have autonomous collision-avoidance layered on top of an otherwise automated task sequence. Understanding where a given robot sits on this spectrum tells you what it can be trusted to handle on its own — and where a human still needs to supervise.</p>
+                    </div>
+                </section>
+
+                <!-- Pioneers and Landmark Moments -->
+                <section class="content-section">
+                    <h2>Pioneers and Landmark Moments</h2>
+                    <p>Robotics has moved from single industrial arms to humanoid robots entering commercial pilots in the span of about sixty years. Here are the moments that mark that arc:</p>
+
+                    <div class="applications-grid">
+                        <div class="application-item">
+                            <h4>Unimate (1961)</h4>
+                            <p>Installed on a General Motors assembly line in New Jersey, Unimate is widely considered the first industrial robot. It lifted and stacked hot pieces of die-cast metal — dangerous, repetitive work that had previously injured human workers. It marked the beginning of automation as a standard part of manufacturing.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>ASIMO (2000)</h4>
+                            <p>Honda's ASIMO was one of the first robots to walk on two legs in a genuinely humanlike way — climbing stairs, running, and even serving drinks in demonstrations. For nearly two decades, ASIMO was the public face of humanoid robotics research, even though it never became a commercial product.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Boston Dynamics Spot & Atlas</h4>
+                            <p>Spot, a four-legged robot, became one of the first legged robots sold commercially — used for industrial inspection, construction site monitoring, and security. Atlas, Boston Dynamics' humanoid, became famous for viral videos of it running, jumping, and doing parkour, showcasing what dynamic balance and control could achieve.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>The Humanoid Race (2025-2026)</h4>
+                            <p>Tesla's Optimus, Figure AI's humanoids, and several Chinese manufacturers (including Unitree and UBTech) moved from lab demos to limited commercial and industrial pilots — folding laundry, moving boxes in warehouses, and performing simple factory tasks. Whether humanoids become a genuinely useful general-purpose form factor, or a narrower tool for specific tasks, is one of the most closely watched open questions in robotics right now.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Next Steps -->
+                <section class="content-section">
+                    <h2>Continue Learning</h2>
+                    <p>Now that you understand the fundamentals, dive deeper into robotics through hands-on learning:</p>
+
+                    <div class="next-steps">
+                        <a href="robotics-readings.html" class="next-step-card">
+                            <h4>Readings & Resources</h4>
+                            <p>Curated research on robot design, human-robot interaction, autonomy, and real-world applications</p>
+                        </a>
+
+                        <a href="robotics-flashcards.html" class="next-step-card">
+                            <h4>Flashcards</h4>
+                            <p>Test your knowledge of robot anatomy, movement, autonomy levels, and maker tools with active recall</p>
+                        </a>
+
+                        <a href="robotics-field-kit.html" class="next-step-card">
+                            <h4>Field Kit</h4>
+                            <p>Arduino and Raspberry Pi kits, design templates, and simulation tools to start building</p>
+                        </a>
+
+                        <a href="robotics-activities.html" class="next-step-card">
+                            <h4>Hands-On Activities</h4>
+                            <p>Build a line-following robot, analyze Boston Dynamics case studies, and try design scenarios</p>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="embodied-landing.html" class="main-menu-link">Embodied & Poetic Interactions</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+<!-- Footer -->
+<footer style="background: var(--color-black); color: var(--color-white); padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Emerging Tech Hub</h3>
+                <p style="font-size: 0.9rem; color: var(--color-gray-400);">A design-first educational platform for understanding emerging technologies. Created by Pranshu Kumar Chaudhary.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Legal</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.5rem;"><a href="terms-of-service.html" style="color: var(--color-gray-400); text-decoration: none;">Terms of Service</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" style="color: var(--color-gray-400); text-decoration: none;">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Studio Poetics</h3>
+                <p style="font-size: 0.9rem; color: var(--color-gray-400);"><a href="interaction-design-india.html" style="color: var(--color-gray-400); text-decoration: none;">Read our perspective →</a></p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid var(--color-gray-800); padding-top: 2rem;">
+            <p style="font-size: 0.9rem; color: var(--color-gray-400);">© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
+    <meta name="author" content="Pranshu Kumar Chaudhary">
+    <title>Future Interfaces Fundamentals - What Comes After the Screen? | Emerging Technology Hub</title>
+    <meta name="description" content="Learn future interfaces fundamentals in plain language: spatial computing, voice, gesture, haptics, and brain-computer interfaces explained for designers, students, and creators.">
+    <meta name="keywords" content="future interfaces fundamentals, spatial computing basics, gesture control, brain computer interface explained, what is XR, haptics for beginners">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/interfaces-fundamentals.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+@media (max-width: 768px) {
+    .experimental-sidebar { display: none !important; }
+    .experimental-main { padding-top: 0 !important; }
+    .experimental-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .experimental-title { font-size: var(--text-4xl) !important; }
+    .experimental-subtitle { font-size: var(--text-lg) !important; }
+    .hero-description { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .experimental-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; padding: var(--space-4) !important; }
+    .experimental-card.featured { grid-row: auto !important; min-height: auto !important; }
+    .card-description, .card-meta { display: none !important; }
+    .card-title { font-size: var(--text-lg) !important; }
+    .experimental-btn { padding: var(--space-2) var(--space-4) !important; }
+    .vertical-menu {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 48px !important;
+        width: 100vw !important;
+        background: var(--color-black) !important;
+        z-index: 20 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .vertical-menu-text {
+        writing-mode: horizontal-tb !important;
+        text-orientation: initial !important;
+        letter-spacing: 0.1em !important;
+    }
+    .experimental-main { padding-top: 48px !important; }
+    .site-footer { padding: var(--space-6) var(--space-4) !important; }
+
+    /* Content page specific */
+    .fundamentals-hero { padding: var(--space-6) var(--space-4) !important; margin-right: 0 !important; }
+    .fundamentals-title { font-size: var(--text-4xl) !important; }
+    .fundamentals-subtitle { font-size: var(--text-base) !important; line-height: 1.6 !important; }
+    .fundamentals-content { padding: var(--space-4) !important; margin-right: 0 !important; }
+    .content-section { margin-bottom: var(--space-8) !important; }
+    .content-section h2 { font-size: var(--text-2xl) !important; }
+    .properties-grid, .feature-grid, .applications-grid, .approach-cards, .getting-started { grid-template-columns: 1fr !important; }
+    .item-description { display: none !important; }
+    .available-badge { display: none !important; }
+
+    /* Landing page specific */
+    .ai-section-nav { position: static !important; margin: 0 !important; padding: var(--space-3) var(--space-4) !important; }
+    .section-nav-list { gap: var(--space-3) !important; }
+    .section-nav-link { font-size: var(--text-xs) !important; padding: var(--space-1) var(--space-2) !important; }
+    .ai-content-section { padding: var(--space-8) var(--space-4) !important; margin-right: 0 !important; min-height: auto !important; }
+    .section-title { font-size: var(--text-3xl) !important; line-height: 1.15 !important; }
+    .section-description { font-size: var(--text-base) !important; }
+    .section-grid { grid-template-columns: 1fr !important; gap: var(--space-3) !important; }
+}
+</style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <!-- Experimental Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Core Concepts</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Future Interfaces</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item">
+                            <a href="interfaces-fundamentals.html" class="experimental-nav-link active">Fundamentals</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="interfaces-readings.html" class="experimental-nav-link">Readings</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="interfaces-flashcards.html" class="experimental-nav-link">Flashcards</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="interfaces-field-kit.html" class="experimental-nav-link">Field Kit</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="interfaces-activities.html" class="experimental-nav-link">Activities</a>
+                        </li>
+                        <li class="experimental-nav-item">
+                            <a href="interfaces-trl.html" class="experimental-nav-link">TRL Radar</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="interfaces-landing.html">← Back to Future Interfaces Hub</a><br>
+                        <a href="interfaces-readings.html">Next: Readings →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+
+            <!-- Hero Section -->
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Future Interfaces Fundamentals</h1>
+                <p class="fundamentals-subtitle">Understanding how humans and computers will talk to each other after the mouse, keyboard, and touchscreen</p>
+            </div>
+
+            <!-- Content -->
+            <div class="fundamentals-content">
+
+                <!-- Introduction -->
+                <section class="content-section">
+                    <h2>What Are Future Interfaces?</h2>
+                    <p>Every generation of computing has been defined by how we interact with it. Punch cards gave way to the keyboard. The keyboard was joined by the mouse. The mouse gave way to touchscreens on our phones. Each shift didn't just change the hardware — it changed who could use computers, and what we used them for.</p>
+
+                    <p>"Future Interfaces" is the umbrella term for what comes next: ways of interacting with digital systems that don't route everything through a flat rectangle of glass. This includes voice assistants, hand and body gesture tracking, augmented and virtual reality headsets, haptic feedback (touch you can feel from a digital object), holographic and volumetric displays, and — at the frontier — brain-computer interfaces that read intent directly from neural signals.</p>
+
+                    <p>Designers sometimes call this field "spatial computing" or "natural user interfaces," because the common thread is interaction that feels closer to how humans already move through the physical world — speaking, pointing, looking, touching — instead of learning an artificial language of clicks and taps.</p>
+
+                    <div class="highlight-box">
+                        <h3>Key Insight</h3>
+                        <p>Future interfaces aren't about fancier screens. They're about removing the screen as the sole bottleneck between a person and information. The best of these technologies try to disappear — succeeding not when you notice the interface, but when you stop noticing it at all.</p>
+                    </div>
+                </section>
+
+                <!-- Core Properties -->
+                <section class="content-section">
+                    <h2>Core Properties of Future Interfaces</h2>
+
+                    <div class="properties-grid">
+                        <div class="property-card">
+                            <h4>Embodied Interaction</h4>
+                            <p>Instead of abstract commands, you use natural human actions — speaking, pointing, grabbing, walking — to control digital systems. The body becomes the input device.</p>
+                        </div>
+
+                        <div class="property-card">
+                            <h4>Spatial Awareness</h4>
+                            <p>Interfaces understand and respond to 3D space, not just a flat 2D plane. Digital objects can be placed on your actual desk, sized to a real room, or anchored to your hand.</p>
+                        </div>
+
+                        <div class="property-card">
+                            <h4>Multi-Sensory Feedback</h4>
+                            <p>Beyond sight and sound, these systems increasingly involve touch (haptics), and experimentally, even smell and taste — engaging more of how humans naturally perceive the world.</p>
+                        </div>
+
+                        <div class="property-card">
+                            <h4>Context Sensitivity</h4>
+                            <p>Good future interfaces adapt to where you are, what you're doing, and who else is around — a wrist gesture that's fine on a train might be replaced by a whisper in a quiet office.</p>
+                        </div>
+
+                        <div class="property-card">
+                            <h4>Reduced Learning Curve</h4>
+                            <p>Because these interactions mimic real-world behavior, they can be more intuitive for first-time users than icons and menus — though new gestures and mental models still need to be learned.</p>
+                        </div>
+
+                        <div class="property-card">
+                            <h4>Ambient Computing</h4>
+                            <p>The long-term goal for many of these technologies is to fade into the background — glasses instead of headsets, a glance instead of a tap, computing that's present without demanding constant attention.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- How Future Interfaces Work -->
+                <section class="content-section">
+                    <h2>How Future Interfaces Work</h2>
+
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Sensing</h4>
+                                <p>Cameras, microphones, muscle sensors, or motion trackers capture raw human signal — a hand shape, a spoken word, a footstep, a muscle twitch in the wrist.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Interpretation</h4>
+                                <p>Machine learning models translate raw signal into meaning — recognizing that a pinch gesture means "select," or that a wrist muscle pattern means "scroll down."</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Mapping to Intent</h4>
+                                <p>The system decides what the user is actually trying to do, factoring in context — is this gesture a command, or an accidental movement?</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Digital Response</h4>
+                                <p>The software carries out the action — opening an app, moving a virtual object, transcribing speech, or steering a cursor.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Feedback to the Human</h4>
+                                <p>The system confirms what happened — a visual highlight, a sound, a haptic buzz, or a spoken reply — closing the loop so the user knows the action registered.</p>
+                            </div>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>Continuous Adaptation</h4>
+                                <p>Many systems learn from repeated use — adjusting sensitivity to an individual's gestures, voice, or even neural patterns to reduce errors over time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Categories -->
+                <section class="content-section">
+                    <h2>The Major Interface Categories</h2>
+
+                    <div class="blockchain-types">
+                        <div class="type-card">
+                            <h4>Voice Interfaces</h4>
+                            <div class="type-details">
+                                <p><strong>How it works:</strong> Speech recognition converts sound to text; language models interpret intent and generate a response</p>
+                                <p><strong>Maturity:</strong> Mainstream — already in phones, cars, and smart speakers</p>
+                                <p><strong>Example:</strong> Asking a smart speaker to set a timer or a car's assistant to navigate</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Gesture & Motion Interfaces</h4>
+                            <div class="type-details">
+                                <p><strong>How it works:</strong> Cameras or wrist-worn sensors track hand shapes, finger movement, or muscle signals (EMG) and translate them into commands</p>
+                                <p><strong>Maturity:</strong> Growing fast — Meta's neural wristband, shown expanding to cars and accessibility tools at CES 2026, reads electrical signals from wrist muscles to control devices without touching them</p>
+                                <p><strong>Example:</strong> Pinching your fingers to select an item in AR glasses, or scrolling a menu with a subtle thumb movement</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Spatial Computing (AR/VR/MR)</h4>
+                            <div class="type-details">
+                                <p><strong>How it works:</strong> Headsets or glasses track your head, hands, and environment, overlaying or replacing your view with digital content anchored in 3D space</p>
+                                <p><strong>Maturity:</strong> Accelerating — Meta Quest 3 dominates the consumer VR market, Apple's Vision Pro 2 launched in early 2026 with a lighter design and improved hand tracking, and true everyday AR glasses from companies like Snap and Samsung are starting to resemble ordinary eyewear</p>
+                                <p><strong>Example:</strong> Placing a virtual screen on your real wall, or walking through a life-size 3D building model before it's built</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Haptic Interfaces</h4>
+                            <div class="type-details">
+                                <p><strong>How it works:</strong> Vibration motors, force feedback, or focused ultrasound waves create the sensation of touching something that isn't physically there</p>
+                                <p><strong>Maturity:</strong> Established in gaming controllers; mid-air ultrasound haptics (letting you "feel" a floating button with no physical surface) are growing quickly in cars and public kiosks</p>
+                                <p><strong>Example:</strong> Feeling a click when you tap a virtual button in mid-air, guided by focused sound waves</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Holographic & Volumetric Displays</h4>
+                            <div class="type-details">
+                                <p><strong>How it works:</strong> Light is projected or manipulated to create images that appear three-dimensional in physical space, viewable without special glasses</p>
+                                <p><strong>Maturity:</strong> Early but growing rapidly, with the market projected to more than double by the early 2030s as the technology moves from novelty displays into automotive dashboards and medical imaging</p>
+                                <p><strong>Example:</strong> A floating 3D product model in a store window, or a life-size hologram of a remote colleague in a meeting</p>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <h4>Brain-Computer Interfaces (BCI)</h4>
+                            <div class="type-details">
+                                <p><strong>How it works:</strong> Sensors — implanted or worn on the scalp — detect electrical activity in the brain and translate patterns into digital commands</p>
+                                <p><strong>Maturity:</strong> Experimental and medical-first. Companies like Neuralink and Synchron have implanted devices in human patients who can browse the web or move a cursor by thought alone, and 2026 has seen the first steps toward larger-scale production</p>
+                                <p><strong>Example:</strong> A paralyzed patient moving a computer cursor using only their intention to move their hand</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Design Principles / Architecture -->
+                <section class="content-section">
+                    <h2>Building Blocks Behind the Scenes</h2>
+
+                    <div class="crypto-concepts">
+                        <div class="crypto-item">
+                            <h4>Sensors</h4>
+                            <p>The hardware that captures human signal in the first place — cameras for gesture and eye tracking, microphones for voice, electrodes for muscle or brain activity, and inertial measurement units (IMUs) for head and body motion.</p>
+                            <div class="example-box">
+                                <strong>Examples:</strong> Depth cameras (like those in VR headsets), EMG wristbands, microphone arrays, accelerometers
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Machine Learning Models</h4>
+                            <p>Trained systems that turn noisy sensor data into clean, reliable meaning — recognizing a specific hand shape as "thumbs up" even when lighting, skin tone, or hand size varies across millions of users.</p>
+                            <div class="example-box">
+                                <strong>Why it matters:</strong> The accuracy of gesture and voice recognition improved enormously as models were trained on much larger and more diverse datasets.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Spatial Mapping</h4>
+                            <p>Systems that build a real-time 3D understanding of a physical room or the user's own body, so digital content can be placed and behave believably — sitting "on" a real table instead of floating through it.</p>
+                            <div class="example-box">
+                                <strong>Technique:</strong> SLAM (Simultaneous Localization and Mapping) is the core algorithm behind most AR headsets and glasses.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Actuators</h4>
+                            <p>The output hardware that lets a device respond physically — vibration motors for haptic buzzes, ultrasound transducer arrays for mid-air touch, and small speakers for spatial audio.</p>
+                            <div class="example-box">
+                                <strong>Use case:</strong> Ultrasound haptic panels are now used in car dashboards so drivers can feel a "button" without taking their eyes off the road.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Edge Processing</h4>
+                            <p>Because gestures, voice, and neural signals need to feel instant, most of this interpretation happens on-device rather than in the cloud, minimizing the lag between an action and its response.</p>
+                            <div class="example-box">
+                                <strong>Why it matters:</strong> A voice command or hand gesture that takes half a second to register feels broken; local processing keeps the delay imperceptible.
+                            </div>
+                        </div>
+
+                        <div class="crypto-item">
+                            <h4>Privacy & Consent Layers</h4>
+                            <p>Because these systems constantly sense the body — sometimes even neural signals — designers are building in ways to limit what's recorded, stored, or shared, and to make that clear to the user.</p>
+                            <div class="example-box">
+                                <strong>Growing concern:</strong> Mental privacy is a live policy debate as BCI devices move from labs into commercial products.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Real-World Applications -->
+                <section class="content-section">
+                    <h2>Real-World Applications</h2>
+
+                    <div class="applications-grid">
+                        <div class="application-item">
+                            <h4>Accessibility</h4>
+                            <p>Voice control, eye tracking, and gesture interfaces give people with motor impairments new ways to operate computers, phones, and even vehicles independently.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Design & Architecture</h4>
+                            <p>Architects and product designers walk clients through full-scale 3D models in VR before anything is built, catching spatial problems no 2D drawing would reveal.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Healthcare</h4>
+                            <p>Surgeons rehearse complex procedures in AR overlays, and brain-computer interfaces are restoring communication and movement to patients with paralysis or ALS.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Remote Collaboration</h4>
+                            <p>Mixed-reality meetings let distributed teams sketch, manipulate 3D models, and gesture together in a shared virtual space instead of staring at a grid of video tiles.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Automotive</h4>
+                            <p>In-car systems increasingly combine voice, gesture, and haptic feedback so drivers can adjust music, climate, or navigation without looking away from the road.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Retail & Product Visualization</h4>
+                            <p>Shoppers use AR to see how furniture fits their home or how makeup looks on their face before buying, and holographic displays showcase products without a physical sample.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Gaming & Entertainment</h4>
+                            <p>VR and mixed reality headsets create fully immersive game worlds, while haptic suits and controllers let players feel impacts, textures, and environmental effects.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Education & Training</h4>
+                            <p>Students explore the inside of a cell or a historical site in VR, and industrial workers train on dangerous machinery in a fully simulated, risk-free environment.</p>
+                        </div>
+
+                        <div class="application-item">
+                            <h4>Everyday Wearables</h4>
+                            <p>Smart glasses and neural wristbands are moving these interfaces out of dedicated headsets and into lightweight, all-day devices worn like ordinary eyewear or a watch.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Challenges and Limitations -->
+                <section class="content-section">
+                    <h2>Current Challenges</h2>
+
+                    <div class="challenges-list">
+                        <div class="challenge-item">
+                            <h4>Social Acceptability</h4>
+                            <p>Talking to your phone in public or waving your hands in the air can feel awkward or draw unwanted attention — a real barrier to everyday adoption regardless of how well the technology works.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h4>Cost and Access</h4>
+                            <p>High-end spatial computing hardware remains expensive; premium headsets can cost thousands of dollars, limiting adoption to enthusiasts, professionals, and early-adopter markets.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h4>Comfort and Fatigue</h4>
+                            <p>Wearing a headset for extended periods can cause eye strain, motion sickness, or physical discomfort — hardware makers are still working to make devices lighter and more comfortable for all-day use.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h4>Privacy and Surveillance</h4>
+                            <p>Devices that constantly sense your surroundings, voice, gestures, or even brain activity raise serious questions about what data is collected, who owns it, and how it could be misused.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h4>Accuracy and Reliability</h4>
+                            <p>Gesture and voice recognition still misfire in noisy environments, with accents, or with unusual hand shapes — errors that can be frustrating or even unsafe in critical applications.</p>
+                        </div>
+
+                        <div class="challenge-item">
+                            <h4>Ethical and Medical Risk</h4>
+                            <p>Invasive brain-computer interfaces involve real surgical risk, and the long-term effects of implanted devices are still being studied as trials scale up in 2026.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Next Steps -->
+                <section class="content-section">
+                    <h2>Continue Learning</h2>
+                    <p>Now that you understand future interfaces fundamentals, explore specific areas:</p>
+
+                    <div class="next-steps">
+                        <a href="interfaces-readings.html" class="next-step-card">
+                            <h4>Readings & Articles</h4>
+                            <p>Dive deeper into spatial computing, BCI, and interaction design through curated resources and case studies</p>
+                        </a>
+
+                        <a href="interfaces-flashcards.html" class="next-step-card">
+                            <h4>Flashcards</h4>
+                            <p>Test your knowledge with interactive flashcards covering voice, gesture, AR/VR, haptics, and BCI concepts</p>
+                        </a>
+
+                        <a href="interfaces-field-kit.html" class="next-step-card">
+                            <h4>Field Kit</h4>
+                            <p>Discover the hardware, platforms, and tools you need to prototype real future-interface projects</p>
+                        </a>
+
+                        <a href="interfaces-activities.html" class="next-step-card">
+                            <h4>Hands-On Activities</h4>
+                            <p>Design gesture systems, storyboard AR experiences, and analyze real-world interface deployments</p>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <!-- Main Menu Overlay -->
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Main menu toggle
+        function toggleMainMenu() {
+            const overlay = document.getElementById('mainMenuOverlay');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('mainMenuOverlay');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+<!-- Footer -->
+<footer style="background: var(--color-black); color: var(--color-white); padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Emerging Tech Hub</h3>
+                <p style="font-size: 0.9rem; color: var(--color-gray-400);">A design-first educational platform for understanding emerging technologies. Created by Pranshu Kumar Chaudhary.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Legal</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.5rem;"><a href="terms-of-service.html" style="color: var(--color-gray-400); text-decoration: none;">Terms of Service</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" style="color: var(--color-gray-400); text-decoration: none;">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Studio Poetics</h3>
+                <p style="font-size: 0.9rem; color: var(--color-gray-400);"><a href="interaction-design-india.html" style="color: var(--color-gray-400); text-decoration: none;">Read our perspective →</a></p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid var(--color-gray-800); padding-top: 2rem;">
+            <p style="font-size: 0.9rem; color: var(--color-gray-400);">© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

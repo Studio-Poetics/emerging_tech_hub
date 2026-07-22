@@ -1,0 +1,5 @@
+{
+  "name": "Consensus Mechanism Simulator",
+  "description": "An interactive educational platform visualizing blockchain consensus mechanisms like Proof of Work, Proof of Stake, and Byzantine Fault Tolerance.",
+  "requestFramePermissions": []
+}

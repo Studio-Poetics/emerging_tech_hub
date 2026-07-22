@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
+    <meta name="author" content="Pranshu Kumar Chaudhary">
+    <title>Flashcards | Embodied & Poetic Interactions | Emerging Tech Hub</title>
+    <meta name="description" content="Spaced-repetition flashcards covering embodied cognition, enactivism, poetic interaction, phenomenology, and the key vocabulary of embodied and poetic design.">
+    <meta name="keywords" content="embodied cognition flashcards, enactivism, poetic interaction, phenomenology, 4E cognition">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/embodied-flashcards.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+    <style>
+        .flashcard-environment {
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .flashcard-hero {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .flashcard-hero .essay-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .flashcard-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+
+        .flashcard-hero p {
+            color: #555;
+            font-size: 1.05rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+            max-width: 900px;
+            margin: 1.5rem auto;
+            padding: 0 2rem;
+        }
+
+        .category-btn {
+            border: 2px solid #000;
+            background: #fff;
+            color: #000;
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            border-radius: 999px;
+            transition: all 0.2s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #000;
+            color: #fff;
+        }
+
+        .flashcard-container {
+            max-width: 640px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .experimental-flashcard {
+            perspective: 1500px;
+            width: 100%;
+            height: 420px;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flashcard-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border: 2px solid #000;
+            border-radius: 12px;
+            background: #fff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow-y: auto;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 0.75rem;
+        }
+
+        .flashcard-number {
+            color: #888;
+        }
+
+        .flashcard-category {
+            background: #0066cc;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .flashcard-question {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #000;
+            margin: auto 0;
+            text-align: center;
+        }
+
+        .flashcard-hint {
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .flashcard-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #0066cc;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-content {
+            font-size: 0.95rem;
+            color: #2a2a2a;
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            border-left: 3px solid #0066cc;
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            color: #444;
+            margin-top: 0.75rem;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .flashcard-controls button {
+            border: 2px solid #000;
+            background: #fff;
+            color: #000;
+            padding: 0.6rem 1.4rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .flashcard-controls button:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .progress-display {
+            max-width: 640px;
+            margin: 1.5rem auto 3rem;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .progress-stats {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #0066cc;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none;
+            }
+
+            .experimental-flashcard {
+                height: 480px;
+            }
+
+            .flashcard-question {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="experimental-container">
+
+        <!-- Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Studio Poetics</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Embodied & Poetic Interactions</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item"><a href="embodied-landing.html" class="experimental-nav-link">Overview</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-fundamentals.html" class="experimental-nav-link">Fundamentals</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-manifesto.html" class="experimental-nav-link">Manifesto</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-frameworks.html" class="experimental-nav-link">Frameworks</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-activities.html" class="experimental-nav-link">Activities</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-field-kit.html" class="experimental-nav-link">Field Kit</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-flashcards.html" class="experimental-nav-link active">Flashcards</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-games-essay.html" class="experimental-nav-link">Games Essay</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-deleuze-essay.html" class="experimental-nav-link">Deleuze Essay</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-readings.html" class="experimental-nav-link">Readings</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-trl.html" class="experimental-nav-link">Maturity Spectrum</a></li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">How to Use</div>
+                    <div class="info-box-content">
+                        Click a card to flip it. Use the arrows (or ← / → keys) to move between cards, and the category filters to focus on one area of vocabulary at a time.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+            <div class="flashcard-environment">
+
+                <div class="flashcard-hero">
+                    <p class="essay-subtitle">FLASHCARDS · EMBODIED & POETIC INTERACTIONS</p>
+                    <h1>Vocabulary for Thinking With the Body</h1>
+                    <p>25 terms spanning philosophy, cognitive science, and design practice — from embodied cognition to the tests used to check whether a game is truly embodied.</p>
+                </div>
+
+                <div class="category-filter" id="categoryFilter"></div>
+
+                <div class="flashcard-container">
+                    <div class="experimental-flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="flashcard-inner" id="flashcardInner">
+                            <div class="flashcard-face flashcard-front">
+                                <div class="flashcard-meta">
+                                    <span class="flashcard-number" id="cardNumber">1 / 25</span>
+                                    <span class="flashcard-category" id="cardCategory">Category</span>
+                                </div>
+                                <div class="flashcard-question" id="cardQuestion">Question</div>
+                                <div class="flashcard-hint">Click to flip</div>
+                            </div>
+                            <div class="flashcard-face flashcard-back">
+                                <div class="flashcard-meta">
+                                    <span class="flashcard-number" id="cardNumberBack">1 / 25</span>
+                                    <span class="flashcard-category" id="cardCategoryBack">Category</span>
+                                </div>
+                                <div class="flashcard-section">
+                                    <div class="section-label">Explanation</div>
+                                    <div class="section-content" id="cardExplanation">Explanation</div>
+                                </div>
+                                <div class="example-box" id="cardExample">Example</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flashcard-controls">
+                        <button onclick="navigateCard(-1)">← Previous</button>
+                        <button onclick="flipCard()">Flip</button>
+                        <button onclick="navigateCard(1)">Next →</button>
+                    </div>
+                </div>
+
+                <div class="progress-display">
+                    <div class="progress-stats" id="progressStats">Card 1 of 25</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progressBarFill" style="width: 4%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu (Mobile) -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="embodied-landing.html" class="main-menu-link active">Embodied & Poetic Interactions</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #000000; color: #ffffff; padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Emerging Tech Hub</h3>
+                    <p style="font-size: 0.9rem; color: #999999;">A design-first educational platform for understanding emerging technologies. Created by Pranshu Kumar Chaudhary.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Legal</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="terms-of-service.html" style="color: #999999; text-decoration: none;">Terms of Service</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" style="color: #999999; text-decoration: none;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Studio Poetics</h3>
+                    <p style="font-size: 0.9rem; color: #999999;"><a href="interaction-design-india.html" style="color: #999999; text-decoration: none;">Read our perspective →</a></p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #333333; padding-top: 2rem;">
+                <p style="font-size: 0.9rem; color: #999999;">© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMainMenu() {
+            document.getElementById('mainMenuOverlay').classList.toggle('active');
+        }
+
+        const embodiedFlashcardsData = [
+            { id: 1, category: "Core Concepts", question: "Embodied Cognition", hint: "The body does the thinking too", explanation: "The view that the mind is not confined to the brain — cognition is shaped by the body's form, movement, and sensory experience of the world.", example: "Example: gesturing while explaining an idea often helps you think it through, not just express it." },
+            { id: 2, category: "Core Concepts", question: "Poetic Interaction", hint: "Meaning through ambiguity, not efficiency", explanation: "A design stance that treats interaction as an open, interpretive experience rather than a task to be completed as fast as possible.", example: "Example: an hourglass invites contemplation of time passing, unlike a digital countdown timer." },
+            { id: 3, category: "Core Concepts", question: "Affordance", hint: "What an object invites you to do", explanation: "A term coined by James Gibson for the possibilities an object or environment offers for action, perceived directly by an organism.", example: "Example: a doorknob affords turning; a flat plate affords pushing." },
+            { id: 4, category: "Core Concepts", question: "Phenomenology", hint: "Philosophy of lived experience", explanation: "The philosophical study of experience and consciousness as it is directly lived, closely associated with Maurice Merleau-Ponty's work on perception.", example: "Example: describing what it feels like to catch a ball, rather than the physics of the trajectory." },
+            { id: 5, category: "Core Concepts", question: "Enactivism", hint: "Cognition arises through action", explanation: "A theory proposed by Francisco Varela and Humberto Maturana that cognition emerges through a dynamic interaction between an organism and its environment, not passive representation.", example: "Example: a blind person 'sees' a cane's tip through the active back-and-forth of tapping, not stored images." },
+            { id: 6, category: "4E Cognition", question: "4E Cognition", hint: "Four ways the mind extends past the brain", explanation: "A framework describing cognition as Embodied, Embedded, Enactive, and Extended — mind is shaped by body, context, action, and tools together.", example: "Example: using a notebook to remember, rather than only your memory, is 'extended' cognition." },
+            { id: 7, category: "4E Cognition", question: "Embodied (the 'E')", hint: "Shaped by the body's form", explanation: "Cognitive processes are shaped by the physical body — its sensors, its size, its motor capacities — not just abstract computation.", example: "Example: humans understand 'heavy' partly through the felt experience of lifting things." },
+            { id: 8, category: "4E Cognition", question: "Embedded (the 'E')", hint: "Shaped by context and environment", explanation: "Cognition depends on the surrounding environment and social context, rather than happening in isolation inside the head.", example: "Example: a chef thinks differently in a kitchen full of familiar tools than in an unfamiliar one." },
+            { id: 9, category: "4E Cognition", question: "Enactive (the 'E')", hint: "Cognition through doing", explanation: "Knowledge and understanding are generated through action and sensorimotor engagement with the world, not passive perception.", example: "Example: you learn what 'slippery' means by having slipped, not by reading a definition." },
+            { id: 10, category: "4E Cognition", question: "Extended (the 'E')", hint: "The mind reaches beyond the skull", explanation: "Tools, objects, and other people can become part of the cognitive process itself, extending the mind beyond the boundary of the brain and body.", example: "Example: a smartphone's map functions as an extension of your own sense of direction." },
+            { id: 11, category: "Thinkers", question: "Maurice Merleau-Ponty", hint: "Phenomenology of Perception", explanation: "French philosopher whose Phenomenology of Perception argued that the body is our primary way of knowing and being in the world, prior to abstract thought.", example: "Example: his idea that we 'think through' the body, not just with the brain, underlies most embodied design theory." },
+            { id: 12, category: "Thinkers", question: "Paul Dourish", hint: "Embodied Interaction (HCI)", explanation: "HCI researcher who brought phenomenology into interaction design with his book Where the Action Is: The Foundations of Embodied Interaction.", example: "Example: his work reframed tangible and social computing as embodied practices, not just screen interactions." },
+            { id: 13, category: "Thinkers", question: "James Gibson", hint: "Ecological psychology, affordance theory", explanation: "Psychologist who developed the ecological approach to perception, introducing 'affordance' as a way to describe direct perception of action possibilities.", example: "Example: his theory underlies why good design often needs no instructions — the object explains itself." },
+            { id: 14, category: "Thinkers", question: "Andy Clark", hint: "The Extended Mind", explanation: "Philosopher (with David Chalmers) who proposed the Extended Mind thesis — that objects in the environment can be literal parts of a cognitive process.", example: "Example: a notebook used habitually for memory can function as part of your mind, not just a tool for it." },
+            { id: 15, category: "Thinkers", question: "Alva Noë", hint: "Perception is something we do", explanation: "Philosopher who argues perception is not a passive process in the brain but an active, embodied skill — 'action in perception.'", example: "Example: understanding depth by moving your head, not just processing a static image." },
+            { id: 16, category: "Deleuze & Guattari", question: "Body without Organs", hint: "A body freed of fixed function", explanation: "A concept from Deleuze and Guattari describing a body understood as pure potential, not yet organized into fixed roles, organs, or habitual structures.", example: "Example: an improvised dance move that doesn't 'belong' to any trained technique." },
+            { id: 17, category: "Deleuze & Guattari", question: "Rhizome", hint: "Networks, not trees", explanation: "A Deleuze and Guattari metaphor for non-hierarchical, interconnected structures — as opposed to a tree with a single root and branching order.", example: "Example: a set of interactive artworks that reference and remix each other with no fixed 'origin' piece." },
+            { id: 18, category: "Deleuze & Guattari", question: "Deterritorialization", hint: "Breaking an object out of its usual context", explanation: "The process of disrupting an object, sign, or practice from its familiar, coded context, opening it to new uses and meanings.", example: "Example: turning a household kettle into a musical instrument disrupts its 'kitchen' coding." },
+            { id: 19, category: "Deleuze & Guattari", question: "Sensation vs. Perception", hint: "Feeling the force, not naming the thing", explanation: "Deleuze distinguishes sensation (a direct, pre-verbal intensity felt in the body) from perception (recognizing and naming what something is).", example: "Example: the jolt of a loud sound before you've identified what made it." },
+            { id: 20, category: "Deleuze & Guattari", question: "Intensity", hint: "Degree of force, not a fixed quality", explanation: "A term for a quality that exists as a matter of degree and force — like brightness or pressure — rather than a stable, named category.", example: "Example: a haptic buzz that gets stronger as you approach a target communicates through intensity, not words." },
+            { id: 21, category: "Poetic Design Principles", question: "Productive Ambiguity", hint: "Unclear on purpose", explanation: "A design principle from the Embodied Manifesto: leaving an interaction open to multiple interpretations invites deeper, more personal engagement than one clear answer.", example: "Example: a sculpture that hums differently depending on where you stand, with no 'correct' listening spot." },
+            { id: 22, category: "Poetic Design Principles", question: "Appropriable Design", hint: "Designed to be reinterpreted by users", explanation: "Designing an object or system so people can adapt, repurpose, or find their own meaning in it, rather than dictating one intended use.", example: "Example: a set of tactile blocks that get used as toys, seating, or a game board depending on who's using them." },
+            { id: 23, category: "Games & Play", question: "Sweat Test", hint: "From the Embodied Games Essay", explanation: "An informal test proposed in the Games Essay: if playtesters aren't slightly out of breath or physically engaged, the game likely isn't truly embodied.", example: "Example: a tabletop game passes the sweat test if reaching, twisting, or balancing is part of play, not just hand movement." },
+            { id: 24, category: "Games & Play", question: "Screen-Off Test", hint: "Would the game still work without a screen?", explanation: "A design check from the Games Essay: if removing the screen entirely destroys the game, the mechanic was never truly embodied to begin with.", example: "Example: a game that relies on physical cards and dice passes; one needing a phone app to function does not." },
+            { id: 25, category: "Games & Play", question: "Involuntary Input Rule", hint: "The body speaks before you decide to", explanation: "A principle from the Games Essay stating that the most embodied mechanics capture involuntary physical responses — flinches, held breath, shifted weight — rather than deliberate button presses.", example: "Example: a game that scores you on how still you can hold your hand, rather than a scripted action." }
+        ];
+
+        let currentIndex = 0;
+        let filteredData = [...embodiedFlashcardsData];
+        let isFlipped = false;
+        let viewedCards = new Set();
+
+        function getCategories() {
+            return [...new Set(embodiedFlashcardsData.map(c => c.category))];
+        }
+
+        function setupCategoryFilter() {
+            const container = document.getElementById('categoryFilter');
+            const categories = ['All', ...getCategories()];
+            container.innerHTML = categories.map(cat =>
+                `<button class="category-btn${cat === 'All' ? ' active' : ''}" onclick="filterByCategory('${cat}')">${cat}</button>`
+            ).join('');
+        }
+
+        function filterByCategory(category) {
+            filteredData = category === 'All'
+                ? [...embodiedFlashcardsData]
+                : embodiedFlashcardsData.filter(c => c.category === category);
+            currentIndex = 0;
+            isFlipped = false;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === category);
+            });
+            loadCard(0);
+        }
+
+        function loadCard(index) {
+            if (filteredData.length === 0) return;
+            currentIndex = ((index % filteredData.length) + filteredData.length) % filteredData.length;
+            const card = filteredData[currentIndex];
+            const inner = document.getElementById('flashcardInner');
+            inner.classList.remove('flipped');
+            isFlipped = false;
+
+            document.getElementById('cardNumber').textContent = `${currentIndex + 1} / ${filteredData.length}`;
+            document.getElementById('cardNumberBack').textContent = `${currentIndex + 1} / ${filteredData.length}`;
+            document.getElementById('cardCategory').textContent = card.category;
+            document.getElementById('cardCategoryBack').textContent = card.category;
+            document.getElementById('cardQuestion').textContent = card.question;
+            document.getElementById('cardExplanation').textContent = card.explanation;
+            document.getElementById('cardExample').textContent = card.example;
+
+            viewedCards.add(card.id);
+            updateProgress();
+        }
+
+        function flipCard() {
+            isFlipped = !isFlipped;
+            document.getElementById('flashcardInner').classList.toggle('flipped', isFlipped);
+        }
+
+        function navigateCard(direction) {
+            loadCard(currentIndex + direction);
+        }
+
+        function updateProgress() {
+            const total = embodiedFlashcardsData.length;
+            const viewed = viewedCards.size;
+            document.getElementById('progressStats').textContent = `Card ${currentIndex + 1} of ${filteredData.length} — ${viewed} of ${total} viewed`;
+            document.getElementById('progressBarFill').style.width = `${(viewed / total) * 100}%`;
+        }
+
+        function setupEventListeners() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') navigateCard(-1);
+                else if (e.key === 'ArrowRight') navigateCard(1);
+                else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flipCard(); }
+                else if (e.key === 'Escape') document.getElementById('mainMenuOverlay').classList.remove('active');
+            });
+        }
+
+        setupCategoryFilter();
+        loadCard(0);
+        setupEventListeners();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
+    <meta name="author" content="Pranshu Kumar Chaudhary">
+    <title>Activities | Embodied & Poetic Interactions | Emerging Tech Hub</title>
+    <meta name="description" content="Hands-on and reflective exercises for practicing embodied and poetic design: body-mapping, designing a screen-free poetic object, movement-based prototyping, and an embodied game-design sprint.">
+    <meta name="keywords" content="embodied design exercises, poetic interaction activities, body mapping, movement prototyping, embodied game design">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://eth.poetics.studio/embodied-activities.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4MBJ1TPQ5');
+    </script>
+    <style>
+        .essay-content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            color: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.8;
+        }
+
+        .essay-header {
+            margin-bottom: 4rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 2.5rem;
+        }
+
+        .essay-title {
+            font-size: 2.8rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            color: #000000;
+            letter-spacing: -0.02em;
+        }
+
+        .essay-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .essay-meta {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .essay-body h2 {
+            font-size: 1.85rem;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            color: #000000;
+            font-weight: 600;
+            border-left: 4px solid #0066cc;
+            padding-left: 1.25rem;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .essay-body h3 {
+            font-size: 1.4rem;
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .essay-body h4 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0066cc;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.95rem;
+        }
+
+        .essay-body p {
+            margin-bottom: 1.5rem;
+            color: #2a2a2a;
+            font-size: 1.05rem;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .essay-body strong {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .essay-body ul,
+        .essay-body ol {
+            margin: 1.5rem 0 2rem 2rem;
+            color: #2a2a2a;
+            font-size: 1.05rem;
+        }
+
+        .essay-body li {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .essay-body ul li::marker {
+            color: #0066cc;
+            font-weight: 600;
+        }
+
+        .activity-card {
+            background: #f8f9fa;
+            border: 2px solid #000;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .activity-card h3 {
+            margin-top: 0;
+            color: #000;
+        }
+
+        .activity-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #0066cc;
+            font-weight: 700;
+        }
+
+        .essay-callout {
+            background: #f0f7ff;
+            border-left: 4px solid #0066cc;
+            padding: 1.75rem 2rem;
+            margin: 2.5rem 0;
+            font-style: italic;
+            color: #1a1a1a;
+        }
+
+        .framework-box {
+            background: #f8f9fa;
+            border-left: 4px solid #0066cc;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .framework-box h4 {
+            margin-top: 0;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .experimental-sidebar {
+                display: none;
+            }
+
+            .experimental-main {
+                padding-top: 60px;
+            }
+
+            .essay-content-wrapper {
+                padding: 1.5rem 1rem;
+            }
+
+            .essay-title {
+                font-size: 2rem;
+            }
+
+            .essay-body h2 {
+                font-size: 1.4rem;
+                margin-top: 3rem;
+            }
+
+            .essay-body p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="experimental-container">
+
+        <!-- Sidebar -->
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Studio Poetics</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Embodied & Poetic Interactions</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item"><a href="embodied-landing.html" class="experimental-nav-link">Overview</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-fundamentals.html" class="experimental-nav-link">Fundamentals</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-manifesto.html" class="experimental-nav-link">Manifesto</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-frameworks.html" class="experimental-nav-link">Frameworks</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-activities.html" class="experimental-nav-link active">Activities</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-field-kit.html" class="experimental-nav-link">Field Kit</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-flashcards.html" class="experimental-nav-link">Flashcards</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-games-essay.html" class="experimental-nav-link">Games Essay</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-deleuze-essay.html" class="experimental-nav-link">Deleuze Essay</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-readings.html" class="experimental-nav-link">Readings</a></li>
+                        <li class="experimental-nav-item"><a href="embodied-trl.html" class="experimental-nav-link">Maturity Spectrum</a></li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content">
+                        <a href="#body-mapping">Body-Mapping a Daily Interaction</a><br>
+                        <a href="#poetic-object">A Poetic Object Without a Screen</a><br>
+                        <a href="#movement-prototyping">Movement-Based Prototyping</a><br>
+                        <a href="#game-sprint">Embodied Game-Design Sprint</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="experimental-main">
+            <div class="essay-content-wrapper">
+
+                <!-- Header -->
+                <div class="essay-header">
+                    <p class="essay-subtitle">ACTIVITIES · EMBODIED & POETIC INTERACTIONS</p>
+                    <h1 class="essay-title">Practicing With the Body</h1>
+                    <p class="essay-meta">Four exercises for putting the ideas in the Fundamentals, Manifesto, and Frameworks pages into your hands — no coding experience required for the first two. ~30–90 min per exercise.</p>
+                </div>
+
+                <div class="essay-body">
+
+                    <p>Reading about embodied cognition is one thing. Feeling the difference between a functional gesture and a poetic one is another. These four exercises are designed to be done solo or in a small group, with materials you likely already have — paper, everyday objects, your own body, and (for the last one) a willingness to prototype a "controller" out of cardboard.</p>
+
+                    <div class="activity-card" id="body-mapping">
+                        <div class="activity-meta"><span>30–45 min</span><span>Solo or Pairs</span><span>No Materials Needed</span></div>
+                        <h3>1. Body-Mapping a Daily Interaction</h3>
+                        <p>Pick one interaction you repeat every day without thinking — unlocking your phone, opening a door, making tea, boarding a bus. Perform it slowly, three times, and each time write down every part of your body involved: not just the hand that presses or turns, but posture, gaze, breath, weight shift, the micro-adjustments you make without noticing.</p>
+                        <p><strong>Then ask:</strong> which of these movements is purely functional (it could be removed with no loss), and which one, if removed, would make the interaction feel wrong even if it still "worked"? That second category is where embodied meaning is hiding.</p>
+                        <p><strong>Write-up:</strong> One paragraph describing the interaction as a piece of choreography, not a task list. Use verbs the body actually does — pivot, cradle, hover, brace — rather than interface verbs like "tap" or "select."</p>
+                    </div>
+
+                    <div class="activity-card" id="poetic-object">
+                        <div class="activity-meta"><span>60–90 min</span><span>Solo</span><span>Household Materials</span></div>
+                        <h3>2. Designing a Poetic Object Without a Screen</h3>
+                        <p>Design a physical object that communicates one piece of information — the weather outside, how much time is left, whether someone is thinking of you — using no digital display, no numbers, and no text. The object can move, change shape, warm up, make sound, or simply invite touch.</p>
+                        <p>Constrain yourself using the Manifesto's seven principles: design the center (what must always be legible) and deliberately leave the edges open (how it's interpreted). Sketch three versions before you commit to one, and build the third with whatever is on hand — string, a jar, a folded paper mechanism.</p>
+                        <div class="essay-callout">
+                            Test it on someone else without explaining what it does. If they invent their own story for it that isn't "wrong," you've succeeded — that's the poetic principle of appropriability working as intended.
+                        </div>
+                    </div>
+
+                    <div class="activity-card" id="movement-prototyping">
+                        <div class="activity-meta"><span>45–60 min</span><span>Pairs or Small Group</span><span>Open Floor Space</span></div>
+                        <h3>3. Movement-Based Prototyping</h3>
+                        <p>Before you touch a single sensor, prototype an interaction with your own body standing in for the device. One person is the "system," one person is the "user." The user performs a gesture; the system responds only through movement, posture, or proximity — no words.</p>
+                        <p>Run through the 4E lens from the <a href="embodied-frameworks.html" style="color:#0066cc;">Frameworks</a> page as you iterate:</p>
+                        <ul>
+                            <li><strong>Embodied</strong> — what does the gesture cost the user physically?</li>
+                            <li><strong>Embedded</strong> — does the surrounding space change what's possible?</li>
+                            <li><strong>Enactive</strong> — does meaning emerge only through repeated attempts?</li>
+                            <li><strong>Extended</strong> — could a simple prop (a stick, a scarf) become part of the "interface"?</li>
+                        </ul>
+                        <p>Only after three or four rounds of human-to-human prototyping should you translate the strongest version into a sketch of an actual sensor-based build.</p>
+                    </div>
+
+                    <div class="activity-card" id="game-sprint">
+                        <div class="activity-meta"><span>2–3 hrs</span><span>Small Group</span><span>Cardboard, String, Optional Microcontroller</span></div>
+                        <h3>4. Embodied Game-Design Sprint</h3>
+                        <p>This exercise mirrors the design tasks in the <a href="embodied-games-essay.html" style="color:#0066cc;">Games Essay</a>. In groups of two or three, invent a game where the controller itself is uncomfortable, effortful, or physically honest in a way a standard gamepad never is.</p>
+                        <p>Start from a constraint, not a technology:</p>
+                        <ul>
+                            <li>The controller must get physically heavier or harder to hold the longer you play.</li>
+                            <li>The player cannot win sitting down.</li>
+                            <li>The "correct" input can only be discovered by failing at the wrong one first.</li>
+                        </ul>
+                        <p>Build a cardboard-and-string prototype of the controller (a functioning microcontroller is optional — a human operator can simulate the sensor by watching and reacting). Playtest it on someone outside your group and run it through the Games Essay's <strong>Sweat Test, Screen-Off Test, and 1:1 Test</strong> before you call it done.</p>
+                    </div>
+
+                    <h2 id="where-next">Where to Go Next</h2>
+                    <p>These exercises are deliberately open-ended — there's no single correct outcome. If you want reference materials, hardware suggestions, or a list of practicing artists to look at before you build, the <a href="embodied-field-kit.html" style="color:#0066cc;">Field Kit</a> is the natural next stop.</p>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Vertical Menu (Mobile) -->
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="embodied-landing.html" class="main-menu-link active">Embodied & Poetic Interactions</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleMainMenu() {
+            document.getElementById('mainMenuOverlay').classList.toggle('active');
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer style="background: #000000; color: #ffffff; padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Emerging Tech Hub</h3>
+                    <p style="font-size: 0.9rem; color: #999999;">A design-first educational platform for understanding emerging technologies. Created by Pranshu Kumar Chaudhary.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Legal</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="terms-of-service.html" style="color: #999999; text-decoration: none;">Terms of Service</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" style="color: #999999; text-decoration: none;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #ffffff; font-weight: 600;">Studio Poetics</h3>
+                    <p style="font-size: 0.9rem; color: #999999;"><a href="interaction-design-india.html" style="color: #999999; text-decoration: none;">Read our perspective →</a></p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #333333; padding-top: 2rem;">
+                <p style="font-size: 0.9rem; color: #999999;">© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

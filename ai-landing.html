@@ -309,12 +309,15 @@
                         <li class="experimental-nav-item">
                             <a href="#activities" class="experimental-nav-link">Activities</a>
                         </li>
+                        <li class="experimental-nav-item">
+                            <a href="#visualizations" class="experimental-nav-link">Visualizations</a>
+                        </li>
                     </ul>
                 </nav>
 
                 <div class="experimental-info-box">
                     <div class="info-box-title">Available Now</div>
-                    <div class="info-box-content">All sections complete: Fundamentals, Readings, Flashcards, Field Kit, and Activities.</div>
+                    <div class="info-box-content">All sections complete: Fundamentals, Readings, Flashcards, Field Kit, Activities, and Interactive Visualizations.</div>
                 </div>
 
                 <div class="experimental-info-box">
@@ -340,6 +343,7 @@
                     <a href="#flashcards" class="section-nav-link">Flashcards</a>
                     <a href="#fieldkit" class="section-nav-link">Field Kit</a>
                     <a href="#activities" class="section-nav-link">Activities</a>
+                    <a href="#visualizations" class="section-nav-link">Visualizations</a>
                 </nav>
             </div>
 
@@ -361,7 +365,7 @@
 
                     <div class="hero-actions">
                         <a href="#fundamentals" class="experimental-btn experimental-btn--primary">Start Learning</a>
-                        <a href="flashcards-experimental.html" class="experimental-btn">Flash Cards</a>
+                        <a href="ai-flashcards.html" class="experimental-btn">Flash Cards</a>
                         <a href="#activities" class="experimental-btn">Activities</a>
                         <a href="ai-trl.html" class="experimental-btn">TRL Radar</a>
                     </div>
@@ -375,6 +379,10 @@
                 <p class="section-description">Master the core concepts that form the foundation of artificial intelligence and machine learning.</p>
 
                 <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='ai-fundamentals.html'">
+                        <h3 class="item-title">AI Fundamentals Overview</h3>
+                        <p class="item-description">Pattern-finding not thinking: training vs. inference, neural networks explained, LLMs, generative AI, and the pioneers who built it.</p>
+                    </div>
                     <div class="section-item" onclick="window.location.href='ai-basics.html'">
                         <h3 class="item-title">AI Basics</h3>
                         <p class="item-description">What is AI? Understanding the fundamental concepts, history, and applications of artificial intelligence.</p>
@@ -447,7 +455,7 @@
                 <p class="section-description">Interactive learning cards covering 52 essential AI concepts, methods, and applications.</p>
 
                 <div class="section-grid">
-                    <div class="section-item" onclick="window.location.href='flashcards-experimental.html'">
+                    <div class="section-item" onclick="window.location.href='ai-flashcards.html'">
                         <h3 class="item-title">Start Flashcards</h3>
                         <p class="item-description">Begin your interactive learning journey with our comprehensive AI flashcard deck.</p>
                     </div>
@@ -534,6 +542,28 @@
                 </div>
             </div>
 
+            <!-- Advanced Visualizations Section -->
+            <div id="visualizations" class="ai-content-section">
+                <div class="section-number">06</div>
+                <h2 class="section-title">Interactive Visualizations<span class="available-badge">Available</span></h2>
+                <p class="section-description">Interactive tools and visual representations of AI concepts, technology readiness levels, and system architectures.</p>
+
+                <div class="section-grid">
+                    <div class="section-item" onclick="window.location.href='ai-trl-radar.html'" style="cursor: pointer;">
+                        <h3 class="item-title">TRL Radar</h3>
+                        <p class="item-description">Interactive Technology Readiness Level mapping showing AI systems from research concepts to deployed production solutions.</p>
+                    </div>
+                    <div class="section-item" onclick="window.location.href='ai-trl-visualization.html'" style="cursor: pointer;">
+                        <h3 class="item-title">TRL Timeline</h3>
+                        <p class="item-description">Visual timeline showing the evolution and technology readiness journey of different AI technologies and capabilities.</p>
+                    </div>
+                    <div class="section-item" onclick="alert('Coming Soon: Interactive Architecture Diagrams')" style="cursor: pointer;">
+                        <h3 class="item-title">Architecture Diagrams</h3>
+                        <p class="item-description">Explore the internal architectures of neural networks, transformers, and modern AI systems through interactive visualizations.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- Footer -->
@@ -561,7 +591,7 @@
                 <h2 class="menu-title">Navigation</h2>
                 <nav class="main-menu-nav">
                     <a href="index.html" class="main-menu-link">Home</a>
-                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="ai-landing.html" class="main-menu-link active">Artificial Intelligence</a>
                     <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
                     <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
                     <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
@@ -571,6 +601,7 @@
                     <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
                     <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
                     <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                    <a href="embodied-landing.html" class="main-menu-link">Embodied & Poetic Interactions</a>
                 </nav>
             </div>
         </div>
@@ -590,7 +621,7 @@
 
             // Handle flashcards separately - direct navigation
             if (section === 'flashcards') {
-                window.location.href = 'flashcards-experimental.html';
+                window.location.href = 'ai-flashcards.html';
                 return;
             }
 
@@ -658,7 +689,7 @@
                         2. Learn about different types of AI<br>
                         3. Explore real-world applications<br>
                         4. Practice with simple examples</p>
-                        <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Start with AI Flashcards</a>
+                        <a href="ai-flashcards.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Start with AI Flashcards</a>
                     `,
                     ml: `
                         <h2>Machine Learning</h2>
@@ -671,7 +702,7 @@
                         </ul>
                         <h3>Common Algorithms:</h3>
                         <p>• Linear Regression<br>• Decision Trees<br>• Random Forest<br>• Support Vector Machines<br>• Neural Networks</p>
-                        <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Practice ML Concepts</a>
+                        <a href="ai-flashcards.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Practice ML Concepts</a>
                     `,
                     neural: `
                         <h2>Neural Networks</h2>
@@ -685,7 +716,7 @@
                         </ul>
                         <h3>Deep Learning Architectures:</h3>
                         <p>• Feedforward Networks<br>• Convolutional Neural Networks (CNNs)<br>• Recurrent Neural Networks (RNNs)<br>• Transformers</p>
-                        <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Learn Neural Network Terms</a>
+                        <a href="ai-flashcards.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Learn Neural Network Terms</a>
                     `
                 },
                 readings: {
@@ -765,7 +796,7 @@
                         </ul>
                         <h3>Workshop Format:</h3>
                         <p>• Live coding sessions<br>• Interactive exercises<br>• Q&A with instructors<br>• Take-home projects</p>
-                        <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Prepare with Flashcards</a>
+                        <a href="ai-flashcards.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Prepare with Flashcards</a>
                     `,
                     simulations: `
                         <h2>AI Simulations</h2>
@@ -787,7 +818,7 @@
                 <h2>${subsection.charAt(0).toUpperCase() + subsection.slice(1)}</h2>
                 <p>Interactive content for ${section} - ${subsection} is being developed!</p>
                 <p>This will include practical exercises, tutorials, and hands-on activities.</p>
-                <a href="flashcards-experimental.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Try AI Flashcards</a>
+                <a href="ai-flashcards.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4040ff; color: white; text-decoration: none; border-radius: 4px;">Try AI Flashcards</a>
             `;
         }
 

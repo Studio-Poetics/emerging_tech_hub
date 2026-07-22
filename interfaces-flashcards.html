@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
     <meta name="author" content="Pranshu Kumar Chaudhary">
-    <title>Edge Computing Flashcards - Interactive Learning System | Emerging Tech Hub</title>
-    <meta name="description" content="Master edge computing concepts through 60 interactive flashcards. Learn IoT fundamentals, distributed architecture, edge AI, and real-world applications.">
-    <meta name="keywords" content="edge computing flashcards, IoT learning, distributed systems education, edge AI concepts, TinyML, fog computing">
+    <title>Future Interfaces Flashcards - Interactive Learning System | Emerging Tech Hub</title>
+    <meta name="description" content="Master future interfaces concepts through interactive flashcards. Learn spatial computing, voice and gesture control, haptics, and brain-computer interfaces.">
+    <meta name="keywords" content="future interfaces flashcards, spatial computing learning, gesture interfaces, brain computer interface basics, haptics education">
+    <link rel="canonical" href="https://eth.poetics.studio/interfaces-flashcards.html">
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-        /* Additional styles for experimental edge computing flashcards */
         .flashcard-environment {
             background: var(--color-white);
             min-height: 100vh;
@@ -215,7 +215,6 @@
             transition: width 0.3s ease;
         }
 
-        /* Category Filter */
         .category-filter {
             display: flex;
             justify-content: center;
@@ -247,7 +246,6 @@
             border-color: var(--color-electric-blue);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .flashcard-hero {
                 padding: var(--space-8) var(--space-4);
@@ -302,7 +300,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-R4MBJ1TPQ5');
   </script>
 </head>
@@ -315,7 +312,7 @@
 
                 <div class="experimental-brand">
                     <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
-                    <p class="brand-subtitle">Edge Computing Flash Cards</p>
+                    <p class="brand-subtitle">Future Interfaces Flash Cards</p>
                 </div>
 
                 <nav>
@@ -325,16 +322,16 @@
                             <a href="index.html" class="experimental-nav-link">Home</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="edge-landing.html" class="experimental-nav-link">Edge Lab</a>
+                            <a href="interfaces-landing.html" class="experimental-nav-link">Future Interfaces Lab</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="edge-flashcards.html" class="experimental-nav-link active">Flash Cards</a>
+                            <a href="interfaces-flashcards.html" class="experimental-nav-link active">Flash Cards</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="ai-landing.html" class="experimental-nav-link">AI Lab</a>
+                            <a href="interfaces-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="blockchain-landing.html" class="experimental-nav-link">Blockchain Lab</a>
+                            <a href="interfaces-readings.html" class="experimental-nav-link">Readings</a>
                         </li>
                     </ul>
                 </nav>
@@ -347,18 +344,9 @@
                 <div class="experimental-info-box">
                     <div class="info-box-title">Categories</div>
                     <div class="info-box-content">
-                        IoT Fundamentals • Distributed Architecture<br>
-                        Edge AI & ML • Applications<br>
-                        Edge Computing Concepts
-                    </div>
-                </div>
-
-                <div class="experimental-info-box">
-                    <div class="info-box-title">Edge Lab</div>
-                    <div class="info-box-content">
-                        Distributed Systems Exploration<br>
-                        Visible: All the time<br>
-                        60 cards total
+                        Spatial Computing • Voice & Gesture<br>
+                        Haptics • Brain-Computer Interfaces<br>
+                        Interaction Design
                     </div>
                 </div>
 
@@ -370,12 +358,12 @@
 
             <!-- Hero Section -->
             <div class="flashcard-hero">
-                <h1 class="experimental-title">Edge Computing Flashcards</h1>
-                <h2 class="experimental-subtitle">Robot Design & Autonomous Systems Learning Lab</h2>
+                <h1 class="experimental-title">Future Interfaces Flashcards</h1>
+                <h2 class="experimental-subtitle">Spatial Computing, Voice, Gesture, Haptics & Brain-Computer Interfaces</h2>
                 <div style="display: flex; align-items: center; margin-bottom: 2rem;">
                     <span class="experimental-date">01</span>
                     <span class="experimental-arrow">→</span>
-                    <span class="experimental-date">60</span>
+                    <span class="experimental-date" id="totalCardsHero">30</span>
                 </div>
             </div>
 
@@ -391,27 +379,27 @@
                             <span class="progress-label">Current</span>
                         </div>
                         <div class="progress-stat">
-                            <span class="progress-value" id="totalCards">60</span>
+                            <span class="progress-value" id="totalCards">30</span>
                             <span class="progress-label">Total</span>
                         </div>
                         <div class="progress-stat">
-                            <span class="progress-value" id="progressPercent">2%</span>
+                            <span class="progress-value" id="progressPercent">3%</span>
                             <span class="progress-label">Complete</span>
                         </div>
                     </div>
                     <div class="progress-bar-container">
-                        <div class="progress-bar-fill" id="progressBarFill" style="width: 2%;"></div>
+                        <div class="progress-bar-fill" id="progressBarFill" style="width: 3%;"></div>
                     </div>
                 </div>
 
                 <!-- Category Filter -->
                 <div class="category-filter">
                     <button class="category-btn active" data-category="all">All Cards</button>
-                    <button class="category-btn" data-category="Edge Computing Concepts">Edge Computing Concepts</button>
-                    <button class="category-btn" data-category="IoT Fundamentals">IoT Fundamentals</button>
-                    <button class="category-btn" data-category="Distributed Architecture">Distributed Architecture</button>
-                    <button class="category-btn" data-category="Edge AI & ML">Edge AI & ML</button>
-                    <button class="category-btn" data-category="Applications & Use Cases">Applications & Use Cases</button>
+                    <button class="category-btn" data-category="Spatial Computing">Spatial Computing</button>
+                    <button class="category-btn" data-category="Voice & Gesture">Voice & Gesture</button>
+                    <button class="category-btn" data-category="Haptics">Haptics</button>
+                    <button class="category-btn" data-category="Brain-Computer Interfaces">Brain-Computer Interfaces</button>
+                    <button class="category-btn" data-category="Interaction Design">Interaction Design</button>
                 </div>
 
                 <!-- Flashcard -->
@@ -422,12 +410,12 @@
                         <div class="flashcard-face flashcard-front">
                             <div class="flashcard-meta">
                                 <span class="flashcard-number" id="cardNumber">01</span>
-                                <span class="flashcard-category" id="cardCategory">Edge Computing Concepts</span>
+                                <span class="flashcard-category" id="cardCategory">Spatial Computing</span>
                             </div>
 
                             <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                                <h1 class="flashcard-question" id="cardTitle">Edge Computing</h1>
-                                <p class="flashcard-hint" id="cardQuestion">Learn about edge computing concepts</p>
+                                <h1 class="flashcard-question" id="cardTitle">Loading...</h1>
+                                <p class="flashcard-hint" id="cardQuestion"></p>
                             </div>
 
                             <div style="font-size: var(--text-sm); opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em;">
@@ -439,7 +427,7 @@
                         <div class="flashcard-face flashcard-back">
                             <div class="flashcard-meta">
                                 <span class="flashcard-number" id="cardNumberBack">01</span>
-                                <span class="flashcard-category" id="cardCategoryBack">Spatial Design</span>
+                                <span class="flashcard-category" id="cardCategoryBack">Spatial Computing</span>
                             </div>
 
                             <div class="flashcard-section">
@@ -450,14 +438,6 @@
                             </div>
 
                             <div class="flashcard-section">
-                                <div class="section-label">Key Principle</div>
-                                <div class="section-content" id="cardPrinciple">
-                                    Key principle will appear here.
-                                </div>
-                            </div>
-
-                            <div class="flashcard-section">
-                                <div class="section-label">Example</div>
                                 <div class="section-content">
                                     <div class="example-box" id="cardExample">
                                         Example will appear here.
@@ -495,12 +475,11 @@
                     <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
                     <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
                     <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
-                    <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
+                    <a href="interfaces-landing.html" class="main-menu-link active">Future Interfaces</a>
                     <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
                     <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
                     <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
-                    <a href="edge-landing.html" class="main-menu-link active">Edge Computing</a>
-                    <a href="embodied-landing.html" class="main-menu-link">Embodied &amp; Poetic Interactions</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
                 </nav>
             </div>
         </div>
@@ -508,82 +487,71 @@
     </div>
 
     <script>
-        // Load edge computing flashcards data from JSON
-        let edgeFlashcardsData = [];
-        let filteredCards = [];
+        const interfacesFlashcardsData = [
+            { id: 1, category: "Spatial Computing", question: "Spatial Computing", hint: "Computing that understands physical space", explanation: "Spatial computing is a general term for technology that blends digital content with the physical world by understanding the shapes, surfaces, and depth of your surroundings in real time. It covers AR, VR, and MR.", example: "Example: An AR app that lets you place a virtual sofa in your actual living room and walk around it." },
+            { id: 2, category: "Spatial Computing", question: "AR", hint: "Digital layers on top of the real world", explanation: "Augmented Reality overlays digital images, text, or objects onto your view of the real world, usually through a phone screen or glasses, while you can still see your actual surroundings.", example: "Example: Pokémon GO showing a cartoon creature standing on your kitchen floor through your phone camera." },
+            { id: 3, category: "Spatial Computing", question: "VR", hint: "Fully replacing your surroundings", explanation: "Virtual Reality fully replaces what you see and hear with a computer-generated environment, usually through a headset, blocking out the physical world entirely.", example: "Example: Putting on a Meta Quest 3 headset to walk through a fully digital 3D museum." },
+            { id: 4, category: "Spatial Computing", question: "MR", hint: "Digital objects that react to real objects", explanation: "Mixed Reality goes further than AR by letting virtual objects interact realistically with real-world objects and surfaces — for example, a digital ball that can roll off your real desk and appear to fall on your real floor.", example: "Example: Apple Vision Pro rendering a virtual character that can hide behind your real couch." },
+            { id: 5, category: "Spatial Computing", question: "SLAM", hint: "How devices map a room while moving through it", explanation: "Simultaneous Localization and Mapping is the technique that lets a headset or robot build a map of an unknown space while simultaneously tracking its own position within that map, using cameras and sensors.", example: "Example: A VR headset's cameras scanning your room so virtual furniture doesn't float through your real walls." },
+            { id: 6, category: "Spatial Computing", question: "Passthrough", hint: "Seeing the real world through a VR headset's cameras", explanation: "Passthrough uses a headset's outward-facing cameras to show you a live video feed of your real surroundings on the internal displays, so a 'VR' headset can also function like AR without removing it.", example: "Example: Taking off nothing but glancing down to see your real coffee table blended with a virtual game board on top of it." },
+            { id: 7, category: "Spatial Computing", question: "Field of View (FOV)", hint: "How much of your peripheral vision a headset fills", explanation: "Field of view describes how many degrees of your natural eyesight a display covers. A narrow FOV feels like looking through a windshield; a wide FOV feels more immersive because it fills your peripheral vision too.", example: "Example: A headset with 110° FOV feels noticeably more enclosing than one with 90°." },
+            { id: 8, category: "Voice & Gesture", question: "Voice Assistant", hint: "Software you talk to instead of typing to", explanation: "A voice assistant converts your spoken words into text (speech recognition), figures out what you want (natural language understanding), and responds — either by speaking back or taking an action.", example: "Example: Saying 'set a timer for ten minutes' to a smart speaker." },
+            { id: 9, category: "Voice & Gesture", question: "Natural Language Understanding (NLU)", hint: "Software that grasps meaning, not just words", explanation: "NLU is the part of a voice or chat system responsible for figuring out the intent behind what someone said, even with slang, incomplete sentences, or ambiguity — turning raw words into an actionable meaning.", example: "Example: Understanding that 'it's freezing in here' near a thermostat probably means 'raise the temperature.'" },
+            { id: 10, category: "Voice & Gesture", question: "Gesture Recognition", hint: "Reading hand and body movement as input", explanation: "Gesture recognition uses cameras, depth sensors, or wearable sensors to detect the shape and movement of your hands or body and translate them into commands, without needing to touch anything.", example: "Example: Pinching your fingers in mid-air to 'select' a menu item in a VR headset." },
+            { id: 11, category: "Voice & Gesture", question: "EMG (Electromyography)", hint: "Reading electrical signals from your muscles", explanation: "Electromyography detects the tiny electrical signals your muscles produce when you move — or even when you just intend to move. Wristbands using EMG can sense finger motions before they're visible.", example: "Example: Meta's Neural Band reading a subtle finger tap on your leg to click a virtual button, without a camera seeing your hand." },
+            { id: 12, category: "Voice & Gesture", question: "Hand Tracking", hint: "Cameras that map your fingers in 3D space", explanation: "Hand tracking uses cameras (often on a headset) combined with computer vision models to detect the position of each joint in your hand, allowing you to interact with digital content using your bare hands instead of controllers.", example: "Example: Reaching out and 'grabbing' a virtual object in a VR game with your actual fingers." },
+            { id: 13, category: "Voice & Gesture", question: "Eye Tracking", hint: "Using your gaze as a pointer", explanation: "Eye tracking uses small infrared cameras to follow where your eyes are pointed, letting a device know exactly what you're looking at — often combined with a subtle gesture to 'click' on it.", example: "Example: In Apple Vision Pro, you look at an app icon and pinch your fingers to select it — no cursor needed." },
+            { id: 14, category: "Voice & Gesture", question: "Wake Word", hint: "The phrase that activates a voice assistant", explanation: "A wake word is a specific phrase a device constantly listens for locally on the device, without sending audio anywhere, until it's detected — at which point full listening and processing begins.", example: "Example: A smart speaker staying silent until you say 'Hey Google.'" },
+            { id: 15, category: "Haptics", question: "Haptic Feedback", hint: "Technology you feel, not just see or hear", explanation: "Haptic feedback uses vibration, force, or pressure to simulate a sense of touch, giving digital interactions a physical feeling — confirming a button press or simulating texture and resistance.", example: "Example: Your phone buzzing slightly when you tap a button on the screen." },
+            { id: 16, category: "Haptics", question: "Mid-Air Haptics", hint: "Feeling something that isn't physically there", explanation: "Mid-air haptics uses focused ultrasound waves aimed at your bare skin to create the sensation of touching an object floating in the air, without wearing any gloves or holding any device.", example: "Example: Feeling a faint 'button' in empty air above a car's touchscreen, so you can adjust volume without looking away from the road." },
+            { id: 17, category: "Haptics", question: "Force Feedback", hint: "Resistance that pushes back against your movement", explanation: "Force feedback goes beyond simple vibration by physically resisting or guiding your movement, simulating weight, resistance, or the feeling of pushing against a solid surface.", example: "Example: A steering wheel that tightens up to simulate hitting a curb in a racing simulator." },
+            { id: 18, category: "Haptics", question: "Haptic Suit", hint: "Wearable clothing that lets you 'feel' virtual impacts", explanation: "A haptic suit is a wearable garment lined with actuators across the body that vibrate or apply pressure in specific locations, simulating being touched, hit, or brushed against in a virtual environment.", example: "Example: Feeling a punch land on your shoulder while boxing in VR because the suit vibrates exactly there." },
+            { id: 19, category: "Brain-Computer Interfaces", question: "Brain-Computer Interface (BCI)", hint: "A direct link between your brain and a device", explanation: "A BCI reads electrical or other signals produced by the brain and translates them into commands a computer can act on, allowing control of software or devices without using hands, voice, or eyes.", example: "Example: A paralyzed person moving a computer cursor just by thinking about moving their hand." },
+            { id: 20, category: "Brain-Computer Interfaces", question: "Invasive BCI", hint: "A BCI implanted inside the skull", explanation: "An invasive BCI involves surgically placing electrodes directly on or inside the brain tissue, giving much clearer, more precise signals than external sensors, at the cost of requiring surgery and carrying medical risk.", example: "Example: Neuralink's 'Link' implant, placed by a surgical robot to read signals from the motor cortex." },
+            { id: 21, category: "Brain-Computer Interfaces", question: "Non-Invasive BCI", hint: "Reading brain signals from outside the skull", explanation: "A non-invasive BCI reads brain activity using sensors placed on the scalp (like an EEG cap) rather than surgically implanted electrodes. It's safer and easier to use, but the signals are weaker and less precise.", example: "Example: Wearing an EEG headband to control a simple game by focusing your attention." },
+            { id: 22, category: "Brain-Computer Interfaces", question: "EEG (Electroencephalography)", hint: "Reading brainwaves through the scalp", explanation: "EEG measures the brain's electrical activity using sensors placed on the scalp. It's the most common non-invasive way to read brain signals, though it captures a blurred, averaged signal rather than pinpoint detail.", example: "Example: A researcher using an EEG cap to see which brainwave patterns appear when someone imagines clenching a fist." },
+            { id: 23, category: "Brain-Computer Interfaces", question: "Motor Cortex", hint: "The brain region BCIs often target for movement control", explanation: "The motor cortex is the part of the brain responsible for planning and executing voluntary movement. Many BCIs are implanted here because thinking about a movement activates this region even if the body can't actually move.", example: "Example: A BCI reading motor cortex activity to let someone 'type' by imagining hand movements." },
+            { id: 24, category: "Brain-Computer Interfaces", question: "Neurorights", hint: "Legal protections for mental privacy", explanation: "Neurorights are proposed human rights specifically protecting the privacy and integrity of a person's brain data and mental processes, addressing concerns that BCI and neurotech could expose or manipulate people's thoughts.", example: "Example: A law requiring explicit consent before any company can collect or sell someone's brain-signal data." },
+            { id: 25, category: "Interaction Design", question: "Zero UI", hint: "Interfaces without visible screens or buttons", explanation: "Zero UI describes a design philosophy where interaction happens through voice, gesture, or ambient sensing instead of a visible graphical interface — the goal is technology that responds naturally without you having to 'operate' it.", example: "Example: Walking into a room and the lights adjust automatically based on the time of day, with no app or switch involved." },
+            { id: 26, category: "Interaction Design", question: "Ambient Computing", hint: "Technology that fades into the background", explanation: "Ambient computing refers to a network of sensors and devices working together so seamlessly that the technology becomes nearly invisible, quietly supporting daily life without demanding direct attention.", example: "Example: A home that automatically adjusts heating, lighting, and music based on who's present, without anyone issuing a command." },
+            { id: 27, category: "Interaction Design", question: "Presence", hint: "The feeling of 'really being there' in a virtual space", explanation: "Presence is the psychological sense that you are physically inside a virtual environment, even though you know rationally that you are not. Strong presence is what makes VR feel convincing rather than like watching a screen.", example: "Example: Flinching when a virtual object appears to fly toward your face in VR, even though nothing is actually there." },
+            { id: 28, category: "Interaction Design", question: "Multimodal Interaction", hint: "Combining several input methods at once", explanation: "Multimodal interaction means a system accepts more than one type of input — such as voice plus gesture plus gaze — and combines them to understand intent more accurately than any single method alone.", example: "Example: Saying 'put that there' while looking at an object and pointing at a shelf, and the system understanding all three cues together." },
+            { id: 29, category: "Interaction Design", question: "Digital Twin", hint: "A virtual replica of a real object or place", explanation: "A digital twin is a detailed virtual model of a real-world object, system, or environment that stays synchronized with its physical counterpart, often used for simulation, monitoring, or spatial computing applications.", example: "Example: A factory's digital twin showing the real-time temperature of an actual machine on the floor." },
+            { id: 30, category: "Interaction Design", question: "Accessibility-First Design", hint: "Designing for the widest range of bodies and abilities from the start", explanation: "Accessibility-first design means considering people with different physical, sensory, or cognitive abilities from the very beginning of designing an interface, rather than adding accommodations later — often producing interfaces that work better for everyone.", example: "Example: Designing a gesture interface with an alternative voice-command path built in from day one, benefiting both people with limited mobility and people whose hands are simply full." }
+        ];
+
+        let filteredCards = interfacesFlashcardsData;
         let currentCategory = 'all';
-
-        // Load the edge computing data
-        async function loadEdgeData() {
-            try {
-                const response = await fetch('edge.json');
-                const data = await response.json();
-                edgeFlashcardsData = data.cards;
-                filteredCards = edgeFlashcardsData;
-
-                console.log('Successfully loaded', edgeFlashcardsData.length, 'cards');
-
-                // Initialize the flashcard system after data is loaded
-                if (edgeFlashcardsData.length > 0) {
-                    loadCard(currentCardIndex);
-                    updateProgress();
-                }
-            } catch (error) {
-                console.error('Error loading edge computing data:', error);
-                alert('Could not load flashcards. If viewing from file://, please use a local server or the cards below.');
-                // Fallback to sample data if JSON fails to load
-                edgeFlashcardsData = [
-                    {
-                        id: 1,
-                        theme: "Edge Computing Concepts",
-                        title: "Edge Computing",
-                        text: "Edge computing processes data near where it's generated—on local devices, gateways, or nearby servers—instead of sending everything to a distant cloud data center. This reduces latency, saves bandwidth, and lets systems keep working even with unreliable connectivity. It's essential for applications like autonomous vehicles, industrial sensors, and real-time video analysis, where waiting for a round trip to the cloud simply isn't fast enough."
-                    }
-                ];
-                filteredCards = edgeFlashcardsData;
-                loadCard(currentCardIndex);
-                updateProgress();
-            }
-        }
-
         let currentCardIndex = 0;
         let isFlipped = false;
 
-        // Main menu toggle
         function toggleMainMenu() {
             const overlay = document.getElementById('mainMenuOverlay');
             overlay.classList.toggle('active');
         }
 
-        // Initialize the flashcard system
         document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('totalCardsHero').textContent = interfacesFlashcardsData.length;
             setupEventListeners();
-            loadEdgeData();
+            loadCard(currentCardIndex);
+            updateProgress();
         });
 
         function setupEventListeners() {
-            // Card flipping
             document.getElementById('flashcardInner').addEventListener('click', flipCard);
             document.getElementById('flipBtn').addEventListener('click', flipCard);
 
-            // Navigation
             document.getElementById('prevBtn').addEventListener('click', () => navigateCard(-1));
             document.getElementById('nextBtn').addEventListener('click', () => navigateCard(1));
 
-            // Category filter
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // Update active button
                     document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-
-                    // Filter cards
-                    const category = this.getAttribute('data-category');
-                    filterByCategory(category);
+                    filterByCategory(this.getAttribute('data-category'));
                 });
             });
 
-            // Keyboard navigation
             document.addEventListener('keydown', function(e) {
                 switch(e.key) {
                     case 'ArrowLeft':
@@ -598,8 +566,7 @@
                         flipCard();
                         break;
                     case 'Escape':
-                        const overlay = document.getElementById('mainMenuOverlay');
-                        overlay.classList.remove('active');
+                        document.getElementById('mainMenuOverlay').classList.remove('active');
                         break;
                 }
             });
@@ -607,12 +574,9 @@
 
         function filterByCategory(category) {
             currentCategory = category;
-
-            if (category === 'all') {
-                filteredCards = edgeFlashcardsData;
-            } else {
-                filteredCards = edgeFlashcardsData.filter(card => card.category === category);
-            }
+            filteredCards = category === 'all'
+                ? interfacesFlashcardsData
+                : interfacesFlashcardsData.filter(card => card.category === category);
 
             currentCardIndex = 0;
             if (filteredCards.length > 0) {
@@ -625,30 +589,20 @@
             const card = filteredCards[index];
             if (!card) return;
 
-            // Update front face
-            document.getElementById('cardNumber').textContent = String(card.id).padStart(2, '0');
-            document.getElementById('cardCategory').textContent = card.category || 'Edge Computing';
+            document.getElementById('cardNumber').textContent = String(index + 1).padStart(2, '0');
+            document.getElementById('cardCategory').textContent = card.category;
             document.getElementById('cardTitle').textContent = card.question;
-            document.getElementById('cardQuestion').textContent = card.hint || 'Smart Textiles concept';
+            document.getElementById('cardQuestion').textContent = card.hint;
 
-            // Update back face
-            document.getElementById('cardNumberBack').textContent = String(card.id).padStart(2, '0');
-            document.getElementById('cardCategoryBack').textContent = card.category || 'Edge Computing';
+            document.getElementById('cardNumberBack').textContent = String(index + 1).padStart(2, '0');
+            document.getElementById('cardCategoryBack').textContent = card.category;
+            document.getElementById('cardExplanation').textContent = card.explanation;
+            document.getElementById('cardExample').textContent = card.example;
 
-            // Use the structured fields from JSON
-            const answer = card.answer || '';
-            const example = card.example || '';
-
-            document.getElementById('cardExplanation').textContent = answer;
-            document.getElementById('cardPrinciple').textContent = '';
-            document.getElementById('cardExample').textContent = example;
-
-            // Reset flip state
             isFlipped = false;
             document.getElementById('flashcardInner').classList.remove('flipped');
             document.getElementById('flipBtn').textContent = 'Flip Card';
 
-            // Update navigation buttons
             document.getElementById('prevBtn').disabled = index === 0;
             document.getElementById('nextBtn').disabled = index === filteredCards.length - 1;
         }
@@ -657,14 +611,11 @@
             const flashcard = document.getElementById('flashcardInner');
             flashcard.classList.toggle('flipped');
             isFlipped = !isFlipped;
-
-            // Update flip button text
             document.getElementById('flipBtn').textContent = isFlipped ? 'Show Question' : 'Show Answer';
         }
 
         function navigateCard(direction) {
             const newIndex = currentCardIndex + direction;
-
             if (newIndex >= 0 && newIndex < filteredCards.length) {
                 currentCardIndex = newIndex;
                 loadCard(currentCardIndex);

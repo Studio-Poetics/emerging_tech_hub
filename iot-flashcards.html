@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
     <meta name="author" content="Pranshu Kumar Chaudhary">
-    <title>Edge Computing Flashcards - Interactive Learning System | Emerging Tech Hub</title>
-    <meta name="description" content="Master edge computing concepts through 60 interactive flashcards. Learn IoT fundamentals, distributed architecture, edge AI, and real-world applications.">
-    <meta name="keywords" content="edge computing flashcards, IoT learning, distributed systems education, edge AI concepts, TinyML, fog computing">
+    <title>IoT Flashcards - Interactive Learning System | Emerging Tech Hub</title>
+    <meta name="description" content="Master Internet of Things concepts through interactive flashcards. Learn sensors, connectivity protocols, industrial IoT, hardware, and IoT security.">
+    <meta name="keywords" content="IoT flashcards, internet of things learning, sensor basics, MQTT, LoRaWAN, IIoT, IoT security, ESP32 Arduino">
+    <link rel="canonical" href="https://eth.poetics.studio/iot-flashcards.html">
     <link rel="stylesheet" href="experimental-design.css">
     <style>
-        /* Additional styles for experimental edge computing flashcards */
         .flashcard-environment {
             background: var(--color-white);
             min-height: 100vh;
@@ -215,7 +215,6 @@
             transition: width 0.3s ease;
         }
 
-        /* Category Filter */
         .category-filter {
             display: flex;
             justify-content: center;
@@ -247,7 +246,6 @@
             border-color: var(--color-electric-blue);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .flashcard-hero {
                 padding: var(--space-8) var(--space-4);
@@ -302,7 +300,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-R4MBJ1TPQ5');
   </script>
 </head>
@@ -315,26 +312,26 @@
 
                 <div class="experimental-brand">
                     <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
-                    <p class="brand-subtitle">Edge Computing Flash Cards</p>
+                    <p class="brand-subtitle">Connected Worlds</p>
                 </div>
 
                 <nav>
-                    <div class="experimental-nav-title">Navigation</div>
+                    <div class="experimental-nav-title">Internet of Things</div>
                     <ul class="experimental-nav">
                         <li class="experimental-nav-item">
-                            <a href="index.html" class="experimental-nav-link">Home</a>
+                            <a href="iot-landing.html" class="experimental-nav-link">IoT Hub</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="edge-landing.html" class="experimental-nav-link">Edge Lab</a>
+                            <a href="iot-flashcards.html" class="experimental-nav-link active">Flash Cards</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="edge-flashcards.html" class="experimental-nav-link active">Flash Cards</a>
+                            <a href="iot-fundamentals.html" class="experimental-nav-link">Fundamentals</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="ai-landing.html" class="experimental-nav-link">AI Lab</a>
+                            <a href="iot-readings.html" class="experimental-nav-link">Readings</a>
                         </li>
                         <li class="experimental-nav-item">
-                            <a href="blockchain-landing.html" class="experimental-nav-link">Blockchain Lab</a>
+                            <a href="iot-field-kit.html" class="experimental-nav-link">Field Kit</a>
                         </li>
                     </ul>
                 </nav>
@@ -347,18 +344,9 @@
                 <div class="experimental-info-box">
                     <div class="info-box-title">Categories</div>
                     <div class="info-box-content">
-                        IoT Fundamentals • Distributed Architecture<br>
-                        Edge AI & ML • Applications<br>
-                        Edge Computing Concepts
-                    </div>
-                </div>
-
-                <div class="experimental-info-box">
-                    <div class="info-box-title">Edge Lab</div>
-                    <div class="info-box-content">
-                        Distributed Systems Exploration<br>
-                        Visible: All the time<br>
-                        60 cards total
+                        IoT Basics • Hardware & Boards<br>
+                        Connectivity & Protocols • Industrial IoT<br>
+                        Security & Ethics
                     </div>
                 </div>
 
@@ -370,12 +358,12 @@
 
             <!-- Hero Section -->
             <div class="flashcard-hero">
-                <h1 class="experimental-title">Edge Computing Flashcards</h1>
-                <h2 class="experimental-subtitle">Robot Design & Autonomous Systems Learning Lab</h2>
+                <h1 class="experimental-title">IoT Flashcards</h1>
+                <h2 class="experimental-subtitle">Sensors, Connectivity, Industrial IoT, Hardware & Security</h2>
                 <div style="display: flex; align-items: center; margin-bottom: 2rem;">
                     <span class="experimental-date">01</span>
                     <span class="experimental-arrow">→</span>
-                    <span class="experimental-date">60</span>
+                    <span class="experimental-date" id="totalCardsHero">30</span>
                 </div>
             </div>
 
@@ -391,27 +379,27 @@
                             <span class="progress-label">Current</span>
                         </div>
                         <div class="progress-stat">
-                            <span class="progress-value" id="totalCards">60</span>
+                            <span class="progress-value" id="totalCards">30</span>
                             <span class="progress-label">Total</span>
                         </div>
                         <div class="progress-stat">
-                            <span class="progress-value" id="progressPercent">2%</span>
+                            <span class="progress-value" id="progressPercent">3%</span>
                             <span class="progress-label">Complete</span>
                         </div>
                     </div>
                     <div class="progress-bar-container">
-                        <div class="progress-bar-fill" id="progressBarFill" style="width: 2%;"></div>
+                        <div class="progress-bar-fill" id="progressBarFill" style="width: 3%;"></div>
                     </div>
                 </div>
 
                 <!-- Category Filter -->
                 <div class="category-filter">
                     <button class="category-btn active" data-category="all">All Cards</button>
-                    <button class="category-btn" data-category="Edge Computing Concepts">Edge Computing Concepts</button>
-                    <button class="category-btn" data-category="IoT Fundamentals">IoT Fundamentals</button>
-                    <button class="category-btn" data-category="Distributed Architecture">Distributed Architecture</button>
-                    <button class="category-btn" data-category="Edge AI & ML">Edge AI & ML</button>
-                    <button class="category-btn" data-category="Applications & Use Cases">Applications & Use Cases</button>
+                    <button class="category-btn" data-category="IoT Basics">IoT Basics</button>
+                    <button class="category-btn" data-category="Hardware & Boards">Hardware & Boards</button>
+                    <button class="category-btn" data-category="Connectivity & Protocols">Connectivity & Protocols</button>
+                    <button class="category-btn" data-category="Industrial IoT">Industrial IoT</button>
+                    <button class="category-btn" data-category="Security & Ethics">Security & Ethics</button>
                 </div>
 
                 <!-- Flashcard -->
@@ -422,12 +410,12 @@
                         <div class="flashcard-face flashcard-front">
                             <div class="flashcard-meta">
                                 <span class="flashcard-number" id="cardNumber">01</span>
-                                <span class="flashcard-category" id="cardCategory">Edge Computing Concepts</span>
+                                <span class="flashcard-category" id="cardCategory">IoT Basics</span>
                             </div>
 
                             <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                                <h1 class="flashcard-question" id="cardTitle">Edge Computing</h1>
-                                <p class="flashcard-hint" id="cardQuestion">Learn about edge computing concepts</p>
+                                <h1 class="flashcard-question" id="cardTitle">Loading...</h1>
+                                <p class="flashcard-hint" id="cardQuestion"></p>
                             </div>
 
                             <div style="font-size: var(--text-sm); opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em;">
@@ -439,7 +427,7 @@
                         <div class="flashcard-face flashcard-back">
                             <div class="flashcard-meta">
                                 <span class="flashcard-number" id="cardNumberBack">01</span>
-                                <span class="flashcard-category" id="cardCategoryBack">Spatial Design</span>
+                                <span class="flashcard-category" id="cardCategoryBack">IoT Basics</span>
                             </div>
 
                             <div class="flashcard-section">
@@ -450,14 +438,6 @@
                             </div>
 
                             <div class="flashcard-section">
-                                <div class="section-label">Key Principle</div>
-                                <div class="section-content" id="cardPrinciple">
-                                    Key principle will appear here.
-                                </div>
-                            </div>
-
-                            <div class="flashcard-section">
-                                <div class="section-label">Example</div>
                                 <div class="section-content">
                                     <div class="example-box" id="cardExample">
                                         Example will appear here.
@@ -492,15 +472,14 @@
                     <a href="index.html" class="main-menu-link">Home</a>
                     <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
                     <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
-                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="iot-landing.html" class="main-menu-link active">Internet of Things</a>
                     <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
                     <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
                     <a href="interfaces-landing.html" class="main-menu-link">Future Interfaces</a>
                     <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
                     <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
                     <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
-                    <a href="edge-landing.html" class="main-menu-link active">Edge Computing</a>
-                    <a href="embodied-landing.html" class="main-menu-link">Embodied &amp; Poetic Interactions</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
                 </nav>
             </div>
         </div>
@@ -508,82 +487,71 @@
     </div>
 
     <script>
-        // Load edge computing flashcards data from JSON
-        let edgeFlashcardsData = [];
-        let filteredCards = [];
+        const iotFlashcardsData = [
+            { id: 1, category: "IoT Basics", question: "IoT", hint: "Everyday objects that sense, think, and talk", explanation: "The Internet of Things is the idea that ordinary physical objects — lightbulbs, water pumps, delivery trucks — can be given sensors, a small processor, and network connectivity so they can gather data and act on it without constant human input.", example: "Example: A soil-moisture sensor on a Maharashtra cotton farm switching on drip irrigation automatically when the soil gets too dry." },
+            { id: 2, category: "IoT Basics", question: "Sensor", hint: "The part that perceives the physical world", explanation: "A sensor converts a physical quantity — temperature, motion, light, pressure — into an electrical signal a microcontroller can read. Sensors are the 'senses' of an IoT device.", example: "Example: A DHT22 sensor measuring temperature and humidity in a smart greenhouse." },
+            { id: 3, category: "IoT Basics", question: "Actuator", hint: "The part that takes action in the real world", explanation: "An actuator turns a digital decision into a physical effect — opening a valve, spinning a motor, switching a relay. If sensors are how a device perceives, actuators are how it acts.", example: "Example: A relay that switches on a water pump once a soil sensor reports dry soil." },
+            { id: 4, category: "IoT Basics", question: "Microcontroller", hint: "The small brain that runs the device's logic", explanation: "A microcontroller is a tiny, low-power computer built into an IoT device that reads sensor data, runs simple decision logic, and controls actuators — without needing a full operating system.", example: "Example: An ESP32 chip checking temperature every second and turning on a fan if it crosses 30°C." },
+            { id: 5, category: "IoT Basics", question: "Edge Computing", hint: "Processing data near where it's created, not in a faraway data center", explanation: "Edge computing means handling data close to the device that generated it, rather than sending everything to the cloud first. This cuts delay and reduces how much data needs to travel over a network.", example: "Example: A factory camera detecting a defective part on the spot instead of streaming raw video to the cloud for analysis." },
+            { id: 6, category: "IoT Basics", question: "Digital Twin", hint: "A living virtual copy of a real machine or system", explanation: "A digital twin is a virtual model of a physical object or system that stays continuously updated with real sensor data, letting engineers simulate, monitor, or predict behavior without touching the real thing.", example: "Example: A digital twin of a wind turbine showing engineers exactly how much stress its blades are under right now." },
+            { id: 7, category: "Hardware & Boards", question: "ESP32", hint: "A tiny, cheap Wi-Fi and Bluetooth chip that powers countless IoT projects", explanation: "The ESP32 is a low-cost microcontroller with built-in Wi-Fi and Bluetooth, widely used for DIY and commercial IoT devices because it's affordable, power-efficient, and easy to program.", example: "Example: Hobbyists in India buying an ESP32 board for around ₹300 to build a Wi-Fi-connected plant watering system." },
+            { id: 8, category: "Hardware & Boards", question: "Arduino", hint: "The beginner-friendly board that started the maker movement", explanation: "Arduino is an open-source hardware and software platform built around simple microcontroller boards, popular for learning electronics and prototyping because of its huge community and simple programming environment.", example: "Example: A student using an Arduino Uno to build a first project that blinks an LED based on a light sensor reading." },
+            { id: 9, category: "Hardware & Boards", question: "Raspberry Pi", hint: "A full tiny computer, not just a microcontroller", explanation: "Unlike a microcontroller, a Raspberry Pi is a complete small computer that runs a full operating system, making it suited for IoT projects that need more processing power, like running a local dashboard or AI model.", example: "Example: A Raspberry Pi running a home security system that analyzes camera footage locally." },
+            { id: 10, category: "Hardware & Boards", question: "RFID", hint: "Tags that identify objects wirelessly, without a battery", explanation: "Radio-Frequency Identification uses a small tag and a reader to identify and track objects wirelessly. Passive RFID tags don't even need their own power source — they draw energy from the reader's radio signal.", example: "Example: A warehouse scanning hundreds of RFID-tagged boxes in seconds without unpacking a single one." },
+            { id: 11, category: "Hardware & Boards", question: "GPS Module", hint: "The component that tells a device where it is", explanation: "A GPS module receives signals from satellites to calculate a device's precise location, letting IoT systems track the position of vehicles, shipments, or assets in real time.", example: "Example: A logistics company tracking a delivery truck's exact route across a city in real time." },
+            { id: 12, category: "Connectivity & Protocols", question: "Wi-Fi", hint: "Fast, short-range wireless connectivity for home devices", explanation: "Wi-Fi is a common wireless standard offering high bandwidth over short distances, making it ideal for home IoT devices like smart speakers and cameras, though it drains battery faster than low-power alternatives.", example: "Example: A smart thermostat sending temperature updates to your phone app over your home Wi-Fi network." },
+            { id: 13, category: "Connectivity & Protocols", question: "LoRaWAN", hint: "Long-range, low-power connectivity for spread-out sensors", explanation: "LoRaWAN is a wireless protocol designed to send small amounts of data over several kilometers while using very little power, making it ideal for rural or spread-out sensor networks that can't rely on Wi-Fi.", example: "Example: Soil moisture sensors scattered across a large farm, all reporting back to a single gateway kilometers away." },
+            { id: 14, category: "Connectivity & Protocols", question: "Zigbee", hint: "A mesh network protocol built for smart homes and buildings", explanation: "Zigbee is a low-power wireless protocol where devices relay messages to each other, forming a 'mesh' network that extends coverage and reliability throughout a home or building without needing a router at every point.", example: "Example: Dozens of Zigbee smart bulbs in a house passing signals to each other so a hub across the building can still control them all." },
+            { id: 15, category: "Connectivity & Protocols", question: "MQTT", hint: "The lightweight messaging protocol that IoT devices use to 'publish' data", explanation: "MQTT (Message Queuing Telemetry Transport) is a lightweight communication protocol where devices publish data to 'topics' and other systems subscribe to receive it, using minimal bandwidth — ideal for devices with limited power and unreliable connections.", example: "Example: A temperature sensor publishing readings to a 'home/livingroom/temp' topic that a phone app subscribes to." },
+            { id: 16, category: "Connectivity & Protocols", question: "Bluetooth Low Energy (BLE)", hint: "Short-range wireless built to sip battery power, not gulp it", explanation: "BLE is a version of Bluetooth optimized for devices that need to run for months or years on a small battery, sending small bursts of data rather than continuous streams.", example: "Example: A fitness tracker syncing your daily step count to your phone via BLE while its battery lasts a full week." },
+            { id: 17, category: "Connectivity & Protocols", question: "NB-IoT", hint: "Cellular connectivity built specifically for low-power IoT devices", explanation: "Narrowband IoT is a cellular network standard designed for devices that send small amounts of data infrequently, offering wide coverage and deep battery life using existing mobile network infrastructure.", example: "Example: A smart water meter in a basement sending monthly readings over NB-IoT, with a battery that lasts a decade." },
+            { id: 18, category: "Industrial IoT", question: "IIoT", hint: "IoT's serious, high-stakes sibling for factories and infrastructure", explanation: "Industrial IoT applies connected sensors and data analytics to manufacturing, energy, and infrastructure, where the systems are larger, the failure consequences are costlier, and the returns are measured in real business value.", example: "Example: Vibration sensors on factory machinery that predict a bearing failure weeks before it happens." },
+            { id: 19, category: "Industrial IoT", question: "Industry 4.0", hint: "The 'fourth industrial revolution' powered by connected data", explanation: "Industry 4.0 describes the shift toward smart, self-monitoring factories where machines, sensors, and software communicate continuously to optimize production, reduce downtime, and enable mass customization.", example: "Example: An automated assembly line that reconfigures itself in real time based on live order data." },
+            { id: 20, category: "Industrial IoT", question: "Predictive Maintenance", hint: "Fixing machines before they break, not after", explanation: "Predictive maintenance uses sensor data and analytics to spot the early warning signs of equipment failure, allowing repairs to be scheduled before a breakdown happens instead of reacting to it afterward.", example: "Example: An oil refinery replacing a pump seal during a planned shutdown because sensor data showed early wear." },
+            { id: 21, category: "Industrial IoT", question: "SCADA", hint: "The control systems that run power grids and water plants", explanation: "Supervisory Control and Data Acquisition systems let operators monitor and control industrial processes — like power distribution or water treatment — from a central dashboard, often across large geographic areas.", example: "Example: A control room operator watching real-time pressure levels across an entire city's water pipeline network." },
+            { id: 22, category: "Industrial IoT", question: "Smart Grid", hint: "An electricity network that can sense and respond to demand", explanation: "A smart grid uses sensors and two-way communication to monitor electricity flow in real time, automatically balancing supply and demand, detecting outages faster, and integrating renewable sources more efficiently.", example: "Example: A smart grid automatically rerouting power around a fallen line during a storm, restoring electricity to most homes within minutes." },
+            { id: 23, category: "Industrial IoT", question: "M2M (Machine-to-Machine)", hint: "Devices talking directly to other devices, no human in between", explanation: "M2M refers to direct communication between two machines or devices without a person initiating it — often considered a precursor to IoT, focused narrowly on point-to-point device communication rather than large connected ecosystems.", example: "Example: A vending machine automatically notifying a supplier's system when its stock runs low." },
+            { id: 24, category: "Security & Ethics", question: "IoT Botnet", hint: "An army of hijacked smart devices used to attack the internet", explanation: "An IoT botnet is a network of compromised connected devices — often ones with weak default passwords — that attackers control remotely to flood websites with traffic or spread malware.", example: "Example: The 2016 Mirai botnet hijacking hundreds of thousands of unsecured IoT cameras and routers to take down major websites." },
+            { id: 25, category: "Security & Ethics", question: "Firmware", hint: "The permanent software baked into a device's hardware", explanation: "Firmware is the low-level software embedded directly into a device's hardware that controls its basic functions. Keeping firmware updated is critical for IoT security, since outdated firmware is a common entry point for attackers.", example: "Example: A smart camera manufacturer pushing a firmware update to patch a security flaw that let hackers view live feeds." },
+            { id: 26, category: "Security & Ethics", question: "Data Privacy (IoT)", hint: "Who gets to see what your connected devices know about you", explanation: "IoT data privacy concerns how much personal information — location, habits, health data, conversations — connected devices collect, and whether that data is stored securely, shared with third parties, or sold without clear consent.", example: "Example: A smart speaker company facing scrutiny over recordings of conversations being reviewed by human contractors." },
+            { id: 27, category: "Security & Ethics", question: "Interoperability", hint: "Whether devices from different brands can actually work together", explanation: "Interoperability is the ability of IoT devices from different manufacturers to communicate and work together smoothly, rather than being locked into a single company's ecosystem and app.", example: "Example: The Matter standard letting a smart bulb from one brand be controlled by a hub or voice assistant from a completely different brand." },
+            { id: 28, category: "Security & Ethics", question: "Vendor Lock-In", hint: "Being stuck with one company's ecosystem once you buy their gear", explanation: "Vendor lock-in happens when a smart device only works fully within its manufacturer's app and cloud service, making it costly or inconvenient to switch brands later — and risky if that company shuts down its servers.", example: "Example: A smart home hub becoming useless overnight because the company that made it shut down its cloud servers." },
+            { id: 29, category: "Security & Ethics", question: "Default Password Risk", hint: "The single biggest reason IoT devices get hacked", explanation: "Many IoT devices ship with the same factory-set username and password on every unit. If owners never change it, attackers can find these defaults online and take control of thousands of devices at once.", example: "Example: A botnet scanning the internet for cameras still using 'admin/admin' as their login and silently taking control." },
+            { id: 30, category: "Security & Ethics", question: "Right to Repair (IoT)", hint: "Whether you're allowed to fix or modify the smart device you own", explanation: "Right to repair is the growing movement arguing that owners of connected devices should be able to repair, modify, or keep using their hardware even after a manufacturer stops supporting it or wants to force an upgrade.", example: "Example: Farmers pushing for the right to repair their own smart tractors instead of being forced to use an authorized dealer for every software issue." }
+        ];
+
+        let filteredCards = iotFlashcardsData;
         let currentCategory = 'all';
-
-        // Load the edge computing data
-        async function loadEdgeData() {
-            try {
-                const response = await fetch('edge.json');
-                const data = await response.json();
-                edgeFlashcardsData = data.cards;
-                filteredCards = edgeFlashcardsData;
-
-                console.log('Successfully loaded', edgeFlashcardsData.length, 'cards');
-
-                // Initialize the flashcard system after data is loaded
-                if (edgeFlashcardsData.length > 0) {
-                    loadCard(currentCardIndex);
-                    updateProgress();
-                }
-            } catch (error) {
-                console.error('Error loading edge computing data:', error);
-                alert('Could not load flashcards. If viewing from file://, please use a local server or the cards below.');
-                // Fallback to sample data if JSON fails to load
-                edgeFlashcardsData = [
-                    {
-                        id: 1,
-                        theme: "Edge Computing Concepts",
-                        title: "Edge Computing",
-                        text: "Edge computing processes data near where it's generated—on local devices, gateways, or nearby servers—instead of sending everything to a distant cloud data center. This reduces latency, saves bandwidth, and lets systems keep working even with unreliable connectivity. It's essential for applications like autonomous vehicles, industrial sensors, and real-time video analysis, where waiting for a round trip to the cloud simply isn't fast enough."
-                    }
-                ];
-                filteredCards = edgeFlashcardsData;
-                loadCard(currentCardIndex);
-                updateProgress();
-            }
-        }
-
         let currentCardIndex = 0;
         let isFlipped = false;
 
-        // Main menu toggle
         function toggleMainMenu() {
             const overlay = document.getElementById('mainMenuOverlay');
             overlay.classList.toggle('active');
         }
 
-        // Initialize the flashcard system
         document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('totalCardsHero').textContent = iotFlashcardsData.length;
             setupEventListeners();
-            loadEdgeData();
+            loadCard(currentCardIndex);
+            updateProgress();
         });
 
         function setupEventListeners() {
-            // Card flipping
             document.getElementById('flashcardInner').addEventListener('click', flipCard);
             document.getElementById('flipBtn').addEventListener('click', flipCard);
 
-            // Navigation
             document.getElementById('prevBtn').addEventListener('click', () => navigateCard(-1));
             document.getElementById('nextBtn').addEventListener('click', () => navigateCard(1));
 
-            // Category filter
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // Update active button
                     document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-
-                    // Filter cards
-                    const category = this.getAttribute('data-category');
-                    filterByCategory(category);
+                    filterByCategory(this.getAttribute('data-category'));
                 });
             });
 
-            // Keyboard navigation
             document.addEventListener('keydown', function(e) {
                 switch(e.key) {
                     case 'ArrowLeft':
@@ -598,8 +566,7 @@
                         flipCard();
                         break;
                     case 'Escape':
-                        const overlay = document.getElementById('mainMenuOverlay');
-                        overlay.classList.remove('active');
+                        document.getElementById('mainMenuOverlay').classList.remove('active');
                         break;
                 }
             });
@@ -607,12 +574,9 @@
 
         function filterByCategory(category) {
             currentCategory = category;
-
-            if (category === 'all') {
-                filteredCards = edgeFlashcardsData;
-            } else {
-                filteredCards = edgeFlashcardsData.filter(card => card.category === category);
-            }
+            filteredCards = category === 'all'
+                ? iotFlashcardsData
+                : iotFlashcardsData.filter(card => card.category === category);
 
             currentCardIndex = 0;
             if (filteredCards.length > 0) {
@@ -625,30 +589,20 @@
             const card = filteredCards[index];
             if (!card) return;
 
-            // Update front face
-            document.getElementById('cardNumber').textContent = String(card.id).padStart(2, '0');
-            document.getElementById('cardCategory').textContent = card.category || 'Edge Computing';
+            document.getElementById('cardNumber').textContent = String(index + 1).padStart(2, '0');
+            document.getElementById('cardCategory').textContent = card.category;
             document.getElementById('cardTitle').textContent = card.question;
-            document.getElementById('cardQuestion').textContent = card.hint || 'Smart Textiles concept';
+            document.getElementById('cardQuestion').textContent = card.hint;
 
-            // Update back face
-            document.getElementById('cardNumberBack').textContent = String(card.id).padStart(2, '0');
-            document.getElementById('cardCategoryBack').textContent = card.category || 'Edge Computing';
+            document.getElementById('cardNumberBack').textContent = String(index + 1).padStart(2, '0');
+            document.getElementById('cardCategoryBack').textContent = card.category;
+            document.getElementById('cardExplanation').textContent = card.explanation;
+            document.getElementById('cardExample').textContent = card.example;
 
-            // Use the structured fields from JSON
-            const answer = card.answer || '';
-            const example = card.example || '';
-
-            document.getElementById('cardExplanation').textContent = answer;
-            document.getElementById('cardPrinciple').textContent = '';
-            document.getElementById('cardExample').textContent = example;
-
-            // Reset flip state
             isFlipped = false;
             document.getElementById('flashcardInner').classList.remove('flipped');
             document.getElementById('flipBtn').textContent = 'Flip Card';
 
-            // Update navigation buttons
             document.getElementById('prevBtn').disabled = index === 0;
             document.getElementById('nextBtn').disabled = index === filteredCards.length - 1;
         }
@@ -657,14 +611,11 @@
             const flashcard = document.getElementById('flashcardInner');
             flashcard.classList.toggle('flipped');
             isFlipped = !isFlipped;
-
-            // Update flip button text
             document.getElementById('flipBtn').textContent = isFlipped ? 'Show Question' : 'Show Answer';
         }
 
         function navigateCard(direction) {
             const newIndex = currentCardIndex + direction;
-
             if (newIndex >= 0 && newIndex < filteredCards.length) {
                 currentCardIndex = newIndex;
                 loadCard(currentCardIndex);

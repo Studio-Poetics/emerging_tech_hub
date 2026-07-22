@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.">
+    <meta name="author" content="Pranshu Kumar Chaudhary">
+    <title>Future Interfaces Activities - Hands-On Exercises | Emerging Tech Hub</title>
+    <meta name="description" content="Hands-on activities, design exercises, and case studies for learning about future interfaces: spatial computing, gesture and voice interaction, haptics, and brain-computer interfaces.">
+    <meta name="keywords" content="future interfaces activities, spatial computing exercises, gesture design activity, haptics project, BCI case study">
+    <link rel="canonical" href="https://eth.poetics.studio/interfaces-activities.html">
+    <link rel="stylesheet" href="experimental-design.css">
+    <link rel="stylesheet" href="ai-fundamentals.css">
+    <style>
+        .activity-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-12);
+            margin-top: var(--space-8);
+        }
+
+        .activity-card {
+            background: var(--color-white);
+            border: var(--border-width-4) solid var(--color-black);
+            padding: var(--space-8);
+            position: relative;
+            transition: all var(--transition-base);
+        }
+
+        .activity-card:hover {
+            border-color: var(--color-electric-blue);
+            transform: translateY(-2px);
+        }
+
+        .activity-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-black);
+            color: var(--color-white);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-4);
+            transition: background var(--transition-base);
+        }
+
+        .activity-card:hover .activity-number {
+            background: var(--color-electric-blue);
+        }
+
+        .activity-title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            margin-bottom: var(--space-3);
+        }
+
+        .activity-description p {
+            line-height: 1.8;
+            margin-bottom: var(--space-3);
+        }
+
+        .activity-description h4 {
+            font-size: var(--text-base);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            color: var(--color-electric-blue);
+            margin-top: var(--space-4);
+            margin-bottom: var(--space-2);
+        }
+
+        .instruction-list {
+            margin-left: var(--space-4);
+        }
+
+        .instruction-list li {
+            line-height: 1.8;
+        }
+
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-8);
+        }
+
+        .case-study-card {
+            background: var(--color-gray-50);
+            border: 2px solid var(--color-gray-300);
+            padding: var(--space-8);
+            transition: all var(--transition-base);
+        }
+
+        .case-study-card:hover {
+            border-color: var(--color-electric-blue);
+            background: var(--color-white);
+        }
+
+        .case-study-card h4 {
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            color: var(--color-electric-blue);
+            margin-top: var(--space-4);
+            margin-bottom: var(--space-2);
+        }
+
+        .analysis-questions {
+            list-style: none;
+            margin-left: 0;
+            margin-top: var(--space-3);
+        }
+
+        .analysis-questions li {
+            padding-left: var(--space-6);
+            position: relative;
+            line-height: 1.8;
+            margin-bottom: var(--space-2);
+        }
+
+        .analysis-questions li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-electric-blue);
+            font-weight: var(--font-bold);
+        }
+
+        @media (max-width: 900px) {
+            .experimental-sidebar { display: none; }
+            .case-study-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4MBJ1TPQ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4MBJ1TPQ5');
+  </script>
+</head>
+<body>
+    <div class="experimental-container">
+
+        <div class="experimental-sidebar">
+            <div class="sidebar-content">
+                <div class="experimental-brand">
+                    <h1 class="brand-title"><a href="index.html" style="color: inherit; text-decoration: none;">Emerging Tech Hub</a></h1>
+                    <p class="brand-subtitle">Future Interfaces Activities</p>
+                </div>
+
+                <nav>
+                    <div class="experimental-nav-title">Activity Types</div>
+                    <ul class="experimental-nav">
+                        <li class="experimental-nav-item"><a href="#individual-projects" class="experimental-nav-link">Individual Projects</a></li>
+                        <li class="experimental-nav-item"><a href="#design-exercises" class="experimental-nav-link">Design Exercises</a></li>
+                        <li class="experimental-nav-item"><a href="#collaborative" class="experimental-nav-link">Collaborative Scenarios</a></li>
+                        <li class="experimental-nav-item"><a href="#case-studies" class="experimental-nav-link">Case Studies</a></li>
+                    </ul>
+                </nav>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">Quick Navigation</div>
+                    <div class="info-box-content"><a href="interfaces-landing.html">← Back to Future Interfaces Hub</a></div>
+                </div>
+
+                <div class="experimental-info-box">
+                    <div class="info-box-title">No Headset? No Problem</div>
+                    <div class="info-box-content">Most activities below can be prototyped with paper, your phone, or a browser — a headset or BCI helps but isn't required to learn the design thinking.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="experimental-main">
+
+            <div class="fundamentals-hero">
+                <h1 class="fundamentals-title">Future Interfaces Activities</h1>
+                <p class="fundamentals-subtitle">Hands-on projects, design exercises, and real-world case studies for exploring spatial computing, voice, gesture, haptics, and brain-computer interfaces — no engineering background required.</p>
+            </div>
+
+            <div class="fundamentals-content">
+
+                <section id="individual-projects" class="content-section">
+                    <h2>Individual Projects</h2>
+
+                    <div class="activity-grid">
+
+                        <div class="activity-card">
+                            <div class="activity-number">01</div>
+                            <h3 class="activity-title">Design a Voice-Only Interaction</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner &nbsp;|&nbsp; <strong>Time:</strong> 2 hours &nbsp;|&nbsp; <strong>Cost:</strong> Free</p>
+                                <h4>What You Need</h4>
+                                <p>Just a notebook, or a smartphone with a voice memo app.</p>
+                                <h4>Instructions</h4>
+                                <ol class="instruction-list">
+                                    <li>Pick a daily task you normally do by touching a screen (ordering coffee, setting an alarm, checking the weather).</li>
+                                    <li>Write out, word for word, exactly what you would say to a voice assistant to complete that task — including how it should respond.</li>
+                                    <li>Test your script by reading it aloud to a friend who plays the assistant, following your script exactly, nothing more.</li>
+                                    <li>Note every moment where the interaction felt awkward, slow, or unclear.</li>
+                                </ol>
+                                <h4>What You'll Learn</h4>
+                                <p>Voice interfaces remove visual cues entirely, forcing you to think in turns of dialogue rather than buttons and menus — a skill central to conversational design.</p>
+                                <h4>Extensions</h4>
+                                <p>Try the same exercise for a task that involves several steps, like booking a table for a specific time and party size, and see where the voice-only version breaks down.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">02</div>
+                            <h3 class="activity-title">Gesture Vocabulary Sketching</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner &nbsp;|&nbsp; <strong>Time:</strong> 1.5 hours &nbsp;|&nbsp; <strong>Cost:</strong> Free</p>
+                                <h4>What You Need</h4>
+                                <p>Paper, pen, and your own two hands.</p>
+                                <h4>Instructions</h4>
+                                <ol class="instruction-list">
+                                    <li>List five common computer actions: select, delete, scroll, zoom, undo.</li>
+                                    <li>For each action, invent a hand gesture to perform it without touching anything.</li>
+                                    <li>Perform each gesture in front of a mirror or camera and photograph it.</li>
+                                    <li>Show your gestures to three people with no explanation and ask them to guess what each one does.</li>
+                                </ol>
+                                <h4>What You'll Learn</h4>
+                                <p>Good gestures need to be intuitive without instructions — this exercise reveals the gap between what feels natural to design and what's actually understandable to someone else.</p>
+                                <h4>Extensions</h4>
+                                <p>Redesign any gesture that was widely misunderstood, then retest it.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">03</div>
+                            <h3 class="activity-title">Try a WebXR Demo</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Beginner &nbsp;|&nbsp; <strong>Time:</strong> 1 hour &nbsp;|&nbsp; <strong>Cost:</strong> Free</p>
+                                <h4>What You Need</h4>
+                                <p>A smartphone or laptop with a modern browser (a headset is optional, not required).</p>
+                                <h4>Instructions</h4>
+                                <ol class="instruction-list">
+                                    <li>Find a public WebXR demo gallery online (search "WebXR examples").</li>
+                                    <li>Try at least three different demos — one AR, one VR, and one that uses hand or motion tracking if available.</li>
+                                    <li>For each, write down what made it feel immersive or, alternately, what broke the illusion.</li>
+                                </ol>
+                                <h4>What You'll Learn</h4>
+                                <p>Direct, hands-on exposure to the sense of "presence" that spatial computing designers work to create — and how fragile that sense can be.</p>
+                                <h4>Extensions</h4>
+                                <p>Sketch one small change you'd make to the least convincing demo to improve its sense of presence.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">04</div>
+                            <h3 class="activity-title">Build a Haptic Feedback Map</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate &nbsp;|&nbsp; <strong>Time:</strong> 2 hours &nbsp;|&nbsp; <strong>Cost:</strong> Free (uses your phone's vibration motor)</p>
+                                <h4>What You Need</h4>
+                                <p>A smartphone with adjustable vibration/haptic settings.</p>
+                                <h4>Instructions</h4>
+                                <ol class="instruction-list">
+                                    <li>Go through your phone's notification and keyboard settings and identify every distinct vibration pattern it uses.</li>
+                                    <li>Trigger each one deliberately and describe, in your own words, what feeling or meaning each pattern seems to communicate.</li>
+                                    <li>Design one new vibration pattern for a situation your phone doesn't currently have a distinct pattern for (e.g., "a friend is nearby" or "battery critically low").</li>
+                                </ol>
+                                <h4>What You'll Learn</h4>
+                                <p>Touch-based feedback carries meaning the same way sound or color does — and most people have never consciously noticed the "vocabulary" already in their pocket.</p>
+                                <h4>Extensions</h4>
+                                <p>Test your new pattern on a friend without explaining it, and see if they can guess its meaning.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="design-exercises" class="content-section">
+                    <h2>Architecture & Design Exercises</h2>
+
+                    <div class="activity-grid">
+
+                        <div class="activity-card">
+                            <div class="activity-number">05</div>
+                            <h3 class="activity-title">Storyboard a Mixed Reality Task</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate &nbsp;|&nbsp; <strong>Time:</strong> 3 hours &nbsp;|&nbsp; <strong>Cost:</strong> Free</p>
+                                <h4>What You Need</h4>
+                                <p>Paper, pens, or any simple drawing app.</p>
+                                <h4>Instructions</h4>
+                                <ol class="instruction-list">
+                                    <li>Pick a real-world task that could benefit from digital overlays — assembling furniture, cooking a recipe, fixing a bike.</li>
+                                    <li>Storyboard six frames showing what the user sees at each step, including exactly what virtual content appears and where.</li>
+                                    <li>Mark clearly which interactions use gaze, gesture, or voice at each step, and why you chose that input for that moment.</li>
+                                </ol>
+                                <h4>What You'll Learn</h4>
+                                <p>Designing for mixed reality means choosing the right input method for each micro-moment, not picking one interaction style for the whole experience.</p>
+                                <h4>Extensions</h4>
+                                <p>Redesign your storyboard assuming the user has one hand full and can't gesture — what has to change?</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">06</div>
+                            <h3 class="activity-title">Design for Accessibility First</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Intermediate &nbsp;|&nbsp; <strong>Time:</strong> 2.5 hours &nbsp;|&nbsp; <strong>Cost:</strong> Free</p>
+                                <h4>What You Need</h4>
+                                <p>Paper and pen.</p>
+                                <h4>Instructions</h4>
+                                <ol class="instruction-list">
+                                    <li>Choose a spatial or gesture-based interaction you designed in a previous activity.</li>
+                                    <li>Redesign it for someone who cannot make large hand gestures, cannot see a headset display clearly, or cannot speak aloud in public — pick one constraint.</li>
+                                    <li>Identify what alternate input (voice, EMG wristband, eye tracking, switch control) could replace the original one.</li>
+                                </ol>
+                                <h4>What You'll Learn</h4>
+                                <p>Designing for one specific constraint from the start, rather than "adding accessibility later," almost always produces an interface that's more flexible for everyone.</p>
+                                <h4>Extensions</h4>
+                                <p>Compare your redesign to the original — which one would you actually prefer to use day-to-day, and why?</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">07</div>
+                            <h3 class="activity-title">Multimodal Command Design</h3>
+                            <div class="activity-description">
+                                <p><strong>Level:</strong> Advanced &nbsp;|&nbsp; <strong>Time:</strong> 3 hours &nbsp;|&nbsp; <strong>Cost:</strong> Free</p>
+                                <h4>What You Need</h4>
+                                <p>Paper, pen, and a willing partner to role-play with.</p>
+                                <h4>Instructions</h4>
+                                <ol class="instruction-list">
+                                    <li>Design a single command that combines two input types at once, like saying "put that there" while pointing.</li>
+                                    <li>Write out exactly what the system needs to know from each input channel to correctly understand the command.</li>
+                                    <li>Role-play the interaction with a partner: one person gives the multimodal command, the other acts as the "system" and narrates what it understood.</li>
+                                    <li>Identify moments of ambiguity where the two channels disagreed or one was missing.</li>
+                                </ol>
+                                <h4>What You'll Learn</h4>
+                                <p>Combining multiple inputs can make interaction more natural, but it also introduces new ways for a system to misunderstand you — multimodal design is a balancing act.</p>
+                                <h4>Extensions</h4>
+                                <p>Redesign the command to work correctly even if one input channel (say, voice) is completely unavailable.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="collaborative" class="content-section">
+                    <h2>Collaborative Team Scenarios</h2>
+
+                    <div class="activity-grid">
+
+                        <div class="activity-card">
+                            <div class="activity-number">08</div>
+                            <h3 class="activity-title">Design a Neurorights Policy</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 3-4 &nbsp;|&nbsp; <strong>Time:</strong> 3 hours</p>
+                                <h4>Team Roles</h4>
+                                <p>Product Manager, Ethicist, Engineer, User Advocate.</p>
+                                <h4>Design Challenge</h4>
+                                <p>Your team is launching a consumer EEG headband that reads brainwave data to detect focus levels for a productivity app. Draft a data policy covering what brain data is collected, who can access it, how long it's stored, and what users are told before they opt in.</p>
+                                <h4>Deliverables</h4>
+                                <p>A one-page plain-language policy document, plus a short list of the three hardest tradeoffs your team debated while writing it.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">09</div>
+                            <h3 class="activity-title">Prototype a Zero-UI Smart Room</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 3-5 &nbsp;|&nbsp; <strong>Time:</strong> 4 hours</p>
+                                <h4>Team Roles</h4>
+                                <p>Spatial Designer, Sensor Planner, Storyteller, Skeptic (challenges every assumption).</p>
+                                <h4>Design Challenge</h4>
+                                <p>Design a room — a classroom, a hospital room, or a shared workspace — where technology responds automatically to the people and activity inside it, with no screens, apps, or explicit commands. Decide what sensors would be needed and what happens in three different scenarios.</p>
+                                <h4>Deliverables</h4>
+                                <p>A floor plan sketch annotated with sensor placement, and three short scenario scripts describing what the room does and why.</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-card">
+                            <div class="activity-number">10</div>
+                            <h3 class="activity-title">Headset vs. Glasses: Pitch Battle</h3>
+                            <div class="activity-description">
+                                <p><strong>Team Size:</strong> 4-6 (two sub-teams) &nbsp;|&nbsp; <strong>Time:</strong> 2.5 hours</p>
+                                <h4>Team Roles</h4>
+                                <p>Two teams, each with a Product Lead, Designer, and Skeptic.</p>
+                                <h4>Design Challenge</h4>
+                                <p>One team designs a use case that's best solved with a full VR/MR headset (like Quest 3 or Vision Pro 2); the other designs a use case best solved with lightweight AR glasses. Each team pitches their solution, then the other team cross-examines it for weaknesses.</p>
+                                <h4>Deliverables</h4>
+                                <p>A 5-minute pitch per team plus a shared list of which device category "won" for which use case, and why.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="case-studies" class="content-section">
+                    <h2>Real-World Case Study Analysis</h2>
+
+                    <div class="case-study-grid">
+
+                        <div class="case-study-card">
+                            <h3>Meta Quest 3 & the WebXR Standard</h3>
+                            <h4>Market Position</h4>
+                            <p>Roughly 50% of the entire XR headset market runs on Quest devices, making Quest 3 the closest thing spatial computing has to a common platform.</p>
+                            <h4>Design Lessons</h4>
+                            <p>Meta prioritized price ($499) and standalone convenience over premium specs, betting that reach matters more than raw quality for building a developer ecosystem.</p>
+                            <ul class="analysis-questions">
+                                <li>Why might being the "default" platform matter more to developers than having the best hardware?</li>
+                                <li>What tradeoffs does Meta accept by keeping the price low?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Apple Vision Pro's Sales Struggle</h3>
+                            <h4>What Happened</h4>
+                            <p>Despite a major second-generation upgrade in January 2026 — lighter, faster, better tracking — Vision Pro sales fell roughly 78% year-over-year in 2025, with only around 85,000 units sold.</p>
+                            <h4>Design Lessons</h4>
+                            <p>A $2,499 price point, limited content library, and unclear everyday use case can outweigh even excellent engineering.</p>
+                            <ul class="analysis-questions">
+                                <li>What does this reveal about the gap between "impressive demo" and "everyday habit"?</li>
+                                <li>What would need to change for you personally to want to wear it daily?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Meta Neural Band's Accessibility Pivot</h3>
+                            <h4>What Happened</h4>
+                            <p>Originally launched as a gesture-control wristband for Meta's smart glasses, the Neural Band's EMG technology was expanded at CES 2026 into automotive interfaces (with Garmin) and accessibility tools (with the University of Utah).</p>
+                            <h4>Design Lessons</h4>
+                            <p>A technology built for one purpose (subtle gesture control) found unexpected, arguably more meaningful applications once other industries picked it up.</p>
+                            <ul class="analysis-questions">
+                                <li>What other industries might benefit from EMG-based, camera-free gesture reading?</li>
+                                <li>Why might reading muscle signals be more inclusive than camera-based gesture tracking?</li>
+                            </ul>
+                        </div>
+
+                        <div class="case-study-card">
+                            <h3>Neuralink vs. Neuracle: A Global BCI Race</h3>
+                            <h4>What Happened</h4>
+                            <p>While Neuralink scales toward high-volume, more automated implant surgery in the US, Neuracle's coin-sized NEO device reportedly achieved the first commercial BCI implant in China in July 2026, performed by surgeons in Shanghai.</p>
+                            <h4>Design Lessons</h4>
+                            <p>Brain-computer interfaces are no longer a single-company research story — they're becoming a competitive, international medical technology field with different regulatory paths in different countries.</p>
+                            <ul class="analysis-questions">
+                                <li>What ethical and safety questions become more complex when BCI development happens in multiple countries with different regulations?</li>
+                                <li>Who should decide what counts as an acceptable risk for a brain implant?</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+                <div style="margin-top: var(--space-12); text-align: center;">
+                    <a href="interfaces-landing.html" style="display: inline-block; background: var(--color-electric-blue); color: var(--color-white); padding: var(--space-3) var(--space-8); font-weight: var(--font-bold); text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none;">← Back to Future Interfaces Hub</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="vertical-menu">
+            <div class="vertical-menu-text" onclick="toggleMainMenu()">Menu</div>
+        </div>
+
+        <div class="main-menu-overlay" id="mainMenuOverlay">
+            <div class="main-menu-content">
+                <button class="menu-close" onclick="toggleMainMenu()">×</button>
+                <h2 class="menu-title">Navigation</h2>
+                <nav class="main-menu-nav">
+                    <a href="index.html" class="main-menu-link">Home</a>
+                    <a href="ai-landing.html" class="main-menu-link">Artificial Intelligence</a>
+                    <a href="blockchain-landing.html" class="main-menu-link">Blockchain Technology</a>
+                    <a href="iot-landing.html" class="main-menu-link">Internet of Things</a>
+                    <a href="textiles-landing.html" class="main-menu-link">Smart Textiles</a>
+                    <a href="robotics-landing.html" class="main-menu-link">Robotics</a>
+                    <a href="interfaces-landing.html" class="main-menu-link active">Future Interfaces</a>
+                    <a href="biorobotics-landing.html" class="main-menu-link">Bio-Robotics</a>
+                    <a href="quantum-landing.html" class="main-menu-link">Quantum Computing</a>
+                    <a href="metaverse-landing.html" class="main-menu-link">Metaverse</a>
+                    <a href="edge-landing.html" class="main-menu-link">Edge Computing</a>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleMainMenu() {
+            document.getElementById('mainMenuOverlay').classList.toggle('active');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+    </script>
+
+<!-- Footer -->
+<footer style="background: var(--color-black); color: var(--color-white); padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Emerging Tech Hub</h3>
+                <p style="font-size: 0.9rem; color: var(--color-gray-400);">A design-first educational platform for understanding emerging technologies. Created by Pranshu Kumar Chaudhary.</p>
+            </div>
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Legal</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 0.5rem;"><a href="terms-of-service.html" style="color: var(--color-gray-400); text-decoration: none;">Terms of Service</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" style="color: var(--color-gray-400); text-decoration: none;">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--color-white); font-weight: 600;">Studio Poetics</h3>
+                <p style="font-size: 0.9rem; color: var(--color-gray-400);"><a href="interaction-design-india.html" style="color: var(--color-gray-400); text-decoration: none;">Read our perspective →</a></p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid var(--color-gray-800); padding-top: 2rem;">
+            <p style="font-size: 0.9rem; color: var(--color-gray-400);">© 2025 Pranshu Kumar Chaudhary. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
